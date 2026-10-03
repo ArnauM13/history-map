@@ -1,5 +1,7 @@
 # Mapa històric d'Europa
 
+**Català** · [Castellano](README.es.md) · [English](README.en.md)
+
 **Europa del 1900 a avui, en un mapa que es mou: les fronteres, les banderes i el que hi va
 passar.**
 
@@ -66,12 +68,13 @@ tenen més història porten dues frases que expliquen què volen dir i per què 
 ### 4.4 Fets i conflictes — què va passar
 
 Els conflictes oberts en la data i els fets de l'any, cadascun amb dues o tres frases i l'enllaç a
-la Viquipèdia per seguir llegint.
+la Viquipèdia, en el teu idioma, per seguir llegint.
 
 ### 4.5 Tres idiomes i un enllaç
 
-Català, castellà i anglès. L'adreça porta la data i l'idioma (`?d=1914-06-28&lang=ca`): qui la
-rep obre el mateix mapa.
+Català, castellà i anglès: la interfície, els noms dels estats i de les capitals, els fets, els
+conflictes i els textos de les banderes. L'adreça porta la data i l'idioma (`?d=1914-06-28&lang=ca`):
+qui la rep obre el mateix mapa.
 
 ## 5. Principis
 
@@ -114,6 +117,7 @@ npm run dev        # http://localhost:5173
 | `npm run format` | Prettier |
 | `npm run data:borders` | Torna a fer `public/data/` a partir de CShapes 2.0 |
 | `npm run data:flags` | Baixa les banderes de `content/flags.yaml` |
+| `npm run data:wikipedia` | Completa els enllaços a la Viquipèdia en català i castellà |
 
 ## 8. Com s'hi contribueix
 
@@ -133,4 +137,5 @@ fitxer YAML curt. A [CONTRIBUTING.md](CONTRIBUTING.md) hi ha com es fa.
 
 *La resta de documentació: el disseny a [DESIGN.md](DESIGN.md), les fonts i les limitacions de
 les dades a [DADES.md](DADES.md), el que ve a [FULL-DE-RUTA.md](FULL-DE-RUTA.md) i les convencions
-del codi a [CLAUDE.md](CLAUDE.md).*
+del codi a [CLAUDE.md](CLAUDE.md). El README, CONTRIBUTING i DADES són als tres idiomes; la resta,
+en català.*

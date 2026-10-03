@@ -1,5 +1,7 @@
 # Com s'hi contribueix
 
+**Català** · [Castellano](CONTRIBUTING.es.md) · [English](CONTRIBUTING.en.md)
+
 Gràcies per voler-hi posar les mans. Hi ha tres maneres d'ajudar:
 
 1. **Contingut**: fets, conflictes, noms d'estats i banderes. No cal programar.
@@ -45,9 +47,13 @@ summary:
     …
   en: >-
     …
-wikipedia: # el títol de l'article, per a l'enllaç «Més a la Viquipèdia»
+wikipedia: # el títol de l'article en anglès; el català i el castellà els afegeix el workflow
   en: Treaty of Versailles
 ```
+
+N'hi ha prou amb el títol de l'article de la Viquipèdia anglesa: quan el canvi arriba a GitHub, el
+workflow «Wikipedia» busca l'article en català i en castellà i n'hi afegeix el títol. En local,
+`npm run data:wikipedia` fa el mateix.
 
 ## Afegir un conflicte
 
@@ -88,11 +94,11 @@ states: # codi de l'estat → les seves banderes, per ordre
   `public/flags/` i en fa un commit. En local, `npm run data:flags` fa el mateix.
 - A la *pull request*, digues d'on surten les dates.
 
-## Noms d'estats
+## Noms d'estats i de capitals
 
 `content/countries.yaml` dona el nom de cada estat al llarg del temps. Si un estat surt amb un nom
-que no li tocava en aquella data, és aquí. El codi d'un estat surt a la seva fitxa (clica'l al
-mapa) o a `public/data/labels.geojson` (`gwcode`).
+que no li tocava en aquella data, és aquí. Les capitals vénen de CShapes en anglès i es tradueixen
+a `content/capitals.yaml`. El codi d'un estat és a `public/data/labels.geojson` (`gwcode`).
 
 ## Com s'escriu
 

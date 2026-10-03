@@ -1,5 +1,7 @@
 # Les dades — d'on surten, amb quina llicència i on fallen
 
+**Català** · [Castellano](DADES.es.md) · [English](DADES.en.md)
+
 El mapa barreja dades de llocs diferents, i cadascuna té la seva llicència. **Si en reaprofites
 alguna cosa, mira la llicència d'aquella part.**
 
@@ -36,7 +38,9 @@ dels territoris que en depenien (colònies, protectorats, mandats, territoris oc
 
 Els estats s'identifiquen amb els **codis de Gleditsch i Ward** (`gwcode`), els mateixos de
 CShapes i de bona part de la ciència política (les dades de conflictes de l'UCDP, per exemple). Els
-fets, els conflictes, els noms i les banderes hi fan referència amb aquests codis.
+fets, els conflictes, els noms i les banderes hi fan referència amb aquests codis. Els noms dels
+estats i de les capitals de CShapes són en anglès; els de l'app surten de `content/countries.yaml`
+i `content/capitals.yaml`, en els tres idiomes.
 
 ### 1.1 On ens en separem
 
@@ -90,5 +94,6 @@ baixa `npm run data:flags`, o el workflow «Flags» de GitHub cada cop que el fi
 
 Els fets i els conflictes de `content/` els escriuen els qui hi contribueixen, amb llicència
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Tot el que s'hi diu s'ha de poder
-comprovar: cada entrada enllaça com a mínim una font (la Viquipèdia val per començar). Com
-s'escriuen és a [CONTRIBUTING.md](CONTRIBUTING.md).
+comprovar: cada entrada enllaça com a mínim una font (la Viquipèdia val per començar). Els enllaços
+a la Viquipèdia en català i castellà els treu `npm run data:wikipedia` dels enllaços entre idiomes
+de l'article anglès. Com s'escriuen els textos és a [CONTRIBUTING.md](CONTRIBUTING.md).

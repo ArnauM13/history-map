@@ -6,6 +6,9 @@ body:
     attributes:
       value: |
         Gràcies! També el pots afegir tu: és un fitxer YAML curt (CONTRIBUTING.md).
+
+        Pots escriure en català, castellà o anglès · Puedes escribir en catalán, castellano o
+        inglés · You can write in Catalan, Spanish or English.
   - type: input
     id: title
     attributes:

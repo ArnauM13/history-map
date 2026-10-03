@@ -2,6 +2,11 @@ name: Una frontera, un nom o una bandera que no toca
 description: El mapa ensenya alguna cosa malament en una data.
 labels: [data]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Pots escriure en català, castellà o anglès · Puedes escribir en catalán, castellano o
+        inglés · You can write in Catalan, Spanish or English.
   - type: input
     id: link
     attributes:

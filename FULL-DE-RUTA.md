@@ -13,6 +13,8 @@ De moment, **Europa del 1900 a avui**. Abans del 1900, potser més endavant (§5
 - [x] La línia temporal, mes a mes, amb reproducció i salts entre dates clau.
 - [x] Fets i conflictes en YAML, validats als tests: 25 fets i 13 conflictes per començar.
 - [x] La interfície en tres idiomes i adreces que es poden compartir.
+- [x] També als tres idiomes: les capitals, els enllaços a la Viquipèdia i la documentació
+      principal (README, CONTRIBUTING i DADES).
 - [x] CI (lint, format, tipus, tests i build) i publicació a GitHub Pages.
 
 ## 1. Les banderes — en marxa
