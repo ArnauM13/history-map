@@ -18,7 +18,8 @@
     "typecheck": "tsc -b",
     "test": "vitest run",
     "data:borders": "node scripts/build-borders.mjs",
-    "data:flags": "node scripts/fetch-flags.mjs"
+    "data:flags": "node scripts/fetch-flags.mjs",
+    "data:wikipedia": "node scripts/wikipedia-links.mjs"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.3.0",
