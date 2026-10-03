@@ -29,6 +29,13 @@ const singleFiles = import.meta.glob<string>(
   { query: '?raw', import: 'default', eager: true },
 )
 
+type WikipediaMap = Record<string, { ca?: string; es?: string }>
+
+/** El títol en català i castellà de cada article anglès citat: el genera `npm run data:sources`. */
+const WIKIPEDIA = (Object.values(
+  import.meta.glob<WikipediaMap>('/content/wikipedia.json', { eager: true, import: 'default' }),
+)[0] ?? {}) as WikipediaMap
+
 /** Un fitxer mal escrit no tomba l'app: l'error s'apunta aquí, i els tests no el deixen passar. */
 export const contentErrors: string[] = []
 
@@ -73,6 +80,7 @@ export const FLAGS = loadFile('/content/flags.yaml', flagsSchema, {
   catalogue: {},
   about: {},
   states: {},
+  sources: {},
 })
 
 if (contentErrors.length > 0)
@@ -85,21 +93,46 @@ export function localize(text: LocalizedText | undefined, lang: Lang): string {
   return ''
 }
 
-export function wikipediaUrl(titles: WikipediaTitles | undefined, lang: Lang): string | undefined {
-  if (!titles) return undefined
-  const l = fallbackOrder(lang).find((candidate) => titles[candidate])
-  if (!l) return undefined
-  return `https://${l}.wikipedia.org/wiki/${encodeURIComponent(titles[l]!.replaceAll(' ', '_'))}`
+export interface WikipediaLink {
+  /** L'idioma de la Viquipèdia on porta l'enllaç, que pot no ser el de la pantalla. */
+  lang: Lang
+  title: string
+  url: string
+}
+
+/**
+ * L'article de la Viquipèdia en l'idioma de la pantalla, o en un altre si no n'hi ha. N'hi ha
+ * prou amb el títol anglès: el català i el castellà surten de content/wikipedia.json.
+ */
+export function wikipediaLink(
+  source: WikipediaTitles | string | undefined,
+  lang: Lang,
+): WikipediaLink | undefined {
+  if (!source) return undefined
+  const titles = typeof source === 'string' ? { en: source } : source
+  for (const l of fallbackOrder(lang)) {
+    const title = titles[l] ?? (l === 'en' ? undefined : titles.en && WIKIPEDIA[titles.en]?.[l])
+    if (title) {
+      const url = `https://${l}.wikipedia.org/wiki/${encodeURIComponent(title.replaceAll(' ', '_'))}`
+      return { lang: l, title, url }
+    }
+  }
+  return undefined
 }
 
 /** El nom d'un estat en una data: l'Imperi Rus, la Unió Soviètica i Rússia són el mateix codi. */
-export function countryName(gwcode: number, date: IsoDate, lang: Lang, fallback = ''): string {
+function nameOn(gwcode: number, date: IsoDate) {
   const entry = COUNTRY_NAMES[String(gwcode)]
-  if (!entry) return fallback
-  if (!Array.isArray(entry)) return localize(entry, lang) || fallback
-  const current = entry.find((e) => !e.until || date <= e.until) ?? entry[entry.length - 1]
-  return localize(current, lang) || fallback
+  if (!entry || !Array.isArray(entry)) return entry
+  return entry.find((e) => !e.until || date <= e.until) ?? entry[entry.length - 1]
 }
+
+export function countryName(gwcode: number, date: IsoDate, lang: Lang, fallback = ''): string {
+  return localize(nameOn(gwcode, date), lang) || fallback
+}
+
+/** La font del nom: l'article de la Viquipèdia sobre l'estat tal com era en aquella data. */
+export const countryWiki = (gwcode: number, date: IsoDate) => nameOn(gwcode, date)?.wiki
 
 /** La capital en l'idioma de la pantalla; si no està traduïda, tal com ve de CShapes. */
 export const capitalName = (capname: string, lang: Lang) =>

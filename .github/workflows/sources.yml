@@ -1,0 +1,51 @@
+# Comprova les fonts del contingut: que cada article citat de la Viquipèdia existeix (i en desa el
+# títol en català i castellà a content/wikipedia.json) i que cada enllaç extern respon. Corre quan
+# canvia el contingut, i cada dilluns, perquè un enllaç que es trenca no passi desapercebut.
+name: Fonts
+
+on:
+  push:
+    paths:
+      - content/**
+      - scripts/check-sources.mjs
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sources-${{ github.ref }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check sources
+        id: sources
+        run: npm run data:sources
+        continue-on-error: true
+      - name: Commit the Wikipedia titles
+        run: |
+          git add content/wikipedia.json
+          if git diff --cached --quiet; then
+            echo "Els títols ja eren al dia."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Fonts: els títols de la Viquipèdia en català i castellà, al dia"
+          git push
+      - name: Broken sources
+        if: steps.sources.outcome == 'failure'
+        run: |
+          echo "::error::Hi ha fonts que no existeixen o no responen. Són al pas 'Check sources'."
+          exit 1

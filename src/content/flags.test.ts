@@ -54,4 +54,15 @@ describe('les banderes', () => {
     expect(changes.map((c) => c.period.flag)).toContain('es-1931')
     expect(flagHistory(230)[1].from).toBe('1931-04-14')
   })
+
+  it("citen d'on surten les dates de cada estat amb banderes", () => {
+    for (const [code, entries] of Object.entries(FLAGS.states)) {
+      if (entries.some((e) => e.flag)) {
+        expect(
+          FLAGS.sources[code]?.length,
+          `${code} no cita d'on surten les seves banderes`,
+        ).toBeTruthy()
+      }
+    }
+  })
 })

@@ -7,6 +7,7 @@ import {
   capitalName,
   contentErrors,
   countryName,
+  wikipediaLink,
 } from './index'
 // Les fronteres, tal com les rep l'app: els noms de capital hi surten en anglès.
 import labelsRaw from '../../public/data/labels.geojson?raw'
@@ -60,5 +61,30 @@ describe('el contingut', () => {
     }
     expect(capitalName('Kiev', 'ca')).toBe('Kíiv')
     expect(capitalName('Bukarest', 'en')).toBe('Bucharest')
+  })
+
+  it('cita una font per a cada fet i cada conflicte', () => {
+    for (const item of [...EVENTS, ...CONFLICTS]) {
+      expect(
+        item.wikipedia?.en || item.sources.length > 0,
+        `${item.id} no cita cap font`,
+      ).toBeTruthy()
+    }
+  })
+
+  it("cita un article per a cada nom d'estat", () => {
+    for (const [code, entry] of Object.entries(COUNTRY_NAMES)) {
+      for (const name of Array.isArray(entry) ? entry : [entry]) {
+        expect(name.wiki, `${code} (${name.ca ?? name.en}) no cita cap article`).toBeTruthy()
+      }
+    }
+  })
+
+  it("troba el títol de la Viquipèdia en l'idioma de la pantalla", () => {
+    expect(wikipediaLink('Treaty of Versailles', 'ca')?.title).toBe('Tractat de Versalles')
+    expect(wikipediaLink('Treaty of Versailles', 'en')?.url).toBe(
+      'https://en.wikipedia.org/wiki/Treaty_of_Versailles',
+    )
+    expect(wikipediaLink({ en: 'Brexit', ca: 'Brexit (ca)' }, 'ca')?.title).toBe('Brexit (ca)')
   })
 })

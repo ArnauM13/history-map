@@ -13,8 +13,21 @@ export const localizedText = z
 /** [longitud, latitud]: l'ordre del GeoJSON, que és el contrari del que ensenyen els mapes web. */
 const lngLat = z.tuple([z.number().min(-180).max(180), z.number().min(-90).max(90)])
 
-/** El títol de l'article a cada Viquipèdia, p. ex. `en: Treaty of Versailles`. */
+/**
+ * L'article de la Viquipèdia que fa de font, pel títol anglès (`en: Treaty of Versailles`). Els
+ * títols en català i castellà els posa content/wikipedia.json; aquí només cal si es volen forçar.
+ */
 const wikipedia = z.strictObject({ ca: text.optional(), es: text.optional(), en: text.optional() })
+
+/** Una font que no és la Viquipèdia: un document, un llibre, una pàgina oficial. */
+export const externalSource = z.strictObject({
+  title: text,
+  url: z.url({ protocol: /^https$/ }),
+  /** Qui la publica: l'ONU, el BOE, una universitat… */
+  publisher: text.optional(),
+})
+
+const sources = z.array(externalSource).default([])
 
 /** Codis de Gleditsch i Ward: els mateixos de les fronteres i de content/countries.yaml. */
 const countries = z.array(z.number().int().positive()).default([])
@@ -37,6 +50,7 @@ export const eventSchema = z.strictObject({
   location: lngLat.optional(),
   countries,
   wikipedia: wikipedia.optional(),
+  sources,
 })
 
 export const CONFLICT_CATEGORIES = [
@@ -59,20 +73,23 @@ export const conflictSchema = z
     location: lngLat,
     countries,
     wikipedia: wikipedia.optional(),
+    sources,
   })
   .refine((c) => !c.end || c.end >= c.start, 'El final no pot ser abans del començament')
 
+/** Un nom, i l'article de la Viquipèdia (en anglès) que explica l'estat amb aquell nom. */
 const nameEntry = z.strictObject({
   /** L'últim dia que va valer aquest nom. L'última entrada no en porta. */
   until: isoDate.optional(),
   ca: text.optional(),
   es: text.optional(),
   en: text.optional(),
+  wiki: text.optional(),
 })
 
 export const countryNamesSchema = z.record(
   z.string().regex(/^\d+$/, 'La clau és un codi de Gleditsch i Ward'),
-  z.union([localizedText, z.array(nameEntry).min(1)]),
+  z.union([nameEntry.omit({ until: true }), z.array(nameEntry).min(1)]),
 )
 
 const flagId = z
@@ -96,10 +113,13 @@ export const flagsSchema = z.strictObject({
   about: z.record(flagId, localizedText).default({}),
   /** Codi de Gleditsch i Ward → les banderes que va fer servir, per ordre. */
   states: z.record(z.string().regex(/^\d+$/), z.array(flagEntry).min(1)),
+  /** D'on surten les dates: codi → títols d'articles de la Viquipèdia anglesa. */
+  sources: z.record(z.string().regex(/^\d+$/), z.array(text).min(1)).default({}),
 })
 
 export type LocalizedText = z.infer<typeof localizedText>
 export type WikipediaTitles = z.infer<typeof wikipedia>
+export type ExternalSource = z.infer<typeof externalSource>
 export type HistoricalEvent = z.infer<typeof eventSchema> & { id: string }
 export type Conflict = z.infer<typeof conflictSchema> & { id: string }
 export type CountryNames = z.infer<typeof countryNamesSchema>

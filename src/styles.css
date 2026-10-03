@@ -299,11 +299,23 @@ a { color: var(--c-brand-ink); font-weight: 600; }
 
 .detail h3 { margin: 16px 0 8px; font-size: 13px; font-weight: 700; color: var(--c-text-2); }
 
-.read-more {
-  display: inline-flex; align-items: center; gap: 4px; font-size: 13px; text-decoration: none;
-  .ms { font-size: 14px; }
-  &:hover { text-decoration: underline; }
+/* Les fonts d'una fitxa: què recolzen, on són i el títol. Discretes, però sempre a la vista. */
+.sources {
+  display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none;
+  li { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  a {
+    display: inline-flex; align-items: baseline; gap: 5px; min-width: 0;
+    font-size: 12px; font-weight: 500; text-decoration: none; color: var(--c-text-2);
+    .ms { align-self: center; font-size: 12px; color: var(--c-brand-ink); }
+    &:hover .src-title { text-decoration: underline; }
+  }
 }
+
+.src-what { font-size: 11px; font-weight: 600; color: var(--c-text-3); }
+.src-site { flex: none; font-weight: 700; color: var(--c-brand-ink); }
+.src-title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+.src-note { margin: 12px 0 0; font-size: 11px; font-weight: 500; line-height: 1.4; color: var(--c-text-3); }
 
 /* Les files `etiqueta → valor` de Petja (app-facts-list). */
 .facts {

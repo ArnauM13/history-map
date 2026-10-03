@@ -5,11 +5,13 @@ import {
   FLAGS,
   capitalName,
   countryName,
+  countryWiki,
   localize,
-  wikipediaUrl,
+  wikipediaLink,
 } from '../content'
 import { commonsUrl, flagHistory, flagOn, loadFlagCredits, type FlagCredit } from '../content/flags'
-import type { Conflict, HistoricalEvent } from '../content/schema'
+import type { Conflict, ExternalSource, HistoricalEvent, WikipediaTitles } from '../content/schema'
+import type { Lang } from '../i18n'
 import { useI18n } from '../i18n'
 import { MIN_DATE, OPEN_END, formatDate, fromDateNumber, yearOf, type IsoDate } from '../lib/date'
 import { stateOn, type LabelCollection } from '../map/data'
@@ -17,6 +19,7 @@ import { REPO_URL, docUrl, type BorderProperties, type Selection } from '../sele
 import { Flag } from './Flag'
 import { FlagGallery } from './FlagGallery'
 import { Icon } from './Icon'
+import { Sources, type SourceItem } from './Sources'
 
 export type SidebarTab = 'flags' | 'history'
 
@@ -350,6 +353,20 @@ function CountryDetail({
           </ul>
         </>
       )}
+      <Sources
+        items={[
+          { what: t('sourceBorders'), ...CSHAPES_SOURCE },
+          ...wikipediaSource(
+            countryWiki(feature.gwcode, date),
+            lang,
+            t('wikipedia'),
+            t('sourceName'),
+          ),
+          ...(FLAGS.sources[String(feature.gwcode)] ?? []).flatMap((title) =>
+            wikipediaSource(title, lang, t('wikipedia'), t('sourceFlags')),
+          ),
+        ]}
+      />
       {related.length > 0 && (
         <>
           <h3>{t('relatedEvents')}</h3>
@@ -379,9 +396,29 @@ function CountryDetail({
   )
 }
 
+/** CShapes és la font de les fronteres i de les capitals de tot el mapa. */
+const CSHAPES_SOURCE = {
+  site: 'CShapes 2.0',
+  title: 'Schvitz et al. (2022)',
+  url: 'https://icr.ethz.ch/data/cshapes/',
+}
+
+/** La Viquipèdia, en l'idioma de la pantalla si es pot, com a font. */
+function wikipediaSource(
+  source: WikipediaTitles | string | undefined,
+  lang: Lang,
+  site: string,
+  what?: string,
+): SourceItem[] {
+  const link = wikipediaLink(source, lang)
+  return link ? [{ what, site: link.lang === lang ? site : `${site} (${link.lang})`, ...link }] : []
+}
+
+const externalSources = (sources: ExternalSource[]): SourceItem[] =>
+  sources.map((s) => ({ site: s.publisher ?? new URL(s.url).hostname, title: s.title, url: s.url }))
+
 function EventDetail({ event }: { event: HistoricalEvent }) {
   const { lang, t } = useI18n()
-  const link = wikipediaUrl(event.wikipedia, lang)
   return (
     <>
       <p className="detail-kicker">
@@ -390,14 +427,18 @@ function EventDetail({ event }: { event: HistoricalEvent }) {
       </p>
       <h2 className="detail-title">{localize(event.title, lang)}</h2>
       <p className="detail-text">{localize(event.summary, lang)}</p>
-      {link && <ReadMore href={link} />}
+      <Sources
+        items={[
+          ...wikipediaSource(event.wikipedia, lang, t('wikipedia')),
+          ...externalSources(event.sources),
+        ]}
+      />
     </>
   )
 }
 
 function ConflictDetail({ conflict }: { conflict: Conflict }) {
   const { lang, t } = useI18n()
-  const link = wikipediaUrl(conflict.wikipedia, lang)
   return (
     <>
       <p className="detail-kicker">
@@ -406,7 +447,12 @@ function ConflictDetail({ conflict }: { conflict: Conflict }) {
       </p>
       <h2 className="detail-title">{localize(conflict.title, lang)}</h2>
       <p className="detail-text">{localize(conflict.summary, lang)}</p>
-      {link && <ReadMore href={link} />}
+      <Sources
+        items={[
+          ...wikipediaSource(conflict.wikipedia, lang, t('wikipedia')),
+          ...externalSources(conflict.sources),
+        ]}
+      />
     </>
   )
 }
@@ -431,15 +477,5 @@ function FlagCaption({ id }: { id: string }) {
       </a>
       {credit?.license && ` · ${publicDomain ? t('publicDomain') : credit.license}`}
     </figcaption>
-  )
-}
-
-function ReadMore({ href }: { href: string }) {
-  const { t } = useI18n()
-  return (
-    <a className="read-more" href={href} target="_blank" rel="noopener">
-      {t('readMore')}
-      <Icon name="open_in_new" />
-    </a>
   )
 }

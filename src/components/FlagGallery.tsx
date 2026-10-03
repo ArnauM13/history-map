@@ -120,6 +120,7 @@ export function FlagGallery({ date, labels, selectedGwcode, onSelectCountry, onG
             )
           })}
         </ul>
+        <p className="src-note">{t('flagsSourcesNote')}</p>
       </section>
     </>
   )

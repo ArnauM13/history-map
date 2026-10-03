@@ -14,7 +14,7 @@ import { ensureFlagImage } from './flagImages'
 import { EUROPE_BOUNDS, MAX_BOUNDS, createStyle, validOn } from './style'
 
 const ATTRIBUTION =
-  '<a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">CShapes 2.0</a> (CC BY-NC-SA 4.0) · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>'
+  '<a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">CShapes 2.0</a> (CC BY-NC-SA 4.0) · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>'
 
 maplibregl.setWorkerUrl(workerUrl)
 
