@@ -1,12 +1,12 @@
-/** Properties of a border feature, as produced by scripts/build-borders.mjs. */
+/** Les propietats d'una peça de frontera, tal com les deixa scripts/build-borders.mjs. */
 export interface BorderProperties {
   gwcode: number
   country_name: string
   status: string
   owner?: string | null
-  /** Valid from (YYYYMMDD). */
+  /** Vigent des de (AAAAMMDD). */
   s: number
-  /** Valid until (YYYYMMDD, 99991231 = still valid). */
+  /** Vigent fins a (AAAAMMDD; 99991231 vol dir que encara val). */
   e: number
   capname?: string
   c: number

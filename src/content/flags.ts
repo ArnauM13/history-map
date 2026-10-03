@@ -1,19 +1,19 @@
 import { addDays, type IsoDate } from '../lib/date'
 import { FLAGS } from './index'
 
-/** A period during which a state used one flag. */
+/** Un tram de temps en què un estat va fer servir una sola bandera. */
 export interface FlagPeriod {
-  /** Catalogue id; `null` = no flag of its own; `undefined` = not documented. */
+  /** Una bandera del catàleg; `null` és «sense bandera pròpia», i `undefined`, «per documentar». */
   flag: string | null | undefined
-  /** First day of use, unknown for the first period of a state. */
+  /** El primer dia. No el sabem per a la primera bandera de cada estat. */
   from?: IsoDate
-  /** Last day of use; undefined = still in use. */
+  /** L'últim dia; sense, encara es fa servir (o la fa servir l'estat fins que desapareix). */
   until?: IsoDate
 }
 
 const histories = new Map<number, FlagPeriod[]>()
 
-/** All the flags a state used, in chronological order. */
+/** Totes les banderes d'un estat, per ordre. */
 export function flagHistory(gwcode: number): FlagPeriod[] {
   let history = histories.get(gwcode)
   if (!history) {
@@ -28,22 +28,29 @@ export function flagHistory(gwcode: number): FlagPeriod[] {
   return history
 }
 
-/** The flag a state used on a given date, if documented. */
+/** La bandera que feia servir un estat en una data, si està documentada. */
 export const flagOn = (gwcode: number, date: IsoDate): FlagPeriod | undefined =>
   flagHistory(gwcode).find((p) => !p.until || date <= p.until)
 
-/** Flag adoptions within [start, end], across all states. */
-export function flagChangesBetween(start: IsoDate, end: IsoDate) {
-  const changes: { gwcode: number; period: FlagPeriod & { from: IsoDate } }[] = []
-  for (const code of Object.keys(FLAGS.states)) {
-    for (const period of flagHistory(Number(code))) {
-      if (period.flag && period.from && start <= period.from && period.from <= end) {
-        changes.push({ gwcode: Number(code), period: { ...period, from: period.from } })
-      }
-    }
-  }
-  return changes.sort((a, b) => a.period.from.localeCompare(b.period.from))
+export interface FlagChange {
+  gwcode: number
+  period: FlagPeriod & { flag: string; from: IsoDate }
 }
+
+/**
+ * Cada vegada que un estat estrena bandera, per ordre de data. La primera bandera de cada
+ * estat no hi és: no en sabem el dia, i sovint ve d'abans del 1900.
+ */
+export const ALL_FLAG_CHANGES: FlagChange[] = Object.keys(FLAGS.states)
+  .flatMap((code) =>
+    flagHistory(Number(code))
+      .filter((p): p is FlagChange['period'] => Boolean(p.flag && p.from))
+      .map((period) => ({ gwcode: Number(code), period })),
+  )
+  .sort((a, b) => a.period.from.localeCompare(b.period.from))
+
+export const flagChangesBetween = (start: IsoDate, end: IsoDate) =>
+  ALL_FLAG_CHANGES.filter((c) => start <= c.period.from && c.period.from <= end)
 
 export const flagUrl = (id: string) => `${import.meta.env.BASE_URL}flags/${id}.png`
 
@@ -58,7 +65,7 @@ export interface FlagCredit {
 
 let credits: Promise<Record<string, FlagCredit>> | undefined
 
-/** Licence and author of each flag image, written by `npm run data:flags`. */
+/** La llicència i l'autor de cada imatge, que escriu `npm run data:flags`. */
 export function loadFlagCredits() {
   credits ??= fetch(`${import.meta.env.BASE_URL}flags/credits.json`)
     .then((r) => (r.ok ? r.json() : {}))

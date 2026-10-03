@@ -1,12 +1,12 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-// BASE_PATH lets the GitHub Pages workflow serve the app from /<repo>/.
+// A GitHub Pages l'app viu a /<repo>/: el workflow de publicació ho diu amb BASE_PATH.
 export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
   plugins: [react()],
-  // MapLibre's worker is an ES module (see src/map/MapView.tsx).
+  // El worker de MapLibre és un mòdul ES (vegeu src/map/MapView.tsx).
   worker: { format: 'es' },
-  // MapLibre alone is ~1 MB minified; there is nothing meaningful left to split.
+  // MapLibre sol ja fa ~1 MB; no queda res que valgui la pena partir.
   build: { chunkSizeWarningLimit: 1600 },
 })

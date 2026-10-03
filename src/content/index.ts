@@ -29,7 +29,7 @@ const singleFiles = import.meta.glob<string>(['/content/countries.yaml', '/conte
   eager: true,
 })
 
-/** Content errors are collected (and checked by the test suite) instead of crashing the app. */
+/** Un fitxer mal escrit no tomba l'app: l'error s'apunta aquí, i els tests no el deixen passar. */
 export const contentErrors: string[] = []
 
 function loadCollection<T>(files: Record<string, string>, schema: z.ZodType<T>) {
@@ -68,12 +68,16 @@ export const CONFLICTS: Conflict[] = loadCollection(conflictFiles, conflictSchem
   a.start.localeCompare(b.start),
 )
 export const COUNTRY_NAMES = loadFile('/content/countries.yaml', countryNamesSchema, {})
-export const FLAGS = loadFile('/content/flags.yaml', flagsSchema, { catalogue: {}, states: {} })
+export const FLAGS = loadFile('/content/flags.yaml', flagsSchema, {
+  catalogue: {},
+  about: {},
+  states: {},
+})
 
 if (contentErrors.length > 0)
   console.error('Invalid content files:\n\n' + contentErrors.join('\n\n'))
 
-/** Picks the text in the requested language, falling back to any other available one. */
+/** El text en l'idioma de la pantalla o, si no hi és, en un altre dels tres. */
 export function localize(text: LocalizedText | undefined, lang: Lang): string {
   if (!text) return ''
   for (const l of fallbackOrder(lang)) if (text[l]) return text[l]
@@ -87,7 +91,7 @@ export function wikipediaUrl(titles: WikipediaTitles | undefined, lang: Lang): s
   return `https://${l}.wikipedia.org/wiki/${encodeURIComponent(titles[l]!.replaceAll(' ', '_'))}`
 }
 
-/** Name of a state or territory on a given date (names change: Russian Empire → USSR → Russia…). */
+/** El nom d'un estat en una data: l'Imperi Rus, la Unió Soviètica i Rússia són el mateix codi. */
 export function countryName(gwcode: number, date: IsoDate, lang: Lang, fallback = ''): string {
   const entry = COUNTRY_NAMES[String(gwcode)]
   if (!entry) return fallback
@@ -102,7 +106,7 @@ export const activeConflicts = (date: IsoDate) =>
 export const eventsOfYear = (year: number) =>
   EVENTS.filter((e) => e.date.startsWith(String(year).padStart(4, '0')))
 
-/** Key dates the timeline can jump between: events and conflict starts/ends. */
+/** Les dates on salta la línia temporal a la pestanya Fets: els fets i l'inici i final dels conflictes. */
 export const KEY_DATES: IsoDate[] = [
   ...new Set([
     ...EVENTS.map((e) => e.date),

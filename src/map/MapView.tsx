@@ -1,6 +1,6 @@
 import * as maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-// MapLibre locates its worker next to its own module, which breaks once bundled: let Vite emit it.
+// MapLibre busca el seu worker al costat del mòdul, i un cop empaquetat no hi és: que el posi Vite.
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { useEffect, useRef, useState } from 'react'
 import { countryName } from '../content'
@@ -14,7 +14,7 @@ import { ensureFlagImage } from './flagImages'
 import { EUROPE_BOUNDS, MAX_BOUNDS, createStyle, validOn } from './style'
 
 const ATTRIBUTION =
-  'Borders: <a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">CShapes 2.0</a> (CC BY-NC-SA 4.0)'
+  '<a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">CShapes 2.0</a> (CC BY-NC-SA 4.0) · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a>'
 
 maplibregl.setWorkerUrl(workerUrl)
 
@@ -41,7 +41,7 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     onSelectRef.current = onSelect
   }, [onSelect])
 
-  // Create the map once.
+  // El mapa es crea un sol cop; la resta d'efectes només en canvien les dades i els filtres.
   useEffect(() => {
     const glyphs = `${location.origin}${import.meta.env.BASE_URL}fonts/{fontstack}/{range}.pbf`
     const map = new maplibregl.Map({
@@ -102,7 +102,7 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     }
   }, [])
 
-  // Borders valid on the selected date.
+  // Les fronteres vigents en la data.
   useEffect(() => {
     const map = mapRef.current
     if (!map || status !== 'ready') return
@@ -111,7 +111,7 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     map.setFilter('borders-line', filter)
   }, [date, status])
 
-  // Labels, with the name (and flag) each state had on that date.
+  // Les etiquetes, amb el nom (i la bandera) que tenia cada estat en aquella data.
   useEffect(() => {
     const map = mapRef.current
     const labels = labelsRef.current
@@ -139,7 +139,7 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
         type: 'FeatureCollection',
         features: features.map((f) => {
           const flag = flags.get(f.properties.gwcode)
-          // Only set `flag` when the image exists: the style checks it with ['has', 'flag'].
+          // `flag` només si la imatge hi és: l'estil ho mira amb ['has', 'flag'] per deixar lloc al nom.
           return flag && available.has(flag) ? { ...f, properties: { ...f.properties, flag } } : f
         }),
       })
@@ -149,7 +149,7 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     }
   }, [date, lang, showFlags, status])
 
-  // Outline of the selected state.
+  // El contorn de l'estat triat.
   useEffect(() => {
     const map = mapRef.current
     if (!map || status !== 'ready') return
@@ -161,7 +161,7 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     ])
   }, [selection, date, status])
 
-  // Event and conflict markers.
+  // Les marques dels fets de l'any i dels conflictes oberts.
   useEffect(() => {
     const map = mapRef.current
     if (!map || status !== 'ready') return
@@ -187,7 +187,7 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     })
   }, [events, conflicts, selection, date, status])
 
-  // Bring the selected event or conflict into view.
+  // Si el fet o el conflicte triat queda fora de la vista, s'hi va.
   useEffect(() => {
     const map = mapRef.current
     if (!map || !selection || selection.kind === 'country') return

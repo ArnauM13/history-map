@@ -1,25 +1,22 @@
 import { z } from 'zod'
 
-/** YAML keeps unquoted dates as plain strings (core schema), e.g. `date: 1914-06-28`. */
-const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Expected a date formatted as YYYY-MM-DD')
+/** El YAML deixa les dates sense cometes com a text (`date: 1914-06-28`), que és el que volem. */
+const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Una data va com a AAAA-MM-DD')
 
 const text = z.string().trim().min(1)
 
-/** A text in one or more of the supported languages. At least one is required. */
+/** Un text en un o més dels tres idiomes. El que falti es llegeix en un altre. */
 export const localizedText = z
   .strictObject({ ca: text.optional(), es: text.optional(), en: text.optional() })
-  .refine(
-    (value) => Object.keys(value).length > 0,
-    'At least one language (ca, es, en) is required',
-  )
+  .refine((value) => Object.keys(value).length > 0, 'Cal com a mínim un idioma (ca, es o en)')
 
-/** [longitude, latitude] in WGS84 — the order used by GeoJSON. */
+/** [longitud, latitud]: l'ordre del GeoJSON, que és el contrari del que ensenyen els mapes web. */
 const lngLat = z.tuple([z.number().min(-180).max(180), z.number().min(-90).max(90)])
 
-/** Article titles per language, e.g. `en: Treaty_of_Versailles`. */
+/** El títol de l'article a cada Viquipèdia, p. ex. `en: Treaty of Versailles`. */
 const wikipedia = z.strictObject({ ca: text.optional(), es: text.optional(), en: text.optional() })
 
-/** Gleditsch & Ward state codes, the same ids used by the border dataset (see content/countries.yaml). */
+/** Codis de Gleditsch i Ward: els mateixos de les fronteres i de content/countries.yaml. */
 const countries = z.array(z.number().int().positive()).default([])
 
 export const EVENT_CATEGORIES = [
@@ -53,20 +50,20 @@ export const CONFLICT_CATEGORIES = [
 export const conflictSchema = z
   .strictObject({
     start: isoDate,
-    /** Omit for ongoing conflicts. */
+    /** Sense `end`, el conflicte és obert. */
     end: isoDate.optional(),
     category: z.enum(CONFLICT_CATEGORIES),
     title: localizedText,
     summary: localizedText,
-    /** A representative point of the main theatre of operations. */
+    /** Un punt del front principal: on el mapa hi posa la marca. */
     location: lngLat,
     countries,
     wikipedia: wikipedia.optional(),
   })
-  .refine((c) => !c.end || c.end >= c.start, '`end` must not be earlier than `start`')
+  .refine((c) => !c.end || c.end >= c.start, 'El final no pot ser abans del començament')
 
 const nameEntry = z.strictObject({
-  /** Last day (inclusive) on which this name applies. Omit on the last entry. */
+  /** L'últim dia que va valer aquest nom. L'última entrada no en porta. */
   until: isoDate.optional(),
   ca: text.optional(),
   es: text.optional(),
@@ -74,23 +71,27 @@ const nameEntry = z.strictObject({
 })
 
 export const countryNamesSchema = z.record(
-  z.string().regex(/^\d+$/, 'Keys must be Gleditsch & Ward codes'),
+  z.string().regex(/^\d+$/, 'La clau és un codi de Gleditsch i Ward'),
   z.union([localizedText, z.array(nameEntry).min(1)]),
 )
 
-const flagId = z.string().regex(/^[a-z0-9-]+$/, 'Flag ids use lowercase letters, digits and dashes')
+const flagId = z
+  .string()
+  .regex(/^[a-z0-9-]+$/, "L'identificador d'una bandera va en minúscules, xifres i guions")
 
 const flagEntry = z.strictObject({
-  /** Last day (inclusive) this flag was in use. Omit on the last entry. */
+  /** L'últim dia que es va fer servir. L'última entrada no en porta. */
   until: isoDate.optional(),
-  /** Catalogue id; `null` = no flag of its own; omitted = not documented yet. */
+  /** Una bandera del catàleg; `null` és «sense bandera pròpia», i sense camp, «per documentar». */
   flag: flagId.nullable().optional(),
 })
 
 export const flagsSchema = z.strictObject({
-  /** Flag id → file name on Wikimedia Commons. */
-  catalogue: z.record(flagId, z.string().regex(/\.(svg|png)$/i, 'Expected an image file name')),
-  /** Gleditsch & Ward code → flags in chronological order. */
+  /** Identificador → nom del fitxer a Wikimedia Commons. */
+  catalogue: z.record(flagId, z.string().regex(/\.(svg|png)$/i, "Ha de ser un fitxer d'imatge")),
+  /** Què vol dir una bandera i per què va arribar: dues o tres frases, no més. */
+  about: z.record(flagId, localizedText).default({}),
+  /** Codi de Gleditsch i Ward → les banderes que va fer servir, per ordre. */
   states: z.record(z.string().regex(/^\d+$/), z.array(flagEntry).min(1)),
 })
 

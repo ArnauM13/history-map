@@ -1,20 +1,48 @@
-const PATHS = {
-  play: 'M8 5v14l11-7z',
-  pause: 'M6 5h4v14H6zM14 5h4v14h-4z',
-  prev: 'M15.4 7.4 14 6l-6 6 6 6 1.4-1.4-4.6-4.6z',
-  next: 'M8.6 16.6 10 18l6-6-6-6-1.4 1.4 4.6 4.6z',
-  first: 'M6 6h2v12H6zm3.5 6 8.5 6V6z',
-  last: 'M16 6h2v12h-2zm-10 12 8.5-6L6 6z',
-  close:
-    'M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z',
+import calendarMonth from '@material-symbols/svg-400/outlined/calendar_month.svg?raw'
+import chevronLeft from '@material-symbols/svg-400/outlined/chevron_left.svg?raw'
+import chevronRight from '@material-symbols/svg-400/outlined/chevron_right.svg?raw'
+import close from '@material-symbols/svg-400/outlined/close.svg?raw'
+import flagFill from '@material-symbols/svg-400/outlined/flag-fill.svg?raw'
+import flag from '@material-symbols/svg-400/outlined/flag.svg?raw'
+import history from '@material-symbols/svg-400/outlined/history.svg?raw'
+import openInNew from '@material-symbols/svg-400/outlined/open_in_new.svg?raw'
+import pause from '@material-symbols/svg-400/outlined/pause.svg?raw'
+import playArrow from '@material-symbols/svg-400/outlined/play_arrow.svg?raw'
+import publicIcon from '@material-symbols/svg-400/outlined/public.svg?raw'
+import skipNext from '@material-symbols/svg-400/outlined/skip_next.svg?raw'
+import skipPrevious from '@material-symbols/svg-400/outlined/skip_previous.svg?raw'
+import swords from '@material-symbols/svg-400/outlined/swords.svg?raw'
+
+/**
+ * Les icones són Material Symbols, com a Petja, però en SVG i només les que es fan servir:
+ * la font sencera pesa més d'un mega per una dotzena de glifs.
+ */
+const ICONS = {
+  calendar_month: calendarMonth,
+  chevron_left: chevronLeft,
+  chevron_right: chevronRight,
+  close,
+  flag,
+  flag_fill: flagFill,
+  history,
+  open_in_new: openInNew,
+  pause,
+  play_arrow: playArrow,
+  public: publicIcon,
+  skip_next: skipNext,
+  skip_previous: skipPrevious,
+  swords,
 }
 
-export type IconName = keyof typeof PATHS
+export type IconName = keyof typeof ICONS
 
-export function Icon({ name }: { name: IconName }) {
+/** Sempre decorativa: el nom el porta el control que l'envolta (`aria-label`). */
+export function Icon({ name, className = '' }: { name: IconName; className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-      <path d={PATHS[name]} fill="currentColor" />
-    </svg>
+    <span
+      className={`ms ${className}`}
+      aria-hidden="true"
+      dangerouslySetInnerHTML={{ __html: ICONS[name] }}
+    />
   )
 }

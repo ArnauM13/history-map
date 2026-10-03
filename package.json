@@ -2,7 +2,7 @@
   "name": "history-map",
   "private": true,
   "version": "0.1.0",
-  "description": "Interactive historical map of Europe (20th–21st centuries): borders, countries, conflicts and events over time.",
+  "description": "Mapa històric d'Europa: les fronteres, les banderes i els fets dels segles XX i XXI.",
   "license": "MIT",
   "type": "module",
   "engines": {
@@ -21,6 +21,7 @@
     "data:flags": "node scripts/fetch-flags.mjs"
   },
   "dependencies": {
+    "@fontsource/roboto": "^5.3.0",
     "maplibre-gl": "^6.11.2",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
@@ -29,6 +30,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@material-symbols/svg-400": "^0.47.6",
     "@types/geojson": "^7946.0.16",
     "@types/node": "^24.19.1",
     "@types/react": "^19.3.0",

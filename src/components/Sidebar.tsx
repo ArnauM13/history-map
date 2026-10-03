@@ -1,17 +1,9 @@
 import { useEffect, useState, type ReactNode } from 'react'
-import { CONFLICTS, EVENTS, countryName, localize, wikipediaUrl } from '../content'
+import { CONFLICTS, EVENTS, FLAGS, countryName, localize, wikipediaUrl } from '../content'
 import { commonsUrl, flagHistory, flagOn, loadFlagCredits, type FlagCredit } from '../content/flags'
 import type { Conflict, HistoricalEvent } from '../content/schema'
 import { useI18n } from '../i18n'
-import {
-  MIN_DATE,
-  OPEN_END,
-  formatDate,
-  formatDateNumber,
-  fromDateNumber,
-  yearOf,
-  type IsoDate,
-} from '../lib/date'
+import { MIN_DATE, OPEN_END, formatDate, fromDateNumber, yearOf, type IsoDate } from '../lib/date'
 import { stateOn, type LabelCollection } from '../map/data'
 import { REPO_URL, type BorderProperties, type Selection } from '../selection'
 import { Flag } from './Flag'
@@ -46,15 +38,15 @@ export function Sidebar({
   onGoToDate,
 }: Props) {
   const { t } = useI18n()
-  const tabs: [SidebarTab, string][] = [
-    ['flags', t('tabFlags')],
-    ['history', t('tabHistory')],
-  ]
+  const tabs = [
+    { id: 'flags', label: t('tabFlags'), icon: 'flag' },
+    { id: 'history', label: t('tabHistory'), icon: 'history' },
+  ] as const
 
   return (
     <aside className="sidebar">
-      <div className="tabs" role="tablist">
-        {tabs.map(([id, label]) => (
+      <div className={`segmented${tab === 'history' ? ' second' : ''}`} role="tablist">
+        {tabs.map(({ id, label, icon }) => (
           <button
             key={id}
             type="button"
@@ -64,6 +56,7 @@ export function Sidebar({
             aria-controls="sidebar-panel"
             onClick={() => onTabChange(id)}
           >
+            <Icon name={icon} />
             {label}
           </button>
         ))}
@@ -102,7 +95,7 @@ export function Sidebar({
       </div>
 
       <footer className="sidebar-footer">
-        <a href={`${REPO_URL}/blob/main/docs/DATA.md`} target="_blank" rel="noopener">
+        <a href={`${REPO_URL}/blob/main/DADES.md`} target="_blank" rel="noopener">
           {t('sources')}
         </a>
         <a href={REPO_URL} target="_blank" rel="noopener">
@@ -126,33 +119,50 @@ function HistoryPanel({
 
   return (
     <>
-      <section>
-        <h2>{t('activeConflicts')}</h2>
+      <section className="card-section">
+        <div className="section-header">
+          <Icon name="swords" />
+          <h2 className="section-title">{t('activeConflicts')}</h2>
+          {conflicts.length > 0 && <span className="section-count">{conflicts.length}</span>}
+        </div>
         {conflicts.length === 0 ? (
-          <p className="muted">{t('noActiveConflicts')}</p>
+          <p className="empty-state">{t('noActiveConflicts')}</p>
         ) : (
           <ul className="item-list">
-            {conflicts.map((c) => (
-              <li key={c.id}>
-                <button
-                  type="button"
-                  className="item conflict"
-                  aria-current={selection?.kind === 'conflict' && selection.id === c.id}
-                  onClick={() => onSelect({ kind: 'conflict', id: c.id })}
-                >
-                  <span className="item-title">{localize(c.title, lang)}</span>
-                  <span className="item-meta">{conflictPeriod(c, lang, t('ongoing'))}</span>
-                </button>
-              </li>
-            ))}
+            {conflicts.map((c) => {
+              const title = localize(c.title, lang)
+              return (
+                <li key={c.id}>
+                  <button
+                    type="button"
+                    className="item-card conflict"
+                    aria-current={selection?.kind === 'conflict' && selection.id === c.id}
+                    onClick={() => onSelect({ kind: 'conflict', id: c.id })}
+                    title={title}
+                  >
+                    <span className="ic-icon">
+                      <Icon name="swords" />
+                    </span>
+                    <span className="ic-body">
+                      <span className="ic-name">{title}</span>
+                      <span className="ic-detail">{conflictPeriod(c, lang, t('ongoing'))}</span>
+                    </span>
+                  </button>
+                </li>
+              )
+            })}
           </ul>
         )}
       </section>
 
-      <section>
-        <h2>{t('eventsOfYear', { year })}</h2>
+      <section className="card-section">
+        <div className="section-header">
+          <Icon name="calendar_month" />
+          <h2 className="section-title">{t('eventsOfYear', { year })}</h2>
+          {yearEvents.length > 0 && <span className="section-count">{yearEvents.length}</span>}
+        </div>
         {yearEvents.length === 0 ? (
-          <p className="muted">
+          <p className="empty-state">
             {t('noEventsOfYear')}{' '}
             <a href={`${REPO_URL}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener">
               {t('contribute')}
@@ -160,19 +170,28 @@ function HistoryPanel({
           </p>
         ) : (
           <ul className="item-list">
-            {yearEvents.map((e) => (
-              <li key={e.id}>
-                <button
-                  type="button"
-                  className={`item event${e.date > date ? ' upcoming' : ''}`}
-                  aria-current={selection?.kind === 'event' && selection.id === e.id}
-                  onClick={() => onGoToEvent(e)}
-                >
-                  <span className="item-meta">{formatDate(e.date, lang)}</span>
-                  <span className="item-title">{localize(e.title, lang)}</span>
-                </button>
-              </li>
-            ))}
+            {yearEvents.map((e) => {
+              const title = localize(e.title, lang)
+              return (
+                <li key={e.id}>
+                  <button
+                    type="button"
+                    className={`item-card event${e.date > date ? ' is-upcoming' : ''}`}
+                    aria-current={selection?.kind === 'event' && selection.id === e.id}
+                    onClick={() => onGoToEvent(e)}
+                    title={title}
+                  >
+                    <span className="ic-icon">
+                      <Icon name="calendar_month" />
+                    </span>
+                    <span className="ic-body">
+                      <span className="ic-name">{title}</span>
+                      <span className="ic-detail">{formatDate(e.date, lang)}</span>
+                    </span>
+                  </button>
+                </li>
+              )
+            })}
           </ul>
         )}
       </section>
@@ -200,7 +219,7 @@ function Detail({ date, labels, selection, onClose, onGoToEvent, onGoToDate }: D
       <CountryDetail
         date={date}
         labels={labels}
-        // The state's borders on the current date, if it still exists then.
+        // Les fronteres que tenia l'estat en la data d'ara, que poden no ser les del clic.
         feature={stateOn(labels, selection.feature.gwcode, date) ?? selection.feature}
         onGoToEvent={onGoToEvent}
         onGoToDate={onGoToDate}
@@ -215,10 +234,10 @@ function Detail({ date, labels, selection, onClose, onGoToEvent, onGoToDate }: D
   }
   if (!content) return null
   return (
-    <section className="detail" aria-live="polite">
+    <section className="card-section detail" aria-live="polite">
       <button
         type="button"
-        className="icon-button detail-close"
+        className="icon-btn detail-close"
         onClick={onClose}
         aria-label={t('close')}
         title={t('close')}
@@ -250,8 +269,11 @@ function CountryDetail({
   const statusKey = `status.${feature.status}` as Parameters<typeof t>[0]
   const related = EVENTS.filter((e) => e.countries.includes(feature.gwcode))
   const current = flagOn(feature.gwcode, date)
+  const about = current?.flag ? localize(FLAGS.about[current.flag], lang) : ''
   const history = flagHistory(feature.gwcode).filter((p) => p.flag !== undefined)
-  // When the state first and last appears on the map: bounds for flags with open-ended periods.
+
+  // Quan surt l'estat al mapa per primer i per últim cop. La primera bandera no té dia
+  // d'estrena, i l'última de l'Alemanya nazi no «arriba fins avui»: s'acaba amb l'estat.
   const spans = labels?.features.filter((f) => f.properties.gwcode === feature.gwcode) ?? []
   const firstSeen = Math.min(...spans.map((f) => f.properties.s))
   const lastSeen = Math.max(...spans.map((f) => f.properties.e))
@@ -274,26 +296,31 @@ function CountryDetail({
           {current.flag && <FlagCaption id={current.flag} />}
         </figure>
       )}
+      {about && <p className="flag-about">{about}</p>}
       <dl className="facts">
-        <dt>{t('status')}</dt>
-        <dd>{t(statusKey)}</dd>
+        <div>
+          <dt>{t('status')}</dt>
+          <dd>{t(statusKey)}</dd>
+        </div>
         {dependent && (
-          <>
+          <div>
             <dt>{t('controlledBy')}</dt>
             <dd>{countryName(Number(feature.owner), date, lang, feature.owner ?? '')}</dd>
-          </>
+          </div>
         )}
         {feature.capname && (
-          <>
+          <div>
             <dt>{t('capital')}</dt>
             <dd>{feature.capname}</dd>
-          </>
+          </div>
         )}
-        <dt>{t('bordersValid')}</dt>
-        <dd>
-          {formatDateNumber(feature.s, lang, t('present'))} –{' '}
-          {formatDateNumber(feature.e, lang, t('present'))}
-        </dd>
+        <div>
+          <dt>{t('bordersValid')}</dt>
+          <dd>
+            {yearOf(fromDateNumber(feature.s))} –{' '}
+            {feature.e >= OPEN_END ? t('present') : yearOf(fromDateNumber(feature.e))}
+          </dd>
+        </div>
       </dl>
       {history.length > 1 && (
         <>
@@ -305,11 +332,10 @@ function CountryDetail({
                   type="button"
                   aria-current={p === current}
                   onClick={() => onGoToDate(p.from ?? firstDate)}
+                  title={p.from ? formatDate(p.from, lang) : undefined}
                 >
                   <Flag id={p.flag} size="sm" label={name} />
-                  <span>
-                    {p.from ? yearOf(p.from) : '…'} – {endLabel(p.until)}
-                  </span>
+                  {p.from ? yearOf(p.from) : '…'} – {endLabel(p.until)}
                 </button>
               </li>
             ))}
@@ -319,15 +345,25 @@ function CountryDetail({
       {related.length > 0 && (
         <>
           <h3>{t('relatedEvents')}</h3>
-          <ul className="item-list compact">
-            {related.map((e) => (
-              <li key={e.id}>
-                <button type="button" className="item event" onClick={() => onGoToEvent(e)}>
-                  <span className="item-meta">{yearOf(e.date)}</span>
-                  <span className="item-title">{localize(e.title, lang)}</span>
-                </button>
-              </li>
-            ))}
+          <ul className="item-list">
+            {related.map((e) => {
+              const title = localize(e.title, lang)
+              return (
+                <li key={e.id}>
+                  <button
+                    type="button"
+                    className="item-card event"
+                    onClick={() => onGoToEvent(e)}
+                    title={title}
+                  >
+                    <span className="ic-body">
+                      <span className="ic-name">{title}</span>
+                      <span className="ic-detail">{formatDate(e.date, lang)}</span>
+                    </span>
+                  </button>
+                </li>
+              )
+            })}
           </ul>
         </>
       )}
@@ -341,11 +377,11 @@ function EventDetail({ event }: { event: HistoricalEvent }) {
   return (
     <>
       <p className="detail-kicker">
-        <span className="badge event">{t(`category.${event.category}`)}</span>{' '}
+        <span className="chip event">{t(`category.${event.category}`)}</span>
         {formatDate(event.date, lang)}
       </p>
       <h2 className="detail-title">{localize(event.title, lang)}</h2>
-      <p>{localize(event.summary, lang)}</p>
+      <p className="detail-text">{localize(event.summary, lang)}</p>
       {link && <ReadMore href={link} />}
     </>
   )
@@ -357,17 +393,17 @@ function ConflictDetail({ conflict }: { conflict: Conflict }) {
   return (
     <>
       <p className="detail-kicker">
-        <span className="badge conflict">{t(`category.${conflict.category}`)}</span>{' '}
+        <span className="chip conflict">{t(`category.${conflict.category}`)}</span>
         {conflictPeriod(conflict, lang, t('ongoing'))}
       </p>
       <h2 className="detail-title">{localize(conflict.title, lang)}</h2>
-      <p>{localize(conflict.summary, lang)}</p>
+      <p className="detail-text">{localize(conflict.summary, lang)}</p>
       {link && <ReadMore href={link} />}
     </>
   )
 }
 
-/** Source and licence of a flag image (images come from Wikimedia Commons). */
+/** D'on surt la imatge. Si la llicència demana citar l'autor (CC BY-SA), se'l cita. */
 function FlagCaption({ id }: { id: string }) {
   const { t } = useI18n()
   const [credit, setCredit] = useState<FlagCredit | undefined>()
@@ -378,14 +414,14 @@ function FlagCaption({ id }: { id: string }) {
       active = false
     }
   }, [id])
+  const publicDomain = credit?.license === 'Public domain'
   return (
     <figcaption>
-      {t('imageSource')}:{' '}
-      {credit?.artist && credit.license !== 'Public domain' && `${credit.artist} · `}
+      {t('imageSource')}: {credit?.artist && !publicDomain && `${credit.artist} · `}
       <a href={commonsUrl(id)} target="_blank" rel="noopener">
         Wikimedia Commons
       </a>
-      {credit?.license && ` · ${credit.license}`}
+      {credit?.license && ` · ${publicDomain ? t('publicDomain') : credit.license}`}
     </figcaption>
   )
 }
@@ -394,7 +430,8 @@ function ReadMore({ href }: { href: string }) {
   const { t } = useI18n()
   return (
     <a className="read-more" href={href} target="_blank" rel="noopener">
-      {t('readMore')} · Wikipedia ↗
+      {t('readMore')}
+      <Icon name="open_in_new" />
     </a>
   )
 }

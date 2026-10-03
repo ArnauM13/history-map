@@ -9,13 +9,13 @@ export type LabelCollection = FeatureCollection<Point, BorderProperties>
 
 export interface BorderData {
   borders: FeatureCollection
-  /** One point per border feature, with the same properties. */
+  /** Un punt per peça de frontera, amb les mateixes propietats: on va el nom. */
   labels: LabelCollection
 }
 
 let data: Promise<BorderData> | undefined
 
-/** Loads the border dataset once; later calls share the same promise. */
+/** Les fronteres es baixen un sol cop: el mapa i la galeria comparteixen la mateixa promesa. */
 export function loadBorderData(): Promise<BorderData> {
   data ??= (async () => {
     const base = import.meta.env.BASE_URL
@@ -30,7 +30,7 @@ export function loadBorderData(): Promise<BorderData> {
   return data
 }
 
-/** Label points of all border features, or null while loading. */
+/** Els punts de les etiquetes, o `null` mentre arriben. */
 export function useLabels(): LabelCollection | null {
   const [labels, setLabels] = useState<LabelCollection | null>(null)
   useEffect(() => {
@@ -45,11 +45,11 @@ export function useLabels(): LabelCollection | null {
   return labels
 }
 
-/** Features valid on a YYYYMMDD date. */
+/** Les peces vigents en una data AAAAMMDD. */
 export const featuresOn = (labels: LabelCollection, date: number) =>
   labels.features.filter((f) => f.properties.s <= date && date <= f.properties.e)
 
-/** Border feature of a state on a date, used to select it. */
+/** La peça d'un estat en una data: el que es fa servir per triar-lo des d'una llista. */
 export const stateOn = (labels: LabelCollection | null, gwcode: number, date: IsoDate) =>
   labels &&
   featuresOn(labels, toDateNumber(date)).find((f) => f.properties.gwcode === gwcode)?.properties

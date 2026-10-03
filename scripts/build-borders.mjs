@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 /**
- * Builds the border dataset used by the web app from CShapes 2.0.
+ * Fa les fronteres de l'app a partir de CShapes 2.0.
  *
  *   npm run data:borders
  *
- * Steps:
- *   1. Download CShapes 2.0 (Gleditsch & Ward version) as TopoJSON if not cached in data-raw/.
- *   2. Keep features valid from 1900 onwards, clip them to Europe and simplify (mapshaper).
- *   3. Encode dates as YYYYMMDD integers (s, e) so MapLibre can filter by date.
- *   4. Apply the manual corrections listed in CORRECTIONS (documented in docs/DATA.md).
- *   5. Assign a colour index per "group" (a state and its dependencies) so that
- *      neighbouring groups that coexist in time never share a colour.
- *   6. Compute one label point per feature (pole of inaccessibility of its largest polygon).
+ * Passos:
+ *   1. Baixa CShapes 2.0 (l'edició de Gleditsch i Ward) en TopoJSON, si no és a data-raw/.
+ *   2. Es queda el que val del 1900 ençà, ho retalla a Europa i ho simplifica (mapshaper).
+ *   3. Passa les dates a enters AAAAMMDD (s, e), perquè MapLibre hi pugui filtrar.
+ *   4. Aplica les correccions de CORRECTIONS (explicades a DADES.md).
+ *   5. Dona un color a cada grup (un estat i els territoris que controla) de manera que dos grups
+ *      veïns que coincideixen en el temps no tinguin mai el mateix.
+ *   6. Calcula on va el nom de cada peça: el pol d'inaccessibilitat del seu polígon més gran.
  *
- * Outputs (committed to the repo, see public/data/README.md for licensing):
+ * Deixa (al repo; la llicència és a public/data/README.md):
  *   public/data/borders.topo.json
  *   public/data/labels.geojson
  */
@@ -30,23 +30,23 @@ const RAW_FILE = `${RAW_DIR}/cshapes_2_gw.topojson`
 const OUT_DIR = 'public/data'
 
 const FIRST_DATE = '1900-01-01'
-/** Last day covered by CShapes 2.0. Features ending that day are still valid today. */
+/** L'últim dia de CShapes 2.0. El que s'acaba aquell dia és que encara val avui. */
 const DATASET_END = '2019-12-31'
 const OPEN_END = 99991231
-/** [west, south, east, north] — Europe plus its surroundings, so the map has no visible edge. */
+/** [oest, sud, est, nord]: Europa i el voltant, perquè no es vegi on s'acaba el mapa. */
 const BBOX = [-28, 30, 78, 82]
-/** Labels are placed inside this smaller area, so that e.g. Russia is labelled in Europe. */
+/** Els noms van dins d'aquesta àrea més petita: el de Rússia, a la part europea, que és la que es veu. */
 const LABEL_BBOX = [-25, 30, 56, 74]
 const SIMPLIFY = '12%'
 
 /**
- * Deliberate deviations from CShapes 2.0, each documented in docs/DATA.md.
- * Territories under de facto control belong in a separate layer (see docs/ROADMAP.md).
+ * On ens separem de CShapes 2.0, a consciència i explicat a DADES.md. El control de fet d'un
+ * territori anirà en una capa a part (FULL-DE-RUTA.md), no barrejat amb les fronteres.
  */
 const CORRECTIONS = [
   {
     description:
-      'Crimea: keep the internationally recognised Russia–Ukraine border after the 2014 annexation (UN GA resolution 68/262)',
+      "Crimea: la frontera reconeguda entre Rússia i Ucraïna, també després de l'annexió del 2014 (resolució 68/262 de l'ONU)",
     gwcodes: [365, 369],
     dropFeaturesStarting: 20140318,
     extendFeaturesEnding: 20140317,
@@ -56,11 +56,11 @@ const CORRECTIONS = [
 async function ensureRawData() {
   if (existsSync(RAW_FILE)) return
   mkdirSync(RAW_DIR, { recursive: true })
-  console.log(`Downloading ${SOURCE_URL}`)
+  console.log(`Baixant ${SOURCE_URL}`)
   const res = await fetch(SOURCE_URL)
-  if (!res.ok) throw new Error(`Download failed: HTTP ${res.status}`)
+  if (!res.ok) throw new Error(`No s'ha pogut baixar: HTTP ${res.status}`)
   writeFileSync(`${RAW_FILE}.xz`, Buffer.from(await res.arrayBuffer()))
-  // Node has no built-in xz decoder; the `xz` CLI is available on Linux and macOS.
+  // Node no sap descomprimir xz; l'ordre `xz` sí, i és a Linux i a macOS.
   execFileSync('xz', ['--decompress', '--force', `${RAW_FILE}.xz`])
 }
 
@@ -95,7 +95,7 @@ function applyCorrections(topo) {
 
 const overlaps = (a, b) => a.s <= b.e && b.s <= a.e
 
-/** A state and the territories it controls (colonies, protectorates…) share a group. */
+/** Un estat i els territoris que controla (colònies, protectorats…) fan un sol grup: el mateix color. */
 const groupOf = (p) => String(p.status === 'independent' || !p.owner ? p.gwcode : p.owner)
 
 function assignColours(topo) {
@@ -113,7 +113,7 @@ function assignColours(topo) {
       }
     }
   })
-  // Greedy colouring, most-connected groups first.
+  // Acolorit voraç, començant pels grups amb més veïns, que són els que tenen menys opcions.
   const order = [...adjacency.keys()].sort((x, y) => adjacency.get(y).size - adjacency.get(x).size)
   const colour = new Map()
   for (const group of order) {
@@ -152,7 +152,7 @@ function buildLabels(topo) {
         return {
           type: 'Feature',
           geometry: { type: 'Point', coordinates: [+x.toFixed(3), +y.toFixed(3)] },
-          // `rank`: larger states win label collisions (used as symbol-sort-key).
+          // `rank`: si dos noms es trepitgen, guanya l'estat més gran (symbol-sort-key).
           properties: {
             gwcode,
             country_name,
@@ -180,5 +180,5 @@ writeFileSync(`${OUT_DIR}/labels.geojson`, JSON.stringify(labels))
 
 const codes = new Set(topo.objects.borders.geometries.map((g) => g.properties.gwcode))
 console.log(
-  `✔ ${topo.objects.borders.geometries.length} border features, ${codes.size} states/territories, ${colours} colours, ${labels.features.length} labels`,
+  `✔ ${topo.objects.borders.geometries.length} peces de frontera, ${codes.size} estats i territoris, ${colours} colors, ${labels.features.length} noms`,
 )

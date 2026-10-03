@@ -3,13 +3,17 @@ import { flagUrl } from '../content/flags'
 import { useI18n } from '../i18n'
 
 interface Props {
-  /** Catalogue id; `null` = no flag of its own; `undefined` = not documented. */
+  /** Una bandera del catàleg; `null` és «sense bandera pròpia», i `undefined`, «per documentar». */
   id: string | null | undefined
   size?: 'sm' | 'md' | 'lg'
-  /** Accessible description, e.g. the state's name. */
+  /** El que es llegeix en comptes de la imatge: normalment, el nom de l'estat. */
   label: string
 }
 
+/**
+ * Una bandera, o el forat que en marca l'absència. Si la imatge no hi és (encara no s'ha
+ * baixat), es pinta el mateix forat que «per documentar» en lloc d'una icona trencada.
+ */
 export function Flag({ id, size = 'md', label }: Props) {
   const { t } = useI18n()
   const [failedId, setFailedId] = useState<string | null>(null)

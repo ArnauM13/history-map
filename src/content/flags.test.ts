@@ -2,33 +2,43 @@ import { describe, expect, it } from 'vitest'
 import { flagChangesBetween, flagHistory, flagOn } from './flags'
 import { COUNTRY_NAMES, FLAGS } from './index'
 
-describe('flags', () => {
-  it('reference only flags defined in the catalogue', () => {
+describe('les banderes', () => {
+  it('són totes al catàleg', () => {
     for (const [code, entries] of Object.entries(FLAGS.states)) {
       for (const { flag } of entries) {
-        if (flag) expect(FLAGS.catalogue[flag], `${code} uses unknown flag "${flag}"`).toBeDefined()
+        if (flag)
+          expect(
+            FLAGS.catalogue[flag],
+            `${code} fa servir «${flag}», que no és al catàleg`,
+          ).toBeDefined()
       }
     }
   })
 
-  it('are defined for known states only, in chronological order', () => {
+  it("són d'estats que existeixen, i per ordre", () => {
     for (const [code, entries] of Object.entries(FLAGS.states)) {
-      expect(COUNTRY_NAMES[code], `unknown state ${code}`).toBeDefined()
+      expect(COUNTRY_NAMES[code], `l'estat ${code} no existeix`).toBeDefined()
       const untils = entries.map((e) => e.until)
-      expect(untils.at(-1), `${code}: last entry must not have "until"`).toBeUndefined()
+      expect(untils.at(-1), `${code}: l'última bandera no porta until`).toBeUndefined()
       const dated = untils.slice(0, -1)
-      expect(dated.every(Boolean), `${code}: only the last entry may omit "until"`).toBe(true)
-      expect([...dated].sort(), `${code}: entries must be sorted`).toEqual(dated)
+      expect(dated.every(Boolean), `${code}: només l'última pot anar sense until`).toBe(true)
+      expect([...dated].sort(), `${code}: les banderes han d'anar per ordre`).toEqual(dated)
     }
   })
 
-  it('does not leave catalogue entries unused', () => {
-    const used = new Set(Object.values(FLAGS.states).flatMap((e) => e.map((x) => x.flag)))
-    for (const id of Object.keys(FLAGS.catalogue))
-      expect(used.has(id), `${id} is unused`).toBe(true)
+  it('només expliquen banderes del catàleg', () => {
+    for (const id of Object.keys(FLAGS.about)) {
+      expect(FLAGS.catalogue[id], `el text de ${id} no té bandera`).toBeDefined()
+    }
   })
 
-  it('finds the flag in use on a date', () => {
+  it('no deixen cap bandera del catàleg sense fer servir', () => {
+    const used = new Set(Object.values(FLAGS.states).flatMap((e) => e.map((x) => x.flag)))
+    for (const id of Object.keys(FLAGS.catalogue))
+      expect(used.has(id), `ningú no fa servir ${id}`).toBe(true)
+  })
+
+  it("troben la bandera d'un estat en una data", () => {
     expect(flagOn(255, '1914-06-28')?.flag).toBe('de-1867')
     expect(flagOn(255, '1925-01-01')?.flag).toBe('de-1919')
     expect(flagOn(260, '1947-01-01')?.flag).toBeNull()
@@ -39,7 +49,7 @@ describe('flags', () => {
     })
   })
 
-  it('lists flag adoptions in a period', () => {
+  it('llisten les banderes estrenades en un període', () => {
     const changes = flagChangesBetween('1931-01-01', '1931-12-31')
     expect(changes.map((c) => c.period.flag)).toContain('es-1931')
     expect(flagHistory(230)[1].from).toBe('1931-04-14')

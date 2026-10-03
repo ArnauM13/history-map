@@ -1,7 +1,7 @@
 import type { Map as MapLibreMap } from 'maplibre-gl'
 import { flagUrl } from '../content/flags'
 
-/** Flag height on the map, in CSS pixels (icon-size scales it with the zoom). */
+/** L'alçada de la bandera al mapa, en píxels CSS (`icon-size` la fa créixer amb el zoom). */
 const HEIGHT = 14
 const PIXEL_RATIO = 2
 
@@ -19,7 +19,7 @@ async function rasterize(url: string): Promise<ImageData> {
   canvas.height = height
   const ctx = canvas.getContext('2d')!
   ctx.drawImage(img, 0, 0, width, height)
-  // A thin frame keeps white flags visible on the pale map.
+  // Un marc prim: sense, les banderes blanques (Polònia, el Japó…) es perden sobre el mapa clar.
   ctx.strokeStyle = 'rgba(40, 30, 20, 0.45)'
   ctx.lineWidth = PIXEL_RATIO
   ctx.strokeRect(1, 1, width - 2, height - 2)
@@ -27,8 +27,8 @@ async function rasterize(url: string): Promise<ImageData> {
 }
 
 /**
- * Makes sure the flag is registered as a map image. Resolves to false if its SVG is missing
- * (e.g. not downloaded yet with `npm run data:flags`).
+ * Registra la bandera com a imatge del mapa, un sol cop per mapa. Torna `false` si la imatge
+ * no hi és (encara no s'ha baixat amb `npm run data:flags`): llavors l'estat surt sense.
  */
 export function ensureFlagImage(map: MapLibreMap, id: string): Promise<boolean> {
   let byId = pending.get(map)

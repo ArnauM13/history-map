@@ -5,3 +5,5 @@ public/fonts
 package-lock.json
 content/countries.yaml
 public/flags/credits.json
+*.css
+*.md

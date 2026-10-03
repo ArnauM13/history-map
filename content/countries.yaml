@@ -1,18 +1,18 @@
-# Names of states and territories, keyed by Gleditsch & Ward code (the `gwcode`
-# used by the CShapes 2.0 border data in public/data/).
+# El nom de cada estat o territori, per codi de Gleditsch i Ward (el `gwcode` de les fronteres
+# de CShapes 2.0 que hi ha a public/data/).
 #
-# A key maps either to one name in several languages:
+# Un codi porta un sol nom, en els tres idiomes:
 #
 #   "220": { ca: França, es: Francia, en: France }
 #
-# or, when the name changed over time, to a chronological list. `until` is the
-# last day (inclusive) a name applies; the last entry has no `until`:
+# o, si el nom va canviar, una llista per ordre. `until` és l'últim dia d'un nom; l'últim no en
+# porta:
 #
 #   "365":
 #     - { until: 1917-03-14, ca: Imperi Rus, es: Imperio ruso, en: Russian Empire }
 #     - { ca: Rússia, es: Rusia, en: Russia }
 #
-# Names are short map labels. Details belong in events and conflicts.
+# Són etiquetes de mapa: curtes. La història va als fets i als conflictes.
 
 "200": { ca: Regne Unit, es: Reino Unido, en: United Kingdom }
 "205":

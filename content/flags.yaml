@@ -1,20 +1,23 @@
-# National flags over time.
+# Les banderes de cada estat al llarg del temps.
 #
-# `catalogue` maps a short id to a file on Wikimedia Commons. `npm run data:flags` downloads a PNG
-# render of each file to public/flags/<id>.png and records its licence in public/flags/credits.json
-# (the "Flags" GitHub workflow runs it automatically when this file changes).
+# `catalogue` dona a cada bandera un identificador curt i el nom del fitxer a Wikimedia Commons.
+# `npm run data:flags` en baixa una còpia en PNG a public/flags/<id>.png i n'apunta la llicència a
+# public/flags/credits.json. No cal fer-ho a mà: el workflow «Flags» ho fa sol quan aquest fitxer
+# canvia a GitHub.
 #
-# `states` lists, for each Gleditsch & Ward code (see countries.yaml), the flags it used in
-# chronological order. `until` is the last day (inclusive) a flag was in use; the last entry has
-# no `until`. `flag` is a catalogue id, or `null` when the state had no flag of its own (e.g.
-# Germany under Allied occupation). An entry without `flag` means "not documented yet" — used for
-# periods as a colony, protectorate or mandate.
+# `about` explica una bandera: què vol dir i per què va arribar. Dues o tres frases, no més; el
+# detall és a la Viquipèdia.
 #
-# Dates are those of official adoption, or of first use when that was earlier. Corrections with
-# sources are very welcome (see CONTRIBUTING.md).
+# `states` diu, per a cada codi de Gleditsch i Ward (vegeu countries.yaml), quines banderes va fer
+# servir i fins quan. `until` és l'últim dia d'una bandera; l'última no en porta. `flag: null` vol
+# dir que l'estat no en tenia de pròpia (l'Alemanya ocupada), i una entrada sense `flag`, que encara
+# no està documentada (els anys com a colònia, protectorat o mandat).
+#
+# Les dates són les de l'adopció oficial, o la del primer ús si va ser abans. Si en saps una de més
+# bona, amb la font, endavant (CONTRIBUTING.md).
 
 catalogue:
-  # Western Europe
+  # Europa occidental
   gb: Flag of the United Kingdom.svg
   ie: Flag of Ireland.svg
   nl: Flag of the Netherlands.svg
@@ -34,7 +37,7 @@ catalogue:
   it: Flag of Italy.svg
   mt: Flag of Malta.svg
 
-  # Central Europe
+  # Europa central
   de-1867: Flag of the German Empire.svg
   de-1919: Flag of Germany (3-2 aspect ratio).svg
   de-1933: Flag of Germany (1933–1935).svg
@@ -54,10 +57,10 @@ catalogue:
   cz: Flag of the Czech Republic.svg
   sk: Flag of Slovakia.svg
 
-  # Northern Europe
+  # Europa del nord
   dk: Flag of Denmark.svg
   is: Flag of Iceland.svg
-  'no': Flag of Norway.svg # quoted: YAML 1.1 parsers read a bare no as false
+  'no': Flag of Norway.svg # entre cometes: el YAML antic llegeix un no sol com a «fals»
   se-1844: Swedish civil ensign (1844–1905).svg
   se: Flag of Sweden.svg
   fi: Flag of Finland.svg
@@ -65,7 +68,7 @@ catalogue:
   lv: Flag of Latvia.svg
   lt: Flag of Lithuania.svg
 
-  # Eastern Europe and the Caucasus
+  # Europa de l'est i el Caucas
   ru: Flag of Russia.svg
   ru-1918: Flag of the Russian Soviet Federative Socialist Republic (1918–1937).svg
   su-1923: Flag of the Soviet Union (1923–1955).svg
@@ -79,7 +82,7 @@ catalogue:
   ge: Flag of Georgia.svg
   az: Flag of Azerbaijan.svg
 
-  # South-eastern Europe
+  # Els Balcans i l'Egeu
   ro: Flag of Romania.svg
   ro-1948: Flag of Romania (1948–1952).svg
   ro-1952: Flag of Romania (1952–1965).svg
@@ -109,7 +112,7 @@ catalogue:
   ot: Flag of the Ottoman Empire (1844–1922).svg
   tr: Flag of Turkey.svg
 
-  # North Africa, Middle East and Central Asia (map edges)
+  # Nord d'Àfrica, Orient Mitjà i Àsia central (les vores del mapa)
   ma: Flag of Morocco.svg
   dz: Flag of Algeria.svg
   tn: Flag of Tunisia.svg
@@ -128,6 +131,257 @@ catalogue:
   uz: Flag of Uzbekistan.svg
   tm: Flag of Turkmenistan.svg
   tj: Flag of Tajikistan.svg
+
+about:
+  de-1867:
+    ca: >-
+      El negre i el blanc de Prússia amb el vermell de les ciutats hanseàtiques. Va ser la bandera
+      de la Confederació d'Alemanya del Nord i, des del 1871, de l'Imperi alemany.
+    es: >-
+      El negro y el blanco de Prusia con el rojo de las ciudades hanseáticas. Fue la bandera de la
+      Confederación de Alemania del Norte y, desde 1871, del Imperio alemán.
+    en: >-
+      The black and white of Prussia with the red of the Hanseatic cities. It was the flag of the
+      North German Confederation and, from 1871, of the German Empire.
+  de-1919:
+    ca: >-
+      El negre, vermell i or de les revolucions liberals del 1848, que la República de Weimar va
+      recuperar com a símbol democràtic. Els nazis la van abolir el 1933.
+    es: >-
+      El negro, rojo y oro de las revoluciones liberales de 1848, que la República de Weimar
+      recuperó como símbolo democrático. Los nazis la abolieron en 1933.
+    en: >-
+      The black, red and gold of the liberal revolutions of 1848, revived by the Weimar Republic as
+      a democratic symbol. The Nazis abolished it in 1933.
+  de-1933:
+    ca: >-
+      Hitler va tornar als colors de l'Imperi el març del 1933, i durant dos anys van conviure amb
+      la bandera del partit nazi.
+    es: >-
+      Hitler volvió a los colores del Imperio en marzo de 1933, y durante dos años convivieron con
+      la bandera del partido nazi.
+    en: >-
+      Hitler brought back the imperial colours in March 1933, and for two years they flew alongside
+      the Nazi party flag.
+  de-1935:
+    ca: >-
+      La bandera del partit nazi va passar a ser l'única bandera nacional amb les lleis de Nuremberg,
+      el setembre del 1935. Avui, a Alemanya i a Àustria només es pot mostrar en contextos
+      històrics i educatius.
+    es: >-
+      La bandera del partido nazi pasó a ser la única bandera nacional con las leyes de Núremberg,
+      en septiembre de 1935. Hoy, en Alemania y Austria solo puede mostrarse en contextos
+      históricos y educativos.
+    en: >-
+      The Nazi party flag became the sole national flag with the Nuremberg Laws in September 1935.
+      Today Germany and Austria only allow it to be shown in historical and educational contexts.
+  de:
+    ca: >-
+      Els colors del 1848 i de Weimar, adoptats per la República Federal el 1949 i, des del 1990, per
+      tota l'Alemanya reunificada.
+    es: >-
+      Los colores de 1848 y de Weimar, adoptados por la República Federal en 1949 y, desde 1990, por
+      toda la Alemania reunificada.
+    en: >-
+      The colours of 1848 and of Weimar, adopted by the Federal Republic in 1949 and, since 1990, by
+      the whole of reunified Germany.
+  dd:
+    ca: >-
+      Fins al 1959 la RDA va fer servir la mateixa bandera que l'RFA. Llavors hi va afegir el
+      martell, el compàs i les espigues: els obrers, els intel·lectuals i els pagesos.
+    es: >-
+      Hasta 1959 la RDA usó la misma bandera que la RFA. Entonces le añadió el martillo, el compás y
+      las espigas: los obreros, los intelectuales y los campesinos.
+    en: >-
+      Until 1959 East Germany used the same flag as West Germany. It then added the hammer, the
+      compass and the ring of rye: workers, intellectuals and farmers.
+  es-1785:
+    ca: >-
+      Carles III va triar el vermell i el groc el 1785 perquè els vaixells de guerra es distingissin
+      bé al mar. Amb el temps va passar a ser la bandera de l'Estat.
+    es: >-
+      Carlos III eligió el rojo y el amarillo en 1785 para que los buques de guerra se distinguieran
+      bien en el mar. Con el tiempo pasó a ser la bandera del Estado.
+    en: >-
+      Charles III chose red and yellow in 1785 so that warships could be told apart at sea. In time
+      it became the flag of the state.
+  es-1931:
+    ca: >-
+      La Segona República va canviar la franja vermella de baix per una de morada, el color que
+      s'atribuïa a Castella, i va posar una corona mural a l'escut en lloc de la reial.
+    es: >-
+      La Segunda República cambió la franja roja de abajo por una morada, el color que se atribuía a
+      Castilla, y puso una corona mural en el escudo en lugar de la real.
+    en: >-
+      The Second Republic replaced the lower red stripe with a purple one, the colour then linked to
+      Castile, and swapped the royal crown on the arms for a mural crown.
+  es-1938:
+    ca: >-
+      La bandera del bàndol franquista, amb l'àguila de Sant Joan a l'escut. Després de la guerra va
+      ser la de tot l'Estat.
+    es: >-
+      La bandera del bando franquista, con el águila de San Juan en el escudo. Después de la guerra
+      fue la de todo el Estado.
+    en: >-
+      The flag of Franco's side, with the eagle of Saint John on the arms. After the war it became
+      the flag of the whole state.
+  es:
+    ca: >-
+      L'escut del 1981: els regnes de Castella, Lleó, Aragó, Navarra i Granada, les columnes
+      d'Hèrcules i la corona reial. Va substituir l'àguila que encara es feia servir a la Transició.
+    es: >-
+      El escudo de 1981: los reinos de Castilla, León, Aragón, Navarra y Granada, las columnas de
+      Hércules y la corona real. Sustituyó al águila que todavía se usaba en la Transición.
+    en: >-
+      The 1981 coat of arms: the kingdoms of Castile, León, Aragon, Navarre and Granada, the Pillars
+      of Hercules and the royal crown. It replaced the eagle still used during the Transition.
+  pt:
+    ca: >-
+      La República del 1910 va deixar el blau i blanc de la monarquia pel verd i vermell del partit
+      republicà, amb l'esfera armil·lar dels navegants portuguesos.
+    es: >-
+      La República de 1910 dejó el azul y blanco de la monarquía por el verde y rojo del partido
+      republicano, con la esfera armilar de los navegantes portugueses.
+    en: >-
+      The Republic of 1910 dropped the monarchy's blue and white for the republican party's green
+      and red, with the armillary sphere of the Portuguese navigators.
+  it:
+    ca: >-
+      La República del 1946 va treure l'escut de la casa de Savoia de la tricolor que Itàlia feia
+      servir des del Risorgimento.
+    es: >-
+      La República de 1946 quitó el escudo de la casa de Saboya de la tricolor que Italia usaba desde
+      el Risorgimento.
+    en: >-
+      The Republic of 1946 removed the arms of the House of Savoy from the tricolour Italy had used
+      since the Risorgimento.
+  ru:
+    ca: >-
+      Blanc, blau i vermell: la bandera de la Rússia imperial, recuperada el 1991 quan va caure la
+      Unió Soviètica.
+    es: >-
+      Blanco, azul y rojo: la bandera de la Rusia imperial, recuperada en 1991 cuando cayó la Unión
+      Soviética.
+    en: >-
+      White, blue and red: the flag of imperial Russia, brought back in 1991 when the Soviet Union
+      fell.
+  ru-1918:
+    ca: >-
+      La primera bandera de la Rússia soviètica: vermella, el color de la revolució, amb les
+      inicials de la república en lletres daurades.
+    es: >-
+      La primera bandera de la Rusia soviética: roja, el color de la revolución, con las iniciales de
+      la república en letras doradas.
+    en: >-
+      The first flag of Soviet Russia: red, the colour of the revolution, with the republic's
+      initials in gold.
+  su-1923:
+    ca: >-
+      La falç i el martell —els pagesos i els obrers— i l'estrella del partit, sobre el vermell de la
+      revolució. El 1955 se'n van retocar les proporcions.
+    es: >-
+      La hoz y el martillo —los campesinos y los obreros— y la estrella del partido, sobre el rojo de
+      la revolución. En 1955 se retocaron sus proporciones.
+    en: >-
+      The hammer and sickle —workers and peasants— and the party's star, on the red of the
+      revolution. Its proportions were adjusted in 1955.
+  hu-1949:
+    ca: >-
+      L'escut d'estil soviètic del règim de Rákosi. El 1956 els revolucionaris el van retallar de les
+      banderes, i el forat es va convertir en el símbol de la revolució.
+    es: >-
+      El escudo de estilo soviético del régimen de Rákosi. En 1956 los revolucionarios lo
+      recortaron de las banderas, y el agujero se convirtió en el símbolo de la revolución.
+    en: >-
+      The Soviet-style emblem of Rákosi's regime. In 1956 revolutionaries cut it out of their flags,
+      and the hole became the symbol of the uprising.
+  ro-1965:
+    ca: >-
+      L'escut de la República Socialista. El desembre del 1989 els manifestants el van retallar de
+      les banderes, com els hongaresos el 1956.
+    es: >-
+      El escudo de la República Socialista. En diciembre de 1989 los manifestantes lo recortaron de
+      las banderas, como los húngaros en 1956.
+    en: >-
+      The arms of the Socialist Republic. In December 1989 protesters cut them out of their flags,
+      as Hungarians had done in 1956.
+  yu-1946:
+    ca: >-
+      La Iugoslàvia de Tito va afegir una estrella vermella a la tricolor eslava del regne.
+    es: >-
+      La Yugoslavia de Tito añadió una estrella roja a la tricolor eslava del reino.
+    en: >-
+      Tito's Yugoslavia added a red star to the kingdom's Slavic tricolour.
+  by-1991:
+    ca: >-
+      El blanc, vermell i blanc de la República Popular Bielorussa del 1918, recuperat amb la
+      independència. El 1995, després d'un referèndum, es va tornar a una versió de la bandera
+      soviètica.
+    es: >-
+      El blanco, rojo y blanco de la República Popular Bielorrusa de 1918, recuperado con la
+      independencia. En 1995, tras un referéndum, se volvió a una versión de la bandera soviética.
+    en: >-
+      The white-red-white of the 1918 Belarusian People's Republic, revived at independence. In
+      1995, after a referendum, it was replaced by a version of the Soviet-era flag.
+  mk-1992:
+    ca: >-
+      El sol de Vergina, que Grècia considerava un símbol propi. El 1995 Macedònia el va canviar per
+      un sol de vuit raigs.
+    es: >-
+      El sol de Vergina, que Grecia consideraba un símbolo propio. En 1995 Macedonia lo cambió por
+      un sol de ocho rayos.
+    en: >-
+      The Vergina Sun, which Greece regarded as its own symbol. In 1995 Macedonia replaced it with
+      an eight-rayed sun.
+  gr-1822:
+    ca: >-
+      La creu blanca sobre blau va ser la bandera de Grècia a terra fins al 1978. La de les franges,
+      que avui és l'única, era la del mar.
+    es: >-
+      La cruz blanca sobre azul fue la bandera de Grecia en tierra hasta 1978. La de las franjas,
+      que hoy es la única, era la del mar.
+    en: >-
+      The white cross on blue was Greece's flag on land until 1978. The striped one, today the only
+      one, was the flag used at sea.
+  ge:
+    ca: >-
+      La bandera de les cinc creus, d'origen medieval, adoptada el 2004 després de la Revolució de
+      les Roses.
+    es: >-
+      La bandera de las cinco cruces, de origen medieval, adoptada en 2004 tras la Revolución de las
+      Rosas.
+    en: >-
+      The five-cross flag, of medieval origin, adopted in 2004 after the Rose Revolution.
+  ie:
+    ca: >-
+      El verd de la tradició gaèlica, el taronja dels protestants i el blanc de la pau entre tots
+      dos.
+    es: >-
+      El verde de la tradición gaélica, el naranja de los protestantes y el blanco de la paz entre
+      ambos.
+    en: >-
+      The green of the Gaelic tradition, the orange of the Protestants and the white of peace
+      between them.
+  ly-1977:
+    ca: >-
+      Gaddafi va adoptar una bandera tota verda, el color de la seva «revolució verda». Ha estat
+      l'única bandera nacional d'un sol color i sense cap dibuix.
+    es: >-
+      Gadafi adoptó una bandera toda verde, el color de su «revolución verde». Ha sido la única
+      bandera nacional de un solo color y sin ningún dibujo.
+    en: >-
+      Gaddafi adopted an all-green flag, the colour of his "green revolution". It is the only
+      national flag ever to be a single colour with no design.
+  at-hu:
+    ca: >-
+      Àustria-Hongria no tenia una bandera comuna oficial. Aquesta, amb els colors i els escuts de les
+      dues meitats de la monarquia, era la de la marina mercant.
+    es: >-
+      Austria-Hungría no tenía una bandera común oficial. Esta, con los colores y los escudos de las
+      dos mitades de la monarquía, era la de la marina mercante.
+    en: >-
+      Austria-Hungary had no official common flag. This one, with the colours and arms of both
+      halves of the monarchy, was its merchant ensign.
 
 states:
   '200': [{ flag: gb }]
@@ -168,7 +422,7 @@ states:
     - { until: 1919-08-01, flag: hu-1919 }
     - { until: 1946-01-31, flag: hu-1915 }
     - { until: 1949-08-19, flag: hu-1946 }
-    # Simplified: from the 1956 revolution the plain tricolour replaced the Rákosi emblem.
+    # Simplificat: des de la revolució del 1956, la tricolor sense escut en lloc de la de Rákosi.
     - { until: 1956-10-22, flag: hu-1949 }
     - { flag: hu }
   '315':
@@ -182,12 +436,12 @@ states:
   '338':
     - { until: 1964-09-20 }
     - { flag: mt }
-  # Simplified: the variants of 1914–1946 (principality, kingdom, Italian protectorate) are not listed yet.
+  # Simplificat: falten les variants del 1914 al 1946 (principat, regne, protectorat italià).
   '339':
     - { until: 1946-01-10, flag: al }
     - { until: 1992-04-06, flag: al-1946 }
     - { flag: al }
-  # Serbia and Montenegro were part of Yugoslavia (345) from 1918 until 2006.
+  # Sèrbia i Montenegro van ser part de Iugoslàvia (345) del 1918 al 2006.
   '340':
     - { until: 1918-11-30, flag: rs-1882 }
     - { until: 2006-06-02 }
@@ -209,14 +463,14 @@ states:
     - { flag: ba }
   '347': [{ flag: xk }]
   '349': [{ flag: si }]
-  # The white-cross flag was the national flag on land until 1978; the striped one was used at sea.
+  # La de la creu blanca era la de terra fins al 1978; la de les franges, la del mar.
   '350':
     - { until: 1978-12-21, flag: gr-1822 }
     - { flag: gr }
   '352':
     - { until: 1960-08-15 }
     - { flag: cy }
-  # Simplified: the 1946–1948 and 1967–1971 emblem variants are not listed yet.
+  # Simplificat: falten les variants de l'escut del 1946-1948 i del 1967-1971.
   '355':
     - { until: 1946-09-14, flag: bg }
     - { until: 1971-05-17, flag: bg-1948 }

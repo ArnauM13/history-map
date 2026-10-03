@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
- * Downloads the flags listed in content/flags.yaml from Wikimedia Commons.
+ * Baixa de Wikimedia Commons les banderes de content/flags.yaml.
  *
- *   npm run data:flags            # download missing flags
- *   npm run data:flags -- --force # download all flags again
+ *   npm run data:flags            # les que falten
+ *   npm run data:flags -- --force # totes, de nou
  *
- * Writes public/flags/<id>.png and public/flags/credits.json (file, licence and author of each
- * image). The PNGs are rendered by Wikimedia from the original SVGs, some of which weigh more than
- * a megabyte because of detailed coats of arms. Exits with an error if some files could not be
- * found on Commons (suggesting similar names), after saving the rest.
+ * Deixa public/flags/<id>.png i public/flags/credits.json (el fitxer, la llicència i l'autor de
+ * cada imatge). Els PNG els renderitza Wikimedia a partir dels SVG originals: n'hi ha que passen
+ * del mega pels escuts detallats, i al mapa una bandera fa 14 px d'alçada. Si un fitxer no és a
+ * Commons, desa la resta, en suggereix noms semblants i acaba amb error.
  */
 import {
   existsSync,
@@ -23,9 +23,9 @@ import { parse } from 'yaml'
 const API = 'https://commons.wikimedia.org/w/api.php'
 const OUT_DIR = 'public/flags'
 const CREDITS = `${OUT_DIR}/credits.json`
-/** Width of the PNG renders: one of Wikimedia's standard thumbnail sizes. */
+/** L'amplada dels PNG: una de les mides estàndard de miniatura de Wikimedia, que no en serveix d'altres. */
 const WIDTH = 330
-// Wikimedia asks API clients to identify themselves: https://meta.wikimedia.org/wiki/User-Agent_policy
+// Wikimedia demana que qui fa servir l'API s'identifiqui: https://meta.wikimedia.org/wiki/User-Agent_policy
 const HEADERS = { 'User-Agent': 'HistoryMap/0.1 (https://github.com/ArnauM13/history-map)' }
 
 const force = process.argv.includes('--force')
@@ -45,14 +45,14 @@ async function get(url, attempt = 1) {
   return res
 }
 
-/** Strips HTML tags from Commons metadata ("<a href=…>Author</a>" → "Author"). */
+/** Treu l'HTML de les metadades de Commons («<a href=…>Autor</a>» → «Autor»). */
 const plain = (html) =>
   html
     ?.replace(/<[^>]*>/g, '')
     .replace(/\s+/g, ' ')
     .trim() || undefined
 
-/** Queries Commons for the download URL and licence of up to 50 files at once. */
+/** Demana a Commons l'adreça i la llicència de fins a 50 fitxers alhora. */
 async function imageInfo(files) {
   const params = new URLSearchParams({
     action: 'query',
@@ -66,7 +66,7 @@ async function imageInfo(files) {
     titles: files.map((f) => `File:${f}`).join('|'),
   })
   const { query } = await (await get(`${API}?${params}`)).json()
-  // Map every requested title to its final page, following normalisations and redirects.
+  // Cada títol demanat, fins a la seva pàgina final: Commons normalitza noms i en redirigeix.
   const rename = new Map()
   for (const { from, to } of [...(query.normalized ?? []), ...(query.redirects ?? [])]) {
     rename.set(from, to)
@@ -82,7 +82,7 @@ async function imageInfo(files) {
   return result
 }
 
-/** Files on Commons whose title looks like `file`, to help fix a wrong name. */
+/** Fitxers de Commons amb un nom semblant, per arreglar un nom mal escrit. */
 async function similarFiles(file) {
   const params = new URLSearchParams({
     action: 'query',
@@ -100,7 +100,7 @@ async function similarFiles(file) {
 const wanted = Object.entries(catalogue).filter(
   ([id, file]) => force || !existsSync(`${OUT_DIR}/${id}.png`) || credits[id]?.file !== file,
 )
-console.log(`${Object.keys(catalogue).length} flags in the catalogue, ${wanted.length} to download`)
+console.log(`${Object.keys(catalogue).length} banderes al catàleg, ${wanted.length} per baixar`)
 
 const missing = []
 for (let i = 0; i < wanted.length; i += 50) {
@@ -110,9 +110,7 @@ for (let i = 0; i < wanted.length; i += 50) {
     const info = infos.get(file)
     if (!info?.thumburl) {
       const suggestions = await similarFiles(file).catch(() => [])
-      missing.push(
-        `${id}: "${file}"` + suggestions.map((s) => `\n      did you mean "${s}"?`).join(''),
-      )
+      missing.push(`${id}: "${file}"` + suggestions.map((s) => `\n      potser «${s}»?`).join(''))
       continue
     }
     const png = await (await get(info.thumburl)).arrayBuffer()
@@ -122,16 +120,16 @@ for (let i = 0; i < wanted.length; i += 50) {
       license: plain(info.extmetadata?.LicenseShortName?.value),
       artist: plain(info.extmetadata?.Artist?.value),
     }
-    console.log(`✔ ${id}  ${file}  (${credits[id].license ?? 'licence unknown'})`)
+    console.log(`✔ ${id}  ${file}  (${credits[id].license ?? 'llicència desconeguda'})`)
     await sleep(200)
   }
 }
 
-// Forget flags that are no longer in the catalogue.
+// Fora el que ja no és al catàleg.
 for (const id of Object.keys(credits)) if (!(id in catalogue)) delete credits[id]
 for (const name of readdirSync(OUT_DIR)) {
   const stale = name.endsWith('.png') && !(name.slice(0, -4) in catalogue)
-  // Earlier versions of this script saved the original SVGs.
+  // Les primeres versions d'aquest script desaven els SVG originals.
   if (stale || name.endsWith('.svg')) unlinkSync(`${OUT_DIR}/${name}`)
 }
 
@@ -140,9 +138,9 @@ writeFileSync(CREDITS, JSON.stringify(sorted, null, 2) + '\n')
 
 if (missing.length > 0) {
   console.error(
-    `\n✘ ${missing.length} files not found on Wikimedia Commons:\n  ${missing.join('\n  ')}`,
+    `\n✘ ${missing.length} fitxers que no són a Wikimedia Commons:\n  ${missing.join('\n  ')}`,
   )
-  console.error('Fix their names in content/flags.yaml (catalogue section).')
+  console.error('Arregla els noms a content/flags.yaml (secció catalogue).')
   process.exit(1)
 }
-console.log('All flags are up to date.')
+console.log('Totes les banderes al dia.')

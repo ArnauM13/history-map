@@ -6,6 +6,7 @@ import { addDays, formatDate, toDateNumber, yearOf, type IsoDate } from '../lib/
 import { featuresOn, stateOn, type LabelCollection } from '../map/data'
 import type { BorderProperties } from '../selection'
 import { Flag } from './Flag'
+import { Icon } from './Icon'
 
 interface Props {
   date: IsoDate
@@ -15,8 +16,9 @@ interface Props {
   onGoToDate: (date: IsoDate) => void
 }
 
+/** La pestanya Banderes: les estrenades aquell any, i totes les que onejaven aquell dia. */
 export function FlagGallery({ date, labels, selectedGwcode, onSelectCountry, onGoToDate }: Props) {
-  const { lang, t } = useI18n()
+  const { lang, t, tn } = useI18n()
   const year = yearOf(date)
   const yearAgo = addDays(date, -365)
 
@@ -29,8 +31,8 @@ export function FlagGallery({ date, labels, selectedGwcode, onSelectCountry, onG
           name: countryName(f.properties.gwcode, date, lang, f.properties.country_name),
           period: flagOn(f.properties.gwcode, date),
         }))
-        // States without any flag history are left out; dependent territories are shown only
-        // when they had a flag of their own (or explicitly none, like occupied Germany).
+        // Un estat sense cap bandera documentada no hi surt. Un territori dependent, només si
+        // en tenia una de pròpia (o cap, com l'Alemanya ocupada, que també s'explica així).
         .filter(
           ({ feature, period }) =>
             period && (period.flag !== undefined || feature.status === 'independent'),
@@ -41,6 +43,7 @@ export function FlagGallery({ date, labels, selectedGwcode, onSelectCountry, onG
 
   const changes = useMemo(() => flagChangesBetween(`${year}-01-01`, `${year}-12-31`), [year])
 
+  // Anar a un canvi és anar a la data i obrir l'estat: el que vols veure és la bandera nova.
   const goToChange = (gwcode: number, from: IsoDate) => {
     onGoToDate(from)
     const feature = stateOn(labels, gwcode, from)
@@ -49,10 +52,14 @@ export function FlagGallery({ date, labels, selectedGwcode, onSelectCountry, onG
 
   return (
     <>
-      <section>
-        <h2>{t('flagChangesOfYear', { year })}</h2>
+      <section className="card-section">
+        <div className="section-header">
+          <Icon name="flag" />
+          <h2 className="section-title">{t('flagChangesOfYear', { year })}</h2>
+          {changes.length > 0 && <span className="section-count">{changes.length}</span>}
+        </div>
         {changes.length === 0 ? (
-          <p className="muted">{t('noFlagChanges')}</p>
+          <p className="empty-state">{t('noFlagChanges')}</p>
         ) : (
           <ul className="item-list">
             {changes.map(({ gwcode, period }) => {
@@ -61,13 +68,15 @@ export function FlagGallery({ date, labels, selectedGwcode, onSelectCountry, onG
                 <li key={`${gwcode}-${period.from}`}>
                   <button
                     type="button"
-                    className={`item flag-change${period.from > date ? ' upcoming' : ''}`}
+                    className={`item-card${period.from > date ? ' is-upcoming' : ''}`}
+                    aria-current={gwcode === selectedGwcode && period.from <= date}
                     onClick={() => goToChange(gwcode, period.from)}
+                    title={name}
                   >
                     <Flag id={period.flag} size="sm" label={name} />
-                    <span>
-                      <span className="item-meta">{formatDate(period.from, lang)}</span>
-                      <span className="item-title">{name}</span>
+                    <span className="ic-body">
+                      <span className="ic-name">{name}</span>
+                      <span className="ic-detail">{formatDate(period.from, lang)}</span>
                     </span>
                   </button>
                 </li>
@@ -77,9 +86,14 @@ export function FlagGallery({ date, labels, selectedGwcode, onSelectCountry, onG
         )}
       </section>
 
-      <section>
-        <h2>{t('flagsOn', { date: formatDate(date, lang) })}</h2>
-        <p className="muted">{t('statesCount', { count: states.length })}</p>
+      <section className="card-section">
+        <div className="section-header">
+          <Icon name="public" />
+          <h2 className="section-title">{t('flagsOn', { date: formatDate(date, lang) })}</h2>
+          <span className="section-count" title={tn('statesCount', states.length)}>
+            {states.length}
+          </span>
+        </div>
         <ul className="flag-grid">
           {states.map(({ feature, name, period }) => {
             const isNew = period?.from && yearAgo < period.from && period.from <= date
@@ -92,13 +106,13 @@ export function FlagGallery({ date, labels, selectedGwcode, onSelectCountry, onG
                   onClick={() => onSelectCountry(feature)}
                 >
                   <Flag id={period?.flag} label={name} />
-                  <span className="flag-card-name">{name}</span>
+                  <span className="ic-name">{name}</span>
                   {isNew ? (
-                    <span className="badge new">{t('newFlag')}</span>
+                    <span className="chip new">{t('newFlag')}</span>
                   ) : (
                     period?.from &&
                     period.flag && (
-                      <span className="item-meta">{t('since', { year: yearOf(period.from) })}</span>
+                      <span className="ic-detail">{t('since', { year: yearOf(period.from) })}</span>
                     )
                   )}
                 </button>

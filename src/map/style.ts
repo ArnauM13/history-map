@@ -1,15 +1,15 @@
 import type { ExpressionSpecification, StyleSpecification } from 'maplibre-gl'
 
 /**
- * "Paper atlas" palette. The border build script assigns each state a colour index (`c`)
- * so that neighbours never share a colour; keep at least as many colours as it reports.
+ * Colors d'atles de paper. L'script de fronteres dona a cada estat un índex (`c`) perquè dos
+ * veïns no en comparteixin mai cap; n'hi ha d'haver, com a mínim, tants com els que diu l'script.
  */
 export const PALETTE = ['#e9c89b', '#b7d4a0', '#f0b49e', '#c6b8e3', '#f2dc8d', '#a8d5c8', '#dcb0c6']
 
 export const COLORS = {
   sea: '#d4e4ec',
   border: '#7a6a58',
-  selected: '#1f2a44',
+  selected: '#006874',
   label: '#3b3329',
   labelHalo: 'rgba(255, 255, 255, 0.85)',
   conflict: '#c0392b',
@@ -35,7 +35,7 @@ const fillColor: ExpressionSpecification = [
 const isIndependent: ExpressionSpecification = ['==', ['get', 'status'], 'independent']
 const isHovered: ExpressionSpecification = ['boolean', ['feature-state', 'hover'], false]
 
-/** Features whose validity period [s, e] contains the given YYYYMMDD date. */
+/** Les peces vigents en una data AAAAMMDD: les que la tenen dins de [s, e]. */
 export const validOn = (date: number): ExpressionSpecification => [
   'all',
   ['<=', ['get', 's'], date],
