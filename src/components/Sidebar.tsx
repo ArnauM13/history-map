@@ -5,6 +5,7 @@ import type { Conflict, HistoricalEvent } from '../content/schema'
 import { useI18n } from '../i18n'
 import {
   MIN_DATE,
+  OPEN_END,
   formatDate,
   formatDateNumber,
   fromDateNumber,
@@ -250,14 +251,18 @@ function CountryDetail({
   const related = EVENTS.filter((e) => e.countries.includes(feature.gwcode))
   const current = flagOn(feature.gwcode, date)
   const history = flagHistory(feature.gwcode).filter((p) => p.flag !== undefined)
-  // Where to jump for a flag whose first day is unknown: when the state first appears.
-  const firstSeen = labels?.features
-    .filter((f) => f.properties.gwcode === feature.gwcode)
-    .reduce((min, f) => Math.min(min, f.properties.s), Infinity)
+  // When the state first and last appears on the map: bounds for flags with open-ended periods.
+  const spans = labels?.features.filter((f) => f.properties.gwcode === feature.gwcode) ?? []
+  const firstSeen = Math.min(...spans.map((f) => f.properties.s))
+  const lastSeen = Math.max(...spans.map((f) => f.properties.e))
   const firstDate =
-    firstSeen && firstSeen !== Infinity && fromDateNumber(firstSeen) > MIN_DATE
-      ? fromDateNumber(firstSeen)
-      : MIN_DATE
+    spans.length > 0 && fromDateNumber(firstSeen) > MIN_DATE ? fromDateNumber(firstSeen) : MIN_DATE
+  const endLabel = (until?: IsoDate) =>
+    until
+      ? yearOf(until)
+      : spans.length > 0 && lastSeen < OPEN_END
+        ? yearOf(fromDateNumber(lastSeen))
+        : t('present')
 
   return (
     <>
@@ -303,7 +308,7 @@ function CountryDetail({
                 >
                   <Flag id={p.flag} size="sm" label={name} />
                   <span>
-                    {p.from ? yearOf(p.from) : '…'} – {p.until ? yearOf(p.until) : t('present')}
+                    {p.from ? yearOf(p.from) : '…'} – {endLabel(p.until)}
                   </span>
                 </button>
               </li>
