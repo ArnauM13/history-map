@@ -1,0 +1,24 @@
+start: 1914-07-28
+end: 1918-11-11
+category: world-war
+location: [4.0, 49.6]
+countries: [300, 255, 640, 355, 365, 220, 200, 325, 340, 360, 350, 211]
+title:
+  ca: Primera Guerra Mundial
+  es: Primera Guerra Mundial
+  en: First World War
+summary:
+  ca: >-
+    Les Potències Centrals (Alemanya, Àustria-Hongria, l'Imperi otomà i Bulgària) es van enfrontar
+    als Aliats (França, el Regne Unit, Rússia, Itàlia, els Estats Units i d'altres). Amb uns 17
+    milions de morts, la guerra va enfonsar quatre imperis i va redibuixar les fronteres d'Europa.
+  es: >-
+    Las Potencias Centrales (Alemania, Austria-Hungría, el Imperio otomano y Bulgaria) se
+    enfrentaron a los Aliados (Francia, el Reino Unido, Rusia, Italia, Estados Unidos y otros). Con
+    unos 17 millones de muertos, la guerra hundió cuatro imperios y redibujó las fronteras de Europa.
+  en: >-
+    The Central Powers (Germany, Austria-Hungary, the Ottoman Empire and Bulgaria) fought the
+    Allies (France, the United Kingdom, Russia, Italy, the United States and others). With some 17
+    million dead, the war brought down four empires and redrew the borders of Europe.
+wikipedia:
+  en: World War I

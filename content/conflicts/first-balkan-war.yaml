@@ -1,0 +1,24 @@
+start: 1912-10-08
+end: 1913-05-30
+category: interstate
+location: [22.0, 41.5]
+countries: [340, 355, 350, 341, 640]
+title:
+  ca: Primera Guerra Balcànica
+  es: Primera Guerra de los Balcanes
+  en: First Balkan War
+summary:
+  ca: >-
+    La Lliga Balcànica (Sèrbia, Bulgària, Grècia i Montenegro) va atacar l'Imperi otomà, que va
+    perdre gairebé tots els seus territoris europeus. El Tractat de Londres va reconèixer també la
+    independència d'Albània.
+  es: >-
+    La Liga Balcánica (Serbia, Bulgaria, Grecia y Montenegro) atacó al Imperio otomano, que perdió
+    casi todos sus territorios europeos. El Tratado de Londres reconoció también la independencia
+    de Albania.
+  en: >-
+    The Balkan League (Serbia, Bulgaria, Greece and Montenegro) attacked the Ottoman Empire, which
+    lost almost all its European territory. The Treaty of London also recognised the independence
+    of Albania.
+wikipedia:
+  en: First Balkan War

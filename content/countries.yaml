@@ -1,0 +1,128 @@
+# Names of states and territories, keyed by Gleditsch & Ward code (the `gwcode`
+# used by the CShapes 2.0 border data in public/data/).
+#
+# A key maps either to one name in several languages:
+#
+#   "220": { ca: França, es: Francia, en: France }
+#
+# or, when the name changed over time, to a chronological list. `until` is the
+# last day (inclusive) a name applies; the last entry has no `until`:
+#
+#   "365":
+#     - { until: 1917-03-14, ca: Imperi Rus, es: Imperio ruso, en: Russian Empire }
+#     - { ca: Rússia, es: Rusia, en: Russia }
+#
+# Names are short map labels. Details belong in events and conflicts.
+
+"200": { ca: Regne Unit, es: Reino Unido, en: United Kingdom }
+"205":
+  - { until: 1937-12-28, ca: Estat Lliure d'Irlanda, es: Estado Libre Irlandés, en: Irish Free State }
+  - { ca: Irlanda, es: Irlanda, en: Ireland }
+"210": { ca: Països Baixos, es: Países Bajos, en: Netherlands }
+"211": { ca: Bèlgica, es: Bélgica, en: Belgium }
+"212": { ca: Luxemburg, es: Luxemburgo, en: Luxembourg }
+"220": { ca: França, es: Francia, en: France }
+"225": { ca: Suïssa, es: Suiza, en: Switzerland }
+"230": { ca: Espanya, es: España, en: Spain }
+"235": { ca: Portugal, es: Portugal, en: Portugal }
+"255":
+  - { until: 1918-11-09, ca: Imperi alemany, es: Imperio alemán, en: German Empire }
+  - { until: 1933-01-29, ca: Alemanya, es: Alemania, en: Germany }
+  - { ca: Alemanya nazi, es: Alemania nazi, en: Nazi Germany }
+"260":
+  - { until: 1949-09-20, ca: Alemanya ocupada, es: Alemania ocupada, en: Allied-occupied Germany }
+  - { until: 1990-10-02, ca: Alemanya Occidental (RFA), es: Alemania Occidental (RFA), en: West Germany (FRG) }
+  - { ca: Alemanya, es: Alemania, en: Germany }
+"265":
+  - { until: 1949-10-06, ca: Zona d'ocupació soviètica, es: Zona de ocupación soviética, en: Soviet occupation zone }
+  - { ca: Alemanya Oriental (RDA), es: Alemania Oriental (RDA), en: East Germany (GDR) }
+"290": { ca: Polònia, es: Polonia, en: Poland }
+"291": { ca: Ciutat Lliure de Danzig, es: Ciudad Libre de Dánzig, en: Free City of Danzig }
+"300": { ca: Àustria-Hongria, es: Austria-Hungría, en: Austria-Hungary }
+"305": { ca: Àustria, es: Austria, en: Austria }
+"310": { ca: Hongria, es: Hungría, en: Hungary }
+"315": { ca: Txecoslovàquia, es: Checoslovaquia, en: Czechoslovakia }
+"316": { ca: Txèquia, es: Chequia, en: Czechia }
+"317": { ca: Eslovàquia, es: Eslovaquia, en: Slovakia }
+"325": { ca: Itàlia, es: Italia, en: Italy }
+"338": { ca: Malta, es: Malta, en: Malta }
+"339": { ca: Albània, es: Albania, en: Albania }
+"340": { ca: Sèrbia, es: Serbia, en: Serbia }
+"341": { ca: Montenegro, es: Montenegro, en: Montenegro }
+"343":
+  - { until: 2019-02-11, ca: Macedònia, es: Macedonia, en: Macedonia }
+  - { ca: Macedònia del Nord, es: Macedonia del Norte, en: North Macedonia }
+"344": { ca: Croàcia, es: Croacia, en: Croatia }
+"345":
+  - { until: 1929-10-02, ca: "Regne dels Serbis, Croats i Eslovens", es: "Reino de los Serbios, Croatas y Eslovenos", en: "Kingdom of Serbs, Croats and Slovenes" }
+  - { until: 2003-02-03, ca: Iugoslàvia, es: Yugoslavia, en: Yugoslavia }
+  - { ca: Sèrbia i Montenegro, es: Serbia y Montenegro, en: Serbia and Montenegro }
+"346": { ca: Bòsnia i Hercegovina, es: Bosnia y Herzegovina, en: Bosnia and Herzegovina }
+"347": { ca: Kosovo, es: Kosovo, en: Kosovo }
+"349": { ca: Eslovènia, es: Eslovenia, en: Slovenia }
+"350": { ca: Grècia, es: Grecia, en: Greece }
+"352": { ca: Xipre, es: Chipre, en: Cyprus }
+"355": { ca: Bulgària, es: Bulgaria, en: Bulgaria }
+"359": { ca: Moldàvia, es: Moldavia, en: Moldova }
+"360": { ca: Romania, es: Rumania, en: Romania }
+"365":
+  - { until: 1917-03-14, ca: Imperi Rus, es: Imperio ruso, en: Russian Empire }
+  - { until: 1917-11-06, ca: Rússia, es: Rusia, en: Russia }
+  - { until: 1922-12-29, ca: Rússia soviètica, es: Rusia soviética, en: Soviet Russia }
+  - { until: 1991-12-25, ca: Unió Soviètica, es: Unión Soviética, en: Soviet Union }
+  - { ca: Rússia, es: Rusia, en: Russia }
+"366": { ca: Estònia, es: Estonia, en: Estonia }
+"367": { ca: Letònia, es: Letonia, en: Latvia }
+"368": { ca: Lituània, es: Lituania, en: Lithuania }
+"369": { ca: Ucraïna, es: Ucrania, en: Ukraine }
+"370": { ca: Bielorússia, es: Bielorrusia, en: Belarus }
+"371": { ca: Armènia, es: Armenia, en: Armenia }
+"372": { ca: Geòrgia, es: Georgia, en: Georgia }
+"373": { ca: Azerbaidjan, es: Azerbaiyán, en: Azerbaijan }
+"375": { ca: Finlàndia, es: Finlandia, en: Finland }
+"380": { ca: Suècia, es: Suecia, en: Sweden }
+"385": { ca: Noruega, es: Noruega, en: Norway }
+"390": { ca: Dinamarca, es: Dinamarca, en: Denmark }
+"395": { ca: Islàndia, es: Islandia, en: Iceland }
+"430": { ca: Àfrica Occidental Francesa, es: África Occidental Francesa, en: French West Africa }
+"600": { ca: Marroc, es: Marruecos, en: Morocco }
+"602": { ca: Marroc espanyol, es: Marruecos español, en: Spanish Morocco }
+"615": { ca: Algèria, es: Argelia, en: Algeria }
+"616": { ca: Tunísia, es: Túnez, en: Tunisia }
+"620": { ca: Líbia, es: Libia, en: Libya }
+"630":
+  - { until: 1935-03-20, ca: Pèrsia, es: Persia, en: Persia }
+  - { ca: Iran, es: Irán, en: Iran }
+"640":
+  - { until: 1922-10-31, ca: Imperi otomà, es: Imperio otomano, en: Ottoman Empire }
+  - { ca: Turquia, es: Turquía, en: Turkey }
+"645": { ca: Iraq, es: Irak, en: Iraq }
+"651": { ca: Egipte, es: Egipto, en: Egypt }
+"652": { ca: Síria, es: Siria, en: Syria }
+"660": { ca: Líban, es: Líbano, en: Lebanon }
+"663":
+  - { until: 1946-05-24, ca: Transjordània, es: Transjordania, en: Transjordan }
+  - { ca: Jordània, es: Jordania, en: Jordan }
+"665": { ca: Palestina, es: Palestina, en: Palestine }
+"666": { ca: Israel, es: Israel, en: Israel }
+"670": { ca: Aràbia Saudita, es: Arabia Saudí, en: Saudi Arabia }
+"690": { ca: Kuwait, es: Kuwait, en: Kuwait }
+"700": { ca: Afganistan, es: Afganistán, en: Afghanistan }
+"701": { ca: Turkmenistan, es: Turkmenistán, en: Turkmenistan }
+"702": { ca: Tadjikistan, es: Tayikistán, en: Tajikistan }
+"703": { ca: Kirguizistan, es: Kirguistán, en: Kyrgyzstan }
+"704": { ca: Uzbekistan, es: Uzbekistán, en: Uzbekistan }
+"705": { ca: Kazakhstan, es: Kazajistán, en: Kazakhstan }
+"710": { ca: Xina, es: China, en: China }
+"750":
+  - { until: 1947-08-14, ca: Índia britànica, es: India británica, en: British India }
+  - { ca: Índia, es: India, en: India }
+"770": { ca: Pakistan, es: Pakistán, en: Pakistan }
+"3461": { ca: Bòsnia, es: Bosnia, en: Bosnia }
+"3462": { ca: Hercegovina, es: Herzegovina, en: Herzegovina }
+"6511": { ca: Franja de Gaza, es: Franja de Gaza, en: Gaza Strip }
+"6631": { ca: Cisjordània, es: Cisjordania, en: West Bank }
+"7020": { ca: Emirat de Bukharà, es: Emirato de Bujará, en: Emirate of Bukhara }
+"7030": { ca: Kanat de Khiva, es: Kanato de Jiva, en: Khanate of Khiva }
+"7506": { ca: Jammu i Caixmir, es: Jammu y Cachemira, en: Jammu and Kashmir }
+"7708": { ca: Azad Caixmir, es: Azad Cachemira, en: Azad Kashmir }

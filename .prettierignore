@@ -1,0 +1,6 @@
+dist
+data-raw
+public/data
+public/fonts
+package-lock.json
+content/countries.yaml

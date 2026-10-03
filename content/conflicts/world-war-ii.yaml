@@ -1,0 +1,24 @@
+start: 1939-09-01
+end: 1945-05-08
+category: world-war
+location: [15.0, 51.0]
+countries: [255, 325, 365, 200, 220, 290]
+title:
+  ca: Segona Guerra Mundial
+  es: Segunda Guerra Mundial
+  en: Second World War
+summary:
+  ca: >-
+    El conflicte més mortífer de la història va enfrontar l'Eix (Alemanya, Itàlia, el Japó i els
+    seus aliats) amb els Aliats. Alemanya va ocupar gran part d'Europa i hi va perpetrar
+    l'Holocaust. A Europa la guerra va acabar el 8 de maig de 1945; al Pacífic, el 2 de setembre.
+  es: >-
+    El conflicto más mortífero de la historia enfrentó al Eje (Alemania, Italia, Japón y sus
+    aliados) con los Aliados. Alemania ocupó gran parte de Europa y perpetró allí el Holocausto. En
+    Europa la guerra terminó el 8 de mayo de 1945; en el Pacífico, el 2 de septiembre.
+  en: >-
+    The deadliest conflict in history pitted the Axis (Germany, Italy, Japan and their allies)
+    against the Allies. Germany occupied much of Europe and carried out the Holocaust there. In
+    Europe the war ended on 8 May 1945; in the Pacific, on 2 September.
+wikipedia:
+  en: World War II

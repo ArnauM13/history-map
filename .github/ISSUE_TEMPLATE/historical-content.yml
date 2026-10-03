@@ -1,0 +1,41 @@
+name: Propose an event or conflict
+description: Suggest a historical event or conflict to add (or fix an existing one).
+labels: [content]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! You can also add it yourself — it's a small YAML file, see CONTRIBUTING.md.
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      placeholder: Treaty of Versailles
+    validations:
+      required: true
+  - type: input
+    id: dates
+    attributes:
+      label: Date (or start – end for a conflict)
+      placeholder: 1919-06-28
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Two to four sentences explaining what happened and why it matters. Any of Catalan, Spanish or English.
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Place
+      placeholder: Versailles, France
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: At least one reliable source (Wikipedia is fine as a start).
+    validations:
+      required: true

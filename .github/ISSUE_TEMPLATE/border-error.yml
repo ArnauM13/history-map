@@ -1,0 +1,29 @@
+name: Report a border or name error
+description: A border, state or name is wrong on a given date.
+labels: [data]
+body:
+  - type: input
+    id: link
+    attributes:
+      label: Link to the map showing the problem
+      description: Copy the URL from the address bar; it includes the date.
+      placeholder: https://arnaum13.github.io/history-map/?d=1938-10-01&lang=en
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong, and what should it look like?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Note: the map shows borders settled by treaties, not wartime occupations
+        (see docs/DATA.md). Occupations are planned as a separate layer.
