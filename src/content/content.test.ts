@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest'
-import { COUNTRY_NAMES, CONFLICTS, EVENTS, contentErrors, countryName } from './index'
+import {
+  CAPITALS,
+  COUNTRY_NAMES,
+  CONFLICTS,
+  EVENTS,
+  capitalName,
+  contentErrors,
+  countryName,
+} from './index'
+// Les fronteres, tal com les rep l'app: els noms de capital hi surten en anglès.
+import labelsRaw from '../../public/data/labels.geojson?raw'
 
 describe('el contingut', () => {
   it('es llegeix sencer, sense cap fitxer mal escrit', () => {
@@ -35,5 +45,20 @@ describe('el contingut', () => {
     expect(countryName(365, '1910-01-01', 'en')).toBe('Russian Empire')
     expect(countryName(365, '1950-01-01', 'ca')).toBe('Unió Soviètica')
     expect(countryName(365, '2000-01-01', 'es')).toBe('Rusia')
+  })
+
+  it('tradueix totes les capitals de les fronteres als tres idiomes', () => {
+    const labels = JSON.parse(labelsRaw)
+    const capitals = new Set<string>(
+      labels.features.map((f: { properties: { capname?: string } }) => f.properties.capname),
+    )
+    for (const name of capitals) {
+      if (!name) continue
+      for (const lang of ['ca', 'es', 'en'] as const) {
+        expect(CAPITALS[name]?.[lang], `${name} en ${lang}`).toBeTruthy()
+      }
+    }
+    expect(capitalName('Kiev', 'ca')).toBe('Kíiv')
+    expect(capitalName('Bukarest', 'en')).toBe('Bucharest')
   })
 })

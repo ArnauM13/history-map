@@ -1,11 +1,19 @@
 import { useEffect, useState, type ReactNode } from 'react'
-import { CONFLICTS, EVENTS, FLAGS, countryName, localize, wikipediaUrl } from '../content'
+import {
+  CONFLICTS,
+  EVENTS,
+  FLAGS,
+  capitalName,
+  countryName,
+  localize,
+  wikipediaUrl,
+} from '../content'
 import { commonsUrl, flagHistory, flagOn, loadFlagCredits, type FlagCredit } from '../content/flags'
 import type { Conflict, HistoricalEvent } from '../content/schema'
 import { useI18n } from '../i18n'
 import { MIN_DATE, OPEN_END, formatDate, fromDateNumber, yearOf, type IsoDate } from '../lib/date'
 import { stateOn, type LabelCollection } from '../map/data'
-import { REPO_URL, type BorderProperties, type Selection } from '../selection'
+import { REPO_URL, docUrl, type BorderProperties, type Selection } from '../selection'
 import { Flag } from './Flag'
 import { FlagGallery } from './FlagGallery'
 import { Icon } from './Icon'
@@ -37,7 +45,7 @@ export function Sidebar({
   onGoToEvent,
   onGoToDate,
 }: Props) {
-  const { t } = useI18n()
+  const { lang, t } = useI18n()
   const tabs = [
     { id: 'flags', label: t('tabFlags'), icon: 'flag' },
     { id: 'history', label: t('tabHistory'), icon: 'history' },
@@ -95,7 +103,7 @@ export function Sidebar({
       </div>
 
       <footer className="sidebar-footer">
-        <a href={`${REPO_URL}/blob/main/DADES.md`} target="_blank" rel="noopener">
+        <a href={docUrl('DADES', lang)} target="_blank" rel="noopener">
           {t('sources')}
         </a>
         <a href={REPO_URL} target="_blank" rel="noopener">
@@ -164,7 +172,7 @@ function HistoryPanel({
         {yearEvents.length === 0 ? (
           <p className="empty-state">
             {t('noEventsOfYear')}{' '}
-            <a href={`${REPO_URL}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener">
+            <a href={docUrl('CONTRIBUTING', lang)} target="_blank" rel="noopener">
               {t('contribute')}
             </a>
           </p>
@@ -311,7 +319,7 @@ function CountryDetail({
         {feature.capname && (
           <div>
             <dt>{t('capital')}</dt>
-            <dd>{feature.capname}</dd>
+            <dd>{capitalName(feature.capname, lang)}</dd>
           </div>
         )}
         <div>

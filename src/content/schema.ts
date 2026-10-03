@@ -86,6 +86,9 @@ const flagEntry = z.strictObject({
   flag: flagId.nullable().optional(),
 })
 
+/** El nom de la capital tal com el porta CShapes (en anglès) → el nom en els tres idiomes. */
+export const capitalsSchema = z.record(z.string(), localizedText)
+
 export const flagsSchema = z.strictObject({
   /** Identificador → nom del fitxer a Wikimedia Commons. */
   catalogue: z.record(flagId, z.string().regex(/\.(svg|png)$/i, "Ha de ser un fitxer d'imatge")),

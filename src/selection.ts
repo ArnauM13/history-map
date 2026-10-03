@@ -18,3 +18,7 @@ export type Selection =
   | { kind: 'conflict'; id: string }
 
 export const REPO_URL = 'https://github.com/ArnauM13/history-map'
+
+/** Un document del repo en l'idioma de la pantalla: el català és l'original, sense sufix. */
+export const docUrl = (name: string, lang: string) =>
+  `${REPO_URL}/blob/main/${name}${lang === 'ca' ? '' : `.${lang}`}.md`

@@ -21,6 +21,8 @@ export interface Plural {
 const ca = {
   appTitle: "Mapa històric d'Europa",
   appSubtitle: 'Les fronteres, les banderes i els fets dels segles XX i XXI',
+  metaDescription:
+    'Europa del 1900 a avui en un mapa que es mou: les fronteres, les banderes i els fets de cada data.',
   language: 'Idioma',
   timeline: 'Línia temporal',
   play: 'Reprodueix',
@@ -88,6 +90,8 @@ type Messages = { [K in MessageKey]: (typeof ca)[K] extends Plural ? Plural : st
 const es: Messages = {
   appTitle: 'Mapa histórico de Europa',
   appSubtitle: 'Las fronteras, las banderas y los hechos de los siglos XX y XXI',
+  metaDescription:
+    'Europa de 1900 a hoy en un mapa que se mueve: las fronteras, las banderas y los hechos de cada fecha.',
   language: 'Idioma',
   timeline: 'Línea temporal',
   play: 'Reproducir',
@@ -152,6 +156,8 @@ const es: Messages = {
 const en: Messages = {
   appTitle: 'Historical Map of Europe',
   appSubtitle: 'Borders, flags and events of the 20th and 21st centuries',
+  metaDescription:
+    'Europe from 1900 to today on a map that moves: the borders, the flags and the events of any date.',
   language: 'Language',
   timeline: 'Timeline',
   play: 'Play',

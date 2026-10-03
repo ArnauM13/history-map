@@ -4,6 +4,7 @@ import { fallbackOrder, type Lang } from '../i18n'
 import { isWithin, type IsoDate } from '../lib/date'
 import {
   conflictSchema,
+  capitalsSchema,
   countryNamesSchema,
   eventSchema,
   flagsSchema,
@@ -23,11 +24,10 @@ const conflictFiles = import.meta.glob<string>('/content/conflicts/*.yaml', {
   import: 'default',
   eager: true,
 })
-const singleFiles = import.meta.glob<string>(['/content/countries.yaml', '/content/flags.yaml'], {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-})
+const singleFiles = import.meta.glob<string>(
+  ['/content/countries.yaml', '/content/flags.yaml', '/content/capitals.yaml'],
+  { query: '?raw', import: 'default', eager: true },
+)
 
 /** Un fitxer mal escrit no tomba l'app: l'error s'apunta aquí, i els tests no el deixen passar. */
 export const contentErrors: string[] = []
@@ -68,6 +68,7 @@ export const CONFLICTS: Conflict[] = loadCollection(conflictFiles, conflictSchem
   a.start.localeCompare(b.start),
 )
 export const COUNTRY_NAMES = loadFile('/content/countries.yaml', countryNamesSchema, {})
+export const CAPITALS = loadFile('/content/capitals.yaml', capitalsSchema, {})
 export const FLAGS = loadFile('/content/flags.yaml', flagsSchema, {
   catalogue: {},
   about: {},
@@ -99,6 +100,10 @@ export function countryName(gwcode: number, date: IsoDate, lang: Lang, fallback 
   const current = entry.find((e) => !e.until || date <= e.until) ?? entry[entry.length - 1]
   return localize(current, lang) || fallback
 }
+
+/** La capital en l'idioma de la pantalla; si no està traduïda, tal com ve de CShapes. */
+export const capitalName = (capname: string, lang: Lang) =>
+  localize(CAPITALS[capname], lang) || capname
 
 export const activeConflicts = (date: IsoDate) =>
   CONFLICTS.filter((c) => isWithin(date, c.start, c.end))

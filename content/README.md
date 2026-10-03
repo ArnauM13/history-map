@@ -5,6 +5,7 @@ s'afegeixen i com s'escriuen, a [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ```
 countries.yaml     el nom de cada estat segons la data
+capitals.yaml      el nom de les capitals, en els tres idiomes
 flags.yaml         les banderes de cada estat segons la data, i què volen dir
 events/            un fitxer per fet          (AAAA-MM-DD-nom-curt.yaml)
 conflicts/         un fitxer per conflicte    (nom-curt.yaml)

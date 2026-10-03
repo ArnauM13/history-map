@@ -73,7 +73,11 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.lang = lang
-    document.title = translator(lang).t('appTitle')
+    const { t } = translator(lang)
+    document.title = t('appTitle')
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', t('metaDescription'))
   }, [lang])
 
   // Reproduir: un mes a cada tic, fins avui.

@@ -1,0 +1,82 @@
+# El nom de cada capital en els tres idiomes. La clau és el nom que porta CShapes 2.0
+# (`capname`, en anglès i de vegades amb errades, com «Bukarest»): no es canvia, es tradueix.
+# Els tests avisen si a les fronteres n'apareix una que no és aquí.
+
+"(East) Jerusalem": { ca: Jerusalem, es: Jerusalén, en: Jerusalem }
+"Algiers": { ca: Alger, es: Argel, en: Algiers }
+"Almaty": { ca: Almati, es: Almaty, en: Almaty }
+"Amman": { ca: Amman, es: Amán, en: Amman }
+"Amsterdam": { ca: Amsterdam, es: Ámsterdam, en: Amsterdam }
+"Ankara": { ca: Ankara, es: Ankara, en: Ankara }
+"Ashgabat": { ca: Aixkhabad, es: Asjabad, en: Ashgabat }
+"Astana": { ca: Astanà, es: Astaná, en: Astana }
+"Athens": { ca: Atenes, es: Atenas, en: Athens }
+"Baghdad": { ca: Bagdad, es: Bagdad, en: Baghdad }
+"Baku": { ca: Bakú, es: Bakú, en: Baku }
+"Beirut": { ca: Beirut, es: Beirut, en: Beirut }
+"Belgrade": { ca: Belgrad, es: Belgrado, en: Belgrade }
+"Berlin": { ca: Berlín, es: Berlín, en: Berlin }
+"Bern": { ca: Berna, es: Berna, en: Bern }
+"Bonn": { ca: Bonn, es: Bonn, en: Bonn }
+"Bratislava": { ca: Bratislava, es: Bratislava, en: Bratislava }
+"Brussels": { ca: Brussel·les, es: Bruselas, en: Brussels }
+"Bucharest": { ca: Bucarest, es: Bucarest, en: Bucharest }
+"Budapest": { ca: Budapest, es: Budapest, en: Budapest }
+"Bukarest": { ca: Bucarest, es: Bucarest, en: Bucharest }
+"Cairo": { ca: El Caire, es: El Cairo, en: Cairo }
+"Cetinje": { ca: Cetinje, es: Cetiña, en: Cetinje }
+"Chisinau": { ca: Chișinău, es: Chisináu, en: Chișinău }
+"Copenhagen": { ca: Copenhaguen, es: Copenhague, en: Copenhagen }
+"Damascus": { ca: Damasc, es: Damasco, en: Damascus }
+"Danzig": { ca: Danzig, es: Dánzig, en: Danzig }
+"Dublin": { ca: Dublín, es: Dublín, en: Dublin }
+"Durres": { ca: Durrës, es: Durrës, en: Durrës }
+"East Berlin": { ca: Berlín Est, es: Berlín Este, en: East Berlin }
+"East Jerusalem": { ca: Jerusalem Est, es: Jerusalén Este, en: East Jerusalem }
+"Gaza": { ca: Gaza, es: Gaza, en: Gaza }
+"Helsinki": { ca: Hèlsinki, es: Helsinki, en: Helsinki }
+"Iasi": { ca: Iași, es: Iași, en: Iași }
+"Istanbul": { ca: Istanbul, es: Estambul, en: Istanbul }
+"Jerusalem": { ca: Jerusalem, es: Jerusalén, en: Jerusalem }
+"Kaunas": { ca: Kaunas, es: Kaunas, en: Kaunas }
+"Kiev": { ca: Kíiv, es: Kiev, en: Kyiv }
+"Kuwait": { ca: Kuwait, es: Kuwait, en: Kuwait City }
+"Lisbon": { ca: Lisboa, es: Lisboa, en: Lisbon }
+"Ljubljana": { ca: Ljubljana, es: Liubliana, en: Ljubljana }
+"London": { ca: Londres, es: Londres, en: London }
+"Luxembourg": { ca: Luxemburg, es: Luxemburgo, en: Luxembourg }
+"Madrid": { ca: Madrid, es: Madrid, en: Madrid }
+"Minsk": { ca: Minsk, es: Minsk, en: Minsk }
+"Moscow": { ca: Moscou, es: Moscú, en: Moscow }
+"Mostar": { ca: Mostar, es: Mostar, en: Mostar }
+"Nicosia": { ca: Nicòsia, es: Nicosia, en: Nicosia }
+"Oslo": { ca: Oslo, es: Oslo, en: Oslo }
+"Paris": { ca: París, es: París, en: Paris }
+"Podgorica": { ca: Podgorica, es: Podgorica, en: Podgorica }
+"Prague": { ca: Praga, es: Praga, en: Prague }
+"Pristina": { ca: Pristina, es: Pristina, en: Pristina }
+"Rabat": { ca: Rabat, es: Rabat, en: Rabat }
+"Reykjavik": { ca: Reykjavík, es: Reikiavik, en: Reykjavík }
+"Riga": { ca: Riga, es: Riga, en: Riga }
+"Riyadh": { ca: Riad, es: Riad, en: Riyadh }
+"Rome": { ca: Roma, es: Roma, en: Rome }
+"Saint Petersburg (Petrograd)": { ca: Sant Petersburg (Petrograd), es: San Petersburgo (Petrogrado), en: Saint Petersburg (Petrograd) }
+"Saint-Louis": { ca: Saint-Louis, es: Saint-Louis, en: Saint-Louis }
+"Sarajevo": { ca: Sarajevo, es: Sarajevo, en: Sarajevo }
+"Skopje": { ca: Skopje, es: Skopie, en: Skopje }
+"Sofia": { ca: Sofia, es: Sofía, en: Sofia }
+"Stockholm": { ca: Estocolm, es: Estocolmo, en: Stockholm }
+"T'bilisi": { ca: Tbilissi, es: Tiflis, en: Tbilisi }
+"Tallinn": { ca: Tallinn, es: Tallin, en: Tallinn }
+"Tehran": { ca: Teheran, es: Teherán, en: Tehran }
+"Tetuan": { ca: Tetuan, es: Tetuán, en: Tétouan }
+"Tirane": { ca: Tirana, es: Tirana, en: Tirana }
+"Tripoli": { ca: Trípoli, es: Trípoli, en: Tripoli }
+"Tunis": { ca: Tunis, es: Túnez, en: Tunis }
+"Valletta": { ca: La Valletta, es: La Valeta, en: Valletta }
+"Vienna": { ca: Viena, es: Viena, en: Vienna }
+"Vilnius": { ca: Vílnius, es: Vilna, en: Vilnius }
+"Vlore": { ca: Vlorë, es: Vlorë, en: Vlorë }
+"Warsaw": { ca: Varsòvia, es: Varsovia, en: Warsaw }
+"Yerevan": { ca: Erevan, es: Ereván, en: Yerevan }
+"Zagreb": { ca: Zagreb, es: Zagreb, en: Zagreb }
