@@ -46,7 +46,7 @@ catalogue:
   at-hu: Flag of Austria-Hungary (1869-1918).svg
   at: Flag of Austria.svg
   hu-1915: Flag of Hungary (1915-1918, 1919-1946).svg
-  hu-1919: Flag of the Hungarian Soviet Republic.svg
+  hu-1919: Flag of Hungarian Soviet Republic.svg
   hu-1946: Flag of Hungary (1946-1949, 1956-1957).svg
   hu-1949: Flag of Hungary (1949-1956).svg
   hu: Flag of Hungary.svg
@@ -58,7 +58,7 @@ catalogue:
   dk: Flag of Denmark.svg
   is: Flag of Iceland.svg
   'no': Flag of Norway.svg # quoted: YAML 1.1 parsers read a bare no as false
-  se-1844: Flag of Sweden (1844–1905).svg
+  se-1844: Swedish civil ensign (1844–1905).svg
   se: Flag of Sweden.svg
   fi: Flag of Finland.svg
   ee: Flag of Estonia.svg
