@@ -31,7 +31,7 @@ La història d'Europa del segle XX s'acostuma a explicar amb quatre mapes —el 
 | **Qualsevol dia** | Les fronteres de qualsevol data del 1900 a avui, amb el dia exacte de cada canvi. |
 | **Cada bandera al seu temps** | Cada estat porta la bandera que tenia aquell dia, i la seva fitxa les ensenya totes. |
 | **El que passava alhora** | Els conflictes oberts i els fets de l'any, al costat del mapa i a la línia temporal. |
-| **Res sense font** | Cada frontera i cada bandera diu d'on surt i amb quina llicència. |
+| **Res sense font** | Cada fitxa diu d'on surt cada dada: les fronteres, el nom, les banderes, els fets. |
 
 ## 3. Per a qui és
 
@@ -80,7 +80,10 @@ qui la rep obre el mateix mapa.
 
 1. **La data mana.** El que es veu —fronteres, noms, banderes, conflictes— és el d'aquell dia, no
    el d'avui.
-2. **Res sense font.** Cada fet enllaça a on es pot comprovar, i cada imatge diu d'on surt.
+2. **Res sense font.** Cada fitxa porta les seves fonts, i cada font porta on es pot comprovar:
+   les fronteres i les capitals, a CShapes; el nom de cada estat i les dates de les banderes, a la
+   Viquipèdia; les imatges, a Wikimedia Commons; els fets, a la Viquipèdia i a fonts oficials. Cada
+   dilluns un workflow comprova que totes encara existeixen.
 3. **Neutral i curt.** Dues o tres frases que expliquen; el debat, a les fonts.
 4. **El contingut és de tothom.** Afegir un fet o corregir una bandera és editar un fitxer de
    text, sense programar.
@@ -117,7 +120,7 @@ npm run dev        # http://localhost:5173
 | `npm run format` | Prettier |
 | `npm run data:borders` | Torna a fer `public/data/` a partir de CShapes 2.0 |
 | `npm run data:flags` | Baixa les banderes de `content/flags.yaml` |
-| `npm run data:wikipedia` | Completa els enllaços a la Viquipèdia en català i castellà |
+| `npm run data:sources` | Comprova les fonts i en tradueix els títols de la Viquipèdia |
 
 ## 8. Com s'hi contribueix
 

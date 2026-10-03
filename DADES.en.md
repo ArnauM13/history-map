@@ -17,6 +17,27 @@ check the licence of that part.**
 
 ---
 
+## 0. Where each piece of data comes from
+
+Everything the map shows has a source, and the card where it appears cites it with a link.
+
+| What you see | Where it comes from | Where it is cited |
+| --- | --- | --- |
+| Borders and capitals | CShapes 2.0 (§1) | On each state's card |
+| Each state's name in each period | The Wikipedia article on the state under that name (`wiki` in `content/countries.yaml`) | On the state's card |
+| Flag dates | The Wikipedia articles on each state's flags (`sources` in `content/flags.yaml`) | On the state's card |
+| Flag images | Wikimedia Commons (§2, `public/flags/credits.json`) | Under each flag |
+| Flag texts, events and conflicts | Written by this project from the sources they cite (§3) | On each one's card |
+| Catalan and Spanish Wikipedia titles | Wikipedia's own interlanguage links (`content/wikipedia.json`) | — |
+| Translations of state and capital names | This project | — |
+
+**How it is checked.** `npm run data:sources` makes sure every cited article exists on Wikipedia
+and every external link responds. The "Fonts" workflow runs it whenever the content changes and
+every Monday, and fails if it finds a broken one. The tests, for their part, let no event,
+conflict, state name or flag in without a source.
+
+---
+
 ## 1. Borders: CShapes 2.0
 
 [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) maps the borders of independent states and of the
@@ -91,6 +112,6 @@ The chronology —which flag each state used and until when— belongs to this p
 
 The events and conflicts in `content/` are written by contributors, under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Everything stated must be
-verifiable: each entry links at least one source (Wikipedia is fine to start with). The Catalan
-and Spanish Wikipedia links are filled in by `npm run data:wikipedia` from the interlanguage links
-of the English article. How the texts are written is in [CONTRIBUTING.en.md](CONTRIBUTING.en.md).
+verifiable: each entry links at least one source (Wikipedia is fine to start with). A source other
+than Wikipedia goes in `sources`, with the title, the publisher and the link (the UN resolution on
+Crimea, for instance). How the texts are written is in [CONTRIBUTING.en.md](CONTRIBUTING.en.md).

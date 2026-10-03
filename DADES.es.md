@@ -17,6 +17,27 @@ mira la licencia de esa parte.**
 
 ---
 
+## 0. De dónde sale cada dato
+
+Todo lo que enseña el mapa tiene una fuente, y la ficha donde aparece la cita con un enlace.
+
+| Qué se ve | De dónde sale | Dónde se cita |
+| --- | --- | --- |
+| Las fronteras y las capitales | CShapes 2.0 (§1) | En la ficha de cada estado |
+| El nombre de cada estado en cada época | El artículo de Wikipedia sobre el estado con ese nombre (`wiki` en `content/countries.yaml`) | En la ficha del estado |
+| Las fechas de las banderas | Los artículos de Wikipedia sobre las banderas de cada estado (`sources` en `content/flags.yaml`) | En la ficha del estado |
+| Las imágenes de las banderas | Wikimedia Commons (§2, `public/flags/credits.json`) | Bajo cada bandera |
+| Los textos de las banderas, los hechos y los conflictos | Escritos por este proyecto a partir de las fuentes que citan (§3) | En la ficha de cada uno |
+| Los títulos de Wikipedia en catalán y castellano | Los enlaces entre idiomas de la propia Wikipedia (`content/wikipedia.json`) | — |
+| La traducción de los nombres de los estados y de las capitales | Este proyecto | — |
+
+**Cómo se comprueba.** `npm run data:sources` mira que cada artículo citado exista en Wikipedia y
+que cada enlace externo responda. El workflow «Fonts» lo ejecuta cuando cambia el contenido y cada
+lunes, y falla si encuentra uno roto. Los tests, por su parte, no dejan entrar ningún hecho,
+conflicto, nombre de estado ni bandera sin fuente.
+
+---
+
 ## 1. Las fronteras: CShapes 2.0
 
 [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) dibuja las fronteras de los estados
@@ -96,6 +117,6 @@ descarga `npm run data:flags`, o el workflow «Flags» de GitHub cada vez que el
 Los hechos y los conflictos de `content/` los escriben quienes contribuyen, con licencia
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es). Todo lo que se dice se
 tiene que poder comprobar: cada entrada enlaza al menos una fuente (Wikipedia vale para empezar).
-Los enlaces a Wikipedia en catalán y castellano los saca `npm run data:wikipedia` de los enlaces
-entre idiomas del artículo en inglés. Cómo se escriben los textos está en
+Una fuente que no es Wikipedia va en `sources`, con el título, quién la publica y el enlace (la
+resolución de la ONU sobre Crimea, por ejemplo). Cómo se escriben los textos está en
 [CONTRIBUTING.es.md](CONTRIBUTING.es.md).

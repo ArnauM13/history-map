@@ -30,7 +30,7 @@ whatever happens in between is left to the imagination.
 | **Any day** | The borders on any date from 1900 to today, with the exact day of every change. |
 | **Every flag in its time** | Each state flies the flag it had that day, and its card shows all of them. |
 | **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and on the timeline. |
-| **Nothing without a source** | Every border and every flag says where it comes from and under which licence. |
+| **Nothing without a source** | Every card says where each piece of data comes from: borders, names, flags, events. |
 
 ## 3. Who it is for
 
@@ -78,8 +78,10 @@ conflicts and the flag texts. The address keeps the date and the language
 
 1. **The date rules.** What you see —borders, names, flags, conflicts— is what was true that day,
    not today.
-2. **Nothing without a source.** Every event links to where it can be checked, and every image
-   says where it comes from.
+2. **Nothing without a source.** Every card lists its sources, and every source links to where it
+   can be checked: borders and capitals to CShapes; state names and flag dates to Wikipedia; images
+   to Wikimedia Commons; events to Wikipedia and official sources. Every Monday a workflow checks
+   that all of them still exist.
 3. **Neutral and short.** Two or three sentences that explain; the debate is in the sources.
 4. **The content belongs to everyone.** Adding an event or fixing a flag means editing a text
    file, no programming needed.
@@ -115,7 +117,7 @@ npm run dev        # http://localhost:5173
 | `npm run format` | Prettier |
 | `npm run data:borders` | Rebuilds `public/data/` from CShapes 2.0 |
 | `npm run data:flags` | Downloads the flags listed in `content/flags.yaml` |
-| `npm run data:wikipedia` | Fills in the Catalan and Spanish Wikipedia links |
+| `npm run data:sources` | Checks the sources and translates the Wikipedia titles |
 
 ## 8. Contributing
 

@@ -30,7 +30,7 @@ La historia de Europa del siglo XX suele contarse con cuatro mapas —el de 1914
 | **Cualquier día** | Las fronteras de cualquier fecha de 1900 a hoy, con el día exacto de cada cambio. |
 | **Cada bandera en su tiempo** | Cada estado lleva la bandera que tenía ese día, y su ficha las enseña todas. |
 | **Lo que pasaba a la vez** | Los conflictos abiertos y los hechos del año, junto al mapa y en la línea temporal. |
-| **Nada sin fuente** | Cada frontera y cada bandera dice de dónde sale y con qué licencia. |
+| **Nada sin fuente** | Cada ficha dice de dónde sale cada dato: las fronteras, el nombre, las banderas, los hechos. |
 
 ## 3. Para quién es
 
@@ -79,8 +79,10 @@ hechos, los conflictos y los textos de las banderas. La dirección lleva la fech
 
 1. **La fecha manda.** Lo que se ve —fronteras, nombres, banderas, conflictos— es lo de ese día,
    no lo de hoy.
-2. **Nada sin fuente.** Cada hecho enlaza a donde se puede comprobar, y cada imagen dice de dónde
-   sale.
+2. **Nada sin fuente.** Cada ficha lleva sus fuentes, y cada fuente lleva a donde se puede
+   comprobar: las fronteras y las capitales, a CShapes; el nombre de cada estado y las fechas de las
+   banderas, a Wikipedia; las imágenes, a Wikimedia Commons; los hechos, a Wikipedia y a fuentes
+   oficiales. Cada lunes un workflow comprueba que todas siguen existiendo.
 3. **Neutral y breve.** Dos o tres frases que explican; el debate, en las fuentes.
 4. **El contenido es de todos.** Añadir un hecho o corregir una bandera es editar un archivo de
    texto, sin programar.
@@ -116,7 +118,7 @@ npm run dev        # http://localhost:5173
 | `npm run format` | Prettier |
 | `npm run data:borders` | Vuelve a generar `public/data/` a partir de CShapes 2.0 |
 | `npm run data:flags` | Descarga las banderas de `content/flags.yaml` |
-| `npm run data:wikipedia` | Completa los enlaces a Wikipedia en catalán y castellano |
+| `npm run data:sources` | Comprueba las fuentes y traduce los títulos de Wikipedia |
 
 ## 8. Cómo contribuir
 

@@ -47,13 +47,19 @@ summary:
     …
   en: >-
     Two or three sentences: what happened and why it matters.
-wikipedia: # the English article title; the workflow adds the Catalan and Spanish ones
+wikipedia: # the main source: the English Wikipedia article title
   en: Treaty of Versailles
+sources: # optional: other sources, with title, publisher and link
+  - title: The Versailles Treaty, June 28, 1919
+    publisher: The Avalon Project, Yale Law School
+    url: https://…
 ```
 
-The English Wikipedia title is enough: when your change reaches GitHub, the "Wikipedia" workflow
-looks up the Catalan and Spanish articles and adds their titles. Locally, `npm run data:wikipedia`
-does the same.
+**No event without a source.** At least the English Wikipedia title or one entry in `sources` is
+required (the tests let nothing in without one). No need to look up the Catalan or Spanish title:
+when your change reaches GitHub, the "Fonts" workflow checks that the article exists, gets its
+title in the other languages (`content/wikipedia.json`) and opens every link in `sources` to check
+it responds. Locally, `npm run data:sources` does the same.
 
 ## Adding a conflict
 
@@ -84,6 +90,9 @@ states: # state code → its flags, in order
     - { until: 1931-04-13, flag: es-1785 } # until = the last day it was used
     - { until: 1939-03-31, flag: es-1931 }
     - { flag: es } # the last one has no until
+
+sources: # where the dates come from: English Wikipedia articles
+  "230": [Flag of Spain]
 ```
 
 - The file name exactly as it appears on the flag's page on Wikimedia Commons (what comes after
@@ -92,12 +101,13 @@ states: # state code → its flags, in order
   means it isn't documented yet.
 - No need to download anything: when your change reaches GitHub, the "Flags" workflow downloads
   the images into `public/flags/` and commits them. Locally, `npm run data:flags` does the same.
-- In the pull request, say where the dates come from.
+- The dates must come from somewhere: the state's article in `sources`, or one you add.
 
 ## State and capital names
 
 `content/countries.yaml` gives the name of each state over time. If a state shows a name it didn't
-have on that date, this is the place. Capitals come from CShapes in English and are translated in
+have on that date, this is the place. Each name cites the English Wikipedia article on the state
+under that name (`wiki: Russian Empire`). Capitals come from CShapes in English and are translated in
 `content/capitals.yaml`. A state's code is in `public/data/labels.geojson` (`gwcode`).
 
 ## How to write

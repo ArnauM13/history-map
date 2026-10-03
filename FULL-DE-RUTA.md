@@ -15,6 +15,8 @@ De moment, **Europa del 1900 a avui**. Abans del 1900, potser més endavant (§5
 - [x] La interfície en tres idiomes i adreces que es poden compartir.
 - [x] També als tres idiomes: les capitals, els enllaços a la Viquipèdia i la documentació
       principal (README, CONTRIBUTING i DADES).
+- [x] Les fonts de tot a la vista: cada fitxa diu d'on surten les fronteres, el nom, les dates de
+      les banderes i els fets, i un workflow comprova cada setmana que les fonts existeixen.
 - [x] CI (lint, format, tipus, tests i build) i publicació a GitHub Pages.
 
 ## 1. Les banderes — en marxa
@@ -37,6 +39,8 @@ El contingut:
 
 - [ ] Uns cent fets i una trentena de conflictes que cobreixin tot el període, en els tres idiomes.
 - [ ] Una fitxa curta per a cada estat: què era, com va néixer i com es va acabar.
+- [ ] Fonts acadèmiques o primàries per a cada fet, a més de la Viquipèdia: el text dels tractats,
+      les resolucions, historiografia de referència.
 - [ ] Que algú amb formació d'historiador revisi tots els textos.
 
 L'experiència:

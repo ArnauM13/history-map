@@ -25,6 +25,7 @@ El contingut va dins del JavaScript; les fronteres i les banderes, com a fitxers
 content/
   countries.yaml        el nom de cada estat segons la data
   capitals.yaml         el nom de les capitals de CShapes, en els tres idiomes
+  wikipedia.json        els títols en català i castellà dels articles citats (generat)
   flags.yaml            les banderes de cada estat segons la data, i què volen dir
   events/*.yaml         un fitxer per fet       (l'id és el nom del fitxer)
   conflicts/*.yaml      un fitxer per conflicte
@@ -35,7 +36,7 @@ public/
 scripts/
   build-borders.mjs     CShapes 2.0 → public/data
   fetch-flags.mjs       Wikimedia Commons → public/flags
-  wikipedia-links.mjs   els enllaços a la Viquipèdia en català i castellà, a partir de l'anglès
+  check-sources.mjs     comprova les fonts i treu els títols de la Viquipèdia en català i castellà
 src/
   App.tsx               l'estat: data, idioma, selecció, reproducció, adreça
   map/                  el mapa (MapView), el seu estil i les dades que baixa
@@ -66,8 +67,13 @@ diferents al llarg del temps (365: Imperi Rus, Rússia soviètica, Unió Sovièt
   governa, més clar.
 - **Les correccions a CShapes són codi** (`CORRECTIONS` a `build-borders.mjs`) i tenen una fila a
   [DADES.md](DADES.md). Els fitxers generats no es toquen mai a mà.
-- **Els enllaços a la Viquipèdia no s'endevinen.** Es posa el títol anglès, i el workflow
-  «Wikipedia» hi afegeix el català i el castellà a partir dels enllaços entre idiomes.
+- **Res sense font, i la font a la vista.** Cada fet, conflicte, nom d'estat i estat amb
+  banderes cita d'on surt (els tests ho exigeixen), i la fitxa ho ensenya a «Fonts». La taula
+  sencera és a [DADES.md](DADES.md) §0.
+- **Els títols de la Viquipèdia no s'endevinen.** Es cita el títol anglès; el workflow «Fonts»
+  comprova que l'article existeix i en desa el català i el castellà a `content/wikipedia.json`,
+  a partir dels enllaços entre idiomes. També obre cada font externa, i cada dilluns ho torna a
+  fer.
 - **Les banderes es baixen a GitHub.** El workflow «Flags» corre `npm run data:flags` quan canvia
   `content/flags.yaml` i fa un commit amb les imatges. Si un nom de fitxer no és a Commons, el
   workflow falla i en suggereix de semblants.

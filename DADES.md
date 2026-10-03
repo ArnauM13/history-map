@@ -17,6 +17,27 @@ alguna cosa, mira la llicència d'aquella part.**
 
 ---
 
+## 0. D'on surt cada dada
+
+Tot el que ensenya el mapa té una font, i la fitxa on surt la cita amb un enllaç.
+
+| Què es veu | D'on surt | On es cita |
+| --- | --- | --- |
+| Les fronteres i les capitals | CShapes 2.0 (§1) | A la fitxa de cada estat |
+| El nom de cada estat en cada època | L'article de la Viquipèdia sobre l'estat amb aquell nom (`wiki` a `content/countries.yaml`) | A la fitxa de l'estat |
+| Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat (`sources` a `content/flags.yaml`) | A la fitxa de l'estat |
+| Les imatges de les banderes | Wikimedia Commons (§2, `public/flags/credits.json`) | Sota cada bandera |
+| Els textos de les banderes, els fets i els conflictes | Escrits per aquest projecte a partir de les fonts que citen (§3) | A la fitxa de cada un |
+| Els títols de la Viquipèdia en català i castellà | Els enllaços entre idiomes de la mateixa Viquipèdia (`content/wikipedia.json`) | — |
+| La traducció dels noms dels estats i de les capitals | Aquest projecte | — |
+
+**Com es comprova.** `npm run data:sources` mira que cada article citat existeixi a la Viquipèdia
+i que cada enllaç extern respongui. El workflow «Fonts» el corre quan canvia el contingut i cada
+dilluns, i falla si en troba un de trencat. Els tests, per la seva banda, no deixen entrar cap fet,
+cap conflicte, cap nom d'estat ni cap bandera sense font.
+
+---
+
 ## 1. Les fronteres: CShapes 2.0
 
 [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) dibuixa les fronteres dels estats independents i
@@ -94,6 +115,6 @@ baixa `npm run data:flags`, o el workflow «Flags» de GitHub cada cop que el fi
 
 Els fets i els conflictes de `content/` els escriuen els qui hi contribueixen, amb llicència
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Tot el que s'hi diu s'ha de poder
-comprovar: cada entrada enllaça com a mínim una font (la Viquipèdia val per començar). Els enllaços
-a la Viquipèdia en català i castellà els treu `npm run data:wikipedia` dels enllaços entre idiomes
-de l'article anglès. Com s'escriuen els textos és a [CONTRIBUTING.md](CONTRIBUTING.md).
+comprovar: cada entrada enllaça com a mínim una font (la Viquipèdia val per començar). Una font que no és
+la Viquipèdia va a `sources`, amb el títol, qui la publica i l'enllaç (la resolució de l'ONU sobre
+Crimea, per exemple). Com s'escriuen els textos és a [CONTRIBUTING.md](CONTRIBUTING.md).

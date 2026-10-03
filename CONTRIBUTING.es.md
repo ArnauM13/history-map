@@ -48,13 +48,19 @@ summary:
     Dos o tres frases: qué pasó y por qué importa.
   en: >-
     …
-wikipedia: # el título del artículo en inglés; el catalán y el castellano los añade el workflow
+wikipedia: # la fuente principal: el título del artículo de la Wikipedia en inglés
   en: Treaty of Versailles
+sources: # opcional: otras fuentes, con título, quién la publica y el enlace
+  - title: The Versailles Treaty, June 28, 1919
+    publisher: The Avalon Project, Yale Law School
+    url: https://…
 ```
 
-Basta con el título del artículo de la Wikipedia en inglés: cuando el cambio llega a GitHub, el
-workflow «Wikipedia» busca el artículo en catalán y en castellano y añade su título. En local,
-`npm run data:wikipedia` hace lo mismo.
+**Ningún hecho sin fuente.** Hace falta como mínimo el título del artículo de la Wikipedia en inglés
+o una fuente en `sources` (los tests no dejan entrar nada sin). No hace falta buscar el título en
+catalán ni en castellano: cuando el cambio llega a GitHub, el workflow «Fonts» comprueba que el
+artículo existe, saca su título en los otros idiomas (`content/wikipedia.json`) y abre cada enlace
+de `sources` para ver que responde. En local, `npm run data:sources` hace lo mismo.
 
 ## Añadir un conflicto
 
@@ -86,6 +92,9 @@ states: # código del estado → sus banderas, por orden
     - { until: 1931-04-13, flag: es-1785 } # until = el último día que se usó
     - { until: 1939-03-31, flag: es-1931 }
     - { flag: es } # la última no lleva until
+
+sources: # de dónde salen las fechas: artículos de la Wikipedia en inglés
+  "230": [Flag of Spain]
 ```
 
 - El nombre del archivo, exactamente como sale en la página de la bandera en Wikimedia Commons (lo
@@ -94,12 +103,13 @@ states: # código del estado → sus banderas, por orden
   `flag`, que todavía no está documentada.
 - No hace falta descargar nada: cuando el cambio llega a GitHub, el workflow «Flags» descarga las
   imágenes a `public/flags/` y hace un commit. En local, `npm run data:flags` hace lo mismo.
-- En la *pull request*, di de dónde salen las fechas.
+- Las fechas tienen que salir de algún sitio: el artículo de `sources` del estado, o uno que añadas.
 
 ## Nombres de estados y de capitales
 
 `content/countries.yaml` da el nombre de cada estado a lo largo del tiempo. Si un estado sale con
-un nombre que no le tocaba en esa fecha, es aquí. Las capitales vienen de CShapes en inglés y se
+un nombre que no le tocaba en esa fecha, es aquí. Cada nombre cita el artículo de la Wikipedia en
+inglés sobre el estado con ese nombre (`wiki: Russian Empire`). Las capitales vienen de CShapes en inglés y se
 traducen en `content/capitals.yaml`. El código de un estado está en `public/data/labels.geojson`
 (`gwcode`).
 

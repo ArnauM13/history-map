@@ -47,13 +47,19 @@ summary:
     …
   en: >-
     …
-wikipedia: # el títol de l'article en anglès; el català i el castellà els afegeix el workflow
+wikipedia: # la font principal: el títol de l'article de la Viquipèdia anglesa
   en: Treaty of Versailles
+sources: # opcional: altres fonts, amb títol, qui la publica i l'enllaç
+  - title: The Versailles Treaty, June 28, 1919
+    publisher: The Avalon Project, Yale Law School
+    url: https://…
 ```
 
-N'hi ha prou amb el títol de l'article de la Viquipèdia anglesa: quan el canvi arriba a GitHub, el
-workflow «Wikipedia» busca l'article en català i en castellà i n'hi afegeix el títol. En local,
-`npm run data:wikipedia` fa el mateix.
+**Cap fet sense font.** Cal com a mínim el títol de l'article de la Viquipèdia anglesa o una font a
+`sources` (els tests no deixen entrar res sense). No cal buscar el títol en català ni en castellà:
+quan el canvi arriba a GitHub, el workflow «Fonts» comprova que l'article existeix, en treu el
+títol en els altres idiomes (`content/wikipedia.json`) i obre cada enllaç de `sources` per veure
+que respon. En local, `npm run data:sources` fa el mateix.
 
 ## Afegir un conflicte
 
@@ -84,6 +90,9 @@ states: # codi de l'estat → les seves banderes, per ordre
     - { until: 1931-04-13, flag: es-1785 } # until = l'últim dia que es va fer servir
     - { until: 1939-03-31, flag: es-1931 }
     - { flag: es } # l'última no porta until
+
+sources: # d'on surten les dates: articles de la Viquipèdia anglesa
+  "230": [Flag of Spain]
 ```
 
 - El nom del fitxer, exactament com surt a la pàgina de la bandera a Wikimedia Commons (el que va
@@ -92,12 +101,13 @@ states: # codi de l'estat → les seves banderes, per ordre
   que encara no està documentada.
 - No cal baixar res: quan el canvi arriba a GitHub, el workflow «Flags» baixa les imatges a
   `public/flags/` i en fa un commit. En local, `npm run data:flags` fa el mateix.
-- A la *pull request*, digues d'on surten les dates.
+- Les dates han de sortir d'algun lloc: l'article de `sources` de l'estat, o un que hi afegeixis.
 
 ## Noms d'estats i de capitals
 
 `content/countries.yaml` dona el nom de cada estat al llarg del temps. Si un estat surt amb un nom
-que no li tocava en aquella data, és aquí. Les capitals vénen de CShapes en anglès i es tradueixen
+que no li tocava en aquella data, és aquí. Cada nom cita l'article de la Viquipèdia anglesa sobre
+l'estat amb aquell nom (`wiki: Russian Empire`). Les capitals vénen de CShapes en anglès i es tradueixen
 a `content/capitals.yaml`. El codi d'un estat és a `public/data/labels.geojson` (`gwcode`).
 
 ## Com s'escriu
