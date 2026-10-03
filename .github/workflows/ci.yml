@@ -1,22 +1,35 @@
 name: CI
 
 on:
+  pull_request:
   push:
     branches: [main]
-  pull_request:
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+
       - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run format:check
-      - run: npm run typecheck
-      - run: npm test
-      - run: npm run build
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format
+        run: npm run format:check
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Unit tests (content included)
+        run: npm test
+
+      - name: Production build
+        run: npm run build

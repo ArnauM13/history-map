@@ -1,0 +1,617 @@
+# Les banderes de cada estat al llarg del temps.
+#
+# `catalogue` dona a cada bandera un identificador curt i el nom del fitxer a Wikimedia Commons.
+# `npm run data:flags` en baixa una còpia en PNG a public/flags/<id>.png i n'apunta la llicència a
+# public/flags/credits.json. No cal fer-ho a mà: el workflow «Flags» ho fa sol quan aquest fitxer
+# canvia a GitHub.
+#
+# `about` explica una bandera: què vol dir i per què va arribar. Dues o tres frases, no més; el
+# detall és a la Viquipèdia.
+#
+# `states` diu, per a cada codi de Gleditsch i Ward (vegeu countries.yaml), quines banderes va fer
+# servir i fins quan. `until` és l'últim dia d'una bandera; l'última no en porta. `flag: null` vol
+# dir que l'estat no en tenia de pròpia (l'Alemanya ocupada), i una entrada sense `flag`, que encara
+# no està documentada (els anys com a colònia, protectorat o mandat).
+#
+# `sources` diu d'on surten les dates de cada estat: articles de la Viquipèdia anglesa sobre les
+# seves banderes (els títols en català i castellà els treu `npm run data:sources`).
+#
+# Les dates són les de l'adopció oficial, o la del primer ús si va ser abans. Si en saps una de més
+# bona, amb la font, endavant (CONTRIBUTING.md).
+
+catalogue:
+  # Europa occidental
+  gb: Flag of the United Kingdom.svg
+  ie: Flag of Ireland.svg
+  nl: Flag of the Netherlands.svg
+  be: Flag of Belgium.svg
+  lu: Flag of Luxembourg.svg
+  fr: Flag of France.svg
+  ch: Flag of Switzerland.svg
+  es-1785: Flag of Spain (1785–1873, 1875–1931).svg
+  es-1931: Flag of Spain (1931–1939).svg
+  es-1938: Flag of Spain (1938–1945).svg
+  es-1945: Flag of Spain (1945–1977).svg
+  es-1977: Flag of Spain (1977–1981).svg
+  es: Flag of Spain.svg
+  pt-1830: Flag of Portugal (1830).svg
+  pt: Flag of Portugal.svg
+  it-1861: Flag of Italy (1861–1946).svg
+  it: Flag of Italy.svg
+  mt: Flag of Malta.svg
+
+  # Europa central
+  de-1867: Flag of the German Empire.svg
+  de-1919: Flag of Germany (3-2 aspect ratio).svg
+  de-1933: Flag of Germany (1933–1935).svg
+  de-1935: Flag of Germany (1935–1945).svg
+  de: Flag of Germany.svg
+  dd: Flag of East Germany.svg
+  pl: Flag of Poland.svg
+  danzig: Flag of the Free City of Danzig.svg
+  at-hu: Flag of Austria-Hungary (1869-1918).svg
+  at: Flag of Austria.svg
+  hu-1915: Flag of Hungary (1915-1918, 1919-1946).svg
+  hu-1919: Flag of Hungarian Soviet Republic.svg
+  hu-1946: Flag of Hungary (1946-1949, 1956-1957).svg
+  hu-1949: Flag of Hungary (1949-1956).svg
+  hu: Flag of Hungary.svg
+  cs-1918: Flag of Bohemia.svg
+  cz: Flag of the Czech Republic.svg
+  sk: Flag of Slovakia.svg
+
+  # Europa del nord
+  dk: Flag of Denmark.svg
+  is: Flag of Iceland.svg
+  'no': Flag of Norway.svg # entre cometes: el YAML antic llegeix un no sol com a «fals»
+  se-1844: Swedish civil ensign (1844–1905).svg
+  se: Flag of Sweden.svg
+  fi: Flag of Finland.svg
+  ee: Flag of Estonia.svg
+  lv: Flag of Latvia.svg
+  lt: Flag of Lithuania.svg
+
+  # Europa de l'est i el Caucas
+  ru: Flag of Russia.svg
+  ru-1918: Flag of the Russian Soviet Federative Socialist Republic (1918–1937).svg
+  su-1923: Flag of the Soviet Union (1923–1955).svg
+  su: Flag of the Soviet Union.svg
+  ua: Flag of Ukraine.svg
+  by-1991: Flag of Belarus (1918, 1991–1995).svg
+  by: Flag of Belarus.svg
+  md: Flag of Moldova.svg
+  am: Flag of Armenia.svg
+  ge-1990: Flag of Georgia (1990–2004).svg
+  ge: Flag of Georgia.svg
+  az: Flag of Azerbaijan.svg
+
+  # Els Balcans i l'Egeu
+  ro: Flag of Romania.svg
+  ro-1948: Flag of Romania (1948–1952).svg
+  ro-1952: Flag of Romania (1952–1965).svg
+  ro-1965: Flag of Romania (1965–1989).svg
+  bg: Flag of Bulgaria.svg
+  bg-1948: Flag of Bulgaria (1948–1967).svg
+  bg-1971: Flag of Bulgaria (1971–1990).svg
+  yu-1918: Flag of Yugoslavia (1918–1941).svg
+  yu-1946: Flag of Yugoslavia (1946–1992).svg
+  yu-1992: Flag of Serbia and Montenegro.svg
+  rs-1882: State Flag of Serbia (1882-1918).svg
+  rs: Flag of Serbia.svg
+  me-1905: Flag of the Kingdom of Montenegro.svg
+  me: Flag of Montenegro.svg
+  hr: Flag of Croatia.svg
+  si: Flag of Slovenia.svg
+  ba-1992: Flag of Bosnia and Herzegovina (1992–1998).svg
+  ba: Flag of Bosnia and Herzegovina.svg
+  mk-1992: Flag of North Macedonia (1992–1995).svg
+  mk: Flag of North Macedonia.svg
+  xk: Flag of Kosovo.svg
+  al: Flag of Albania.svg
+  al-1946: Flag of Albania (1946–1992).svg
+  gr-1822: Flag of Greece (1822-1978).svg
+  gr: Flag of Greece.svg
+  cy: Flag of Cyprus.svg
+  ot: Flag of the Ottoman Empire (1844–1922).svg
+  tr: Flag of Turkey.svg
+
+  # Nord d'Àfrica, Orient Mitjà i Àsia central (les vores del mapa)
+  ma: Flag of Morocco.svg
+  dz: Flag of Algeria.svg
+  tn: Flag of Tunisia.svg
+  ly-1951: Flag of Libya (1951–1969).svg
+  ly-1969: Flag of Libya (1969–1972).svg
+  ly-1972: Flag of Libya (1972–1977).svg
+  ly-1977: Flag of Libya (1977–2011).svg
+  ly: Flag of Libya.svg
+  lb: Flag of Lebanon.svg
+  il: Flag of Israel.svg
+  jo: Flag of Jordan.svg
+  sa: Flag of Saudi Arabia.svg
+  kw: Flag of Kuwait.svg
+  ir: Flag of Iran.svg
+  kz: Flag of Kazakhstan.svg
+  uz: Flag of Uzbekistan.svg
+  tm: Flag of Turkmenistan.svg
+  tj: Flag of Tajikistan.svg
+
+about:
+  de-1867:
+    ca: >-
+      El negre i el blanc de Prússia amb el vermell de les ciutats hanseàtiques. Va ser la bandera
+      de la Confederació d'Alemanya del Nord i, des del 1871, de l'Imperi alemany.
+    es: >-
+      El negro y el blanco de Prusia con el rojo de las ciudades hanseáticas. Fue la bandera de la
+      Confederación de Alemania del Norte y, desde 1871, del Imperio alemán.
+    en: >-
+      The black and white of Prussia with the red of the Hanseatic cities. It was the flag of the
+      North German Confederation and, from 1871, of the German Empire.
+  de-1919:
+    ca: >-
+      El negre, vermell i or de les revolucions liberals del 1848, que la República de Weimar va
+      recuperar com a símbol democràtic. Els nazis la van abolir el 1933.
+    es: >-
+      El negro, rojo y oro de las revoluciones liberales de 1848, que la República de Weimar
+      recuperó como símbolo democrático. Los nazis la abolieron en 1933.
+    en: >-
+      The black, red and gold of the liberal revolutions of 1848, revived by the Weimar Republic as
+      a democratic symbol. The Nazis abolished it in 1933.
+  de-1933:
+    ca: >-
+      Hitler va tornar als colors de l'Imperi el març del 1933, i durant dos anys van conviure amb
+      la bandera del partit nazi.
+    es: >-
+      Hitler volvió a los colores del Imperio en marzo de 1933, y durante dos años convivieron con
+      la bandera del partido nazi.
+    en: >-
+      Hitler brought back the imperial colours in March 1933, and for two years they flew alongside
+      the Nazi party flag.
+  de-1935:
+    ca: >-
+      La bandera del partit nazi va passar a ser l'única bandera nacional amb les lleis de Nuremberg,
+      el setembre del 1935. Avui, a Alemanya i a Àustria només es pot mostrar en contextos
+      històrics i educatius.
+    es: >-
+      La bandera del partido nazi pasó a ser la única bandera nacional con las leyes de Núremberg,
+      en septiembre de 1935. Hoy, en Alemania y Austria solo puede mostrarse en contextos
+      históricos y educativos.
+    en: >-
+      The Nazi party flag became the sole national flag with the Nuremberg Laws in September 1935.
+      Today Germany and Austria only allow it to be shown in historical and educational contexts.
+  de:
+    ca: >-
+      Els colors del 1848 i de Weimar, adoptats per la República Federal el 1949 i, des del 1990, per
+      tota l'Alemanya reunificada.
+    es: >-
+      Los colores de 1848 y de Weimar, adoptados por la República Federal en 1949 y, desde 1990, por
+      toda la Alemania reunificada.
+    en: >-
+      The colours of 1848 and of Weimar, adopted by the Federal Republic in 1949 and, since 1990, by
+      the whole of reunified Germany.
+  dd:
+    ca: >-
+      Fins al 1959 la RDA va fer servir la mateixa bandera que l'RFA. Llavors hi va afegir el
+      martell, el compàs i les espigues: els obrers, els intel·lectuals i els pagesos.
+    es: >-
+      Hasta 1959 la RDA usó la misma bandera que la RFA. Entonces le añadió el martillo, el compás y
+      las espigas: los obreros, los intelectuales y los campesinos.
+    en: >-
+      Until 1959 East Germany used the same flag as West Germany. It then added the hammer, the
+      compass and the ring of rye: workers, intellectuals and farmers.
+  es-1785:
+    ca: >-
+      Carles III va triar el vermell i el groc el 1785 perquè els vaixells de guerra es distingissin
+      bé al mar. Amb el temps va passar a ser la bandera de l'Estat.
+    es: >-
+      Carlos III eligió el rojo y el amarillo en 1785 para que los buques de guerra se distinguieran
+      bien en el mar. Con el tiempo pasó a ser la bandera del Estado.
+    en: >-
+      Charles III chose red and yellow in 1785 so that warships could be told apart at sea. In time
+      it became the flag of the state.
+  es-1931:
+    ca: >-
+      La Segona República va canviar la franja vermella de baix per una de morada, el color que
+      s'atribuïa a Castella, i va posar una corona mural a l'escut en lloc de la reial.
+    es: >-
+      La Segunda República cambió la franja roja de abajo por una morada, el color que se atribuía a
+      Castilla, y puso una corona mural en el escudo en lugar de la real.
+    en: >-
+      The Second Republic replaced the lower red stripe with a purple one, the colour then linked to
+      Castile, and swapped the royal crown on the arms for a mural crown.
+  es-1938:
+    ca: >-
+      La bandera del bàndol franquista, amb l'àguila de Sant Joan a l'escut. Després de la guerra va
+      ser la de tot l'Estat.
+    es: >-
+      La bandera del bando franquista, con el águila de San Juan en el escudo. Después de la guerra
+      fue la de todo el Estado.
+    en: >-
+      The flag of Franco's side, with the eagle of Saint John on the arms. After the war it became
+      the flag of the whole state.
+  es:
+    ca: >-
+      L'escut del 1981: els regnes de Castella, Lleó, Aragó, Navarra i Granada, les columnes
+      d'Hèrcules i la corona reial. Va substituir l'àguila que encara es feia servir a la Transició.
+    es: >-
+      El escudo de 1981: los reinos de Castilla, León, Aragón, Navarra y Granada, las columnas de
+      Hércules y la corona real. Sustituyó al águila que todavía se usaba en la Transición.
+    en: >-
+      The 1981 coat of arms: the kingdoms of Castile, León, Aragon, Navarre and Granada, the Pillars
+      of Hercules and the royal crown. It replaced the eagle still used during the Transition.
+  pt:
+    ca: >-
+      La República del 1910 va deixar el blau i blanc de la monarquia pel verd i vermell del partit
+      republicà, amb l'esfera armil·lar dels navegants portuguesos.
+    es: >-
+      La República de 1910 dejó el azul y blanco de la monarquía por el verde y rojo del partido
+      republicano, con la esfera armilar de los navegantes portugueses.
+    en: >-
+      The Republic of 1910 dropped the monarchy's blue and white for the republican party's green
+      and red, with the armillary sphere of the Portuguese navigators.
+  it:
+    ca: >-
+      La República del 1946 va treure l'escut de la casa de Savoia de la tricolor que Itàlia feia
+      servir des del Risorgimento.
+    es: >-
+      La República de 1946 quitó el escudo de la casa de Saboya de la tricolor que Italia usaba desde
+      el Risorgimento.
+    en: >-
+      The Republic of 1946 removed the arms of the House of Savoy from the tricolour Italy had used
+      since the Risorgimento.
+  ru:
+    ca: >-
+      Blanc, blau i vermell: la bandera de la Rússia imperial, recuperada el 1991 quan va caure la
+      Unió Soviètica.
+    es: >-
+      Blanco, azul y rojo: la bandera de la Rusia imperial, recuperada en 1991 cuando cayó la Unión
+      Soviética.
+    en: >-
+      White, blue and red: the flag of imperial Russia, brought back in 1991 when the Soviet Union
+      fell.
+  ru-1918:
+    ca: >-
+      La primera bandera de la Rússia soviètica: vermella, el color de la revolució, amb les
+      inicials de la república en lletres daurades.
+    es: >-
+      La primera bandera de la Rusia soviética: roja, el color de la revolución, con las iniciales de
+      la república en letras doradas.
+    en: >-
+      The first flag of Soviet Russia: red, the colour of the revolution, with the republic's
+      initials in gold.
+  su-1923:
+    ca: >-
+      La falç i el martell —els pagesos i els obrers— i l'estrella del partit, sobre el vermell de la
+      revolució. El 1955 se'n van retocar les proporcions.
+    es: >-
+      La hoz y el martillo —los campesinos y los obreros— y la estrella del partido, sobre el rojo de
+      la revolución. En 1955 se retocaron sus proporciones.
+    en: >-
+      The hammer and sickle —workers and peasants— and the party's star, on the red of the
+      revolution. Its proportions were adjusted in 1955.
+  hu-1949:
+    ca: >-
+      L'escut d'estil soviètic del règim de Rákosi. El 1956 els revolucionaris el van retallar de les
+      banderes, i el forat es va convertir en el símbol de la revolució.
+    es: >-
+      El escudo de estilo soviético del régimen de Rákosi. En 1956 los revolucionarios lo
+      recortaron de las banderas, y el agujero se convirtió en el símbolo de la revolución.
+    en: >-
+      The Soviet-style emblem of Rákosi's regime. In 1956 revolutionaries cut it out of their flags,
+      and the hole became the symbol of the uprising.
+  ro-1965:
+    ca: >-
+      L'escut de la República Socialista. El desembre del 1989 els manifestants el van retallar de
+      les banderes, com els hongaresos el 1956.
+    es: >-
+      El escudo de la República Socialista. En diciembre de 1989 los manifestantes lo recortaron de
+      las banderas, como los húngaros en 1956.
+    en: >-
+      The arms of the Socialist Republic. In December 1989 protesters cut them out of their flags,
+      as Hungarians had done in 1956.
+  yu-1946:
+    ca: >-
+      La Iugoslàvia de Tito va afegir una estrella vermella a la tricolor eslava del regne.
+    es: >-
+      La Yugoslavia de Tito añadió una estrella roja a la tricolor eslava del reino.
+    en: >-
+      Tito's Yugoslavia added a red star to the kingdom's Slavic tricolour.
+  by-1991:
+    ca: >-
+      El blanc, vermell i blanc de la República Popular Bielorussa del 1918, recuperat amb la
+      independència. El 1995, després d'un referèndum, es va tornar a una versió de la bandera
+      soviètica.
+    es: >-
+      El blanco, rojo y blanco de la República Popular Bielorrusa de 1918, recuperado con la
+      independencia. En 1995, tras un referéndum, se volvió a una versión de la bandera soviética.
+    en: >-
+      The white-red-white of the 1918 Belarusian People's Republic, revived at independence. In
+      1995, after a referendum, it was replaced by a version of the Soviet-era flag.
+  mk-1992:
+    ca: >-
+      El sol de Vergina, que Grècia considerava un símbol propi. El 1995 Macedònia el va canviar per
+      un sol de vuit raigs.
+    es: >-
+      El sol de Vergina, que Grecia consideraba un símbolo propio. En 1995 Macedonia lo cambió por
+      un sol de ocho rayos.
+    en: >-
+      The Vergina Sun, which Greece regarded as its own symbol. In 1995 Macedonia replaced it with
+      an eight-rayed sun.
+  gr-1822:
+    ca: >-
+      La creu blanca sobre blau va ser la bandera de Grècia a terra fins al 1978. La de les franges,
+      que avui és l'única, era la del mar.
+    es: >-
+      La cruz blanca sobre azul fue la bandera de Grecia en tierra hasta 1978. La de las franjas,
+      que hoy es la única, era la del mar.
+    en: >-
+      The white cross on blue was Greece's flag on land until 1978. The striped one, today the only
+      one, was the flag used at sea.
+  ge:
+    ca: >-
+      La bandera de les cinc creus, d'origen medieval, adoptada el 2004 després de la Revolució de
+      les Roses.
+    es: >-
+      La bandera de las cinco cruces, de origen medieval, adoptada en 2004 tras la Revolución de las
+      Rosas.
+    en: >-
+      The five-cross flag, of medieval origin, adopted in 2004 after the Rose Revolution.
+  ie:
+    ca: >-
+      El verd de la tradició gaèlica, el taronja dels protestants i el blanc de la pau entre tots
+      dos.
+    es: >-
+      El verde de la tradición gaélica, el naranja de los protestantes y el blanco de la paz entre
+      ambos.
+    en: >-
+      The green of the Gaelic tradition, the orange of the Protestants and the white of peace
+      between them.
+  ly-1977:
+    ca: >-
+      Gaddafi va adoptar una bandera tota verda, el color de la seva «revolució verda». Ha estat
+      l'única bandera nacional d'un sol color i sense cap dibuix.
+    es: >-
+      Gadafi adoptó una bandera toda verde, el color de su «revolución verde». Ha sido la única
+      bandera nacional de un solo color y sin ningún dibujo.
+    en: >-
+      Gaddafi adopted an all-green flag, the colour of his "green revolution". It is the only
+      national flag ever to be a single colour with no design.
+  at-hu:
+    ca: >-
+      Àustria-Hongria no tenia una bandera comuna oficial. Aquesta, amb els colors i els escuts de les
+      dues meitats de la monarquia, era la de la marina mercant.
+    es: >-
+      Austria-Hungría no tenía una bandera común oficial. Esta, con los colores y los escudos de las
+      dos mitades de la monarquía, era la de la marina mercante.
+    en: >-
+      Austria-Hungary had no official common flag. This one, with the colours and arms of both
+      halves of the monarchy, was its merchant ensign.
+
+states:
+  '200': [{ flag: gb }]
+  '205': [{ flag: ie }]
+  '210': [{ flag: nl }]
+  '211': [{ flag: be }]
+  '212': [{ flag: lu }]
+  '220': [{ flag: fr }]
+  '225': [{ flag: ch }]
+  '230':
+    - { until: 1931-04-13, flag: es-1785 }
+    - { until: 1939-03-31, flag: es-1931 }
+    - { until: 1945-10-10, flag: es-1938 }
+    - { until: 1977-01-20, flag: es-1945 }
+    - { until: 1981-10-04, flag: es-1977 }
+    - { flag: es }
+  '235':
+    - { until: 1910-11-30, flag: pt-1830 }
+    - { flag: pt }
+  '255':
+    - { until: 1919-08-10, flag: de-1867 }
+    - { until: 1933-03-11, flag: de-1919 }
+    - { until: 1935-09-14, flag: de-1933 }
+    - { flag: de-1935 }
+  '260':
+    - { until: 1949-05-22, flag: null }
+    - { flag: de }
+  '265':
+    - { until: 1949-10-06, flag: null }
+    - { until: 1959-09-30, flag: de }
+    - { flag: dd }
+  '290': [{ flag: pl }]
+  '291': [{ flag: danzig }]
+  '300': [{ flag: at-hu }]
+  '305': [{ flag: at }]
+  '310':
+    - { until: 1919-03-20, flag: hu-1915 }
+    - { until: 1919-08-01, flag: hu-1919 }
+    - { until: 1946-01-31, flag: hu-1915 }
+    - { until: 1949-08-19, flag: hu-1946 }
+    # Simplificat: des de la revolució del 1956, la tricolor sense escut en lloc de la de Rákosi.
+    - { until: 1956-10-22, flag: hu-1949 }
+    - { flag: hu }
+  '315':
+    - { until: 1920-03-29, flag: cs-1918 }
+    - { flag: cz }
+  '316': [{ flag: cz }]
+  '317': [{ flag: sk }]
+  '325':
+    - { until: 1946-06-18, flag: it-1861 }
+    - { flag: it }
+  '338':
+    - { until: 1964-09-20 }
+    - { flag: mt }
+  # Simplificat: falten les variants del 1914 al 1946 (principat, regne, protectorat italià).
+  '339':
+    - { until: 1946-01-10, flag: al }
+    - { until: 1992-04-06, flag: al-1946 }
+    - { flag: al }
+  # Sèrbia i Montenegro van ser part de Iugoslàvia (345) del 1918 al 2006.
+  '340':
+    - { until: 1918-11-30, flag: rs-1882 }
+    - { until: 2006-06-02 }
+    - { flag: rs }
+  '341':
+    - { until: 1918-11-26, flag: me-1905 }
+    - { until: 2006-06-02 }
+    - { flag: me }
+  '343':
+    - { until: 1995-10-04, flag: mk-1992 }
+    - { flag: mk }
+  '344': [{ flag: hr }]
+  '345':
+    - { until: 1945-11-28, flag: yu-1918 }
+    - { until: 1992-04-26, flag: yu-1946 }
+    - { flag: yu-1992 }
+  '346':
+    - { until: 1998-02-03, flag: ba-1992 }
+    - { flag: ba }
+  '347': [{ flag: xk }]
+  '349': [{ flag: si }]
+  # La de la creu blanca era la de terra fins al 1978; la de les franges, la del mar.
+  '350':
+    - { until: 1978-12-21, flag: gr-1822 }
+    - { flag: gr }
+  '352':
+    - { until: 1960-08-15 }
+    - { flag: cy }
+  # Simplificat: falten les variants de l'escut del 1946-1948 i del 1967-1971.
+  '355':
+    - { until: 1946-09-14, flag: bg }
+    - { until: 1971-05-17, flag: bg-1948 }
+    - { until: 1990-11-21, flag: bg-1971 }
+    - { flag: bg }
+  '359': [{ flag: md }]
+  '360':
+    - { until: 1947-12-29, flag: ro }
+    - { until: 1952-09-23, flag: ro-1948 }
+    - { until: 1965-08-20, flag: ro-1952 }
+    - { until: 1989-12-21, flag: ro-1965 }
+    - { flag: ro }
+  '365':
+    - { until: 1918-04-07, flag: ru }
+    - { until: 1923-11-11, flag: ru-1918 }
+    - { until: 1955-08-18, flag: su-1923 }
+    - { until: 1991-12-25, flag: su }
+    - { flag: ru }
+  '366': [{ flag: ee }]
+  '367': [{ flag: lv }]
+  '368': [{ flag: lt }]
+  '369': [{ flag: ua }]
+  '370':
+    - { until: 1995-06-06, flag: by-1991 }
+    - { flag: by }
+  '371': [{ flag: am }]
+  '372':
+    - { until: 2004-01-13, flag: ge-1990 }
+    - { flag: ge }
+  '373': [{ flag: az }]
+  '375': [{ flag: fi }]
+  '380':
+    - { until: 1905-10-31, flag: se-1844 }
+    - { flag: se }
+  '385': [{ flag: 'no' }]
+  '390': [{ flag: dk }]
+  '395':
+    - { until: 1918-11-30 }
+    - { flag: is }
+  '600':
+    - { until: 1915-11-16 }
+    - { flag: ma }
+  '615':
+    - { until: 1962-07-04 }
+    - { flag: dz }
+  '616': [{ flag: tn }]
+  '620':
+    - { until: 1951-12-23 }
+    - { until: 1969-08-31, flag: ly-1951 }
+    - { until: 1971-12-31, flag: ly-1969 }
+    - { until: 1977-11-10, flag: ly-1972 }
+    - { until: 2011-09-15, flag: ly-1977 }
+    - { flag: ly }
+  '630':
+    - { until: 1980-07-28 }
+    - { flag: ir }
+  '640':
+    - { until: 1922-10-31, flag: ot }
+    - { flag: tr }
+  '660':
+    - { until: 1943-12-06 }
+    - { flag: lb }
+  '663':
+    - { until: 1928-04-15 }
+    - { flag: jo }
+  '666': [{ flag: il }]
+  '670': [{ flag: sa }]
+  '690':
+    - { until: 1961-09-06 }
+    - { flag: kw }
+  '701': [{ flag: tm }]
+  '702': [{ flag: tj }]
+  '704': [{ flag: uz }]
+  '705': [{ flag: kz }]
+
+sources:
+  '200': [Flag of the United Kingdom]
+  '205': [Flag of Ireland]
+  '210': [Flag of the Netherlands]
+  '211': [Flag of Belgium]
+  '212': [Flag of Luxembourg]
+  '220': [Flag of France]
+  '225': [Flag of Switzerland]
+  '230': [Flag of Spain]
+  '235': [Flag of Portugal]
+  '255': [Flag of Germany, Flag of Nazi Germany]
+  '260': [Flag of Germany]
+  '265': [Flag of East Germany]
+  '290': [Flag of Poland]
+  '291': [Free City of Danzig]
+  '300': [Flag of Austria-Hungary]
+  '305': [Flag of Austria]
+  '310': [Flag of Hungary]
+  '315': [Flag of the Czech Republic]
+  '316': [Flag of the Czech Republic]
+  '317': [Flag of Slovakia]
+  '325': [Flag of Italy]
+  '338': [Flag of Malta]
+  '339': [Flag of Albania]
+  '340': [Flag of Serbia]
+  '341': [Flag of Montenegro]
+  '343': [Flag of North Macedonia]
+  '344': [Flag of Croatia]
+  '345': [Flag of Yugoslavia]
+  '346': [Flag of Bosnia and Herzegovina]
+  '347': [Flag of Kosovo]
+  '349': [Flag of Slovenia]
+  '350': [Flag of Greece]
+  '352': [Flag of Cyprus]
+  '355': [Flag of Bulgaria]
+  '359': [Flag of Moldova]
+  '360': [Flag of Romania]
+  '365': [Flag of Russia, Flag of the Soviet Union]
+  '366': [Flag of Estonia]
+  '367': [Flag of Latvia]
+  '368': [Flag of Lithuania]
+  '369': [Flag of Ukraine]
+  '370': [Flag of Belarus]
+  '371': [Flag of Armenia]
+  '372': [Flag of Georgia (country)]
+  '373': [Flag of Azerbaijan]
+  '375': [Flag of Finland]
+  '380': [Flag of Sweden]
+  '385': [Flag of Norway]
+  '390': [Flag of Denmark]
+  '395': [Flag of Iceland]
+  '600': [Flag of Morocco]
+  '615': [Flag of Algeria]
+  '616': [Flag of Tunisia]
+  '620': [Flag of Libya]
+  '630': [Flag of Iran]
+  '640': [Flag of Turkey, Flag of the Ottoman Empire]
+  '660': [Flag of Lebanon]
+  '663': [Flag of Jordan]
+  '666': [Flag of Israel]
+  '670': [Flag of Saudi Arabia]
+  '690': [Flag of Kuwait]
+  '701': [Flag of Turkmenistan]
+  '702': [Flag of Tajikistan]
+  '704': [Flag of Uzbekistan]
+  '705': [Flag of Kazakhstan]

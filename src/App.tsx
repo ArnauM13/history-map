@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Sidebar } from './components/Sidebar'
+import { Icon } from './components/Icon'
+import { Sidebar, type SidebarTab } from './components/Sidebar'
 import { Timeline } from './components/Timeline'
 import { activeConflicts, eventsOfYear } from './content'
 import type { HistoricalEvent } from './content/schema'
@@ -23,11 +24,13 @@ import {
   type IsoDate,
   type Precision,
 } from './lib/date'
+import { useLabels } from './map/data'
 import { MapView } from './map/MapView'
 import type { Selection } from './selection'
 
+/** El dia de Sarajevo: l'Europa dels imperis, just abans que s'esquerdi. */
 const DEFAULT_DATE = '1914-06-28'
-/** Milliseconds per month while playing the timeline. */
+/** Mil·lisegons per mes quan la línia es reprodueix: un segle passa en uns tres minuts. */
 const PLAY_INTERVAL = 150
 
 function initialState(maxDate: IsoDate) {
@@ -37,6 +40,7 @@ function initialState(maxDate: IsoDate) {
   return {
     date: isValidIsoDate(d) ? clampDate(d, maxDate) : DEFAULT_DATE,
     lang: isLang(lang) ? lang : detectLanguage(),
+    showFlags: params.get('flags') !== '0',
   }
 }
 
@@ -48,26 +52,35 @@ export default function App() {
   const [precision, setPrecision] = useState<Precision>('day')
   const [selection, setSelection] = useState<Selection | null>(null)
   const [playing, setPlaying] = useState(false)
-  const t = translator(lang)
+  const [showFlags, setShowFlags] = useState(initial.showFlags)
+  const [tab, setTab] = useState<SidebarTab>('flags')
+  const labels = useLabels()
+  const { t } = translator(lang)
 
   const year = yearOf(date)
   const yearEvents = useMemo(() => eventsOfYear(year), [year])
   const conflicts = useMemo(() => activeConflicts(date), [date])
 
-  // Keep the URL shareable: ?d=1914-06-28&lang=ca
+  // L'adreça es pot compartir: ?d=1914-06-28&lang=ca obre el mateix mapa a qui la rebi.
   useEffect(() => {
     const params = new URLSearchParams(location.search)
     params.set('d', date)
     params.set('lang', lang)
+    if (showFlags) params.delete('flags')
+    else params.set('flags', '0')
     history.replaceState(null, '', `?${params}`)
-  }, [date, lang])
+  }, [date, lang, showFlags])
 
   useEffect(() => {
     document.documentElement.lang = lang
-    document.title = translator(lang)('appTitle')
+    const { t } = translator(lang)
+    document.title = t('appTitle')
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', t('metaDescription'))
   }, [lang])
 
-  // Playback: advance one month per tick until today.
+  // Reproduir: un mes a cada tic, fins avui.
   useEffect(() => {
     if (!playing) return
     const id = setInterval(() => {
@@ -90,6 +103,14 @@ export default function App() {
     setPlaying(!playing)
   }
 
+  const goToDate = useCallback(
+    (next: IsoDate) => {
+      setPlaying(false)
+      changeDate(next, 'day')
+    },
+    [changeDate],
+  )
+
   const goToEvent = useCallback(
     (event: HistoricalEvent) => {
       setPlaying(false)
@@ -107,7 +128,7 @@ export default function App() {
             <h1>{t('appTitle')}</h1>
             <p className="subtitle">{t('appSubtitle')}</p>
           </div>
-          <label className="language">
+          <label className="lang">
             <span className="visually-hidden">{t('language')}</span>
             <select value={lang} onChange={(e) => setLang(e.target.value as Lang)}>
               {LANGUAGES.map((l) => (
@@ -122,11 +143,22 @@ export default function App() {
         <main className="map-area">
           <MapView
             date={date}
+            showFlags={showFlags}
             events={yearEvents}
             conflicts={conflicts}
             selection={selection}
             onSelect={setSelection}
           />
+          <button
+            type="button"
+            className="map-toggle"
+            aria-pressed={showFlags}
+            aria-label={t('showFlagsLabel')}
+            onClick={() => setShowFlags(!showFlags)}
+          >
+            <Icon name={showFlags ? 'flag_fill' : 'flag'} />
+            {t('showFlags')}
+          </button>
         </main>
 
         <Timeline
@@ -134,6 +166,8 @@ export default function App() {
           precision={precision}
           maxDate={maxDate}
           playing={playing}
+          tab={tab}
+          selectedGwcode={selection?.kind === 'country' ? selection.feature.gwcode : undefined}
           onChange={changeDate}
           onTogglePlay={togglePlay}
           onSelectConflict={(id) => setSelection({ kind: 'conflict', id })}
@@ -141,11 +175,15 @@ export default function App() {
 
         <Sidebar
           date={date}
+          tab={tab}
+          labels={labels}
           selection={selection}
           yearEvents={yearEvents}
           conflicts={conflicts}
+          onTabChange={setTab}
           onSelect={setSelection}
           onGoToEvent={goToEvent}
+          onGoToDate={goToDate}
         />
       </div>
     </LangContext.Provider>

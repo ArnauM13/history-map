@@ -1,10 +1,10 @@
-# Code of conduct
+# Codi de conducta
 
-This project follows the [Contributor Covenant, version 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
+Aquest projecte segueix el [Contributor Covenant, versió 2.1](https://www.contributor-covenant.org/ca/version/2/1/code_of_conduct/).
 
-In short: be respectful and welcoming, assume good faith, and keep discussions about history
-factual and civil — especially on sensitive topics such as wars, borders and national identity.
-Harassment, hate speech and personal attacks are not tolerated.
+En poques paraules: respecte, bona fe i ganes que hi càpiga tothom. Quan parlem d'història —guerres,
+fronteres, identitats— els fets, les fonts i les formes: es discuteixen les idees, no les persones.
+No hi ha lloc per a l'assetjament, el discurs d'odi ni els atacs personals.
 
-Report unacceptable behaviour privately to the project maintainers (contact details are on their
-GitHub profiles). Reports will be handled promptly and discreetly.
+Si veus alguna cosa que no hi hauria de ser, escriu en privat a qui manté el projecte (el contacte
+és al seu perfil de GitHub). Es tractarà aviat i amb discreció.

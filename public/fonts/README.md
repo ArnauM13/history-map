@@ -1,7 +1,8 @@
-# Map label glyphs
+# Les lletres del mapa
 
-Signed-distance-field glyphs of **Open Sans** (Semibold and Italic), Latin ranges only, taken from
-[openmaptiles/fonts](https://github.com/openmaptiles/fonts). Open Sans is © Google and licensed
-under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+Glifs SDF d'**Open Sans** (Semibold i Italic), només els rangs llatins, de
+[openmaptiles/fonts](https://github.com/openmaptiles/fonts). Open Sans és © Google, amb
+[llicència Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
-To support another script (e.g. Cyrillic, 1024-1279), add the matching `<range>.pbf` files.
+Per a un altre alfabet (el ciríl·lic, per exemple, 1024-1279), cal afegir-hi els `<rang>.pbf`
+corresponents.
