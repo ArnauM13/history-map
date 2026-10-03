@@ -1,8 +1,8 @@
 # National flags over time.
 #
-# `catalogue` maps a short id to a file on Wikimedia Commons. `npm run data:flags` downloads each
-# file to public/flags/<id>.svg and records its licence in public/flags/credits.json (the "Flags"
-# GitHub workflow runs it automatically when this file changes).
+# `catalogue` maps a short id to a file on Wikimedia Commons. `npm run data:flags` downloads a PNG
+# render of each file to public/flags/<id>.png and records its licence in public/flags/credits.json
+# (the "Flags" GitHub workflow runs it automatically when this file changes).
 #
 # `states` lists, for each Gleditsch & Ward code (see countries.yaml), the flags it used in
 # chronological order. `until` is the last day (inclusive) a flag was in use; the last entry has

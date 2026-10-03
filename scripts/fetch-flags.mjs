@@ -5,8 +5,10 @@
  *   npm run data:flags            # download missing flags
  *   npm run data:flags -- --force # download all flags again
  *
- * Writes public/flags/<id>.svg and public/flags/credits.json (file, licence and author of each
- * image). Exits with an error if some files could not be found on Commons, after saving the rest.
+ * Writes public/flags/<id>.png and public/flags/credits.json (file, licence and author of each
+ * image). The PNGs are rendered by Wikimedia from the original SVGs, some of which weigh more than
+ * a megabyte because of detailed coats of arms. Exits with an error if some files could not be
+ * found on Commons (suggesting similar names), after saving the rest.
  */
 import {
   existsSync,
@@ -21,6 +23,8 @@ import { parse } from 'yaml'
 const API = 'https://commons.wikimedia.org/w/api.php'
 const OUT_DIR = 'public/flags'
 const CREDITS = `${OUT_DIR}/credits.json`
+/** Width of the PNG renders: one of Wikimedia's standard thumbnail sizes. */
+const WIDTH = 330
 // Wikimedia asks API clients to identify themselves: https://meta.wikimedia.org/wiki/User-Agent_policy
 const HEADERS = { 'User-Agent': 'HistoryMap/0.1 (https://github.com/ArnauM13/history-map)' }
 
@@ -57,6 +61,7 @@ async function imageInfo(files) {
     redirects: '1',
     prop: 'imageinfo',
     iiprop: 'url|extmetadata',
+    iiurlwidth: String(WIDTH),
     iiextmetadatafilter: 'LicenseShortName|Artist',
     titles: files.map((f) => `File:${f}`).join('|'),
   })
@@ -77,8 +82,23 @@ async function imageInfo(files) {
   return result
 }
 
+/** Files on Commons whose title looks like `file`, to help fix a wrong name. */
+async function similarFiles(file) {
+  const params = new URLSearchParams({
+    action: 'query',
+    format: 'json',
+    formatversion: '2',
+    list: 'search',
+    srnamespace: '6',
+    srlimit: '5',
+    srsearch: file.replace(/\.svg$/, ''),
+  })
+  const { query } = await (await get(`${API}?${params}`)).json()
+  return query.search.map((r) => r.title.replace(/^File:/, ''))
+}
+
 const wanted = Object.entries(catalogue).filter(
-  ([id, file]) => force || !existsSync(`${OUT_DIR}/${id}.svg`) || credits[id]?.file !== file,
+  ([id, file]) => force || !existsSync(`${OUT_DIR}/${id}.png`) || credits[id]?.file !== file,
 )
 console.log(`${Object.keys(catalogue).length} flags in the catalogue, ${wanted.length} to download`)
 
@@ -88,12 +108,15 @@ for (let i = 0; i < wanted.length; i += 50) {
   const infos = await imageInfo(batch.map(([, file]) => file))
   for (const [id, file] of batch) {
     const info = infos.get(file)
-    if (!info) {
-      missing.push(`${id}: "${file}"`)
+    if (!info?.thumburl) {
+      const suggestions = await similarFiles(file).catch(() => [])
+      missing.push(
+        `${id}: "${file}"` + suggestions.map((s) => `\n      did you mean "${s}"?`).join(''),
+      )
       continue
     }
-    const svg = await (await get(info.url)).text()
-    writeFileSync(`${OUT_DIR}/${id}.svg`, svg)
+    const png = await (await get(info.thumburl)).arrayBuffer()
+    writeFileSync(`${OUT_DIR}/${id}.png`, Buffer.from(png))
     credits[id] = {
       file,
       license: plain(info.extmetadata?.LicenseShortName?.value),
@@ -107,7 +130,9 @@ for (let i = 0; i < wanted.length; i += 50) {
 // Forget flags that are no longer in the catalogue.
 for (const id of Object.keys(credits)) if (!(id in catalogue)) delete credits[id]
 for (const name of readdirSync(OUT_DIR)) {
-  if (name.endsWith('.svg') && !(name.slice(0, -4) in catalogue)) unlinkSync(`${OUT_DIR}/${name}`)
+  const stale = name.endsWith('.png') && !(name.slice(0, -4) in catalogue)
+  // Earlier versions of this script saved the original SVGs.
+  if (stale || name.endsWith('.svg')) unlinkSync(`${OUT_DIR}/${name}`)
 }
 
 const sorted = Object.fromEntries(Object.entries(credits).sort(([a], [b]) => a.localeCompare(b)))

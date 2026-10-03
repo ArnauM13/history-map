@@ -89,7 +89,7 @@ const flagEntry = z.strictObject({
 
 export const flagsSchema = z.strictObject({
   /** Flag id → file name on Wikimedia Commons. */
-  catalogue: z.record(flagId, z.string().regex(/\.svg$/, 'Expected an SVG file name')),
+  catalogue: z.record(flagId, z.string().regex(/\.(svg|png)$/i, 'Expected an image file name')),
   /** Gleditsch & Ward code → flags in chronological order. */
   states: z.record(z.string().regex(/^\d+$/), z.array(flagEntry).min(1)),
 })

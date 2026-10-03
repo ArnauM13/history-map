@@ -376,6 +376,7 @@ function FlagCaption({ id }: { id: string }) {
   return (
     <figcaption>
       {t('imageSource')}:{' '}
+      {credit?.artist && credit.license !== 'Public domain' && `${credit.artist} · `}
       <a href={commonsUrl(id)} target="_blank" rel="noopener">
         Wikimedia Commons
       </a>

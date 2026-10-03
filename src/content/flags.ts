@@ -45,7 +45,7 @@ export function flagChangesBetween(start: IsoDate, end: IsoDate) {
   return changes.sort((a, b) => a.period.from.localeCompare(b.period.from))
 }
 
-export const flagUrl = (id: string) => `${import.meta.env.BASE_URL}flags/${id}.svg`
+export const flagUrl = (id: string) => `${import.meta.env.BASE_URL}flags/${id}.png`
 
 export const commonsUrl = (id: string) =>
   `https://commons.wikimedia.org/wiki/File:${encodeURIComponent((FLAGS.catalogue[id] ?? '').replaceAll(' ', '_'))}`

@@ -55,7 +55,7 @@ content/
   conflicts/*.yaml      one file per conflict    (id = file name)
 public/
   data/                 generated border data (do not edit by hand)
-  flags/                flag SVGs + credits.json (downloaded, do not edit by hand)
+  flags/                flag PNGs + credits.json (downloaded, do not edit by hand)
   fonts/                glyphs for map labels
 scripts/
   build-borders.mjs     CShapes → public/data
