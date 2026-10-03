@@ -6,6 +6,22 @@
     "ca": "Independència de Kosovo",
     "es": "Declaración de independencia de Kosovo"
   },
+  "Afghanistan": {
+    "ca": "Afganistan",
+    "es": "Afganistán"
+  },
+  "Albania": {
+    "ca": "Albània",
+    "es": "Albania"
+  },
+  "Algeria": {
+    "ca": "Algèria",
+    "es": "Argelia"
+  },
+  "Allied-occupied Germany": {
+    "ca": "Zones d'ocupació aliada a Alemanya",
+    "es": "Ocupación aliada de Alemania"
+  },
   "Annexation of Crimea by the Russian Federation": {
     "ca": "Annexió de Crimea a la Federació de Rússia",
     "es": "Anexión de Crimea por Rusia"
@@ -13,6 +29,10 @@
   "Anschluss": {
     "ca": "Anschluss",
     "es": "Anschluss"
+  },
+  "Armenia": {
+    "ca": "Armènia",
+    "es": "Armenia"
   },
   "Armistice of 11 November 1918": {
     "ca": "Armistici de Compiègne",
@@ -22,9 +42,40 @@
     "ca": "Assassinat de Sarajevo",
     "es": "Atentado de Sarajevo"
   },
+  "Austria": {
+    "ca": "Àustria",
+    "es": "Austria"
+  },
+  "Austria-Hungary": {
+    "ca": "Imperi Austrohongarès",
+    "es": "Imperio austrohúngaro"
+  },
+  "Austro-Hungarian rule in Bosnia and Herzegovina": {
+    "es": "Provincia imperial de Bosnia y Herzegovina"
+  },
+  "Azad Kashmir": {
+    "ca": "Azad Kashmir",
+    "es": "Azad Cachemira"
+  },
+  "Azerbaijan": {
+    "ca": "Azerbaidjan",
+    "es": "Azerbaiyán"
+  },
+  "Belarus": {
+    "ca": "Belarús",
+    "es": "Bielorrusia"
+  },
+  "Belgium": {
+    "ca": "Bèlgica",
+    "es": "Bélgica"
+  },
   "Berlin Wall": {
     "ca": "Mur de Berlín",
     "es": "Muro de Berlín"
+  },
+  "Bosnia and Herzegovina": {
+    "ca": "Bòsnia i Hercegovina",
+    "es": "Bosnia y Herzegovina"
   },
   "Bosnian crisis": {
     "es": "Crisis bosnia"
@@ -33,9 +84,41 @@
     "ca": "Sortida del Regne Unit de la Unió Europea",
     "es": "Salida del Reino Unido de la Unión Europea"
   },
+  "British Raj": {
+    "ca": "Raj britànic",
+    "es": "India británica"
+  },
+  "Bulgaria": {
+    "ca": "Bulgària",
+    "es": "Bulgaria"
+  },
   "Carnation Revolution": {
     "ca": "Revolució dels Clavells",
     "es": "Revolución de los Claveles"
+  },
+  "China": {
+    "ca": "República Popular de la Xina",
+    "es": "República Popular China"
+  },
+  "Croatia": {
+    "ca": "Croàcia",
+    "es": "Croacia"
+  },
+  "Cyprus": {
+    "ca": "Xipre",
+    "es": "Chipre"
+  },
+  "Czech Republic": {
+    "ca": "Txèquia",
+    "es": "República Checa"
+  },
+  "Czechoslovakia": {
+    "ca": "Txecoslovàquia",
+    "es": "Checoslovaquia"
+  },
+  "Denmark": {
+    "ca": "Dinamarca",
+    "es": "Dinamarca"
   },
   "Dissolution of Czechoslovakia": {
     "ca": "Dissolució de Txecoslovàquia",
@@ -48,9 +131,33 @@
   "Dissolution of the union between Norway and Sweden": {
     "es": "Disolución de la unión entre Suecia y Noruega"
   },
+  "East Germany": {
+    "ca": "República Democràtica Alemanya",
+    "es": "República Democrática Alemana"
+  },
+  "Egypt": {
+    "ca": "Egipte",
+    "es": "Egipto"
+  },
+  "Emirate of Bukhara": {
+    "ca": "Emirat de Bukharà",
+    "es": "Emirato de Bujará"
+  },
+  "Emirate of Transjordan": {
+    "ca": "Transjordània",
+    "es": "Emirato de Transjordania"
+  },
+  "Estonia": {
+    "ca": "Estònia",
+    "es": "Estonia"
+  },
   "Fall of the Berlin Wall": {
     "ca": "Caiguda del mur de Berlín",
     "es": "Caída del Muro de Berlín"
+  },
+  "Finland": {
+    "ca": "Finlàndia",
+    "es": "Finlandia"
   },
   "Finnish Declaration of Independence": {
     "ca": "Declaració d'Independència de Finlàndia",
@@ -60,6 +167,285 @@
     "ca": "Primera Guerra Balcànica",
     "es": "Primera guerra de los Balcanes"
   },
+  "Flag of Albania": {
+    "ca": "Bandera d'Albània",
+    "es": "Bandera de Albania"
+  },
+  "Flag of Algeria": {
+    "ca": "Bandera d'Algèria",
+    "es": "Bandera de Argelia"
+  },
+  "Flag of Armenia": {
+    "ca": "Bandera d'Armènia",
+    "es": "Bandera de Armenia"
+  },
+  "Flag of Austria": {
+    "ca": "Bandera d'Àustria",
+    "es": "Bandera de Austria"
+  },
+  "Flag of Austria-Hungary": {
+    "ca": "Banderes d'Àustria-Hongria"
+  },
+  "Flag of Azerbaijan": {
+    "ca": "Bandera de l'Azerbaidjan",
+    "es": "Bandera de Azerbaiyán"
+  },
+  "Flag of Belarus": {
+    "ca": "Bandera de Belarús",
+    "es": "Bandera de Bielorrusia"
+  },
+  "Flag of Belgium": {
+    "ca": "Bandera de Bèlgica",
+    "es": "Bandera de Bélgica"
+  },
+  "Flag of Bosnia and Herzegovina": {
+    "ca": "Bandera de Bòsnia i Hercegovina",
+    "es": "Bandera de Bosnia y Herzegovina"
+  },
+  "Flag of Bulgaria": {
+    "ca": "Bandera de Bulgària",
+    "es": "Bandera de Bulgaria"
+  },
+  "Flag of Croatia": {
+    "ca": "Bandera de Croàcia",
+    "es": "Bandera de Croacia"
+  },
+  "Flag of Cyprus": {
+    "ca": "Bandera de Xipre",
+    "es": "Bandera de Chipre"
+  },
+  "Flag of Denmark": {
+    "ca": "Bandera de Dinamarca",
+    "es": "Bandera de Dinamarca"
+  },
+  "Flag of East Germany": {
+    "es": "Bandera de la República Democrática Alemana"
+  },
+  "Flag of Estonia": {
+    "ca": "Bandera d'Estònia",
+    "es": "Bandera de Estonia"
+  },
+  "Flag of Finland": {
+    "ca": "Bandera de Finlàndia",
+    "es": "Bandera de Finlandia"
+  },
+  "Flag of France": {
+    "ca": "Bandera de França",
+    "es": "Bandera de Francia"
+  },
+  "Flag of Georgia (country)": {
+    "ca": "Bandera de Geòrgia",
+    "es": "Bandera de Georgia"
+  },
+  "Flag of Germany": {
+    "ca": "Bandera d'Alemanya",
+    "es": "Bandera de Alemania"
+  },
+  "Flag of Greece": {
+    "ca": "Bandera de Grècia",
+    "es": "Bandera de Grecia"
+  },
+  "Flag of Hungary": {
+    "ca": "Bandera d'Hongria",
+    "es": "Bandera de Hungría"
+  },
+  "Flag of Iceland": {
+    "ca": "Bandera d'Islàndia",
+    "es": "Bandera de Islandia"
+  },
+  "Flag of Iran": {
+    "ca": "Bandera de l'Iran",
+    "es": "Bandera de Irán"
+  },
+  "Flag of Ireland": {
+    "ca": "Bandera d'Irlanda",
+    "es": "Bandera de Irlanda"
+  },
+  "Flag of Israel": {
+    "ca": "Bandera d'Israel",
+    "es": "Bandera de Israel"
+  },
+  "Flag of Italy": {
+    "ca": "Bandera d'Itàlia",
+    "es": "Bandera de Italia"
+  },
+  "Flag of Jordan": {
+    "ca": "Bandera de Jordània",
+    "es": "Bandera de Jordania"
+  },
+  "Flag of Kazakhstan": {
+    "ca": "Bandera del Kazakhstan",
+    "es": "Bandera de Kazajistán"
+  },
+  "Flag of Kosovo": {
+    "ca": "Bandera de Kosovo",
+    "es": "Bandera de Kosovo"
+  },
+  "Flag of Kuwait": {
+    "ca": "Bandera de Kuwait",
+    "es": "Bandera de Kuwait"
+  },
+  "Flag of Latvia": {
+    "ca": "Bandera de Letònia",
+    "es": "Bandera de Letonia"
+  },
+  "Flag of Lebanon": {
+    "ca": "Bandera del Líban",
+    "es": "Bandera de Líbano"
+  },
+  "Flag of Libya": {
+    "ca": "Bandera de Líbia",
+    "es": "Bandera de Libia"
+  },
+  "Flag of Lithuania": {
+    "ca": "Bandera de Lituània",
+    "es": "Bandera de Lituania"
+  },
+  "Flag of Luxembourg": {
+    "ca": "Bandera de Luxemburg",
+    "es": "Bandera de Luxemburgo"
+  },
+  "Flag of Malta": {
+    "ca": "Bandera de Malta",
+    "es": "Bandera de Malta"
+  },
+  "Flag of Moldova": {
+    "ca": "Bandera de Moldàvia",
+    "es": "Bandera de Moldavia"
+  },
+  "Flag of Montenegro": {
+    "ca": "Bandera de Montenegro",
+    "es": "Bandera de Montenegro"
+  },
+  "Flag of Morocco": {
+    "ca": "Bandera del Marroc",
+    "es": "Bandera de Marruecos"
+  },
+  "Flag of Nazi Germany": {
+    "es": "Bandera de la Alemania nazi"
+  },
+  "Flag of North Macedonia": {
+    "ca": "Bandera de Macedònia del Nord",
+    "es": "Bandera de Macedonia del Norte"
+  },
+  "Flag of Norway": {
+    "ca": "Bandera de Noruega",
+    "es": "Bandera de Noruega"
+  },
+  "Flag of Poland": {
+    "ca": "Bandera de Polònia",
+    "es": "Bandera de Polonia"
+  },
+  "Flag of Portugal": {
+    "ca": "Bandera de Portugal",
+    "es": "Bandera de Portugal"
+  },
+  "Flag of Romania": {
+    "ca": "Bandera de Romania",
+    "es": "Bandera de Rumania"
+  },
+  "Flag of Russia": {
+    "ca": "Bandera de Rússia",
+    "es": "Bandera de Rusia"
+  },
+  "Flag of Saudi Arabia": {
+    "ca": "Bandera de l'Aràbia Saudita",
+    "es": "Bandera de Arabia Saudita"
+  },
+  "Flag of Serbia": {
+    "ca": "Bandera de Sèrbia",
+    "es": "Bandera de Serbia"
+  },
+  "Flag of Slovakia": {
+    "ca": "Bandera d'Eslovàquia",
+    "es": "Bandera de Eslovaquia"
+  },
+  "Flag of Slovenia": {
+    "ca": "Bandera d'Eslovènia",
+    "es": "Bandera de Eslovenia"
+  },
+  "Flag of Spain": {
+    "ca": "Bandera d'Espanya",
+    "es": "Bandera de España"
+  },
+  "Flag of Sweden": {
+    "ca": "Bandera de Suècia",
+    "es": "Bandera de Suecia"
+  },
+  "Flag of Switzerland": {
+    "ca": "Bandera de Suïssa",
+    "es": "Bandera de Suiza"
+  },
+  "Flag of Tajikistan": {
+    "ca": "Bandera del Tadjikistan",
+    "es": "Bandera de Tayikistán"
+  },
+  "Flag of the Czech Republic": {
+    "ca": "Bandera de Txèquia",
+    "es": "Bandera de la República Checa"
+  },
+  "Flag of the Netherlands": {
+    "ca": "Bandera dels Països Baixos",
+    "es": "Bandera de los Países Bajos"
+  },
+  "Flag of the Ottoman Empire": {
+    "es": "Bandera del Imperio otomano"
+  },
+  "Flag of the Soviet Union": {
+    "ca": "Bandera de la Unió de Repúbliques Socialistes Soviètiques",
+    "es": "Bandera de la Unión Soviética"
+  },
+  "Flag of the United Kingdom": {
+    "ca": "Bandera del Regne Unit",
+    "es": "Bandera del Reino Unido"
+  },
+  "Flag of Tunisia": {
+    "ca": "Bandera de Tunísia",
+    "es": "Bandera de Túnez"
+  },
+  "Flag of Turkey": {
+    "ca": "Bandera de Turquia",
+    "es": "Bandera de Turquía"
+  },
+  "Flag of Turkmenistan": {
+    "ca": "Bandera del Turkmenistan",
+    "es": "Bandera de Turkmenistán"
+  },
+  "Flag of Ukraine": {
+    "ca": "Bandera d'Ucraïna",
+    "es": "Bandera de Ucrania"
+  },
+  "Flag of Uzbekistan": {
+    "ca": "Bandera de l'Uzbekistan",
+    "es": "Bandera de Uzbekistán"
+  },
+  "Flag of Yugoslavia": {
+    "es": "Bandera de Yugoslavia"
+  },
+  "France": {
+    "ca": "França",
+    "es": "Francia"
+  },
+  "Free City of Danzig": {
+    "ca": "Ciutat Lliure de Danzig",
+    "es": "Ciudad Libre de Dánzig"
+  },
+  "French West Africa": {
+    "ca": "Àfrica Occidental Francesa",
+    "es": "África Occidental Francesa"
+  },
+  "Gaza Strip": {
+    "ca": "Franja de Gaza",
+    "es": "Franja de Gaza"
+  },
+  "Georgia (country)": {
+    "ca": "Geòrgia",
+    "es": "Georgia"
+  },
+  "German Empire": {
+    "ca": "Imperi Alemany",
+    "es": "Imperio alemán"
+  },
   "German Instrument of Surrender": {
     "ca": "Actes de capitulació del Tercer Reich",
     "es": "Capitulación alemana de mayo de 1945"
@@ -68,9 +454,17 @@
     "ca": "Reunificació alemanya",
     "es": "Reunificación alemana"
   },
+  "Germany": {
+    "ca": "Alemanya",
+    "es": "Alemania"
+  },
   "Greco-Turkish War (1919–1922)": {
     "ca": "Guerra greco-turca (1919-1922)",
     "es": "Guerra greco-turca (1919-1922)"
+  },
+  "Greece": {
+    "ca": "Grècia",
+    "es": "Grecia"
   },
   "Greek Civil War": {
     "ca": "Guerra Civil grega",
@@ -80,45 +474,258 @@
     "ca": "Revolució hongaresa de 1956",
     "es": "Revolución húngara de 1956"
   },
+  "Hungary": {
+    "ca": "Hongria",
+    "es": "Hungría"
+  },
+  "Iceland": {
+    "ca": "Islàndia",
+    "es": "Islandia"
+  },
+  "India": {
+    "ca": "Índia",
+    "es": "India"
+  },
   "Invasion of Poland": {
     "ca": "Campanya de Polònia",
     "es": "Invasión alemana de Polonia de 1939"
+  },
+  "Iran": {
+    "ca": "Iran",
+    "es": "Irán"
+  },
+  "Iraq": {
+    "ca": "Iraq",
+    "es": "Irak"
+  },
+  "Irish Free State": {
+    "ca": "Estat Lliure d'Irlanda",
+    "es": "Estado Libre Irlandés"
   },
   "Irish War of Independence": {
     "ca": "Guerra angloirlandesa",
     "es": "Guerra de Independencia irlandesa"
   },
+  "Israel": {
+    "ca": "Israel",
+    "es": "Israel"
+  },
+  "Italy": {
+    "ca": "Itàlia",
+    "es": "Italia"
+  },
+  "Jammu and Kashmir (princely state)": {
+    "es": "Principado de Jammu y Cachemira"
+  },
+  "Jordan": {
+    "ca": "Jordània",
+    "es": "Jordania"
+  },
+  "Kazakhstan": {
+    "ca": "Kazakhstan",
+    "es": "Kazajistán"
+  },
+  "Khanate of Khiva": {
+    "ca": "Kanat de Khivà",
+    "es": "Kanato de Jiva"
+  },
+  "Kingdom of Yugoslavia": {
+    "es": "Reino de Yugoslavia"
+  },
+  "Kosovo": {
+    "ca": "Kosovo",
+    "es": "Kosovo"
+  },
+  "Kuwait": {
+    "ca": "Kuwait",
+    "es": "Kuwait"
+  },
+  "Kyrgyzstan": {
+    "ca": "Kirguizstan",
+    "es": "Kirguistán"
+  },
+  "Latvia": {
+    "ca": "Letònia",
+    "es": "Letonia"
+  },
+  "Lebanon": {
+    "ca": "Líban",
+    "es": "Líbano"
+  },
+  "Libya": {
+    "ca": "Líbia",
+    "es": "Libia"
+  },
+  "Lithuania": {
+    "ca": "Lituània",
+    "es": "Lituania"
+  },
+  "Luxembourg": {
+    "ca": "Luxemburg",
+    "es": "Luxemburgo"
+  },
+  "Malta": {
+    "ca": "Malta",
+    "es": "Malta"
+  },
+  "Mandatory Palestine": {
+    "ca": "Mandat britànic de Palestina",
+    "es": "Mandato británico de Palestina"
+  },
+  "Moldova": {
+    "ca": "República de Moldàvia",
+    "es": "Moldavia"
+  },
+  "Montenegro": {
+    "ca": "Montenegro",
+    "es": "Montenegro"
+  },
+  "Morocco": {
+    "ca": "Marroc",
+    "es": "Marruecos"
+  },
   "Munich Agreement": {
     "ca": "Acord de Múnic",
     "es": "Acuerdos de Múnich"
+  },
+  "Nazi Germany": {
+    "ca": "Tercer Reich",
+    "es": "Alemania nazi"
+  },
+  "Netherlands": {
+    "ca": "Països Baixos",
+    "es": "Países Bajos"
+  },
+  "North Macedonia": {
+    "ca": "Macedònia del Nord",
+    "es": "Macedonia del Norte"
+  },
+  "Norway": {
+    "ca": "Noruega",
+    "es": "Noruega"
   },
   "October Revolution": {
     "ca": "Revolució d'Octubre de 1917",
     "es": "Revolución de Octubre"
   },
+  "Ottoman Empire": {
+    "ca": "Imperi Otomà",
+    "es": "Imperio otomano"
+  },
+  "Pakistan": {
+    "ca": "Pakistan",
+    "es": "Pakistán"
+  },
+  "Poland": {
+    "ca": "Polònia",
+    "es": "Polonia"
+  },
+  "Portugal": {
+    "ca": "Portugal",
+    "es": "Portugal"
+  },
+  "Qajar Iran": {
+    "ca": "Imperi Qajar",
+    "es": "Irán Kayar"
+  },
+  "Republic of Ireland": {
+    "ca": "Irlanda",
+    "es": "Irlanda"
+  },
+  "Romania": {
+    "ca": "Romania",
+    "es": "Rumania"
+  },
+  "Russia": {
+    "ca": "Rússia",
+    "es": "Rusia"
+  },
   "Russian Civil War": {
     "ca": "Guerra Civil russa",
     "es": "Guerra civil rusa"
+  },
+  "Russian Empire": {
+    "ca": "Imperi Rus",
+    "es": "Imperio ruso"
   },
   "Russian invasion of Ukraine": {
     "ca": "Invasió russa d'Ucraïna del 2022",
     "es": "Guerra ruso-ucraniana"
   },
+  "Russian Republic": {
+    "es": "República Rusa"
+  },
+  "Russian Soviet Federative Socialist Republic": {
+    "ca": "República Socialista Federativa Soviètica de Rússia",
+    "es": "República Socialista Federativa Soviética de Rusia"
+  },
   "Russo-Ukrainian war": {
     "ca": "Guerra russo-ucraïnesa",
     "es": "Conflicto ruso-ucraniano (2014-presente)"
+  },
+  "Saudi Arabia": {
+    "ca": "Aràbia Saudita",
+    "es": "Arabia Saudita"
   },
   "Second Balkan War": {
     "ca": "Segona Guerra Balcànica",
     "es": "Segunda guerra de los Balcanes"
   },
+  "Serbia": {
+    "ca": "Sèrbia",
+    "es": "Serbia"
+  },
+  "Serbia and Montenegro": {
+    "ca": "Sèrbia i Montenegro",
+    "es": "Serbia y Montenegro"
+  },
+  "Slovakia": {
+    "ca": "Eslovàquia",
+    "es": "Eslovaquia"
+  },
+  "Slovenia": {
+    "ca": "Eslovènia",
+    "es": "Eslovenia"
+  },
+  "Soviet occupation zone in Germany": {
+    "ca": "Zona d'ocupació soviètica",
+    "es": "Zona de ocupación soviética"
+  },
+  "Soviet Union": {
+    "ca": "Unió de Repúbliques Socialistes Soviètiques",
+    "es": "Unión Soviética"
+  },
+  "Spain": {
+    "ca": "Espanya",
+    "es": "España"
+  },
   "Spanish Civil War": {
     "ca": "Guerra Civil espanyola",
     "es": "Guerra civil española"
   },
+  "Spanish protectorate in Morocco": {
+    "ca": "Protectorat espanyol al Marroc",
+    "es": "Protectorado español de Marruecos"
+  },
   "Spanish transition to democracy": {
     "ca": "Transició democràtica espanyola",
     "es": "Transición española"
+  },
+  "Sweden": {
+    "ca": "Suècia",
+    "es": "Suecia"
+  },
+  "Switzerland": {
+    "ca": "Suïssa",
+    "es": "Suiza"
+  },
+  "Syria": {
+    "ca": "Síria",
+    "es": "Siria"
+  },
+  "Tajikistan": {
+    "ca": "Tadjikistan",
+    "es": "Tayikistán"
   },
   "Treaty of Rome": {
     "ca": "Tractats de Roma",
@@ -132,8 +739,44 @@
     "ca": "Tractat de Creació de l'URSS",
     "es": "Tratado de Creación de la URSS"
   },
+  "Tunisia": {
+    "ca": "Tunísia",
+    "es": "Túnez"
+  },
+  "Turkey": {
+    "ca": "Turquia",
+    "es": "Turquía"
+  },
   "Turkish invasion of Cyprus": {
     "es": "Invasión turca de Chipre"
+  },
+  "Turkmenistan": {
+    "ca": "Turkmenistan",
+    "es": "Turkmenistán"
+  },
+  "Ukraine": {
+    "ca": "Ucraïna",
+    "es": "Ucrania"
+  },
+  "United Kingdom": {
+    "ca": "Regne Unit",
+    "es": "Reino Unido"
+  },
+  "Uzbekistan": {
+    "ca": "Uzbekistan",
+    "es": "Uzbekistán"
+  },
+  "Weimar Republic": {
+    "ca": "República de Weimar",
+    "es": "República de Weimar"
+  },
+  "West Bank": {
+    "ca": "Cisjordània",
+    "es": "Cisjordania"
+  },
+  "West Germany": {
+    "ca": "Alemanya Occidental",
+    "es": "Alemania Occidental"
   },
   "World War I": {
     "ca": "Primera Guerra Mundial",
@@ -146,5 +789,9 @@
   "Yugoslav Wars": {
     "ca": "Guerres de Iugoslàvia",
     "es": "Guerras yugoslavas"
+  },
+  "Yugoslavia": {
+    "ca": "Iugoslàvia",
+    "es": "Yugoslavia"
   }
 }
