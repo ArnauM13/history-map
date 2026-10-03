@@ -1,29 +1,29 @@
-name: Report a border or name error
-description: A border, state or name is wrong on a given date.
+name: Una frontera, un nom o una bandera que no toca
+description: El mapa ensenya alguna cosa malament en una data.
 labels: [data]
 body:
   - type: input
     id: link
     attributes:
-      label: Link to the map showing the problem
-      description: Copy the URL from the address bar; it includes the date.
-      placeholder: https://arnaum13.github.io/history-map/?d=1938-10-01&lang=en
+      label: L'enllaç al mapa on es veu
+      description: Copia l'adreça; ja porta la data.
+      placeholder: https://arnaum13.github.io/history-map/?d=1938-10-01&lang=ca
     validations:
       required: true
   - type: textarea
     id: problem
     attributes:
-      label: What is wrong, and what should it look like?
+      label: Què hi ha malament i com hauria de ser
     validations:
       required: true
   - type: textarea
     id: sources
     attributes:
-      label: Sources
+      label: Fonts
     validations:
       required: true
   - type: markdown
     attributes:
       value: |
-        Note: the map shows borders settled by treaties, not wartime occupations
-        (see docs/DATA.md). Occupations are planned as a separate layer.
+        Les fronteres són les dels tractats, no les de les ocupacions (DADES.md). Les ocupacions
+        aniran en una capa a part.

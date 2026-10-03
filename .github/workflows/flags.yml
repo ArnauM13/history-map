@@ -1,5 +1,5 @@
-# Downloads the flags listed in content/flags.yaml from Wikimedia Commons and commits them,
-# so contributors only need to edit the YAML file.
+# Baixa de Wikimedia Commons les banderes de content/flags.yaml i en fa un commit: qui hi
+# contribueix només ha de tocar el YAML.
 name: Flags
 
 on:
@@ -24,23 +24,25 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
-      - run: npm ci
-      - id: fetch
+      - name: Install dependencies
+        run: npm ci
+      - name: Fetch flags
+        id: fetch
         run: npm run data:flags
         continue-on-error: true
-      - name: Commit downloaded flags
+      - name: Commit the flags
         run: |
           git add public/flags
           if git diff --cached --quiet; then
-            echo "Flags already up to date."
+            echo "Les banderes ja eren al dia."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Fetch flags from Wikimedia Commons"
+          git commit -m "Banderes: les imatges de Wikimedia Commons, al dia"
           git push
-      - name: Report flags that could not be found
+      - name: Missing files
         if: steps.fetch.outcome == 'failure'
         run: |
-          echo "::error::Some flags were not found on Wikimedia Commons. See the 'fetch' step log."
+          echo "::error::Hi ha banderes que no són a Wikimedia Commons. Els noms i els suggeriments són al pas 'Fetch flags'."
           exit 1

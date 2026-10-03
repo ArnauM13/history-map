@@ -1,5 +1,5 @@
-# Publishes the site to GitHub Pages on every push to main.
-# One-time setup: Settings → Pages → Build and deployment → Source: "GitHub Actions".
+# Publica la web a GitHub Pages a cada push a main.
+# Un sol cop: Settings → Pages → Build and deployment → Source: «GitHub Actions».
 name: Deploy
 
 on:

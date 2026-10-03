@@ -1,6 +1,7 @@
-## What does this change?
+## Què canvia
 
-## How was it checked?
+## Com ho has comprovat
 
-- [ ] `npm run lint`, `npm run typecheck` and `npm test` pass
-- [ ] For content: facts checked against the sources linked in the files
+- [ ] `npm run lint`, `npm run typecheck` i `npm test` passen
+- [ ] Si és interfície: vist al navegador, també en fosc i en una pantalla estreta
+- [ ] Si és contingut: les dades, contrastades amb les fonts enllaçades
