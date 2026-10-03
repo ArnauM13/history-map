@@ -219,6 +219,11 @@
     "license": "Public domain",
     "artist": "User:Zscout370, colour correction: User:R-41, current version: Thommy"
   },
+  "hu-1919": {
+    "file": "Flag of Hungarian Soviet Republic.svg",
+    "license": "CC0",
+    "artist": "Anonykitten"
+  },
   "hu-1946": {
     "file": "Flag of Hungary (1946-1949, 1956-1957).svg",
     "license": "Public domain",
@@ -432,6 +437,11 @@
     "file": "Flag of Sweden.svg",
     "license": "Public domain",
     "artist": "Jon Harald Søby and others."
+  },
+  "se-1844": {
+    "file": "Swedish civil ensign (1844–1905).svg",
+    "license": "Public domain",
+    "artist": "Jeltz"
   },
   "si": {
     "file": "Flag of Slovenia.svg",
