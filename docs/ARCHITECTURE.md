@@ -50,13 +50,16 @@ that only affects how it is displayed. The timeline slider moves in months; even
 ```
 content/
   countries.yaml        names of each state by date and language
+  flags.yaml            flags of each state by date (Wikimedia Commons files)
   events/*.yaml         one file per event       (id = file name)
   conflicts/*.yaml      one file per conflict    (id = file name)
 public/
   data/                 generated border data (do not edit by hand)
+  flags/                flag SVGs + credits.json (downloaded, do not edit by hand)
   fonts/                glyphs for map labels
 scripts/
   build-borders.mjs     CShapes → public/data
+  fetch-flags.mjs       Wikimedia Commons → public/flags
 src/
   App.tsx               state: date, language, selection, playback, URL sync
   map/                  MapLibre map (MapView) and its style

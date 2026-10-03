@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Sidebar } from './components/Sidebar'
+import { Sidebar, type SidebarTab } from './components/Sidebar'
 import { Timeline } from './components/Timeline'
 import { activeConflicts, eventsOfYear } from './content'
 import type { HistoricalEvent } from './content/schema'
@@ -23,6 +23,7 @@ import {
   type IsoDate,
   type Precision,
 } from './lib/date'
+import { useLabels } from './map/data'
 import { MapView } from './map/MapView'
 import type { Selection } from './selection'
 
@@ -37,6 +38,7 @@ function initialState(maxDate: IsoDate) {
   return {
     date: isValidIsoDate(d) ? clampDate(d, maxDate) : DEFAULT_DATE,
     lang: isLang(lang) ? lang : detectLanguage(),
+    showFlags: params.get('flags') !== '0',
   }
 }
 
@@ -48,6 +50,9 @@ export default function App() {
   const [precision, setPrecision] = useState<Precision>('day')
   const [selection, setSelection] = useState<Selection | null>(null)
   const [playing, setPlaying] = useState(false)
+  const [showFlags, setShowFlags] = useState(initial.showFlags)
+  const [tab, setTab] = useState<SidebarTab>('flags')
+  const labels = useLabels()
   const t = translator(lang)
 
   const year = yearOf(date)
@@ -59,8 +64,10 @@ export default function App() {
     const params = new URLSearchParams(location.search)
     params.set('d', date)
     params.set('lang', lang)
+    if (showFlags) params.delete('flags')
+    else params.set('flags', '0')
     history.replaceState(null, '', `?${params}`)
-  }, [date, lang])
+  }, [date, lang, showFlags])
 
   useEffect(() => {
     document.documentElement.lang = lang
@@ -89,6 +96,14 @@ export default function App() {
     if (!playing && atEnd) changeDate(MIN_DATE, 'month')
     setPlaying(!playing)
   }
+
+  const goToDate = useCallback(
+    (next: IsoDate) => {
+      setPlaying(false)
+      changeDate(next, 'day')
+    },
+    [changeDate],
+  )
 
   const goToEvent = useCallback(
     (event: HistoricalEvent) => {
@@ -122,11 +137,20 @@ export default function App() {
         <main className="map-area">
           <MapView
             date={date}
+            showFlags={showFlags}
             events={yearEvents}
             conflicts={conflicts}
             selection={selection}
             onSelect={setSelection}
           />
+          <label className="map-toggle">
+            <input
+              type="checkbox"
+              checked={showFlags}
+              onChange={(e) => setShowFlags(e.target.checked)}
+            />
+            {t('showFlags')}
+          </label>
         </main>
 
         <Timeline
@@ -141,11 +165,15 @@ export default function App() {
 
         <Sidebar
           date={date}
+          tab={tab}
+          labels={labels}
           selection={selection}
           yearEvents={yearEvents}
           conflicts={conflicts}
+          onTabChange={setTab}
           onSelect={setSelection}
           onGoToEvent={goToEvent}
+          onGoToDate={goToDate}
         />
       </div>
     </LangContext.Provider>

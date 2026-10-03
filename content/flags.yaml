@@ -1,0 +1,293 @@
+# National flags over time.
+#
+# `catalogue` maps a short id to a file on Wikimedia Commons. `npm run data:flags` downloads each
+# file to public/flags/<id>.svg and records its licence in public/flags/credits.json (the "Flags"
+# GitHub workflow runs it automatically when this file changes).
+#
+# `states` lists, for each Gleditsch & Ward code (see countries.yaml), the flags it used in
+# chronological order. `until` is the last day (inclusive) a flag was in use; the last entry has
+# no `until`. `flag` is a catalogue id, or `null` when the state had no flag of its own (e.g.
+# Germany under Allied occupation). An entry without `flag` means "not documented yet" — used for
+# periods as a colony, protectorate or mandate.
+#
+# Dates are those of official adoption, or of first use when that was earlier. Corrections with
+# sources are very welcome (see CONTRIBUTING.md).
+
+catalogue:
+  # Western Europe
+  gb: Flag of the United Kingdom.svg
+  ie: Flag of Ireland.svg
+  nl: Flag of the Netherlands.svg
+  be: Flag of Belgium.svg
+  lu: Flag of Luxembourg.svg
+  fr: Flag of France.svg
+  ch: Flag of Switzerland.svg
+  es-1785: Flag of Spain (1785–1873, 1875–1931).svg
+  es-1931: Flag of Spain (1931–1939).svg
+  es-1938: Flag of Spain (1938–1945).svg
+  es-1945: Flag of Spain (1945–1977).svg
+  es-1977: Flag of Spain (1977–1981).svg
+  es: Flag of Spain.svg
+  pt-1830: Flag of Portugal (1830).svg
+  pt: Flag of Portugal.svg
+  it-1861: Flag of Italy (1861–1946).svg
+  it: Flag of Italy.svg
+  mt: Flag of Malta.svg
+
+  # Central Europe
+  de-1867: Flag of the German Empire.svg
+  de-1919: Flag of Germany (3-2 aspect ratio).svg
+  de-1933: Flag of Germany (1933–1935).svg
+  de-1935: Flag of Germany (1935–1945).svg
+  de: Flag of Germany.svg
+  dd: Flag of East Germany.svg
+  pl: Flag of Poland.svg
+  danzig: Flag of the Free City of Danzig.svg
+  at-hu: Flag of Austria-Hungary (1869-1918).svg
+  at: Flag of Austria.svg
+  hu-1915: Flag of Hungary (1915-1918, 1919-1946).svg
+  hu-1919: Flag of the Hungarian Soviet Republic.svg
+  hu-1946: Flag of Hungary (1946-1949, 1956-1957).svg
+  hu-1949: Flag of Hungary (1949-1956).svg
+  hu: Flag of Hungary.svg
+  cs-1918: Flag of Bohemia.svg
+  cz: Flag of the Czech Republic.svg
+  sk: Flag of Slovakia.svg
+
+  # Northern Europe
+  dk: Flag of Denmark.svg
+  is: Flag of Iceland.svg
+  'no': Flag of Norway.svg # quoted: YAML 1.1 parsers read a bare no as false
+  se-1844: Flag of Sweden (1844–1905).svg
+  se: Flag of Sweden.svg
+  fi: Flag of Finland.svg
+  ee: Flag of Estonia.svg
+  lv: Flag of Latvia.svg
+  lt: Flag of Lithuania.svg
+
+  # Eastern Europe and the Caucasus
+  ru: Flag of Russia.svg
+  ru-1918: Flag of the Russian Soviet Federative Socialist Republic (1918–1937).svg
+  su-1923: Flag of the Soviet Union (1923–1955).svg
+  su: Flag of the Soviet Union.svg
+  ua: Flag of Ukraine.svg
+  by-1991: Flag of Belarus (1918, 1991–1995).svg
+  by: Flag of Belarus.svg
+  md: Flag of Moldova.svg
+  am: Flag of Armenia.svg
+  ge-1990: Flag of Georgia (1990–2004).svg
+  ge: Flag of Georgia.svg
+  az: Flag of Azerbaijan.svg
+
+  # South-eastern Europe
+  ro: Flag of Romania.svg
+  ro-1948: Flag of Romania (1948–1952).svg
+  ro-1952: Flag of Romania (1952–1965).svg
+  ro-1965: Flag of Romania (1965–1989).svg
+  bg: Flag of Bulgaria.svg
+  bg-1948: Flag of Bulgaria (1948–1967).svg
+  bg-1971: Flag of Bulgaria (1971–1990).svg
+  yu-1918: Flag of Yugoslavia (1918–1941).svg
+  yu-1946: Flag of Yugoslavia (1946–1992).svg
+  yu-1992: Flag of Serbia and Montenegro.svg
+  rs-1882: State Flag of Serbia (1882-1918).svg
+  rs: Flag of Serbia.svg
+  me-1905: Flag of the Kingdom of Montenegro.svg
+  me: Flag of Montenegro.svg
+  hr: Flag of Croatia.svg
+  si: Flag of Slovenia.svg
+  ba-1992: Flag of Bosnia and Herzegovina (1992–1998).svg
+  ba: Flag of Bosnia and Herzegovina.svg
+  mk-1992: Flag of North Macedonia (1992–1995).svg
+  mk: Flag of North Macedonia.svg
+  xk: Flag of Kosovo.svg
+  al: Flag of Albania.svg
+  al-1946: Flag of Albania (1946–1992).svg
+  gr-1822: Flag of Greece (1822-1978).svg
+  gr: Flag of Greece.svg
+  cy: Flag of Cyprus.svg
+  ot: Flag of the Ottoman Empire (1844–1922).svg
+  tr: Flag of Turkey.svg
+
+  # North Africa, Middle East and Central Asia (map edges)
+  ma: Flag of Morocco.svg
+  dz: Flag of Algeria.svg
+  tn: Flag of Tunisia.svg
+  ly-1951: Flag of Libya (1951–1969).svg
+  ly-1969: Flag of Libya (1969–1972).svg
+  ly-1972: Flag of Libya (1972–1977).svg
+  ly-1977: Flag of Libya (1977–2011).svg
+  ly: Flag of Libya.svg
+  lb: Flag of Lebanon.svg
+  il: Flag of Israel.svg
+  jo: Flag of Jordan.svg
+  sa: Flag of Saudi Arabia.svg
+  kw: Flag of Kuwait.svg
+  ir: Flag of Iran.svg
+  kz: Flag of Kazakhstan.svg
+  uz: Flag of Uzbekistan.svg
+  tm: Flag of Turkmenistan.svg
+  tj: Flag of Tajikistan.svg
+
+states:
+  '200': [{ flag: gb }]
+  '205': [{ flag: ie }]
+  '210': [{ flag: nl }]
+  '211': [{ flag: be }]
+  '212': [{ flag: lu }]
+  '220': [{ flag: fr }]
+  '225': [{ flag: ch }]
+  '230':
+    - { until: 1931-04-13, flag: es-1785 }
+    - { until: 1939-03-31, flag: es-1931 }
+    - { until: 1945-10-10, flag: es-1938 }
+    - { until: 1977-01-20, flag: es-1945 }
+    - { until: 1981-10-04, flag: es-1977 }
+    - { flag: es }
+  '235':
+    - { until: 1910-11-30, flag: pt-1830 }
+    - { flag: pt }
+  '255':
+    - { until: 1919-08-10, flag: de-1867 }
+    - { until: 1933-03-11, flag: de-1919 }
+    - { until: 1935-09-14, flag: de-1933 }
+    - { flag: de-1935 }
+  '260':
+    - { until: 1949-05-22, flag: null }
+    - { flag: de }
+  '265':
+    - { until: 1949-10-06, flag: null }
+    - { until: 1959-09-30, flag: de }
+    - { flag: dd }
+  '290': [{ flag: pl }]
+  '291': [{ flag: danzig }]
+  '300': [{ flag: at-hu }]
+  '305': [{ flag: at }]
+  '310':
+    - { until: 1919-03-20, flag: hu-1915 }
+    - { until: 1919-08-01, flag: hu-1919 }
+    - { until: 1946-01-31, flag: hu-1915 }
+    - { until: 1949-08-19, flag: hu-1946 }
+    # Simplified: from the 1956 revolution the plain tricolour replaced the Rákosi emblem.
+    - { until: 1956-10-22, flag: hu-1949 }
+    - { flag: hu }
+  '315':
+    - { until: 1920-03-29, flag: cs-1918 }
+    - { flag: cz }
+  '316': [{ flag: cz }]
+  '317': [{ flag: sk }]
+  '325':
+    - { until: 1946-06-18, flag: it-1861 }
+    - { flag: it }
+  '338':
+    - { until: 1964-09-20 }
+    - { flag: mt }
+  # Simplified: the variants of 1914–1946 (principality, kingdom, Italian protectorate) are not listed yet.
+  '339':
+    - { until: 1946-01-10, flag: al }
+    - { until: 1992-04-06, flag: al-1946 }
+    - { flag: al }
+  # Serbia and Montenegro were part of Yugoslavia (345) from 1918 until 2006.
+  '340':
+    - { until: 1918-11-30, flag: rs-1882 }
+    - { until: 2006-06-02 }
+    - { flag: rs }
+  '341':
+    - { until: 1918-11-26, flag: me-1905 }
+    - { until: 2006-06-02 }
+    - { flag: me }
+  '343':
+    - { until: 1995-10-04, flag: mk-1992 }
+    - { flag: mk }
+  '344': [{ flag: hr }]
+  '345':
+    - { until: 1945-11-28, flag: yu-1918 }
+    - { until: 1992-04-26, flag: yu-1946 }
+    - { flag: yu-1992 }
+  '346':
+    - { until: 1998-02-03, flag: ba-1992 }
+    - { flag: ba }
+  '347': [{ flag: xk }]
+  '349': [{ flag: si }]
+  # The white-cross flag was the national flag on land until 1978; the striped one was used at sea.
+  '350':
+    - { until: 1978-12-21, flag: gr-1822 }
+    - { flag: gr }
+  '352':
+    - { until: 1960-08-15 }
+    - { flag: cy }
+  # Simplified: the 1946–1948 and 1967–1971 emblem variants are not listed yet.
+  '355':
+    - { until: 1946-09-14, flag: bg }
+    - { until: 1971-05-17, flag: bg-1948 }
+    - { until: 1990-11-21, flag: bg-1971 }
+    - { flag: bg }
+  '359': [{ flag: md }]
+  '360':
+    - { until: 1947-12-29, flag: ro }
+    - { until: 1952-09-23, flag: ro-1948 }
+    - { until: 1965-08-20, flag: ro-1952 }
+    - { until: 1989-12-21, flag: ro-1965 }
+    - { flag: ro }
+  '365':
+    - { until: 1918-04-07, flag: ru }
+    - { until: 1923-11-11, flag: ru-1918 }
+    - { until: 1955-08-18, flag: su-1923 }
+    - { until: 1991-12-25, flag: su }
+    - { flag: ru }
+  '366': [{ flag: ee }]
+  '367': [{ flag: lv }]
+  '368': [{ flag: lt }]
+  '369': [{ flag: ua }]
+  '370':
+    - { until: 1995-06-06, flag: by-1991 }
+    - { flag: by }
+  '371': [{ flag: am }]
+  '372':
+    - { until: 2004-01-13, flag: ge-1990 }
+    - { flag: ge }
+  '373': [{ flag: az }]
+  '375': [{ flag: fi }]
+  '380':
+    - { until: 1905-10-31, flag: se-1844 }
+    - { flag: se }
+  '385': [{ flag: 'no' }]
+  '390': [{ flag: dk }]
+  '395':
+    - { until: 1918-11-30 }
+    - { flag: is }
+  '600':
+    - { until: 1915-11-16 }
+    - { flag: ma }
+  '615':
+    - { until: 1962-07-04 }
+    - { flag: dz }
+  '616': [{ flag: tn }]
+  '620':
+    - { until: 1951-12-23 }
+    - { until: 1969-08-31, flag: ly-1951 }
+    - { until: 1971-12-31, flag: ly-1969 }
+    - { until: 1977-11-10, flag: ly-1972 }
+    - { until: 2011-09-15, flag: ly-1977 }
+    - { flag: ly }
+  '630':
+    - { until: 1980-07-28 }
+    - { flag: ir }
+  '640':
+    - { until: 1922-10-31, flag: ot }
+    - { flag: tr }
+  '660':
+    - { until: 1943-12-06 }
+    - { flag: lb }
+  '663':
+    - { until: 1928-04-15 }
+    - { flag: jo }
+  '666': [{ flag: il }]
+  '670': [{ flag: sa }]
+  '690':
+    - { until: 1961-09-06 }
+    - { flag: kw }
+  '701': [{ flag: tm }]
+  '702': [{ flag: tj }]
+  '704': [{ flag: uz }]
+  '705': [{ flag: kz }]

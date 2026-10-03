@@ -6,8 +6,8 @@ import {
   conflictSchema,
   countryNamesSchema,
   eventSchema,
+  flagsSchema,
   type Conflict,
-  type CountryNames,
   type HistoricalEvent,
   type LocalizedText,
   type WikipediaTitles,
@@ -23,7 +23,7 @@ const conflictFiles = import.meta.glob<string>('/content/conflicts/*.yaml', {
   import: 'default',
   eager: true,
 })
-const countryFiles = import.meta.glob<string>('/content/countries.yaml', {
+const singleFiles = import.meta.glob<string>(['/content/countries.yaml', '/content/flags.yaml'], {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -50,12 +50,15 @@ function loadCollection<T>(files: Record<string, string>, schema: z.ZodType<T>) 
   return items
 }
 
-function loadCountryNames(): CountryNames {
-  const raw = Object.values(countryFiles)[0] ?? '{}'
-  const result = countryNamesSchema.safeParse(parse(raw))
-  if (result.success) return result.data
-  contentErrors.push(`/content/countries.yaml\n${z.prettifyError(result.error)}`)
-  return {}
+function loadFile<T>(path: string, schema: z.ZodType<T>, fallback: T): T {
+  try {
+    const result = schema.safeParse(parse(singleFiles[path] ?? ''))
+    if (result.success) return result.data
+    contentErrors.push(`${path}\n${z.prettifyError(result.error)}`)
+  } catch (error) {
+    contentErrors.push(`${path}\n${String(error)}`)
+  }
+  return fallback
 }
 
 export const EVENTS: HistoricalEvent[] = loadCollection(eventFiles, eventSchema).sort((a, b) =>
@@ -64,7 +67,8 @@ export const EVENTS: HistoricalEvent[] = loadCollection(eventFiles, eventSchema)
 export const CONFLICTS: Conflict[] = loadCollection(conflictFiles, conflictSchema).sort((a, b) =>
   a.start.localeCompare(b.start),
 )
-export const COUNTRY_NAMES = loadCountryNames()
+export const COUNTRY_NAMES = loadFile('/content/countries.yaml', countryNamesSchema, {})
+export const FLAGS = loadFile('/content/flags.yaml', flagsSchema, { catalogue: {}, states: {} })
 
 if (contentErrors.length > 0)
   console.error('Invalid content files:\n\n' + contentErrors.join('\n\n'))

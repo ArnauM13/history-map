@@ -148,7 +148,7 @@ function buildLabels(topo) {
           f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates
         const largest = polygons.reduce((a, b) => (ringArea(b[0]) > ringArea(a[0]) ? b : a))
         const [x, y] = polylabel(largest, 0.05)
-        const { gwcode, country_name, status, owner, s, e } = f.properties
+        const { gwcode, country_name, status, owner, s, e, capname } = f.properties
         return {
           type: 'Feature',
           geometry: { type: 'Point', coordinates: [+x.toFixed(3), +y.toFixed(3)] },
@@ -160,6 +160,7 @@ function buildLabels(topo) {
             owner,
             s,
             e,
+            capname,
             rank: -Math.round(ringArea(largest[0])),
           },
         }

@@ -1,16 +1,16 @@
-import type { FeatureCollection, Point } from 'geojson'
 import * as maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 // MapLibre locates its worker next to its own module, which breaks once bundled: let Vite emit it.
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { useEffect, useRef, useState } from 'react'
-import { feature } from 'topojson-client'
-import type { GeometryCollection, Topology } from 'topojson-specification'
 import { countryName } from '../content'
+import { flagOn } from '../content/flags'
 import type { Conflict, HistoricalEvent } from '../content/schema'
 import { useI18n } from '../i18n'
 import { toDateNumber, type IsoDate } from '../lib/date'
 import type { BorderProperties, Selection } from '../selection'
+import { featuresOn, loadBorderData, type LabelCollection } from './data'
+import { ensureFlagImage } from './flagImages'
 import { EUROPE_BOUNDS, MAX_BOUNDS, createStyle, validOn } from './style'
 
 const ATTRIBUTION =
@@ -18,10 +18,9 @@ const ATTRIBUTION =
 
 maplibregl.setWorkerUrl(workerUrl)
 
-type LabelCollection = FeatureCollection<Point, BorderProperties>
-
 interface Props {
   date: IsoDate
+  showFlags: boolean
   events: HistoricalEvent[]
   conflicts: Conflict[]
   selection: Selection | null
@@ -30,17 +29,7 @@ interface Props {
 
 const geojson = (map: maplibregl.Map, id: string) => map.getSource(id) as maplibregl.GeoJSONSource
 
-async function loadData() {
-  const base = import.meta.env.BASE_URL
-  const [topo, labels] = await Promise.all([
-    fetch(`${base}data/borders.topo.json`).then((r) => r.json() as Promise<Topology>),
-    fetch(`${base}data/labels.geojson`).then((r) => r.json() as Promise<LabelCollection>),
-  ])
-  const borders = feature(topo, topo.objects.borders as GeometryCollection) as FeatureCollection
-  return { borders, labels }
-}
-
-export function MapView({ date, events, conflicts, selection, onSelect }: Props) {
+export function MapView({ date, showFlags, events, conflicts, selection, onSelect }: Props) {
   const { lang, t } = useI18n()
   const container = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
@@ -95,7 +84,7 @@ export function MapView({ date, events, conflicts, selection, onSelect }: Props)
     })
 
     const styleReady = new Promise((resolve) => map.once('load', resolve))
-    Promise.all([loadData(), styleReady])
+    Promise.all([loadBorderData(), styleReady])
       .then(([{ borders, labels }]) => {
         if (mapRef.current !== map) return
         geojson(map, 'borders').setData(borders)
@@ -122,25 +111,43 @@ export function MapView({ date, events, conflicts, selection, onSelect }: Props)
     map.setFilter('borders-line', filter)
   }, [date, status])
 
-  // Labels, with the name each state had on that date.
+  // Labels, with the name (and flag) each state had on that date.
   useEffect(() => {
     const map = mapRef.current
     const labels = labelsRef.current
     if (!map || !labels || status !== 'ready') return
-    const d = toDateNumber(date)
-    geojson(map, 'labels').setData({
-      type: 'FeatureCollection',
-      features: labels.features
-        .filter((f) => f.properties.s <= d && d <= f.properties.e)
-        .map((f) => ({
-          ...f,
-          properties: {
-            ...f.properties,
-            name: countryName(f.properties.gwcode, date, lang, f.properties.country_name),
-          },
-        })),
+    let cancelled = false
+    const features = featuresOn(labels, toDateNumber(date)).map((f) => ({
+      ...f,
+      properties: {
+        ...f.properties,
+        name: countryName(f.properties.gwcode, date, lang, f.properties.country_name),
+      },
+    }))
+    const flags = new Map<number, string>()
+    if (showFlags) {
+      for (const f of features) {
+        const flag = flagOn(f.properties.gwcode, date)?.flag
+        if (flag) flags.set(f.properties.gwcode, flag)
+      }
+    }
+    const ids = [...new Set(flags.values())]
+    Promise.all(ids.map((id) => ensureFlagImage(map, id))).then((loaded) => {
+      if (cancelled) return
+      const available = new Set(ids.filter((_, i) => loaded[i]))
+      geojson(map, 'labels').setData({
+        type: 'FeatureCollection',
+        features: features.map((f) => {
+          const flag = flags.get(f.properties.gwcode)
+          // Only set `flag` when the image exists: the style checks it with ['has', 'flag'].
+          return flag && available.has(flag) ? { ...f, properties: { ...f.properties, flag } } : f
+        }),
+      })
     })
-  }, [date, lang, status])
+    return () => {
+      cancelled = true
+    }
+  }, [date, lang, showFlags, status])
 
   // Outline of the selected state.
   useEffect(() => {

@@ -1,35 +1,130 @@
-import type { ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { CONFLICTS, EVENTS, countryName, localize, wikipediaUrl } from '../content'
+import { commonsUrl, flagHistory, flagOn, loadFlagCredits, type FlagCredit } from '../content/flags'
 import type { Conflict, HistoricalEvent } from '../content/schema'
 import { useI18n } from '../i18n'
-import { formatDate, formatDateNumber, yearOf, type IsoDate } from '../lib/date'
+import {
+  MIN_DATE,
+  formatDate,
+  formatDateNumber,
+  fromDateNumber,
+  yearOf,
+  type IsoDate,
+} from '../lib/date'
+import { stateOn, type LabelCollection } from '../map/data'
 import { REPO_URL, type BorderProperties, type Selection } from '../selection'
+import { Flag } from './Flag'
+import { FlagGallery } from './FlagGallery'
 import { Icon } from './Icon'
+
+export type SidebarTab = 'flags' | 'history'
 
 interface Props {
   date: IsoDate
+  tab: SidebarTab
+  labels: LabelCollection | null
   selection: Selection | null
   yearEvents: HistoricalEvent[]
   conflicts: Conflict[]
+  onTabChange: (tab: SidebarTab) => void
   onSelect: (selection: Selection | null) => void
   onGoToEvent: (event: HistoricalEvent) => void
+  onGoToDate: (date: IsoDate) => void
 }
 
-export function Sidebar({ date, selection, yearEvents, conflicts, onSelect, onGoToEvent }: Props) {
+export function Sidebar({
+  date,
+  tab,
+  labels,
+  selection,
+  yearEvents,
+  conflicts,
+  onTabChange,
+  onSelect,
+  onGoToEvent,
+  onGoToDate,
+}: Props) {
+  const { t } = useI18n()
+  const tabs: [SidebarTab, string][] = [
+    ['flags', t('tabFlags')],
+    ['history', t('tabHistory')],
+  ]
+
+  return (
+    <aside className="sidebar">
+      <div className="tabs" role="tablist">
+        {tabs.map(([id, label]) => (
+          <button
+            key={id}
+            type="button"
+            role="tab"
+            id={`tab-${id}`}
+            aria-selected={tab === id}
+            aria-controls="sidebar-panel"
+            onClick={() => onTabChange(id)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {selection && (
+        <Detail
+          date={date}
+          labels={labels}
+          selection={selection}
+          onClose={() => onSelect(null)}
+          onGoToEvent={onGoToEvent}
+          onGoToDate={onGoToDate}
+        />
+      )}
+
+      <div id="sidebar-panel" role="tabpanel" aria-labelledby={`tab-${tab}`} className="panel">
+        {tab === 'flags' ? (
+          <FlagGallery
+            date={date}
+            labels={labels}
+            selectedGwcode={selection?.kind === 'country' ? selection.feature.gwcode : undefined}
+            onSelectCountry={(feature) => onSelect({ kind: 'country', feature })}
+            onGoToDate={onGoToDate}
+          />
+        ) : (
+          <HistoryPanel
+            date={date}
+            selection={selection}
+            yearEvents={yearEvents}
+            conflicts={conflicts}
+            onSelect={onSelect}
+            onGoToEvent={onGoToEvent}
+          />
+        )}
+      </div>
+
+      <footer className="sidebar-footer">
+        <a href={`${REPO_URL}/blob/main/docs/DATA.md`} target="_blank" rel="noopener">
+          {t('sources')}
+        </a>
+        <a href={REPO_URL} target="_blank" rel="noopener">
+          {t('sourceCode')}
+        </a>
+      </footer>
+    </aside>
+  )
+}
+
+function HistoryPanel({
+  date,
+  selection,
+  yearEvents,
+  conflicts,
+  onSelect,
+  onGoToEvent,
+}: Pick<Props, 'date' | 'selection' | 'yearEvents' | 'conflicts' | 'onSelect' | 'onGoToEvent'>) {
   const { lang, t } = useI18n()
   const year = yearOf(date)
 
   return (
-    <aside className="sidebar">
-      {selection && (
-        <Detail
-          date={date}
-          selection={selection}
-          onClose={() => onSelect(null)}
-          onGoToEvent={onGoToEvent}
-        />
-      )}
-
+    <>
       <section>
         <h2>{t('activeConflicts')}</h2>
         {conflicts.length === 0 ? (
@@ -80,16 +175,7 @@ export function Sidebar({ date, selection, yearEvents, conflicts, onSelect, onGo
           </ul>
         )}
       </section>
-
-      <footer className="sidebar-footer">
-        <a href={`${REPO_URL}/blob/main/docs/DATA.md`} target="_blank" rel="noopener">
-          {t('sources')}
-        </a>
-        <a href={REPO_URL} target="_blank" rel="noopener">
-          {t('sourceCode')}
-        </a>
-      </footer>
-    </aside>
+    </>
   )
 }
 
@@ -98,16 +184,27 @@ const conflictPeriod = (c: Conflict, lang: string, ongoing: string) =>
 
 interface DetailProps {
   date: IsoDate
+  labels: LabelCollection | null
   selection: Selection
   onClose: () => void
   onGoToEvent: (event: HistoricalEvent) => void
+  onGoToDate: (date: IsoDate) => void
 }
 
-function Detail({ date, selection, onClose, onGoToEvent }: DetailProps) {
+function Detail({ date, labels, selection, onClose, onGoToEvent, onGoToDate }: DetailProps) {
   const { t } = useI18n()
   let content: ReactNode = null
   if (selection.kind === 'country') {
-    content = <CountryDetail date={date} feature={selection.feature} onGoToEvent={onGoToEvent} />
+    content = (
+      <CountryDetail
+        date={date}
+        labels={labels}
+        // The state's borders on the current date, if it still exists then.
+        feature={stateOn(labels, selection.feature.gwcode, date) ?? selection.feature}
+        onGoToEvent={onGoToEvent}
+        onGoToDate={onGoToDate}
+      />
+    )
   } else if (selection.kind === 'event') {
     const event = EVENTS.find((e) => e.id === selection.id)
     if (event) content = <EventDetail event={event} />
@@ -134,12 +231,16 @@ function Detail({ date, selection, onClose, onGoToEvent }: DetailProps) {
 
 function CountryDetail({
   date,
+  labels,
   feature,
   onGoToEvent,
+  onGoToDate,
 }: {
   date: IsoDate
+  labels: LabelCollection | null
   feature: BorderProperties
   onGoToEvent: (event: HistoricalEvent) => void
+  onGoToDate: (date: IsoDate) => void
 }) {
   const { lang, t } = useI18n()
   const name = countryName(feature.gwcode, date, lang, feature.country_name)
@@ -147,11 +248,27 @@ function CountryDetail({
     feature.status !== 'independent' && feature.owner && feature.owner !== String(feature.gwcode)
   const statusKey = `status.${feature.status}` as Parameters<typeof t>[0]
   const related = EVENTS.filter((e) => e.countries.includes(feature.gwcode))
+  const current = flagOn(feature.gwcode, date)
+  const history = flagHistory(feature.gwcode).filter((p) => p.flag !== undefined)
+  // Where to jump for a flag whose first day is unknown: when the state first appears.
+  const firstSeen = labels?.features
+    .filter((f) => f.properties.gwcode === feature.gwcode)
+    .reduce((min, f) => Math.min(min, f.properties.s), Infinity)
+  const firstDate =
+    firstSeen && firstSeen !== Infinity && fromDateNumber(firstSeen) > MIN_DATE
+      ? fromDateNumber(firstSeen)
+      : MIN_DATE
 
   return (
     <>
       <p className="detail-kicker">{t('country')}</p>
       <h2 className="detail-title">{name}</h2>
+      {current && (
+        <figure className="detail-flag">
+          <Flag id={current.flag} size="lg" label={name} />
+          {current.flag && <FlagCaption id={current.flag} />}
+        </figure>
+      )}
       <dl className="facts">
         <dt>{t('status')}</dt>
         <dd>{t(statusKey)}</dd>
@@ -173,6 +290,27 @@ function CountryDetail({
           {formatDateNumber(feature.e, lang, t('present'))}
         </dd>
       </dl>
+      {history.length > 1 && (
+        <>
+          <h3>{t('flagHistory')}</h3>
+          <ul className="flag-history">
+            {history.map((p) => (
+              <li key={p.from ?? 'first'}>
+                <button
+                  type="button"
+                  aria-current={p === current}
+                  onClick={() => onGoToDate(p.from ?? firstDate)}
+                >
+                  <Flag id={p.flag} size="sm" label={name} />
+                  <span>
+                    {p.from ? yearOf(p.from) : '…'} – {p.until ? yearOf(p.until) : t('present')}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
       {related.length > 0 && (
         <>
           <h3>{t('relatedEvents')}</h3>
@@ -221,6 +359,28 @@ function ConflictDetail({ conflict }: { conflict: Conflict }) {
       <p>{localize(conflict.summary, lang)}</p>
       {link && <ReadMore href={link} />}
     </>
+  )
+}
+
+/** Source and licence of a flag image (images come from Wikimedia Commons). */
+function FlagCaption({ id }: { id: string }) {
+  const { t } = useI18n()
+  const [credit, setCredit] = useState<FlagCredit | undefined>()
+  useEffect(() => {
+    let active = true
+    loadFlagCredits().then((credits) => active && setCredit(credits[id]))
+    return () => {
+      active = false
+    }
+  }, [id])
+  return (
+    <figcaption>
+      {t('imageSource')}:{' '}
+      <a href={commonsUrl(id)} target="_blank" rel="noopener">
+        Wikimedia Commons
+      </a>
+      {credit?.license && ` · ${credit.license}`}
+    </figcaption>
   )
 }
 

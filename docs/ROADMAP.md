@@ -3,7 +3,7 @@
 The goal is a map where anyone can **see how Europe changed** and **understand why**. Borders
 are the canvas; the value is in the history told on top of them.
 
-Scope for now: **Europe, 1900 – today**. Earlier periods may come later (see phase 4).
+Scope for now: **Europe, 1900 – today**. Earlier periods may come later (see phase 5).
 
 ## Phase 0 — Foundations ✅
 
@@ -16,7 +16,20 @@ Scope for now: **Europe, 1900 – today**. Earlier periods may come later (see p
 - [x] Trilingual UI (ca / es / en) and shareable URLs.
 - [x] CI (lint, format, types, tests, build) and deployment to GitHub Pages.
 
-## Phase 1 — A complete first version
+## Phase 1 — Flags 🏳️ (in progress)
+
+- [x] Chronology of national flags for ~70 states (`content/flags.yaml`), images from
+      Wikimedia Commons downloaded automatically by a GitHub workflow.
+- [x] Flags on the map, next to each state's name (can be switched off).
+- [x] Flag gallery for any date, with the flags adopted that year.
+- [x] Each state's card shows its flag and all the flags it used over time.
+- [ ] Complete the simplified periods (see [DATA.md](DATA.md#flags-wikimedia-commons)) and the
+      states at the map edges (Egypt, Syria, Iraq…).
+- [ ] A short text per flag: what it means and why it changed (e.g. Spain 1931, Germany 1919).
+- [ ] Flags of colonies, protectorates and short-lived states.
+- [ ] "Flag quiz" mode: guess the state from its flag on a given date.
+
+## Phase 2 — A complete first version
 
 Content
 
@@ -33,7 +46,7 @@ Experience
 - [ ] Keyboard shortcuts and an accessibility review (contrast, screen readers).
 - [ ] Translated map attribution and a proper "About / sources" page.
 
-## Phase 2 — The de facto layer (the big data task)
+## Phase 3 — The de facto layer (the big data task)
 
 CShapes, like most border datasets, records borders **settled by treaties** and ignores military
 occupations. That is a sound basis, but it leaves out much of what makes the 20th century
@@ -52,7 +65,7 @@ facto_ control:
       (GPL-3.0), Natural Earth disputed areas (public domain), manual digitisation from
       public-domain maps.
 
-## Phase 3 — More ways to read the map
+## Phase 4 — More ways to read the map
 
 - [ ] **Alliances and blocs** colour mode: Triple Entente vs Central Powers, Allies vs Axis,
       NATO vs Warsaw Pact, EEC/EU membership over time.
@@ -61,7 +74,7 @@ facto_ control:
 - [ ] Internal divisions where they matter (Soviet and Yugoslav republics, German states).
 - [ ] Quiz / classroom mode for teachers.
 
-## Phase 4 — Beyond
+## Phase 5 — Beyond
 
 - [ ] Extend back to the 19th century (CShapes starts in 1886; other sources for 1815 – 1886).
 - [ ] Vector tiles (PMTiles) if the data grows beyond what a single file can hold.

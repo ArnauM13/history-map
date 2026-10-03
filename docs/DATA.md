@@ -3,12 +3,13 @@
 History Map combines data from different sources, each with its own licence. **If you reuse
 anything from this repository, check the licence of that specific part.**
 
-| Part                               | Source                                                                     | Licence         |
-| ---------------------------------- | -------------------------------------------------------------------------- | --------------- |
-| Code (`src/`, `scripts/`…)         | This project                                                               | MIT             |
-| Texts (`content/`)                 | This project's contributors                                                | CC BY-SA 4.0    |
-| Borders (`public/data/`)           | CShapes 2.0, processed by this project                                     | CC BY-NC-SA 4.0 |
-| Map label glyphs (`public/fonts/`) | Open Sans, via [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0      |
+| Part                               | Source                                                                     | Licence              |
+| ---------------------------------- | -------------------------------------------------------------------------- | -------------------- |
+| Code (`src/`, `scripts/`…)         | This project                                                               | MIT                  |
+| Texts (`content/`)                 | This project's contributors                                                | CC BY-SA 4.0         |
+| Borders (`public/data/`)           | CShapes 2.0, processed by this project                                     | CC BY-NC-SA 4.0      |
+| Flags (`public/flags/`)            | Wikimedia Commons                                                          | Per image, see below |
+| Map label glyphs (`public/fonts/`) | Open Sans, via [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0           |
 
 ## Borders: CShapes 2.0
 
@@ -40,7 +41,7 @@ dependent territories (colonies, protectorates, mandates, occupied territories) 
   the Munich Agreement and the Vienna Awards (1938, 1940), the Soviet annexations of 1940 — but
   not territory taken by force. So between 1938 and 1945 the map still shows Austria,
   Bohemia-Moravia and Poland, and none of the Axis occupations. This is the main gap to close
-  (see "Phase 2" in the [roadmap](ROADMAP.md)); in the meantime, events and conflicts explain
+  (see "Phase 3" in the [roadmap](ROADMAP.md)); in the meantime, events and conflicts explain
   what happened.
 - **No microstates**: Andorra, Liechtenstein, Monaco, San Marino and Vatican City are not part of
   CShapes.
@@ -50,6 +51,25 @@ dependent territories (colonies, protectorates, mandates, occupied territories) 
 - **Data ends in 2019.** We assume no recognised border in Europe has changed since; changes
   after 2019 will be added by hand.
 - **Simplified geometry**: fine for a continental view, not for measuring distances or areas.
+
+## Flags: Wikimedia Commons
+
+`content/flags.yaml` is the project's own chronology of national flags (which flag each state used
+and when). The images are downloaded from [Wikimedia Commons](https://commons.wikimedia.org/) by
+`npm run data:flags`, or automatically by the **Flags** GitHub workflow whenever that file
+changes.
+
+- **Licences**: most flag images are in the public domain (flags are usually not eligible for
+  copyright, or their copyright has expired). Some drawings of coats of arms are under free
+  licences such as CC BY-SA. The licence and author of every image are recorded in
+  `public/flags/credits.json` and shown in the app next to the flag.
+- **Dates** are those of official adoption, or of first use when that was earlier.
+- **Simplifications**, marked with comments in the YAML file: several short-lived variants are
+  not listed yet (e.g. Albania 1914–1946, Bulgaria 1946–1948 and 1967–1971, Hungary 1918–1919
+  and 1956–1957, Finland's red lion flag of 1917–1918). Colonies, protectorates and mandates have
+  no flag yet. Germany under Allied occupation (1945–1949) is shown as having no national flag.
+- **Displaying historical flags** — including those of the Nazi and Soviet regimes — is done for
+  educational and historical purposes, in their historical context.
 
 ## Historical content
 

@@ -4,7 +4,7 @@ Thank you for helping! There are three main ways to contribute:
 
 1. **Historical content** — events, conflicts, state names. No programming needed.
 2. **Data** — fixing borders, adding occupied/disputed territories (see the
-   [roadmap](docs/ROADMAP.md), phase 2).
+   [roadmap](docs/ROADMAP.md), phase 3).
 3. **Code** — features, design, accessibility, performance.
 
 Not sure where to start? Look for issues labelled `good first issue` or `content`, or open an
@@ -74,6 +74,29 @@ location: [-3.7, 40.4] # required: a representative point of the main theatre
 - **Languages.** Ideally Catalan, Spanish and English. At least one is required; missing
   translations fall back to another language, and others can complete them later.
 - **Own words.** Don't copy text from other sites. Texts are published under CC BY-SA 4.0.
+
+## Flags
+
+`content/flags.yaml` has two parts:
+
+```yaml
+catalogue: # id → file name on Wikimedia Commons
+  es-1931: Flag of Spain (1931–1939).svg
+
+states: # Gleditsch & Ward code → flags in chronological order
+  '230':
+    - { until: 1931-04-13, flag: es-1785 } # until = last day the flag was in use
+    - { until: 1939-03-31, flag: es-1931 }
+    - { flag: es } # the last entry has no `until`
+```
+
+- Use the exact file name from the flag's page on Wikimedia Commons (the title after `File:`).
+- `flag: null` means the state had no flag of its own on those dates; an entry without `flag`
+  means "not documented yet".
+- You don't need to download anything: when your change reaches GitHub, the **Flags** workflow
+  downloads the images into `public/flags/` and commits them. Locally, `npm run data:flags`
+  does the same.
+- Cite your source for the dates in the pull request.
 
 ## Country names
 

@@ -1,0 +1,46 @@
+# Downloads the flags listed in content/flags.yaml from Wikimedia Commons and commits them,
+# so contributors only need to edit the YAML file.
+name: Flags
+
+on:
+  push:
+    paths:
+      - content/flags.yaml
+      - scripts/fetch-flags.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flags-${{ github.ref }}
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - id: fetch
+        run: npm run data:flags
+        continue-on-error: true
+      - name: Commit downloaded flags
+        run: |
+          git add public/flags
+          if git diff --cached --quiet; then
+            echo "Flags already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Fetch flags from Wikimedia Commons"
+          git push
+      - name: Report flags that could not be found
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "::error::Some flags were not found on Wikimedia Commons. See the 'fetch' step log."
+          exit 1

@@ -13,6 +13,11 @@ const pad = (n: number) => String(n).padStart(2, '0')
 
 export const toDateNumber = (iso: IsoDate) => Number(iso.replaceAll('-', ''))
 
+export const fromDateNumber = (value: number): IsoDate => {
+  const s = String(value)
+  return `${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`
+}
+
 export const isValidIsoDate = (value: string) => /^\d{4}-\d{2}-\d{2}$/.test(value)
 
 export const yearOf = (iso: IsoDate) => Number(iso.slice(0, 4))
@@ -29,6 +34,11 @@ export function monthIndex(iso: IsoDate): number {
 
 export function fromMonthIndex(index: number): IsoDate {
   return `${FIRST_YEAR + Math.floor(index / 12)}-${pad((index % 12) + 1)}-01`
+}
+
+export function addDays(iso: IsoDate, days: number): IsoDate {
+  const [y, m, d] = iso.split('-').map(Number)
+  return new Date(Date.UTC(y, m - 1, d + days)).toISOString().slice(0, 10)
 }
 
 export const clampDate = (iso: IsoDate, max: IsoDate): IsoDate =>
@@ -56,6 +66,5 @@ export function formatDate(iso: IsoDate, locale: string, precision: Precision = 
 /** Formats a YYYYMMDD number from the border data. */
 export function formatDateNumber(value: number, locale: string, openLabel: string): string {
   if (value >= OPEN_END) return openLabel
-  const s = String(value)
-  return formatDate(`${s.slice(0, 4)}-${s.slice(4, 6)}-${s.slice(6, 8)}`, locale)
+  return formatDate(fromDateNumber(value), locale)
 }

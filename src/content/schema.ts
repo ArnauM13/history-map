@@ -78,8 +78,25 @@ export const countryNamesSchema = z.record(
   z.union([localizedText, z.array(nameEntry).min(1)]),
 )
 
+const flagId = z.string().regex(/^[a-z0-9-]+$/, 'Flag ids use lowercase letters, digits and dashes')
+
+const flagEntry = z.strictObject({
+  /** Last day (inclusive) this flag was in use. Omit on the last entry. */
+  until: isoDate.optional(),
+  /** Catalogue id; `null` = no flag of its own; omitted = not documented yet. */
+  flag: flagId.nullable().optional(),
+})
+
+export const flagsSchema = z.strictObject({
+  /** Flag id → file name on Wikimedia Commons. */
+  catalogue: z.record(flagId, z.string().regex(/\.svg$/, 'Expected an SVG file name')),
+  /** Gleditsch & Ward code → flags in chronological order. */
+  states: z.record(z.string().regex(/^\d+$/), z.array(flagEntry).min(1)),
+})
+
 export type LocalizedText = z.infer<typeof localizedText>
 export type WikipediaTitles = z.infer<typeof wikipedia>
 export type HistoricalEvent = z.infer<typeof eventSchema> & { id: string }
 export type Conflict = z.infer<typeof conflictSchema> & { id: string }
 export type CountryNames = z.infer<typeof countryNamesSchema>
+export type Flags = z.infer<typeof flagsSchema>

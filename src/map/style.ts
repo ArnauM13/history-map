@@ -88,7 +88,12 @@ export function createStyle(glyphsUrl: string): StyleSpecification {
         type: 'symbol',
         source: 'labels',
         layout: {
+          'icon-image': ['coalesce', ['get', 'flag'], ''],
+          'icon-anchor': 'bottom',
+          'icon-size': ['interpolate', ['linear'], ['zoom'], 2, 0.75, 5, 1, 7, 1.3],
           'text-field': ['get', 'name'],
+          'text-anchor': ['case', ['has', 'flag'], 'top', 'center'],
+          'text-offset': ['case', ['has', 'flag'], ['literal', [0, 0.2]], ['literal', [0, 0]]],
           'text-font': [
             'case',
             isIndependent,
