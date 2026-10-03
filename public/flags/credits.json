@@ -1,0 +1,505 @@
+{
+  "al": {
+    "file": "Flag of Albania.svg",
+    "license": "Public domain",
+    "artist": "Sadik Kaceli"
+  },
+  "al-1946": {
+    "file": "Flag of Albania (1946–1992).svg",
+    "license": "Public domain",
+    "artist": "Sadik Kaceli"
+  },
+  "am": {
+    "file": "Flag of Armenia.svg",
+    "license": "Public domain",
+    "artist": "Original: Stepan Malkhasyants Vector: SKopp"
+  },
+  "at": {
+    "file": "Flag of Austria.svg",
+    "license": "Public domain",
+    "artist": "Bundesministerium für Landesverteidigung"
+  },
+  "at-hu": {
+    "file": "Flag of Austria-Hungary (1869-1918).svg",
+    "license": "Public domain",
+    "artist": "Vectorization: Sgt_bilko / Original: Željko Heimer"
+  },
+  "az": {
+    "file": "Flag of Azerbaijan.svg",
+    "license": "Public domain",
+    "artist": "SKopp and others"
+  },
+  "ba": {
+    "file": "Flag of Bosnia and Herzegovina.svg",
+    "license": "Public domain",
+    "artist": "Mladen Kolobarić"
+  },
+  "ba-1992": {
+    "file": "Flag of Bosnia and Herzegovina (1992–1998).svg",
+    "license": "Public domain",
+    "artist": "The authors of the final version of the officially adopted flag are Prof. Dr. Enver Imamović and graphic designer Zvonimir Bebek. Other authors from the Working Group prior to the dissolution can be found in the cited sources. The SVG version was created based on official documentation and other relevant sources, as cited above, by LeCorbusierB NRMostar (Reddit username u/LeCorbusierB) and FiliusBosnensis (Reddit username u/filius_bosnensis). It was entirely created from scratch, without using other people’s work. The original author of the previous, i.e. the older version of the flag that had been in use before the change, is Kseferovic. Others later revised his coat of arms on several occasions. See the file history for more information."
+  },
+  "be": {
+    "file": "Flag of Belgium.svg",
+    "license": "Public domain",
+    "artist": "Dbenbenn and others"
+  },
+  "bg": {
+    "file": "Flag of Bulgaria.svg",
+    "license": "Public domain",
+    "artist": "SKopp"
+  },
+  "bg-1948": {
+    "file": "Flag of Bulgaria (1948–1967).svg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Scroch"
+  },
+  "bg-1971": {
+    "file": "Flag of Bulgaria (1971–1990).svg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Scroch"
+  },
+  "by": {
+    "file": "Flag of Belarus.svg",
+    "license": "Public domain",
+    "artist": "See File history below for details."
+  },
+  "by-1991": {
+    "file": "Flag of Belarus (1918, 1991–1995).svg",
+    "license": "Public domain",
+    "artist": "BetacommandBot"
+  },
+  "ch": {
+    "file": "Flag of Switzerland.svg",
+    "license": "Public domain",
+    "artist": "Original: Unknown Vector: User:Marc Mongenet Credits: User:-xfi- User:Zscout370"
+  },
+  "cs-1918": {
+    "file": "Flag of Bohemia.svg",
+    "license": "Public domain",
+    "artist": "No machine-readable author provided. Urmas assumed (based on copyright claims)."
+  },
+  "cy": {
+    "file": "Flag of Cyprus.svg",
+    "license": "Public domain",
+    "artist": "İsmet Güney, SVG by User:Vzb83~commonswiki"
+  },
+  "cz": {
+    "file": "Flag of the Czech Republic.svg",
+    "license": "Public domain",
+    "artist": "Jaroslav Kursa"
+  },
+  "danzig": {
+    "file": "Flag of the Free City of Danzig.svg",
+    "license": "Public domain",
+    "artist": "Mnmazur"
+  },
+  "dd": {
+    "file": "Flag of East Germany.svg",
+    "license": "Public domain",
+    "artist": "Flaggenentwurf: unbekannt diese Datei: Jwnabd"
+  },
+  "de": {
+    "file": "Flag of Germany.svg",
+    "license": "Public domain",
+    "artist": "User:SKopp, User:Madden, and other users"
+  },
+  "de-1867": {
+    "file": "Flag of the German Empire.svg",
+    "license": "Public domain",
+    "artist": "Original: Adolf Soetbeer, Otto von Bismarck Vector: B1mbo, Madden"
+  },
+  "de-1919": {
+    "file": "Flag of Germany (3-2 aspect ratio).svg",
+    "license": "Public domain",
+    "artist": "User:Mmxx"
+  },
+  "de-1933": {
+    "file": "Flag of Germany (1933–1935).svg",
+    "license": "Public domain",
+    "artist": "SeNeKa @ commons (+ Alkari, Illegitimate Barrister, GeMet)R-41 @ ENWP"
+  },
+  "de-1935": {
+    "file": "Flag of Germany (1935–1945).svg",
+    "license": "Public domain",
+    "artist": "German government"
+  },
+  "dk": {
+    "file": "Flag of Denmark.svg",
+    "license": "Public domain",
+    "artist": "Madden and others"
+  },
+  "dz": {
+    "file": "Flag of Algeria.svg",
+    "license": "Public domain",
+    "artist": "Original: National Liberation Front of Algeria Vector: SKopp"
+  },
+  "ee": {
+    "file": "Flag of Estonia.svg",
+    "license": "Public domain",
+    "artist": "Original: Unknown author Vector: SKopp, PeepP and ‍others"
+  },
+  "es": {
+    "file": "Flag of Spain.svg",
+    "license": "Public domain",
+    "artist": "RelShot 263, Echando una mano; earlier version was Pedro A. Gracia Fajardo, escudo de Manual de Imagen Institucional de la Administración General del Estado"
+  },
+  "es-1785": {
+    "file": "Flag of Spain (1785–1873, 1875–1931).svg",
+    "license": "CC BY-SA 3.0",
+    "artist": "previous version User:Ignaciogavira ; current version HansenBCN, designs from SanchoPanzaXXI"
+  },
+  "es-1931": {
+    "file": "Flag of Spain (1931–1939).svg",
+    "license": "CC BY-SA 4.0",
+    "artist": "SanchoPanzaXXI"
+  },
+  "es-1938": {
+    "file": "Flag of Spain (1938–1945).svg",
+    "license": "CC BY-SA 4.0",
+    "artist": "SanchoPanzaXXI"
+  },
+  "es-1945": {
+    "file": "Flag of Spain (1945–1977).svg",
+    "license": "CC BY-SA 4.0",
+    "artist": "SanchoPanzaXXI"
+  },
+  "es-1977": {
+    "file": "Flag of Spain (1977–1981).svg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Miguillen"
+  },
+  "fi": {
+    "file": "Flag of Finland.svg",
+    "license": "Public domain",
+    "artist": "Unknown"
+  },
+  "fr": {
+    "file": "Flag of France.svg",
+    "license": "Public domain",
+    "artist": "Original: Unknown Vector: SKopp"
+  },
+  "gb": {
+    "file": "Flag of the United Kingdom.svg",
+    "license": "Public domain",
+    "artist": "Original: Acts of Union 1800 Vector: Yaddah"
+  },
+  "ge": {
+    "file": "Flag of Georgia.svg",
+    "license": "Public domain",
+    "artist": "Last update by MapGrid SKopp"
+  },
+  "ge-1990": {
+    "file": "Flag of Georgia (1990–2004).svg",
+    "license": "Public domain",
+    "artist": "Jon Harald Søby"
+  },
+  "gr": {
+    "file": "Flag of Greece.svg",
+    "license": "Public domain",
+    "artist": "Unknown authorUnknown author"
+  },
+  "gr-1822": {
+    "file": "Flag of Greece (1822-1978).svg",
+    "license": "Public domain",
+    "artist": "(of code) User:Makaristos"
+  },
+  "hr": {
+    "file": "Flag of Croatia.svg",
+    "license": "Public domain",
+    "artist": "Nightstallion, Elephantus, Neoneo13, Denelson83, Rainman, R-41, Minestrone, Lupo, Zscout370,MaGa (based on Decision of the Parliament)"
+  },
+  "hu": {
+    "file": "Flag of Hungary.svg",
+    "license": "Public domain",
+    "artist": "SKopp"
+  },
+  "hu-1915": {
+    "file": "Flag of Hungary (1915-1918, 1919-1946).svg",
+    "license": "Public domain",
+    "artist": "User:Zscout370, colour correction: User:R-41, current version: Thommy"
+  },
+  "hu-1946": {
+    "file": "Flag of Hungary (1946-1949, 1956-1957).svg",
+    "license": "Public domain",
+    "artist": "Thommy"
+  },
+  "hu-1949": {
+    "file": "Flag of Hungary (1949-1956).svg",
+    "license": "Public domain",
+    "artist": "Thommy"
+  },
+  "ie": {
+    "file": "Flag of Ireland.svg",
+    "license": "Public domain",
+    "artist": "Éire"
+  },
+  "il": {
+    "file": "Flag of Israel.svg",
+    "license": "Public domain",
+    "artist": "Israel Belkind and Fanny Abramovitch (original) “The Provisional Council of State Proclamation of the Flag of the State of Israel” of 25 Tishrei 5709 (28 October 1948) provides the official specification for the design of the Israeli flag. The color of the Magen David and the stripes of the Israeli flag is not precisely specified by the above legislation. The color depicted in the current version of the image is typical of flags used in Israel today, although individual flags can and do vary. The flag legislation officially specifies dimensions of 220 cm × 160 cm. However, the sizes of actual flags vary (although the aspect ratio is usually retained)."
+  },
+  "ir": {
+    "file": "Flag of Iran.svg",
+    "license": "Public domain",
+    "artist": "SVG file: SiBr4Designer: Hamid NadimiConstruction: ISIRI"
+  },
+  "is": {
+    "file": "Flag of Iceland.svg",
+    "license": "Public domain",
+    "artist": "Original: Matthías Þórðarson Vector: Árni Dagur and Magasjukur2"
+  },
+  "it": {
+    "file": "Flag of Italy.svg",
+    "license": "Public domain",
+    "artist": "See below."
+  },
+  "it-1861": {
+    "file": "Flag of Italy (1861–1946).svg",
+    "license": "Public domain",
+    "artist": "F l a n k e r"
+  },
+  "jo": {
+    "file": "Flag of Jordan.svg",
+    "license": "Public domain",
+    "artist": "Unknown"
+  },
+  "kw": {
+    "file": "Flag of Kuwait.svg",
+    "license": "Public domain"
+  },
+  "kz": {
+    "file": "Flag of Kazakhstan.svg",
+    "license": "Public domain",
+    "artist": "Shaken Niyazbekop"
+  },
+  "lb": {
+    "file": "Flag of Lebanon.svg",
+    "license": "Public domain",
+    "artist": "Henri Pharaon"
+  },
+  "lt": {
+    "file": "Flag of Lithuania.svg",
+    "license": "Public domain",
+    "artist": "Original: Jonas Basanavičius, Tadas Daugirdas and Antanas Žmuidzinavičius Vector: SKopp The SVG code is valid. This flag was created with a text editor.Previous version had been created with Inkscape (1930 bytes) f now 14.15% of previous size Please do not replace the simplified code of this file with a version created with Inkscape or any other graphical vector graphics editor"
+  },
+  "lu": {
+    "file": "Flag of Luxembourg.svg",
+    "license": "Public domain",
+    "artist": "Drawn by User:SKopp"
+  },
+  "lv": {
+    "file": "Flag of Latvia.svg",
+    "license": "Public domain",
+    "artist": "Original: Ansis Cīrulis Vector: SKopp"
+  },
+  "ly": {
+    "file": "Flag of Libya.svg",
+    "license": "Public domain",
+    "artist": "Various The SVG code is valid. This vector image was created with a text editor."
+  },
+  "ly-1951": {
+    "file": "Flag of Libya (1951–1969).svg",
+    "license": "Public domain",
+    "artist": "Various The SVG code is valid. This vector image was created with a text editor."
+  },
+  "ly-1969": {
+    "file": "Flag of Libya (1969–1972).svg",
+    "license": "Public domain",
+    "artist": "F l a n k e r"
+  },
+  "ly-1972": {
+    "file": "Flag of Libya (1972–1977).svg",
+    "license": "Public domain",
+    "artist": "TRAJAN 117 This W3C-unspecified vector image was created with Inkscape ."
+  },
+  "ly-1977": {
+    "file": "Flag of Libya (1977–2011).svg",
+    "license": "Public domain",
+    "artist": "Zscout370"
+  },
+  "ma": {
+    "file": "Flag of Morocco.svg",
+    "license": "Public domain",
+    "artist": "Denelson83, Zscout370"
+  },
+  "md": {
+    "file": "Flag of Moldova.svg",
+    "license": "Public domain",
+    "artist": "Gheorghe Vrabie"
+  },
+  "me": {
+    "file": "Flag of Montenegro.svg",
+    "license": "Public domain",
+    "artist": "B1mbo, Froztbyte, Great Brightstar"
+  },
+  "me-1905": {
+    "file": "Flag of the Kingdom of Montenegro.svg",
+    "license": "CC BY-SA 4.0",
+    "artist": "Desemeus"
+  },
+  "mk": {
+    "file": "Flag of North Macedonia.svg",
+    "license": "Public domain",
+    "artist": "User:SKopp, redrawn by User:Gabbe"
+  },
+  "mk-1992": {
+    "file": "Flag of North Macedonia (1992–1995).svg",
+    "license": "Public domain",
+    "artist": "Mysid"
+  },
+  "mt": {
+    "file": "Flag of Malta.svg",
+    "license": "Public domain",
+    "artist": "See File history below for details."
+  },
+  "nl": {
+    "file": "Flag of the Netherlands.svg",
+    "license": "Public domain",
+    "artist": "Zscout370"
+  },
+  "no": {
+    "file": "Flag of Norway.svg",
+    "license": "Public domain",
+    "artist": "Original: Fredrik Meltzer Vector: Gutten på Hemsen"
+  },
+  "ot": {
+    "file": "Flag of the Ottoman Empire (1844–1922).svg",
+    "license": "Public domain",
+    "artist": "User:Orwellianist"
+  },
+  "pl": {
+    "file": "Flag of Poland.svg",
+    "license": "Public domain",
+    "artist": "See below."
+  },
+  "pt": {
+    "file": "Flag of Portugal.svg",
+    "license": "Public domain",
+    "artist": "Original: Columbano Bordalo Pinheiro (1910; generic design) Vector: Vítor Luís Rodrigues; António Martins-Tuválkin (2004; this specific vector set: see sources)"
+  },
+  "pt-1830": {
+    "file": "Flag of Portugal (1830).svg",
+    "license": "Public domain",
+    "artist": "Tonyjeff, based on ancient national symbol."
+  },
+  "ro": {
+    "file": "Flag of Romania.svg",
+    "license": "Public domain",
+    "artist": "AdiJapan"
+  },
+  "ro-1948": {
+    "file": "Flag of Romania (1948–1952).svg",
+    "license": "Public domain",
+    "artist": "Various, see File History below for details."
+  },
+  "ro-1952": {
+    "file": "Flag of Romania (1952–1965).svg",
+    "license": "Public domain",
+    "artist": "Various, see File History below for details."
+  },
+  "ro-1965": {
+    "file": "Flag of Romania (1965–1989).svg",
+    "license": "Public domain",
+    "artist": "Various, see File History below for details."
+  },
+  "rs": {
+    "file": "Flag of Serbia.svg",
+    "license": "Public domain",
+    "artist": "See File history below for details."
+  },
+  "rs-1882": {
+    "file": "State Flag of Serbia (1882-1918).svg",
+    "license": "CC BY-SA 3.0",
+    "artist": "Guilherme Paula"
+  },
+  "ru": {
+    "file": "Flag of Russia.svg",
+    "license": "Public domain",
+    "artist": "Peter the Great"
+  },
+  "ru-1918": {
+    "file": "Flag of the Russian Soviet Federative Socialist Republic (1918–1937).svg",
+    "license": "Public domain",
+    "artist": "Sergey Chekhonin"
+  },
+  "sa": {
+    "file": "Flag of Saudi Arabia.svg",
+    "license": "Public domain",
+    "artist": "The Shura Council"
+  },
+  "se": {
+    "file": "Flag of Sweden.svg",
+    "license": "Public domain",
+    "artist": "Jon Harald Søby and others."
+  },
+  "si": {
+    "file": "Flag of Slovenia.svg",
+    "license": "Public domain",
+    "artist": "Original: Marko Pogačnik Vector: Achim1999"
+  },
+  "sk": {
+    "file": "Flag of Slovakia.svg",
+    "license": "Public domain",
+    "artist": "Original: Ladislav Čisárik and Ladislav Vrtel Vector: SKopp"
+  },
+  "su": {
+    "file": "Flag of the Soviet Union.svg",
+    "license": "Public domain",
+    "artist": "СССР"
+  },
+  "su-1923": {
+    "file": "Flag of the Soviet Union (1923–1955).svg",
+    "license": "Public domain",
+    "artist": "created by rotemliss from Image:Flag of the Soviet Union.svg."
+  },
+  "tj": {
+    "file": "Flag of Tajikistan.svg",
+    "license": "Public domain",
+    "artist": "Unknown authorUnknown author"
+  },
+  "tm": {
+    "file": "Flag of Turkmenistan.svg",
+    "license": "Public domain"
+  },
+  "tn": {
+    "file": "Flag of Tunisia.svg",
+    "license": "Public domain",
+    "artist": "Various Wikimedia Commons' contributors"
+  },
+  "tr": {
+    "file": "Flag of Turkey.svg",
+    "license": "Public domain",
+    "artist": "David Benbennick (original author)"
+  },
+  "ua": {
+    "file": "Flag of Ukraine.svg",
+    "license": "Public domain",
+    "artist": "Government of Ukraine"
+  },
+  "uz": {
+    "file": "Flag of Uzbekistan.svg",
+    "license": "Public domain",
+    "artist": "Farhod Yoʻldoshev"
+  },
+  "xk": {
+    "file": "Flag of Kosovo.svg",
+    "license": "Public domain",
+    "artist": "Cradel (current version), earlier version by Ningyou"
+  },
+  "yu-1918": {
+    "file": "Flag of Yugoslavia (1918–1941).svg",
+    "license": "Public domain",
+    "artist": "Fibonacci"
+  },
+  "yu-1946": {
+    "file": "Flag of Yugoslavia (1946–1992).svg",
+    "license": "Public domain",
+    "artist": "Flag designed by Đorđe Andrejević-Kun[3]SVG coding: Zscout370"
+  },
+  "yu-1992": {
+    "file": "Flag of Serbia and Montenegro.svg",
+    "license": "Public domain",
+    "artist": "See File history below for details. (www.gov.yu)"
+  }
+}
