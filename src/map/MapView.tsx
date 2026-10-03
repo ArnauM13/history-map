@@ -88,6 +88,14 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
       .then(([{ borders, labels }]) => {
         if (mapRef.current !== map) return
         geojson(map, 'borders').setData(borders)
+        // MapLibre obre el crèdit en carregar i no el plega fins que es mou el mapa: en una
+        // pantalla estreta tapava una franja sencera. Hi és igualment, rere la «i».
+        if (map.getContainer().clientWidth < 640) {
+          map
+            .getContainer()
+            .querySelector('.maplibregl-ctrl-attrib')
+            ?.classList.remove('maplibregl-compact-show')
+        }
         labelsRef.current = labels
         setStatus('ready')
       })

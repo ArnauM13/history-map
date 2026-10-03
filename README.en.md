@@ -1,109 +1,121 @@
-# Historical Map of Europe
+<div align="center">
 
-[Català](README.md) · [Castellano](README.es.md) · **English**
+# Historical Map of Europe
 
 **Europe from 1900 to today, on a map that moves: the borders, the flags and what happened.**
 
+[Open the map](https://arnaum13.github.io/history-map/?lang=en) · [Where the information comes from](DADES.en.md) · [Contributing](CONTRIBUTING.en.md) · [Roadmap (in Catalan)](FULL-DE-RUTA.md)
+
+[Català](README.md) · [Castellano](README.es.md) · **English**
+
+[![CI](https://github.com/ArnauM13/history-map/actions/workflows/ci.yml/badge.svg)](https://github.com/ArnauM13/history-map/actions/workflows/ci.yml)
+[![Sources](https://github.com/ArnauM13/history-map/actions/workflows/sources.yml/badge.svg)](https://github.com/ArnauM13/history-map/actions/workflows/sources.yml)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-006874)](LICENSE)
+[![Texts: CC BY-SA 4.0](https://img.shields.io/badge/texts-CC%20BY--SA%204.0-006874)](content/README.md)
+[![Borders: CC BY-NC-SA 4.0](https://img.shields.io/badge/borders-CC%20BY--NC--SA%204.0-006874)](DADES.en.md)
+
+<img src=".github/readme/en-mapa.gif" width="900" alt="The map goes through twelve dates: 1914, 1919, 1923, 1938, 1945, 1950, 1975, 1989, 1991, 1993, 2008 and today. Borders, names and flags change at each one.">
+
+</div>
+
 Pick a date and the map shows you Europe on that day: which states existed and what they were
-called, which flag each one flew, which wars were being fought and what happened that year.
-
-![Europe on 28 June 1914](.github/captura.png)
-
----
-
-## 1. The problem
+called, which flag each one flew, which wars were being fought and what happened that year. And,
+for each of those, where it comes from.
 
 The history of 20th-century Europe is usually told with four maps —1914, 1919, 1945 and 1991— and
-whatever happens in between is left to the imagination.
+whatever happens in between is left to the imagination. Between 1918 and 1922, for instance, the
+map changes every few months. Here you can follow it day by day.
 
-- **Loose snapshots.** Between 1918 and 1922 Europe changes every few months. Four maps can't show
-  that; a map that moves can.
-- **Everything apart.** One article for each state, another for each war and another for each
-  flag. What was happening at the same time is never seen together.
-- **Changing names.** The Russian Empire, Soviet Russia, the Soviet Union and Russia occupy the
-  same place on the map. Unless someone tells you, they look like four countries.
-
-## 2. What it offers
+## What you'll find
 
 | | |
 | --- | --- |
-| **Any day** | The borders on any date from 1900 to today, with the exact day of every change. |
-| **Every flag in its time** | Each state flies the flag it had that day, and its card shows all of them. |
-| **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and on the timeline. |
-| **Nothing without a source** | Every card says where each piece of data comes from: borders, names, flags, events. |
+| **The borders on any day** | From 1900 to today, with the exact day of every change and the name each state had at the time: the Russian Empire, Soviet Russia, the Soviet Union, Russia. |
+| **Every flag in its time** | About a hundred flags of some seventy states: on the map, in a gallery for each date and on each state's card, with what the ones with the most history mean. |
+| **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and marked on the timeline. |
+| **The source of every piece of data** | Every card says where its borders, name, flag dates and events come from, with the link to check it. |
+| **Three languages** | Catalan, Spanish and English: the interface, the names of states and capitals, the texts and the Wikipedia links. |
+| **A link for every date** | `?d=1914-06-28&lang=en` opens exactly the same map for whoever gets it. |
 
-## 3. Who it is for
+## Screenshots
 
-- **History lovers.** They want to watch Austria-Hungary come apart month by month, or see when
-  Spain changed its flag and why.
-- **Teachers and students.** They need a map that can be moved in class and a link that opens the
-  exact date they are talking about.
-- **Flag collectors.** They will find the chronology of Europe's flags, with the image, the date
-  and the source.
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src=".github/readme/en-banderes.png" alt="The Flags tab on 1 June 1931: the year's new flag, that of the Spanish Second Republic, and every flag flying that day.">
+      <p><b>Flags.</b> Every flag flying that day, and the ones adopted that year: in 1931, the Second Republic's.</p>
+    </td>
+    <td width="50%" valign="top">
+      <img src=".github/readme/en-fitxa.png" alt="The Soviet Union's card in 1950: its flag, what it means, the five flags the same state has had and the sources.">
+      <p><b>A state's card.</b> The flag and what it means, every flag it has had and, under "Sources", where each piece of data comes from.</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <img src=".github/readme/en-fets.png" alt="The Events tab on 1 September 1939, with the Second World War ongoing and the invasion of Poland.">
+      <p><b>Events and conflicts.</b> What was ongoing that day and what happened that year, in two or three sentences.</p>
+    </td>
+    <td valign="top">
+      <img src=".github/readme/en-mobil.png" width="300" alt="The map on a phone, in dark mode, on 26 December 1991.">
+      <p><b>On a phone, in dark mode.</b> The map, the timeline and the panel, one below the other.</p>
+    </td>
+  </tr>
+</table>
 
----
+## Where the information comes from
 
-## 4. What it does
+No piece of data gets in without a source, and the source is shown on the card where it appears.
 
-### 4.1 The map — Europe on a date
+| What you see | Where it comes from |
+| --- | --- |
+| Borders and capitals | [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zurich and University of Konstanz), with the exact day of every change from 1886 to 2019 |
+| Each state's name in each period | A Wikipedia article for every name |
+| Flag dates | The Wikipedia articles on each state's flags |
+| Flag images | [Wikimedia Commons](https://commons.wikimedia.org/), with each one's licence and author |
+| Events and conflicts | Wikipedia and external sources, such as UN resolution 68/262 on Crimea |
 
-The borders in force that day, with the name each state had at the time. Colonies, protectorates
-and occupied territories are told apart from independent states. Click a state to open its card.
+The tests let nothing in without a source, and the "Fonts" workflow checks every Monday that all
+articles and links still exist. The details, corrections and limitations are in
+[DADES.en.md](DADES.en.md).
 
-### 4.2 The timeline — a century, month by month
+## What it doesn't do (on purpose)
 
-It moves month by month, plays by itself (a century in about three minutes) and jumps from one
-key date to the next. Below it are the conflicts, as bars, and the marks of the events or of the
-flag changes, depending on the tab you have open.
-
-### 4.3 Flags — all of them, and when they changed
-
-On the map, every state carries its flag next to its name. The Flags tab shows all the flags
-flying that day and the ones adopted that year. A state's card shows every flag it has had, and
-picking one takes you to the date it arrived. The ones with the most history come with two
-sentences on what they mean and why they changed.
-
-### 4.4 Events and conflicts — what happened
-
-The conflicts ongoing on the date and the events of the year, each with two or three sentences
-and a link to Wikipedia, in your language, to keep reading.
-
-### 4.5 Three languages and a link
-
-Catalan, Spanish and English: the interface, the names of states and capitals, the events, the
-conflicts and the flag texts. The address keeps the date and the language
-(`?d=1914-06-28&lang=en`): whoever gets it opens the same map.
-
-## 5. Principles
-
-1. **The date rules.** What you see —borders, names, flags, conflicts— is what was true that day,
-   not today.
-2. **Nothing without a source.** Every card lists its sources, and every source links to where it
-   can be checked: borders and capitals to CShapes; state names and flag dates to Wikipedia; images
-   to Wikimedia Commons; events to Wikipedia and official sources. Every Monday a workflow checks
-   that all of them still exist.
-3. **Neutral and short.** Two or three sentences that explain; the debate is in the sources.
-4. **The content belongs to everyone.** Adding an event or fixing a flag means editing a text
-   file, no programming needed.
-5. **A static website.** No server, no accounts, nothing to maintain but the content.
-
-## 6. What it doesn't do (on purpose)
-
-- **It isn't an encyclopaedia.** Two or three sentences and the Wikipedia link; the rest is well
-  explained there.
-- **It doesn't draw occupations or front lines, for now.** Borders are those set by treaties.
-  Between 1938 and 1945, Austria and Poland are still on the map (see [DADES.en.md](DADES.en.md)).
-  The occupations layer is on the [roadmap](FULL-DE-RUTA.md) (in Catalan).
+- **It doesn't draw occupations or front lines, for now.** Borders are those set by treaties:
+  between 1938 and 1945, Austria and Poland are still on the map. The occupations layer is the next
+  big piece of work.
+- **It isn't an encyclopaedia.** Two or three sentences and the link to the source; the rest is
+  well explained there.
 - **It asks you for nothing.** No account, no cookies, no personal data.
 - **It can't be used commercially.** The CShapes borders are CC BY-NC-SA.
 
----
+## How it works
 
-## 7. Running it
+A static website: React 19, TypeScript, Vite and [MapLibre GL](https://maplibre.org/). No server,
+no database. Each piece of border carries the day it starts and the day it ends, and showing the
+map on a given day is a filter: `start <= day <= end`.
+
+```mermaid
+flowchart LR
+  cshapes["CShapes 2.0"] -- "npm run data:borders" --> data["public/data<br/>borders"]
+  commons["Wikimedia Commons"] -- "Flags workflow" --> flags["public/flags<br/>flags"]
+  wiki["Wikipedia"] -- "Fonts workflow" --> titles["content/wikipedia.json<br/>Catalan and Spanish titles"]
+  yaml["content/*.yaml<br/>events, conflicts, names, flags"] --> app(("The website"))
+  data --> app
+  flags --> app
+  titles --> app
+```
+
+The content is YAML, read and written by hand and validated by the tests. External data (borders,
+flags, Wikipedia titles) is downloaded by scripts, and on GitHub by workflows that commit it when
+it changes.
+
+## Running it
 
 Requires Node.js 22 or newer.
 
 ```bash
+git clone https://github.com/ArnauM13/history-map.git
+cd history-map
 npm install
 npm run dev        # http://localhost:5173
 ```
@@ -112,30 +124,57 @@ npm run dev        # http://localhost:5173
 | --- | --- |
 | `npm run dev` | Development server |
 | `npm run build` | Type-checks and builds the site into `dist/` |
-| `npm test` | Tests, which also validate every content file |
-| `npm run lint` | oxlint |
-| `npm run format` | Prettier |
-| `npm run data:borders` | Rebuilds `public/data/` from CShapes 2.0 |
+| `npm test` | The tests, which also validate all the content and its sources |
+| `npm run lint` · `npm run format` | oxlint and Prettier |
+| `npm run data:borders` | Rebuilds the borders from CShapes 2.0 |
 | `npm run data:flags` | Downloads the flags listed in `content/flags.yaml` |
 | `npm run data:sources` | Checks the sources and translates the Wikipedia titles |
 
-## 8. Contributing
+## Structure
 
-What it needs most is content: events, conflicts, flag dates. No programming required; it's a
-short YAML file. [CONTRIBUTING.en.md](CONTRIBUTING.en.md) explains how.
+```
+content/        the content: events, conflicts, state and capital names, flags (YAML)
+public/data/    the borders, generated from CShapes
+public/flags/   the flags, downloaded from Wikimedia Commons
+scripts/        the ones that generate or check the data
+src/            the website: the map, the timeline, the panel
+```
 
-## 9. Licences
+How it's built and the conventions are in [CLAUDE.md](CLAUDE.md); the design, in
+[DESIGN.md](DESIGN.md) (both in Catalan).
 
-- **Code**: [MIT](LICENSE).
-- **Texts** in `content/`: [CC BY-SA 4.0](content/README.md).
-- **Flags**: images from [Wikimedia Commons](https://commons.wikimedia.org/), almost all in the
-  public domain; each one's licence is in `public/flags/credits.json` and in the app, under the
-  flag.
-- **Borders**: derived from [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zurich and
-  University of Konstanz), CC BY-NC-SA 4.0: **non-commercial use only**.
+## Contributing
 
----
+What it needs most is content: events, conflicts, flag dates. No programming required: it's a short
+YAML file, and a source is mandatory. [CONTRIBUTING.en.md](CONTRIBUTING.en.md) explains how, and
+the issues have templates to propose an event or report a border, a name or a flag that's wrong.
+You can write in Catalan, Spanish or English.
 
-*The rest of the documentation is in Catalan: the design in [DESIGN.md](DESIGN.md), what comes
-next in [FULL-DE-RUTA.md](FULL-DE-RUTA.md) and the code conventions in [CLAUDE.md](CLAUDE.md). The
-data sources and their limitations are in [DADES.en.md](DADES.en.md).*
+## What's next
+
+- **The occupations layer**: what was under de facto control between 1938 and 1945, and today's
+  disputed territories.
+- **More content**: about a hundred events and thirty conflicts, with academic sources as well as
+  Wikipedia.
+- **Search and guided stories** that move the map step by step.
+
+The rest is in [FULL-DE-RUTA.md](FULL-DE-RUTA.md) (in Catalan).
+
+## Licences
+
+| What | Licence |
+| --- | --- |
+| The code | [MIT](LICENSE) |
+| The texts in `content/` | [CC BY-SA 4.0](content/README.md) |
+| The borders in `public/data/` | CC BY-NC-SA 4.0, like CShapes 2.0: **non-commercial use only** |
+| The flags in `public/flags/` | Each image's own, almost all public domain (`credits.json`) |
+| Fonts and icons | Open Sans and Material Symbols (Apache 2.0), Roboto (OFL 1.1) |
+
+## Acknowledgements
+
+- Guy Schvitz, Luc Girardin, Seraina Rüegger, Nils B. Weidmann, Lars-Erik Cederman and Kristian
+  Skrede Gleditsch, for [CShapes 2.0](https://icr.ethz.ch/data/cshapes/).
+- Everyone who draws flags on Wikimedia Commons and writes Wikipedia, in every language.
+- [MapLibre](https://maplibre.org/), [OpenMapTiles](https://github.com/openmaptiles/fonts),
+  [Fontsource](https://fontsource.org/) and [Material Symbols](https://fonts.google.com/icons).
+- The visual language comes from Petja.

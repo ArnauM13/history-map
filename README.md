@@ -1,112 +1,119 @@
+<div align="center">
+
 # Mapa històric d'Europa
+
+**Europa del 1900 a avui, en un mapa que es mou: les fronteres, les banderes i el que hi va passar.**
+
+[Obre el mapa](https://arnaum13.github.io/history-map/?lang=ca) · [D'on surt la informació](DADES.md) · [Com s'hi contribueix](CONTRIBUTING.md) · [Full de ruta](FULL-DE-RUTA.md)
 
 **Català** · [Castellano](README.es.md) · [English](README.en.md)
 
-**Europa del 1900 a avui, en un mapa que es mou: les fronteres, les banderes i el que hi va
-passar.**
+[![CI](https://github.com/ArnauM13/history-map/actions/workflows/ci.yml/badge.svg)](https://github.com/ArnauM13/history-map/actions/workflows/ci.yml)
+[![Fonts](https://github.com/ArnauM13/history-map/actions/workflows/sources.yml/badge.svg)](https://github.com/ArnauM13/history-map/actions/workflows/sources.yml)
+[![Codi: MIT](https://img.shields.io/badge/codi-MIT-006874)](LICENSE)
+[![Textos: CC BY-SA 4.0](https://img.shields.io/badge/textos-CC%20BY--SA%204.0-006874)](content/README.md)
+[![Fronteres: CC BY-NC-SA 4.0](https://img.shields.io/badge/fronteres-CC%20BY--NC--SA%204.0-006874)](DADES.md)
+
+<img src=".github/readme/ca-mapa.gif" width="900" alt="El mapa passa per dotze dates: 1914, 1919, 1923, 1938, 1945, 1950, 1975, 1989, 1991, 1993, 2008 i avui. Les fronteres, els noms i les banderes canvien a cada una.">
+
+</div>
 
 Tries una data i el mapa et diu com era Europa aquell dia: quins estats hi havia i com es deien,
-quina bandera feia servir cadascun, quines guerres estaven obertes i què va passar aquell any.
+quina bandera feia servir cadascun, quines guerres estaven obertes i què va passar aquell any. I de
+cada cosa, d'on surt.
 
-![Europa el 28 de juny del 1914](.github/captura.png)
+La història d'Europa del segle XX s'acostuma a explicar amb quatre mapes —el del 1914, el del 1919,
+el del 1945 i el del 1991— i el que passa entre l'un i l'altre s'ha d'imaginar. Entre el 1918 i el
+1922, per exemple, el mapa canvia cada pocs mesos. Aquí es pot veure dia a dia.
 
----
-
-## 1. El problema
-
-La història d'Europa del segle XX s'acostuma a explicar amb quatre mapes —el del 1914, el del
-1919, el del 1945 i el del 1991— i el que passa entre l'un i l'altre s'ha d'imaginar.
-
-- **Fotos soltes.** Entre el 1918 i el 1922 Europa canvia cada pocs mesos. Quatre mapes no ho
-  expliquen; un mapa que es mou, sí.
-- **Tot per separat.** Un article per a cada estat, un altre per a cada guerra i un altre per a
-  cada bandera. El que passava alhora no es veu mai junt.
-- **Noms que canvien.** L'Imperi Rus, la Rússia soviètica, la Unió Soviètica i Rússia ocupen el
-  mateix lloc del mapa. Si no t'ho diu ningú, sembla que siguin quatre països.
-
-## 2. La proposta
+## Què hi trobaràs
 
 | | |
 | --- | --- |
-| **Qualsevol dia** | Les fronteres de qualsevol data del 1900 a avui, amb el dia exacte de cada canvi. |
-| **Cada bandera al seu temps** | Cada estat porta la bandera que tenia aquell dia, i la seva fitxa les ensenya totes. |
-| **El que passava alhora** | Els conflictes oberts i els fets de l'any, al costat del mapa i a la línia temporal. |
-| **Res sense font** | Cada fitxa diu d'on surt cada dada: les fronteres, el nom, les banderes, els fets. |
+| **Les fronteres de qualsevol dia** | Del 1900 a avui, amb el dia exacte de cada canvi i el nom que tenia cada estat aleshores: l'Imperi Rus, la Rússia soviètica, la Unió Soviètica, Rússia. |
+| **Cada bandera al seu temps** | Un centenar de banderes d'una setantena d'estats: al mapa, en una galeria per a cada data i a la fitxa de cada estat, amb què volen dir les que tenen més història. |
+| **El que passava alhora** | Els conflictes oberts i els fets de l'any, al costat del mapa i marcats a la línia temporal. |
+| **La font de cada dada** | Cada fitxa diu d'on surten les fronteres, el nom, les dates de les banderes i els fets, amb l'enllaç per comprovar-ho. |
+| **Tres idiomes** | Català, castellà i anglès: la interfície, els noms dels estats i de les capitals, els textos i els enllaços a la Viquipèdia. |
+| **Un enllaç per a cada data** | `?d=1914-06-28&lang=ca` obre exactament el mateix mapa a qui el rebi. |
 
-## 3. Per a qui és
+## Captures
 
-- **Qui s'estima la història.** Vol veure com es desfà Àustria-Hongria mes a mes, o quan va
-  canviar de bandera Espanya i per què.
-- **Docents i estudiants.** Necessiten un mapa que es pugui moure a classe i un enllaç que obri
-  exactament la data que expliquen.
-- **Qui col·lecciona banderes.** Hi troba la cronologia de les banderes d'Europa, amb la imatge,
-  la data i la font.
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src=".github/readme/ca-banderes.png" alt="La pestanya Banderes l'1 de juny del 1931: la bandera nova de l'any, la de la Segona República espanyola, i totes les que onejaven aquell dia.">
+      <p><b>Banderes.</b> Totes les que onejaven aquell dia, i les estrenades aquell any: el 1931, la de la Segona República.</p>
+    </td>
+    <td width="50%" valign="top">
+      <img src=".github/readme/ca-fitxa.png" alt="La fitxa de la Unió Soviètica el 1950: la bandera, què vol dir, les cinc banderes que ha tingut el mateix estat i les fonts.">
+      <p><b>La fitxa d'un estat.</b> La bandera i què vol dir, totes les que ha tingut i, a «Fonts», d'on surt cada dada.</p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <img src=".github/readme/ca-fets.png" alt="La pestanya Fets l'1 de setembre del 1939, amb la Segona Guerra Mundial oberta i la invasió de Polònia.">
+      <p><b>Fets i conflictes.</b> El que estava obert aquell dia i el que va passar aquell any, en dues o tres frases.</p>
+    </td>
+    <td valign="top">
+      <img src=".github/readme/ca-mobil.png" width="300" alt="El mapa al mòbil i en tema fosc, el 26 de desembre del 1991.">
+      <p><b>Al mòbil i en fosc.</b> El mapa, la línia temporal i el panell, un sota l'altre.</p>
+    </td>
+  </tr>
+</table>
 
----
+## D'on surt la informació
 
-## 4. Què fa
+Cap dada no hi entra sense font, i la font es veu a la fitxa on surt.
 
-### 4.1 El mapa — Europa en una data
+| Què es veu | D'on surt |
+| --- | --- |
+| Les fronteres i les capitals | [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zuric i Universitat de Constança), amb el dia exacte de cada canvi del 1886 al 2019 |
+| El nom de cada estat en cada època | Un article de la Viquipèdia per a cada nom |
+| Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat |
+| Les imatges de les banderes | [Wikimedia Commons](https://commons.wikimedia.org/), amb la llicència i l'autor de cadascuna |
+| Els fets i els conflictes | La Viquipèdia i fonts externes, com la resolució 68/262 de l'ONU sobre Crimea |
 
-Les fronteres vigents aquell dia, amb el nom que tenia cada estat en aquell moment. Les colònies,
-els protectorats i els territoris ocupats es distingeixen dels estats independents. Si cliques un
-estat, se n'obre la fitxa.
+Els tests no deixen entrar res sense font, i el workflow «Fonts» comprova cada dilluns que tots els
+articles i enllaços encara existeixen. El detall, les correccions i les limitacions són a
+[DADES.md](DADES.md).
 
-### 4.2 La línia temporal — un segle, mes a mes
+## Què no fa (i és volgut)
 
-Es mou mes a mes, es reprodueix sola (un segle en uns tres minuts) i salta d'una data clau a la
-següent. A sota hi ha els conflictes, en barres, i les marques dels fets o dels canvis de bandera,
-segons la pestanya que tinguis oberta.
-
-### 4.3 Banderes — totes, i quan van canviar
-
-Al mapa, cada estat porta la seva bandera al costat del nom. A la pestanya Banderes hi ha totes
-les que onejaven aquell dia i les que es van estrenar aquell any. La fitxa d'un estat ensenya
-totes les que ha tingut, i en tria una: anar-hi és saltar a la data en què va arribar. Les que
-tenen més història porten dues frases que expliquen què volen dir i per què van canviar.
-
-### 4.4 Fets i conflictes — què va passar
-
-Els conflictes oberts en la data i els fets de l'any, cadascun amb dues o tres frases i l'enllaç a
-la Viquipèdia, en el teu idioma, per seguir llegint.
-
-### 4.5 Tres idiomes i un enllaç
-
-Català, castellà i anglès: la interfície, els noms dels estats i de les capitals, els fets, els
-conflictes i els textos de les banderes. L'adreça porta la data i l'idioma (`?d=1914-06-28&lang=ca`):
-qui la rep obre el mateix mapa.
-
-## 5. Principis
-
-1. **La data mana.** El que es veu —fronteres, noms, banderes, conflictes— és el d'aquell dia, no
-   el d'avui.
-2. **Res sense font.** Cada fitxa porta les seves fonts, i cada font porta on es pot comprovar:
-   les fronteres i les capitals, a CShapes; el nom de cada estat i les dates de les banderes, a la
-   Viquipèdia; les imatges, a Wikimedia Commons; els fets, a la Viquipèdia i a fonts oficials. Cada
-   dilluns un workflow comprova que totes encara existeixen.
-3. **Neutral i curt.** Dues o tres frases que expliquen; el debat, a les fonts.
-4. **El contingut és de tothom.** Afegir un fet o corregir una bandera és editar un fitxer de
-   text, sense programar.
-5. **Una web estàtica.** Sense servidor, sense comptes, sense res a mantenir que no sigui el
-   contingut.
-
-## 6. Què no fa (i és volgut)
-
-- **No és una enciclopèdia.** Dues o tres frases i l'enllaç a la Viquipèdia; la resta hi és ben
-  explicada.
-- **No dibuixa ocupacions ni fronts, de moment.** Les fronteres són les dels tractats. Entre el
-  1938 i el 1945, Àustria i Polònia hi segueixen sortint (vegeu [DADES.md](DADES.md)). La capa
-  d'ocupacions és al [full de ruta](FULL-DE-RUTA.md).
+- **No dibuixa ocupacions ni fronts, de moment.** Les fronteres són les dels tractats: entre el 1938
+  i el 1945, Àustria i Polònia hi segueixen sortint. La capa d'ocupacions és la propera gran feina.
+- **No és una enciclopèdia.** Dues o tres frases i l'enllaç a la font; la resta hi és ben explicada.
 - **No et demana res.** Ni compte, ni galetes, ni dades teves.
 - **No es pot fer servir comercialment.** Les fronteres de CShapes són CC BY-NC-SA.
 
----
+## Com funciona
 
-## 7. Com s'executa
+Una web estàtica: React 19, TypeScript, Vite i [MapLibre GL](https://maplibre.org/). Sense
+servidor ni base de dades. Cada peça de frontera porta el dia que comença i el que s'acaba, i
+ensenyar el mapa d'un dia és un filtre: `inici <= dia <= final`.
+
+```mermaid
+flowchart LR
+  cshapes["CShapes 2.0"] -- "npm run data:borders" --> data["public/data<br/>fronteres"]
+  commons["Wikimedia Commons"] -- "workflow Flags" --> flags["public/flags<br/>banderes"]
+  wiki["Viquipèdia"] -- "workflow Fonts" --> titles["content/wikipedia.json<br/>títols en català i castellà"]
+  yaml["content/*.yaml<br/>fets, conflictes, noms, banderes"] --> app(("La web"))
+  data --> app
+  flags --> app
+  titles --> app
+```
+
+El contingut és YAML que es llegeix i s'escriu a mà, i els tests el validen. Les dades externes
+(fronteres, banderes, títols de la Viquipèdia) les baixen scripts, i a GitHub, workflows que en fan
+un commit quan canvien.
+
+## Posar-lo en marxa
 
 Cal Node.js 22 o més nou.
 
 ```bash
+git clone https://github.com/ArnauM13/history-map.git
+cd history-map
 npm install
 npm run dev        # http://localhost:5173
 ```
@@ -115,30 +122,56 @@ npm run dev        # http://localhost:5173
 | --- | --- |
 | `npm run dev` | Servidor de desenvolupament |
 | `npm run build` | Comprova els tipus i deixa la web a `dist/` |
-| `npm test` | Tests, que també validen tots els fitxers de contingut |
-| `npm run lint` | oxlint |
-| `npm run format` | Prettier |
-| `npm run data:borders` | Torna a fer `public/data/` a partir de CShapes 2.0 |
+| `npm test` | Els tests, que també validen tot el contingut i les seves fonts |
+| `npm run lint` · `npm run format` | oxlint i Prettier |
+| `npm run data:borders` | Torna a fer les fronteres a partir de CShapes 2.0 |
 | `npm run data:flags` | Baixa les banderes de `content/flags.yaml` |
 | `npm run data:sources` | Comprova les fonts i en tradueix els títols de la Viquipèdia |
 
-## 8. Com s'hi contribueix
+## Estructura
 
-El que més falta és contingut: fets, conflictes, dates de banderes. No cal saber programar; és un
-fitxer YAML curt. A [CONTRIBUTING.md](CONTRIBUTING.md) hi ha com es fa.
+```
+content/        el contingut: fets, conflictes, noms d'estats i capitals, banderes (YAML)
+public/data/    les fronteres, generades a partir de CShapes
+public/flags/   les banderes, baixades de Wikimedia Commons
+scripts/        els que generen o comproven les dades
+src/            la web: el mapa, la línia temporal, el panell
+```
 
-## 9. Llicències
+Com està fet i les convencions, a [CLAUDE.md](CLAUDE.md); el disseny, a [DESIGN.md](DESIGN.md).
 
-- **El codi**: [MIT](LICENSE).
-- **Els textos** de `content/`: [CC BY-SA 4.0](content/README.md).
-- **Les banderes**: imatges de [Wikimedia Commons](https://commons.wikimedia.org/), quasi totes de
-  domini públic; la de cadascuna és a `public/flags/credits.json` i a l'app, sota la bandera.
-- **Les fronteres**: derivades de [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zuric i
-  Universitat de Constança), CC BY-NC-SA 4.0: **només ús no comercial**.
+## Contribuir
 
----
+El que més falta és contingut: fets, conflictes, dates de banderes. No cal saber programar: és un
+fitxer YAML curt, i la font és obligatòria. A [CONTRIBUTING.md](CONTRIBUTING.md) hi ha com es fa, i
+als *issues* hi ha plantilles per proposar un fet o avisar d'una frontera, un nom o una bandera
+que no toca. S'hi pot escriure en català, castellà o anglès.
 
-*La resta de documentació: el disseny a [DESIGN.md](DESIGN.md), les fonts i les limitacions de
-les dades a [DADES.md](DADES.md), el que ve a [FULL-DE-RUTA.md](FULL-DE-RUTA.md) i les convencions
-del codi a [CLAUDE.md](CLAUDE.md). El README, CONTRIBUTING i DADES són als tres idiomes; la resta,
-en català.*
+## El que ve
+
+- **La capa d'ocupacions**: el que es controlava de fet entre el 1938 i el 1945, i els territoris
+  en disputa d'avui.
+- **Més contingut**: uns cent fets i una trentena de conflictes, amb fonts acadèmiques a més de la
+  Viquipèdia.
+- **Un cercador i històries guiades** que moguin el mapa pas a pas.
+
+La resta, a [FULL-DE-RUTA.md](FULL-DE-RUTA.md).
+
+## Llicències
+
+| Què | Llicència |
+| --- | --- |
+| El codi | [MIT](LICENSE) |
+| Els textos de `content/` | [CC BY-SA 4.0](content/README.md) |
+| Les fronteres de `public/data/` | CC BY-NC-SA 4.0, com CShapes 2.0: **només ús no comercial** |
+| Les banderes de `public/flags/` | La de cada imatge, quasi totes de domini públic (`credits.json`) |
+| Les lletres i les icones | Open Sans i Material Symbols (Apache 2.0), Roboto (OFL 1.1) |
+
+## Agraïments
+
+- Guy Schvitz, Luc Girardin, Seraina Rüegger, Nils B. Weidmann, Lars-Erik Cederman i Kristian
+  Skrede Gleditsch, per [CShapes 2.0](https://icr.ethz.ch/data/cshapes/).
+- Qui dibuixa les banderes de Wikimedia Commons i qui escriu la Viquipèdia, en tots els idiomes.
+- [MapLibre](https://maplibre.org/), [OpenMapTiles](https://github.com/openmaptiles/fonts),
+  [Fontsource](https://fontsource.org/) i [Material Symbols](https://fonts.google.com/icons).
+- El llenguatge visual és el de Petja.
