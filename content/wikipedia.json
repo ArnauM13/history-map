@@ -13,6 +13,9 @@
     "ca": "Afganistan",
     "es": "Afganistán"
   },
+  "Afsharid Iran": {
+    "es": "Imperio afsárida"
+  },
   "Albania": {
     "ca": "Albània",
     "es": "Albania"
@@ -25,6 +28,22 @@
     "ca": "Zones d'ocupació aliada a Alemanya",
     "es": "Ocupación aliada de Alemania"
   },
+  "Andorra": {
+    "ca": "Andorra",
+    "es": "Andorra"
+  },
+  "Anhalt-Bernburg": {
+    "ca": "Anhalt-Bernburg",
+    "es": "Anhalt-Bernburg"
+  },
+  "Anhalt-Dessau": {
+    "ca": "Anhalt-Dessau",
+    "es": "Anhalt-Dessau"
+  },
+  "Anhalt-Köthen": {
+    "ca": "Anhalt-Köthen",
+    "es": "Anhalt-Köthen"
+  },
   "Annexation of Crimea by the Russian Federation": {
     "ca": "Annexió de Crimea a la Federació de Rússia",
     "es": "Anexión de Crimea por Rusia"
@@ -32,6 +51,10 @@
   "Anschluss": {
     "ca": "Anschluss",
     "es": "Anschluss"
+  },
+  "Aq Qoyunlu": {
+    "ca": "Aq Qoyunlu",
+    "es": "Ak Koyunlu"
   },
   "Armenia": {
     "ca": "Armènia",
@@ -45,6 +68,10 @@
     "ca": "Assassinat de Sarajevo",
     "es": "Atentado de Sarajevo"
   },
+  "Astrakhan Khanate": {
+    "ca": "Kanat d'Astracan",
+    "es": "Kanato de Astracán"
+  },
   "Austria": {
     "ca": "Àustria",
     "es": "Austria"
@@ -53,8 +80,16 @@
     "ca": "Imperi Austrohongarès",
     "es": "Imperio austrohúngaro"
   },
+  "Austrian Empire": {
+    "ca": "Imperi Austríac",
+    "es": "Imperio austríaco"
+  },
   "Austro-Hungarian rule in Bosnia and Herzegovina": {
     "es": "Provincia imperial de Bosnia y Herzegovina"
+  },
+  "Auvergne": {
+    "ca": "Alvèrnia",
+    "es": "Auvernia"
   },
   "Axis occupation of Greece": {
     "es": "Ocupación de Grecia por las fuerzas del Eje"
@@ -66,6 +101,10 @@
   "Azerbaijan": {
     "ca": "Azerbaidjan",
     "es": "Azerbaiyán"
+  },
+  "Batavian Republic": {
+    "ca": "República Batava",
+    "es": "República Bátava"
   },
   "Belarus": {
     "ca": "Belarús",
@@ -79,6 +118,13 @@
     "ca": "Mur de Berlín",
     "es": "Muro de Berlín"
   },
+  "Beylik of Dulkadir": {
+    "ca": "Dhu l-Kadr",
+    "es": "Beylicato de Dulkadir"
+  },
+  "Beylik of Tunis": {
+    "es": "Beylicato de Túnez"
+  },
   "Bosnia and Herzegovina": {
     "ca": "Bòsnia i Hercegovina",
     "es": "Bosnia y Herzegovina"
@@ -86,9 +132,25 @@
   "Bosnian crisis": {
     "es": "Crisis bosnia"
   },
+  "Bourbon Restoration in France": {
+    "ca": "Restauració francesa",
+    "es": "Restauración borbónica en Francia"
+  },
+  "Brandenburg-Prussia": {
+    "ca": "Brandenburg-Prússia",
+    "es": "Brandeburgo-Prusia"
+  },
+  "Bremen (state)": {
+    "ca": "Estat de Bremen",
+    "es": "Bremen (estado)"
+  },
   "Brexit": {
     "ca": "Sortida del Regne Unit de la Unió Europea",
     "es": "Salida del Reino Unido de la Unión Europea"
+  },
+  "British Empire": {
+    "ca": "Imperi Britànic",
+    "es": "Imperio británico"
   },
   "British Raj": {
     "ca": "Raj britànic",
@@ -110,13 +172,67 @@
     "ca": "Operació Anton",
     "es": "Operación Anton"
   },
+  "Catalan Republic (1640–1641)": {
+    "ca": "República Catalana (1640-1641)",
+    "es": "República Catalana (1641)"
+  },
+  "Caucasian Imamate": {
+    "es": "Imanato del Cáucaso"
+  },
   "China": {
     "ca": "República Popular de la Xina",
     "es": "República Popular China"
   },
+  "Cisalpine Republic": {
+    "ca": "República Cisalpina",
+    "es": "República Cisalpina"
+  },
+  "Cispadane Republic": {
+    "ca": "República Cispadana",
+    "es": "República Cispadana"
+  },
+  "Commonwealth of England": {
+    "ca": "Commonwealth d'Anglaterra",
+    "es": "Mancomunidad de Inglaterra"
+  },
+  "Comtat Venaissin": {
+    "ca": "Comtat Venaissí",
+    "es": "Condado Venaissin"
+  },
+  "Confederate Ireland": {
+    "ca": "Irlanda Confederada",
+    "es": "Irlanda confederada"
+  },
+  "Corsican Republic": {
+    "ca": "República de Còrsega",
+    "es": "República Corsa"
+  },
+  "County of Foix": {
+    "ca": "Comtat de Foix",
+    "es": "Condado de Foix"
+  },
+  "County of Nevers": {
+    "es": "Condado de Névers"
+  },
+  "County of Savoy": {
+    "ca": "Comtat de Savoia",
+    "es": "Condado de Saboya"
+  },
+  "Crimean Khanate": {
+    "ca": "Kanat de Crimea",
+    "es": "Kanato de Crimea"
+  },
   "Croatia": {
     "ca": "Croàcia",
     "es": "Croacia"
+  },
+  "Crown of Aragon": {
+    "ca": "Corona d'Aragó",
+    "es": "Corona de Aragón"
+  },
+  "Crown of Castile": {
+    "ca": "Corona de Castella",
+    "es": "Corona de Castilla"
   },
   "Cyprus": {
     "ca": "Xipre",
@@ -134,6 +250,11 @@
     "ca": "Dinamarca",
     "es": "Dinamarca"
   },
+  "Denmark-Norway": {
+    "ca": "Regne de Dinamarca i Noruega",
+    "es": "Reino de Dinamarca y Noruega"
+  },
+  "Dictatorship of Giuseppe Garibaldi": {},
   "Dissolution of Czechoslovakia": {
     "ca": "Dissolució de Txecoslovàquia",
     "es": "Disolución de Checoslovaquia"
@@ -145,25 +266,140 @@
   "Dissolution of the union between Norway and Sweden": {
     "es": "Disolución de la unión entre Suecia y Noruega"
   },
+  "Don Cossacks": {
+    "ca": "Cosac del Don",
+    "es": "Cosacos del Don"
+  },
+  "Duchy of Anhalt": {
+    "es": "Anhalt"
+  },
+  "Duchy of Bavaria": {
+    "ca": "Ducat de Baviera",
+    "es": "Ducado de Baviera"
+  },
+  "Duchy of Brunswick": {
+    "es": "Ducado de Brunswick"
+  },
+  "Duchy of Courland and Semigallia": {
+    "ca": "Ducat de Curlàndia i Semigàlia",
+    "es": "Ducado de Curlandia y Semigalia"
+  },
+  "Duchy of Holstein": {
+    "es": "Ducado de Holstein"
+  },
+  "Duchy of Lorraine": {
+    "ca": "Ducat de Lorena",
+    "es": "Ducado de Lorena"
+  },
+  "Duchy of Lucca": {
+    "ca": "Ducat de Lucca",
+    "es": "Ducado de Lucca"
+  },
+  "Duchy of Massa and Carrara": {
+    "es": "Ducado de Massa y Carrara"
+  },
+  "Duchy of Mecklenburg": {},
+  "Duchy of Mecklenburg-Schwerin": {
+    "ca": "Ducat de Mecklenburg-Schwerin",
+    "es": "Ducado de Mecklemburgo-Schwerin"
+  },
+  "Duchy of Mecklenburg-Strelitz": {
+    "es": "Ducado de Mecklemburgo-Strelitz"
+  },
+  "Duchy of Milan": {
+    "ca": "Ducat de Milà",
+    "es": "Ducado de Milán"
+  },
+  "Duchy of Modena and Reggio": {
+    "ca": "Ducat de Mòdena",
+    "es": "Ducado de Módena"
+  },
+  "Duchy of Nassau": {
+    "ca": "Ducat de Nassau",
+    "es": "Ducado de Nassau"
+  },
+  "Duchy of Oldenburg": {
+    "es": "Ducado de Oldemburgo"
+  },
+  "Duchy of Parma and Piacenza": {
+    "ca": "Ducat de Parma",
+    "es": "Ducado de Parma"
+  },
+  "Duchy of Prussia": {
+    "ca": "Ducat de Prússia",
+    "es": "Ducado de Prusia"
+  },
+  "Duchy of Styria": {
+    "ca": "Ducat d'Estíria",
+    "es": "Ducado de Estiria"
+  },
+  "Duchy of Warsaw": {
+    "ca": "Gran Ducat de Varsòvia",
+    "es": "Gran Ducado de Varsovia"
+  },
+  "Dutch Republic": {
+    "ca": "Províncies Unides",
+    "es": "Provincias Unidas de los Países Bajos"
+  },
   "East Germany": {
     "ca": "República Democràtica Alemanya",
     "es": "República Democrática Alemana"
+  },
+  "Eastern Hungarian Kingdom": {
+    "es": "Reino de Hungría del Este"
   },
   "Egypt": {
     "ca": "Egipte",
     "es": "Egipto"
   },
+  "Electorate of Baden": {
+    "es": "Electorado de Baden"
+  },
+  "Electorate of Hanover": {
+    "es": "Electorado de Brunswick-Luneburgo"
+  },
+  "Electorate of Hesse": {
+    "ca": "Electorat de Hessen",
+    "es": "Electorado de Hesse"
+  },
+  "Electorate of Salzburg": {
+    "es": "Electorado de Salzburgo"
+  },
+  "Electorate of Saxony": {
+    "ca": "Electorat de Saxònia",
+    "es": "Electorado de Sajonia"
+  },
+  "Electorate of Trier": {
+    "es": "Electorado de Tréveris"
+  },
+  "Electorate of Württemberg": {
+    "es": "Electorado de Wurtemberg"
+  },
   "Emirate of Bukhara": {
     "ca": "Emirat de Bukharà",
     "es": "Emirato de Bujará"
+  },
+  "Emirate of Diriyah": {
+    "ca": "Emirat de Diriyah",
+    "es": "Emirato de Diriyah"
   },
   "Emirate of Transjordan": {
     "ca": "Transjordània",
     "es": "Emirato de Transjordania"
   },
+  "English overseas possessions": {
+    "es": "Posesiones inglesas de ultramar"
+  },
+  "Ernestine duchies": {
+    "es": "Ducados ernestinos"
+  },
   "Estonia": {
     "ca": "Estònia",
     "es": "Estonia"
+  },
+  "Expedition of the Thousand": {
+    "ca": "Expedició dels Mil",
+    "es": "Expedición de los Mil"
   },
   "Fall of the Berlin Wall": {
     "ca": "Caiguda del mur de Berlín",
@@ -180,6 +416,22 @@
   "First Balkan War": {
     "ca": "Primera Guerra Balcànica",
     "es": "Primera guerra de los Balcanes"
+  },
+  "First French Empire": {
+    "ca": "Primer Imperi Francès",
+    "es": "Primer Imperio francés"
+  },
+  "First Hellenic Republic": {
+    "ca": "Primera República Hel·lènica",
+    "es": "Primera República helénica"
+  },
+  "First Spanish Republic": {
+    "ca": "Primera República Espanyola",
+    "es": "Primera República española"
+  },
+  "Five Days of Milan": {
+    "ca": "Cinc dies de Milà",
+    "es": "Cinco jornadas de Milán"
   },
   "Flag of Albania": {
     "ca": "Bandera d'Albània",
@@ -459,9 +711,46 @@
     "ca": "França",
     "es": "Francia"
   },
+  "Free City of Cracow": {
+    "es": "República de Cracovia"
+  },
   "Free City of Danzig": {
     "ca": "Ciutat Lliure de Danzig",
     "es": "Ciudad Libre de Dánzig"
+  },
+  "Free City of Frankfurt": {
+    "es": "Ciudad Libre de Fráncfort"
+  },
+  "Free City of Lübeck": {
+    "ca": "Ciutat Lliure de Lübeck",
+    "es": "Ciudad Libre de Lübeck"
+  },
+  "French Africa": {
+    "es": "Colonización francesa de África"
+  },
+  "French Algeria": {
+    "ca": "Algèria francesa",
+    "es": "Argelia francesa"
+  },
+  "French Consulate": {
+    "ca": "Consolat francès",
+    "es": "Consulado (Francia)"
+  },
+  "French Directory": {
+    "ca": "Directori francès",
+    "es": "Directorio (Francia)"
+  },
+  "French First Republic": {
+    "ca": "Primera República Francesa",
+    "es": "Primera República francesa"
+  },
+  "French Second Republic": {
+    "ca": "Segona República Francesa",
+    "es": "Segunda República francesa"
+  },
+  "French Third Republic": {
+    "ca": "Tercera República Francesa",
+    "es": "Tercera República francesa"
   },
   "French West Africa": {
     "ca": "Àfrica Occidental Francesa",
@@ -539,8 +828,45 @@
     "ca": "Alemanya",
     "es": "Alemania"
   },
+  "Golden Horde": {
+    "ca": "Horda d'Or",
+    "es": "Horda de Oro"
+  },
   "Governorate of Dalmatia": {
     "es": "Gobernación de Dalmacia"
+  },
+  "Grand Duchy of Baden": {
+    "ca": "Gran Ducat de Baden",
+    "es": "Gran Ducado de Baden"
+  },
+  "Grand Duchy of Berg": {
+    "ca": "Gran Ducat de Berg",
+    "es": "Gran Ducado de Berg"
+  },
+  "Grand Duchy of Hesse": {
+    "ca": "Gran ducat de Hessen i del Rin",
+    "es": "Hesse-Darmstadt"
+  },
+  "Grand Duchy of Mecklenburg-Schwerin": {
+    "ca": "Gran Ducat de Mecklenburg-Schwerin",
+    "es": "Gran Ducado de Mecklemburgo-Schwerin"
+  },
+  "Grand Duchy of Mecklenburg-Strelitz": {
+    "es": "Gran Ducado de Mecklemburgo-Strelitz"
+  },
+  "Grand Duchy of Oldenburg": {
+    "es": "Gran Ducado de Oldemburgo"
+  },
+  "Grand Duchy of Tuscany": {
+    "ca": "Gran Ducat de Toscana",
+    "es": "Gran Ducado de Toscana"
+  },
+  "Grand Duchy of Würzburg": {
+    "es": "Gran Ducado de Wurzburgo"
+  },
+  "Great Britain": {
+    "ca": "Gran Bretanya",
+    "es": "Gran Bretaña"
   },
   "Greco-Turkish War (1919–1922)": {
     "ca": "Guerra greco-turca (1919-1922)",
@@ -554,14 +880,79 @@
     "ca": "Guerra Civil grega",
     "es": "Guerra civil griega"
   },
+  "Habsburg Austria": {},
+  "Habsburg monarchy": {
+    "ca": "Imperi Habsburg",
+    "es": "Imperio Habsburgo"
+  },
+  "Habsburg Spain": {
+    "ca": "Casal d'Àustria",
+    "es": "Casa de Austria"
+  },
+  "Hafsid dynasty": {
+    "ca": "Hàfsida",
+    "es": "Dinastía hafsí"
+  },
+  "Hamburg": {
+    "ca": "Hamburg",
+    "es": "Hamburgo"
+  },
+  "Helvetic Republic": {
+    "ca": "República Helvètica",
+    "es": "República Helvética"
+  },
+  "Hesse-Homburg": {
+    "es": "Hesse-Homburg"
+  },
+  "History of Bremen (city)": {
+    "es": "Historia de Bremen"
+  },
+  "History of Egypt under the Muhammad Ali dynasty": {},
+  "History of Spain (1808–1874)": {},
+  "Hohenzollern-Hechingen": {
+    "es": "Hohenzollern-Hechingen"
+  },
+  "Hohenzollern-Sigmaringen": {
+    "ca": "Hohenzollern-Sigmaringen",
+    "es": "Hohenzollern-Sigmaringen"
+  },
+  "Holy Roman Empire": {
+    "ca": "Sacre Imperi Romanogermànic",
+    "es": "Sacro Imperio Romano Germánico"
+  },
+  "Hotak dynasty": {
+    "es": "Dinastía hotaki"
+  },
+  "House of Bourbon": {
+    "ca": "Dinastia borbònica",
+    "es": "Casa de Borbón"
+  },
+  "House of Habsburg": {
+    "ca": "Dinastia dels Habsburg",
+    "es": "Casa de Habsburgo"
+  },
+  "House of Savoy": {
+    "ca": "Dinastia Savoia",
+    "es": "Casa de Saboya"
+  },
+  "House of Schwarzburg": {
+    "es": "Casa de Schwarzburgo"
+  },
   "Hungarian occupation of Yugoslav territories": {},
   "Hungarian Revolution of 1956": {
     "ca": "Revolució hongaresa de 1956",
     "es": "Revolución húngara de 1956"
   },
+  "Hungarian State": {
+    "es": "Estado húngaro"
+  },
   "Hungary": {
     "ca": "Hongria",
     "es": "Hungría"
+  },
+  "Iberian Union": {
+    "ca": "Unió Ibèrica",
+    "es": "Portugal bajo la casa de Austria"
   },
   "Iceland": {
     "ca": "Islàndia",
@@ -609,6 +1000,10 @@
   "Italian occupation of France": {
     "es": "Ocupación italiana de Francia (1940-1944)"
   },
+  "Italian Republic (Napoleonic)": {
+    "ca": "República d'Itàlia",
+    "es": "República Italiana (1802-1805)"
+  },
   "Italian Social Republic": {
     "ca": "República Social Italiana",
     "es": "República Social Italiana"
@@ -617,6 +1012,10 @@
     "ca": "Itàlia",
     "es": "Italia"
   },
+  "Jagiellonian dynasty": {
+    "ca": "Dinastia Jagelló",
+    "es": "Dinastía Jagellón"
+  },
   "Jammu and Kashmir (princely state)": {
     "es": "Principado de Jammu y Cachemira"
   },
@@ -624,13 +1023,154 @@
     "ca": "Jordània",
     "es": "Jordania"
   },
+  "July Monarchy": {
+    "ca": "Monarquia de Juliol",
+    "es": "Monarquía de Julio"
+  },
+  "Kalmar Union": {
+    "ca": "Unió de Kalmar",
+    "es": "Unión de Kalmar"
+  },
+  "Kalmyk Khanate": {
+    "es": "Kanato calmuco"
+  },
+  "Karamanli dynasty": {
+    "ca": "Karamanli",
+    "es": "Dinastía Karamanli"
+  },
+  "Kazakh Khanate": {
+    "ca": "Kanat Kazakh",
+    "es": "Kanato kazajo"
+  },
   "Kazakhstan": {
     "ca": "Kazakhstan",
     "es": "Kazajistán"
   },
+  "Khanate of Kazan": {
+    "ca": "Kanat de Kazan",
+    "es": "Kanato de Kazán"
+  },
   "Khanate of Khiva": {
     "ca": "Kanat de Khivà",
     "es": "Kanato de Jiva"
+  },
+  "Khanates of the Caucasus": {
+    "ca": "Kanats del Caucas"
+  },
+  "Khedivate of Egypt": {
+    "es": "Jedivato de Egipto"
+  },
+  "Kingdom of Bavaria": {
+    "ca": "Regne de Baviera",
+    "es": "Reino de Baviera"
+  },
+  "Kingdom of Bohemia": {
+    "ca": "Regne de Bohèmia",
+    "es": "Reino de Bohemia"
+  },
+  "Kingdom of England": {
+    "ca": "Regne d'Anglaterra",
+    "es": "Reino de Inglaterra"
+  },
+  "Kingdom of Etruria": {
+    "ca": "Regne d'Etrúria",
+    "es": "Reino de Etruria"
+  },
+  "Kingdom of France": {
+    "ca": "Regne de França",
+    "es": "Reino de Francia"
+  },
+  "Kingdom of Georgia": {
+    "ca": "Regne de Geòrgia",
+    "es": "Reino de Georgia"
+  },
+  "Kingdom of Greece": {
+    "ca": "Regne de Grècia",
+    "es": "Reino de Grecia"
+  },
+  "Kingdom of Hanover": {
+    "ca": "Regne de Hannover",
+    "es": "Reino de Hannover"
+  },
+  "Kingdom of Hungary": {
+    "ca": "Regne d'Hongria",
+    "es": "Reino de Hungría"
+  },
+  "Kingdom of Imereti": {
+    "ca": "Imerècia",
+    "es": "Reino de Imericia"
+  },
+  "Kingdom of Italy": {
+    "ca": "Regne d'Itàlia (1861-1946)",
+    "es": "Reino de Italia (1861-1946)"
+  },
+  "Kingdom of Italy (Napoleonic)": {
+    "ca": "Regne napoleònic d'Itàlia",
+    "es": "Reino de Italia (1805-1814)"
+  },
+  "Kingdom of Kakheti": {
+    "es": "Reino de Kajetia"
+  },
+  "Kingdom of Kartli": {
+    "es": "Reino de Kartli"
+  },
+  "Kingdom of Naples": {
+    "ca": "Regne de Nàpols",
+    "es": "Reino de Nápoles"
+  },
+  "Kingdom of Naples (Napoleonic)": {
+    "es": "Reino de Nápoles (estado cliente)"
+  },
+  "Kingdom of Portugal": {
+    "ca": "Regne de Portugal",
+    "es": "Reino de Portugal"
+  },
+  "Kingdom of Prussia": {
+    "ca": "Regne de Prússia",
+    "es": "Reino de Prusia"
+  },
+  "Kingdom of Romania": {
+    "ca": "Regne de Romania",
+    "es": "Reino de Rumania"
+  },
+  "Kingdom of Sardinia": {
+    "ca": "Regne de Sardenya",
+    "es": "Reino de Cerdeña"
+  },
+  "Kingdom of Sardinia (1720-1861)": {
+    "ca": "Regne de Sardenya-Piemont",
+    "es": "Reino de Cerdeña (1720-1861)"
+  },
+  "Kingdom of Saxony": {
+    "ca": "Regne de Saxònia",
+    "es": "Reino de Sajonia"
+  },
+  "Kingdom of Scotland": {
+    "ca": "Regne d'Escòcia",
+    "es": "Reino de Escocia"
+  },
+  "Kingdom of Serbia": {
+    "ca": "Regne de Sèrbia",
+    "es": "Reino de Serbia"
+  },
+  "Kingdom of Sicily": {
+    "ca": "Regne de Sicília",
+    "es": "Reino de Sicilia"
+  },
+  "Kingdom of the Two Sicilies": {
+    "ca": "Regne de les Dues Sicílies",
+    "es": "Reino de las Dos Sicilias"
+  },
+  "Kingdom of Tlemcen": {
+    "es": "Reino ziyánida de Tremecén"
+  },
+  "Kingdom of Westphalia": {
+    "ca": "Regne de Westfàlia",
+    "es": "Reino de Westfalia"
+  },
+  "Kingdom of Württemberg": {
+    "ca": "Regne de Württemberg",
+    "es": "Reino de Wurtemberg"
   },
   "Kingdom of Yugoslavia": {
     "es": "Reino de Yugoslavia"
@@ -663,11 +1203,27 @@
     "ca": "Líbia",
     "es": "Libia"
   },
+  "Liechtenstein": {
+    "ca": "Liechtenstein",
+    "es": "Liechtenstein"
+  },
+  "Ligurian Republic": {
+    "ca": "República Lígur",
+    "es": "República Ligur"
+  },
   "Lion and Sun flag": {},
   "List of Moroccan flags": {},
   "Lithuania": {
     "ca": "Lituània",
     "es": "Lituania"
+  },
+  "Livonian Confederation": {
+    "ca": "Terra Mariana",
+    "es": "Terra Mariana"
+  },
+  "Livonian language": {
+    "ca": "Livonià",
+    "es": "Idioma livonio"
   },
   "Luxembourg": {
     "ca": "Luxemburg",
@@ -680,16 +1236,32 @@
     "ca": "Malta",
     "es": "Malta"
   },
+  "Mamluk Sultanate": {
+    "ca": "Soldanat Mameluc",
+    "es": "Sultanato mameluco de Egipto"
+  },
   "Mandatory Palestine": {
     "ca": "Mandat britànic de Palestina",
     "es": "Mandato británico de Palestina"
   },
+  "Margraviate of Brandenburg": {
+    "ca": "Marcgraviat de Brandenburg",
+    "es": "Margraviato de Brandeburgo"
+  },
   "Military Administration in Belgium and Northern France": {
     "es": "Administración Militar del Norte de Francia y Bélgica"
+  },
+  "Moldavia": {
+    "ca": "Principat de Moldàvia",
+    "es": "Principado de Moldavia"
   },
   "Moldova": {
     "ca": "República de Moldàvia",
     "es": "Moldavia"
+  },
+  "Monaco": {
+    "ca": "Mònaco",
+    "es": "Mónaco"
   },
   "Montenegro": {
     "ca": "Montenegro",
@@ -711,6 +1283,14 @@
     "ca": "Països Baixos",
     "es": "Países Bajos"
   },
+  "Nogai Horde": {
+    "ca": "Horda de Nogai",
+    "es": "Horda de Nogái"
+  },
+  "North German Confederation": {
+    "ca": "Confederació Alemanya del Nord",
+    "es": "Confederación Alemana del Norte"
+  },
   "North Macedonia": {
     "ca": "Macedònia del Nord",
     "es": "Macedonia del Norte"
@@ -718,6 +1298,10 @@
   "Norway": {
     "ca": "Noruega",
     "es": "Noruega"
+  },
+  "November Uprising": {
+    "ca": "Revolta polonesa del 1830",
+    "es": "Levantamiento de Noviembre"
   },
   "Occupation of Denmark": {
     "ca": "Ocupació de Dinamarca per l'Alemanya nazi",
@@ -746,9 +1330,17 @@
     "ca": "Imperi Otomà",
     "es": "Imperio otomano"
   },
+  "Ottoman Tripolitania": {
+    "ca": "Regència de Trípoli",
+    "es": "Trípoli otomana#top"
+  },
   "Pakistan": {
     "ca": "Pakistan",
     "es": "Pakistán"
+  },
+  "Papal States": {
+    "ca": "Estats Pontificis",
+    "es": "Estados Pontificios"
   },
   "Poland": {
     "ca": "Polònia",
@@ -757,9 +1349,71 @@
   "Polish areas annexed by Nazi Germany": {
     "es": "Territorios polacos anexionados por la Alemania nazi"
   },
+  "Polish-Lithuanian Commonwealth": {
+    "ca": "Confederació de Polònia i Lituània",
+    "es": "República de las Dos Naciones"
+  },
   "Portugal": {
     "ca": "Portugal",
     "es": "Portugal"
+  },
+  "Portuguese Africa": {},
+  "Portuguese Empire": {
+    "ca": "Imperi Portuguès",
+    "es": "Imperio portugués"
+  },
+  "Principality of Abkhazia": {
+    "es": "Principado de Abjasia"
+  },
+  "Principality of Bulgaria": {
+    "ca": "Principat de Bulgària",
+    "es": "Principado de Bulgaria"
+  },
+  "Principality of Guria": {
+    "es": "Principado de Guria"
+  },
+  "Principality of Lichtenberg": {
+    "es": "Principado de Lichtenberg"
+  },
+  "Principality of Lippe": {
+    "ca": "Principat de Lippe",
+    "es": "Principado de Lippe"
+  },
+  "Principality of Mingrelia": {
+    "es": "Principado de Mingrelia"
+  },
+  "Principality of Moscow": {
+    "ca": "Gran Ducat de Moscou",
+    "es": "Principado de Moscú"
+  },
+  "Principality of Orange": {
+    "ca": "Principat d'Aurenja",
+    "es": "Principado de Orange"
+  },
+  "Principality of Regensburg": {
+    "es": "Principado de Ratisbona"
+  },
+  "Principality of Reuss-Gera": {
+    "es": "Principado de Reuss-Gera"
+  },
+  "Principality of Reuss-Greiz": {
+    "es": "Principado de Reuss-Greiz"
+  },
+  "Principality of Serbia": {
+    "ca": "Principat de Sèrbia",
+    "es": "Principado de Serbia"
+  },
+  "Principality of Svaneti": {},
+  "Principality of Transylvania (1570-1711)": {
+    "ca": "Principat de Transsilvània",
+    "es": "Principado de Transilvania"
+  },
+  "Principality of Upper Hungary": {
+    "es": "Principado de la Alta Hungría"
+  },
+  "Principality of Waldeck and Pyrmont": {
+    "ca": "Waldeck",
+    "es": "Principado de Waldeck"
   },
   "Protectorate of Bohemia and Moravia": {
     "ca": "Protectorat de Bohèmia i Moràvia",
@@ -768,17 +1422,66 @@
   "Province of Ljubljana": {
     "es": "Provincia de Liubliana"
   },
+  "Pskov Republic": {
+    "es": "República de Pskov"
+  },
+  "Qajar dynasty": {
+    "ca": "Dinastia Qajar",
+    "es": "Dinastía kayar"
+  },
   "Qajar Iran": {
     "ca": "Imperi Qajar",
     "es": "Irán Kayar"
+  },
+  "Qasim Khanate": {
+    "ca": "Kanat de Kassímov",
+    "es": "Kanato de Qasim"
+  },
+  "Ramadanid Emirate": {
+    "ca": "Ramazanoğulları",
+    "es": "Ramázanidas"
+  },
+  "Regency of Algiers": {
+    "ca": "Regència d'Alger",
+    "es": "Regencia de Argel"
   },
   "Reichskommissariat Ukraine": {
     "ca": "Reichskommissariat Ukraine",
     "es": "Reichskommissariat Ukraine"
   },
+  "Republic of Baden": {
+    "ca": "República de Baden",
+    "es": "República de Baden"
+  },
+  "Republic of Florence": {
+    "ca": "República de Florència",
+    "es": "República de Florencia"
+  },
+  "Republic of Genoa": {
+    "ca": "República de Gènova",
+    "es": "República de Génova"
+  },
   "Republic of Ireland": {
     "ca": "Irlanda",
     "es": "Irlanda"
+  },
+  "Republic of Ragusa": {
+    "ca": "República de Ragusa",
+    "es": "República de Ragusa"
+  },
+  "Republic of San Marco": {
+    "es": "República de San Marco"
+  },
+  "Republic of Venice": {
+    "ca": "República de Venècia",
+    "es": "República de Venecia"
+  },
+  "Revolutionary Serbia": {
+    "es": "Serbia revolucionaria"
+  },
+  "Roman Republic (1798-1799)": {
+    "ca": "República Romana (1798-1799)",
+    "es": "República Romana (1798-1799)"
   },
   "Romania": {
     "ca": "Romania",
@@ -811,17 +1514,71 @@
     "ca": "Guerra russo-ucraïnesa",
     "es": "Conflicto ruso-ucraniano (2014-presente)"
   },
+  "Ryazan": {
+    "ca": "Riazan",
+    "es": "Riazán"
+  },
+  "Saadi Sultanate": {
+    "ca": "Dinastia sadita",
+    "es": "Sultanato saadí"
+  },
+  "Safavid dynasty": {
+    "ca": "Dinastia safàvida",
+    "es": "Dinastía safávida"
+  },
+  "Samtskhe-Saatabago": {
+    "es": "Principado de Mesjetia"
+  },
+  "San Marino": {
+    "ca": "San Marino",
+    "es": "San Marino"
+  },
   "Saudi Arabia": {
     "ca": "Aràbia Saudita",
     "es": "Arabia Saudita"
+  },
+  "Saxe-Altenburg": {
+    "es": "Ducado de Sajonia-Altemburgo"
+  },
+  "Saxe-Coburg and Gotha": {
+    "ca": "Saxònia-Coburg-Gotha",
+    "es": "Ducado de Sajonia-Coburgo y Gotha"
+  },
+  "Saxe-Meiningen": {
+    "es": "Ducado de Sajonia-Meiningen"
+  },
+  "Saxe-Weimar-Eisenach": {
+    "ca": "Saxònia-Weimar-Eisenach",
+    "es": "Ducado de Sajonia-Weimar-Eisenach"
+  },
+  "Schaumburg-Lippe": {
+    "ca": "Schaumburg-Lippe",
+    "es": "Schaumburg-Lippe"
+  },
+  "Schwarzburg-Rudolstadt": {
+    "es": "Schwarzburgo-Rudolstadt"
+  },
+  "Schwarzburg-Sondershausen": {
+    "es": "Schwarzburgo-Sondershausen"
+  },
+  "Scramble for Africa": {
+    "ca": "Cursa per l'Àfrica",
+    "es": "Reparto de África"
   },
   "Second Balkan War": {
     "ca": "Segona Guerra Balcànica",
     "es": "Segunda guerra de los Balcanes"
   },
+  "Second French Empire": {
+    "ca": "Segon Imperi Francès",
+    "es": "Segundo Imperio francés"
+  },
   "Second Vienna Award": {
     "ca": "Segon arbitratge de Viena",
     "es": "Segundo arbitraje de Viena"
+  },
+  "Septinsular Republic": {
+    "es": "República de las Islas Jónicas"
   },
   "Serbia": {
     "ca": "Sèrbia",
@@ -830,6 +1587,21 @@
   "Serbia and Montenegro": {
     "ca": "Sèrbia i Montenegro",
     "es": "Serbia y Montenegro"
+  },
+  "Shaybanids": {
+    "ca": "Xibànides",
+    "es": "Shaybánidas"
+  },
+  "Shirvan": {
+    "ca": "Xirvan",
+    "es": "Shirván"
+  },
+  "Sicilian revolution of 1848": {
+    "es": "Revolución siciliana de 1848"
+  },
+  "Sloboda Ukraine": {
+    "ca": "Ucraïna Slobodà",
+    "es": "Ucrania Libre"
   },
   "Slovak Republic (1939–1945)": {
     "ca": "República Eslovaca (1939-1945)",
@@ -842,6 +1614,9 @@
   "Slovenia": {
     "ca": "Eslovènia",
     "es": "Eslovenia"
+  },
+  "Sovereign Principality of the United Netherlands": {
+    "es": "Soberano Principado de los Países Bajos Unidos"
   },
   "Soviet invasion of Poland": {
     "ca": "Invasió soviètica de Polònia",
@@ -867,6 +1642,10 @@
     "ca": "Guerra Civil espanyola",
     "es": "Guerra civil española"
   },
+  "Spanish Empire": {
+    "ca": "Imperi Espanyol",
+    "es": "Imperio español"
+  },
   "Spanish protectorate in Morocco": {
     "ca": "Protectorat espanyol al Marroc",
     "es": "Protectorado español de Marruecos"
@@ -875,10 +1654,19 @@
     "ca": "Transició democràtica espanyola",
     "es": "Transición española"
   },
+  "Stanisław Leszczyński": {
+    "ca": "Estanislau I de Polònia",
+    "es": "Estanislao I Leszczynski"
+  },
   "Sweden": {
     "ca": "Suècia",
     "es": "Suecia"
   },
+  "Swedish Empire": {
+    "ca": "Imperi Suec",
+    "es": "Imperio sueco"
+  },
+  "Swedish invasion of Poland (1701-1706)": {},
   "Switzerland": {
     "ca": "Suïssa",
     "es": "Suiza"
@@ -893,6 +1681,14 @@
   },
   "Territory of the Military Commander in Serbia": {
     "es": "Territorio de la comandancia militar en Serbia"
+  },
+  "Teutonic Order": {
+    "ca": "Orde Teutònic",
+    "es": "Orden Teutónica"
+  },
+  "Timurid Empire": {
+    "ca": "Timúrides",
+    "es": "Imperio timúrida"
   },
   "Trans-Olza": {
     "es": "Zaolzie"
@@ -911,6 +1707,10 @@
   "Treaty on the Creation of the USSR": {
     "ca": "Tractat de Creació de l'URSS",
     "es": "Tratado de Creación de la URSS"
+  },
+  "Tsardom of Russia": {
+    "ca": "Tsarat Rus",
+    "es": "Zarato ruso"
   },
   "Tunisia": {
     "ca": "Tunísia",
@@ -931,9 +1731,32 @@
     "ca": "Ucraïna",
     "es": "Ucrania"
   },
+  "Union between Sweden and Norway": {
+    "ca": "Unió entre Suècia i Noruega",
+    "es": "Unión entre Suecia y Noruega"
+  },
+  "Union of Utrecht": {
+    "ca": "Unió d'Utrecht",
+    "es": "Unión de Utrecht"
+  },
   "United Kingdom": {
     "ca": "Regne Unit",
     "es": "Reino Unido"
+  },
+  "United Kingdom of Great Britain and Ireland": {
+    "ca": "Regne Unit de la Gran Bretanya i Irlanda",
+    "es": "Reino Unido de Gran Bretaña e Irlanda"
+  },
+  "United Principalities of Moldavia and Wallachia": {
+    "ca": "Principat de Romania",
+    "es": "Principado de Rumania"
+  },
+  "United Provinces of Central Italy": {
+    "ca": "Províncies Unides de la Itàlia Central",
+    "es": "Provincias Unidas de Italia Central"
+  },
+  "United States of the Ionian Islands": {
+    "es": "Estados Unidos de las Islas Jónicas"
   },
   "Uzbekistan": {
     "ca": "Uzbekistan",
@@ -942,6 +1765,18 @@
   "Vichy France": {
     "ca": "Govern de Vichy",
     "es": "Francia de Vichy"
+  },
+  "Wallachia": {
+    "ca": "Valàquia",
+    "es": "Valaquia"
+  },
+  "War of the Spanish Succession": {
+    "ca": "Guerra de Successió Espanyola",
+    "es": "Guerra de sucesión española"
+  },
+  "Wattasid dynasty": {
+    "ca": "Dinastia wattàssida",
+    "es": "Sultanato wattásida"
   },
   "Weimar Republic": {
     "ca": "República de Weimar",
@@ -971,5 +1806,13 @@
   "Yugoslavia": {
     "ca": "Iugoslàvia",
     "es": "Yugoslavia"
+  },
+  "Zand dynasty": {},
+  "Zaporozhian Cossacks": {
+    "ca": "Zaporoges",
+    "es": "Cosacos de Zaporiyia"
+  },
+  "Zayyanid dynasty": {
+    "ca": "Abdalwadites"
   }
 }

@@ -1,9 +1,16 @@
 import { useMemo } from 'react'
-import { controlOn, countryName, localize } from '../content'
+import { controlOn, countryName, localize, stateName } from '../content'
 import { flagChangesBetween, flagOn, type FlagPeriod } from '../content/flags'
 import type { Occupation } from '../content/schema'
 import { useI18n } from '../i18n'
-import { addDays, formatDate, toDateNumber, yearOf, type IsoDate } from '../lib/date'
+import {
+  EXACT_BORDERS_FROM,
+  addDays,
+  formatDate,
+  toDateNumber,
+  yearOf,
+  type IsoDate,
+} from '../lib/date'
 import {
   featuresOn,
   insideMultiPolygon,
@@ -38,7 +45,7 @@ export function FlagGallery({ date, labels, occupations, selection, onSelect, on
   const year = yearOf(date)
   const yearAgo = addDays(date, -365)
   const shapes = useBorderData()?.occupations
-  const selectedGwcode = selection?.kind === 'country' ? selection.feature.gwcode : undefined
+  const selectedCode = selection?.kind === 'country' ? selection.feature.code : undefined
 
   const cards = useMemo(() => {
     if (!labels) return []
@@ -52,21 +59,19 @@ export function FlagGallery({ date, labels, occupations, selection, onSelect, on
       .filter((f) =>
         annexations.every(
           ({ by, shape }) =>
-            by === f.properties.gwcode ||
-            !insideMultiPolygon(f.geometry.coordinates, shape.geometry),
+            by === f.properties.code || !insideMultiPolygon(f.geometry.coordinates, shape.geometry),
         ),
       )
       .flatMap((f) => {
-        const period = flagOn(f.properties.gwcode, date)
+        const period = flagOn(f.properties.code, date)
         // Un estat sense cap bandera documentada no hi surt. Un territori dependent, només si
         // en tenia una de pròpia (o cap, com l'Alemanya ocupada, que també s'explica així).
         if (!period || (period.flag === undefined && f.properties.status !== 'independent'))
           return []
-        const { gwcode, country_name } = f.properties
         return [
           {
-            key: String(gwcode),
-            name: countryName(gwcode, date, lang, country_name),
+            key: f.properties.code,
+            name: stateName(f.properties, date, lang),
             period,
             selection: { kind: 'country' as const, feature: f.properties },
           },
@@ -93,9 +98,9 @@ export function FlagGallery({ date, labels, occupations, selection, onSelect, on
   const changes = useMemo(() => flagChangesBetween(`${year}-01-01`, `${year}-12-31`), [year])
 
   // Anar a un canvi és anar a la data i obrir l'estat: el que vols veure és la bandera nova.
-  const goToChange = (gwcode: number, from: IsoDate) => {
+  const goToChange = (code: string, from: IsoDate) => {
     onGoToDate(from)
-    const feature = stateOn(labels, gwcode, from)
+    const feature = stateOn(labels, code, from)
     if (feature) onSelect({ kind: 'country', feature })
   }
 
@@ -111,15 +116,15 @@ export function FlagGallery({ date, labels, occupations, selection, onSelect, on
           <p className="empty-state">{t('noFlagChanges')}</p>
         ) : (
           <ul className="item-list">
-            {changes.map(({ gwcode, period }) => {
-              const name = countryName(gwcode, period.from, lang)
+            {changes.map(({ code, period }) => {
+              const name = countryName(code, period.from, lang)
               return (
-                <li key={`${gwcode}-${period.from}`}>
+                <li key={`${code}-${period.from}`}>
                   <button
                     type="button"
                     className={`item-card${period.from > date ? ' is-upcoming' : ''}`}
-                    aria-current={gwcode === selectedGwcode && period.from <= date}
-                    onClick={() => goToChange(gwcode, period.from)}
+                    aria-current={code === selectedCode && period.from <= date}
+                    onClick={() => goToChange(code, period.from)}
                     title={name}
                   >
                     <Flag id={period.flag} size="sm" label={name} />
@@ -143,12 +148,15 @@ export function FlagGallery({ date, labels, occupations, selection, onSelect, on
             {cards.length}
           </span>
         </div>
+        {cards.length === 0 && date < EXACT_BORDERS_FROM && (
+          <p className="empty-state">{t('noFlagsBefore')}</p>
+        )}
         <ul className="flag-grid">
           {cards.map(({ key, name, period, selection: target }) => {
             const isNew = period?.from && yearAgo < period.from && period.from <= date
             const current =
               target.kind === 'country'
-                ? target.feature.gwcode === selectedGwcode
+                ? target.feature.code === selectedCode
                 : selection?.kind === 'occupation' && selection.id === target.id
             return (
               <li key={key}>

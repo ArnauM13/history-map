@@ -3,7 +3,7 @@
 L'objectiu és un mapa on qualsevol pugui **veure com va canviar Europa** i **entendre per què**.
 Les fronteres són el llenç; el que val és la història que s'hi explica a sobre.
 
-De moment, **Europa del 1886 a avui**, que és d'on arrenca CShapes. Abans, unint-hi altres fonts (§5).
+**Europa del 1500 a avui**: del 1886 ençà, amb CShapes, dia a dia; abans, amb Cliopatria, d'any en any (§5).
 
 ## 0. Els fonaments — fet
 
@@ -98,8 +98,18 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
 ## 5. Més enllà
 
 - [x] Tirar enrere fins al 1886, on comença CShapes.
-- [ ] Abans del 1886, tan enrere com es pugui: unir diverses fonts de fronteres en una sola
-      capa, amb les mateixes dates i els mateixos codis que CShapes.
+- [x] Del 1500 al 1885 amb Cliopatria, en un fitxer per segle, amb els codis i els colors de
+      CShapes per als estats que continuen, i les ocupacions i els règims corregits amb la data
+      exacta ([DADES.md](DADES.md) §1.4).
+- [x] Un criteri per quan les fonts no coincideixen, apuntat a [DADES.md](DADES.md) §0.1.
+- [x] Els tractats grans (Westfàlia, Utrecht, les particions de Polònia…) el dia que es van
+      signar, i els estats que s'intercanvien territori canviant el mateix dia.
+- [x] L'Europa central del 1815 al 1870, d'OpenHistoricalMap, amb el dia de cada canvi (§1.5).
+- [ ] Les banderes d'abans del 1886.
+- [ ] OpenHistoricalMap a l'època napoleònica (1806–1815), on Cliopatria s'equivoca més.
+- [ ] Els errors que queden ([DADES.md](DADES.md) §1.4.2): Gdańsk i Toruń del 1772 al 1793,
+      Cracòvia, els estats petits d'abans del 1815.
+- [ ] Més enrere del 1500: la font hi arriba; cal la línia temporal i revisar-ho igual.
 - [ ] *Vector tiles* (PMTiles), si les dades creixen més del que un fitxer pot dur.
 - [ ] Que funcioni sense connexió.
 - [ ] Una manera de contribuir sense Git, per a qui sap història i no vol saber de YAML.

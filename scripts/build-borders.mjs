@@ -56,7 +56,7 @@ const CORRECTIONS = [
   {
     description:
       "Crimea: la frontera reconeguda entre Rússia i Ucraïna, també després de l'annexió del 2014 (resolució 68/262 de l'ONU)",
-    gwcodes: [365, 369],
+    codes: ['365', '369'],
     dropFeaturesStarting: 20140318,
     extendFeaturesEnding: 20140317,
   },
@@ -78,8 +78,9 @@ async function processWithMapshaper(raw, bbox) {
     '-i input.topojson name=borders',
     `-clip bbox=${bbox.join(',')} remove-slivers`,
     `-simplify ${SIMPLIFY} keep-shapes`,
-    `-each 's = +start.replace(/-/g, ""), e = end === "${DATASET_END}" ? ${OPEN_END} : +end.replace(/-/g, "")'`,
-    '-filter-fields gwcode,country_name,status,owner,s,e,capname',
+    // El codi va en text: les entitats d'abans del 1886 (build-history.mjs) en porten un de Wikidata.
+    `-each 's = +start.replace(/-/g, ""), e = end === "${DATASET_END}" ? ${OPEN_END} : +end.replace(/-/g, ""), code = String(gwcode)'`,
+    '-filter-fields code,country_name,status,owner,s,e,capname',
     '-o output.json format=topojson quantization=100000',
   ].join(' ')
   const output = await mapshaper.applyCommands(commands, { 'input.topojson': raw })
@@ -91,7 +92,7 @@ async function processWithMapshaper(raw, bbox) {
 function applyCorrections(topo) {
   const collection = topo.objects.borders
   for (const fix of CORRECTIONS) {
-    const affected = (g) => fix.gwcodes.includes(g.properties.gwcode)
+    const affected = (g) => fix.codes.includes(g.properties.code)
     collection.geometries = collection.geometries.filter(
       (g) => !(affected(g) && g.properties.s === fix.dropFeaturesStarting),
     )
@@ -104,7 +105,7 @@ function applyCorrections(topo) {
 const overlaps = (a, b) => a.s <= b.e && b.s <= a.e
 
 /** Un estat i els territoris que controla (colònies, protectorats…) fan un sol grup: el mateix color. */
-const groupOf = (p) => String(p.status === 'independent' || !p.owner ? p.gwcode : p.owner)
+const groupOf = (p) => (p.status === 'independent' || !p.owner ? p.code : p.owner)
 
 /**
  * Les zones de content/occupations/ es pinten amb el color de l'ocupant: França ocupada, del de
@@ -148,7 +149,7 @@ function assignColours(topo, occupations) {
       if (groupOf(a) !== groupOf(b) && overlaps(a, b)) {
         adjacency.get(groupOf(a)).add(groupOf(b))
         adjacency.get(groupOf(b)).add(groupOf(a))
-        const key = String(a.gwcode)
+        const key = a.code
         if (!pieces.has(key)) pieces.set(key, [])
         pieces.get(key).push({ group: groupOf(b), s: Math.max(a.s, b.s), e: Math.min(a.e, b.e) })
       }
@@ -169,9 +170,7 @@ function assignColours(topo, occupations) {
   for (const [group, direct] of adjacency) {
     for (const n of direct) for (const far of adjacency.get(n)) penalise(group, far, COST.near)
   }
-  const groupOfCode = new Map(
-    geoms.map((g) => [String(g.properties.gwcode), groupOf(g.properties)]),
-  )
+  const groupOfCode = new Map(geoms.map((g) => [g.properties.code, groupOf(g.properties)]))
   for (const o of occupations) {
     const occupier = groupOfCode.get(o.by)
     for (const country of o.countries) {
@@ -226,13 +225,13 @@ function buildLabels(topo) {
           f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates
         const largest = polygons.reduce((a, b) => (ringArea(b[0]) > ringArea(a[0]) ? b : a))
         const [x, y] = polylabel(largest, 0.05)
-        const { gwcode, country_name, status, owner, s, e, capname } = f.properties
+        const { code, country_name, status, owner, s, e, capname } = f.properties
         return {
           type: 'Feature',
           geometry: { type: 'Point', coordinates: [+x.toFixed(3), +y.toFixed(3)] },
           // `rank`: si dos noms es trepitgen, guanya l'estat més gran (symbol-sort-key).
           properties: {
-            gwcode,
+            code,
             country_name,
             status,
             owner,
@@ -260,7 +259,7 @@ if (colours > PALETTE_SIZE) {
   console.error(`✘ Calen ${colours} colors i la paleta en té ${PALETTE_SIZE}: afegeix-ne a PALETTE`)
   process.exit(1)
 }
-const codes = new Set(topo.objects.borders.geometries.map((g) => g.properties.gwcode))
+const codes = new Set(topo.objects.borders.geometries.map((g) => g.properties.code))
 console.log(
   `✔ ${topo.objects.borders.geometries.length} peces de frontera, ${codes.size} estats i territoris, ${colours} colors, ${labels.features.length} noms`,
 )

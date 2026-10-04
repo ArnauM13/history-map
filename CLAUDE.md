@@ -16,6 +16,28 @@ treballa, per a persones i per a agents.
 - **Res de frases fetes.** Ni «millores diverses», ni «robust», ni «potent». Si no se sap dir què
   canvia, encara no està fet.
 
+## La fiabilitat, primer
+
+El mapa vol ser **una referència**: el lloc on es pot anar a comprovar com era Europa un dia
+concret, amb tota la informació que hi ha aquí i allà ajuntada i contrastada. Per això, davant de
+qualsevol altra cosa (que es vegi bé, que sigui ràpid, que hi hagi més dades), mana que el que es
+veu sigui cert, i com més exacte millor.
+
+- **Les fronteres, tan realistes com es pugui.** Una font que dibuixa una cosa que no va passar
+  (Moscou francesa dos anys, una revolta de set setmanes que dura tres) es corregeix, amb la data
+  exacta i la font al costat. El que encara no està bé es diu a [DADES.md](DADES.md).
+- **Quan dues fonts no coincideixen** —en una data, en un nom, en una frontera—, no se'n tria una a
+  l'atzar ni es fa la mitjana: s'investiga **per què** discrepen, a la Viquipèdia (l'article i les
+  fonts que cita) i a fonts fiables (el text dels tractats, historiografia de referència). D'aquí
+  surt un **criteri**, que s'apunta a [DADES.md](DADES.md) §0.1 perquè valgui per a tots els casos
+  iguals, no només per al que el va fer necessari.
+- **La confusió també és informació.** Si la discrepància té importància històrica (una frontera
+  en disputa, una data que cada historiografia posa diferent, una sobirania que depèn de qui la
+  reconeixia), es documenta: a DADES, i a la fitxa o al fet si el lector l'ha de saber.
+- **Cada correcció, comprovada sobre el mapa.** Abans de donar per bona una correcció, es mira el
+  resultat: a quin estat cau cada capital any per any, que no hi hagi peces que se sobreposin ni
+  forats, i com queda al navegador.
+
 ## Com està fet
 
 Una web estàtica: React 19, TypeScript, Vite i MapLibre GL. Sense servidor, sense base de dades.
@@ -32,10 +54,12 @@ content/
   occupations/*.yaml    un fitxer per zona ocupada o annexionada: dates, qui la controlava, text
 public/
   data/                 les fronteres i les zones ocupades, generades (no es toquen a mà)
+  data/history/         les fronteres d'abans del 1886, un fitxer per segle (generades)
   flags/                les banderes en PNG i credits.json, baixades (no es toquen a mà)
   fonts/                les lletres de les etiquetes del mapa
 scripts/
   build-borders.mjs     CShapes 2.0 → public/data
+  build-history.mjs     Cliopatria → public/data/history, amb les correccions
   build-occupations.mjs les formes de les zones ocupades: CShapes, Natural Earth i línies a mà
   fetch-flags.mjs       Wikimedia Commons → public/flags
   check-sources.mjs     comprova les fonts i treu els títols de la Viquipèdia en català i castellà
@@ -56,9 +80,15 @@ en text ISO (`1914-06-28`) i una precisió (dia, mes o any) que només canvia co
 
 ### Els estats
 
-S'identifiquen amb el **codi de Gleditsch i Ward** (`gwcode`), el de CShapes. Els noms, les
+S'identifiquen amb el **codi de Gleditsch i Ward** (`code`, en text), el de CShapes. Els noms, les
 banderes, els fets i els conflictes hi fan referència. Un mateix codi pot tenir noms i banderes
 diferents al llarg del temps (365: Imperi Rus, Rússia soviètica, Unió Soviètica, Rússia).
+
+Abans del 1886, les fronteres són de Cliopatria (`scripts/build-history.mjs`), d'any en any i en un
+fitxer per segle que l'app baixa quan cal; a l'Europa central del 1815 al 1870, d'OpenHistoricalMap,
+amb el dia de cada canvi (DADES.md §1.5). Cada peça porta el QID de Wikidata de l'entitat (`qid`):
+el codi és el de Gleditsch i Ward si continua un estat de CShapes (el Regne de França és el 220), i
+el QID si no. El nom va pel QID, no pel codi: el 1700, el 220 és el Regne de França.
 
 ### Decisions
 
@@ -68,7 +98,9 @@ diferents al llarg del temps (365: Imperi Rus, Rússia soviètica, Unió Sovièt
   comparteixen mai color, i un estat el manté tota la vida. Les colònies porten el de qui les
   governa, més clar.
 - **Les correccions a CShapes són codi** (`CORRECTIONS` a `build-borders.mjs`) i tenen una fila a
-  [DADES.md](DADES.md). Els fitxers generats no es toquen mai a mà.
+  [DADES.md](DADES.md). Els fitxers generats no es toquen mai a mà. Les de Cliopatria, també
+  (`CORRECTIONS` i `SHAPES` a `build-history.mjs`), sempre amb la data exacta: la mostra d'any en
+  any no ho és, i el nom i el territori han de ser de qui eren, no de qui els ocupava.
 - **Les ocupacions, a part de les fronteres.** CShapes dona les pactades; el control de fet va en
   una capa pròpia (`content/occupations/`), amb el color de l'ocupant. La forma de cada zona és
   codi (`ZONES` a `build-occupations.mjs`), feta de peces de CShapes sempre que es pot perquè les

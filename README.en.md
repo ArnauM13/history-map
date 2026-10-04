@@ -2,7 +2,7 @@
 
 # Historical Map of Europe
 
-**Europe from 1886 to today, on a map that moves: the borders, the flags and what happened.**
+**Europe from 1500 to today, on a map that moves: the borders, the flags and what happened.**
 
 [Open the map](https://arnaum13.github.io/history-map/?lang=en) · [Where the information comes from](DADES.en.md) · [Contributing](CONTRIBUTING.en.md) · [Roadmap (in Catalan)](FULL-DE-RUTA.md)
 
@@ -31,6 +31,7 @@ map changes every few months. Here you can follow it day by day.
 | | |
 | --- | --- |
 | **The borders on any day** | From 1886 to today, with the exact day of every change and the name each state had at the time: the Russian Empire, Soviet Russia, the Soviet Union, Russia. |
+| **Four more centuries** | From 1500 to 1885, year by year: the Kingdom of France and the July Monarchy, the Holy Roman Empire, the Polish-Lithuanian Commonwealth, the Swedish Empire. With the occupations the source counted as annexations given back to their owners, and the exact day of every change of regime. |
 | **Every flag in its time** | About a hundred flags of some seventy states: on the map, in a gallery for each date and on each state's card, with what the ones with the most history mean. |
 | **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and marked on the timeline. |
 | **Occupations, from 1938 to 1945** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France, Yugoslavia and Greece carved up, occupied Ukraine. In the occupier's colour, as one more part of its territory, and each zone with its name on the map and its own card. |
@@ -70,6 +71,7 @@ No piece of data gets in without a source, and the source is shown on the card w
 | What you see | Where it comes from |
 | --- | --- |
 | Borders and capitals | [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zurich and University of Konstanz), with the exact day of every change from 1886 to 2019 |
+| Borders before 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), year by year, and, in central Europe from 1815 to 1870, [OpenHistoricalMap](https://www.openhistoricalmap.org/), with the day of every change; with the corrections explained in [DADES.en.md](DADES.en.md) |
 | Each state's name in each period | A Wikipedia article for every name |
 | Flag dates | The Wikipedia articles on each state's flags |
 | Flag images | [Wikimedia Commons](https://commons.wikimedia.org/), with each one's licence and author |

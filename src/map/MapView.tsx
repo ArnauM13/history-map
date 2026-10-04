@@ -3,7 +3,7 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 // MapLibre busca el seu worker al costat del mòdul, i un cop empaquetat no hi és: que el posi Vite.
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { useEffect, useRef, useState } from 'react'
-import { OCCUPATIONS, controlOn, countryName, localize } from '../content'
+import { OCCUPATIONS, controlOn, countryName, localize, stateName } from '../content'
 import { flagOn } from '../content/flags'
 import type { Conflict, HistoricalEvent } from '../content/schema'
 import { translator, useI18n } from '../i18n'
@@ -13,6 +13,9 @@ import {
   featuresOn,
   insideMultiPolygon,
   loadBorderData,
+  useHistoryVersion,
+  withHistory,
+  type BorderData,
   type LabelCollection,
   type OccupationCollection,
 } from './data'
@@ -20,12 +23,14 @@ import { ensureFlagImage } from './flagImages'
 import { EUROPE_BOUNDS, MAX_BOUNDS, addHatches, createStyle, validOn } from './style'
 
 const ATTRIBUTION =
-  '<a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">CShapes 2.0</a> (CC BY-NC-SA 4.0) · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>'
+  '<a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">CShapes 2.0</a> (CC BY-NC-SA 4.0) · <a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria</a> (CC BY 4.0) · <a href="https://www.openhistoricalmap.org/" target="_blank" rel="noopener">OpenHistoricalMap</a> · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>'
 
 maplibregl.setWorkerUrl(workerUrl)
 
 interface Props {
   date: IsoDate
+  /** Si les fronteres del segle de la data (abans del 1886) ja han arribat. */
+  historyStatus: 'ready' | 'loading' | 'error'
   showFlags: boolean
   showOccupations: boolean
   events: HistoricalEvent[]
@@ -54,6 +59,7 @@ const ZONE_PRIORITY = 10_000
 
 export function MapView({
   date,
+  historyStatus,
   showFlags,
   showOccupations,
   events,
@@ -64,10 +70,12 @@ export function MapView({
   const { lang, t } = useI18n()
   const container = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
+  const baseRef = useRef<BorderData | null>(null)
   const labelsRef = useRef<LabelCollection | null>(null)
   const occupationsRef = useRef<OccupationCollection | null>(null)
   /** El color de cada estat (l'índex `c` de la paleta), per pintar les zones del de qui les controla. */
-  const coloursRef = useRef(new Map<number, number>())
+  const coloursRef = useRef(new Map<string, number>())
+  const historyVersion = useHistoryVersion()
   const onSelectRef = useRef(onSelect)
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
 
@@ -121,14 +129,10 @@ export function MapView({
     const styleReady = new Promise((resolve) => map.once('load', resolve))
     map.once('load', () => addHatches(map))
     Promise.all([loadBorderData(), styleReady])
-      .then(([{ borders, labels, occupations }]) => {
+      .then(([data]) => {
         if (mapRef.current !== map) return
-        geojson(map, 'borders').setData(borders)
-        for (const f of borders.features) {
-          const { gwcode, c } = f.properties as BorderProperties
-          if (!coloursRef.current.has(gwcode)) coloursRef.current.set(gwcode, c)
-        }
-        occupationsRef.current = occupations
+        baseRef.current = data
+        occupationsRef.current = data.occupations
         // MapLibre obre el crèdit en carregar i no el plega fins que es mou el mapa: en una
         // pantalla estreta tapava una franja sencera. Hi és igualment, rere la «i».
         if (map.getContainer().clientWidth < 640) {
@@ -137,7 +141,6 @@ export function MapView({
             .querySelector('.maplibregl-ctrl-attrib')
             ?.classList.remove('maplibregl-compact-show')
         }
-        labelsRef.current = labels
         setStatus('ready')
       })
       .catch((error: unknown) => {
@@ -150,6 +153,20 @@ export function MapView({
       map.remove()
     }
   }, [])
+
+  // Les fronteres: les de CShapes i les dels segles d'abans que ja han arribat.
+  useEffect(() => {
+    const map = mapRef.current
+    const base = baseRef.current
+    if (!map || !base || status !== 'ready') return
+    const { borders, labels } = withHistory(base)
+    geojson(map, 'borders').setData(borders)
+    for (const f of borders.features) {
+      const { code, c } = f.properties as BorderProperties
+      if (!coloursRef.current.has(code)) coloursRef.current.set(code, c)
+    }
+    labelsRef.current = labels
+  }, [historyVersion, status])
 
   // Les fronteres vigents en la data.
   useEffect(() => {
@@ -201,10 +218,10 @@ export function MapView({
         geometry: f.geometry,
         properties: {
           ...f.properties,
-          name: countryName(f.properties.gwcode, date, lang, f.properties.country_name),
-          rank: f.properties.rank - (occupiers.has(f.properties.gwcode) ? 2 * ZONE_PRIORITY : 0),
+          name: stateName(f.properties, date, lang),
+          rank: f.properties.rank - (occupiers.has(f.properties.code) ? 2 * ZONE_PRIORITY : 0),
         },
-        flagId: flagOn(f.properties.gwcode, date)?.flag,
+        flagId: flagOn(f.properties.code, date)?.flag,
       }))
     const zoneLabels = zones.map(({ feature, zone, period }) => ({
       type: 'Feature' as const,
@@ -240,16 +257,16 @@ export function MapView({
     return () => {
       cancelled = true
     }
-  }, [date, lang, showFlags, showOccupations, status])
+  }, [date, lang, showFlags, showOccupations, status, historyVersion])
 
   // El contorn de l'estat triat.
   useEffect(() => {
     const map = mapRef.current
     if (!map || status !== 'ready') return
-    const gwcode = selection?.kind === 'country' ? selection.feature.gwcode : -1
+    const code = selection?.kind === 'country' ? selection.feature.code : ''
     map.setFilter('borders-selected', [
       'all',
-      ['==', ['get', 'gwcode'], gwcode],
+      ['==', ['get', 'code'], code],
       validOn(toDateNumber(date)),
     ])
     const zone = selection?.kind === 'occupation' ? selection.id : ''
@@ -301,9 +318,9 @@ export function MapView({
   return (
     <div className="map">
       <div ref={container} className="map-canvas" />
-      {status !== 'ready' && (
+      {(status !== 'ready' || historyStatus !== 'ready') && (
         <div className="map-status" role="status">
-          {status === 'loading' ? t('loadingMap') : t('mapError')}
+          {status === 'error' || historyStatus === 'error' ? t('mapError') : t('loadingMap')}
         </div>
       )}
     </div>

@@ -6,7 +6,8 @@
  *   npm run data:sources -- --force # també els títols que ja s'havien comprovat
  *
  * Tot el que ensenya el mapa cita un article de la Viquipèdia anglesa: els fets, els conflictes i
- * les ocupacions (`wikipedia.en`), el nom de cada estat en cada època (`wiki` a countries.yaml) i les dates de
+ * les ocupacions (`wikipedia.en`), el nom de cada estat en cada època (`wiki` a countries.yaml), les
+ * entitats d'abans del 1886 (`wiki` a public/data/history, que hi posa Cliopatria) i les dates de
  * les banderes (`sources` a flags.yaml). L'script:
  *
  *   1. Comprova que cada article existeix.
@@ -24,6 +25,7 @@ const API = 'https://en.wikipedia.org/w/api.php'
 const HEADERS = { 'User-Agent': 'HistoryMap/0.1 (https://github.com/ArnauM13/history-map)' }
 const LANGS = ['ca', 'es']
 const MAP_FILE = 'content/wikipedia.json'
+const HISTORY_DIR = 'public/data/history'
 const force = process.argv.includes('--force')
 
 const read = (path) => parse(readFileSync(path, 'utf8'))
@@ -53,6 +55,14 @@ for (const [code, value] of Object.entries(read('content/countries.yaml'))) {
 }
 for (const [code, titles] of Object.entries(read('content/flags.yaml').sources ?? {})) {
   for (const title of titles) cite(title, `flags.yaml ${code}`)
+}
+// El nom en català i castellà d'aquestes entitats és el títol de l'article: per això hi són.
+for (const name of readdirSync(HISTORY_DIR).filter((n) => n.endsWith('.labels.geojson'))) {
+  const { features } = JSON.parse(readFileSync(`${HISTORY_DIR}/${name}`, 'utf8'))
+  for (const { properties: p } of features) {
+    // Sense article anglès, el nom i la font els posa content/countries.yaml pel QID.
+    if (p.wiki) cite(p.wiki, `${HISTORY_DIR}/${name} ${p.qid}`)
+  }
 }
 
 // ── La Viquipèdia ────────────────────────────────────────────────────────────

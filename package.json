@@ -18,6 +18,7 @@
     "typecheck": "tsc -b",
     "test": "vitest run",
     "data:borders": "node scripts/build-borders.mjs",
+    "data:history": "node scripts/build-history.mjs",
     "data:flags": "node scripts/fetch-flags.mjs",
     "data:sources": "node scripts/check-sources.mjs",
     "data:occupations": "node scripts/build-occupations.mjs"
@@ -41,6 +42,7 @@
     "@types/topojson-specification": "^1.0.5",
     "@vitejs/plugin-react": "^6.1.1",
     "mapshaper": "^0.7.72",
+    "osmtogeojson": "^3.0.0-beta.5",
     "oxlint": "^1.86.0",
     "polygon-clipping": "^0.15.7",
     "polylabel": "^2.1.0",

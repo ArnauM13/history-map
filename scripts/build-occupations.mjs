@@ -561,7 +561,7 @@ const pieces = topojson.feature(topo, topo.objects.borders).features.filter((f) 
 function state(gwcode, date) {
   const day = Number(date.replaceAll('-', ''))
   const found = pieces.filter(
-    (f) => f.properties.gwcode === gwcode && f.properties.s <= day && day <= f.properties.e,
+    (f) => f.properties.code === String(gwcode) && f.properties.s <= day && day <= f.properties.e,
   )
   if (found.length === 0) throw new Error(`CShapes no té l'estat ${gwcode} el ${date}`)
   return union(

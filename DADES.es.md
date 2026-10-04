@@ -10,6 +10,7 @@ mira la licencia de esa parte.**
 | El código (`src/`, `scripts/`…) | Este proyecto | MIT |
 | Los textos (`content/`) | Quien contribuye | CC BY-SA 4.0 |
 | Las fronteras (`public/data/`) | CShapes 2.0, recortado y simplificado aquí | CC BY-NC-SA 4.0 |
+| Las fronteras anteriores a 1886 (`public/data/history/`) | Cliopatria y, de 1815 a 1870 en la Europa central, OpenHistoricalMap, recortados, simplificados y corregidos aquí (§1.4, §1.5) | CC BY 4.0 |
 | Las zonas de ocupación (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) y líneas dibujadas aquí (§1.3) | CC BY-NC-SA 4.0 |
 | Las banderas (`public/flags/`) | Wikimedia Commons | La de cada imagen (§2) |
 | Las letras del mapa (`public/fonts/`) | Open Sans, de [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0 |
@@ -25,7 +26,9 @@ Todo lo que enseña el mapa tiene una fuente, y la ficha donde aparece la cita c
 | Qué se ve | De dónde sale | Dónde se cita |
 | --- | --- | --- |
 | Las fronteras y las capitales | CShapes 2.0 (§1) | En la ficha de cada estado |
+| Las fronteras anteriores a 1886 | Cliopatria (§1.4) y OpenHistoricalMap (§1.5) | En la ficha de cada estado |
 | El nombre de cada estado en cada época | El artículo de Wikipedia sobre el estado con ese nombre (`wiki` en `content/countries.yaml`) | En la ficha del estado |
+| El nombre de cada entidad anterior a 1886 | El título del artículo de Wikipedia que cita Cliopatria, en catalán y castellano, o `content/countries.yaml` por el QID (§1.4) | En la ficha del estado |
 | Las fechas de las banderas | Los artículos de Wikipedia sobre las banderas de cada estado (`sources` en `content/flags.yaml`) | En la ficha del estado |
 | Las imágenes de las banderas | Wikimedia Commons (§2, `public/flags/credits.json`) | Bajo cada bandera |
 | Las zonas ocupadas y anexionadas (1938-1945) | Fronteras de CShapes de otras fechas, divisiones actuales de Natural Earth y líneas dibujadas a mano (§1.3); las fechas, del artículo de Wikipedia de cada zona (`content/occupations/`) | En la ficha de cada zona |
@@ -37,6 +40,27 @@ Todo lo que enseña el mapa tiene una fuente, y la ficha donde aparece la cita c
 que cada enlace externo responda. El workflow «Fonts» lo ejecuta cuando cambia el contenido y cada
 lunes, y falla si encuentra uno roto. Los tests, por su parte, no dejan entrar ningún hecho,
 conflicto, ocupación, nombre de estado ni bandera sin fuente.
+
+### 0.1 Cuando las fuentes no coinciden
+
+El mapa quiere ser una referencia. Cuando dos fuentes dicen cosas distintas —una fecha, un nombre,
+una frontera—, se investiga por qué, en Wikipedia y en las fuentes que cita, en el texto de los
+tratados y en historiografía de referencia, y se saca un criterio que vale para todos los casos
+iguales. Los criterios de ahora:
+
+| Cuando | Criterio | Ejemplo |
+| --- | --- | --- |
+| Una fuente da a un estado el territorio que otro ocupaba en una guerra | El mapa dibuja la **soberanía**: el territorio es de quien lo tenía hasta que un tratado o una anexión formal lo cambia de manos. Las ocupaciones largas del siglo XX van en la capa de ocupaciones (§1.3). | Moscú en 1812 es rusa; Hamburgo es francés desde la anexión de 1811, no desde la ocupación de 1806. |
+| Las fuentes ponen el cambio en fechas distintas | El **día en que tiene efecto**: la proclamación o la abdicación, para un cambio de régimen; el tratado, para una cesión, si no fija otro; el decreto, para una anexión. En el calendario gregoriano. | La Segunda República francesa, del 24 de febrero de 1848 al 2 de diciembre de 1852. |
+| Dos estados tienen el mismo soberano | **Estados separados** mientras mantienen instituciones propias; uno solo cuando se unen por ley. | Sajonia y Polonia (1697-1763), Hannover y Gran Bretaña (1714-1837) y Escocia e Inglaterra (1603-1707), separados; Gran Bretaña desde 1707. |
+| Un estado paga tributo o es vasallo de otro | **Estado propio**, si se gobernaba solo. | Valaquia y Moldavia, bajo el Imperio otomano. |
+| Una revuelta | En el mapa, solo si tuvo **un gobierno sobre el territorio**, y con las fechas de ese gobierno. | El Estado Húngaro, del 14 de abril al 13 de agosto de 1849; la revuelta de Nalivaiko, dentro de la República de las Dos Naciones. |
+| El nombre | El que tenía el estado **entonces**, como lo llama la Wikipedia de cada idioma. | En 1700, el Reino de Francia; en 1810, el Primer Imperio francés. |
+
+Si la discrepancia tiene importancia histórica (una frontera en disputa, una fecha que cada
+historiografía pone distinta, una soberanía que depende de quién la reconocía), también se
+documenta, aquí y en la ficha si el lector debe saberlo. Las correcciones que salen de aquí están
+en §1.1 y §1.4.1.
 
 ---
 
@@ -60,9 +84,11 @@ territorios ocupados) de 1886 a 2019, con el día exacto de cada cambio.
   además, los doce colores se reparten, y un ocupante no usa el del estado ocupado, para que la
   zona se distinga.
 
-Los estados se identifican con los **códigos de Gleditsch y Ward** (`gwcode`), los mismos de
+Los estados se identifican con los **códigos de Gleditsch y Ward** (`code`), los mismos de
 CShapes y de buena parte de la ciencia política (los datos de conflictos del UCDP, por ejemplo).
-Los hechos, los conflictos, los nombres y las banderas se refieren a ellos con estos códigos. Los
+Los hechos, los conflictos, los nombres y las banderas se refieren a ellos con estos códigos. Las
+entidades anteriores a 1886 que no continúan ningún estado de CShapes llevan como código el QID de
+Wikidata (`Q207162`) (§1.4). Los
 nombres de los estados y de las capitales de CShapes están en inglés; los de la app salen de
 `content/countries.yaml` y `content/capitals.yaml`, en los tres idiomas.
 
@@ -149,6 +175,121 @@ pisen.
   irá con la capa de los frentes.
 - **Trozos pequeños de las anexiones italianas de 1941**: lo que se añadió a la provincia de
   Fiume (Sušak, Kastav, Krk y Rab) y, desde el otoño, Hvar y Pag. Salen dentro de Croacia.
+
+### 1.4 Antes de 1886: Cliopatria
+
+[Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria), de la Seshat Global
+History Databank, dibuja las entidades políticas del mundo de 3400 a. C. a 2024, cada una con el año
+en que empieza y en que termina cada forma. El mapa usa las de Europa de 1500 a 1885.
+
+> Seshat Global History Databank. Cliopatria, versión 0.2.1. _Scientific Data_ (2025).
+> https://doi.org/10.1038/s41597-025-04516-9
+
+- **Licencia**: CC BY 4.0. Los archivos de `public/data/history/` son una obra derivada con la misma
+  licencia.
+- **Qué se hace** (`npm run data:history`, después de `npm run data:borders`, que da los colores):
+  - Se quitan las agrupaciones (las filas entre paréntesis, que repiten las piezas de otras), y se
+    recorta y se simplifica como CShapes.
+  - Cada entidad lleva su QID de Wikidata. Si en 1885 ocupa el mismo lugar que un estado de CShapes
+    de 1886, o está en la lista `SAME_STATE`, toma su código y su color: el Reino de Francia, la
+    República y los dos Imperios son el 220, como la Francia de CShapes. La lista añade los
+    predecesores que Gleditsch y Ward ya cuentan como el mismo estado (Prusia, el 255; el Reino de
+    Cerdeña, el 325) y los que eran su núcleo (Inglaterra, el 200; la Monarquía de los Habsburgo, el 300).
+  - El nombre es el título, en catalán y castellano, del artículo de Wikipedia que cita Cliopatria
+    (`content/wikipedia.json`). Cuando no lo hay, o no es el de la entidad, lo pone
+    `content/countries.yaml` por el QID.
+  - Va en un archivo por siglo, y la app solo descarga el siglo que mira: todos juntos pesan diez
+    veces las fronteras de CShapes.
+
+**La precisión.** Cliopatria muestrea el mapa cada pocos años —cada año en los momentos agitados,
+cada diez o más en los tranquilos— y cada forma vale hasta la muestra siguiente. Por eso las
+fronteras cambian el 1 de enero y no el día en que ocurrió, y un cambio puede llegar uno o dos años
+tarde. La ficha de cada estado lo dice, y la línea temporal lo marca con una franja rayada hasta
+1886. Donde sabemos el día, el nombre sí cambia el día exacto (§1.4.1).
+
+#### 1.4.1 Dónde nos separamos
+
+Las correcciones son código, en `scripts/build-history.mjs`, y siguen los criterios de §0.1:
+`CORRECTIONS` cambia de quién es una pieza y hasta cuándo; `SHAPES` devuelve un territorio a quien
+era, y solo lo toma de quien lo ocupaba, para no tocar los cambios de verdad de los vecinos;
+`TRANSITIONS` pone el cambio de los grandes tratados el día en que se firmaron. Cada una lleva la
+descripción y las fechas al lado, comprobadas en Wikipedia.
+
+| Qué | Por qué |
+| --- | --- |
+| Prusia, de 1809 a 1867 | Cliopatria le pone el nombre de la Confederación del Rin (1809-1814), en la que nunca entró, y el de la Confederación Germánica (1815-1867), que no era un estado. Su fila «Kingdom of Prussia» no llega a 2.000 km². |
+| Ocupaciones contadas como soberanía | Cliopatria dibuja el control militar como si fuera una anexión, y la muestra lo alarga. Vuelven a quien eran: Viena, otomana en 1529-1533 y en 1683-1686 por dos asedios que fracasaron; Moscú y Lituania, francesas en 1812-1813 por seis meses de campaña; Viena (1805, 1809), Prusia y Varsovia (1807-1808) y España (1809-1811), francesas; París, alemán en 1870-1872; Barcelona, inglesa en 1706-1712; Sajonia, sueca y prusiana en las guerras de los Treinta Años y de los Siete Años, y prusiana en 1815-1819 y en 1866; Bohemia, prusiana en 1744 y en 1866; Brandeburgo, sueco en 1632-1647; Lombardía, sarda en 1848. |
+| La guerra de los Treinta Años | Maguncia, Fráncfort, Wurzburgo, Erfurt, Mecklemburgo y Bremen-Verden salen suecos de 1632 a 1647, Hamburgo danés de 1622 a 1628, y Mecklemburgo, Hamburgo y Lübeck de los Habsburgo de 1629 a 1631. Suecia no gana nada hasta Westfalia (1648); el Mecklemburgo de Wallenstein era un feudo imperial. Todo vuelve al Sacro Imperio. |
+| Valaquia y Moldavia | Vasallos otomanos, pero estados propios (§0.1). Cliopatria las hace rusas o austriacas en cada guerra (1769-1774, 1791, 1807-1812, 1828-1834, 1849-1856). Besarabia es rusa desde el tratado de Bucarest, el 28 de mayo de 1812, no desde 1807. |
+| La revuelta bohemia | Del 23 de mayo de 1618 (la defenestración de Praga) a la Montaña Blanca, el 8 de noviembre de 1620, Bohemia se gobierna sola; Cliopatria la pone dentro del «Sacro Imperio» hasta 1621. |
+| Las ciudades hanseáticas | Hamburgo y Bremen, libres de 1806 a 1810: Francia las ocupa, pero no se las anexiona hasta 1811. Lübeck, al revés: Cliopatria la deja libre cuando era francesa (1811-1813). |
+| Monarquías compuestas | La Austria y la Bohemia de Fernando I salen como parte de España (1529-1555); la Sajonia del elector que era rey de Polonia, como Polonia (1700-1756); la Toscana de los Habsburgo-Lorena, como Austria; Hannover, como británico o prusiano. Eran estados aparte. |
+| Escocia | Reino aparte hasta el 1 de mayo de 1707, salvo durante la Commonwealth de Cromwell. Cliopatria la hace inglesa desde 1609 y la deja en blanco de 1640 a 1652. |
+| Revueltas de pocos meses | El Estado Húngaro (14 de abril - 13 de agosto de 1849), la República de Baden (1 de junio - 23 de julio de 1849), la Sicilia de 1848 y el gobierno del Levantamiento de Noviembre (29 de noviembre de 1830 - 21 de octubre de 1831), con sus fechas; la muestra los alargaba hasta tres años. Las revueltas de Nalivaiko y de los hugonotes, dentro de su estado. |
+| Los tratados, el día en que se firmaron | Westfalia (24-10-1648), los Pirineos (7-11-1659), Utrecht (11-4-1713), Passarowitz (21-7-1718), Nystad (10-9-1721), Aquisgrán (18-10-1748), las particiones de Polonia (5-8-1772, 23-1-1793 y 24-10-1795), Crimea (19-4-1783), Campo Formio (17-10-1797), Tilsit (9-7-1807), Schönbrunn (14-10-1809), Viena (9-6-1815), Bélgica (4-10-1830), Zúrich (10-11-1859), Turín (24-3-1860), Viena (30-10-1864), Praga (23-8-1866) y la Confederación de Alemania del Norte (1-7-1867). Cliopatria los pone el 1 de enero de la muestra, y la segunda y la tercera partición de Polonia, un año antes. Cambian el mismo día todos los estados que se intercambian territorio, también los de fuera de la zona del tratado (en 1809, Suecia, que pierde Finlandia). |
+| El día del cambio de régimen | Francia (1792, 1795, 1799, 1804, 1814, 1830, 1848, 1852, 1870), España (1873, 1874), Gran Bretaña (1707) y el Reino Unido (1801), Dinamarca y Noruega (1814), Suecia (1721), Prusia (1701), Austria-Hungría (1867), Italia (1861), la Italia napoleónica (1805), Nápoles (1806), la Toscana (1569), Grecia (1832), Serbia (1882) y Rumania (1862, 1881). |
+| Nombres y artículos equivocados | «Serbs», el pueblo, para el Principado de Serbia; el condado de Urgel por Andorra; un «Reino de Mónaco»; los QID y los artículos de la Cataluña de hoy para la República Catalana de 1641, y de la Italia de hoy para la República Italiana de 1802; el Egipto de 1885, enlazado al «Reparto de África»; la Confederación Livonia, al idioma livonio. |
+| Francia en 1814 | Cliopatria da 100.000 km² alrededor de París al Gran Ducado de Berg, que tenía 15.000, en el Rin. |
+| Alsacia y Lorena | Francesas hasta el tratado de Fráncfort (10 de mayo de 1871), no hasta el 1 de enero. |
+
+**Discrepancias que lo son de verdad**, entre fuentes fiables, y el criterio que se ha tomado:
+
+- **La tercera partición de Polonia.** Las tres potencias se ponen de acuerdo el 24 de octubre de
+  1795, y el tratado que la cierra es del 26 de enero de 1797. El mapa usa 1795: es cuando la
+  República de las Dos Naciones deja de existir de hecho, y el rey abdica un mes después.
+- **El Imperio alemán.** Los tratados de adhesión de Baviera, Wurtemberg, Baden y Hesse entraron en
+  vigor el 1 de enero de 1871; el emperador se proclamó el 18 de enero, y la constitución del
+  Imperio es del 4 de mayo, la fecha que usa OpenHistoricalMap. El mapa usa el 1 de enero, cuando
+  los estados del sur dejan de ser independientes.
+
+#### 1.4.2 Dónde fallan
+
+- **De año en año**, donde no hay un tratado o un régimen con la fecha puesta. Véase «La precisión»,
+  arriba.
+- **Más control de hecho.** Quedan ocupaciones breves que Cliopatria cuenta como soberanía, sobre
+  todo en la época napoleónica (Bruselas en 1814) y en las fronteras del este.
+- **Estados pequeños fuera de 1815-1870.** Los del Sacro Imperio van juntos, con el nombre del
+  Imperio, también los de Italia hasta 1740. Antes de 1815, Fráncfort sale dentro de Berg y de
+  Wurzburgo, y las formas de Bremen y Lübeck quedan desplazadas unos kilómetros de las ciudades. De
+  1815 a 1870 lo arregla OpenHistoricalMap (§1.5).
+- **Gdansk y Toruń**, prusianas desde 1772: fueron polacas hasta 1793. Cliopatria no las separa de
+  su entorno, que sí pasó a Prusia en 1772.
+- **Finlandia**, sueca hasta el 14 de octubre de 1809 (Schönbrunn), cuando el tratado de
+  Fredrikshamn es del 17 de septiembre: la misma muestra de Cliopatria recoge los dos cambios.
+- **Bordes menos finos** que los de CShapes, y con un salto pequeño el 1 de enero de 1886, cuando
+  empiezan los de CShapes. Ginebra, que era independiente y es suiza desde 1815, cae al otro lado
+  de la frontera.
+- **Huecos.** De 1659 a 1661, Kiev no es de nadie.
+- **Sin banderas.** Empiezan en 1886: las anteriores aún no están documentadas.
+
+### 1.5 La Europa central de 1815 a 1870: OpenHistoricalMap
+
+Cliopatria no distingue bien los estados pequeños de la Confederación Germánica: pone Kassel dentro
+de Hannover, Fráncfort dentro de Hesse-Darmstadt, Maguncia dentro de Fráncfort y Gotha dentro de
+Prusia. [OpenHistoricalMap](https://www.openhistoricalmap.org/) (OHM, dominio público CC0) los tiene
+todos, con el día de cada cambio y el QID de Wikidata. Entre el 9 de junio de 1815 (el Congreso de
+Viena) y el 31 de diciembre de 1870 (el Imperio alemán), donde hay OHM manda OHM, y Cliopatria llena
+el resto.
+
+- **Qué se toma**: los estados de la Confederación Germánica, Austria y Prusia incluidas, la
+  Confederación de Alemania del Norte, los de Italia, Liechtenstein, Luxemburgo, Mónaco y San
+  Marino, y los gobiernos revolucionarios que gobernaron un territorio (Milán y Venecia en 1848,
+  Sicilia en 1848-1849, las Provincias Unidas de Italia Central, Garibaldi en 1860). Los vecinos
+  siguen siendo de Cliopatria: OHM tiene ahí errores que Cliopatria no tiene.
+- **Dónde se corrige OHM**: la Prusia de 1829 a 1834 se adentra 13.000 km² en la Polonia rusa. La
+  frontera occidental de Rusia no se movió de 1815 a 1914, y ahí manda CShapes.
+- **Los nombres**, de Wikidata (el nombre inglés y el artículo de Wikipedia), traducidos como los
+  demás (§1.4), o de `content/countries.yaml`.
+- **Se descarga una sola vez** (`npm run data:history`), en `data-raw/`: son unos cientos de MB.
+
+Dónde falla:
+
+- **Turingia antes de 1826.** OHM no tiene Sajonia-Gotha-Altemburgo, Sajonia-Hildburghausen ni
+  Sajonia-Coburgo-Saalfeld antes de la reorganización del 12 de noviembre de 1826. En vez de poner
+  lo que dice Cliopatria (Prusia, Baviera, Berg), el mapa dice lo que se sabe: **los ducados
+  ernestinos**, sin separarlos.
+- **Cracovia.** La forma de OHM de la Ciudad Libre no cierra bien y deja fuera el centro de la
+  ciudad; donde falta, sale Cliopatria.
 
 ---
 

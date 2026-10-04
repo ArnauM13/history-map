@@ -225,7 +225,7 @@ export function createStyle(glyphsUrl: string): StyleSpecification {
         id: 'borders-selected',
         type: 'line',
         source: 'borders',
-        filter: ['==', ['get', 'gwcode'], -1],
+        filter: ['==', ['get', 'code'], ''],
         paint: { 'line-color': COLORS.selected, 'line-width': 2.5 },
       },
       {

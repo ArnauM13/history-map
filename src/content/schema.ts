@@ -29,8 +29,19 @@ export const externalSource = z.strictObject({
 
 const sources = z.array(externalSource).default([])
 
-/** Codis de Gleditsch i Ward: els mateixos de les fronteres i de content/countries.yaml. */
-const countries = z.array(z.number().int().positive()).default([])
+/**
+ * Un estat, amb el codi de les fronteres: el de Gleditsch i Ward (220) o, per als que no en
+ * tenen, el QID de Wikidata (Q207162). Al YAML, els números van sense cometes.
+ */
+const stateCode = z.union([
+  z.number().int().positive().transform(String),
+  z.string().regex(/^Q\d+$/, 'Un estat va amb un codi de Gleditsch i Ward o un QID de Wikidata'),
+])
+
+/** La clau dels fitxers que parlen d'estats: content/countries.yaml i content/flags.yaml. */
+const stateKey = z.string().regex(/^(\d+|Q\d+)$/, 'La clau és un codi de Gleditsch i Ward o un QID')
+
+const countries = z.array(stateCode).default([])
 
 export const EVENT_CATEGORIES = [
   'war',
@@ -91,8 +102,8 @@ export const OCCUPATION_KINDS = ['annexation', 'occupation', 'client'] as const
 const controlPeriod = z.strictObject({
   /** L'últim dia d'aquest tram. Només l'últim pot anar sense, si encara dura. */
   until: isoDate.optional(),
-  /** Qui el controlava: un codi de Gleditsch i Ward. */
-  by: z.number().int().positive(),
+  /** Qui el controlava. */
+  by: stateCode,
   kind: z.enum(OCCUPATION_KINDS),
   /**
    * Per què: el fet que el va posar sota aquest control, en poques paraules («Armistici francès,
@@ -138,7 +149,7 @@ const nameEntry = z.strictObject({
 })
 
 export const countryNamesSchema = z.record(
-  z.string().regex(/^\d+$/, 'La clau és un codi de Gleditsch i Ward'),
+  stateKey,
   z.union([nameEntry.omit({ until: true }), z.array(nameEntry).min(1)]),
 )
 
@@ -157,10 +168,10 @@ export const flagsSchema = z.strictObject({
   catalogue: z.record(flagId, z.string().regex(/\.(svg|png)$/i, "Ha de ser un fitxer d'imatge")),
   /** Què vol dir una bandera i per què va arribar: dues o tres frases, no més. */
   about: z.record(flagId, localizedText).default({}),
-  /** Codi de Gleditsch i Ward → les banderes que va fer servir, per ordre. */
-  states: z.record(z.string().regex(/^\d+$/), z.array(flagEntry).min(1)),
+  /** Codi de l'estat → les banderes que va fer servir, per ordre. */
+  states: z.record(stateKey, z.array(flagEntry).min(1)),
   /** D'on surten les dates: codi → títols d'articles de la Viquipèdia anglesa. */
-  sources: z.record(z.string().regex(/^\d+$/), z.array(text).min(1)).default({}),
+  sources: z.record(stateKey, z.array(text).min(1)).default({}),
 })
 
 export type LocalizedText = z.infer<typeof localizedText>
