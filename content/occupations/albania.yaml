@@ -1,0 +1,27 @@
+start: 1939-04-12
+control:
+  - { until: 1943-09-08, by: 325, kind: client }
+  - { until: 1944-11-29, by: 255, kind: occupation }
+countries: [339]
+title:
+  ca: Albània ocupada
+  es: Albania ocupada
+  en: Occupied Albania
+summary:
+  ca: >-
+    Itàlia va envair Albània el 7 d'abril del 1939; el rei Zog va fugir, i el 12 d'abril una
+    assemblea albanesa va votar la unió amb Itàlia sota la corona de Víctor Manuel III. Quan Itàlia
+    va signar l'armistici, el setembre del 1943, la va ocupar Alemanya. Els partisans albanesos en
+    van completar l'alliberament el 29 de novembre del 1944.
+  es: >-
+    Italia invadió Albania el 7 de abril de 1939; el rey Zog huyó, y el 12 de abril una asamblea
+    albanesa votó la unión con Italia bajo la corona de Víctor Manuel III. Cuando Italia firmó el
+    armisticio, en septiembre de 1943, la ocupó Alemania. Los partisanos albaneses completaron su
+    liberación el 29 de noviembre de 1944.
+  en: >-
+    Italy invaded Albania on 7 April 1939; King Zog fled, and on 12 April an Albanian assembly
+    voted for union with Italy under the crown of Victor Emmanuel III. When Italy signed the
+    armistice in September 1943, Germany occupied the country. Albanian partisans completed its
+    liberation on 29 November 1944.
+wikipedia:
+  en: Italian invasion of Albania

@@ -1,0 +1,26 @@
+start: 1940-06-10
+control:
+  - { until: 1945-05-08, by: 255, kind: occupation }
+countries: [385]
+title:
+  ca: Noruega ocupada
+  es: Noruega ocupada
+  en: Occupied Norway
+summary:
+  ca: >-
+    Alemanya va envair Noruega el 9 d'abril del 1940, i després de dos mesos de combats l'exèrcit
+    noruec va capitular el 10 de juny; el rei i el govern van seguir la guerra des de Londres. El
+    país el governava un comissari del Reich, Josef Terboven, amb Vidkun Quisling al capdavant
+    d'un govern col·laboracionista. Les tropes alemanyes van capitular el 8 de maig del 1945.
+  es: >-
+    Alemania invadió Noruega el 9 de abril de 1940, y tras dos meses de combates el ejército
+    noruego capituló el 10 de junio; el rey y el gobierno siguieron la guerra desde Londres. El
+    país lo gobernaba un comisario del Reich, Josef Terboven, con Vidkun Quisling al frente de un
+    gobierno colaboracionista. Las tropas alemanas capitularon el 8 de mayo de 1945.
+  en: >-
+    Germany invaded Norway on 9 April 1940, and after two months of fighting the Norwegian army
+    surrendered on 10 June; the king and the government carried on the war from London. The
+    country was ruled by a Reich commissioner, Josef Terboven, with Vidkun Quisling heading a
+    collaborationist government. The German troops surrendered on 8 May 1945.
+wikipedia:
+  en: German occupation of Norway

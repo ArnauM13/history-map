@@ -2,9 +2,12 @@ import calendarMonth from '@material-symbols/svg-400/outlined/calendar_month.svg
 import chevronLeft from '@material-symbols/svg-400/outlined/chevron_left.svg?raw'
 import chevronRight from '@material-symbols/svg-400/outlined/chevron_right.svg?raw'
 import close from '@material-symbols/svg-400/outlined/close.svg?raw'
+import fence from '@material-symbols/svg-400/outlined/fence.svg?raw'
 import flagFill from '@material-symbols/svg-400/outlined/flag-fill.svg?raw'
 import flag from '@material-symbols/svg-400/outlined/flag.svg?raw'
 import history from '@material-symbols/svg-400/outlined/history.svg?raw'
+import layersFill from '@material-symbols/svg-400/outlined/layers-fill.svg?raw'
+import layers from '@material-symbols/svg-400/outlined/layers.svg?raw'
 import openInNew from '@material-symbols/svg-400/outlined/open_in_new.svg?raw'
 import pause from '@material-symbols/svg-400/outlined/pause.svg?raw'
 import playArrow from '@material-symbols/svg-400/outlined/play_arrow.svg?raw'
@@ -22,9 +25,12 @@ const ICONS = {
   chevron_left: chevronLeft,
   chevron_right: chevronRight,
   close,
+  fence,
   flag,
   flag_fill: flagFill,
   history,
+  layers,
+  layers_fill: layersFill,
   open_in_new: openInNew,
   pause,
   play_arrow: playArrow,

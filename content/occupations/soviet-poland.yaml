@@ -1,0 +1,32 @@
+start: 1939-09-28
+control:
+  - { until: 1941-06-21, by: 365, kind: annexation }
+countries: [290]
+title:
+  ca: Polònia annexionada per la Unió Soviètica
+  es: Polonia anexionada por la Unión Soviética
+  en: Polish areas annexed by the Soviet Union
+label:
+  ca: Annexionada per la URSS
+  es: Anexionada por la URSS
+  en: Annexed by the USSR
+summary:
+  ca: >-
+    L'Exèrcit Roig va entrar a Polònia el 17 de setembre del 1939, i el tractat del 28 de setembre
+    li va donar la meitat oriental del país. Després d'unes eleccions sota l'ocupació, l'1 i el 2
+    de novembre es va incorporar a les repúbliques soviètiques d'Ucraïna i Bielorússia, i centenars
+    de milers de polonesos van ser deportats a l'interior de la Unió Soviètica. Alemanya la va
+    envair el 22 de juny del 1941.
+  es: >-
+    El Ejército Rojo entró en Polonia el 17 de septiembre de 1939, y el tratado del 28 de
+    septiembre le dio la mitad oriental del país. Tras unas elecciones bajo la ocupación, el 1 y
+    el 2 de noviembre se incorporó a las repúblicas soviéticas de Ucrania y Bielorrusia, y cientos
+    de miles de polacos fueron deportados al interior de la Unión Soviética. Alemania la invadió
+    el 22 de junio de 1941.
+  en: >-
+    The Red Army entered Poland on 17 September 1939, and the treaty of 28 September gave it the
+    eastern half of the country. After elections held under occupation, on 1 and 2 November it
+    was incorporated into the Ukrainian and Byelorussian Soviet republics, and hundreds of
+    thousands of Poles were deported to the Soviet interior. Germany invaded it on 22 June 1941.
+wikipedia:
+  en: Soviet invasion of Poland

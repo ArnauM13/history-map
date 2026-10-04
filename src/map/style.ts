@@ -1,4 +1,4 @@
-import type { ExpressionSpecification, StyleSpecification } from 'maplibre-gl'
+import type { ExpressionSpecification, Map as MapLibreMap, StyleSpecification } from 'maplibre-gl'
 
 /**
  * Colors d'atles de paper. L'script de fronteres dona a cada estat un índex (`c`) perquè dos
@@ -14,6 +14,8 @@ export const COLORS = {
   labelHalo: 'rgba(255, 255, 255, 0.85)',
   conflict: '#c0392b',
   event: '#d68910',
+  /** La vora discontínua de les zones ocupades: més fosca que les fronteres, que van per sota. */
+  occupation: '#4a3b2c',
 }
 
 export const EUROPE_BOUNDS: [[number, number], [number, number]] = [
@@ -24,6 +26,42 @@ export const MAX_BOUNDS: [[number, number], [number, number]] = [
   [-45, 22],
   [76, 83],
 ]
+
+/**
+ * Les zones de la capa d'ocupacions es pinten amb el color de qui les controla: una annexió, plena
+ * (Àustria es veu com una part més d'Alemanya); una ocupació, ratllada espessa; un estat client,
+ * ratllada clara. Les ratlles deixen veure el color de l'estat de sota, que és de qui era.
+ */
+const HATCHES = { occupation: 7, client: 3 } as const
+const HATCH_SIZE = 24
+
+/** Un color de la paleta, enfosquit: les ratlles han de destacar sobre un altre color pastís. */
+function darken(hex: string, amount = 0.35): [number, number, number] {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16))
+  return [r, g, b].map((v) => Math.round(v * (1 - amount))) as [number, number, number]
+}
+
+/** Les imatges de les ratlles: `hatch-{manera}-{color}`, una per cada color de la paleta. */
+export function addHatches(map: MapLibreMap) {
+  PALETTE.forEach((color, c) => {
+    const [r, g, b] = darken(color)
+    for (const [kind, width] of Object.entries(HATCHES)) {
+      const data = new Uint8Array(HATCH_SIZE * HATCH_SIZE * 4)
+      for (let y = 0; y < HATCH_SIZE; y++) {
+        for (let x = 0; x < HATCH_SIZE; x++) {
+          // Diagonals que tornen a començar a cada rajola, perquè no es noti on s'ajunten.
+          if ((x + y) % HATCH_SIZE >= width) continue
+          data.set([r, g, b, 230], (y * HATCH_SIZE + x) * 4)
+        }
+      }
+      map.addImage(
+        `hatch-${kind}-${c}`,
+        { width: HATCH_SIZE, height: HATCH_SIZE, data },
+        { pixelRatio: 2 },
+      )
+    }
+  })
+}
 
 const fillColor: ExpressionSpecification = [
   'match',
@@ -51,6 +89,7 @@ export function createStyle(glyphsUrl: string): StyleSpecification {
     sources: {
       borders: { type: 'geojson', data: emptyCollection },
       labels: { type: 'geojson', data: emptyCollection },
+      occupations: { type: 'geojson', data: emptyCollection },
       conflicts: { type: 'geojson', data: emptyCollection },
       events: { type: 'geojson', data: emptyCollection },
     },
@@ -75,6 +114,39 @@ export function createStyle(glyphsUrl: string): StyleSpecification {
           'line-color': COLORS.border,
           'line-width': ['interpolate', ['linear'], ['zoom'], 2, 0.4, 6, 1.2],
         },
+      },
+      {
+        id: 'occupations-fill',
+        type: 'fill',
+        source: 'occupations',
+        filter: ['==', ['get', 'kind'], 'annexation'],
+        paint: { 'fill-color': fillColor, 'fill-opacity': 0.85 },
+      },
+      {
+        id: 'occupations-hatch',
+        type: 'fill',
+        source: 'occupations',
+        filter: ['!=', ['get', 'kind'], 'annexation'],
+        paint: {
+          'fill-pattern': ['concat', 'hatch-', ['get', 'kind'], '-', ['to-string', ['get', 'c']]],
+        },
+      },
+      {
+        id: 'occupations-line',
+        type: 'line',
+        source: 'occupations',
+        paint: {
+          'line-color': COLORS.occupation,
+          'line-width': ['interpolate', ['linear'], ['zoom'], 2, 0.6, 6, 1.6],
+          'line-dasharray': [3, 2],
+        },
+      },
+      {
+        id: 'occupations-selected',
+        type: 'line',
+        source: 'occupations',
+        filter: ['==', ['get', 'id'], ''],
+        paint: { 'line-color': COLORS.selected, 'line-width': 2.5 },
       },
       {
         id: 'borders-selected',

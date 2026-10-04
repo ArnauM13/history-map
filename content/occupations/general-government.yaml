@@ -1,0 +1,26 @@
+start: 1939-10-26
+control:
+  - { until: 1945-01-19, by: 255, kind: occupation }
+countries: [290]
+title:
+  ca: Govern General
+  es: Gobierno General
+  en: General Government
+summary:
+  ca: >-
+    La resta de la Polònia ocupada per Alemanya, sense annexionar ni cap govern polonès, la
+    governava des de Cracòvia Hans Frank. Hi havia els camps d'extermini de Treblinka, Sobibór i
+    Bełżec. L'agost del 1941 s'hi va afegir la Galítsia oriental, presa a la Unió Soviètica.
+    L'Exèrcit Roig va entrar a Cracòvia el 19 de gener del 1945.
+  es: >-
+    El resto de la Polonia ocupada por Alemania, sin anexionar ni gobierno polaco alguno, lo
+    gobernaba desde Cracovia Hans Frank. Allí estaban los campos de exterminio de Treblinka,
+    Sobibór y Bełżec. En agosto de 1941 se le añadió la Galitzia oriental, tomada a la Unión
+    Soviética. El Ejército Rojo entró en Cracovia el 19 de enero de 1945.
+  en: >-
+    The rest of German-occupied Poland, neither annexed nor given any Polish government, was ruled
+    from Kraków by Hans Frank. The extermination camps of Treblinka, Sobibór and Bełżec were here.
+    In August 1941 eastern Galicia, taken from the Soviet Union, was added to it. The Red Army
+    entered Kraków on 19 January 1945.
+wikipedia:
+  en: General Government

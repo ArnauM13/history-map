@@ -1,0 +1,27 @@
+start: 1939-03-23
+control:
+  - { until: 1945-01-28, by: 255, kind: annexation }
+countries: [368]
+title:
+  ca: Territori de Memel
+  es: Territorio de Memel
+  en: Memel Territory
+label:
+  ca: Memel
+  es: Memel
+  en: Memel
+summary:
+  ca: >-
+    Davant d'un ultimàtum alemany, Lituània va cedir el territori de Memel (Klaipėda) el 22 de
+    març del 1939, i l'endemà Hitler hi va entrar. Havia estat alemany fins al 1920 i lituà des
+    del 1923. L'Exèrcit Roig va prendre Klaipėda el 28 de gener del 1945.
+  es: >-
+    Ante un ultimátum alemán, Lituania cedió el territorio de Memel (Klaipėda) el 22 de marzo de
+    1939, y al día siguiente Hitler entró en él. Había sido alemán hasta 1920 y lituano desde
+    1923. El Ejército Rojo tomó Klaipėda el 28 de enero de 1945.
+  en: >-
+    Faced with a German ultimatum, Lithuania ceded the Memel Territory (Klaipėda) on 22 March
+    1939, and Hitler entered it the next day. It had been German until 1920 and Lithuanian since
+    1923. The Red Army took Klaipėda on 28 January 1945.
+wikipedia:
+  en: 1939 German ultimatum to Lithuania

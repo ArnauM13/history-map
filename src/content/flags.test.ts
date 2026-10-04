@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { flagChangesBetween, flagHistory, flagOn } from './flags'
-import { COUNTRY_NAMES, FLAGS } from './index'
+import { COUNTRY_NAMES, FLAGS, OCCUPATIONS } from './index'
 
 describe('les banderes', () => {
   it('són totes al catàleg', () => {
@@ -33,7 +33,10 @@ describe('les banderes', () => {
   })
 
   it('no deixen cap bandera del catàleg sense fer servir', () => {
-    const used = new Set(Object.values(FLAGS.states).flatMap((e) => e.map((x) => x.flag)))
+    const used = new Set([
+      ...Object.values(FLAGS.states).flatMap((e) => e.map((x) => x.flag)),
+      ...OCCUPATIONS.map((o) => o.flag),
+    ])
     for (const id of Object.keys(FLAGS.catalogue))
       expect(used.has(id), `ningú no fa servir ${id}`).toBe(true)
   })

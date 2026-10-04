@@ -5,8 +5,8 @@
 Thanks for wanting to lend a hand. There are three ways to help:
 
 1. **Content**: events, conflicts, state names and flags. No programming needed.
-2. **Data**: fixing a border or drawing the occupations layer (see the
-   [roadmap](FULL-DE-RUTA.md), §3, in Catalan).
+2. **Data**: fixing a border or adding zones to the occupations layer, such as Yugoslavia or Greece
+   (see the [roadmap](FULL-DE-RUTA.md), §3, in Catalan).
 3. **Code**: features, design, accessibility.
 
 If you don't know where to start, look at the issues labelled `content`, or open one and we'll
@@ -124,6 +124,32 @@ under that name (`wiki: Russian Empire`). Capitals come from CShapes in English 
 `public/data/` is never edited by hand: `npm run data:borders` generates it. A correction to
 CShapes goes into the `CORRECTIONS` list in `scripts/build-borders.mjs`, with its row and source in
 [DADES.en.md](DADES.en.md).
+
+## Occupations
+
+A zone of the occupations layer has two parts. The text, in `content/occupations/short-name.yaml`:
+
+```yaml
+start: 1939-10-26 # the day the occupier takes control
+control: # who controlled it and how, in order; until = the last day
+  - { until: 1945-01-19, by: 255, kind: occupation } # annexation | occupation | client
+countries: [290] # whose territory it was under the recognised borders
+title:
+  en: General Government
+label: # optional: the short name shown on the map
+  en: …
+summary:
+  en: >-
+    Two or three sentences, like an event.
+flag: sk-1939 # optional: if the territory had a flag of its own
+wikipedia:
+  en: General Government
+```
+
+And the shape, in `ZONES` in `scripts/build-occupations.mjs`: from a CShapes state, from today's
+divisions in Natural Earth or, if there is nothing else, from a hand-drawn line with its source
+next to it. Then run `npm run data:occupations`. How they are made and which dates are used, in
+[DADES.en.md](DADES.en.md) §1.3.
 
 ## Code
 

@@ -16,6 +16,7 @@ export type Selection =
   | { kind: 'country'; feature: BorderProperties }
   | { kind: 'event'; id: string }
   | { kind: 'conflict'; id: string }
+  | { kind: 'occupation'; id: string }
 
 export const REPO_URL = 'https://github.com/ArnauM13/history-map'
 

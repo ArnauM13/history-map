@@ -1,0 +1,33 @@
+start: 1939-09-28
+control:
+  - { until: 1939-10-27, by: 365, kind: occupation }
+  - { until: 1940-06-14, by: 368, kind: annexation }
+  - { until: 1941-06-21, by: 365, kind: annexation }
+  - { until: 1944-07-13, by: 255, kind: occupation }
+countries: [290, 368]
+title:
+  ca: La regió de Vílnius
+  es: La región de Vilna
+  en: The Vilnius region
+label:
+  ca: Vílnius
+  es: Vilna
+  en: Vilnius
+summary:
+  ca: >-
+    Polonesa des del 1922 i reclamada per Lituània com a capital, la regió de Vílnius la va ocupar
+    l'Exèrcit Roig el setembre del 1939. La Unió Soviètica la va cedir a Lituània, que hi va entrar
+    el 28 d'octubre a canvi d'acceptar bases soviètiques al país. El 15 de juny del 1940, l'Exèrcit
+    Roig va ocupar tota Lituània, i del juny del 1941 al 13 de juliol del 1944 la va ocupar Alemanya.
+  es: >-
+    Polaca desde 1922 y reclamada por Lituania como capital, la región de Vilna la ocupó el
+    Ejército Rojo en septiembre de 1939. La Unión Soviética la cedió a Lituania, que entró en ella
+    el 28 de octubre a cambio de aceptar bases soviéticas en el país. El 15 de junio de 1940, el
+    Ejército Rojo ocupó toda Lituania, y de junio de 1941 al 13 de julio de 1944 la ocupó Alemania.
+  en: >-
+    Polish since 1922 and claimed by Lithuania as its capital, the Vilnius region was occupied by
+    the Red Army in September 1939. The Soviet Union handed it to Lithuania, which entered it on
+    28 October in exchange for accepting Soviet bases in the country. On 15 June 1940 the Red Army
+    occupied the whole of Lithuania, and from June 1941 to 13 July 1944 Germany occupied it.
+wikipedia:
+  en: Soviet–Lithuanian Mutual Assistance Treaty

@@ -25,6 +25,8 @@
   /* Els colors del que passa en una data: el mateix a la llista, al mapa i a la línia. */
   --c-conflict: var(--c-danger);
   --c-event: var(--c-amber);
+  /* Les ocupacions, a la llista i a la fitxa. Al mapa no: allà van del color de l'ocupant. */
+  --c-occupation: #7b1fa2;
 
   --sidebar-width: 400px;
   --gap: 12px;
@@ -53,6 +55,7 @@
     --c-brand-ink: color-mix(in srgb, var(--c-brand) 40%, var(--c-text));
     --c-danger: #ef5350;
     --c-amber: #ff9800;
+    --c-occupation: #ce93d8;
     --c-success: #66bb6a;
     --c-shadow: rgba(0, 0, 0, 0.4);
     --c-shadow-md: rgba(0, 0, 0, 0.5);
@@ -117,8 +120,13 @@ a { color: var(--c-brand-ink); font-weight: 600; }
 }
 
 /* L'interruptor de les banderes: una pastilla, i l'estat també a la icona, no només al color. */
-.map-toggle {
+/* Els interruptors de les capes, un sota l'altre a la cantonada. */
+.map-toggles {
   position: absolute; top: 10px; right: 10px;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+}
+
+.map-toggle {
   display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px 0 10px;
   border: 1px solid var(--c-border-2); border-radius: 20px; background: var(--c-card);
   box-shadow: 0 2px 10px var(--c-shadow-md);
@@ -126,6 +134,24 @@ a { color: var(--c-brand-ink); font-weight: 600; }
   .ms { font-size: 15px; }
   &[aria-pressed='true'] { color: var(--c-brand-ink); border-color: color-mix(in srgb, var(--c-brand) 35%, transparent); }
   &:active { transform: scale(0.97); }
+}
+
+/* La llegenda de les ocupacions. Les mostres són grises: al mapa, el color és el de l'ocupant, i
+   aquí només compta com es pinta (ple, ratllat espès, ratllat clar). */
+.map-legend {
+  position: absolute; left: 10px; bottom: 10px;
+  display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 8px 12px 8px 10px;
+  border-radius: 14px; background: var(--c-card); box-shadow: 0 2px 10px var(--c-shadow-md);
+  list-style: none; font-size: 12px; font-weight: 600; color: var(--c-text-2);
+  li { display: flex; align-items: center; gap: 8px; }
+}
+
+.legend-swatch {
+  --sw: var(--c-text-3);
+  width: 20px; height: 13px; border: 1px dashed var(--sw); border-radius: 3px;
+  &.annexation { background: color-mix(in srgb, var(--sw) 55%, transparent); }
+  &.occupation { background: repeating-linear-gradient(-45deg, var(--sw) 0 2px, transparent 2px 7px); }
+  &.client { background: repeating-linear-gradient(-45deg, var(--sw) 0 1px, transparent 1px 8px); }
 }
 
 /* ── Targetes ───────────────────────────────────────────────────────────── */
@@ -161,6 +187,7 @@ a { color: var(--c-brand-ink); font-weight: 600; }
   &.is-upcoming { opacity: 0.6; }
   &.conflict { --ic: var(--c-conflict); }
   &.event { --ic: var(--c-event); }
+  &.occupation { --ic: var(--c-occupation); }
 }
 
 .ic-icon {
@@ -182,6 +209,7 @@ a { color: var(--c-brand-ink); font-weight: 600; }
   font-size: 11px; font-weight: 700; color: var(--ic);
   &.conflict { --ic: var(--c-conflict); }
   &.event { --ic: var(--c-event); }
+  &.occupation { --ic: var(--c-occupation); }
   &.new { --ic: var(--c-success); }
 }
 
@@ -325,6 +353,14 @@ a { color: var(--c-brand-ink); font-weight: 600; }
   dd { min-width: 0; margin: 0; text-align: right; font-size: 12px; font-weight: 700; color: var(--c-text-2); font-variant-numeric: tabular-nums; }
 }
 
+/* Un estat dins d'un text, que obre la seva fitxa: un enllaç, però és un botó. */
+.link-btn {
+  padding: 0; border: 0; background: none; font: inherit; color: var(--c-brand-ink); cursor: pointer;
+  &:hover { text-decoration: underline; }
+}
+
+.facts div[aria-current='true'] dd { color: var(--c-text); }
+
 .sidebar-footer {
   display: flex; gap: 16px; margin-top: auto; padding: 4px 6px 0;
   font-size: 12px; a { color: var(--c-text-3); }
@@ -398,4 +434,6 @@ a { color: var(--c-brand-ink); font-weight: 600; }
 
 @media (max-width: 560px) {
   .timeline-decades button:nth-child(even) { display: none; }
+  /* En una fila, perquè no tapi mig mapa. */
+  .map-legend { flex-direction: row; flex-wrap: wrap; gap: 4px 10px; right: 52px; padding: 6px 10px; font-size: 11px; }
 }

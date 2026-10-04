@@ -1,0 +1,23 @@
+start: 1940-06-25
+control:
+  - { until: 1944-08-25, by: 255, kind: occupation }
+countries: [220]
+title:
+  ca: França ocupada
+  es: Francia ocupada
+  en: Occupied France
+summary:
+  ca: >-
+    Per l'armistici del 22 de juny del 1940, el nord de França i tota la costa atlàntica van
+    quedar sota ocupació militar alemanya, separats de la zona lliure per una línia de demarcació
+    que no es podia creuar sense permís. París va ser alliberada el 25 d'agost del 1944.
+  es: >-
+    Por el armisticio del 22 de junio de 1940, el norte de Francia y toda la costa atlántica
+    quedaron bajo ocupación militar alemana, separados de la zona libre por una línea de
+    demarcación que no se podía cruzar sin permiso. París fue liberada el 25 de agosto de 1944.
+  en: >-
+    Under the armistice of 22 June 1940, northern France and the whole Atlantic coast came under
+    German military occupation, cut off from the free zone by a demarcation line that could not be
+    crossed without a permit. Paris was liberated on 25 August 1944.
+wikipedia:
+  en: German military administration in occupied France during World War II

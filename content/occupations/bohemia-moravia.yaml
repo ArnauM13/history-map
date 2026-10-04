@@ -1,0 +1,31 @@
+start: 1939-03-16
+control:
+  - { until: 1945-05-08, by: 255, kind: annexation }
+countries: [315]
+flag: protectorate
+title:
+  ca: Protectorat de Bohèmia i Moràvia
+  es: Protectorado de Bohemia y Moravia
+  en: Protectorate of Bohemia and Moravia
+label:
+  ca: Bohèmia i Moràvia
+  es: Bohemia y Moravia
+  en: Bohemia and Moravia
+summary:
+  ca: >-
+    El 15 de març del 1939 Alemanya va ocupar el que quedava de les terres txeques, i l'endemà
+    Hitler les va declarar protectorat del Reich: un govern txec sense poder real, sota un
+    protector alemany. Va durar fins a la capitulació alemanya, el 8 de maig del 1945, l'últim dia
+    de l'aixecament de Praga.
+  es: >-
+    El 15 de marzo de 1939 Alemania ocupó lo que quedaba de las tierras checas, y al día siguiente
+    Hitler las declaró protectorado del Reich: un gobierno checo sin poder real, bajo un protector
+    alemán. Duró hasta la capitulación alemana, el 8 de mayo de 1945, último día del levantamiento
+    de Praga.
+  en: >-
+    On 15 March 1939 Germany occupied what was left of the Czech lands, and the next day Hitler
+    declared them a protectorate of the Reich: a Czech government with no real power, under a
+    German protector. It lasted until the German surrender on 8 May 1945, the last day of the
+    Prague uprising.
+wikipedia:
+  en: Protectorate of Bohemia and Moravia

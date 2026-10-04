@@ -14,7 +14,7 @@
 [![Textos: CC BY-SA 4.0](https://img.shields.io/badge/textos-CC%20BY--SA%204.0-006874)](content/README.md)
 [![Fronteres: CC BY-NC-SA 4.0](https://img.shields.io/badge/fronteres-CC%20BY--NC--SA%204.0-006874)](DADES.md)
 
-<img src=".github/readme/ca-mapa.gif" width="900" alt="El mapa passa per dotze dates: 1914, 1919, 1923, 1938, 1945, 1950, 1975, 1989, 1991, 1993, 2008 i avui. Les fronteres, els noms i les banderes canvien a cada una.">
+<img src=".github/readme/ca-mapa.gif" width="900" alt="El mapa passa per tretze dates: 1914, 1919, 1923, 1938, 1942, 1945, 1950, 1975, 1989, 1991, 1993, 2008 i avui. Les fronteres, els noms, les banderes i les ocupacions canvien a cada una.">
 
 </div>
 
@@ -33,6 +33,7 @@ el del 1945 i el del 1991— i el que passa entre l'un i l'altre s'ha d'imaginar
 | **Les fronteres de qualsevol dia** | Del 1900 a avui, amb el dia exacte de cada canvi i el nom que tenia cada estat aleshores: l'Imperi Rus, la Rússia soviètica, la Unió Soviètica, Rússia. |
 | **Cada bandera al seu temps** | Un centenar de banderes d'una setantena d'estats: al mapa, en una galeria per a cada data i a la fitxa de cada estat, amb què volen dir les que tenen més història. |
 | **El que passava alhora** | Els conflictes oberts i els fets de l'any, al costat del mapa i marcats a la línia temporal. |
+| **Les ocupacions, del 1938 al 1945** | El que es controlava de fet i les fronteres no ensenyen: l'annexió d'Àustria, el Govern General, la França de Vichy. Ratllat del color de l'ocupant, cada zona amb la seva fitxa. |
 | **La font de cada dada** | Cada fitxa diu d'on surten les fronteres, el nom, les dates de les banderes i els fets, amb l'enllaç per comprovar-ho. |
 | **Tres idiomes** | Català, castellà i anglès: la interfície, els noms dels estats i de les capitals, els textos i els enllaços a la Viquipèdia. |
 | **Un enllaç per a cada data** | `?d=1914-06-28&lang=ca` obre exactament el mateix mapa a qui el rebi. |
@@ -52,8 +53,8 @@ el del 1945 i el del 1991— i el que passa entre l'un i l'altre s'ha d'imaginar
   </tr>
   <tr>
     <td valign="top">
-      <img src=".github/readme/ca-fets.png" alt="La pestanya Fets l'1 de setembre del 1939, amb la Segona Guerra Mundial oberta i la invasió de Polònia.">
-      <p><b>Fets i conflictes.</b> El que estava obert aquell dia i el que va passar aquell any, en dues o tres frases.</p>
+      <img src=".github/readme/ca-fets.png" alt="La pestanya Fets l'1 de juny del 1942: la fitxa del Govern General, la Segona Guerra Mundial oberta i les ocupacions d'aquell dia.">
+      <p><b>Fets, conflictes i ocupacions.</b> El que estava obert aquell dia, el que va passar aquell any i qui controlava cada territori: el 1942, el Govern General.</p>
     </td>
     <td valign="top">
       <img src=".github/readme/ca-mobil.png" width="300" alt="El mapa al mòbil i en tema fosc, el 26 de desembre del 1991.">
@@ -73,6 +74,7 @@ Cap dada no hi entra sense font, i la font es veu a la fitxa on surt.
 | Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat |
 | Les imatges de les banderes | [Wikimedia Commons](https://commons.wikimedia.org/), amb la llicència i l'autor de cadascuna |
 | Els fets i els conflictes | La Viquipèdia i fonts externes, com la resolució 68/262 de l'ONU sobre Crimea |
+| Les zones ocupades i annexionades | Les fronteres de CShapes d'altres anys, les divisions d'avui de [Natural Earth](https://www.naturalearthdata.com/) i línies dibuixades a mà, amb l'article de la Viquipèdia de cada zona |
 
 Els tests no deixen entrar res sense font, i el workflow «Fonts» comprova cada dilluns que tots els
 articles i enllaços encara existeixen. El detall, les correccions i les limitacions són a
@@ -80,8 +82,8 @@ articles i enllaços encara existeixen. El detall, les correccions i les limitac
 
 ## Què no fa (i és volgut)
 
-- **No dibuixa ocupacions ni fronts, de moment.** Les fronteres són les dels tractats: entre el 1938
-  i el 1945, Àustria i Polònia hi segueixen sortint. La capa d'ocupacions és la propera gran feina.
+- **No dibuixa els fronts, de moment.** La capa d'ocupacions diu qui controlava cada territori, no
+  on eren els exèrcits. Iugoslàvia, Grècia i el front de l'Est encara hi falten.
 - **No és una enciclopèdia.** Dues o tres frases i l'enllaç a la font; la resta hi és ben explicada.
 - **No et demana res.** Ni compte, ni galetes, ni dades teves.
 - **No es pot fer servir comercialment.** Les fronteres de CShapes són CC BY-NC-SA.
@@ -94,7 +96,8 @@ ensenyar el mapa d'un dia és un filtre: `inici <= dia <= final`.
 
 ```mermaid
 flowchart LR
-  cshapes["CShapes 2.0"] -- "npm run data:borders" --> data["public/data<br/>fronteres"]
+  cshapes["CShapes 2.0"] -- "npm run data:borders" --> data["public/data<br/>fronteres i ocupacions"]
+  ne["Natural Earth"] -- "npm run data:occupations" --> data
   commons["Wikimedia Commons"] -- "workflow Flags" --> flags["public/flags<br/>banderes"]
   wiki["Viquipèdia"] -- "workflow Fonts" --> titles["content/wikipedia.json<br/>títols en català i castellà"]
   yaml["content/*.yaml<br/>fets, conflictes, noms, banderes"] --> app(("La web"))
@@ -125,14 +128,15 @@ npm run dev        # http://localhost:5173
 | `npm test` | Els tests, que també validen tot el contingut i les seves fonts |
 | `npm run lint` · `npm run format` | oxlint i Prettier |
 | `npm run data:borders` | Torna a fer les fronteres a partir de CShapes 2.0 |
+| `npm run data:occupations` | Torna a fer les zones de la capa d'ocupacions |
 | `npm run data:flags` | Baixa les banderes de `content/flags.yaml` |
 | `npm run data:sources` | Comprova les fonts i en tradueix els títols de la Viquipèdia |
 
 ## Estructura
 
 ```
-content/        el contingut: fets, conflictes, noms d'estats i capitals, banderes (YAML)
-public/data/    les fronteres, generades a partir de CShapes
+content/        el contingut: fets, conflictes, ocupacions, noms d'estats i capitals, banderes (YAML)
+public/data/    les fronteres i les zones ocupades, generades a partir de CShapes
 public/flags/   les banderes, baixades de Wikimedia Commons
 scripts/        els que generen o comproven les dades
 src/            la web: el mapa, la línia temporal, el panell
@@ -149,8 +153,8 @@ que no toca. S'hi pot escriure en català, castellà o anglès.
 
 ## El que ve
 
-- **La capa d'ocupacions**: el que es controlava de fet entre el 1938 i el 1945, i els territoris
-  en disputa d'avui.
+- **La resta de la capa d'ocupacions**: Iugoslàvia, Grècia i el front de l'Est, i els territoris en
+  disputa d'avui.
 - **Més contingut**: uns cent fets i una trentena de conflictes, amb fonts acadèmiques a més de la
   Viquipèdia.
 - **Un cercador i històries guiades** que moguin el mapa pas a pas.
@@ -163,7 +167,7 @@ La resta, a [FULL-DE-RUTA.md](FULL-DE-RUTA.md).
 | --- | --- |
 | El codi | [MIT](LICENSE) |
 | Els textos de `content/` | [CC BY-SA 4.0](content/README.md) |
-| Les fronteres de `public/data/` | CC BY-NC-SA 4.0, com CShapes 2.0: **només ús no comercial** |
+| Les fronteres i les ocupacions de `public/data/` | CC BY-NC-SA 4.0, com CShapes 2.0: **només ús no comercial** |
 | Les banderes de `public/flags/` | La de cada imatge, quasi totes de domini públic (`credits.json`) |
 | Les lletres i les icones | Open Sans i Material Symbols (Apache 2.0), Roboto (OFL 1.1) |
 
@@ -172,6 +176,7 @@ La resta, a [FULL-DE-RUTA.md](FULL-DE-RUTA.md).
 - Guy Schvitz, Luc Girardin, Seraina Rüegger, Nils B. Weidmann, Lars-Erik Cederman i Kristian
   Skrede Gleditsch, per [CShapes 2.0](https://icr.ethz.ch/data/cshapes/).
 - Qui dibuixa les banderes de Wikimedia Commons i qui escriu la Viquipèdia, en tots els idiomes.
+- [Natural Earth](https://www.naturalearthdata.com/), per les divisions administratives.
 - [MapLibre](https://maplibre.org/), [OpenMapTiles](https://github.com/openmaptiles/fonts),
   [Fontsource](https://fontsource.org/) i [Material Symbols](https://fonts.google.com/icons).
 - El llenguatge visual és el de Petja.

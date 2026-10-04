@@ -9,6 +9,7 @@ capitals.yaml      el nom de les capitals, en els tres idiomes
 flags.yaml         les banderes de cada estat segons la data, i què volen dir
 events/            un fitxer per fet          (AAAA-MM-DD-nom-curt.yaml)
 conflicts/         un fitxer per conflicte    (nom-curt.yaml)
+occupations/       un fitxer per zona ocupada (nom-curt.yaml; la forma és a scripts/build-occupations.mjs)
 ```
 
 L'esquema és a [`src/content/schema.ts`](../src/content/schema.ts), i `npm test` el comprova a

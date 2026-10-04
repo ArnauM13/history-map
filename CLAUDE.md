@@ -29,12 +29,14 @@ content/
   flags.yaml            les banderes de cada estat segons la data, i què volen dir
   events/*.yaml         un fitxer per fet       (l'id és el nom del fitxer)
   conflicts/*.yaml      un fitxer per conflicte
+  occupations/*.yaml    un fitxer per zona ocupada o annexionada: dates, qui la controlava, text
 public/
-  data/                 les fronteres, generades (no es toquen a mà)
+  data/                 les fronteres i les zones ocupades, generades (no es toquen a mà)
   flags/                les banderes en PNG i credits.json, baixades (no es toquen a mà)
   fonts/                les lletres de les etiquetes del mapa
 scripts/
   build-borders.mjs     CShapes 2.0 → public/data
+  build-occupations.mjs les formes de les zones ocupades: CShapes, Natural Earth i línies a mà
   fetch-flags.mjs       Wikimedia Commons → public/flags
   check-sources.mjs     comprova les fonts i treu els títols de la Viquipèdia en català i castellà
 src/
@@ -67,6 +69,10 @@ diferents al llarg del temps (365: Imperi Rus, Rússia soviètica, Unió Sovièt
   governa, més clar.
 - **Les correccions a CShapes són codi** (`CORRECTIONS` a `build-borders.mjs`) i tenen una fila a
   [DADES.md](DADES.md). Els fitxers generats no es toquen mai a mà.
+- **Les ocupacions, a part de les fronteres.** CShapes dona les pactades; el control de fet va en
+  una capa pròpia (`content/occupations/`), amb el color de l'ocupant. La forma de cada zona és
+  codi (`ZONES` a `build-occupations.mjs`), feta de peces de CShapes sempre que es pot perquè les
+  vores coincideixin; una línia dibuixada a mà porta la font al costat i surt com a aproximada.
 - **Res sense font, i la font a la vista.** Cada fet, conflicte, nom d'estat i estat amb
   banderes cita d'on surt (els tests ho exigeixen), i la fitxa ho ensenya a «Fonts». La taula
   sencera és a [DADES.md](DADES.md) §0.
@@ -107,6 +113,11 @@ npm run lint && npm run format:check && npm run typecheck && npm test && npm run
 
 I mirar-ho al navegador: un canvi d'interfície no està fet fins que s'ha vist funcionar, també en
 fosc i en una pantalla estreta.
+
+## Branques
+
+El prefix és el nom del repo, i després què s'hi fa: `history-map/ocupacions-1938-1945`. Res de
+noms d'altres projectes ni de noms generats.
 
 ## Commits
 

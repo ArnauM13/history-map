@@ -10,6 +10,7 @@ check the licence of that part.**
 | The code (`src/`, `scripts/`…) | This project | MIT |
 | The texts (`content/`) | Its contributors | CC BY-SA 4.0 |
 | The borders (`public/data/`) | CShapes 2.0, clipped and simplified here | CC BY-NC-SA 4.0 |
+| The occupation zones (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) and lines drawn here (§1.3) | CC BY-NC-SA 4.0 |
 | The flags (`public/flags/`) | Wikimedia Commons | Each image's own (§2) |
 | The map lettering (`public/fonts/`) | Open Sans, from [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0 |
 | The interface font | Roboto ([Fontsource](https://fontsource.org/)) | OFL 1.1 |
@@ -27,14 +28,15 @@ Everything the map shows has a source, and the card where it appears cites it wi
 | Each state's name in each period | The Wikipedia article on the state under that name (`wiki` in `content/countries.yaml`) | On the state's card |
 | Flag dates | The Wikipedia articles on each state's flags (`sources` in `content/flags.yaml`) | On the state's card |
 | Flag images | Wikimedia Commons (§2, `public/flags/credits.json`) | Under each flag |
-| Flag texts, events and conflicts | Written by this project from the sources they cite (§3) | On each one's card |
+| Occupied and annexed zones (1938–1945) | CShapes borders from other dates, today's divisions from Natural Earth and hand-drawn lines (§1.3); the dates, from each zone's Wikipedia article (`content/occupations/`) | On each zone's card |
+| Flag texts, events, conflicts and occupations | Written by this project from the sources they cite (§3) | On each one's card |
 | Catalan and Spanish Wikipedia titles | Wikipedia's own interlanguage links (`content/wikipedia.json`) | — |
 | Translations of state and capital names | This project | — |
 
 **How it is checked.** `npm run data:sources` makes sure every cited article exists on Wikipedia
 and every external link responds. The "Fonts" workflow runs it whenever the content changes and
 every Monday, and fails if it finds a broken one. The tests, for their part, let no event,
-conflict, state name or flag in without a source.
+conflict, occupation, state name or flag in without a source.
 
 ---
 
@@ -72,11 +74,13 @@ row here. The generated files are never edited by hand.
 
 ### 1.2 Where it falls short
 
-- **Treaty borders, not occupation.** CShapes records agreed changes —the Munich Agreement and the
-  Vienna Awards (1938 and 1940), the Soviet annexations of 1940— but not territory taken by force.
-  Between 1938 and 1945 the map still shows Austria, Bohemia-Moravia and Poland, and none of the
-  Axis occupations. It is the biggest gap left to fill (see the [roadmap](FULL-DE-RUTA.md), in
-  Catalan); meanwhile, the events and conflicts explain it.
+- **Treaty borders, not occupation.** CShapes records agreed changes —the Munich Agreement, the
+  First Vienna Award (1938), the Soviet annexations of 1940— but not territory taken by force, nor
+  the Second Vienna Award (1940), which gave northern Transylvania to Hungary. Between 1938 and
+  1945, Austria, Bohemia-Moravia and Poland are still on the map. The occupations layer explains
+  it (§1.3), though it is not complete yet.
+- **Danzig** appears inside Germany from 30 September 1938. It was a free city until 1 September
+  1939, when the Reich annexed it.
 - **No microstates.** Andorra, Liechtenstein, Monaco, San Marino and the Vatican are not in
   CShapes.
 - **Sovereignty criteria.** Some choices come from the Gleditsch & Ward list: Montenegro is part
@@ -85,6 +89,46 @@ row here. The generated files are never edited by hand.
 - **It ends in 2019.** We assume no recognised border in Europe has changed since; if one does, it
   will be added by hand.
 - **Simplified geometry.** Good enough to see the continent; not to measure distances or areas.
+
+### 1.3 The occupations layer
+
+What was under de facto control between 1938 and 1945 goes in a separate, hatched layer that can
+be hidden. Each zone has a file in `content/occupations/`, with the text, the dates, who
+controlled it and the source, and a shape made by `npm run data:occupations`
+(`scripts/build-occupations.mjs`).
+
+**Dates.** A zone starts on the day the occupier takes control —the surrender, the armistice, the
+annexation or the capture of the capital— and ends on the day it loses it: the withdrawal, the
+surrender or the liberation of the capital. While the fighting went on, what the map shows is the
+conflict, not the zone; front lines are not drawn.
+
+**Shapes** are built from pieces that already exist, so that their edges match the map's:
+
+| From | For | Example |
+| --- | --- | --- |
+| A CShapes state, from the same period or another | Most zones | Austria is the Austria of 1938; Bohemia and Moravia, the Czechoslovakia of 1939 inside today's Czechia |
+| Today's administrative divisions, from [Natural Earth](https://www.naturalearthdata.com/) (public domain) | Edges that followed a division that still exists | Alsace and Moselle are three departments; the Italian zone of France, eight |
+| Lines drawn by hand (`LINES` in the script), with the source next to them | Where there is nothing else | The partition of Poland, the French demarcation line, Memel, Trans-Olza |
+
+Hand-drawn lines are **approximate**, within some 10–20 km; today's divisions, as much as they
+have moved since. Each zone's card says so.
+
+**What is there.** The German expansion of 1938–1939 (Austria, Bohemia and Moravia, the Slovak
+State, Memel), Trans-Olza and Hungarian Ruthenia; the partition of Poland, including the east
+occupied by Germany from 1941 to 1944; Albania; the occupation of Denmark, Norway, the
+Netherlands, Belgium and Luxembourg, and that of France: the occupied zone, Vichy, Alsace and
+Moselle, the 1942 zones and Corsica.
+
+**What is missing**, and comes next:
+
+- **Yugoslavia and Greece**, partitioned in 1941 between Germany, Italy, Hungary and Bulgaria.
+- **Northern Transylvania**, Hungarian from 1940 to 1944, and the Bulgarian annexations.
+- **The Eastern Front**: the Baltic states, Belarus, Ukraine and Russia occupied from 1941 to
+  1944, and Transnistria. Those zones depended on the front, and will come with the front-lines
+  layer.
+- **Italy from 1943 to 1945**: the Italian Social Republic and the areas Germany annexed in all
+  but name.
+- The small territories: the Channel Islands and Eupen-Malmedy.
 
 ---
 

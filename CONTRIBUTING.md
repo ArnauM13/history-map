@@ -5,8 +5,8 @@
 Gràcies per voler-hi posar les mans. Hi ha tres maneres d'ajudar:
 
 1. **Contingut**: fets, conflictes, noms d'estats i banderes. No cal programar.
-2. **Dades**: arreglar una frontera o dibuixar la capa d'ocupacions (vegeu el
-   [full de ruta](FULL-DE-RUTA.md), §3).
+2. **Dades**: arreglar una frontera o afegir zones a la capa d'ocupacions, com Iugoslàvia o Grècia
+   (vegeu el [full de ruta](FULL-DE-RUTA.md), §3).
 3. **Codi**: funcionalitats, disseny, accessibilitat.
 
 Si no saps per on començar, mira els *issues* amb l'etiqueta `content`, o obre'n un i en parlem.
@@ -124,6 +124,32 @@ a `content/capitals.yaml`. El codi d'un estat és a `public/data/labels.geojson`
 `public/data/` no es toca a mà: el fa `npm run data:borders`. Una correcció a CShapes va a la
 llista `CORRECTIONS` de `scripts/build-borders.mjs`, amb la seva fila i la font a
 [DADES.md](DADES.md).
+
+## Ocupacions
+
+Una zona de la capa d'ocupacions té dues parts. El text, a `content/occupations/nom-curt.yaml`:
+
+```yaml
+start: 1939-10-26 # el dia que l'ocupant en pren el control
+control: # qui la controlava i com, per ordre; until = l'últim dia
+  - { until: 1945-01-19, by: 255, kind: occupation } # annexation | occupation | client
+countries: [290] # de qui era el territori segons les fronteres reconegudes
+title:
+  ca: Govern General
+label: # opcional: el nom curt que va al mapa
+  ca: …
+summary:
+  ca: >-
+    Dues o tres frases, com un fet.
+flag: sk-1939 # opcional: si el territori en feia servir una de pròpia
+wikipedia:
+  en: General Government
+```
+
+I la forma, a `ZONES` de `scripts/build-occupations.mjs`: amb un estat de CShapes, amb les
+divisions d'avui de Natural Earth o, si no hi ha res més, amb una línia dibuixada a mà i la font al
+costat. Després, `npm run data:occupations`. Com es fan i quines dates es fan servir, a
+[DADES.md](DADES.md) §1.3.
 
 ## Codi
 

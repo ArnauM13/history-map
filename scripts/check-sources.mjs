@@ -5,8 +5,8 @@
  *   npm run data:sources            # els títols nous i tots els enllaços externs
  *   npm run data:sources -- --force # també els títols que ja s'havien comprovat
  *
- * Tot el que ensenya el mapa cita un article de la Viquipèdia anglesa: els fets i els conflictes
- * (`wikipedia.en`), el nom de cada estat en cada època (`wiki` a countries.yaml) i les dates de
+ * Tot el que ensenya el mapa cita un article de la Viquipèdia anglesa: els fets, els conflictes i
+ * les ocupacions (`wikipedia.en`), el nom de cada estat en cada època (`wiki` a countries.yaml) i les dates de
  * les banderes (`sources` a flags.yaml). L'script:
  *
  *   1. Comprova que cada article existeix.
@@ -39,7 +39,9 @@ const cited = new Map()
 const cite = (title, where) => cited.set(title, [...(cited.get(title) ?? []), where])
 const urls = []
 
-for (const path of [...yamlFiles('content/events'), ...yamlFiles('content/conflicts')]) {
+for (const path of ['events', 'conflicts', 'occupations'].flatMap((dir) =>
+  yamlFiles(`content/${dir}`),
+)) {
   const item = read(path)
   if (item.wikipedia?.en) cite(item.wikipedia.en, path)
   for (const source of item.sources ?? []) urls.push({ url: source.url, where: path })

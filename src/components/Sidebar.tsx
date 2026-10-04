@@ -3,18 +3,28 @@ import {
   CONFLICTS,
   EVENTS,
   FLAGS,
+  OCCUPATIONS,
   capitalName,
+  controlOn,
+  controlPeriods,
   countryName,
   countryWiki,
   localize,
+  occupationEnd,
   wikipediaLink,
 } from '../content'
 import { commonsUrl, flagHistory, flagOn, loadFlagCredits, type FlagCredit } from '../content/flags'
-import type { Conflict, ExternalSource, HistoricalEvent, WikipediaTitles } from '../content/schema'
+import type {
+  Conflict,
+  ExternalSource,
+  HistoricalEvent,
+  Occupation,
+  WikipediaTitles,
+} from '../content/schema'
 import type { Lang } from '../i18n'
 import { useI18n } from '../i18n'
 import { MIN_DATE, OPEN_END, formatDate, fromDateNumber, yearOf, type IsoDate } from '../lib/date'
-import { stateOn, type LabelCollection } from '../map/data'
+import { stateOn, useBorderData, type LabelCollection } from '../map/data'
 import { REPO_URL, docUrl, type BorderProperties, type Selection } from '../selection'
 import { Flag } from './Flag'
 import { FlagGallery } from './FlagGallery'
@@ -30,6 +40,10 @@ interface Props {
   selection: Selection | null
   yearEvents: HistoricalEvent[]
   conflicts: Conflict[]
+  /** Les zones de la capa d'ocupacions que valen en la data. */
+  occupations: Occupation[]
+  /** Si la capa d'ocupacions és visible: llavors la galeria de banderes també en té en compte. */
+  showOccupations: boolean
   onTabChange: (tab: SidebarTab) => void
   onSelect: (selection: Selection | null) => void
   onGoToEvent: (event: HistoricalEvent) => void
@@ -43,6 +57,8 @@ export function Sidebar({
   selection,
   yearEvents,
   conflicts,
+  occupations,
+  showOccupations,
   onTabChange,
   onSelect,
   onGoToEvent,
@@ -79,6 +95,7 @@ export function Sidebar({
           labels={labels}
           selection={selection}
           onClose={() => onSelect(null)}
+          onSelect={onSelect}
           onGoToEvent={onGoToEvent}
           onGoToDate={onGoToDate}
         />
@@ -89,8 +106,9 @@ export function Sidebar({
           <FlagGallery
             date={date}
             labels={labels}
-            selectedGwcode={selection?.kind === 'country' ? selection.feature.gwcode : undefined}
-            onSelectCountry={(feature) => onSelect({ kind: 'country', feature })}
+            occupations={showOccupations ? occupations : []}
+            selection={selection}
+            onSelect={onSelect}
             onGoToDate={onGoToDate}
           />
         ) : (
@@ -99,6 +117,7 @@ export function Sidebar({
             selection={selection}
             yearEvents={yearEvents}
             conflicts={conflicts}
+            occupations={occupations}
             onSelect={onSelect}
             onGoToEvent={onGoToEvent}
           />
@@ -122,9 +141,13 @@ function HistoryPanel({
   selection,
   yearEvents,
   conflicts,
+  occupations,
   onSelect,
   onGoToEvent,
-}: Pick<Props, 'date' | 'selection' | 'yearEvents' | 'conflicts' | 'onSelect' | 'onGoToEvent'>) {
+}: Pick<
+  Props,
+  'date' | 'selection' | 'yearEvents' | 'conflicts' | 'occupations' | 'onSelect' | 'onGoToEvent'
+>) {
   const { lang, t } = useI18n()
   const year = yearOf(date)
 
@@ -206,6 +229,44 @@ function HistoryPanel({
           </ul>
         )}
       </section>
+
+      {/* Només quan n'hi ha: fora del 1938-1945, la secció seria buida gairebé sempre. */}
+      {occupations.length > 0 && (
+        <section className="card-section">
+          <div className="section-header">
+            <Icon name="fence" />
+            <h2 className="section-title">{t('occupationsTitle')}</h2>
+            <span className="section-count">{occupations.length}</span>
+          </div>
+          <ul className="item-list">
+            {occupations.map((o) => {
+              const title = localize(o.title, lang)
+              const control = controlOn(o, date)!
+              return (
+                <li key={o.id}>
+                  <button
+                    type="button"
+                    className="item-card occupation"
+                    aria-current={selection?.kind === 'occupation' && selection.id === o.id}
+                    onClick={() => onSelect({ kind: 'occupation', id: o.id })}
+                    title={title}
+                  >
+                    <span className="ic-icon">
+                      <Icon name="fence" />
+                    </span>
+                    <span className="ic-body">
+                      <span className="ic-name">{title}</span>
+                      <span className="ic-detail">
+                        {t(`occupation.${control.kind}`)} · {countryName(control.by, date, lang)}
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              )
+            })}
+          </ul>
+        </section>
+      )}
     </>
   )
 }
@@ -218,11 +279,20 @@ interface DetailProps {
   labels: LabelCollection | null
   selection: Selection
   onClose: () => void
+  onSelect: (selection: Selection | null) => void
   onGoToEvent: (event: HistoricalEvent) => void
   onGoToDate: (date: IsoDate) => void
 }
 
-function Detail({ date, labels, selection, onClose, onGoToEvent, onGoToDate }: DetailProps) {
+function Detail({
+  date,
+  labels,
+  selection,
+  onClose,
+  onSelect,
+  onGoToEvent,
+  onGoToDate,
+}: DetailProps) {
   const { t } = useI18n()
   let content: ReactNode = null
   if (selection.kind === 'country') {
@@ -239,9 +309,13 @@ function Detail({ date, labels, selection, onClose, onGoToEvent, onGoToDate }: D
   } else if (selection.kind === 'event') {
     const event = EVENTS.find((e) => e.id === selection.id)
     if (event) content = <EventDetail event={event} />
-  } else {
+  } else if (selection.kind === 'conflict') {
     const conflict = CONFLICTS.find((c) => c.id === selection.id)
     if (conflict) content = <ConflictDetail conflict={conflict} />
+  } else {
+    const zone = OCCUPATIONS.find((o) => o.id === selection.id)
+    if (zone)
+      content = <OccupationDetail zone={zone} date={date} labels={labels} onSelect={onSelect} />
   }
   if (!content) return null
   return (
@@ -403,6 +477,13 @@ const CSHAPES_SOURCE = {
   url: 'https://icr.ethz.ch/data/cshapes/',
 }
 
+/** Les divisions administratives d'avui, d'on surten algunes vores de les zones ocupades. */
+const NATURAL_EARTH_SOURCE = {
+  site: 'Natural Earth',
+  title: 'Admin 1 – States, Provinces',
+  url: 'https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/',
+}
+
 /** La Viquipèdia, en l'idioma de la pantalla si es pot, com a font. */
 function wikipediaSource(
   source: WikipediaTitles | string | undefined,
@@ -451,6 +532,107 @@ function ConflictDetail({ conflict }: { conflict: Conflict }) {
         items={[
           ...wikipediaSource(conflict.wikipedia, lang, t('wikipedia')),
           ...externalSources(conflict.sources),
+        ]}
+      />
+    </>
+  )
+}
+
+function OccupationDetail({
+  zone,
+  date,
+  labels,
+  onSelect,
+}: {
+  zone: Occupation
+  date: IsoDate
+  labels: LabelCollection | null
+  onSelect: (selection: Selection | null) => void
+}) {
+  const { lang, t } = useI18n()
+  const periods = controlPeriods(zone)
+  // Si la data ja no és dins de la zona, la fitxa en parla com era al principi o al final.
+  const current =
+    controlOn(zone, date) ?? (date < zone.start ? periods[0] : periods[periods.length - 1])
+  const end = occupationEnd(zone)
+  const title = localize(zone.title, lang)
+  const approx = useBorderData()?.occupations.features.find((f) => f.properties.id === zone.id)
+    ?.properties.approx
+  const periodYears = (p: (typeof periods)[number]) =>
+    `${yearOf(p.from)} – ${p.until ? yearOf(p.until) : t('present')}`
+
+  return (
+    <>
+      <p className="detail-kicker">
+        <span className="chip occupation">{t(`occupation.${current.kind}`)}</span>
+        {formatDate(zone.start, lang)} – {end ? formatDate(end, lang) : t('ongoing')}
+      </p>
+      <h2 className="detail-title">{title}</h2>
+      {zone.flag && (
+        <figure className="detail-flag">
+          <Flag id={zone.flag} size="lg" label={title} />
+          <FlagCaption id={zone.flag} />
+        </figure>
+      )}
+      <p className="detail-text">{localize(zone.summary, lang)}</p>
+      <dl className="facts">
+        <div>
+          <dt>{t('controlledBy')}</dt>
+          <dd>{countryName(current.by, date, lang)}</dd>
+        </div>
+        <div>
+          <dt>{t('territoryOf')}</dt>
+          <dd>
+            {zone.countries.map((code, i) => {
+              const name = countryName(code, date, lang)
+              // L'estat, si en aquella data surt al mapa: llavors se'n pot obrir la fitxa.
+              const feature = stateOn(labels, code, date)
+              return (
+                <span key={code}>
+                  {i > 0 && ', '}
+                  {feature ? (
+                    <button
+                      type="button"
+                      className="link-btn"
+                      onClick={() => onSelect({ kind: 'country', feature })}
+                    >
+                      {name}
+                    </button>
+                  ) : (
+                    name
+                  )}
+                </span>
+              )
+            })}
+          </dd>
+        </div>
+      </dl>
+      {periods.length > 1 && (
+        <>
+          <h3>{t('controlHistory')}</h3>
+          <dl className="facts">
+            {periods.map((p) => (
+              <div key={p.from} aria-current={p === current}>
+                <dt>{periodYears(p)}</dt>
+                <dd>
+                  {countryName(p.by, p.from, lang)} · {t(`occupation.${p.kind}`)}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </>
+      )}
+      {approx && (
+        <p className="src-note">{t(approx === 'line' ? 'zoneApproxLine' : 'zoneApproxAdmin')}</p>
+      )}
+      <Sources
+        items={[
+          ...wikipediaSource(zone.wikipedia, lang, t('wikipedia'), t('sourceZoneText')),
+          ...externalSources(zone.sources).map((s) => ({ what: t('sourceZoneText'), ...s })),
+          { what: t('sourceZoneBorders'), ...CSHAPES_SOURCE },
+          ...(approx === 'admin'
+            ? [{ what: t('sourceZoneBorders'), ...NATURAL_EARTH_SOURCE }]
+            : []),
         ]}
       />
     </>

@@ -1,0 +1,26 @@
+start: 1938-03-13
+control:
+  - { until: 1945-04-27, by: 255, kind: annexation }
+countries: [305]
+title:
+  ca: Àustria annexionada
+  es: Austria anexionada
+  en: Annexed Austria
+summary:
+  ca: >-
+    El 12 de març del 1938 la Wehrmacht va entrar a Àustria, i l'endemà una llei la va declarar
+    part del Reich alemany: l'Anschluss. Un plebiscit sense garanties el va ratificar el 10
+    d'abril. Amb Viena ja presa per l'Exèrcit Roig, Àustria va tornar a declarar-se independent el
+    27 d'abril del 1945.
+  es: >-
+    El 12 de marzo de 1938 la Wehrmacht entró en Austria, y al día siguiente una ley la declaró
+    parte del Reich alemán: el Anschluss. Un plebiscito sin garantías lo ratificó el 10 de abril.
+    Con Viena ya tomada por el Ejército Rojo, Austria volvió a declararse independiente el 27 de
+    abril de 1945.
+  en: >-
+    On 12 March 1938 the Wehrmacht marched into Austria, and the next day a law declared it part
+    of the German Reich: the Anschluss. A plebiscite without safeguards ratified it on 10 April.
+    With Vienna already taken by the Red Army, Austria declared its independence again on 27 April
+    1945.
+wikipedia:
+  en: Anschluss

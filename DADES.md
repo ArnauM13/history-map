@@ -10,6 +10,7 @@ alguna cosa, mira la llicència d'aquella part.**
 | El codi (`src/`, `scripts/`…) | Aquest projecte | MIT |
 | Els textos (`content/`) | Qui hi contribueix | CC BY-SA 4.0 |
 | Les fronteres (`public/data/`) | CShapes 2.0, retallat i simplificat aquí | CC BY-NC-SA 4.0 |
+| Les zones d'ocupació (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) i línies dibuixades aquí (§1.3) | CC BY-NC-SA 4.0 |
 | Les banderes (`public/flags/`) | Wikimedia Commons | La de cada imatge (§2) |
 | Les lletres del mapa (`public/fonts/`) | Open Sans, de [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0 |
 | La lletra de la interfície | Roboto ([Fontsource](https://fontsource.org/)) | OFL 1.1 |
@@ -27,14 +28,15 @@ Tot el que ensenya el mapa té una font, i la fitxa on surt la cita amb un enlla
 | El nom de cada estat en cada època | L'article de la Viquipèdia sobre l'estat amb aquell nom (`wiki` a `content/countries.yaml`) | A la fitxa de l'estat |
 | Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat (`sources` a `content/flags.yaml`) | A la fitxa de l'estat |
 | Les imatges de les banderes | Wikimedia Commons (§2, `public/flags/credits.json`) | Sota cada bandera |
-| Els textos de les banderes, els fets i els conflictes | Escrits per aquest projecte a partir de les fonts que citen (§3) | A la fitxa de cada un |
+| Les zones ocupades i annexionades (1938-1945) | Fronteres de CShapes d'altres dates, divisions d'avui de Natural Earth i línies dibuixades a mà (§1.3); les dates, de l'article de la Viquipèdia de cada zona (`content/occupations/`) | A la fitxa de cada zona |
+| Els textos de les banderes, els fets, els conflictes i les ocupacions | Escrits per aquest projecte a partir de les fonts que citen (§3) | A la fitxa de cada un |
 | Els títols de la Viquipèdia en català i castellà | Els enllaços entre idiomes de la mateixa Viquipèdia (`content/wikipedia.json`) | — |
 | La traducció dels noms dels estats i de les capitals | Aquest projecte | — |
 
 **Com es comprova.** `npm run data:sources` mira que cada article citat existeixi a la Viquipèdia
 i que cada enllaç extern respongui. El workflow «Fonts» el corre quan canvia el contingut i cada
 dilluns, i falla si en troba un de trencat. Els tests, per la seva banda, no deixen entrar cap fet,
-cap conflicte, cap nom d'estat ni cap bandera sense font.
+cap conflicte, cap ocupació, cap nom d'estat ni cap bandera sense font.
 
 ---
 
@@ -74,11 +76,13 @@ aquí. Els fitxers generats no es toquen mai a mà.
 
 ### 1.2 On fallen
 
-- **Fronteres de tractat, no d'ocupació.** CShapes recull els canvis pactats —l'acord de Munic i
-  els arbitratges de Viena (1938 i 1940), les annexions soviètiques del 1940— però no el territori
-  pres per la força. Entre el 1938 i el 1945 el mapa encara ensenya Àustria, Bohèmia-Moràvia i
-  Polònia, i cap ocupació de l'Eix. És el forat més gran que queda per tapar (vegeu el
-  [full de ruta](FULL-DE-RUTA.md)); mentrestant, ho expliquen els fets i els conflictes.
+- **Fronteres de tractat, no d'ocupació.** CShapes recull els canvis pactats —l'acord de Munic, el
+  primer arbitratge de Viena (1938), les annexions soviètiques del 1940— però no el territori pres
+  per la força, ni el segon arbitratge de Viena (1940), que va donar el nord de Transsilvània a
+  Hongria. Entre el 1938 i el 1945, Àustria, Bohèmia-Moràvia i Polònia hi segueixen sortint. Ho
+  explica la capa d'ocupacions (§1.3), que encara no és sencera.
+- **Dàntzig** surt dins d'Alemanya des del 30 de setembre del 1938. Va ser ciutat lliure fins a
+  l'1 de setembre del 1939, quan el Reich se la va annexionar.
 - **Sense microestats.** Andorra, Liechtenstein, Mònaco, San Marino i el Vaticà no són a CShapes.
 - **Criteris de sobirania.** Algunes decisions són de la llista de Gleditsch i Ward: Montenegro és
   part de Iugoslàvia del 1918 al 2006, i l'Alemanya Occidental comença el 1945, amb les zones
@@ -87,6 +91,44 @@ aquí. Els fitxers generats no es toquen mai a mà.
   si en canvia alguna, s'afegirà a mà.
 - **Geometria simplificada.** Per veure el continent n'hi ha prou; per mesurar distàncies o
   superfícies, no.
+
+### 1.3 La capa d'ocupacions
+
+El que es controlava de fet entre el 1938 i el 1945 va en una capa a part, ratllada i que es pot
+amagar. Cada zona té un fitxer a `content/occupations/`, amb el text, les dates, qui la controlava
+i la font, i una forma que fa `npm run data:occupations` (`scripts/build-occupations.mjs`).
+
+**Les dates.** Una zona comença el dia que l'ocupant en pren el control —la capitulació,
+l'armistici, l'annexió o la presa de la capital— i s'acaba el dia que el perd: la retirada, la
+capitulació o l'alliberament de la capital. Mentre es lluitava, el que surt al mapa és el
+conflicte, no la zona; els fronts no s'hi dibuixen.
+
+**La forma** es fa amb peces que ja existeixen, perquè les vores coincideixin amb les del mapa:
+
+| D'on | Per a què | Exemple |
+| --- | --- | --- |
+| Un estat de CShapes, de la mateixa època o d'una altra | La majoria de les zones | Àustria és l'Àustria del 1938; Bohèmia i Moràvia, la Txecoslovàquia del 1939 dins de la Txèquia d'avui |
+| Les divisions administratives d'avui, de [Natural Earth](https://www.naturalearthdata.com/) (domini públic) | Les vores que seguien una divisió que encara existeix | Alsàcia i Mosel·la són tres departaments; la zona italiana de França, vuit |
+| Línies dibuixades a mà (`LINES` a l'script), amb la font al costat | On no hi ha res més | La partició de Polònia, la línia de demarcació francesa, Memel, Zaolzie |
+
+Les línies dibuixades a mà són **aproximades**, amb un error d'uns 10-20 km; les divisions d'avui,
+tant com s'hagin mogut des d'aleshores. La fitxa de cada zona ho diu.
+
+**Què hi ha.** L'expansió alemanya del 1938-1939 (Àustria, Bohèmia i Moràvia, l'Estat Eslovac,
+Memel), Zaolzie i la Rutènia hongaresa; la partició de Polònia, també l'est ocupat per Alemanya
+del 1941 al 1944; Albània; l'ocupació de Dinamarca, Noruega, els Països Baixos, Bèlgica i
+Luxemburg, i la de França: la zona ocupada, la de Vichy, Alsàcia i Mosel·la, les zones del 1942 i
+Còrsega.
+
+**Què hi falta**, i és la feina que ve:
+
+- **Iugoslàvia i Grècia**, repartides el 1941 entre Alemanya, Itàlia, Hongria i Bulgària.
+- **El nord de Transsilvània**, hongarès del 1940 al 1944, i les annexions búlgares.
+- **El front de l'Est**: els països bàltics, Bielorússia, Ucraïna i Rússia ocupats del 1941 al
+  1944, i Transnístria. Les zones depenien del front, i aniran amb la capa dels fronts.
+- **Itàlia del 1943 al 1945**: la República Social Italiana i les zones que Alemanya es va
+  annexionar de fet.
+- Els territoris petits: les illes del Canal i Eupen-Malmedy.
 
 ---
 

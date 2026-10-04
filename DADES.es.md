@@ -10,6 +10,7 @@ mira la licencia de esa parte.**
 | El código (`src/`, `scripts/`…) | Este proyecto | MIT |
 | Los textos (`content/`) | Quien contribuye | CC BY-SA 4.0 |
 | Las fronteras (`public/data/`) | CShapes 2.0, recortado y simplificado aquí | CC BY-NC-SA 4.0 |
+| Las zonas de ocupación (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) y líneas dibujadas aquí (§1.3) | CC BY-NC-SA 4.0 |
 | Las banderas (`public/flags/`) | Wikimedia Commons | La de cada imagen (§2) |
 | Las letras del mapa (`public/fonts/`) | Open Sans, de [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0 |
 | La letra de la interfaz | Roboto ([Fontsource](https://fontsource.org/)) | OFL 1.1 |
@@ -27,14 +28,15 @@ Todo lo que enseña el mapa tiene una fuente, y la ficha donde aparece la cita c
 | El nombre de cada estado en cada época | El artículo de Wikipedia sobre el estado con ese nombre (`wiki` en `content/countries.yaml`) | En la ficha del estado |
 | Las fechas de las banderas | Los artículos de Wikipedia sobre las banderas de cada estado (`sources` en `content/flags.yaml`) | En la ficha del estado |
 | Las imágenes de las banderas | Wikimedia Commons (§2, `public/flags/credits.json`) | Bajo cada bandera |
-| Los textos de las banderas, los hechos y los conflictos | Escritos por este proyecto a partir de las fuentes que citan (§3) | En la ficha de cada uno |
+| Las zonas ocupadas y anexionadas (1938-1945) | Fronteras de CShapes de otras fechas, divisiones actuales de Natural Earth y líneas dibujadas a mano (§1.3); las fechas, del artículo de Wikipedia de cada zona (`content/occupations/`) | En la ficha de cada zona |
+| Los textos de las banderas, los hechos, los conflictos y las ocupaciones | Escritos por este proyecto a partir de las fuentes que citan (§3) | En la ficha de cada uno |
 | Los títulos de Wikipedia en catalán y castellano | Los enlaces entre idiomas de la propia Wikipedia (`content/wikipedia.json`) | — |
 | La traducción de los nombres de los estados y de las capitales | Este proyecto | — |
 
 **Cómo se comprueba.** `npm run data:sources` mira que cada artículo citado exista en Wikipedia y
 que cada enlace externo responda. El workflow «Fonts» lo ejecuta cuando cambia el contenido y cada
 lunes, y falla si encuentra uno roto. Los tests, por su parte, no dejan entrar ningún hecho,
-conflicto, nombre de estado ni bandera sin fuente.
+conflicto, ocupación, nombre de estado ni bandera sin fuente.
 
 ---
 
@@ -74,11 +76,12 @@ fila aquí. Los archivos generados no se tocan nunca a mano.
 ### 1.2 Dónde fallan
 
 - **Fronteras de tratado, no de ocupación.** CShapes recoge los cambios pactados —el acuerdo de
-  Múnich y los arbitrajes de Viena (1938 y 1940), las anexiones soviéticas de 1940— pero no el
-  territorio tomado por la fuerza. Entre 1938 y 1945 el mapa todavía enseña Austria,
-  Bohemia-Moravia y Polonia, y ninguna ocupación del Eje. Es el mayor agujero que queda por tapar
-  (ver la [hoja de ruta](FULL-DE-RUTA.md), en catalán); mientras tanto, lo explican los hechos y
-  los conflictos.
+  Múnich, el primer arbitraje de Viena (1938), las anexiones soviéticas de 1940— pero no el
+  territorio tomado por la fuerza, ni el segundo arbitraje de Viena (1940), que dio el norte de
+  Transilvania a Hungría. Entre 1938 y 1945, Austria, Bohemia-Moravia y Polonia siguen saliendo.
+  Lo explica la capa de ocupaciones (§1.3), que todavía no está entera.
+- **Danzig** sale dentro de Alemania desde el 30 de septiembre de 1938. Fue ciudad libre hasta el
+  1 de septiembre de 1939, cuando el Reich se la anexionó.
 - **Sin microestados.** Andorra, Liechtenstein, Mónaco, San Marino y el Vaticano no están en
   CShapes.
 - **Criterios de soberanía.** Algunas decisiones son de la lista de Gleditsch y Ward: Montenegro
@@ -88,6 +91,45 @@ fila aquí. Los archivos generados no se tocan nunca a mano.
   después; si cambia alguna, se añadirá a mano.
 - **Geometría simplificada.** Para ver el continente basta; para medir distancias o superficies,
   no.
+
+### 1.3 La capa de ocupaciones
+
+Lo que se controlaba de hecho entre 1938 y 1945 va en una capa aparte, rayada y que se puede
+ocultar. Cada zona tiene un archivo en `content/occupations/`, con el texto, las fechas, quién la
+controlaba y la fuente, y una forma que hace `npm run data:occupations`
+(`scripts/build-occupations.mjs`).
+
+**Las fechas.** Una zona empieza el día en que el ocupante toma el control —la capitulación, el
+armisticio, la anexión o la toma de la capital— y termina el día en que lo pierde: la retirada,
+la capitulación o la liberación de la capital. Mientras se combatía, lo que sale en el mapa es el
+conflicto, no la zona; los frentes no se dibujan.
+
+**La forma** se hace con piezas que ya existen, para que los bordes coincidan con los del mapa:
+
+| De dónde | Para qué | Ejemplo |
+| --- | --- | --- |
+| Un estado de CShapes, de la misma época o de otra | La mayoría de las zonas | Austria es la Austria de 1938; Bohemia y Moravia, la Checoslovaquia de 1939 dentro de la Chequia actual |
+| Las divisiones administrativas actuales, de [Natural Earth](https://www.naturalearthdata.com/) (dominio público) | Los bordes que seguían una división que todavía existe | Alsacia y Mosela son tres departamentos; la zona italiana de Francia, ocho |
+| Líneas dibujadas a mano (`LINES` en el script), con la fuente al lado | Donde no hay nada más | El reparto de Polonia, la línea de demarcación francesa, Memel, Zaolzie |
+
+Las líneas dibujadas a mano son **aproximadas**, con un error de unos 10-20 km; las divisiones
+actuales, tanto como se hayan movido desde entonces. La ficha de cada zona lo dice.
+
+**Qué hay.** La expansión alemana de 1938-1939 (Austria, Bohemia y Moravia, el Estado Eslovaco,
+Memel), Zaolzie y la Rutenia húngara; el reparto de Polonia, también el este ocupado por Alemania
+de 1941 a 1944; Albania; la ocupación de Dinamarca, Noruega, los Países Bajos, Bélgica y
+Luxemburgo, y la de Francia: la zona ocupada, la de Vichy, Alsacia y Mosela, las zonas de 1942 y
+Córcega.
+
+**Qué falta**, y es el trabajo que viene:
+
+- **Yugoslavia y Grecia**, repartidas en 1941 entre Alemania, Italia, Hungría y Bulgaria.
+- **El norte de Transilvania**, húngaro de 1940 a 1944, y las anexiones búlgaras.
+- **El frente del Este**: los países bálticos, Bielorrusia, Ucrania y Rusia ocupados de 1941 a
+  1944, y Transnistria. Las zonas dependían del frente, e irán con la capa de los frentes.
+- **Italia de 1943 a 1945**: la República Social Italiana y las zonas que Alemania se anexionó de
+  hecho.
+- Los territorios pequeños: las islas del Canal y Eupen-Malmedy.
 
 ---
 
