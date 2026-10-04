@@ -56,6 +56,9 @@
   "Austro-Hungarian rule in Bosnia and Herzegovina": {
     "es": "Provincia imperial de Bosnia y Herzegovina"
   },
+  "Axis occupation of Greece": {
+    "es": "Ocupación de Grecia por las fuerzas del Eje"
+  },
   "Azad Kashmir": {
     "ca": "Azad Kashmir",
     "es": "Azad Cachemira"
@@ -95,6 +98,7 @@
     "ca": "Bulgària",
     "es": "Bulgaria"
   },
+  "Bulgarian rule of Macedonia, Morava Valley and Western Thrace (1941–1944)": {},
   "Carnation Revolution": {
     "ca": "Revolució dels Clavells",
     "es": "Revolución de los Claveles"
@@ -450,6 +454,7 @@
   "Flag of Yugoslavia": {
     "es": "Bandera de Yugoslavia"
   },
+  "Fortress Crete": {},
   "France": {
     "ca": "França",
     "es": "Francia"
@@ -482,15 +487,44 @@
     "ca": "Actes de capitulació del Tercer Reich",
     "es": "Capitulación alemana de mayo de 1945"
   },
+  "German invasion of Hungary (1944)": {
+    "ca": "Operació Margalida",
+    "es": "Operación Margarethe"
+  },
   "German military administration in occupied France during World War II": {
     "ca": "Administració militar alemanya a la França ocupada durant la Segona Guerra Mundial",
     "es": "Ocupación de Francia por las Fuerzas del Eje"
+  },
+  "German occupation of Belgium during World War II": {
+    "es": "Ocupación alemana de Bélgica durante la Segunda Guerra Mundial"
+  },
+  "German occupation of Byelorussia during World War II": {
+    "ca": "Ocupació de Belarús per l'Alemanya nazi",
+    "es": "Ocupación alemana de Bielorrusia"
+  },
+  "German occupation of Crimea during World War II": {
+    "es": "Ocupación alemana de Crimea durante la Segunda Guerra Mundial"
+  },
+  "German occupation of Estonia during World War II": {
+    "es": "Ocupación de Estonia por la Alemania nazi"
+  },
+  "German occupation of Latvia during World War II": {
+    "ca": "Ocupació de Letònia per l'Alemanya nazi",
+    "es": "Ocupación de Letonia por la Alemania nazi"
+  },
+  "German occupation of Lithuania during World War II": {
+    "ca": "Ocupació de Lituània per l'Alemanya nazi",
+    "es": "Ocupación de Lituania por la Alemania nazi"
   },
   "German occupation of Luxembourg during World War II": {
     "ca": "Ocupació de Luxemburg durant la Segona Guerra Mundial"
   },
   "German occupation of Norway": {
     "es": "Ocupación de Noruega por la Alemania nazi"
+  },
+  "German occupation of Rome": {},
+  "German occupation of the Channel Islands": {
+    "es": "Ocupación alemana de las islas del Canal"
   },
   "German occupation of the Netherlands": {},
   "German reunification": {
@@ -505,6 +539,9 @@
     "ca": "Alemanya",
     "es": "Alemania"
   },
+  "Governorate of Dalmatia": {
+    "es": "Gobernación de Dalmacia"
+  },
   "Greco-Turkish War (1919–1922)": {
     "ca": "Guerra greco-turca (1919-1922)",
     "es": "Guerra greco-turca (1919-1922)"
@@ -517,6 +554,7 @@
     "ca": "Guerra Civil grega",
     "es": "Guerra civil griega"
   },
+  "Hungarian occupation of Yugoslav territories": {},
   "Hungarian Revolution of 1956": {
     "ca": "Revolució hongaresa de 1956",
     "es": "Revolución húngara de 1956"
@@ -528,6 +566,10 @@
   "Iceland": {
     "ca": "Islàndia",
     "es": "Islandia"
+  },
+  "Independent State of Croatia": {
+    "ca": "Estat independent de Croàcia",
+    "es": "Estado Independiente de Croacia"
   },
   "India": {
     "ca": "Índia",
@@ -557,12 +599,19 @@
     "ca": "Israel",
     "es": "Israel"
   },
+  "Italian governorate of Montenegro": {
+    "es": "Estado Independiente de Montenegro"
+  },
   "Italian invasion of Albania": {
     "ca": "Invasió italiana d'Albània",
     "es": "Invasión italiana de Albania"
   },
   "Italian occupation of France": {
     "es": "Ocupación italiana de Francia (1940-1944)"
+  },
+  "Italian Social Republic": {
+    "ca": "República Social Italiana",
+    "es": "República Social Italiana"
   },
   "Italy": {
     "ca": "Itàlia",
@@ -590,6 +639,7 @@
     "ca": "Kosovo",
     "es": "Kosovo"
   },
+  "Kosovo during World War II": {},
   "Kuwait": {
     "ca": "Kuwait",
     "es": "Kuwait"
@@ -681,6 +731,17 @@
     "ca": "Revolució d'Octubre de 1917",
     "es": "Revolución de Octubre"
   },
+  "Operation München": {
+    "es": "Operación München"
+  },
+  "Operational Zone of the Adriatic Littoral": {
+    "ca": "Zona d'Operacions del Litoral Adriàtic",
+    "es": "Zona de Operaciones del Litoral Adriático"
+  },
+  "Operational Zone of the Alpine Foothills": {
+    "ca": "Zona d'Operacions dels Prealps",
+    "es": "Zona de Operaciones de los Macizos Alpinos"
+  },
   "Ottoman Empire": {
     "ca": "Imperi Otomà",
     "es": "Imperio otomano"
@@ -704,9 +765,16 @@
     "ca": "Protectorat de Bohèmia i Moràvia",
     "es": "Protectorado de Bohemia y Moravia"
   },
+  "Province of Ljubljana": {
+    "es": "Provincia de Liubliana"
+  },
   "Qajar Iran": {
     "ca": "Imperi Qajar",
     "es": "Irán Kayar"
+  },
+  "Reichskommissariat Ukraine": {
+    "ca": "Reichskommissariat Ukraine",
+    "es": "Reichskommissariat Ukraine"
   },
   "Republic of Ireland": {
     "ca": "Irlanda",
@@ -750,6 +818,10 @@
   "Second Balkan War": {
     "ca": "Segona Guerra Balcànica",
     "es": "Segunda guerra de los Balcanes"
+  },
+  "Second Vienna Award": {
+    "ca": "Segon arbitratge de Viena",
+    "es": "Segundo arbitraje de Viena"
   },
   "Serbia": {
     "ca": "Sèrbia",
@@ -819,8 +891,14 @@
     "ca": "Tadjikistan",
     "es": "Tayikistán"
   },
+  "Territory of the Military Commander in Serbia": {
+    "es": "Territorio de la comandancia militar en Serbia"
+  },
   "Trans-Olza": {
     "es": "Zaolzie"
+  },
+  "Transnistria Governorate": {
+    "es": "Gobernación de Transnistria"
   },
   "Treaty of Rome": {
     "ca": "Tractats de Roma",
@@ -885,6 +963,7 @@
     "ca": "Segona Guerra Mundial",
     "es": "Segunda Guerra Mundial"
   },
+  "World War II in the Slovene Lands": {},
   "Yugoslav Wars": {
     "ca": "Guerres de Iugoslàvia",
     "es": "Guerras yugoslavas"
