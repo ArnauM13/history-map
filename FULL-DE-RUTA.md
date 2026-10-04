@@ -3,7 +3,7 @@
 L'objectiu és un mapa on qualsevol pugui **veure com va canviar Europa** i **entendre per què**.
 Les fronteres són el llenç; el que val és la història que s'hi explica a sobre.
 
-De moment, **Europa del 1886 a avui**, que és d'on arrenca CShapes. Abans, potser més endavant (§5).
+De moment, **Europa del 1886 a avui**, que és d'on arrenca CShapes. Abans, unint-hi altres fonts (§5).
 
 ## 0. Els fonaments — fet
 
@@ -84,7 +84,8 @@ part i ben marcat, el que es controlava de fet:
 ## 5. Més enllà
 
 - [x] Tirar enrere fins al 1886, on comença CShapes.
-- [ ] Del 1815 al 1886, amb fronteres d'una altra font.
+- [ ] Abans del 1886, tan enrere com es pugui: unir diverses fonts de fronteres en una sola
+      capa, amb les mateixes dates i els mateixos codis que CShapes.
 - [ ] *Vector tiles* (PMTiles), si les dades creixen més del que un fitxer pot dur.
 - [ ] Que funcioni sense connexió.
 - [ ] Una manera de contribuir sense Git, per a qui sap història i no vol saber de YAML.
