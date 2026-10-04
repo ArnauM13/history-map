@@ -221,6 +221,10 @@
   "Flag of East Germany": {
     "es": "Bandera de la República Democrática Alemana"
   },
+  "Flag of Egypt": {
+    "ca": "Bandera d'Egipte",
+    "es": "Bandera de Egipto"
+  },
   "Flag of Estonia": {
     "ca": "Bandera d'Estònia",
     "es": "Bandera de Estonia"
@@ -256,6 +260,10 @@
   "Flag of Iran": {
     "ca": "Bandera de l'Iran",
     "es": "Bandera de Irán"
+  },
+  "Flag of Iraq": {
+    "ca": "Bandera de l'Iraq",
+    "es": "Bandera de Irak"
   },
   "Flag of Ireland": {
     "ca": "Bandera d'Irlanda",
@@ -376,14 +384,23 @@
     "ca": "Bandera de Suïssa",
     "es": "Bandera de Suiza"
   },
+  "Flag of Syria": {
+    "ca": "Bandera de Síria",
+    "es": "Bandera de Siria"
+  },
   "Flag of Tajikistan": {
     "ca": "Bandera del Tadjikistan",
     "es": "Bandera de Tayikistán"
+  },
+  "Flag of the Arab Revolt": {
+    "ca": "Bandera de la Rebel·lió Àrab",
+    "es": "Bandera de la Rebelión árabe"
   },
   "Flag of the Czech Republic": {
     "ca": "Bandera de Txèquia",
     "es": "Bandera de la República Checa"
   },
+  "Flag of the Federation of Arab Republics": {},
   "Flag of the Netherlands": {
     "ca": "Bandera dels Països Baixos",
     "es": "Bandera de los Países Bajos"
@@ -395,6 +412,7 @@
     "ca": "Bandera de la Unió de Repúbliques Socialistes Soviètiques",
     "es": "Bandera de la Unión Soviética"
   },
+  "Flag of the United Arab Republic": {},
   "Flag of the United Kingdom": {
     "ca": "Bandera del Regne Unit",
     "es": "Bandera del Reino Unido"
@@ -556,6 +574,8 @@
     "ca": "Líbia",
     "es": "Libia"
   },
+  "Lion and Sun flag": {},
+  "List of Moroccan flags": {},
   "Lithuania": {
     "ca": "Lituània",
     "es": "Lituania"
