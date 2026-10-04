@@ -554,6 +554,14 @@ function OccupationDetail({
   // Si la data ja no és dins de la zona, la fitxa en parla com era al principi o al final.
   const current =
     controlOn(zone, date) ?? (date < zone.start ? periods[0] : periods[periods.length - 1])
+  // Els noms, els d'una data del tram: l'Alemanya de l'annexió d'Àustria és l'Alemanya nazi,
+  // també si la fitxa s'obre el 1950.
+  const at =
+    date < current.from
+      ? current.from
+      : current.until && date > current.until
+        ? current.until
+        : date
   const end = occupationEnd(zone)
   const title = localize(zone.title, lang)
   const approx = useBorderData()?.occupations.features.find((f) => f.properties.id === zone.id)
@@ -578,13 +586,13 @@ function OccupationDetail({
       <dl className="facts">
         <div>
           <dt>{t('controlledBy')}</dt>
-          <dd>{countryName(current.by, date, lang)}</dd>
+          <dd>{countryName(current.by, at, lang)}</dd>
         </div>
         <div>
           <dt>{t('territoryOf')}</dt>
           <dd>
             {zone.countries.map((code, i) => {
-              const name = countryName(code, date, lang)
+              const name = countryName(code, at, lang)
               // L'estat, si en aquella data surt al mapa: llavors se'n pot obrir la fitxa.
               const feature = stateOn(labels, code, date)
               return (
