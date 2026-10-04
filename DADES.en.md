@@ -112,8 +112,10 @@ names come from `content/countries.yaml` and `content/capitals.yaml`, in all thr
   Dodecanese from 31 March 1947 and formally annexed it on 7 March 1948.
 
 Every correction is code, in the `CORRECTIONS` list in `scripts/build-borders.mjs`, and has its
-row here. New borders are made before simplifying, from CShapes' own pieces, so that they match
-the neighbours'. The generated files are never edited by hand.
+row here. New borders are made after simplifying, from CShapes' own pieces, so that they match
+the neighbours' and simplification does not eat their detail (before, the centre of Fiume fell in
+Yugoslavia and Kastav in Italy); a test checks where each corrected place falls, year by year. The
+generated files are never edited by hand.
 
 ### 1.2 Where it falls short
 

@@ -115,8 +115,10 @@ nombres de los estados y de las capitales de CShapes están en inglés; los de l
   desde el 31 de marzo de 1947 y se lo anexionó formalmente el 7 de marzo de 1948.
 
 Cada corrección es código, en la lista `CORRECTIONS` de `scripts/build-borders.mjs`, y tiene su
-fila aquí. Los bordes nuevos se hacen antes de simplificar, con las piezas de CShapes, para que
-coincidan con los de los vecinos. Los archivos generados no se tocan nunca a mano.
+fila aquí. Los bordes nuevos se hacen después de simplificar, con las piezas de CShapes, para que
+coincidan con los de los vecinos y la simplificación no se coma sus detalles (antes, el centro de
+Fiume caía en Yugoslavia y Kastav en Italia); un test comprueba dónde cae cada lugar corregido,
+año por año. Los archivos generados no se tocan nunca a mano.
 
 ### 1.2 Dónde fallan
 

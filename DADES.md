@@ -115,8 +115,10 @@ i `content/capitals.yaml`, en els tres idiomes.
   Dodecanès des del 31 de març del 1947 i se'l va annexionar formalment el 7 de març del 1948.
 
 Cada correcció és codi, a la llista `CORRECTIONS` de `scripts/build-borders.mjs`, i té la seva fila
-aquí. Les vores noves es fan abans de simplificar, amb les peces de CShapes, perquè coincideixin
-amb les dels veïns. Els fitxers generats no es toquen mai a mà.
+aquí. Les vores noves es fan després de simplificar, amb les peces de CShapes, perquè coincideixin
+amb les dels veïns i la simplificació no se'n mengi els detalls (abans, el centre de Fiume queia a
+Iugoslàvia i Kastav a Itàlia); un test comprova on cau cada lloc corregit, any per any. Els
+fitxers generats no es toquen mai a mà.
 
 ### 1.2 On fallen
 

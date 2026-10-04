@@ -6,10 +6,11 @@
  *
  * Passos:
  *   1. Baixa CShapes 2.0 (l'edició de Gleditsch i Ward) en TopoJSON, si no és a data-raw/.
- *   2. Aplica les correccions de CORRECTIONS (explicades a DADES.md §1.1) abans de simplificar,
- *      perquè les vores noves comparteixin els vèrtexs amb les dels veïns.
- *   3. Ho retalla a Europa i ho simplifica (mapshaper). Ho agafa tot: CShapes comença el 1886, i
+ *   2. Ho retalla a Europa i ho simplifica (mapshaper). Ho agafa tot: CShapes comença el 1886, i
  *      el mapa també (FIRST_YEAR a src/lib/date.ts).
+ *   3. Aplica les correccions de CORRECTIONS (explicades a DADES.md §1.1) a les peces ja
+ *      simplificades, perquè les línies dibuixades a mà no perdin detall i les vores noves
+ *      comparteixin els vèrtexs amb les dels veïns.
  *   4. Passa les dates a enters AAAAMMDD (s, e), perquè MapLibre hi pugui filtrar.
  *   5. Dona un color a cada grup (un estat i els territoris que controla) de manera que dos grups
  *      veïns que coincideixen en el temps no tinguin mai el mateix, que els colors es reparteixin
@@ -84,12 +85,13 @@ const LINES = {
     [14.43, 45.5],
     [14.38, 45.43],
     // Entre Matulji, italiana, i Kastav; i l'Estat Lliure de Fiume, fins al Rječina.
-    [14.335, 45.385],
-    [14.35, 45.36],
-    [14.39, 45.37],
+    [14.325, 45.385],
+    [14.335, 45.36],
+    [14.37, 45.362],
+    [14.4, 45.37],
     [14.43, 45.375],
-    [14.445, 45.36],
-    [14.445, 45.32],
+    [14.447, 45.36],
+    [14.447, 45.3],
     [14.35, 45.25],
     [14.26, 45.16],
     [14.2, 44.95],
@@ -102,12 +104,13 @@ const LINES = {
    * Fonts: «Free State of Fiume» i «Treaty of Rapallo (1920)», article 4.
    */
   fiume: [
-    [14.34, 45.3],
-    [14.35, 45.36],
-    [14.39, 45.37],
+    [14.33, 45.3],
+    [14.335, 45.36],
+    [14.37, 45.362],
+    [14.4, 45.37],
     [14.43, 45.375],
-    [14.445, 45.36],
-    [14.445, 45.3],
+    [14.447, 45.36],
+    [14.447, 45.3],
   ],
   /** Zara: la ciutat i el seu terme, uns 110 km², a la costa. Font: «Province of Zara». */
   zara: [
@@ -273,10 +276,8 @@ function reshape(features, code, start, end, change) {
 }
 
 /** CShapes, en GeoJSON i amb les correccions de CORRECTIONS. */
-function correctedFeatures(raw) {
-  const topo = JSON.parse(raw)
-  const object = Object.values(topo.objects)[0]
-  let features = topojson.feature(topo, object).features.filter((f) => f.geometry)
+function correctedFeatures(simplified) {
+  let features = simplified.features.filter((f) => f.geometry)
   // El codi va en text: les entitats que no són a CShapes en porten un de Wikidata.
   for (const f of features) f.properties.gwcode = String(f.properties.gwcode)
   const areas = Object.fromEntries(
@@ -353,11 +354,24 @@ async function ensureRawData() {
   execFileSync('xz', ['--decompress', '--force', `${RAW_FILE}.xz`])
 }
 
-async function processWithMapshaper(corrected, bbox) {
-  const commands = [
-    '-i input.json name=borders',
+/**
+ * Primer es retalla i se simplifica CShapes, i després s'hi apliquen les correccions. Al revés, la
+ * simplificació se menjava els detalls de les línies dibuixades a mà: el centre de Fiume queia a
+ * Iugoslàvia i Kastav a Itàlia, i la costa d'Opatija perdia un tros.
+ */
+async function processWithMapshaper(raw, bbox) {
+  const simplify = [
+    '-i input.topojson name=borders',
     `-clip bbox=${bbox.join(',')} remove-slivers`,
     `-simplify ${SIMPLIFY} keep-shapes`,
+    '-o output.json format=topojson no-quantization',
+  ].join(' ')
+  const simplified = JSON.parse(
+    (await mapshaper.applyCommands(simplify, { 'input.topojson': raw }))['output.json'],
+  )
+  const corrected = correctedFeatures(topojson.feature(simplified, simplified.objects.borders))
+  const commands = [
+    '-i input.json name=borders',
     // El codi ja va en text (correctedFeatures), com el de les entitats d'abans del 1886.
     `-each 's = +start.replace(/-/g, ""), e = end === "${DATASET_END}" ? ${OPEN_END} : +end.replace(/-/g, ""), code = String(gwcode)'`,
     '-filter-fields code,country_name,status,owner,s,e,capname',
@@ -511,10 +525,10 @@ function buildLabels(topo) {
 }
 
 await ensureRawData()
-const corrected = JSON.stringify(correctedFeatures(readFileSync(RAW_FILE, 'utf8')))
-const topo = await processWithMapshaper(corrected, BBOX)
+const raw = readFileSync(RAW_FILE, 'utf8')
+const topo = await processWithMapshaper(raw, BBOX)
 const colours = assignColours(topo, readOccupations())
-const labels = buildLabels(await processWithMapshaper(corrected, LABEL_BBOX))
+const labels = buildLabels(await processWithMapshaper(raw, LABEL_BBOX))
 
 mkdirSync(OUT_DIR, { recursive: true })
 writeFileSync(`${OUT_DIR}/borders.topo.json`, JSON.stringify(topo))

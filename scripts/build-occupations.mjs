@@ -542,9 +542,23 @@ const LINES = {
 
 const ring = (points) => [[...points, points[0]]]
 const rings = (list) => union(...list.map(ring))
-const union = (...geoms) => polygonClipping.union(...geoms.filter((g) => g.length > 0))
-const intersect = (a, ...others) => polygonClipping.intersection(a, ...others)
-const minus = (a, ...others) => polygonClipping.difference(a, ...others.filter((g) => g.length))
+/**
+ * polygon-clipping de vegades no sap tancar un anell quan dues vores gairebé es toquen (la zona
+ * italiana de Grècia, quan les fronteres es corregeixen després de simplificar). Llavors es torna
+ * a provar amb les coordenades arrodonides a 1e-6 graus, uns 10 cm.
+ */
+const clip = (op, ...geoms) => {
+  try {
+    return polygonClipping[op](...geoms)
+  } catch {
+    const rounded = (g) =>
+      g.map((p) => p.map((r) => r.map(([x, y]) => [+x.toFixed(6), +y.toFixed(6)])))
+    return polygonClipping[op](...geoms.map(rounded))
+  }
+}
+const union = (...geoms) => clip('union', ...geoms.filter((g) => g.length > 0))
+const intersect = (a, ...others) => clip('intersection', a, ...others)
+const minus = (a, ...others) => clip('difference', a, ...others.filter((g) => g.length))
 
 const topo = JSON.parse(readFileSync(BORDERS, 'utf8'))
 const pieces = topojson.feature(topo, topo.objects.borders).features.filter((f) => f.geometry)
