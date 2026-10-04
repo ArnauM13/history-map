@@ -33,7 +33,7 @@ map changes every few months. Here you can follow it day by day.
 | **The borders on any day** | From 1886 to today, with the exact day of every change and the name each state had at the time: the Russian Empire, Soviet Russia, the Soviet Union, Russia. |
 | **Every flag in its time** | About a hundred flags of some seventy states: on the map, in a gallery for each date and on each state's card, with what the ones with the most history mean. |
 | **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and marked on the timeline. |
-| **Occupations, from 1938 to 1945** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France, Yugoslavia and Greece carved up, occupied Ukraine. Hatched in the occupier's colour, each zone with its own card. |
+| **Occupations, from 1938 to 1945** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France, Yugoslavia and Greece carved up, occupied Ukraine. In the occupier's colour, as one more part of its territory, and each zone with its name on the map and its own card. |
 | **The source of every piece of data** | Every card says where its borders, name, flag dates and events come from, with the link to check it. |
 | **Three languages** | Catalan, Spanish and English: the interface, the names of states and capitals, the texts and the Wikipedia links. |
 | **A link for every date** | `?d=1914-06-28&lang=en` opens exactly the same map for whoever gets it. |

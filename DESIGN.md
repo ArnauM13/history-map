@@ -31,10 +31,11 @@ un component, vol dir que falta un token.
 El mapa té els seus colors a `src/map/style.ts`: el mar, les fronteres i la paleta d'atles de paper
 dels estats. No segueixen el tema: un mapa antic és clar també de nit.
 
-Les zones de la capa d'ocupacions es pinten amb el color de qui les controlava: una annexió, plena
-(Àustria es veu com una part més d'Alemanya); una ocupació, ratllada espessa; un estat client,
-ratllada clara. Sempre amb la vora discontínua, i les ratlles deixen veure el color de l'estat de
-sota, que és de qui era. La llegenda (`.map-legend`) només surt si en la data n'hi ha alguna, i
+Les zones de la capa d'ocupacions es pinten opaques i del color de qui les controlava, tal com es
+veu el seu territori: la França ocupada és una part més d'Alemanya. Una annexió, plena; una
+ocupació, plena i amb ratlles primes del mateix color, més fosc; un estat client, més clar, com
+una colònia. Sempre amb la vora discontínua i el nom de la zona a dins. Si els noms no hi caben
+tots, surten primer els dels ocupants, després els de les zones i després la resta. La llegenda (`.map-legend`) només surt si en la data n'hi ha alguna, i
 només amb les maneres que hi surten.
 
 **Mides**: marge de pàgina 16 px, espai entre targetes 12 px, dins d'una targeta `14px 14px 16px`.

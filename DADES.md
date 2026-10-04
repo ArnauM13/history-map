@@ -57,7 +57,9 @@ dels territoris que en depenien (colònies, protectorats, mandats, territoris oc
   (`cshapes_2_gw.topojson`).
 - **Què se'n fa** (`npm run data:borders`): s'agafa sencer, del 1886 ençà; es retalla a
   `[-28°, 30°, 78°, 82°]`, se simplifica fins al 12 % dels vèrtexs, les dates passen a enters i es
-  calculen els colors i on va cada nom.
+  calculen els colors i on va cada nom. Dos veïns no comparteixen mai color; a més, els dotze
+  colors es reparteixen, i un ocupant no fa servir el de l'estat ocupat, perquè la zona es
+  distingeixi.
 
 Els estats s'identifiquen amb els **codis de Gleditsch i Ward** (`gwcode`), els mateixos de
 CShapes i de bona part de la ciència política (les dades de conflictes de l'UCDP, per exemple). Els
@@ -98,8 +100,8 @@ aquí. Els fitxers generats no es toquen mai a mà.
 
 ### 1.3 La capa d'ocupacions
 
-El que es controlava de fet entre el 1938 i el 1945 va en una capa a part, ratllada i que es pot
-amagar. Cada zona té un fitxer a `content/occupations/`, amb el text, les dates, qui la controlava
+El que es controlava de fet entre el 1938 i el 1945 va en una capa a part, que es pot amagar i
+que pinta cada zona del color de l'estat que la controlava. Cada zona té un fitxer a `content/occupations/`, amb el text, les dates, qui la controlava
 i la font, i una forma que fa `npm run data:occupations` (`scripts/build-occupations.mjs`).
 
 **Les dates.** Una zona comença el dia que l'ocupant en pren el control —la capitulació,

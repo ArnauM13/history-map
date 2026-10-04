@@ -56,7 +56,9 @@ territorios ocupados) de 1886 a 2019, con el día exacto de cada cambio.
   (`cshapes_2_gw.topojson`).
 - **Qué se hace con él** (`npm run data:borders`): se toma entero, de 1886 en adelante; se
   recorta a `[-28°, 30°, 78°, 82°]`, se simplifica hasta el 12 % de los vértices, las fechas pasan a
-  enteros y se calculan los colores y dónde va cada nombre.
+  enteros y se calculan los colores y dónde va cada nombre. Dos vecinos no comparten nunca color;
+  además, los doce colores se reparten, y un ocupante no usa el del estado ocupado, para que la
+  zona se distinga.
 
 Los estados se identifican con los **códigos de Gleditsch y Ward** (`gwcode`), los mismos de
 CShapes y de buena parte de la ciencia política (los datos de conflictos del UCDP, por ejemplo).
@@ -98,8 +100,8 @@ fila aquí. Los archivos generados no se tocan nunca a mano.
 
 ### 1.3 La capa de ocupaciones
 
-Lo que se controlaba de hecho entre 1938 y 1945 va en una capa aparte, rayada y que se puede
-ocultar. Cada zona tiene un archivo en `content/occupations/`, con el texto, las fechas, quién la
+Lo que se controlaba de hecho entre 1938 y 1945 va en una capa aparte, que se puede ocultar y
+que pinta cada zona del color del estado que la controlaba. Cada zona tiene un archivo en `content/occupations/`, con el texto, las fechas, quién la
 controlaba y la fuente, y una forma que hace `npm run data:occupations`
 (`scripts/build-occupations.mjs`).
 

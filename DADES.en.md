@@ -56,7 +56,9 @@ territories that depended on them (colonies, protectorates, mandates, occupied t
   (`cshapes_2_gw.topojson`).
 - **What is done to it** (`npm run data:borders`): take all of it, from 1886 onwards; clip to
   `[-28°, 30°, 78°, 82°]`, simplify to 12 % of the vertices, turn dates into integers and work out
-  the colours and where each name goes.
+  the colours and where each name goes. Two neighbours never share a colour; on top of that, the
+  twelve colours are spread out, and an occupier never takes the occupied state's, so the zone
+  stands out.
 
 States are identified by their **Gleditsch & Ward codes** (`gwcode`), the same ones used by
 CShapes and much of political science (UCDP conflict data, for instance). Events, conflicts, names
@@ -96,8 +98,8 @@ row here. The generated files are never edited by hand.
 
 ### 1.3 The occupations layer
 
-What was under de facto control between 1938 and 1945 goes in a separate, hatched layer that can
-be hidden. Each zone has a file in `content/occupations/`, with the text, the dates, who
+What was under de facto control between 1938 and 1945 goes in a separate layer that can be
+hidden and paints each zone in the colour of the state that controlled it. Each zone has a file in `content/occupations/`, with the text, the dates, who
 controlled it and the source, and a shape made by `npm run data:occupations`
 (`scripts/build-occupations.mjs`).
 

@@ -5,7 +5,8 @@ import type { GeometryCollection, Topology } from 'topojson-specification'
 import { toDateNumber, type IsoDate } from '../lib/date'
 import type { BorderProperties } from '../selection'
 
-export type LabelCollection = FeatureCollection<Point, BorderProperties>
+/** `rank`: si dos noms es trepitgen, guanya l'estat més gran (scripts/build-borders.mjs). */
+export type LabelCollection = FeatureCollection<Point, BorderProperties & { rank: number }>
 
 /** Una zona de la capa d'ocupacions, tal com la deixa scripts/build-occupations.mjs. */
 export interface OccupationProperties {
