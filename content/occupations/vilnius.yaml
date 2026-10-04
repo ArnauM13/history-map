@@ -1,9 +1,33 @@
 start: 1939-09-28
 control:
-  - { until: 1939-10-27, by: 365, kind: occupation }
-  - { until: 1940-06-14, by: 368, kind: annexation }
-  - { until: 1941-06-21, by: 365, kind: annexation }
-  - { until: 1944-07-13, by: 255, kind: occupation }
+  - until: 1939-10-27
+    by: 365
+    kind: occupation
+    cause:
+      ca: Pacte germanosoviètic, 1939
+      es: Pacto germano-soviético, 1939
+      en: Nazi–Soviet Pact, 1939
+  - until: 1940-06-14
+    by: 368
+    kind: annexation
+    cause:
+      ca: Cessió soviètica a Lituània, 1939
+      es: Cesión soviética a Lituania, 1939
+      en: Soviet cession to Lithuania, 1939
+  - until: 1941-06-21
+    by: 365
+    kind: annexation
+    cause:
+      ca: Annexió soviètica de Lituània, 1940
+      es: Anexión soviética de Lituania, 1940
+      en: Soviet annexation of Lithuania, 1940
+  - until: 1944-07-13
+    by: 255
+    kind: occupation
+    cause:
+      ca: Invasió de la Unió Soviètica, 1941
+      es: Invasión de la Unión Soviética, 1941
+      en: Invasion of the Soviet Union, 1941
 countries: [290, 368]
 title:
   ca: La regió de Vílnius

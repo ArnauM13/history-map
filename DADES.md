@@ -101,8 +101,10 @@ aquí. Els fitxers generats no es toquen mai a mà.
 ### 1.3 La capa d'ocupacions
 
 El que es controlava de fet entre el 1938 i el 1945 va en una capa a part, que es pot amagar i
-que pinta cada zona del color de l'estat que la controlava. Cada zona té un fitxer a `content/occupations/`, amb el text, les dates, qui la controlava
-i la font, i una forma que fa `npm run data:occupations` (`scripts/build-occupations.mjs`).
+que pinta cada zona del color de l'estat que la controlava, amb el nom, qui la controlava i per
+què. Cada zona té un fitxer a `content/occupations/`, amb el text, les dates, qui la controlava,
+per què (`cause`, un fet amb l'any, tret del text de la zona) i la font, i una forma que fa
+`npm run data:occupations` (`scripts/build-occupations.mjs`).
 
 **Les dates.** Una zona comença el dia que l'ocupant en pren el control —la capitulació,
 l'armistici, l'annexió o la presa de la capital— i s'acaba el dia que el perd: la retirada, la

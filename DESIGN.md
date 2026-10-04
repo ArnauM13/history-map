@@ -34,9 +34,11 @@ dels estats. No segueixen el tema: un mapa antic és clar també de nit.
 Les zones de la capa d'ocupacions es pinten opaques i del color de qui les controlava, tal com es
 veu el seu territori: la França ocupada és una part més d'Alemanya. Una annexió, plena; una
 ocupació, plena i amb ratlles primes del mateix color, més fosc; un estat client, més clar, com
-una colònia. Sempre amb la vora discontínua i el nom de la zona a dins. Si els noms no hi caben
-tots, surten primer els dels ocupants, després els de les zones i després la resta. La llegenda (`.map-legend`) només surt si en la data n'hi ha alguna, i
-només amb les maneres que hi surten.
+una colònia. Sempre amb la vora discontínua i, a dins, el nom de la zona, qui la controlava
+(«Ocupació: Alemanya nazi») i, des del zoom 4, per què («Armistici francès, 1940»). Si els noms
+no hi caben tots, surten primer els dels ocupants, després els de les zones i després la resta.
+La llegenda (`.map-legend`) només surt si en la data n'hi ha alguna, i només amb les maneres que
+hi surten.
 
 **Mides**: marge de pàgina 16 px, espai entre targetes 12 px, dins d'una targeta `14px 14px 16px`.
 **Radis**: targeta 18, fila 14, pastilla 20, botó rodó 50 %. **Ombra**: `0 2px 10px var(--c-shadow)`.

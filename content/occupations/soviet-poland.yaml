@@ -1,6 +1,12 @@
 start: 1939-09-28
 control:
-  - { until: 1941-06-21, by: 365, kind: annexation }
+  - until: 1941-06-21
+    by: 365
+    kind: annexation
+    cause:
+      ca: Pacte germanosoviètic, 1939
+      es: Pacto germano-soviético, 1939
+      en: Nazi–Soviet Pact, 1939
 countries: [290]
 title:
   ca: Polònia annexionada per la Unió Soviètica

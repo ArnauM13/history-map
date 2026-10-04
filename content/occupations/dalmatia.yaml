@@ -1,8 +1,26 @@
 start: 1941-04-17
 control:
-  - { until: 1941-05-17, by: 325, kind: occupation }
-  - { until: 1943-09-08, by: 325, kind: annexation }
-  - { until: 1944-10-31, by: 255, kind: occupation }
+  - until: 1941-05-17
+    by: 325
+    kind: occupation
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
+  - until: 1943-09-08
+    by: 325
+    kind: annexation
+    cause:
+      ca: Tractats de Roma, 1941
+      es: Tratados de Roma, 1941
+      en: Treaties of Rome, 1941
+  - until: 1944-10-31
+    by: 255
+    kind: occupation
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
 countries: [345]
 title:
   ca: Governació de Dalmàcia

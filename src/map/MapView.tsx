@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { OCCUPATIONS, controlOn, countryName, localize } from '../content'
 import { flagOn } from '../content/flags'
 import type { Conflict, HistoricalEvent } from '../content/schema'
-import { useI18n } from '../i18n'
+import { translator, useI18n } from '../i18n'
 import { toDateNumber, type IsoDate } from '../lib/date'
 import type { BorderProperties, Selection } from '../selection'
 import {
@@ -206,12 +206,17 @@ export function MapView({
         },
         flagId: flagOn(f.properties.gwcode, date)?.flag,
       }))
-    const zoneLabels = zones.map(({ feature, zone }) => ({
+    const zoneLabels = zones.map(({ feature, zone, period }) => ({
       type: 'Feature' as const,
       geometry: { type: 'Point' as const, coordinates: feature.properties.label },
       // `status` diferent d'«independent»: el nom va en cursiva, com el dels territoris dependents.
       properties: {
         name: localize(zone.label ?? zone.title, lang),
+        // Sota el nom, qui la controlava i com, i per què: el que el color sol no diu.
+        controlledBy: translator(lang).t(`zoneOnMap.${period.kind}`, {
+          by: countryName(period.by, date, lang),
+        }),
+        cause: localize(period.cause, lang),
         status: 'zone',
         rank: feature.properties.rank - ZONE_PRIORITY,
       },

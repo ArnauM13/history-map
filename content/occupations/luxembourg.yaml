@@ -1,6 +1,12 @@
 start: 1940-05-10
 control:
-  - { until: 1944-09-10, by: 255, kind: annexation }
+  - until: 1944-09-10
+    by: 255
+    kind: annexation
+    cause:
+      ca: Invasió del Benelux, 1940
+      es: Invasión del Benelux, 1940
+      en: Invasion of the Low Countries, 1940
 countries: [212]
 title:
   ca: Luxemburg annexionat

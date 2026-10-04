@@ -13,7 +13,6 @@ import {
   type HistoricalEvent,
   type LocalizedText,
   type Occupation,
-  type OccupationKind,
   type WikipediaTitles,
 } from './schema'
 
@@ -153,12 +152,7 @@ export const activeConflicts = (date: IsoDate) =>
   CONFLICTS.filter((c) => isWithin(date, c.start, c.end))
 
 /** Un tram de control d'una zona, amb el primer dia ja calculat. */
-export interface ControlPeriod {
-  from: IsoDate
-  until?: IsoDate
-  by: number
-  kind: OccupationKind
-}
+export type ControlPeriod = Occupation['control'][number] & { from: IsoDate }
 
 /** Qui va controlar una zona i com, tram a tram: cada un comença l'endemà de l'anterior. */
 export const controlPeriods = (zone: Occupation): ControlPeriod[] =>

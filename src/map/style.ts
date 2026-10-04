@@ -115,6 +115,31 @@ const fillColor: ExpressionSpecification = [
 ] as unknown as ExpressionSpecification
 
 const isIndependent: ExpressionSpecification = ['==', ['get', 'status'], 'independent']
+const isZone: ExpressionSpecification = ['has', 'controlledBy']
+
+/**
+ * El nom d'una zona porta a sota qui la controlava («Ocupació: Alemanya nazi»), en rodona perquè
+ * es llegeixi primer, i, de més a prop, per què («Armistici francès, 1940»). Els estats, només el
+ * nom.
+ */
+const CAUSE_ZOOM = 4
+function zoneText(withCause: boolean) {
+  return [
+    'case',
+    isZone,
+    [
+      'format',
+      ['get', 'name'],
+      {},
+      '\n',
+      {},
+      ['get', 'controlledBy'],
+      { 'font-scale': 0.85, 'text-font': ['literal', ['Open Sans Semibold']] },
+      ...(withCause ? ['\n', {}, ['get', 'cause'], { 'font-scale': 0.8 }] : []),
+    ],
+    ['get', 'name'],
+  ]
+}
 const isHovered: ExpressionSpecification = ['boolean', ['feature-state', 'hover'], false]
 
 /** Les peces vigents en una data AAAAMMDD: les que la tenen dins de [s, e]. */
@@ -211,7 +236,13 @@ export function createStyle(glyphsUrl: string): StyleSpecification {
           'icon-image': ['coalesce', ['get', 'flag'], ''],
           'icon-anchor': 'bottom',
           'icon-size': ['interpolate', ['linear'], ['zoom'], 2, 0.75, 5, 1, 7, 1.3],
-          'text-field': ['get', 'name'],
+          'text-field': [
+            'step',
+            ['zoom'],
+            zoneText(false),
+            CAUSE_ZOOM,
+            zoneText(true),
+          ] as unknown as ExpressionSpecification,
           'text-anchor': ['case', ['has', 'flag'], 'top', 'center'],
           'text-offset': ['case', ['has', 'flag'], ['literal', [0, 0.2]], ['literal', [0, 0]]],
           'text-font': [
@@ -221,7 +252,8 @@ export function createStyle(glyphsUrl: string): StyleSpecification {
             ['literal', ['Open Sans Italic']],
           ],
           'text-size': ['interpolate', ['linear'], ['zoom'], 2, 9, 4, 11, 7, 15],
-          'text-max-width': 7,
+          // Més ample per a les zones: «Ocupació: Alemanya nazi» en una sola ratlla.
+          'text-max-width': ['case', isZone, 10, 7],
           'symbol-sort-key': ['get', 'rank'],
           'text-padding': 4,
         },

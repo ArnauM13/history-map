@@ -94,6 +94,11 @@ const controlPeriod = z.strictObject({
   /** Qui el controlava: un codi de Gleditsch i Ward. */
   by: z.number().int().positive(),
   kind: z.enum(OCCUPATION_KINDS),
+  /**
+   * Per què: el fet que el va posar sota aquest control, en poques paraules («Armistici francès,
+   * 1940»). Va al mapa, sota el nom de la zona; la resta de la història, a `summary`.
+   */
+  cause: localizedText,
 })
 
 export const occupationSchema = z

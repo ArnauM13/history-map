@@ -1,7 +1,19 @@
 start: 1941-08-19
 control:
-  - { until: 1944-03-31, by: 360, kind: occupation }
-  - { until: 1944-04-10, by: 255, kind: occupation }
+  - until: 1944-03-31
+    by: 360
+    kind: occupation
+    cause:
+      ca: Invasió de la Unió Soviètica, 1941
+      es: Invasión de la Unión Soviética, 1941
+      en: Invasion of the Soviet Union, 1941
+  - until: 1944-04-10
+    by: 255
+    kind: occupation
+    cause:
+      ca: Retirada romanesa, 1944
+      es: Retirada rumana, 1944
+      en: Romanian withdrawal, 1944
 countries: [365]
 title:
   ca: Transnístria

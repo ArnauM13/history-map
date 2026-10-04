@@ -1,7 +1,19 @@
 start: 1941-04-11
 control:
-  - { until: 1941-12-13, by: 310, kind: occupation }
-  - { until: 1945-04-04, by: 310, kind: annexation }
+  - until: 1941-12-13
+    by: 310
+    kind: occupation
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
+  - until: 1945-04-04
+    by: 310
+    kind: annexation
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
 countries: [345]
 title:
   ca: Prekmurje i Međimurje

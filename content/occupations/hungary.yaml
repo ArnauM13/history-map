@@ -1,6 +1,12 @@
 start: 1944-03-19
 control:
-  - { until: 1945-04-04, by: 255, kind: occupation }
+  - until: 1945-04-04
+    by: 255
+    kind: occupation
+    cause:
+      ca: Hongria negociava la pau, 1944
+      es: Hungría negociaba la paz, 1944
+      en: Hungary sought a separate peace, 1944
 countries: [310]
 title:
   ca: Hongria ocupada

@@ -1,6 +1,12 @@
 start: 1940-06-25
 control:
-  - { until: 1942-11-10, by: 255, kind: client }
+  - until: 1942-11-10
+    by: 255
+    kind: client
+    cause:
+      ca: Armistici francès, 1940
+      es: Armisticio francés, 1940
+      en: French armistice, 1940
 countries: [220]
 flag: fr
 title:

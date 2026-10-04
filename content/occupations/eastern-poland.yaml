@@ -1,6 +1,12 @@
 start: 1941-06-22
 control:
-  - { until: 1944-07-27, by: 255, kind: occupation }
+  - until: 1944-07-27
+    by: 255
+    kind: occupation
+    cause:
+      ca: Invasió de la Unió Soviètica, 1941
+      es: Invasión de la Unión Soviética, 1941
+      en: Invasion of the Soviet Union, 1941
 countries: [290]
 title:
   ca: Polònia oriental ocupada per Alemanya

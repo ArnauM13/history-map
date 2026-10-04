@@ -1,6 +1,12 @@
 start: 1938-03-13
 control:
-  - { until: 1945-04-27, by: 255, kind: annexation }
+  - until: 1945-04-27
+    by: 255
+    kind: annexation
+    cause:
+      ca: Anschluss, 1938
+      es: Anschluss, 1938
+      en: Anschluss, 1938
 countries: [305]
 title:
   ca: Àustria annexionada

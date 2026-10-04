@@ -1,6 +1,12 @@
 start: 1939-03-18
 control:
-  - { until: 1944-10-27, by: 310, kind: annexation }
+  - until: 1944-10-27
+    by: 310
+    kind: annexation
+    cause:
+      ca: Desmembrament de Txecoslovàquia, 1939
+      es: Desmembramiento de Checoslovaquia, 1939
+      en: Break-up of Czechoslovakia, 1939
 countries: [315]
 title:
   ca: Rutènia Subcarpàtica hongaresa

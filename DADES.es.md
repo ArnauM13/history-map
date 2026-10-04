@@ -101,9 +101,10 @@ fila aquí. Los archivos generados no se tocan nunca a mano.
 ### 1.3 La capa de ocupaciones
 
 Lo que se controlaba de hecho entre 1938 y 1945 va en una capa aparte, que se puede ocultar y
-que pinta cada zona del color del estado que la controlaba. Cada zona tiene un archivo en `content/occupations/`, con el texto, las fechas, quién la
-controlaba y la fuente, y una forma que hace `npm run data:occupations`
-(`scripts/build-occupations.mjs`).
+que pinta cada zona del color del estado que la controlaba, con el nombre, quién la controlaba y
+por qué. Cada zona tiene un archivo en `content/occupations/`, con el texto, las fechas, quién la
+controlaba, por qué (`cause`, un hecho con el año, sacado del texto de la zona) y la fuente, y
+una forma que hace `npm run data:occupations` (`scripts/build-occupations.mjs`).
 
 **Las fechas.** Una zona empieza el día en que el ocupante toma el control —la capitulación, el
 armisticio, la anexión o la toma de la capital— y termina el día en que lo pierde: la retirada,

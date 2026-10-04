@@ -99,9 +99,10 @@ row here. The generated files are never edited by hand.
 ### 1.3 The occupations layer
 
 What was under de facto control between 1938 and 1945 goes in a separate layer that can be
-hidden and paints each zone in the colour of the state that controlled it. Each zone has a file in `content/occupations/`, with the text, the dates, who
-controlled it and the source, and a shape made by `npm run data:occupations`
-(`scripts/build-occupations.mjs`).
+hidden and paints each zone in the colour of the state that controlled it, with its name, who
+controlled it and why. Each zone has a file in `content/occupations/`, with the text, the dates,
+who controlled it, why (`cause`, an event with its year, taken from the zone's text) and the
+source, and a shape made by `npm run data:occupations` (`scripts/build-occupations.mjs`).
 
 **Dates.** A zone starts on the day the occupier takes control —the surrender, the armistice, the
 annexation or the capture of the capital— and ends on the day it loses it: the withdrawal, the

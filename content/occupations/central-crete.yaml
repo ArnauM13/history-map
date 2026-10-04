@@ -1,6 +1,12 @@
 start: 1941-06-01
 control:
-  - { until: 1944-10-13, by: 255, kind: occupation }
+  - until: 1944-10-13
+    by: 255
+    kind: occupation
+    cause:
+      ca: Batalla de Creta, 1941
+      es: Batalla de Creta, 1941
+      en: Battle of Crete, 1941
 countries: [350]
 title:
   ca: Creta central

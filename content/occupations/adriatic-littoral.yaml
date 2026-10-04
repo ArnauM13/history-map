@@ -1,6 +1,12 @@
 start: 1943-09-10
 control:
-  - { until: 1945-05-01, by: 255, kind: annexation }
+  - until: 1945-05-01
+    by: 255
+    kind: annexation
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
 countries: [325]
 title:
   ca: Zona d'Operacions del Litoral Adriàtic

@@ -1,6 +1,12 @@
 start: 1940-06-10
 control:
-  - { until: 1945-05-08, by: 255, kind: occupation }
+  - until: 1945-05-08
+    by: 255
+    kind: occupation
+    cause:
+      ca: Invasió de Noruega, 1940
+      es: Invasión de Noruega, 1940
+      en: Invasion of Norway, 1940
 countries: [385]
 title:
   ca: Noruega ocupada
