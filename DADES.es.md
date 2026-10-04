@@ -79,9 +79,13 @@ fila aquí. Los archivos generados no se tocan nunca a mano.
   Múnich, el primer arbitraje de Viena (1938), las anexiones soviéticas de 1940— pero no el
   territorio tomado por la fuerza, ni el segundo arbitraje de Viena (1940), que dio el norte de
   Transilvania a Hungría. Entre 1938 y 1945, Austria, Bohemia-Moravia y Polonia siguen saliendo.
-  Lo explica la capa de ocupaciones (§1.3), que todavía no está entera.
+  Lo explica la capa de ocupaciones (§1.3).
 - **Danzig** sale dentro de Alemania desde el 30 de septiembre de 1938. Fue ciudad libre hasta el
   1 de septiembre de 1939, cuando el Reich se la anexionó.
+- **La frontera italiana de 1920 a 1947.** Istria, Fiume, el Litoral esloveno con Postojna y las
+  islas de Cres y Lošinj salen dentro de Yugoslavia, y el Dodecaneso, dentro de Grecia, cuando
+  eran italianos. La capa de ocupaciones no los cuenta en el reparto de Yugoslavia de 1941;
+  corregir las fronteras está en la [hoja de ruta](FULL-DE-RUTA.md), §3 (en catalán).
 - **Sin microestados.** Andorra, Liechtenstein, Mónaco, San Marino y el Vaticano no están en
   CShapes.
 - **Criterios de soberanía.** Algunas decisiones son de la lista de Gleditsch y Ward: Montenegro
@@ -102,34 +106,46 @@ controlaba y la fuente, y una forma que hace `npm run data:occupations`
 **Las fechas.** Una zona empieza el día en que el ocupante toma el control —la capitulación, el
 armisticio, la anexión o la toma de la capital— y termina el día en que lo pierde: la retirada,
 la capitulación o la liberación de la capital. Mientras se combatía, lo que sale en el mapa es el
-conflicto, no la zona; los frentes no se dibujan.
+conflicto, no la zona; los frentes no se dibujan. En las zonas grandes, la capital marca las dos
+fechas aunque una parte cambiara de manos antes o después: Ucrania ocupada va de la toma de Kiev,
+en septiembre de 1941, a su liberación, en noviembre de 1943, aunque el oeste no se liberó hasta
+1944.
 
 **La forma** se hace con piezas que ya existen, para que los bordes coincidan con los del mapa:
 
 | De dónde | Para qué | Ejemplo |
 | --- | --- | --- |
 | Un estado de CShapes, de la misma época o de otra | La mayoría de las zonas | Austria es la Austria de 1938; Bohemia y Moravia, la Checoslovaquia de 1939 dentro de la Chequia actual |
-| Las divisiones administrativas actuales, de [Natural Earth](https://www.naturalearthdata.com/) (dominio público) | Los bordes que seguían una división que todavía existe | Alsacia y Mosela son tres departamentos; la zona italiana de Francia, ocho |
-| Líneas dibujadas a mano (`LINES` en el script), con la fuente al lado | Donde no hay nada más | El reparto de Polonia, la línea de demarcación francesa, Memel, Zaolzie |
+| Las divisiones administrativas actuales, de [Natural Earth](https://www.naturalearthdata.com/) (dominio público) | Los bordes que seguían una división que todavía existe | Alsacia y Mosela son tres departamentos; la República Social Italiana, las provincias del norte de Italia; Kosovo, repartido por municipios |
+| Líneas dibujadas a mano (`LINES` en el script), con la fuente al lado | Donde no hay nada más | El reparto de Polonia, la línea de demarcación francesa, el segundo arbitraje de Viena, Transnistria |
 
 Las líneas dibujadas a mano son **aproximadas**, con un error de unos 10-20 km; las divisiones
-actuales, tanto como se hayan movido desde entonces. La ficha de cada zona lo dice.
+actuales, tanto como se hayan movido desde entonces. La ficha de cada zona lo dice, y cita
+Natural Earth si se usan sus divisiones. Un test comprueba que dos zonas de las mismas fechas no se
+pisen.
 
-**Qué hay.** La expansión alemana de 1938-1939 (Austria, Bohemia y Moravia, el Estado Eslovaco,
-Memel), Zaolzie y la Rutenia húngara; el reparto de Polonia, también el este ocupado por Alemania
-de 1941 a 1944; Albania; la ocupación de Dinamarca, Noruega, los Países Bajos, Bélgica y
-Luxemburgo, y la de Francia: la zona ocupada, la de Vichy, Alsacia y Mosela, las zonas de 1942 y
-Córcega.
+**Qué hay**, en 57 zonas:
 
-**Qué falta**, y es el trabajo que viene:
+- **El oeste y el centro**: la expansión alemana de 1938-1939 (Austria, Bohemia y Moravia, el
+  Estado Eslovaco, Memel), Zaolzie y la Rutenia húngara; el reparto de Polonia; la ocupación de
+  Dinamarca, Noruega, los Países Bajos, Bélgica, Eupen-Malmedy, Luxemburgo y las islas del Canal,
+  y la de Francia: la zona ocupada, la de Vichy, Alsacia y Mosela, las zonas de 1942 y Córcega.
+- **Los Balcanes**: Albania; el reparto de Yugoslavia (el Estado Independiente de Croacia,
+  Serbia, la Eslovenia alemana y la italiana, Dalmacia, Montenegro, Kosovo y el oeste de Macedonia
+  unidos a Albania, la Macedonia búlgara, la Bačka y el Prekmurje húngaros) y el de Grecia (las
+  zonas alemana, italiana y búlgara, y Creta).
+- **El Danubio y el Este**: el norte de Transilvania, Besarabia, el norte de Bucovina y
+  Transnistria; los países bálticos, Bielorrusia, Ucrania y Crimea, ocupados de 1941 a 1944, y la
+  Hungría ocupada de 1944.
+- **Italia de 1943 a 1945**: la República Social Italiana, Roma y la Italia central, y las dos
+  zonas de operaciones que Alemania se anexionó de hecho.
 
-- **Yugoslavia y Grecia**, repartidas en 1941 entre Alemania, Italia, Hungría y Bulgaria.
-- **El norte de Transilvania**, húngaro de 1940 a 1944, y las anexiones búlgaras.
-- **El frente del Este**: los países bálticos, Bielorrusia, Ucrania y Rusia ocupados de 1941 a
-  1944, y Transnistria. Las zonas dependían del frente, e irán con la capa de los frentes.
-- **Italia de 1943 a 1945**: la República Social Italiana y las zonas que Alemania se anexionó de
-  hecho.
-- Los territorios pequeños: las islas del Canal y Eupen-Malmedy.
+**Qué falta**:
+
+- **La Rusia ocupada** de 1941 a 1943, de Smolensk al Cáucaso: cambió de manos con el frente, e
+  irá con la capa de los frentes.
+- **Trozos pequeños de las anexiones italianas de 1941**: lo que se añadió a la provincia de
+  Fiume (Sušak, Kastav, Krk y Rab) y, desde el otoño, Hvar y Pag. Salen dentro de Croacia.
 
 ---
 

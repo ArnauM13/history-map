@@ -1,0 +1,27 @@
+start: 1941-04-17
+control:
+  - { until: 1943-09-08, by: 325, kind: occupation }
+  - { until: 1944-12-19, by: 255, kind: occupation }
+countries: [345]
+title:
+  ca: Montenegro ocupat
+  es: Montenegro ocupado
+  en: Occupied Montenegro
+summary:
+  ca: >-
+    Itàlia va ocupar Montenegro i hi volia restaurar un regne, però la revolta popular del juliol
+    del 1941 la va fer desistir, i des de l'octubre el va governar com a governació militar. Després
+    de l'armistici italià, el setembre del 1943, el va ocupar Alemanya. Els partisans van alliberar
+    Podgorica el 19 de desembre del 1944, quan els alemanys ja se'n retiraven.
+  es: >-
+    Italia ocupó Montenegro y quería restaurar allí un reino, pero la revuelta popular de julio de
+    1941 la hizo desistir, y desde octubre lo gobernó como gobernación militar. Tras el armisticio
+    italiano, en septiembre de 1943, lo ocupó Alemania. Los partisanos liberaron Podgorica el 19 de
+    diciembre de 1944, cuando los alemanes ya se retiraban.
+  en: >-
+    Italy occupied Montenegro and meant to restore a kingdom there, but the popular uprising of July
+    1941 made it give up, and from October it ruled it as a military governorate. After the Italian
+    armistice in September 1943 Germany occupied it. The Partisans liberated Podgorica on 19
+    December 1944, as the Germans were already withdrawing.
+wikipedia:
+  en: Italian governorate of Montenegro

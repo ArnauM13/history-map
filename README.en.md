@@ -33,7 +33,7 @@ map changes every few months. Here you can follow it day by day.
 | **The borders on any day** | From 1886 to today, with the exact day of every change and the name each state had at the time: the Russian Empire, Soviet Russia, the Soviet Union, Russia. |
 | **Every flag in its time** | About a hundred flags of some seventy states: on the map, in a gallery for each date and on each state's card, with what the ones with the most history mean. |
 | **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and marked on the timeline. |
-| **Occupations, from 1938 to 1945** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France. Hatched in the occupier's colour, each zone with its own card. |
+| **Occupations, from 1938 to 1945** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France, Yugoslavia and Greece carved up, occupied Ukraine. Hatched in the occupier's colour, each zone with its own card. |
 | **The source of every piece of data** | Every card says where its borders, name, flag dates and events come from, with the link to check it. |
 | **Three languages** | Catalan, Spanish and English: the interface, the names of states and capitals, the texts and the Wikipedia links. |
 | **A link for every date** | `?d=1914-06-28&lang=en` opens exactly the same map for whoever gets it. |
@@ -83,8 +83,8 @@ articles and links still exist. The details, corrections and limitations are in
 ## What it doesn't do (on purpose)
 
 - **It doesn't draw front lines, for now.** The occupations layer says who controlled each
-  territory, not where the armies were. Yugoslavia, Greece and the Eastern Front are still
-  missing.
+  territory, not where the armies were. That is why occupied Russia is still missing: it changed
+  hands with the front.
 - **It isn't an encyclopaedia.** Two or three sentences and the link to the source; the rest is
   well explained there.
 - **It asks you for nothing.** No account, no cookies, no personal data.
@@ -156,7 +156,7 @@ You can write in Catalan, Spanish or English.
 
 ## What's next
 
-- **The rest of the occupations layer**: Yugoslavia, Greece and the Eastern Front, and today's
+- **The rest of the occupations layer**: occupied Russia, with the front lines, and today's
   disputed territories.
 - **More content**: about a hundred events and thirty conflicts, with academic sources as well as
   Wikipedia.

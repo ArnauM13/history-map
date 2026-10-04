@@ -5,7 +5,7 @@
 Thanks for wanting to lend a hand. There are three ways to help:
 
 1. **Content**: events, conflicts, state names and flags. No programming needed.
-2. **Data**: fixing a border or adding zones to the occupations layer, such as Yugoslavia or Greece
+2. **Data**: fixing a border or adding zones to the occupations layer, such as those of 1917 to 1923
    (see the [roadmap](FULL-DE-RUTA.md), §3, in Catalan).
 3. **Code**: features, design, accessibility.
 

@@ -1,0 +1,29 @@
+start: 1941-04-11
+control:
+  - { until: 1941-12-13, by: 310, kind: occupation }
+  - { until: 1944-10-23, by: 310, kind: annexation }
+countries: [345]
+title:
+  ca: Bačka i Baranja
+  es: Bačka y Baranja
+  en: Bačka and Baranja
+summary:
+  ca: >-
+    Hongria, que havia signat un pacte d'amistat amb Iugoslàvia pocs mesos abans, la va envair al
+    costat d'Alemanya i l'11 d'abril del 1941 va ocupar la Bačka i la Baranja, hongareses fins al
+    1918. Se les va annexionar el 14 de desembre. El gener del 1942, les seves tropes hi van matar
+    milers de serbis i jueus a la batuda de Novi Sad; l'Exèrcit Roig i els partisans van alliberar
+    la ciutat el 23 d'octubre del 1944.
+  es: >-
+    Hungría, que había firmado un pacto de amistad con Yugoslavia pocos meses antes, la invadió
+    junto a Alemania y el 11 de abril de 1941 ocupó la Bačka y la Baranja, húngaras hasta 1918. Se
+    las anexionó el 14 de diciembre. En enero de 1942, sus tropas mataron allí a miles de serbios y
+    judíos en la redada de Novi Sad; el Ejército Rojo y los partisanos liberaron la ciudad el 23 de
+    octubre de 1944.
+  en: >-
+    Hungary, which had signed a friendship treaty with Yugoslavia a few months earlier, invaded it
+    alongside Germany and on 11 April 1941 occupied Bačka and Baranja, Hungarian until 1918. It
+    annexed them on 14 December. In January 1942 its troops killed thousands of Serbs and Jews there
+    in the Novi Sad raid; the Red Army and the Partisans liberated the city on 23 October 1944.
+wikipedia:
+  en: Hungarian occupation of Yugoslav territories

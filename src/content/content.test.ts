@@ -1,3 +1,4 @@
+import polygonClipping, { type MultiPolygon } from 'polygon-clipping'
 import { describe, expect, it } from 'vitest'
 import {
   CAPITALS,
@@ -12,6 +13,7 @@ import {
   contentErrors,
   controlOn,
   countryName,
+  occupationEnd,
   wikipediaLink,
 } from './index'
 // Les fronteres, tal com les rep l'app: els noms de capital hi surten en anglès.
@@ -119,6 +121,38 @@ describe('el contingut', () => {
       (f: { properties: { id: string } }) => f.properties.id,
     )
     expect([...shapes].sort()).toEqual(OCCUPATIONS.map((o) => o.id).sort())
+  })
+
+  it('no posa dues zones al mateix lloc alhora', () => {
+    // Abans, la meitat est de Còrsega sortia a la zona ocupada des del 1940, i el 1942 també a la
+    // italiana. On dues fonts dibuixen diferent la mateixa vora queden engrunes compartides, de
+    // pocs km²; per sobre d'això, és un error de forma.
+    const shapes = new Map<string, MultiPolygon>(
+      JSON.parse(occupationsRaw).features.map(
+        (f: { properties: { id: string }; geometry: { coordinates: MultiPolygon } }) => [
+          f.properties.id,
+          f.geometry.coordinates,
+        ],
+      ),
+    )
+    const ringArea = (r: number[][]) =>
+      Math.abs(
+        r.reduce((sum, [x, y], i) => sum + (r.at(i - 1)![0] - x) * (r.at(i - 1)![1] + y), 0),
+      ) / 2
+    const area = (mp: MultiPolygon) =>
+      mp.reduce(
+        (sum, [outer, ...holes]) =>
+          sum + ringArea(outer) - holes.reduce((h, r) => h + ringArea(r), 0),
+        0,
+      )
+    const end = (zone: (typeof OCCUPATIONS)[number]) => occupationEnd(zone) ?? '9999-12-31'
+    for (const [i, a] of OCCUPATIONS.entries()) {
+      for (const b of OCCUPATIONS.slice(i + 1)) {
+        if (a.start > end(b) || b.start > end(a)) continue
+        const shared = area(polygonClipping.intersection(shapes.get(a.id)!, shapes.get(b.id)!))
+        expect(shared, `${a.id} i ${b.id} es trepitgen`).toBeLessThan(0.02)
+      }
+    }
   })
 
   it('troba qui controlava una zona en una data', () => {

@@ -67,12 +67,19 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
       Memel, Zaolzie, la Rutènia hongaresa, Albània, la partició de Polònia i el Govern General,
       Dinamarca, Noruega, els Països Baixos, Bèlgica, Luxemburg i França (la zona ocupada, Vichy,
       Alsàcia i Mosel·la, la zona italiana i Còrsega).
-- [ ] 1941-1945, els Balcans: l'Estat Independent de Croàcia i la partició de Iugoslàvia, la
-      triple ocupació de Grècia, les annexions hongareses i búlgares, el nord de Transsilvània.
-- [ ] 1941-1944, el front de l'Est: els països bàltics, Bielorússia, Ucraïna, Rússia i
-      Transnístria. Depèn del front, i va amb la capa dels fronts (§4).
-- [ ] 1943-1945, Itàlia: la República Social Italiana i les zones annexionades de fet per
-      Alemanya.
+- [x] 1940-1945, els Balcans i el Danubi: l'Estat Independent de Croàcia i la partició de
+      Iugoslàvia, la triple ocupació de Grècia, les annexions hongareses i búlgares, el nord de
+      Transsilvània, Bessaràbia, Bucovina, Transnístria i l'Hongria ocupada del 1944.
+- [x] 1941-1944, el front de l'Est: els països bàltics, Bielorússia, Ucraïna i Crimea, de la presa
+      de la capital a l'alliberament.
+- [ ] La Rússia ocupada del 1941 al 1943, que canviava de mans amb el front: va amb la capa dels
+      fronts (§4).
+- [x] 1943-1945, Itàlia: la República Social Italiana i les zones que Alemanya es va annexionar de
+      fet. I les illes del Canal i Eupen-Malmedy.
+- [ ] Els trossos petits que encara hi falten: el que Itàlia va afegir el 1941 a la província de
+      Fiume (Sušak, Kastav, Krk i Rab), i Hvar i Pag, a la tardor.
+- [ ] Corregir CShapes perquè dibuixi la frontera italiana del 1920 al 1947 (l'Ístria, Fiume, el
+      Litoral eslovè) i el Dodecanès italià, com explica [DADES.md](DADES.md) §1.2.
 - [ ] 1917-1923: els estats de poca durada de la guerra civil russa, Fiume, les zones de
       plebiscit.
 - [ ] Del 1990 ençà, els territoris en disputa: Crimea, el Donbàs, Transnístria, Abkhàzia,

@@ -1,0 +1,32 @@
+start: 1941-04-17
+control:
+  - { until: 1941-05-17, by: 325, kind: occupation }
+  - { until: 1943-09-08, by: 325, kind: annexation }
+  - { until: 1944-10-31, by: 255, kind: occupation }
+countries: [345]
+title:
+  ca: Governació de Dalmàcia
+  es: Gobernación de Dalmacia
+  en: Governorate of Dalmatia
+label:
+  ca: Dalmàcia italiana
+  es: Dalmacia italiana
+  en: Italian Dalmatia
+summary:
+  ca: >-
+    Pels Tractats de Roma del 18 de maig del 1941, Itàlia es va annexionar la costa dàlmata de Zadar
+    a Split, gairebé totes les illes del davant i les bocues de Kotor, i en va fer una governació
+    amb capital a Zadar. Després de l'armistici italià del setembre del 1943 la va ocupar Alemanya.
+    Els partisans van alliberar Split el 26 d'octubre del 1944, i Zadar, el 31.
+  es: >-
+    Por los Tratados de Roma del 18 de mayo de 1941, Italia se anexionó la costa dálmata de Zadar a
+    Split, casi todas las islas de enfrente y las bocas de Kotor, y formó con ellas una gobernación
+    con capital en Zadar. Tras el armisticio italiano de septiembre de 1943 la ocupó Alemania. Los
+    partisanos liberaron Split el 26 de octubre de 1944, y Zadar, el 31.
+  en: >-
+    Under the Treaties of Rome of 18 May 1941, Italy annexed the Dalmatian coast from Zadar to
+    Split, most of the islands off it and the Bay of Kotor, and made them a governorate with its
+    capital at Zadar. After the Italian armistice of September 1943 Germany occupied it. The
+    Partisans liberated Split on 26 October 1944, and Zadar on the 31st.
+wikipedia:
+  en: Governorate of Dalmatia

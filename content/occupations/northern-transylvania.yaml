@@ -1,0 +1,26 @@
+start: 1940-09-05
+control:
+  - { until: 1944-10-11, by: 310, kind: annexation }
+countries: [360]
+title:
+  ca: Transsilvània del Nord
+  es: Transilvania del Norte
+  en: Northern Transylvania
+summary:
+  ca: >-
+    Pel segon arbitratge de Viena, el 30 d'agost del 1940, Alemanya i Itàlia van obligar Romania a
+    cedir a Hongria el nord de Transsilvània, amb Cluj i el País dels Székely. Les tropes hongareses
+    hi van entrar el 5 de setembre. El 1944 en van deportar els jueus a Auschwitz; tropes romaneses
+    i soviètiques van prendre Cluj l'11 d'octubre del 1944.
+  es: >-
+    Por el segundo arbitraje de Viena, el 30 de agosto de 1940, Alemania e Italia obligaron a
+    Rumanía a ceder a Hungría el norte de Transilvania, con Cluj y el País de los Székely. Las
+    tropas húngaras entraron el 5 de septiembre. En 1944 deportaron a sus judíos a Auschwitz; tropas
+    rumanas y soviéticas tomaron Cluj el 11 de octubre de 1944.
+  en: >-
+    Under the Second Vienna Award of 30 August 1940, Germany and Italy forced Romania to cede
+    northern Transylvania, with Cluj and the Székely Land, to Hungary. Hungarian troops entered on 5
+    September. In 1944 its Jews were deported to Auschwitz; Romanian and Soviet troops took Cluj on
+    11 October 1944.
+wikipedia:
+  en: Second Vienna Award

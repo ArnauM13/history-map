@@ -1,0 +1,23 @@
+start: 1941-06-01
+control:
+  - { until: 1945-05-09, by: 255, kind: occupation }
+countries: [350]
+title:
+  ca: Creta occidental
+  es: Creta occidental
+  en: Western Crete
+summary:
+  ca: >-
+    Alemanya va prendre Creta amb paracaigudistes en una batalla que va acabar l'1 de juny del 1941.
+    A la tardor del 1944 es va replegar a la zona de Khanià, la «Fortalesa Creta», i hi va resistir
+    fins després de la capitulació alemanya: la guarnició es va rendir el 9 de maig del 1945.
+  es: >-
+    Alemania tomó Creta con paracaidistas en una batalla que terminó el 1 de junio de 1941. En otoño
+    de 1944 se replegó a la zona de Chania, la «Fortaleza Creta», y resistió allí hasta después de
+    la capitulación alemana: la guarnición se rindió el 9 de mayo de 1945.
+  en: >-
+    Germany took Crete with paratroopers in a battle that ended on 1 June 1941. In autumn 1944 it
+    fell back to the area around Chania, "Fortress Crete", and held out there until after the German
+    capitulation: the garrison surrendered on 9 May 1945.
+wikipedia:
+  en: Fortress Crete

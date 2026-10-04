@@ -1,0 +1,26 @@
+start: 1941-09-19
+control:
+  - { until: 1943-11-06, by: 255, kind: occupation }
+countries: [365]
+title:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    Alemanya va prendre Kíiv el 19 de setembre del 1941, i al cap de deu dies hi va assassinar més
+    de 33.000 jueus a Babi Iar. La major part d'Ucraïna va formar el Reichskommissariat Ucraïna, que
+    n'havia de treure gra i mà d'obra per al Reich; l'est va quedar sota administració militar.
+    L'Exèrcit Roig va alliberar Kíiv el 6 de novembre del 1943, i la resta del país, el 1944.
+  es: >-
+    Alemania tomó Kiev el 19 de septiembre de 1941, y diez días después asesinó allí a más de 33.000
+    judíos en Babi Yar. La mayor parte de Ucrania formó el Reichskommissariat Ucrania, del que debía
+    sacar grano y mano de obra para el Reich; el este quedó bajo administración militar. El Ejército
+    Rojo liberó Kiev el 6 de noviembre de 1943, y el resto del país, en 1944.
+  en: >-
+    Germany took Kyiv on 19 September 1941, and ten days later murdered more than 33,000 Jews there
+    at Babyn Yar. Most of Ukraine became the Reichskommissariat Ukraine, meant to supply grain and
+    labour to the Reich; the east stayed under military administration. The Red Army liberated Kyiv
+    on 6 November 1943, and the rest of the country in 1944.
+wikipedia:
+  en: Reichskommissariat Ukraine

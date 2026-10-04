@@ -564,8 +564,9 @@ function OccupationDetail({
         : date
   const end = occupationEnd(zone)
   const title = localize(zone.title, lang)
-  const approx = useBorderData()?.occupations.features.find((f) => f.properties.id === zone.id)
-    ?.properties.approx
+  const approx =
+    useBorderData()?.occupations.features.find((f) => f.properties.id === zone.id)?.properties
+      .approx ?? []
   const periodYears = (p: (typeof periods)[number]) =>
     `${yearOf(p.from)} – ${p.until ? yearOf(p.until) : t('present')}`
 
@@ -630,15 +631,23 @@ function OccupationDetail({
           </dl>
         </>
       )}
-      {approx && (
-        <p className="src-note">{t(approx === 'line' ? 'zoneApproxLine' : 'zoneApproxAdmin')}</p>
+      {approx.length > 0 && (
+        <p className="src-note">
+          {t(
+            approx.length > 1
+              ? 'zoneApproxBoth'
+              : approx[0] === 'line'
+                ? 'zoneApproxLine'
+                : 'zoneApproxAdmin',
+          )}
+        </p>
       )}
       <Sources
         items={[
           ...wikipediaSource(zone.wikipedia, lang, t('wikipedia'), t('sourceZoneText')),
           ...externalSources(zone.sources).map((s) => ({ what: t('sourceZoneText'), ...s })),
           { what: t('sourceZoneBorders'), ...CSHAPES_SOURCE },
-          ...(approx === 'admin'
+          ...(approx.includes('admin')
             ? [{ what: t('sourceZoneBorders'), ...NATURAL_EARTH_SOURCE }]
             : []),
         ]}

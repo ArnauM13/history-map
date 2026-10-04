@@ -1,0 +1,26 @@
+start: 1941-06-28
+control:
+  - { until: 1944-07-03, by: 255, kind: occupation }
+countries: [365]
+title:
+  ca: Bielorússia ocupada
+  es: Bielorrusia ocupada
+  en: Occupied Belarus
+summary:
+  ca: >-
+    Alemanya va prendre Minsk el 28 de juny del 1941. L'est de Bielorússia va quedar sota
+    administració militar, i l'oest, al Reichskommissariat Ostland; contra els partisans, hi van
+    cremar centenars de pobles amb els seus habitants, com Khatin. L'Exèrcit Roig va alliberar Minsk
+    el 3 de juliol del 1944, a l'operació Bagration.
+  es: >-
+    Alemania tomó Minsk el 28 de junio de 1941. El este de Bielorrusia quedó bajo administración
+    militar, y el oeste, en el Reichskommissariat Ostland; contra los partisanos, quemaron cientos
+    de pueblos con sus habitantes, como Jatín. El Ejército Rojo liberó Minsk el 3 de julio de 1944,
+    en la operación Bagratión.
+  en: >-
+    Germany took Minsk on 28 June 1941. Eastern Belarus stayed under military administration, and
+    the west went to the Reichskommissariat Ostland; against the partisans, hundreds of villages
+    were burned with their inhabitants, such as Khatyn. The Red Army liberated Minsk on 3 July 1944,
+    in Operation Bagration.
+wikipedia:
+  en: German occupation of Byelorussia during World War II

@@ -1,0 +1,26 @@
+start: 1941-07-05
+control:
+  - { until: 1944-03-29, by: 360, kind: annexation }
+countries: [365]
+title:
+  ca: Nord de Bucovina
+  es: Norte de Bucovina
+  en: Northern Bukovina
+summary:
+  ca: >-
+    La Unió Soviètica havia obligat Romania a cedir-li el nord de Bucovina el juny del 1940. Quan
+    Alemanya i Romania van envair la URSS, les tropes romaneses van prendre Txernivtsí el 5 de
+    juliol del 1941 i el van tornar a unir a Romania, que en va deportar els jueus a Transnístria.
+    L'Exèrcit Roig va recuperar Txernivtsí el 29 de març del 1944.
+  es: >-
+    La Unión Soviética había obligado a Rumanía a cederle el norte de Bucovina en junio de 1940.
+    Cuando Alemania y Rumanía invadieron la URSS, las tropas rumanas tomaron Chernivtsí el 5 de
+    julio de 1941 y lo volvieron a unir a Rumanía, que deportó a sus judíos a Transnistria. El
+    Ejército Rojo recuperó Chernivtsí el 29 de marzo de 1944.
+  en: >-
+    The Soviet Union had forced Romania to cede northern Bukovina in June 1940. When Germany and
+    Romania invaded the USSR, Romanian troops took Chernivtsi on 5 July 1941 and joined it back to
+    Romania, which deported its Jews to Transnistria. The Red Army retook Chernivtsi on 29 March
+    1944.
+wikipedia:
+  en: Operation München

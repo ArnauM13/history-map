@@ -78,9 +78,13 @@ row here. The generated files are never edited by hand.
   First Vienna Award (1938), the Soviet annexations of 1940— but not territory taken by force, nor
   the Second Vienna Award (1940), which gave northern Transylvania to Hungary. Between 1938 and
   1945, Austria, Bohemia-Moravia and Poland are still on the map. The occupations layer explains
-  it (§1.3), though it is not complete yet.
+  it (§1.3).
 - **Danzig** appears inside Germany from 30 September 1938. It was a free city until 1 September
   1939, when the Reich annexed it.
+- **The Italian border of 1920 to 1947.** Istria, Fiume, the Slovene Littoral with Postojna and
+  the islands of Cres and Lošinj appear inside Yugoslavia, and the Dodecanese inside Greece, when
+  they were Italian. The occupations layer leaves them out of the 1941 partition of Yugoslavia;
+  fixing the borders is on the [roadmap](FULL-DE-RUTA.md), §3 (in Catalan).
 - **No microstates.** Andorra, Liechtenstein, Monaco, San Marino and the Vatican are not in
   CShapes.
 - **Sovereignty criteria.** Some choices come from the Gleditsch & Ward list: Montenegro is part
@@ -100,35 +104,45 @@ controlled it and the source, and a shape made by `npm run data:occupations`
 **Dates.** A zone starts on the day the occupier takes control —the surrender, the armistice, the
 annexation or the capture of the capital— and ends on the day it loses it: the withdrawal, the
 surrender or the liberation of the capital. While the fighting went on, what the map shows is the
-conflict, not the zone; front lines are not drawn.
+conflict, not the zone; front lines are not drawn. For large zones, the capital sets both dates
+even if part of the zone changed hands earlier or later: occupied Ukraine runs from the capture of
+Kyiv, in September 1941, to its liberation, in November 1943, although the west was only liberated
+in 1944.
 
 **Shapes** are built from pieces that already exist, so that their edges match the map's:
 
 | From | For | Example |
 | --- | --- | --- |
 | A CShapes state, from the same period or another | Most zones | Austria is the Austria of 1938; Bohemia and Moravia, the Czechoslovakia of 1939 inside today's Czechia |
-| Today's administrative divisions, from [Natural Earth](https://www.naturalearthdata.com/) (public domain) | Edges that followed a division that still exists | Alsace and Moselle are three departments; the Italian zone of France, eight |
-| Lines drawn by hand (`LINES` in the script), with the source next to them | Where there is nothing else | The partition of Poland, the French demarcation line, Memel, Trans-Olza |
+| Today's administrative divisions, from [Natural Earth](https://www.naturalearthdata.com/) (public domain) | Edges that followed a division that still exists | Alsace and Moselle are three departments; the Italian Social Republic, the provinces of northern Italy; Kosovo, divided by municipality |
+| Lines drawn by hand (`LINES` in the script), with the source next to them | Where there is nothing else | The partition of Poland, the French demarcation line, the Second Vienna Award, Transnistria |
 
 Hand-drawn lines are **approximate**, within some 10–20 km; today's divisions, as much as they
-have moved since. Each zone's card says so.
+have moved since. Each zone's card says so, and cites Natural Earth when its divisions are used. A
+test checks that no two zones with the same dates overlap.
 
-**What is there.** The German expansion of 1938–1939 (Austria, Bohemia and Moravia, the Slovak
-State, Memel), Trans-Olza and Hungarian Ruthenia; the partition of Poland, including the east
-occupied by Germany from 1941 to 1944; Albania; the occupation of Denmark, Norway, the
-Netherlands, Belgium and Luxembourg, and that of France: the occupied zone, Vichy, Alsace and
-Moselle, the 1942 zones and Corsica.
+**What is there**, in 57 zones:
 
-**What is missing**, and comes next:
+- **The west and centre**: the German expansion of 1938–1939 (Austria, Bohemia and Moravia, the
+  Slovak State, Memel), Trans-Olza and Hungarian Ruthenia; the partition of Poland; the occupation
+  of Denmark, Norway, the Netherlands, Belgium, Eupen-Malmedy, Luxembourg and the Channel Islands,
+  and that of France: the occupied zone, Vichy, Alsace and Moselle, the 1942 zones and Corsica.
+- **The Balkans**: Albania; the partition of Yugoslavia (the Independent State of Croatia,
+  Serbia, German and Italian Slovenia, Dalmatia, Montenegro, Kosovo and western Macedonia joined to
+  Albania, Bulgarian Macedonia, Hungarian Bačka and Prekmurje) and that of Greece (the German,
+  Italian and Bulgarian zones, and Crete).
+- **The Danube and the East**: northern Transylvania, Bessarabia, northern Bukovina and
+  Transnistria; the Baltic states, Belarus, Ukraine and Crimea, occupied from 1941 to 1944, and
+  occupied Hungary in 1944.
+- **Italy from 1943 to 1945**: the Italian Social Republic, Rome and central Italy, and the two
+  operational zones Germany annexed in all but name.
 
-- **Yugoslavia and Greece**, partitioned in 1941 between Germany, Italy, Hungary and Bulgaria.
-- **Northern Transylvania**, Hungarian from 1940 to 1944, and the Bulgarian annexations.
-- **The Eastern Front**: the Baltic states, Belarus, Ukraine and Russia occupied from 1941 to
-  1944, and Transnistria. Those zones depended on the front, and will come with the front-lines
-  layer.
-- **Italy from 1943 to 1945**: the Italian Social Republic and the areas Germany annexed in all
-  but name.
-- The small territories: the Channel Islands and Eupen-Malmedy.
+**What is missing**:
+
+- **Occupied Russia** from 1941 to 1943, from Smolensk to the Caucasus: it changed hands with the
+  front, and will come with the front-lines layer.
+- **Small pieces of the 1941 Italian annexations**: what was added to the province of Fiume
+  (Sušak, Kastav, Krk and Rab) and, from the autumn, Hvar and Pag. They appear inside Croatia.
 
 ---
 

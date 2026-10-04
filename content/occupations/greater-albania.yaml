@@ -1,0 +1,32 @@
+start: 1941-04-17
+control:
+  - { until: 1943-09-08, by: 325, kind: client }
+  - { until: 1944-11-22, by: 255, kind: occupation }
+countries: [345]
+title:
+  ca: Kosovo i l'oest de Macedònia, units a Albània
+  es: Kosovo y el oeste de Macedonia, unidos a Albania
+  en: Kosovo and western Macedonia, joined to Albania
+label:
+  ca: Kosovo
+  es: Kosovo
+  en: Kosovo
+summary:
+  ca: >-
+    Itàlia va unir a l'Albània que ocupava la major part de Kosovo, l'oest de Macedònia, amb Tetovo
+    i Struga, i un tros de Montenegro; el nord de Kosovo es va quedar a la Sèrbia alemanya, i un
+    tros del sud-est, a Bulgària. Després de l'armistici italià, el 1943, Alemanya en va mantenir la
+    unió amb Albània sota la seva protecció. L'ocupació de Kosovo va acabar el 22 de novembre del
+    1944.
+  es: >-
+    Italia unió a la Albania que ocupaba la mayor parte de Kosovo, el oeste de Macedonia, con Tetovo
+    y Struga, y un trozo de Montenegro; el norte de Kosovo se quedó en la Serbia alemana, y un trozo
+    del sureste, en Bulgaria. Tras el armisticio italiano, en 1943, Alemania mantuvo su unión con
+    Albania bajo su protección. La ocupación de Kosovo terminó el 22 de noviembre de 1944.
+  en: >-
+    Italy joined most of Kosovo, western Macedonia, with Tetovo and Struga, and part of Montenegro
+    to the Albania it occupied; northern Kosovo stayed in German Serbia, and part of the south-east
+    went to Bulgaria. After the Italian armistice in 1943, Germany kept them joined to Albania under
+    its protection. The occupation of Kosovo ended on 22 November 1944.
+wikipedia:
+  en: Kosovo during World War II

@@ -1,0 +1,30 @@
+start: 1941-08-19
+control:
+  - { until: 1944-03-31, by: 360, kind: occupation }
+  - { until: 1944-04-10, by: 255, kind: occupation }
+countries: [365]
+title:
+  ca: Transnístria
+  es: Transnistria
+  en: Transnistria
+summary:
+  ca: >-
+    Alemanya va deixar a Romania el territori entre el Dnièster i el Bug, que no havia estat mai
+    romanès, i el 19 d'agost del 1941 en va néixer la governació, amb capital a Odessa des que la
+    ciutat va caure, a l'octubre. Hi van morir més de cent mil jueus, molts deportats des de
+    Bessaràbia i Bucovina, i milers de gitanos. Romania se'n va retirar el març del 1944, i
+    l'Exèrcit Roig va alliberar Odessa el 10 d'abril.
+  es: >-
+    Alemania dejó a Rumanía el territorio entre el Dniéster y el Bug, que nunca había sido rumano, y
+    el 19 de agosto de 1941 nació la gobernación, con capital en Odesa desde que la ciudad cayó, en
+    octubre. Murieron allí más de cien mil judíos, muchos deportados desde Besarabia y Bucovina, y
+    miles de gitanos. Rumanía se retiró en marzo de 1944, y el Ejército Rojo liberó Odesa el 10 de
+    abril.
+  en: >-
+    Germany left Romania the land between the Dniester and the Bug, which had never been Romanian,
+    and the governorate was created on 19 August 1941, with its capital at Odesa once the city fell
+    in October. More than a hundred thousand Jews died there, many of them deported from Bessarabia
+    and Bukovina, and thousands of Roma. Romania withdrew in March 1944, and the Red Army liberated
+    Odesa on 10 April.
+wikipedia:
+  en: Transnistria Governorate

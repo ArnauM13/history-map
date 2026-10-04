@@ -1,0 +1,31 @@
+start: 1941-04-19
+control:
+  - { until: 1944-09-08, by: 355, kind: annexation }
+  - { until: 1944-11-13, by: 255, kind: occupation }
+countries: [345]
+title:
+  ca: Macedònia i Pirot, sota Bulgària
+  es: Macedonia y Pirot, bajo Bulgaria
+  en: Macedonia and Pirot under Bulgaria
+label:
+  ca: Macedònia búlgara
+  es: Macedonia búlgara
+  en: Bulgarian Macedonia
+summary:
+  ca: >-
+    Bulgària, aliada de l'Eix, va entrar a la Macedònia iugoslava el 19 d'abril del 1941 i la va
+    administrar com a territori propi, amb Pirot i Vranje, sense cap tractat que ho reconegués. Quan
+    va canviar de bàndol, el 8 de setembre del 1944, hi van quedar les tropes alemanyes, fins que
+    els partisans macedonis les van fer fora de Skopje el 13 de novembre.
+  es: >-
+    Bulgaria, aliada del Eje, entró en la Macedonia yugoslava el 19 de abril de 1941 y la administró
+    como territorio propio, con Pirot y Vranje, sin ningún tratado que lo reconociera. Cuando cambió
+    de bando, el 8 de septiembre de 1944, quedaron allí las tropas alemanas, hasta que los
+    partisanos macedonios las echaron de Skopie el 13 de noviembre.
+  en: >-
+    Bulgaria, an Axis ally, entered Yugoslav Macedonia on 19 April 1941 and ran it as its own
+    territory, together with Pirot and Vranje, with no treaty recognising it. When it changed sides
+    on 8 September 1944, German troops remained there until the Macedonian Partisans drove them out
+    of Skopje on 13 November.
+wikipedia:
+  en: Bulgarian rule of Macedonia, Morava Valley and Western Thrace (1941–1944)

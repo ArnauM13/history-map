@@ -1,0 +1,26 @@
+start: 1941-07-01
+control:
+  - { until: 1944-10-13, by: 255, kind: occupation }
+countries: [365]
+title:
+  ca: Letònia ocupada
+  es: Letonia ocupada
+  en: Occupied Latvia
+summary:
+  ca: >-
+    Alemanya va entrar a Riga l'1 de juliol del 1941 i el dia 10 ja havia ocupat tota Letònia, que
+    la URSS s'havia annexionat l'any abans; en va fer un districte del Reichskommissariat Ostland.
+    L'Exèrcit Roig va prendre Riga el 13 d'octubre del 1944, però les tropes alemanyes van resistir
+    a Curlàndia fins a la capitulació, el maig del 1945.
+  es: >-
+    Alemania entró en Riga el 1 de julio de 1941 y el día 10 ya había ocupado toda Letonia, que la
+    URSS se había anexionado el año anterior; la convirtió en un distrito del Reichskommissariat
+    Ostland. El Ejército Rojo tomó Riga el 13 de octubre de 1944, pero las tropas alemanas
+    resistieron en Curlandia hasta la capitulación, en mayo de 1945.
+  en: >-
+    Germany entered Riga on 1 July 1941 and by the 10th had occupied all of Latvia, which the USSR
+    had annexed the year before; it made it a district of the Reichskommissariat Ostland. The Red
+    Army took Riga on 13 October 1944, but German troops held out in Courland until the capitulation
+    in May 1945.
+wikipedia:
+  en: German occupation of Latvia during World War II

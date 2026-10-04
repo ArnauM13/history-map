@@ -1,0 +1,27 @@
+start: 1943-09-10
+control:
+  - { until: 1943-09-22, by: 255, kind: occupation }
+  - { until: 1945-04-25, by: 255, kind: client }
+countries: [325]
+title:
+  ca: República Social Italiana
+  es: República Social Italiana
+  en: Italian Social Republic
+summary:
+  ca: >-
+    Quan Itàlia va signar l'armistici amb els Aliats, anunciat el 8 de setembre del 1943, Alemanya
+    va ocupar el nord i el centre del país i en va desarmar l'exèrcit. El 23 de setembre hi va posar
+    Mussolini al capdavant d'un estat titella, amb el govern a Salò. Va caure amb la insurrecció del
+    25 d'abril del 1945, quan els partisans van alliberar Milà i les grans ciutats del nord.
+  es: >-
+    Cuando Italia firmó el armisticio con los Aliados, anunciado el 8 de septiembre de 1943,
+    Alemania ocupó el norte y el centro del país y desarmó a su ejército. El 23 de septiembre puso a
+    Mussolini al frente de un estado títere, con el gobierno en Saló. Cayó con la insurrección del
+    25 de abril de 1945, cuando los partisanos liberaron Milán y las grandes ciudades del norte.
+  en: >-
+    When Italy signed the armistice with the Allies, announced on 8 September 1943, Germany occupied
+    the north and centre of the country and disarmed its army. On 23 September it put Mussolini at
+    the head of a puppet state, with its government at Salò. It fell with the insurrection of 25
+    April 1945, when the partisans liberated Milan and the great cities of the north.
+wikipedia:
+  en: Italian Social Republic

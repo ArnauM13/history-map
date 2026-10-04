@@ -1,0 +1,26 @@
+start: 1941-11-01
+control:
+  - { until: 1944-05-12, by: 255, kind: occupation }
+countries: [365]
+title:
+  ca: Crimea ocupada
+  es: Crimea ocupada
+  en: Occupied Crimea
+summary:
+  ca: >-
+    Els exèrcits alemany i romanès van entrar a Crimea a la tardor del 1941 i van prendre Simferòpol
+    l'1 de novembre, però Sebastòpol va resistir fins al 4 de juliol del 1942. La península va
+    quedar sota administració militar alemanya. L'Exèrcit Roig la va recuperar el maig del 1944:
+    Sebastòpol, el dia 9, i la resta, el 12.
+  es: >-
+    Los ejércitos alemán y rumano entraron en Crimea en otoño de 1941 y tomaron Simferópol el 1 de
+    noviembre, pero Sebastopol resistió hasta el 4 de julio de 1942. La península quedó bajo
+    administración militar alemana. El Ejército Rojo la recuperó en mayo de 1944: Sebastopol, el día
+    9, y el resto, el 12.
+  en: >-
+    The German and Romanian armies entered Crimea in autumn 1941 and took Simferopol on 1 November,
+    but Sevastopol held out until 4 July 1942. The peninsula stayed under German military
+    administration. The Red Army retook it in May 1944: Sevastopol on the 9th, and the rest on the
+    12th.
+wikipedia:
+  en: German occupation of Crimea during World War II

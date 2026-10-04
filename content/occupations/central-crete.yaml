@@ -1,0 +1,23 @@
+start: 1941-06-01
+control:
+  - { until: 1944-10-13, by: 255, kind: occupation }
+countries: [350]
+title:
+  ca: Creta central
+  es: Creta central
+  en: Central Crete
+summary:
+  ca: >-
+    Réthimno i Iràklio van quedar sota l'ocupació alemanya després de la batalla de Creta, amb
+    represàlies contra els pobles que ajudaven la resistència. Quan els alemanys es van replegar cap
+    a Khanià, el 13 d'octubre del 1944, totes dues ciutats van quedar lliures.
+  es: >-
+    Rétino y Heraclión quedaron bajo la ocupación alemana tras la batalla de Creta, con represalias
+    contra los pueblos que ayudaban a la resistencia. Cuando los alemanes se replegaron hacia
+    Chania, el 13 de octubre de 1944, ambas ciudades quedaron libres.
+  en: >-
+    Rethymno and Heraklion came under German occupation after the Battle of Crete, with reprisals
+    against the villages that helped the resistance. When the Germans fell back towards Chania, on
+    13 October 1944, both cities were freed.
+wikipedia:
+  en: Fortress Crete
