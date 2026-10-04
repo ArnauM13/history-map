@@ -40,6 +40,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
           git commit -m "Banderes: les imatges de Wikimedia Commons, al dia"
+          # «Flags» i «Fonts» corren alhora quan un push toca content/flags.yaml i la resta del
+          # contingut: el segon a acabar ha d'agafar el commit del primer abans de pujar el seu.
+          git pull --rebase origin "$GITHUB_REF_NAME"
           git push
       - name: Missing files
         if: steps.fetch.outcome == 'failure'
