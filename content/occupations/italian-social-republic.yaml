@@ -1,7 +1,19 @@
 start: 1943-09-10
 control:
-  - { until: 1943-09-22, by: 255, kind: occupation }
-  - { until: 1945-04-25, by: 255, kind: client }
+  - until: 1943-09-22
+    by: 255
+    kind: occupation
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
+  - until: 1945-04-25
+    by: 255
+    kind: client
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
 countries: [325]
 title:
   ca: República Social Italiana

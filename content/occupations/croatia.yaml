@@ -1,6 +1,12 @@
 start: 1941-04-10
 control:
-  - { until: 1945-05-08, by: 255, kind: client }
+  - until: 1945-05-08
+    by: 255
+    kind: client
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
 countries: [345]
 title:
   ca: Estat Independent de Croàcia

@@ -1,6 +1,12 @@
 start: 1940-06-25
 control:
-  - { until: 1944-08-25, by: 255, kind: occupation }
+  - until: 1944-08-25
+    by: 255
+    kind: occupation
+    cause:
+      ca: Armistici francès, 1940
+      es: Armisticio francés, 1940
+      en: French armistice, 1940
 countries: [220]
 title:
   ca: França ocupada

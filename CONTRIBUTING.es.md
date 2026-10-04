@@ -136,7 +136,11 @@ Una zona de la capa de ocupaciones tiene dos partes. El texto, en
 ```yaml
 start: 1939-10-26 # el día en que el ocupante toma el control
 control: # quién la controlaba y cómo, por orden; until = el último día
-  - { until: 1945-01-19, by: 255, kind: occupation } # annexation | occupation | client
+  - until: 1945-01-19
+    by: 255
+    kind: occupation # annexation | occupation | client
+    cause: # por qué, en pocas palabras: sale en el mapa, bajo el nombre de la zona
+      ca: Invasió de Polònia, 1939
 countries: [290] # de quién era el territorio según las fronteras reconocidas
 title:
   es: Gobierno General

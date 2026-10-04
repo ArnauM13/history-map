@@ -1,6 +1,12 @@
 start: 1941-04-14
 control:
-  - { until: 1945-05-08, by: 255, kind: annexation }
+  - until: 1945-05-08
+    by: 255
+    kind: annexation
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
 countries: [345]
 title:
   ca: Eslovènia annexionada per Alemanya

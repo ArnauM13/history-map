@@ -257,8 +257,11 @@ function HistoryPanel({
                     <span className="ic-body">
                       <span className="ic-name">{title}</span>
                       <span className="ic-detail">
-                        {t(`occupation.${control.kind}`)} · {countryName(control.by, date, lang)}
+                        {t(`zoneOnMap.${control.kind}`, {
+                          by: countryName(control.by, date, lang),
+                        })}
                       </span>
+                      <span className="ic-detail">{localize(control.cause, lang)}</span>
                     </span>
                   </button>
                 </li>
@@ -583,11 +586,14 @@ function OccupationDetail({
           <FlagCaption id={zone.flag} />
         </figure>
       )}
-      <p className="detail-text">{localize(zone.summary, lang)}</p>
       <dl className="facts">
         <div>
           <dt>{t('controlledBy')}</dt>
           <dd>{countryName(current.by, at, lang)}</dd>
+        </div>
+        <div>
+          <dt>{t('cause')}</dt>
+          <dd>{localize(current.cause, lang)}</dd>
         </div>
         <div>
           <dt>{t('territoryOf')}</dt>
@@ -616,6 +622,7 @@ function OccupationDetail({
           </dd>
         </div>
       </dl>
+      <p className="detail-text">{localize(zone.summary, lang)}</p>
       {periods.length > 1 && (
         <>
           <h3>{t('controlHistory')}</h3>
@@ -625,6 +632,7 @@ function OccupationDetail({
                 <dt>{periodYears(p)}</dt>
                 <dd>
                   {countryName(p.by, p.from, lang)} · {t(`occupation.${p.kind}`)}
+                  <span className="fact-note">{localize(p.cause, lang)}</span>
                 </dd>
               </div>
             ))}

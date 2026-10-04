@@ -11,7 +11,8 @@
  *   3. Passa les dates a enters AAAAMMDD (s, e), perquè MapLibre hi pugui filtrar.
  *   4. Aplica les correccions de CORRECTIONS (explicades a DADES.md).
  *   5. Dona un color a cada grup (un estat i els territoris que controla) de manera que dos grups
- *      veïns que coincideixen en el temps no tinguin mai el mateix.
+ *      veïns que coincideixen en el temps no tinguin mai el mateix, que els colors es reparteixin
+ *      i que una zona ocupada (content/occupations/) es distingeixi de l'estat ocupat.
  *   6. Calcula on va el nom de cada peça: el pol d'inaccessibilitat del seu polígon més gran.
  *
  * Deixa (al repo; la llicència és a public/data/README.md):
@@ -19,16 +20,24 @@
  *   public/data/labels.geojson
  */
 import { execFileSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import mapshaper from 'mapshaper'
 import polylabel from 'polylabel'
 import * as topojson from 'topojson-client'
+import { parse } from 'yaml'
 
 const SOURCE_URL =
   'https://github.com/cran/cshapes/raw/master/inst/extdata/cshapes_2_gw.topojson.xz'
 const RAW_DIR = 'data-raw'
 const RAW_FILE = `${RAW_DIR}/cshapes_2_gw.topojson`
 const OUT_DIR = 'public/data'
+const OCCUPATIONS_DIR = 'content/occupations'
+/**
+ * Quants colors té la paleta del mapa (PALETTE a src/map/style.ts). L'acolorit els fa servir
+ * tots, repartits; si un grup té tants veïns que no n'hi ha prou, en fa servir un de més i
+ * l'script avisa.
+ */
+const PALETTE_SIZE = 12
 
 /** L'últim dia de CShapes 2.0. El que s'acaba aquell dia és que encara val avui. */
 const DATASET_END = '2019-12-31'
@@ -97,11 +106,41 @@ const overlaps = (a, b) => a.s <= b.e && b.s <= a.e
 /** Un estat i els territoris que controla (colònies, protectorats…) fan un sol grup: el mateix color. */
 const groupOf = (p) => String(p.status === 'independent' || !p.owner ? p.gwcode : p.owner)
 
-function assignColours(topo) {
+/**
+ * Les zones de content/occupations/ es pinten amb el color de l'ocupant: França ocupada, del de
+ * l'Alemanya. Per això l'ocupant no pot compartir color amb l'estat ocupat (la zona no es
+ * distingiria de la resta de França) i val més que no el comparteixi amb els veïns d'aquest.
+ */
+function readOccupations() {
+  return readdirSync(OCCUPATIONS_DIR)
+    .filter((name) => name.endsWith('.yaml'))
+    .flatMap((name) => {
+      const zone = parse(readFileSync(`${OCCUPATIONS_DIR}/${name}`, 'utf8'))
+      const s = +zone.start.replace(/-/g, '')
+      return zone.control.map((p) => ({
+        by: String(p.by),
+        countries: zone.countries.map(String),
+        s,
+        e: p.until ? +p.until.replace(/-/g, '') : OPEN_END,
+      }))
+    })
+}
+
+/**
+ * Què costa cada mena de coincidència de color. Dos veïns no poden coincidir mai; la resta es
+ * paga: l'ocupant i l'ocupat (o els veïns de l'ocupat), els veïns dels veïns i, per desempatar,
+ * els colors que ja surten més. Sense els dos últims, l'acolorit voraç donava el primer color a
+ * mig continent: el 1914, Alemanya, Noruega i els Països Baixos eren del mateix lila.
+ */
+const COST = { occupied: 1000, occupiedNeighbour: 100, near: 10 }
+
+function assignColours(topo, occupations) {
   const geoms = topo.objects.borders.geometries
   const neighbours = topojson.neighbors(geoms)
   const adjacency = new Map()
   geoms.forEach((g) => adjacency.set(groupOf(g.properties), new Set()))
+  // Els grups de cada estat, amb les dates: un ocupant només paga pels veïns de l'època.
+  const pieces = new Map()
   neighbours.forEach((list, i) => {
     const a = geoms[i].properties
     for (const j of list) {
@@ -109,17 +148,57 @@ function assignColours(topo) {
       if (groupOf(a) !== groupOf(b) && overlaps(a, b)) {
         adjacency.get(groupOf(a)).add(groupOf(b))
         adjacency.get(groupOf(b)).add(groupOf(a))
+        const key = String(a.gwcode)
+        if (!pieces.has(key)) pieces.set(key, [])
+        pieces.get(key).push({ group: groupOf(b), s: Math.max(a.s, b.s), e: Math.min(a.e, b.e) })
       }
     }
   })
-  // Acolorit voraç, començant pels grups amb més veïns, que són els que tenen menys opcions.
+
+  // Les penalitzacions, en els dos sentits: el primer dels dos que tria color ja les paga.
+  const penalties = new Map([...adjacency.keys()].map((g) => [g, new Map()]))
+  const penalise = (a, b, cost) => {
+    if (a === b || !penalties.has(a) || !penalties.has(b) || adjacency.get(a).has(b)) return
+    for (const [x, y] of [
+      [a, b],
+      [b, a],
+    ]) {
+      penalties.get(x).set(y, Math.max(penalties.get(x).get(y) ?? 0, cost))
+    }
+  }
+  for (const [group, direct] of adjacency) {
+    for (const n of direct) for (const far of adjacency.get(n)) penalise(group, far, COST.near)
+  }
+  const groupOfCode = new Map(
+    geoms.map((g) => [String(g.properties.gwcode), groupOf(g.properties)]),
+  )
+  for (const o of occupations) {
+    const occupier = groupOfCode.get(o.by)
+    for (const country of o.countries) {
+      penalise(occupier, groupOfCode.get(country), COST.occupied)
+      for (const n of pieces.get(country) ?? []) {
+        if (overlaps(n, o)) penalise(occupier, n.group, COST.occupiedNeighbour)
+      }
+    }
+  }
+
+  // Voraç, començant pels grups amb més veïns, que són els que tenen menys opcions.
   const order = [...adjacency.keys()].sort((x, y) => adjacency.get(y).size - adjacency.get(x).size)
   const colour = new Map()
+  const usage = []
   for (const group of order) {
-    const used = new Set([...adjacency.get(group)].map((n) => colour.get(n)))
-    let c = 0
-    while (used.has(c)) c++
-    colour.set(group, c)
+    const forbidden = new Set([...adjacency.get(group)].map((n) => colour.get(n)))
+    const cost = (c) => {
+      let total = (usage[c] ?? 0) / order.length
+      for (const [other, p] of penalties.get(group)) if (colour.get(other) === c) total += p
+      return total
+    }
+    let best = -1
+    for (let c = 0; c < PALETTE_SIZE || best < 0; c++) {
+      if (!forbidden.has(c) && (best < 0 || cost(c) < cost(best))) best = c
+    }
+    colour.set(group, best)
+    usage[best] = (usage[best] ?? 0) + 1
   }
   geoms.forEach((g, i) => {
     g.id = i
@@ -170,13 +249,17 @@ function buildLabels(topo) {
 await ensureRawData()
 const raw = readFileSync(RAW_FILE, 'utf8')
 const topo = await processWithMapshaper(raw, BBOX)
-const colours = assignColours(topo)
+const colours = assignColours(topo, readOccupations())
 const labels = buildLabels(await processWithMapshaper(raw, LABEL_BBOX))
 
 mkdirSync(OUT_DIR, { recursive: true })
 writeFileSync(`${OUT_DIR}/borders.topo.json`, JSON.stringify(topo))
 writeFileSync(`${OUT_DIR}/labels.geojson`, JSON.stringify(labels))
 
+if (colours > PALETTE_SIZE) {
+  console.error(`✘ Calen ${colours} colors i la paleta en té ${PALETTE_SIZE}: afegeix-ne a PALETTE`)
+  process.exit(1)
+}
 const codes = new Set(topo.objects.borders.geometries.map((g) => g.properties.gwcode))
 console.log(
   `✔ ${topo.objects.borders.geometries.length} peces de frontera, ${codes.size} estats i territoris, ${colours} colors, ${labels.features.length} noms`,

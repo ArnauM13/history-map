@@ -132,7 +132,11 @@ A zone of the occupations layer has two parts. The text, in `content/occupations
 ```yaml
 start: 1939-10-26 # the day the occupier takes control
 control: # who controlled it and how, in order; until = the last day
-  - { until: 1945-01-19, by: 255, kind: occupation } # annexation | occupation | client
+  - until: 1945-01-19
+    by: 255
+    kind: occupation # annexation | occupation | client
+    cause: # why, in a few words: shown on the map, under the zone's name
+      ca: Invasió de Polònia, 1939
 countries: [290] # whose territory it was under the recognised borders
 title:
   en: General Government

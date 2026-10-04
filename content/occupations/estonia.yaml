@@ -1,6 +1,12 @@
 start: 1941-08-28
 control:
-  - { until: 1944-09-22, by: 255, kind: occupation }
+  - until: 1944-09-22
+    by: 255
+    kind: occupation
+    cause:
+      ca: Invasió de la Unió Soviètica, 1941
+      es: Invasión de la Unión Soviética, 1941
+      en: Invasion of the Soviet Union, 1941
 countries: [365]
 title:
   ca: Estònia ocupada

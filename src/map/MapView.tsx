@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { OCCUPATIONS, controlOn, countryName, localize } from '../content'
 import { flagOn } from '../content/flags'
 import type { Conflict, HistoricalEvent } from '../content/schema'
-import { useI18n } from '../i18n'
+import { translator, useI18n } from '../i18n'
 import { toDateNumber, type IsoDate } from '../lib/date'
 import type { BorderProperties, Selection } from '../selection'
 import {
@@ -48,6 +48,9 @@ function zonesOn(collection: OccupationCollection, date: IsoDate) {
 }
 
 const ZONE_LAYERS = ['occupations-fill', 'occupations-hatch']
+
+/** Més que el `rank` de l'estat més gran: el que se li resta passa una etiqueta davant de tot un grup. */
+const ZONE_PRIORITY = 10_000
 
 export function MapView({
   date,
@@ -178,7 +181,9 @@ export function MapView({
   }, [date, showOccupations, status])
 
   // Les etiquetes, amb el nom (i la bandera) que tenia cada estat en aquella data. On hi ha una
-  // zona ocupada, el nom de la zona substitueix el de l'estat que queda a sota.
+  // zona ocupada, el nom de la zona substitueix el de l'estat que queda a sota. Si no hi caben
+  // tots, primer els ocupants, després les zones i després la resta: les zones porten el color
+  // de l'ocupant, i sense el seu nom el 1942 hi havia mig continent rosa i cap «Alemanya».
   useEffect(() => {
     const map = mapRef.current
     const labels = labelsRef.current
@@ -186,6 +191,7 @@ export function MapView({
     if (!map || !labels || !occupations || status !== 'ready') return
     let cancelled = false
     const zones = showOccupations ? zonesOn(occupations, date) : []
+    const occupiers = new Set(zones.map(({ period }) => period.by))
     const states = featuresOn(labels, toDateNumber(date))
       .filter((f) =>
         zones.every(({ feature }) => !insideMultiPolygon(f.geometry.coordinates, feature.geometry)),
@@ -196,18 +202,23 @@ export function MapView({
         properties: {
           ...f.properties,
           name: countryName(f.properties.gwcode, date, lang, f.properties.country_name),
+          rank: f.properties.rank - (occupiers.has(f.properties.gwcode) ? 2 * ZONE_PRIORITY : 0),
         },
         flagId: flagOn(f.properties.gwcode, date)?.flag,
       }))
-    const zoneLabels = zones.map(({ feature, zone }) => ({
+    const zoneLabels = zones.map(({ feature, zone, period }) => ({
       type: 'Feature' as const,
       geometry: { type: 'Point' as const, coordinates: feature.properties.label },
       // `status` diferent d'«independent»: el nom va en cursiva, com el dels territoris dependents.
       properties: {
         name: localize(zone.label ?? zone.title, lang),
+        // Sota el nom, qui la controlava i com, i per què: el que el color sol no diu.
+        controlledBy: translator(lang).t(`zoneOnMap.${period.kind}`, {
+          by: countryName(period.by, date, lang),
+        }),
+        cause: localize(period.cause, lang),
         status: 'zone',
-        // Abans que el de cap estat: el nom de la zona és el que explica què hi passava.
-        rank: feature.properties.rank - 10_000,
+        rank: feature.properties.rank - ZONE_PRIORITY,
       },
       flagId: zone.flag,
     }))

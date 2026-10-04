@@ -1,7 +1,19 @@
 start: 1941-04-23
 control:
-  - { until: 1943-09-08, by: 325, kind: occupation }
-  - { until: 1944-10-12, by: 255, kind: occupation }
+  - until: 1943-09-08
+    by: 325
+    kind: occupation
+    cause:
+      ca: Invasió de Grècia, 1941
+      es: Invasión de Grecia, 1941
+      en: Invasion of Greece, 1941
+  - until: 1944-10-12
+    by: 255
+    kind: occupation
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
 countries: [350]
 title:
   ca: Grècia ocupada per Itàlia

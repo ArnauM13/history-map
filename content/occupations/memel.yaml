@@ -1,6 +1,12 @@
 start: 1939-03-23
 control:
-  - { until: 1945-01-28, by: 255, kind: annexation }
+  - until: 1945-01-28
+    by: 255
+    kind: annexation
+    cause:
+      ca: Ultimàtum alemany a Lituània, 1939
+      es: Ultimátum alemán a Lituania, 1939
+      en: German ultimatum to Lithuania, 1939
 countries: [368]
 title:
   ca: Territori de Memel

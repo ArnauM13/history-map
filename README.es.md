@@ -33,7 +33,7 @@ ejemplo, el mapa cambia cada pocos meses. Aquí se puede ver día a día.
 | **Las fronteras de cualquier día** | De 1886 a hoy, con el día exacto de cada cambio y el nombre que tenía cada estado entonces: el Imperio ruso, la Rusia soviética, la Unión Soviética, Rusia. |
 | **Cada bandera en su tiempo** | Un centenar de banderas de unos setenta estados: en el mapa, en una galería para cada fecha y en la ficha de cada estado, con qué significan las que tienen más historia. |
 | **Lo que pasaba a la vez** | Los conflictos abiertos y los hechos del año, junto al mapa y marcados en la línea temporal. |
-| **Las ocupaciones, de 1938 a 1945** | Lo que se controlaba de hecho y las fronteras no enseñan: la anexión de Austria, el Gobierno General, la Francia de Vichy, Yugoslavia y Grecia repartidas, Ucrania ocupada. Rayado del color del ocupante, cada zona con su ficha. |
+| **Las ocupaciones, de 1938 a 1945** | Lo que se controlaba de hecho y las fronteras no enseñan: la anexión de Austria, el Gobierno General, la Francia de Vichy, Yugoslavia y Grecia repartidas, Ucrania ocupada. Del color del ocupante, como una parte más de su territorio, y cada zona con el nombre en el mapa y su ficha. |
 | **La fuente de cada dato** | Cada ficha dice de dónde salen las fronteras, el nombre, las fechas de las banderas y los hechos, con el enlace para comprobarlo. |
 | **Tres idiomas** | Catalán, castellano e inglés: la interfaz, los nombres de los estados y de las capitales, los textos y los enlaces a Wikipedia. |
 | **Un enlace para cada fecha** | `?d=1914-06-28&lang=es` abre exactamente el mismo mapa a quien lo reciba. |

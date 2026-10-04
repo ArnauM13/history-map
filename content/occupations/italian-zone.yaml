@@ -1,7 +1,19 @@
 start: 1942-11-11
 control:
-  - { until: 1943-09-08, by: 325, kind: occupation }
-  - { until: 1944-08-25, by: 255, kind: occupation }
+  - until: 1943-09-08
+    by: 325
+    kind: occupation
+    cause:
+      ca: Desembarcament aliat al nord d'Àfrica, 1942
+      es: Desembarco aliado en el norte de África, 1942
+      en: Allied landings in North Africa, 1942
+  - until: 1944-08-25
+    by: 255
+    kind: occupation
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
 countries: [220]
 title:
   ca: La zona d'ocupació italiana

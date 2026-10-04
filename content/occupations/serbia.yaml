@@ -1,6 +1,12 @@
 start: 1941-04-17
 control:
-  - { until: 1944-10-20, by: 255, kind: occupation }
+  - until: 1944-10-20
+    by: 255
+    kind: occupation
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
 countries: [345]
 title:
   ca: Sèrbia ocupada

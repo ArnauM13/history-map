@@ -1,7 +1,19 @@
 start: 1941-04-19
 control:
-  - { until: 1944-09-08, by: 355, kind: annexation }
-  - { until: 1944-11-13, by: 255, kind: occupation }
+  - until: 1944-09-08
+    by: 355
+    kind: annexation
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
+  - until: 1944-11-13
+    by: 255
+    kind: occupation
+    cause:
+      ca: Bulgària canvia de bàndol, 1944
+      es: Bulgaria cambia de bando, 1944
+      en: Bulgaria switches sides, 1944
 countries: [345]
 title:
   ca: Macedònia i Pirot, sota Bulgària

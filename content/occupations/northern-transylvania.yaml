@@ -1,6 +1,12 @@
 start: 1940-09-05
 control:
-  - { until: 1944-10-11, by: 310, kind: annexation }
+  - until: 1944-10-11
+    by: 310
+    kind: annexation
+    cause:
+      ca: Segon arbitratge de Viena, 1940
+      es: Segundo arbitraje de Viena, 1940
+      en: Second Vienna Award, 1940
 countries: [360]
 title:
   ca: Transsilvània del Nord

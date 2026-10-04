@@ -1,6 +1,12 @@
 start: 1940-06-30
 control:
-  - { until: 1945-05-09, by: 255, kind: occupation }
+  - until: 1945-05-09
+    by: 255
+    kind: occupation
+    cause:
+      ca: Caiguda de França, 1940
+      es: Caída de Francia, 1940
+      en: Fall of France, 1940
 countries: [200]
 title:
   ca: Illes del Canal

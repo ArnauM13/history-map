@@ -62,6 +62,7 @@ const ca = {
   country: 'Estat o territori',
   status: 'Estatus',
   controlledBy: 'Sota el control de',
+  cause: 'Per què',
   capital: 'Capital',
   bordersValid: 'Fronteres vigents',
   present: 'avui',
@@ -105,6 +106,9 @@ const ca = {
   'occupation.annexation': 'Annexió',
   'occupation.occupation': 'Ocupació',
   'occupation.client': 'Estat client',
+  'zoneOnMap.annexation': 'Annexió: {by}',
+  'zoneOnMap.occupation': 'Ocupació: {by}',
+  'zoneOnMap.client': 'Estat client: {by}',
 }
 
 export type MessageKey = keyof typeof ca
@@ -154,6 +158,7 @@ const es: Messages = {
   country: 'Estado o territorio',
   status: 'Estatus',
   controlledBy: 'Bajo el control de',
+  cause: 'Por qué',
   capital: 'Capital',
   bordersValid: 'Fronteras vigentes',
   present: 'hoy',
@@ -197,6 +202,9 @@ const es: Messages = {
   'occupation.annexation': 'Anexión',
   'occupation.occupation': 'Ocupación',
   'occupation.client': 'Estado cliente',
+  'zoneOnMap.annexation': 'Anexión: {by}',
+  'zoneOnMap.occupation': 'Ocupación: {by}',
+  'zoneOnMap.client': 'Estado cliente: {by}',
 }
 
 const en: Messages = {
@@ -243,6 +251,7 @@ const en: Messages = {
   country: 'State or territory',
   status: 'Status',
   controlledBy: 'Controlled by',
+  cause: 'Why',
   capital: 'Capital',
   bordersValid: 'Borders in force',
   present: 'today',
@@ -286,6 +295,9 @@ const en: Messages = {
   'occupation.annexation': 'Annexation',
   'occupation.occupation': 'Occupation',
   'occupation.client': 'Client state',
+  'zoneOnMap.annexation': 'Annexed by {by}',
+  'zoneOnMap.occupation': 'Occupied by {by}',
+  'zoneOnMap.client': 'Client state of {by}',
 }
 
 export const MESSAGES: Record<Lang, Messages> = { ca: ca as Messages, es, en }

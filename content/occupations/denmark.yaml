@@ -1,6 +1,12 @@
 start: 1940-04-09
 control:
-  - { until: 1945-05-05, by: 255, kind: occupation }
+  - until: 1945-05-05
+    by: 255
+    kind: occupation
+    cause:
+      ca: Invasió de Dinamarca, 1940
+      es: Invasión de Dinamarca, 1940
+      en: Invasion of Denmark, 1940
 countries: [390]
 title:
   ca: Dinamarca ocupada

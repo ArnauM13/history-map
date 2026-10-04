@@ -150,8 +150,12 @@ a { color: var(--c-brand-ink); font-weight: 600; }
   --sw: var(--c-text-3);
   width: 20px; height: 13px; border: 1px dashed var(--sw); border-radius: 3px;
   &.annexation { background: color-mix(in srgb, var(--sw) 55%, transparent); }
-  &.occupation { background: repeating-linear-gradient(-45deg, var(--sw) 0 2px, transparent 2px 7px); }
-  &.client { background: repeating-linear-gradient(-45deg, var(--sw) 0 1px, transparent 1px 8px); }
+  &.occupation {
+    background:
+      repeating-linear-gradient(-45deg, var(--sw) 0 1px, transparent 1px 6px),
+      color-mix(in srgb, var(--sw) 55%, transparent);
+  }
+  &.client { background: color-mix(in srgb, var(--sw) 25%, transparent); }
 }
 
 /* ── Targetes ───────────────────────────────────────────────────────────── */
@@ -324,6 +328,7 @@ a { color: var(--c-brand-ink); font-weight: 600; }
 .detail-title { margin: 0 0 10px; font-size: 20px; font-weight: 800; letter-spacing: -0.2px; }
 
 .detail-text { margin: 0 0 12px; font-size: 13px; font-weight: 500; line-height: 1.5; color: var(--c-text-2); }
+.facts + .detail-text { margin-top: 12px; }
 
 .detail h3 { margin: 16px 0 8px; font-size: 13px; font-weight: 700; color: var(--c-text-2); }
 
@@ -360,6 +365,8 @@ a { color: var(--c-brand-ink); font-weight: 600; }
 }
 
 .facts div[aria-current='true'] dd { color: var(--c-text); }
+/* El per què de cada tram, sota qui el controlava: més fluix, perquè no competeixi amb el nom. */
+.fact-note { display: block; font-weight: 500; color: var(--c-text-3); }
 
 .sidebar-footer {
   display: flex; gap: 16px; margin-top: auto; padding: 4px 6px 0;

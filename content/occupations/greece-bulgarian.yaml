@@ -1,6 +1,12 @@
 start: 1941-04-20
 control:
-  - { until: 1944-10-26, by: 355, kind: annexation }
+  - until: 1944-10-26
+    by: 355
+    kind: annexation
+    cause:
+      ca: Invasió de Grècia, 1941
+      es: Invasión de Grecia, 1941
+      en: Invasion of Greece, 1941
 countries: [350]
 title:
   ca: Macedònia oriental i Tràcia, sota Bulgària

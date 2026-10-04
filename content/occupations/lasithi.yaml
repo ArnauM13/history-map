@@ -1,7 +1,19 @@
 start: 1941-06-01
 control:
-  - { until: 1943-09-08, by: 325, kind: occupation }
-  - { until: 1944-10-13, by: 255, kind: occupation }
+  - until: 1943-09-08
+    by: 325
+    kind: occupation
+    cause:
+      ca: Batalla de Creta, 1941
+      es: Batalla de Creta, 1941
+      en: Battle of Crete, 1941
+  - until: 1944-10-13
+    by: 255
+    kind: occupation
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
 countries: [350]
 title:
   ca: Lassithi

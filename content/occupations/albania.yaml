@@ -1,7 +1,19 @@
 start: 1939-04-12
 control:
-  - { until: 1943-09-08, by: 325, kind: client }
-  - { until: 1944-11-29, by: 255, kind: occupation }
+  - until: 1943-09-08
+    by: 325
+    kind: client
+    cause:
+      ca: Invasió italiana d'Albània, 1939
+      es: Invasión italiana de Albania, 1939
+      en: Italian invasion of Albania, 1939
+  - until: 1944-11-29
+    by: 255
+    kind: occupation
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
 countries: [339]
 title:
   ca: Albània ocupada

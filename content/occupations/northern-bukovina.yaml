@@ -1,6 +1,12 @@
 start: 1941-07-05
 control:
-  - { until: 1944-03-29, by: 360, kind: annexation }
+  - until: 1944-03-29
+    by: 360
+    kind: annexation
+    cause:
+      ca: Invasió de la Unió Soviètica, 1941
+      es: Invasión de la Unión Soviética, 1941
+      en: Invasion of the Soviet Union, 1941
 countries: [365]
 title:
   ca: Nord de Bucovina

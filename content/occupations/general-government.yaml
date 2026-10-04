@@ -1,6 +1,12 @@
 start: 1939-10-26
 control:
-  - { until: 1945-01-19, by: 255, kind: occupation }
+  - until: 1945-01-19
+    by: 255
+    kind: occupation
+    cause:
+      ca: Invasió de Polònia, 1939
+      es: Invasión de Polonia, 1939
+      en: Invasion of Poland, 1939
 countries: [290]
 title:
   ca: Govern General
