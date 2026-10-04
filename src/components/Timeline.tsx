@@ -59,8 +59,9 @@ export function Timeline({
   const lanes = useConflictLanes(maxDate)
   const laneCount = Math.max(1, ...lanes.map((l) => l.lane + 1))
 
+  // Les marques van als anys rodons, no cada deu anys des del primer: 1890, 1900…, no 1886, 1896…
   const decades = []
-  for (let y = FIRST_YEAR; y <= yearOf(maxDate); y += 10) decades.push(y)
+  for (let y = Math.ceil(FIRST_YEAR / 10) * 10; y <= yearOf(maxDate); y += 10) decades.push(y)
 
   // A Banderes, les dates clau són els canvis de bandera: tots, o només els de l'estat triat,
   // que és el que vols recórrer quan mires com ha canviat la d'un país.
@@ -185,6 +186,7 @@ export function Timeline({
             <button
               type="button"
               key={year}
+              className={year % 20 === 0 ? undefined : 'is-minor'}
               style={{ left: pct(`${year}-01-01`) }}
               onClick={() => onChange(`${year}-01-01`, 'year')}
             >

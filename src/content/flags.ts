@@ -39,7 +39,7 @@ export interface FlagChange {
 
 /**
  * Cada vegada que un estat estrena bandera, per ordre de data. La primera bandera de cada
- * estat no hi és: no en sabem el dia, i sovint ve d'abans del 1900.
+ * estat no hi és: no en sabem el dia, i sovint ve d'abans del 1886.
  */
 export const ALL_FLAG_CHANGES: FlagChange[] = Object.keys(FLAGS.states)
   .flatMap((code) =>

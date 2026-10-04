@@ -52,7 +52,7 @@ territorios ocupados) de 1886 a 2019, con el día exacto de cada cambio.
   licencia: se pueden compartir y adaptar citando el origen, **pero no con fines comerciales**.
 - **Edición**: la de Gleditsch y Ward que trae el [paquete `cshapes` de R](https://github.com/cran/cshapes)
   (`cshapes_2_gw.topojson`).
-- **Qué se hace con él** (`npm run data:borders`): se queda lo que vale de 1900 en adelante, se
+- **Qué se hace con él** (`npm run data:borders`): se toma entero, de 1886 en adelante; se
   recorta a `[-28°, 30°, 78°, 82°]`, se simplifica hasta el 12 % de los vértices, las fechas pasan a
   enteros y se calculan los colores y dónde va cada nombre.
 

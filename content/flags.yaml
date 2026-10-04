@@ -98,6 +98,7 @@ catalogue:
   yu-1992: Flag of Serbia and Montenegro.svg
   rs-1882: State Flag of Serbia (1882-1918).svg
   rs: Flag of Serbia.svg
+  me-1860: Flag of Montenegro (1860–1905).svg
   me-1905: Flag of the Kingdom of Montenegro.svg
   me: Flag of Montenegro.svg
   hr: Flag of Croatia.svg
@@ -116,7 +117,14 @@ catalogue:
   tr: Flag of Turkey.svg
 
   # Nord d'Àfrica, Orient Mitjà i Àsia central (les vores del mapa)
+  ma-1666: Flag of Morocco (1666–1915).svg
   ma: Flag of Morocco.svg
+  ma-es: Merchant flag of Spanish Morocco.svg
+  eg-1882: Flag of Egypt (1882–1922).svg
+  eg-1922: Flag of Egypt (1922-1958).svg
+  uar: Flag of the United Arab Republic (1958–1971), Flag of Syria (1980–2024).svg
+  eg-1972: Flag of Egypt (1972–1984).svg
+  eg: Flag of Egypt.svg
   dz: Flag of Algeria.svg
   tn: Flag of Tunisia.svg
   ly-1951: Flag of Libya (1951–1969).svg
@@ -124,11 +132,23 @@ catalogue:
   ly-1972: Flag of Libya (1972–1977).svg
   ly-1977: Flag of Libya (1977–2011).svg
   ly: Flag of Libya.svg
+  sy: Flag of Syria.svg
+  sy-1972: Flag of Syria (1972–1980).svg
+  iq-1924: Flag of Iraq (1924–1959).svg
+  iq-1959: Flag of Iraq (1959–1963).svg
+  iq-1963: Flag of Iraq (1963–1991).svg
+  iq-1991: Flag of Iraq (1991–2004).svg
+  iq-2004: Flag of Iraq (2004–2008).svg
+  iq: Flag of Iraq.svg
+  lb-1920: Flag of Lebanon during French Mandate (1920-1943).svg
   lb: Flag of Lebanon.svg
   il: Flag of Israel.svg
+  arab-revolt: Flag of the Arab Revolt.svg
   jo: Flag of Jordan.svg
   sa: Flag of Saudi Arabia.svg
+  kw-1915: Flag of Kuwait (1915-1961).svg
   kw: Flag of Kuwait.svg
+  ir-1907: State flag of Persia (1907–1933).svg
   ir: Flag of Iran.svg
   kz: Flag of Kazakhstan.svg
   uz: Flag of Uzbekistan.svg
@@ -385,6 +405,46 @@ about:
     en: >-
       Austria-Hungary had no official common flag. This one, with the colours and arms of both
       halves of the monarchy, was its merchant ensign.
+  ir-1907:
+    ca: >-
+      El verd, el blanc i el vermell amb el lleó i el sol, que s'havia convertit en el símbol del
+      país amb la dinastia qajar. La constitució del 1907 la va fer oficial, i va durar, amb
+      retocs, fins a la Revolució Islàmica.
+    es: >-
+      El verde, el blanco y el rojo con el león y el sol, que se había convertido en el símbolo del
+      país con la dinastía Kayar. La constitución de 1907 la hizo oficial, y duró, con retoques,
+      hasta la Revolución islámica.
+    en: >-
+      Green, white and red with the Lion and Sun, which had become the country's symbol under the
+      Qajar dynasty. The 1907 constitution made it official, and with some retouching it lasted
+      until the Islamic Revolution.
+  uar:
+    ca: >-
+      Les franges de la bandera de la revolució egípcia del 1952 amb dues estrelles verdes, una per
+      Egipte i una per Síria, quan es van unir en la República Àrab Unida. Egipte la va mantenir
+      fins al 1972, i Síria la va recuperar del 1980 al 2024.
+    es: >-
+      Las franjas de la bandera de la revolución egipcia de 1952 con dos estrellas verdes, una por
+      Egipto y una por Siria, cuando se unieron en la República Árabe Unida. Egipto la mantuvo
+      hasta 1972, y Siria la recuperó de 1980 a 2024.
+    en: >-
+      The stripes of the flag of Egypt's 1952 revolution with two green stars, one for Egypt and
+      one for Syria, when they joined in the United Arab Republic. Egypt kept it until 1972, and
+      Syria brought it back from 1980 to 2024.
+  sy:
+    ca: >-
+      La bandera de la República Siriana des del 1930, sota el mandat francès, i de la
+      independència, el 1946. Es va deixar de fer servir el 1963, l'oposició la va fer seva durant
+      la guerra civil, i torna a ser la de Síria des de la caiguda del règim d'Al-Assad, el
+      desembre del 2024.
+    es: >-
+      La bandera de la República Siria desde 1930, bajo el mandato francés, y de la independencia,
+      en 1946. Dejó de usarse en 1963, la oposición la hizo suya durante la guerra civil, y vuelve
+      a ser la de Siria desde la caída del régimen de al-Asad, en diciembre de 2024.
+    en: >-
+      The flag of the Syrian Republic from 1930, under the French mandate, and at independence in
+      1946. It was dropped in 1963, the opposition took it up during the civil war, and it has
+      been Syria's flag again since the fall of the Assad regime in December 2024.
 
 states:
   '200': [{ flag: gb }]
@@ -450,6 +510,7 @@ states:
     - { until: 2006-06-02 }
     - { flag: rs }
   '341':
+    - { until: 1905-12-18, flag: me-1860 }
     - { until: 1918-11-26, flag: me-1905 }
     - { until: 2006-06-02 }
     - { flag: me }
@@ -510,12 +571,17 @@ states:
     - { flag: se }
   '385': [{ flag: 'no' }]
   '390': [{ flag: dk }]
+  # Bandera pròpia des del decret del 1915; nacional, des de la sobirania del 1918.
   '395':
-    - { until: 1918-11-30 }
+    - { until: 1915-06-18 }
     - { flag: is }
   '600':
-    - { until: 1915-11-16 }
+    - { until: 1915-11-16, flag: ma-1666 }
     - { flag: ma }
+  # El dia del 1937, de Flags of the World: el dahir del califa que va crear la bandera.
+  '602':
+    - { until: 1937-01-06 }
+    - { flag: ma-es }
   '615':
     - { until: 1962-07-04 }
     - { flag: dz }
@@ -527,22 +593,61 @@ states:
     - { until: 1977-11-10, flag: ly-1972 }
     - { until: 2011-09-15, flag: ly-1977 }
     - { flag: ly }
+  # Simplificat: un decret del 1910 en va fixar el dibuix del lleó i el 1964 en van canviar les
+  # proporcions. Abans del 1907 n'hi havia d'altres sense data clara.
   '630':
-    - { until: 1980-07-28 }
+    - { until: 1907-10-06 }
+    - { until: 1980-07-28, flag: ir-1907 }
     - { flag: ir }
   '640':
     - { until: 1922-10-31, flag: ot }
     - { flag: tr }
+  # Simplificat: falten la primera versió de la bandera del regne (1921-1924) i la de la
+  # Federació Àrab amb Jordània (1958). Els dies del 1921 i del 1959 no són a la Viquipèdia: el
+  # primer és el de la coronació de Faisal, i el segon, l'1 de gener, el que donen altres fonts
+  # per a la llei de la bandera de Qasim.
+  '645':
+    - { until: 1921-08-22 }
+    - { until: 1958-12-31, flag: iq-1924 }
+    - { until: 1963-07-30, flag: iq-1959 }
+    - { until: 1991-01-12, flag: iq-1963 }
+    - { until: 2004-06-27, flag: iq-1991 }
+    - { until: 2008-01-21, flag: iq-2004 }
+    - { flag: iq }
+  # La del regne és del 1922; el dia, el de la proclamació (1922-03-15). La verda es va mantenir
+  # després de la república, fins a la unió amb Síria.
+  '651':
+    - { until: 1922-03-14, flag: eg-1882 }
+    - { until: 1958-02-21, flag: eg-1922 }
+    - { until: 1971-12-31, flag: uar }
+    - { until: 1984-10-03, flag: eg-1972 }
+    - { flag: eg }
+  # Del 1920 al 1930, els estats del mandat (Damasc, Alep, l'Estat de Síria) en tenien de pròpies.
+  # La del 1963 és la mateixa que la de l'Iraq. La de la independència torna el 1961, amb la
+  # secessió, i el 2024, el dia que cau el règim (l'adopció oficial és del 13 de març del 2025).
+  '652':
+    - { until: 1930-05-13 }
+    - { until: 1958-02-21, flag: sy }
+    - { until: 1961-09-27, flag: uar }
+    - { until: 1963-04-30, flag: sy }
+    - { until: 1971-12-31, flag: iq-1963 }
+    - { until: 1980-03-28, flag: sy-1972 }
+    - { until: 2024-12-07, flag: uar }
+    - { flag: sy }
+  # La del Gran Líban, des que es va proclamar (1920-09-01).
   '660':
-    - { until: 1943-12-06 }
+    - { until: 1920-08-31 }
+    - { until: 1943-12-06, flag: lb-1920 }
     - { flag: lb }
+  # La de la Revolta Àrab, des que es va fundar l'emirat (1921-04-11).
   '663':
-    - { until: 1928-04-15 }
+    - { until: 1921-04-10 }
+    - { until: 1928-04-15, flag: arab-revolt }
     - { flag: jo }
   '666': [{ flag: il }]
   '670': [{ flag: sa }]
   '690':
-    - { until: 1961-09-06 }
+    - { until: 1961-09-06, flag: kw-1915 }
     - { flag: kw }
   '701': [{ flag: tm }]
   '702': [{ flag: tj }]
@@ -601,13 +706,17 @@ sources:
   '390': [Flag of Denmark]
   '395': [Flag of Iceland]
   '600': [Flag of Morocco]
+  '602': [List of Moroccan flags]
   '615': [Flag of Algeria]
   '616': [Flag of Tunisia]
   '620': [Flag of Libya]
-  '630': [Flag of Iran]
+  '630': [Flag of Iran, Lion and Sun flag]
   '640': [Flag of Turkey, Flag of the Ottoman Empire]
+  '645': [Flag of Iraq]
+  '651': [Flag of Egypt, Flag of the United Arab Republic]
+  '652': [Flag of Syria, Flag of the United Arab Republic, Flag of the Federation of Arab Republics]
   '660': [Flag of Lebanon]
-  '663': [Flag of Jordan]
+  '663': [Flag of Jordan, Flag of the Arab Revolt]
   '666': [Flag of Israel]
   '670': [Flag of Saudi Arabia]
   '690': [Flag of Kuwait]

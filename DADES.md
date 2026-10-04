@@ -53,7 +53,7 @@ dels territoris que en depenien (colònies, protectorats, mandats, territoris oc
   comercial**.
 - **Edició**: la de Gleditsch i Ward que porta el [paquet `cshapes` d'R](https://github.com/cran/cshapes)
   (`cshapes_2_gw.topojson`).
-- **Què se'n fa** (`npm run data:borders`): es queda el que val del 1900 ençà, es retalla a
+- **Què se'n fa** (`npm run data:borders`): s'agafa sencer, del 1886 ençà; es retalla a
   `[-28°, 30°, 78°, 82°]`, se simplifica fins al 12 % dels vèrtexs, les dates passen a enters i es
   calculen els colors i on va cada nom.
 

@@ -2,7 +2,7 @@
 
 # Mapa històric d'Europa
 
-**Europa del 1900 a avui, en un mapa que es mou: les fronteres, les banderes i el que hi va passar.**
+**Europa del 1886 a avui, en un mapa que es mou: les fronteres, les banderes i el que hi va passar.**
 
 [Obre el mapa](https://arnaum13.github.io/history-map/?lang=ca) · [D'on surt la informació](DADES.md) · [Com s'hi contribueix](CONTRIBUTING.md) · [Full de ruta](FULL-DE-RUTA.md)
 
@@ -30,7 +30,7 @@ el del 1945 i el del 1991— i el que passa entre l'un i l'altre s'ha d'imaginar
 
 | | |
 | --- | --- |
-| **Les fronteres de qualsevol dia** | Del 1900 a avui, amb el dia exacte de cada canvi i el nom que tenia cada estat aleshores: l'Imperi Rus, la Rússia soviètica, la Unió Soviètica, Rússia. |
+| **Les fronteres de qualsevol dia** | Del 1886 a avui, amb el dia exacte de cada canvi i el nom que tenia cada estat aleshores: l'Imperi Rus, la Rússia soviètica, la Unió Soviètica, Rússia. |
 | **Cada bandera al seu temps** | Un centenar de banderes d'una setantena d'estats: al mapa, en una galeria per a cada data i a la fitxa de cada estat, amb què volen dir les que tenen més història. |
 | **El que passava alhora** | Els conflictes oberts i els fets de l'any, al costat del mapa i marcats a la línia temporal. |
 | **La font de cada dada** | Cada fitxa diu d'on surten les fronteres, el nom, les dates de les banderes i els fets, amb l'enllaç per comprovar-ho. |

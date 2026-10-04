@@ -4,7 +4,8 @@
  */
 export type IsoDate = string
 
-export const FIRST_YEAR = 1900
+/** El primer any de CShapes 2.0: d'abans no hi ha fronteres. */
+export const FIRST_YEAR = 1886
 export const MIN_DATE: IsoDate = `${FIRST_YEAR}-01-01`
 /** El final de les fronteres que encara valen avui. */
 export const OPEN_END = 99991231
@@ -26,7 +27,7 @@ export function todayIso(now = new Date()): IsoDate {
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`
 }
 
-/** Mesos des del gener del 1900: la unitat de la línia temporal. */
+/** Mesos des del gener de FIRST_YEAR: la unitat de la línia temporal. */
 export function monthIndex(iso: IsoDate): number {
   const [y, m] = iso.split('-').map(Number)
   return (y - FIRST_YEAR) * 12 + (m - 1)

@@ -7,9 +7,9 @@ describe('les dates', () => {
   })
 
   it('van i tornen del número de mes de la línia temporal', () => {
-    expect(monthIndex('1900-01-15')).toBe(0)
-    expect(monthIndex('1914-06-28')).toBe(173)
-    expect(fromMonthIndex(173)).toBe('1914-06-01')
+    expect(monthIndex('1886-01-15')).toBe(0)
+    expect(monthIndex('1914-06-28')).toBe(341)
+    expect(fromMonthIndex(341)).toBe('1914-06-01')
   })
 
   it("saben si cauen dins d'un període, també d'un d'obert", () => {

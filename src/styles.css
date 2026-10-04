@@ -396,6 +396,7 @@ a { color: var(--c-brand-ink); font-weight: 600; }
   .sidebar { overflow: visible; }
 }
 
+/* Per l'any i no per la posició: si no, en començar al 1890 desapareixerien el 1900 i el 2000. */
 @media (max-width: 560px) {
-  .timeline-decades button:nth-child(even) { display: none; }
+  .timeline-decades button.is-minor { display: none; }
 }
