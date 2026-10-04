@@ -101,10 +101,14 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
 - [x] Del 1500 al 1885 amb Cliopatria, en un fitxer per segle, amb els codis i els colors de
       CShapes per als estats que continuen, i les ocupacions i els règims corregits amb la data
       exacta ([DADES.md](DADES.md) §1.4).
+- [x] Un criteri per quan les fonts no coincideixen, apuntat a [DADES.md](DADES.md) §0.1.
+- [x] Els tractats grans (Westfàlia, Utrecht, les particions de Polònia…) el dia que es van
+      signar, i els estats que s'intercanvien territori canviant el mateix dia.
+- [x] L'Europa central del 1815 al 1870, d'OpenHistoricalMap, amb el dia de cada canvi (§1.5).
 - [ ] Les banderes d'abans del 1886.
-- [ ] Més precisió on Cliopatria va d'any en any: les fronteres dels tractats grans (Westfàlia,
-      Utrecht, Viena) el dia que es van signar, i els estats petits d'Alemanya i d'Itàlia, que
-      Cliopatria ajunta o confon.
+- [ ] OpenHistoricalMap a l'època napoleònica (1806–1815), on Cliopatria s'equivoca més.
+- [ ] Els errors que queden ([DADES.md](DADES.md) §1.4.2): Gdańsk i Toruń del 1772 al 1793,
+      Cracòvia, els estats petits d'abans del 1815.
 - [ ] Més enrere del 1500: la font hi arriba; cal la línia temporal i revisar-ho igual.
 - [ ] *Vector tiles* (PMTiles), si les dades creixen més del que un fitxer pot dur.
 - [ ] Que funcioni sense connexió.

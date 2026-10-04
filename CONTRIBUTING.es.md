@@ -135,7 +135,12 @@ la lista `CORRECTIONS` de `scripts/build-borders.mjs`, con su fila y la fuente e
 Las anteriores a 1886 (`public/data/history/`) las genera `npm run data:history`, a partir de
 Cliopatria. Si una entidad lleva un nombre que no le toca o dura más de lo que duró, va en
 `CORRECTIONS` de `scripts/build-history.mjs`; si un territorio sale de quien lo ocupaba y no de
-quien era, en `SHAPES`. Las dos, con la fecha exacta y una fila en [DADES.es.md](DADES.es.md) §1.4.
+quien era, en `SHAPES`; si un tratado mueve fronteras un día que no es el de la muestra anual, en
+`TRANSITIONS`. Las tres, con la fecha exacta y una fila en [DADES.es.md](DADES.es.md) §1.4. En
+Europa central de 1815 a 1870, las fronteras son de OpenHistoricalMap (`OHM`, §1.5).
+
+Si dos fuentes no coinciden, no se elige una al azar: se investiga por qué, y el criterio que sale
+va a [DADES.es.md](DADES.es.md) §0.1 para que valga en todos los casos iguales.
 
 ## Ocupaciones
 

@@ -132,7 +132,12 @@ llista `CORRECTIONS` de `scripts/build-borders.mjs`, amb la seva fila i la font 
 Les d'abans del 1886 (`public/data/history/`) les fa `npm run data:history`, a partir de
 Cliopatria. Si una entitat porta un nom que no li toca o dura més del que va durar, va a
 `CORRECTIONS` de `scripts/build-history.mjs`; si un territori surt de qui l'ocupava i no de qui
-era, a `SHAPES`. Totes dues, amb la data exacta i una fila a [DADES.md](DADES.md) §1.4.
+era, a `SHAPES`; si un tractat mou fronteres un dia que no és el de la mostra anual, a
+`TRANSITIONS`. Totes tres, amb la data exacta i una fila a [DADES.md](DADES.md) §1.4. A l'Europa
+central del 1815 al 1870, les fronteres són d'OpenHistoricalMap (`OHM`, §1.5).
+
+Si dues fonts no coincideixen, no se'n tria una a l'atzar: s'investiga per què, i el criteri que en
+surt va a [DADES.md](DADES.md) §0.1 perquè valgui per a tots els casos iguals.
 
 ## Ocupacions
 

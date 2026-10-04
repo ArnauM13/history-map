@@ -132,7 +132,12 @@ CShapes goes into the `CORRECTIONS` list in `scripts/build-borders.mjs`, with it
 Those before 1886 (`public/data/history/`) come from Cliopatria through `npm run data:history`. If
 an entity has a name it should not, or lasts longer than it did, the fix goes into `CORRECTIONS` in
 `scripts/build-history.mjs`; if a territory belongs to whoever occupied it rather than its owner,
-into `SHAPES`. Both with the exact date and a row in [DADES.en.md](DADES.en.md) §1.4.
+into `SHAPES`; if a treaty moves borders on a day other than the yearly sample's, into
+`TRANSITIONS`. All three with the exact date and a row in [DADES.en.md](DADES.en.md) §1.4. In
+central Europe from 1815 to 1870, borders come from OpenHistoricalMap (`OHM`, §1.5).
+
+If two sources disagree, neither is picked at random: find out why, and the criterion that comes
+out of it goes into [DADES.en.md](DADES.en.md) §0.1 so it applies to every similar case.
 
 ## Occupations
 
