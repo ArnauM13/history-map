@@ -6,7 +6,8 @@
  *
  * Passos:
  *   1. Baixa CShapes 2.0 (l'edició de Gleditsch i Ward) en TopoJSON, si no és a data-raw/.
- *   2. Es queda el que val del 1900 ençà, ho retalla a Europa i ho simplifica (mapshaper).
+ *   2. Ho retalla a Europa i ho simplifica (mapshaper). Ho agafa tot: CShapes comença el 1886, i
+ *      el mapa també (FIRST_YEAR a src/lib/date.ts).
  *   3. Passa les dates a enters AAAAMMDD (s, e), perquè MapLibre hi pugui filtrar.
  *   4. Aplica les correccions de CORRECTIONS (explicades a DADES.md).
  *   5. Dona un color a cada grup (un estat i els territoris que controla) de manera que dos grups
@@ -29,7 +30,6 @@ const RAW_DIR = 'data-raw'
 const RAW_FILE = `${RAW_DIR}/cshapes_2_gw.topojson`
 const OUT_DIR = 'public/data'
 
-const FIRST_DATE = '1900-01-01'
 /** L'últim dia de CShapes 2.0. El que s'acaba aquell dia és que encara val avui. */
 const DATASET_END = '2019-12-31'
 const OPEN_END = 99991231
@@ -67,7 +67,6 @@ async function ensureRawData() {
 async function processWithMapshaper(raw, bbox) {
   const commands = [
     '-i input.topojson name=borders',
-    `-filter 'end >= "${FIRST_DATE}"'`,
     `-clip bbox=${bbox.join(',')} remove-slivers`,
     `-simplify ${SIMPLIFY} keep-shapes`,
     `-each 's = +start.replace(/-/g, ""), e = end === "${DATASET_END}" ? ${OPEN_END} : +end.replace(/-/g, "")'`,
