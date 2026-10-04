@@ -1,0 +1,32 @@
+start: 1941-04-20
+control:
+  - { until: 1944-10-26, by: 355, kind: annexation }
+countries: [350]
+title:
+  ca: Macedònia oriental i Tràcia, sota Bulgària
+  es: Macedonia oriental y Tracia, bajo Bulgaria
+  en: Eastern Macedonia and Thrace under Bulgaria
+label:
+  ca: Zona búlgara
+  es: Zona búlgara
+  en: Bulgarian zone
+summary:
+  ca: >-
+    L'exèrcit búlgar va entrar a Grècia el 20 d'abril del 1941 i va ocupar gairebé tot el territori
+    entre l'Estrimó i l'Evros, que Bulgària va administrar com a propi, sense cap tractat que ho
+    reconegués. Hi va expulsar part de la població grega i hi va instal·lar colons búlgars; la
+    revolta de Drama, el setembre del 1941, la va esclafar amb matances. Bulgària se'n va retirar el
+    26 d'octubre del 1944.
+  es: >-
+    El ejército búlgaro entró en Grecia el 20 de abril de 1941 y ocupó casi todo el territorio entre
+    el Estrimón y el Evros, que Bulgaria administró como propio, sin ningún tratado que lo
+    reconociera. Expulsó a parte de la población griega e instaló colonos búlgaros; la revuelta de
+    Drama, en septiembre de 1941, la aplastó con matanzas. Bulgaria se retiró el 26 de octubre de
+    1944.
+  en: >-
+    The Bulgarian army entered Greece on 20 April 1941 and occupied nearly all the land between the
+    Struma and the Evros, which Bulgaria ran as its own territory, with no treaty recognising it. It
+    expelled part of the Greek population and brought in Bulgarian settlers; it crushed the Drama
+    uprising of September 1941 with massacres. Bulgaria withdrew on 26 October 1944.
+wikipedia:
+  en: Bulgarian rule of Macedonia, Morava Valley and Western Thrace (1941–1944)

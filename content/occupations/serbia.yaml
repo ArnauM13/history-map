@@ -1,0 +1,26 @@
+start: 1941-04-17
+control:
+  - { until: 1944-10-20, by: 255, kind: occupation }
+countries: [345]
+title:
+  ca: Sèrbia ocupada
+  es: Serbia ocupada
+  en: Occupied Serbia
+summary:
+  ca: >-
+    Després de la capitulació iugoslava, el 17 d'abril del 1941, Alemanya va posar Sèrbia, amb el
+    Banat i el nord de Kosovo, sota un govern militar, amb un govern serbi titella a Belgrad. La
+    revolta de l'estiu del 1941 la va reprimir afusellant ostatges a milers. L'Exèrcit Roig i els
+    partisans iugoslaus van alliberar Belgrad el 20 d'octubre del 1944.
+  es: >-
+    Tras la capitulación yugoslava, el 17 de abril de 1941, Alemania puso Serbia, con el Banato y el
+    norte de Kosovo, bajo un gobierno militar, con un gobierno serbio títere en Belgrado. La
+    revuelta del verano de 1941 la reprimió fusilando rehenes por millares. El Ejército Rojo y los
+    partisanos yugoslavos liberaron Belgrado el 20 de octubre de 1944.
+  en: >-
+    After the Yugoslav capitulation on 17 April 1941, Germany placed Serbia, with the Banat and
+    northern Kosovo, under a military government, with a Serbian puppet government in Belgrade. It
+    put down the uprising of summer 1941 by shooting hostages by the thousand. The Red Army and the
+    Yugoslav Partisans liberated Belgrade on 20 October 1944.
+wikipedia:
+  en: Territory of the Military Commander in Serbia

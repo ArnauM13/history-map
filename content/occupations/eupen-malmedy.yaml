@@ -1,0 +1,26 @@
+start: 1940-05-18
+control:
+  - { until: 1944-09-11, by: 255, kind: annexation }
+countries: [211]
+title:
+  ca: Eupen-Malmedy
+  es: Eupen-Malmedy
+  en: Eupen-Malmedy
+summary:
+  ca: >-
+    Els cantons d'Eupen, Malmedy i Sankt Vith, alemanys fins al 1920, els va annexionar Alemanya per
+    decret el 18 de maig del 1940, amb deu municipis veïns que sempre havien estat belgues. Els seus
+    homes van ser cridats a la Wehrmacht. Les tropes nord-americanes van arribar a Eupen l'11 de
+    setembre del 1944, i la regió va tornar a Bèlgica.
+  es: >-
+    Los cantones de Eupen, Malmedy y Sankt Vith, alemanes hasta 1920, los anexionó Alemania por
+    decreto el 18 de mayo de 1940, con diez municipios vecinos que siempre habían sido belgas. Sus
+    hombres fueron llamados a la Wehrmacht. Las tropas estadounidenses llegaron a Eupen el 11 de
+    septiembre de 1944, y la región volvió a Bélgica.
+  en: >-
+    The cantons of Eupen, Malmedy and Sankt Vith, German until 1920, were annexed by Germany by
+    decree on 18 May 1940, together with ten neighbouring municipalities that had always been
+    Belgian. Their men were called up into the Wehrmacht. American troops reached Eupen on 11
+    September 1944, and the region went back to Belgium.
+wikipedia:
+  en: German occupation of Belgium during World War II

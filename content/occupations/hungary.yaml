@@ -1,0 +1,26 @@
+start: 1944-03-19
+control:
+  - { until: 1945-04-04, by: 255, kind: occupation }
+countries: [310]
+title:
+  ca: Hongria ocupada
+  es: Hungría ocupada
+  en: Occupied Hungary
+summary:
+  ca: >-
+    Alemanya va ocupar Hongria, la seva aliada, el 19 de març del 1944, quan el regent Horthy
+    buscava una pau per separat. En pocs mesos en van deportar uns 440.000 jueus, la majoria a
+    Auschwitz, i a l'octubre els alemanys hi van posar al govern el partit de la Creu Fletxada. Els
+    darrers soldats alemanys en van sortir el 4 d'abril del 1945.
+  es: >-
+    Alemania ocupó Hungría, su aliada, el 19 de marzo de 1944, cuando el regente Horthy buscaba una
+    paz por separado. En pocos meses se deportó a unos 440.000 judíos, la mayoría a Auschwitz, y en
+    octubre los alemanes pusieron en el gobierno al partido de la Cruz Flechada. Los últimos
+    soldados alemanes salieron del país el 4 de abril de 1945.
+  en: >-
+    Germany occupied Hungary, its ally, on 19 March 1944, as the regent Horthy was seeking a
+    separate peace. Within a few months some 440,000 Jews were deported, most of them to Auschwitz,
+    and in October the Germans put the Arrow Cross party in power. The last German soldiers left on
+    4 April 1945.
+wikipedia:
+  en: German invasion of Hungary (1944)

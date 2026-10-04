@@ -1,0 +1,28 @@
+start: 1941-04-17
+control:
+  - { until: 1941-05-02, by: 325, kind: occupation }
+  - { until: 1943-09-08, by: 325, kind: annexation }
+  - { until: 1945-05-09, by: 255, kind: occupation }
+countries: [345]
+title:
+  ca: Província de Ljubljana
+  es: Provincia de Liubliana
+  en: Province of Ljubljana
+summary:
+  ca: >-
+    Itàlia es va annexionar el sud d'Eslovènia, amb Ljubljana, i el 3 de maig del 1941 en va fer una
+    província italiana. Després de l'armistici italià del setembre del 1943 la va ocupar Alemanya,
+    que la va integrar a la Zona d'Operacions del Litoral Adriàtic. Els partisans eslovens van
+    alliberar Ljubljana el 9 de maig del 1945.
+  es: >-
+    Italia se anexionó el sur de Eslovenia, con Liubliana, y el 3 de mayo de 1941 la convirtió en
+    una provincia italiana. Tras el armisticio italiano de septiembre de 1943 la ocupó Alemania, que
+    la integró en la Zona de Operaciones del Litoral Adriático. Los partisanos eslovenos liberaron
+    Liubliana el 9 de mayo de 1945.
+  en: >-
+    Italy annexed southern Slovenia, with Ljubljana, and on 3 May 1941 made it an Italian province.
+    After the Italian armistice of September 1943 Germany occupied it and made it part of the
+    Operational Zone of the Adriatic Littoral. The Slovene Partisans liberated Ljubljana on 9 May
+    1945.
+wikipedia:
+  en: Province of Ljubljana

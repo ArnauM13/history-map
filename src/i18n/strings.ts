@@ -47,6 +47,8 @@ const ca = {
     "Les vores interiors d'aquesta zona són aproximades: s'han dibuixat a mà a partir dels mapes de les fonts.",
   zoneApproxAdmin:
     "Les vores interiors d'aquesta zona segueixen les divisions administratives d'avui, que no són exactament les d'aleshores.",
+  zoneApproxBoth:
+    "Les vores interiors d'aquesta zona són aproximades: unes s'han dibuixat a mà a partir dels mapes de les fonts, i les altres segueixen les divisions administratives d'avui.",
   activeConflicts: 'Conflictes oberts',
   noActiveConflicts: 'Cap conflicte obert en aquesta data.',
   eventsOfYear: 'Fets del {year}',
@@ -137,6 +139,8 @@ const es: Messages = {
     'Los bordes interiores de esta zona son aproximados: se han dibujado a mano a partir de los mapas de las fuentes.',
   zoneApproxAdmin:
     'Los bordes interiores de esta zona siguen las divisiones administrativas actuales, que no son exactamente las de entonces.',
+  zoneApproxBoth:
+    'Los bordes interiores de esta zona son aproximados: unos se han dibujado a mano a partir de los mapas de las fuentes, y los otros siguen las divisiones administrativas actuales.',
   activeConflicts: 'Conflictos abiertos',
   noActiveConflicts: 'Ningún conflicto abierto en esta fecha.',
   eventsOfYear: 'Hechos de {year}',
@@ -224,6 +228,8 @@ const en: Messages = {
     "This zone's inner borders are approximate: they were drawn by hand from the maps in the sources.",
   zoneApproxAdmin:
     "This zone's inner borders follow today's administrative divisions, which are not exactly those of the time.",
+  zoneApproxBoth:
+    "This zone's inner borders are approximate: some were drawn by hand from the maps in the sources, and the rest follow today's administrative divisions.",
   activeConflicts: 'Ongoing conflicts',
   noActiveConflicts: 'No ongoing conflict on this date.',
   eventsOfYear: 'Events in {year}',

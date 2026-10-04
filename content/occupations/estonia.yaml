@@ -1,0 +1,27 @@
+start: 1941-08-28
+control:
+  - { until: 1944-09-22, by: 255, kind: occupation }
+countries: [365]
+title:
+  ca: Estònia ocupada
+  es: Estonia ocupada
+  en: Occupied Estonia
+summary:
+  ca: >-
+    La Unió Soviètica s'havia annexionat Estònia l'agost del 1940. Alemanya la va ocupar entre el
+    juliol i el desembre del 1941, i va entrar a Tallinn el 28 d'agost; molts estonians, que
+    acabaven de patir les deportacions soviètiques, la van rebre com a alliberadora. Va formar part
+    del Reichskommissariat Ostland fins que l'Exèrcit Roig va prendre Tallinn el 22 de setembre del
+    1944.
+  es: >-
+    La Unión Soviética se había anexionado Estonia en agosto de 1940. Alemania la ocupó entre julio
+    y diciembre de 1941, y entró en Tallin el 28 de agosto; muchos estonios, que acababan de sufrir
+    las deportaciones soviéticas, la recibieron como libertadora. Formó parte del Reichskommissariat
+    Ostland hasta que el Ejército Rojo tomó Tallin el 22 de septiembre de 1944.
+  en: >-
+    The Soviet Union had annexed Estonia in August 1940. Germany occupied it between July and
+    December 1941, entering Tallinn on 28 August; many Estonians, who had just suffered the Soviet
+    deportations, welcomed it as a liberator. It was part of the Reichskommissariat Ostland until
+    the Red Army took Tallinn on 22 September 1944.
+wikipedia:
+  en: German occupation of Estonia during World War II

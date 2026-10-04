@@ -5,7 +5,7 @@
 Gràcies per voler-hi posar les mans. Hi ha tres maneres d'ajudar:
 
 1. **Contingut**: fets, conflictes, noms d'estats i banderes. No cal programar.
-2. **Dades**: arreglar una frontera o afegir zones a la capa d'ocupacions, com Iugoslàvia o Grècia
+2. **Dades**: arreglar una frontera o afegir zones a la capa d'ocupacions, com les del 1917 al 1923
    (vegeu el [full de ruta](FULL-DE-RUTA.md), §3).
 3. **Codi**: funcionalitats, disseny, accessibilitat.
 

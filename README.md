@@ -33,7 +33,7 @@ el del 1945 i el del 1991— i el que passa entre l'un i l'altre s'ha d'imaginar
 | **Les fronteres de qualsevol dia** | Del 1886 a avui, amb el dia exacte de cada canvi i el nom que tenia cada estat aleshores: l'Imperi Rus, la Rússia soviètica, la Unió Soviètica, Rússia. |
 | **Cada bandera al seu temps** | Un centenar de banderes d'una setantena d'estats: al mapa, en una galeria per a cada data i a la fitxa de cada estat, amb què volen dir les que tenen més història. |
 | **El que passava alhora** | Els conflictes oberts i els fets de l'any, al costat del mapa i marcats a la línia temporal. |
-| **Les ocupacions, del 1938 al 1945** | El que es controlava de fet i les fronteres no ensenyen: l'annexió d'Àustria, el Govern General, la França de Vichy. Ratllat del color de l'ocupant, cada zona amb la seva fitxa. |
+| **Les ocupacions, del 1938 al 1945** | El que es controlava de fet i les fronteres no ensenyen: l'annexió d'Àustria, el Govern General, la França de Vichy, Iugoslàvia i Grècia repartides, Ucraïna ocupada. Ratllat del color de l'ocupant, cada zona amb la seva fitxa. |
 | **La font de cada dada** | Cada fitxa diu d'on surten les fronteres, el nom, les dates de les banderes i els fets, amb l'enllaç per comprovar-ho. |
 | **Tres idiomes** | Català, castellà i anglès: la interfície, els noms dels estats i de les capitals, els textos i els enllaços a la Viquipèdia. |
 | **Un enllaç per a cada data** | `?d=1914-06-28&lang=ca` obre exactament el mateix mapa a qui el rebi. |
@@ -83,7 +83,8 @@ articles i enllaços encara existeixen. El detall, les correccions i les limitac
 ## Què no fa (i és volgut)
 
 - **No dibuixa els fronts, de moment.** La capa d'ocupacions diu qui controlava cada territori, no
-  on eren els exèrcits. Iugoslàvia, Grècia i el front de l'Est encara hi falten.
+  on eren els exèrcits. Per això encara hi falta la Rússia ocupada, que va canviar de mans amb el
+  front.
 - **No és una enciclopèdia.** Dues o tres frases i l'enllaç a la font; la resta hi és ben explicada.
 - **No et demana res.** Ni compte, ni galetes, ni dades teves.
 - **No es pot fer servir comercialment.** Les fronteres de CShapes són CC BY-NC-SA.
@@ -153,7 +154,7 @@ que no toca. S'hi pot escriure en català, castellà o anglès.
 
 ## El que ve
 
-- **La resta de la capa d'ocupacions**: Iugoslàvia, Grècia i el front de l'Est, i els territoris en
+- **La resta de la capa d'ocupacions**: la Rússia ocupada, amb els fronts, i els territoris en
   disputa d'avui.
 - **Més contingut**: uns cent fets i una trentena de conflictes, amb fonts acadèmiques a més de la
   Viquipèdia.

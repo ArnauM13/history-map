@@ -5,8 +5,8 @@
 Gracias por querer echar una mano. Hay tres maneras de ayudar:
 
 1. **Contenido**: hechos, conflictos, nombres de estados y banderas. No hace falta programar.
-2. **Datos**: arreglar una frontera o añadir zonas a la capa de ocupaciones, como Yugoslavia o
-   Grecia (ver la [hoja de ruta](FULL-DE-RUTA.md), §3, en catalán).
+2. **Datos**: arreglar una frontera o añadir zonas a la capa de ocupaciones, como las de 1917 a
+   1923 (ver la [hoja de ruta](FULL-DE-RUTA.md), §3, en catalán).
 3. **Código**: funcionalidades, diseño, accesibilidad.
 
 Si no sabes por dónde empezar, mira los *issues* con la etiqueta `content`, o abre uno y lo

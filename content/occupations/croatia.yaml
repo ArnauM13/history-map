@@ -1,0 +1,32 @@
+start: 1941-04-10
+control:
+  - { until: 1945-05-08, by: 255, kind: client }
+countries: [345]
+title:
+  ca: Estat Independent de Croàcia
+  es: Estado Independiente de Croacia
+  en: Independent State of Croatia
+label:
+  ca: Croàcia (NDH)
+  es: Croacia (NDH)
+  en: Croatia (NDH)
+summary:
+  ca: >-
+    L'Ustaixa d'Ante Pavelić el va proclamar a Zagreb el 10 d'abril del 1941, mentre Alemanya i
+    Itàlia envaïen Iugoslàvia, i en va ser un estat titella de totes dues. Hi entraven Bòsnia i
+    Hercegovina i el Srem, però no la costa dàlmata que es va quedar Itàlia. Hi va perseguir i
+    assassinar serbis, jueus i gitanos, i va desaparèixer el maig del 1945 amb la derrota
+    d'Alemanya.
+  es: >-
+    La Ustacha de Ante Pavelić lo proclamó en Zagreb el 10 de abril de 1941, mientras Alemania e
+    Italia invadían Yugoslavia, y fue un estado títere de ambas. Incluía Bosnia y Herzegovina y el
+    Srem, pero no la costa dálmata que se quedó Italia. Persiguió y asesinó a serbios, judíos y
+    gitanos, y desapareció en mayo de 1945 con la derrota de Alemania.
+  en: >-
+    Ante Pavelić's Ustaše proclaimed it in Zagreb on 10 April 1941, while Germany and Italy were
+    invading Yugoslavia, and it was a puppet state of both. It included Bosnia and Herzegovina and
+    Syrmia, but not the Dalmatian coast that Italy kept. It persecuted and murdered Serbs, Jews and
+    Roma, and it disappeared in May 1945 with Germany's defeat.
+flag: ndh
+wikipedia:
+  en: Independent State of Croatia

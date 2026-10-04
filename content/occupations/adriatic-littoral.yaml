@@ -1,0 +1,30 @@
+start: 1943-09-10
+control:
+  - { until: 1945-05-01, by: 255, kind: annexation }
+countries: [325]
+title:
+  ca: Zona d'Operacions del Litoral Adriàtic
+  es: Zona de Operaciones del Litoral Adriático
+  en: Operational Zone of the Adriatic Littoral
+label:
+  ca: Litoral Adriàtic
+  es: Litoral Adriático
+  en: Adriatic Littoral
+summary:
+  ca: >-
+    Des del 10 de setembre del 1943, Alemanya va governar de fet, des de Trieste, el Friül, Gorízia,
+    l'Ístria, Fiume i Ljubljana, sota el gauleiter de Caríntia, Friedrich Rainer. A Trieste va obrir
+    la Risiera di San Sabba, l'únic camp de concentració amb crematori d'Itàlia. Els partisans
+    iugoslaus van entrar a Trieste l'1 de maig del 1945.
+  es: >-
+    Desde el 10 de septiembre de 1943, Alemania gobernó de hecho, desde Trieste, el Friul, Gorizia,
+    Istria, Fiume y Liubliana, bajo el gauleiter de Carintia, Friedrich Rainer. En Trieste abrió la
+    Risiera di San Sabba, el único campo de concentración con crematorio de Italia. Los partisanos
+    yugoslavos entraron en Trieste el 1 de mayo de 1945.
+  en: >-
+    From 10 September 1943 Germany ruled Friuli, Gorizia, Istria, Fiume and Ljubljana from Trieste
+    in all but name, under the Gauleiter of Carinthia, Friedrich Rainer. In Trieste it opened the
+    Risiera di San Sabba, the only concentration camp with a crematorium in Italy. The Yugoslav
+    Partisans entered Trieste on 1 May 1945.
+wikipedia:
+  en: Operational Zone of the Adriatic Littoral

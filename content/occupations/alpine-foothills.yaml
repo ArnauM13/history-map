@@ -1,0 +1,32 @@
+start: 1943-09-10
+control:
+  - { until: 1945-05-01, by: 255, kind: annexation }
+countries: [325]
+title:
+  ca: Zona d'Operacions dels Prealps
+  es: Zona de Operaciones de los Prealpes
+  en: Operational Zone of the Alpine Foothills
+label:
+  ca: Prealps
+  es: Prealpes
+  en: Alpine Foothills
+summary:
+  ca: >-
+    Després de l'armistici italià, el 10 de setembre del 1943, Alemanya va treure les províncies de
+    Bolzano, Trento i Belluno del govern de la República Social Italiana i les va posar sota el
+    gauleiter del Tirol, Franz Hofer. Era una annexió de fet, sense cap tractat, d'una regió que,
+    llevat de Belluno, havia estat austríaca fins al 1918. La zona es va dissoldre l'1 de maig del
+    1945.
+  es: >-
+    Tras el armisticio italiano, el 10 de septiembre de 1943, Alemania sacó las provincias de
+    Bolzano, Trento y Belluno del gobierno de la República Social Italiana y las puso bajo el
+    gauleiter del Tirol, Franz Hofer. Era una anexión de hecho, sin ningún tratado, de una región
+    que, salvo Belluno, había sido austríaca hasta 1918. La zona se disolvió el 1 de mayo de 1945.
+  en: >-
+    After the Italian armistice, on 10 September 1943, Germany took the provinces of Bolzano, Trento
+    and Belluno away from the Italian Social Republic's government and placed them under the
+    Gauleiter of Tyrol, Franz Hofer. It was an annexation in all but name, without any treaty, of a
+    region that, apart from Belluno, had been Austrian until 1918. The zone was dissolved on 1 May
+    1945.
+wikipedia:
+  en: Operational Zone of the Alpine Foothills

@@ -1,0 +1,25 @@
+start: 1941-04-11
+control:
+  - { until: 1941-12-13, by: 310, kind: occupation }
+  - { until: 1945-04-04, by: 310, kind: annexation }
+countries: [345]
+title:
+  ca: Prekmurje i Međimurje
+  es: Prekmurje y Međimurje
+  en: Prekmurje and Međimurje
+summary:
+  ca: >-
+    Hongria també va ocupar el Prekmurje, a Eslovènia, i el Međimurje, a Croàcia, i se'ls va
+    annexionar el 14 de desembre del 1941, amb la Bačka i la Baranja. Aquí la guerra va durar més:
+    l'Exèrcit Roig i els partisans no van alliberar el Prekmurje fins entre el 30 de març i el 4
+    d'abril del 1945.
+  es: >-
+    Hungría también ocupó el Prekmurje, en Eslovenia, y el Međimurje, en Croacia, y se los anexionó
+    el 14 de diciembre de 1941, con la Bačka y la Baranja. Aquí la guerra duró más: el Ejército Rojo
+    y los partisanos no liberaron el Prekmurje hasta entre el 30 de marzo y el 4 de abril de 1945.
+  en: >-
+    Hungary also occupied Prekmurje, in Slovenia, and Međimurje, in Croatia, and annexed them on 14
+    December 1941 together with Bačka and Baranja. Here the war lasted longer: the Red Army and the
+    Partisans only liberated Prekmurje between 30 March and 4 April 1945.
+wikipedia:
+  en: Hungarian occupation of Yugoslav territories

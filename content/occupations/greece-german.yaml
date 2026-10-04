@@ -1,0 +1,31 @@
+start: 1941-04-23
+control:
+  - { until: 1944-10-12, by: 255, kind: occupation }
+countries: [350]
+title:
+  ca: Grècia ocupada per Alemanya
+  es: Grecia ocupada por Alemania
+  en: German-occupied Greece
+label:
+  ca: Zona alemanya
+  es: Zona alemana
+  en: German zone
+summary:
+  ca: >-
+    Grècia va capitular el 23 d'abril del 1941 i es va repartir en tres zones. Alemanya es va quedar
+    les més importants: Atenes i el Pireu, Salònica i la Macedònia central, la frontera amb Turquia
+    i les illes del nord de l'Egeu. La fam de l'hivern del 1941 al 1942 hi va matar desenes de
+    milers de persones. Els alemanys van deixar Atenes el 12 d'octubre del 1944, i Salònica, el 30.
+  es: >-
+    Grecia capituló el 23 de abril de 1941 y se repartió en tres zonas. Alemania se quedó las más
+    importantes: Atenas y el Pireo, Salónica y la Macedonia central, la frontera con Turquía y las
+    islas del norte del Egeo. La hambruna del invierno de 1941 a 1942 mató allí a decenas de miles
+    de personas. Los alemanes dejaron Atenas el 12 de octubre de 1944, y Salónica, el 30.
+  en: >-
+    Greece capitulated on 23 April 1941 and was divided into three zones. Germany kept the most
+    important ones: Athens and Piraeus, Thessaloniki and central Macedonia, the border with Turkey
+    and the islands of the northern Aegean. The famine of the winter of 1941 to 1942 killed tens of
+    thousands of people there. The Germans left Athens on 12 October 1944, and Thessaloniki on the
+    30th.
+wikipedia:
+  en: Axis occupation of Greece

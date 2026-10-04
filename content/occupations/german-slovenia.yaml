@@ -1,0 +1,30 @@
+start: 1941-04-14
+control:
+  - { until: 1945-05-08, by: 255, kind: annexation }
+countries: [345]
+title:
+  ca: Eslovènia annexionada per Alemanya
+  es: Eslovenia anexionada por Alemania
+  en: Slovenia annexed by Germany
+label:
+  ca: Eslovènia alemanya
+  es: Eslovenia alemana
+  en: German Slovenia
+summary:
+  ca: >-
+    Alemanya es va quedar el nord d'Eslovènia, la Baixa Estíria i l'Alta Carniola, i el 14 d'abril
+    del 1941 hi va posar una administració civil per incorporar-les al Reich. Hi va prohibir
+    l'eslovè en públic i en va deportar milers d'habitants per germanitzar-la. Hi va manar fins a la
+    capitulació alemanya, el maig del 1945.
+  es: >-
+    Alemania se quedó el norte de Eslovenia, la Baja Estiria y la Alta Carniola, y el 14 de abril de
+    1941 puso allí una administración civil para incorporarlas al Reich. Prohibió el esloveno en
+    público y deportó a miles de habitantes para germanizarla. Mandó allí hasta la capitulación
+    alemana, en mayo de 1945.
+  en: >-
+    Germany kept northern Slovenia, Lower Styria and Upper Carniola, and on 14 April 1941 set up a
+    civil administration there to incorporate them into the Reich. It banned Slovene in public and
+    deported thousands of inhabitants to Germanise it. It ruled there until the German capitulation
+    in May 1945.
+wikipedia:
+  en: World War II in the Slovene Lands

@@ -1,0 +1,25 @@
+start: 1941-07-16
+control:
+  - { until: 1944-08-24, by: 360, kind: annexation }
+countries: [365]
+title:
+  ca: Bessaràbia
+  es: Besarabia
+  en: Bessarabia
+summary:
+  ca: >-
+    Bessaràbia, que la URSS havia pres a Romania el juny del 1940, la van recuperar les tropes
+    romaneses i alemanyes el juliol del 1941: Chișinău va caure el 16 de juliol. Romania la va
+    tornar a governar com a província pròpia fins a l'ofensiva soviètica de l'agost del 1944, que va
+    prendre Chișinău el dia 24.
+  es: >-
+    Besarabia, que la URSS había quitado a Rumanía en junio de 1940, la recuperaron las tropas
+    rumanas y alemanas en julio de 1941: Chisináu cayó el 16 de julio. Rumanía la volvió a gobernar
+    como provincia propia hasta la ofensiva soviética de agosto de 1944, que tomó Chisináu el día
+    24.
+  en: >-
+    Bessarabia, which the USSR had taken from Romania in June 1940, was recovered by Romanian and
+    German troops in July 1941: Chișinău fell on 16 July. Romania ruled it again as its own province
+    until the Soviet offensive of August 1944, which took Chișinău on the 24th.
+wikipedia:
+  en: Operation München

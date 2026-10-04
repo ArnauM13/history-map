@@ -12,7 +12,7 @@ export interface OccupationProperties {
   /** El nom del fitxer de content/occupations/, que en té els textos i les dates. */
   id: string
   /** D'on surten les vores que no són de CShapes: `line`, dibuixades a mà; `admin`, divisions d'avui. */
-  approx: 'line' | 'admin' | null
+  approx: ('line' | 'admin')[]
   /** On va el nom: [longitud, latitud]. */
   label: [number, number]
   /** Com el `rank` dels estats: si dos noms es trepitgen, guanya la zona més gran. */

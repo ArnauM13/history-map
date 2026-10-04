@@ -238,8 +238,8 @@ const LINES = {
     [6.12, 46.14],
     [6.22, 46.2],
     [6.25, 46.5],
-    [9.0, 46.5],
-    [9.0, 41.0],
+    [10.0, 46.5],
+    [10.0, 41.0],
     [-2.0, 41.0],
     [-2.0, 43.05],
   ],
@@ -288,11 +288,268 @@ const LINES = {
     [40, 85],
     [-30, 85],
   ],
+
+  /**
+   * El costat italià de la partició d'Eslovènia del 1941, la Província de Ljubljana: Ljubljana,
+   * Vrhnika, Kočevje, Novo Mesto i la Baixa Carniola; al nord, Medvode, Kamnik, Zagorje i Krško
+   * van a Alemanya. Fonts: el mapa de «Province of Ljubljana» i el de «World War II in the
+   * Slovene Lands».
+   */
+  ljubljana: [
+    [13.9, 46.08],
+    [14.15, 46.08],
+    [14.33, 46.1],
+    [14.47, 46.095],
+    [14.55, 46.09],
+    [14.65, 46.08],
+    [14.82, 46.08],
+    [14.95, 46.05],
+    [15.0, 46.0],
+    [15.1, 45.95],
+    [15.25, 45.9],
+    [15.38, 45.85],
+    [15.5, 45.8],
+    [15.6, 45.76],
+    [15.9, 45.7],
+    [15.9, 45.3],
+    [13.9, 45.3],
+  ],
+
+  /**
+   * La Baranja croata, entre el Drava i el Danubi, que va ocupar Hongria; Osijek, a l'altra riba,
+   * queda a Croàcia. Font: el mapa de «Hungarian occupation of Yugoslav territories».
+   */
+  baranja: [
+    [18.2, 45.95],
+    [19.1, 45.95],
+    [19.1, 45.52],
+    [18.92, 45.54],
+    [18.8, 45.56],
+    [18.69, 45.57],
+    [18.55, 45.62],
+    [18.45, 45.67],
+    [18.3, 45.72],
+    [18.2, 45.78],
+  ],
+
+  /**
+   * La costa dàlmata que Itàlia es va annexionar pels Tractats de Roma del 18 de maig del 1941:
+   * de Zadar a Split, amb Trogir, Šibenik i les illes del davant, sense Brač, Hvar ni Pag, que
+   * van quedar a Croàcia (Hvar i Pag, fins a la tardor). Fonts: el mapa de «Governorate of
+   * Dalmatia» i el de «Treaties of Rome (1941)».
+   */
+  dalmatia: [
+    [14.7, 44.3],
+    [15.2, 44.35],
+    [15.45, 44.2],
+    [15.65, 44.05],
+    [15.85, 43.85],
+    [16.05, 43.7],
+    [16.25, 43.62],
+    [16.45, 43.58],
+    [16.5, 43.52],
+    [16.38, 43.45],
+    [16.38, 43.32],
+    [16.15, 43.3],
+    [15.85, 43.5],
+    [15.4, 43.7],
+    [14.7, 44.0],
+  ],
+  /** Vis i Korčula, de la mateixa annexió. */
+  dalmatianIslands: [
+    [
+      [15.95, 43.12],
+      [16.3, 43.12],
+      [16.3, 42.95],
+      [15.95, 42.95],
+    ],
+    [
+      [16.6, 43.0],
+      [17.15, 43.0],
+      [17.15, 42.88],
+      [16.6, 42.88],
+    ],
+  ],
+
+  /**
+   * La zona búlgara de Grècia: a l'est de l'Estrimó, amb Serres, Drama, Kavala, Xanthi,
+   * Komotiní, Thasos i Samotràcia. Font: el mapa de «Axis occupation of Greece».
+   */
+  struma: [
+    [23.33, 41.8],
+    [23.33, 41.4],
+    [23.3, 41.25],
+    [23.35, 41.15],
+    [23.45, 41.0],
+    [23.6, 40.9],
+    [23.75, 40.82],
+    [23.85, 40.78],
+    [23.9, 40.5],
+    [25.2, 40.5],
+    [25.2, 40.35],
+    [27.0, 40.35],
+    [27.0, 41.8],
+  ],
+
+  /**
+   * La franja de l'Evros, a tocar de Turquia, que es va quedar Alemanya: Orestiada i
+   * Didimòtic. Font: el mapa de «Axis occupation of Greece».
+   */
+  evros: [
+    [26.05, 41.8],
+    [26.8, 41.8],
+    [26.8, 40.85],
+    [26.2, 40.85],
+    [26.25, 41.05],
+    [26.2, 41.3],
+    [26.15, 41.5],
+  ],
+
+  /** Samos i Ikaria, a la zona italiana; la resta de l'Egeu Septentrional era alemanya. */
+  samos: [
+    [25.9, 37.95],
+    [27.2, 37.95],
+    [27.2, 37.4],
+    [25.9, 37.4],
+  ],
+
+  /**
+   * Creta, en tres: Khanià, a l'oest, on els alemanys van resistir fins al maig del 1945;
+   * Réthimno i Iràklio, al centre; i Lassithi, a l'est, la part italiana. Font: «Fortress Crete».
+   */
+  westCrete: [
+    [23.0, 36.0],
+    [24.3, 36.0],
+    [24.3, 35.0],
+    [23.0, 35.0],
+  ],
+  eastCrete: [
+    [25.5, 36.0],
+    [26.5, 36.0],
+    [26.5, 34.5],
+    [25.5, 34.5],
+  ],
+
+  /**
+   * La frontera del segon arbitratge de Viena (30 d'agost del 1940), que va donar a Hongria el
+   * nord de Transsilvània: Oradea, Cluj, Târgu Mureș i el País dels Székely, a Hongria; Salonta,
+   * Beiuș, Turda, Sighișoara i Brașov, a Romania. CShapes no la té. Font: el mapa de «Second
+   * Vienna Award».
+   */
+  viennaAward: [
+    [21.0, 46.95],
+    [22.0, 46.95],
+    [22.4, 46.85],
+    [22.8, 46.78],
+    [23.2, 46.75],
+    [23.5, 46.7],
+    [23.75, 46.65],
+    [24.05, 46.55],
+    [24.35, 46.45],
+    [24.65, 46.38],
+    [24.95, 46.3],
+    [25.2, 46.15],
+    [25.4, 45.95],
+    [25.6, 45.82],
+    [25.9, 45.7],
+    [26.8, 45.4],
+    [26.8, 48.5],
+    [21.0, 48.5],
+  ],
+
+  /**
+   * La Transnístria romanesa: entre el Dnièster i el Bug Meridional, de Mohiliv-Podilski i
+   * Tultxin fins a la mar, amb Odessa; Vínnitsia i Mikolaiv, a l'altra banda, eren alemanyes.
+   * Font: el mapa de «Transnistria Governorate».
+   */
+  transnistria: [
+    [27.0, 48.45],
+    [27.8, 48.47],
+    [28.1, 48.6],
+    [28.6, 48.75],
+    [29.1, 48.8],
+    [29.25, 48.68],
+    [29.5, 48.55],
+    [29.9, 48.33],
+    [30.5, 48.15],
+    [30.85, 48.02],
+    [31.2, 47.72],
+    [31.35, 47.55],
+    [31.6, 47.3],
+    [31.9, 47.05],
+    [32.0, 46.85],
+    [31.95, 46.6],
+    [31.6, 45.8],
+    [27.0, 45.8],
+  ],
+
+  /** Bessaràbia és a l'est del Prut, que el 1940 va quedar de frontera. */
+  eastOfPrut: [
+    [26.55, 48.6],
+    [30.5, 48.6],
+    [30.5, 45.0],
+    [26.55, 45.0],
+  ],
+
+  /** Crimea, al sud de l'istme de Perekop. */
+  crimea: [
+    [32.3, 46.16],
+    [36.8, 46.16],
+    [36.8, 44.2],
+    [32.3, 44.2],
+  ],
+
+  /**
+   * La frontera entre Itàlia i Iugoslàvia del 1920 al 1947 (els tractats de Rapallo i de Roma),
+   * que CShapes no té: el Litoral eslovè amb Postojna, l'Ístria, Fiume i les illes de Cres i
+   * Lošinj eren italians, i CShapes els fa iugoslaus. Kastav, Sušak i Krk eren iugoslaus. Font:
+   * el mapa de «Treaty of Rapallo (1920)».
+   */
+  julianMarch: [
+    [13.0, 46.7],
+    [13.72, 46.55],
+    [13.7, 46.47],
+    [13.84, 46.38],
+    [13.9, 46.3],
+    [13.98, 46.2],
+    [14.03, 46.1],
+    [14.08, 46.0],
+    [14.12, 45.93],
+    [14.2, 45.85],
+    [14.3, 45.72],
+    [14.4, 45.62],
+    [14.45, 45.5],
+    [14.38, 45.45],
+    [14.4, 45.36],
+    [14.44, 45.33],
+    [14.47, 45.15],
+    [14.5, 44.95],
+    [14.55, 44.6],
+    [14.4, 44.4],
+    [13.0, 44.4],
+  ],
+
+  /**
+   * Eupen-Malmedy: els cantons d'Eupen, Malmedy i Sankt Vith, i els deu municipis de l'entorn de
+   * Montzen que Alemanya s'hi va annexionar també. Font: el mapa de «Eupen-Malmedy».
+   */
+  eupenMalmedy: [
+    [5.8, 50.78],
+    [6.35, 50.78],
+    [6.35, 50.1],
+    [6.1, 50.12],
+    [6.0, 50.25],
+    [5.96, 50.38],
+    [5.93, 50.5],
+    [5.85, 50.6],
+    [5.8, 50.66],
+  ],
 }
 
 // ── La geometria ─────────────────────────────────────────────────────────────
 
 const ring = (points) => [[...points, points[0]]]
+const rings = (list) => union(...list.map(ring))
 const union = (...geoms) => polygonClipping.union(...geoms.filter((g) => g.length > 0))
 const intersect = (a, ...others) => polygonClipping.intersection(a, ...others)
 const minus = (a, ...others) => polygonClipping.difference(a, ...others.filter((g) => g.length))
@@ -315,8 +572,14 @@ function state(gwcode, date) {
 }
 
 /** Les unitats de Natural Earth que es fan servir, per país (ISO de tres lletres). */
-const ADMIN_COUNTRIES = ['FRA']
+const ADMIN_COUNTRIES = [
+  ...['FRA', 'ITA', 'JEY', 'GGY'],
+  ...['SVN', 'HRV', 'BIH', 'SRB', 'MNE', 'MKD', 'KOS', 'GRC'],
+  ...['ROU', 'UKR'],
+]
 let admins
+/** Si la zona que s'està fent fa servir alguna unitat de Natural Earth. */
+let usesAdmin = false
 
 async function loadAdmins() {
   if (!existsSync(NE_FILE)) {
@@ -330,7 +593,7 @@ async function loadAdmins() {
   const features = all.features.filter((f) => ADMIN_COUNTRIES.includes(f.properties.adm0_a3))
   // Simplificades, i junts els veïns: dues unitats que es toquen comparteixen la mateixa línia.
   const out = await mapshaper.applyCommands(
-    '-i in.json -filter-fields adm0_a3,name -simplify interval=500 keep-shapes -o out.json format=geojson',
+    '-i in.json -filter-fields adm0_a3,name,region -simplify interval=500 keep-shapes -o out.json format=geojson',
     { 'in.json': { type: 'FeatureCollection', features } },
   )
   admins = JSON.parse(out['out.json']).features
@@ -359,13 +622,29 @@ async function buffer(geom, radius) {
   return union(...geometries.map(coordsOf))
 }
 
+/** Els noms de les unitats d'un país que són d'unes regions: les províncies del Laci… */
+const inRegions = (country, regions) =>
+  admins
+    .filter((f) => f.properties.adm0_a3 === country && regions.includes(f.properties.region))
+    .map((f) => f.properties.name)
+
+/** Unes unitats de Natural Earth tal com són, per a les illes que CShapes no dibuixa. */
+const adminUnits = (country) => {
+  usesAdmin = true
+  return union(
+    ...admins.filter((f) => f.properties.adm0_a3 === country).map((f) => coordsOf(f.geometry)),
+  )
+}
+
 /**
  * La part de `base` (un estat de CShapes) que cau dins d'unes unitats de Natural Earth. La línia
  * interior és la de Natural Earth; l'exterior, la de CShapes, perquè la unitat s'eixampla abans
  * de retallar i les altres unitats del país se'n treuen després.
  */
 async function within(base, country, names) {
+  usesAdmin = true
   const units = admins.filter((f) => f.properties.adm0_a3 === country)
+  if (names.length === 0) throw new Error(`Cap unitat de Natural Earth per a ${country}`)
   const missing = names.filter((name) => !units.some((f) => f.properties.name === name))
   if (missing.length > 0) throw new Error(`Natural Earth no té ${missing.join(', ')} (${country})`)
   const inside = units
@@ -400,50 +679,153 @@ const ITALIAN_FRANCE = [
 ]
 const CORSICA = ['Haute-Corse', 'Corse-du-Sud']
 
+const YUGOSLAVIA = () => state(345, '1941-01-01')
+/** El que era italià abans del 1941 i CShapes fa iugoslau: no entrava al repartiment. */
+const JULIAN_MARCH = () => intersect(YUGOSLAVIA(), ring(LINES.julianMarch))
+const ITALY = () => state(325, '1943-01-01')
+const GREECE = () => state(350, '1941-01-01')
+/** La Iugoslàvia del 1941 dins d'un estat d'avui: Croàcia (344), Eslovènia (349)… */
+const YUGOSLAV = (gwcode) => intersect(YUGOSLAVIA(), state(gwcode, '2020-01-01'))
+const YUGOSLAV_STATES = { SVN: 349, HRV: 344, BIH: 346, SRB: 340, KOS: 347, MNE: 341, MKD: 343 }
 /**
- * Com es fa cada zona. `approx` diu d'on surten les vores que no són de CShapes: `line`, d'una
- * línia dibuixada a mà; `admin`, de les divisions d'avui. L'app ho ensenya a la fitxa.
+ * Unes unitats de Natural Earth dins de la Iugoslàvia del 1941. Es retallen amb l'estat d'avui, i
+ * no amb tota Iugoslàvia, perquè el marge de `within` no passi a la república del costat.
+ */
+const yugoslav = (country, names) => within(YUGOSLAV(YUGOSLAV_STATES[country]), country, names)
+const BACKA = ['Severno-Backi', 'Zapadno-Backi', 'Južno-Backi']
+const PREKMURJE = [
+  'Moravske Toplice',
+  'Šalovci',
+  'Hodoš',
+  'Gornji Petrovci',
+  'Kuzma',
+  'Lendava',
+  'Dobrovnik',
+  'Kobilje',
+  'Rogašovci',
+  'Cankova',
+  'Črenšovci',
+  'Puconci',
+  'Grad',
+  'Murska Sobota',
+  'Turnišče',
+  'Velika Polana',
+  'Beltinci',
+  'Odranci',
+]
+/** Les bocues de Kotor, que van anar a la Dalmàcia italiana i no al Montenegro. */
+const KOTOR = ['Herceg Novi', 'Kotor', 'Tivat']
+/** El nord de Kosovo, amb les mines de Trepča, el va retenir Alemanya dins de Sèrbia. */
+const GERMAN_KOSOVO = [
+  'Leposavić',
+  'Zvečan',
+  'Zubin Potok',
+  'Kosovska Mitrovica',
+  'Vučitrn',
+  'Podujevo',
+]
+const BULGARIAN_KOSOVO = ['Kačanik', 'Vitina']
+const BULGARIAN_SERBIA = ['Pirotski', 'Pcinjski']
+/** L'oest de Macedònia, de Tetovo a Struga, que va anar a Albània; Ohrid i Skopje, a Bulgària. */
+const ALBANIAN_MACEDONIA = [
+  'Struga',
+  'Centar župa',
+  'Debar',
+  'Mavrovo and Rostusa',
+  'Gostivar',
+  'Vevčani',
+  'Jegunovce',
+  'Tearce',
+  'Tetovo',
+  'Bogovinje',
+  'Vrapcište',
+  'Želino',
+  'Brvenica',
+  'Oslomej',
+  'Zajas',
+  'Kičevo',
+  'Plasnica',
+  'Vraneštica',
+  'Drugovo',
+]
+const ALBANIAN_MONTENEGRO = ['Ulcinj', 'Plav', 'Rožaje']
+const DALMATIA = () =>
+  intersect(YUGOSLAV(344), union(ring(LINES.dalmatia), rings(LINES.dalmatianIslands)))
+const CRETE = () => within(GREECE(), 'GRC', ['Kriti'])
+const BULGARIAN_GREECE = () => minus(intersect(GREECE(), ring(LINES.struma)), ring(LINES.evros))
+const GERMAN_GREECE = async () =>
+  union(
+    minus(
+      await within(GREECE(), 'GRC', [
+        'Kentriki Makedonia',
+        'Ayion Oros',
+        'Attiki',
+        'Voreio Aigaio',
+      ]),
+      ring(LINES.struma),
+      ring(LINES.samos),
+    ),
+    intersect(GREECE(), ring(LINES.evros)),
+  )
+
+const USSR = () => state(365, '1941-01-01')
+const ROMANIA = () => state(360, '1940-01-01')
+/** El que Romania va cedir a la URSS el juny del 1940: Bessaràbia, el nord de Bucovina i Herța. */
+const ROMANIA_LOST = () => minus(ROMANIA(), state(360, '1940-07-01'))
+/** El nord de Bucovina, aproximat amb la província de Txernivtsí d'avui. */
+const BUKOVINA = async () =>
+  intersect(ROMANIA_LOST(), await within(state(369, '2020-01-01'), 'UKR', ['Chernivtsi']))
+const TRANSNISTRIA = () => minus(intersect(USSR(), ring(LINES.transnistria)), ROMANIA())
+const CRIMEA = () => intersect(USSR(), ring(LINES.crimea))
+/** La Unió Soviètica d'abans del 1939 dins d'un estat d'avui: sense el que era polonès o romanès. */
+const SOVIET = (gwcode) =>
+  minus(intersect(USSR(), state(gwcode, '2020-01-01')), POLAND(), CZECHOSLOVAKIA(), ROMANIA())
+
+/**
+ * Com es fa cada zona. `line` vol dir que hi ha una vora dibuixada a mà; si s'hi fan servir les
+ * divisions de Natural Earth, ho detecta `within`. L'app ho ensenya a la fitxa, i en cita la font.
  */
 const ZONES = {
   austria: { build: () => state(305, '1938-01-01') },
   'bohemia-moravia': {
-    approx: 'line',
+    line: true,
     build: () => minus(intersect(CZECHOSLOVAKIA(), state(316, '2000-01-01')), ZAOLZIE()),
   },
   slovakia: { build: () => intersect(CZECHOSLOVAKIA(), state(317, '2000-01-01')) },
   'carpathian-ruthenia': { build: () => intersect(CZECHOSLOVAKIA(), state(369, '2000-01-01')) },
-  'trans-olza': { approx: 'line', build: ZAOLZIE },
-  memel: { approx: 'line', build: () => intersect(state(368, '1939-01-01'), ring(LINES.memel)) },
+  'trans-olza': { line: true, build: ZAOLZIE },
+  memel: { line: true, build: () => intersect(state(368, '1939-01-01'), ring(LINES.memel)) },
   albania: { build: () => state(339, '1939-01-01') },
-  'occupied-poland': { approx: 'line', build: GERMAN_POLAND },
+  'occupied-poland': { line: true, build: GERMAN_POLAND },
   'annexed-poland': {
-    approx: 'line',
+    line: true,
     build: () => intersect(GERMAN_POLAND(), ring(LINES.annexedPoland)),
   },
   'general-government': {
-    approx: 'line',
+    line: true,
     build: () => minus(GERMAN_POLAND(), ring(LINES.annexedPoland)),
   },
-  'soviet-poland': { approx: 'line', build: SOVIET_POLAND },
-  'eastern-poland': { approx: 'line', build: SOVIET_POLAND },
+  'soviet-poland': { line: true, build: SOVIET_POLAND },
+  'eastern-poland': { line: true, build: SOVIET_POLAND },
   // La regió que la URSS va cedir a Lituània el 1939, aproximada amb la frontera lituana d'avui.
-  vilnius: { approx: 'line', build: () => intersect(POLAND(), LITHUANIA()) },
+  vilnius: { line: true, build: () => intersect(POLAND(), LITHUANIA()) },
   denmark: { build: () => minus(state(390, '1940-01-01'), ring(LINES.northernIslands)) },
   norway: { build: () => minus(state(385, '1940-01-01'), ring(LINES.northernIslands)) },
   netherlands: { build: () => state(210, '1940-01-01') },
   belgium: {
-    approx: 'admin',
     build: async () =>
-      union(state(211, '1940-01-01'), await within(FRANCE(), 'FRA', ['Nord', 'Pas-de-Calais'])),
+      union(
+        minus(state(211, '1940-01-01'), ring(LINES.eupenMalmedy)),
+        await within(FRANCE(), 'FRA', ['Nord', 'Pas-de-Calais']),
+      ),
   },
   luxembourg: { build: () => state(212, '1940-01-01') },
   'alsace-moselle': {
-    approx: 'admin',
     // «Haute-Rhin» és com ho escriu Natural Earth.
     build: () => within(FRANCE(), 'FRA', ['Bas-Rhin', 'Haute-Rhin', 'Moselle']),
   },
   'occupied-france': {
-    approx: 'line',
+    line: true,
     build: async () =>
       minus(
         FRANCE(),
@@ -457,9 +839,9 @@ const ZONES = {
         ]),
       ),
   },
-  'vichy-france': { approx: 'line', build: () => intersect(FRANCE(), ring(LINES.freeZone)) },
+  'vichy-france': { line: true, build: () => intersect(FRANCE(), ring(LINES.freeZone)) },
   'southern-zone': {
-    approx: 'line',
+    line: true,
     build: async () =>
       minus(
         intersect(FRANCE(), ring(LINES.freeZone)),
@@ -467,11 +849,172 @@ const ZONES = {
       ),
   },
   'italian-zone': {
-    approx: 'admin',
     build: async () =>
       intersect(ring(LINES.freeZone), await within(FRANCE(), 'FRA', ITALIAN_FRANCE)),
   },
   corsica: { build: () => within(FRANCE(), 'FRA', CORSICA) },
+
+  // Iugoslàvia, repartida l'abril del 1941.
+  croatia: {
+    line: true,
+    build: async () =>
+      minus(
+        union(YUGOSLAV(344), YUGOSLAV(346), await yugoslav('SRB', ['Sremski'])),
+        await yugoslav('HRV', ['Medimurska']),
+        await yugoslav('SRB', BACKA),
+        ring(LINES.baranja),
+        DALMATIA(),
+        JULIAN_MARCH(),
+      ),
+  },
+  serbia: {
+    build: async () =>
+      union(
+        await yugoslav(
+          'SRB',
+          admins
+            .filter((f) => f.properties.adm0_a3 === 'SRB')
+            .map((f) => f.properties.name)
+            .filter((name) => ![...BACKA, 'Sremski', ...BULGARIAN_SERBIA].includes(name)),
+        ),
+        await yugoslav('KOS', GERMAN_KOSOVO),
+      ),
+  },
+  'german-slovenia': {
+    line: true,
+    build: async () =>
+      minus(YUGOSLAV(349), ring(LINES.ljubljana), await yugoslav('SVN', PREKMURJE), JULIAN_MARCH()),
+  },
+  ljubljana: {
+    line: true,
+    build: () => minus(intersect(YUGOSLAV(349), ring(LINES.ljubljana)), JULIAN_MARCH()),
+  },
+  dalmatia: {
+    line: true,
+    build: async () => union(DALMATIA(), await yugoslav('MNE', KOTOR)),
+  },
+  montenegro: {
+    build: async () =>
+      minus(YUGOSLAV(341), await yugoslav('MNE', [...KOTOR, ...ALBANIAN_MONTENEGRO])),
+  },
+  'greater-albania': {
+    build: async () =>
+      union(
+        minus(YUGOSLAV(347), await yugoslav('KOS', [...GERMAN_KOSOVO, ...BULGARIAN_KOSOVO])),
+        await yugoslav('MKD', ALBANIAN_MACEDONIA),
+        await yugoslav('MNE', ALBANIAN_MONTENEGRO),
+      ),
+  },
+  'bulgarian-macedonia': {
+    build: async () =>
+      union(
+        minus(YUGOSLAV(343), await yugoslav('MKD', ALBANIAN_MACEDONIA)),
+        await yugoslav('SRB', BULGARIAN_SERBIA),
+        await yugoslav('KOS', BULGARIAN_KOSOVO),
+      ),
+  },
+  'backa-baranja': {
+    line: true,
+    build: async () =>
+      union(await yugoslav('SRB', BACKA), intersect(YUGOSLAV(344), ring(LINES.baranja))),
+  },
+  'prekmurje-medjimurje': {
+    build: async () =>
+      union(await yugoslav('SVN', PREKMURJE), await yugoslav('HRV', ['Medimurska'])),
+  },
+
+  // Grècia, repartida l'abril del 1941.
+  'greece-german': { line: true, build: GERMAN_GREECE },
+  'greece-italian': {
+    line: true,
+    build: async () => minus(GREECE(), await GERMAN_GREECE(), BULGARIAN_GREECE(), await CRETE()),
+  },
+  'greece-bulgarian': { line: true, build: BULGARIAN_GREECE },
+  'western-crete': {
+    line: true,
+    build: async () => intersect(await CRETE(), ring(LINES.westCrete)),
+  },
+  'central-crete': {
+    line: true,
+    build: async () => minus(await CRETE(), ring(LINES.westCrete), ring(LINES.eastCrete)),
+  },
+  lasithi: { line: true, build: async () => intersect(await CRETE(), ring(LINES.eastCrete)) },
+
+  // Hongria i Romania, del 1940 al 1944.
+  'northern-transylvania': {
+    line: true,
+    build: async () =>
+      intersect(
+        await within(ROMANIA(), 'ROU', [
+          'Satu Mare',
+          'Maramures',
+          'Salaj',
+          'Bistrita-Nasaud',
+          'Cluj',
+          'Mures',
+          'Harghita',
+          'Covasna',
+          'Bihor',
+        ]),
+        ring(LINES.viennaAward),
+      ),
+  },
+  'northern-bukovina': { build: BUKOVINA },
+  bessarabia: {
+    // A l'est del Prut: el que queda a l'oest són engrunes de comparar dues dates de CShapes.
+    build: async () => intersect(minus(ROMANIA_LOST(), await BUKOVINA()), ring(LINES.eastOfPrut)),
+  },
+  transnistria: { line: true, build: TRANSNISTRIA },
+  hungary: { build: () => state(310, '1941-01-01') },
+
+  // El front de l'Est: el que Alemanya va ocupar de la Unió Soviètica de després del 1940.
+  estonia: { build: () => state(366, '1940-01-01') },
+  latvia: { build: () => state(367, '1940-01-01') },
+  lithuania: {
+    line: true,
+    build: () => minus(LITHUANIA(), POLAND(), ring(LINES.memel)),
+  },
+  // Sense el que el 1940 era letó o lituà: les fronteres soviètiques es van moure després.
+  belarus: { build: () => minus(SOVIET(370), state(367, '1940-01-01'), LITHUANIA()) },
+  ukraine: { line: true, build: () => minus(SOVIET(369), TRANSNISTRIA(), CRIMEA()) },
+  crimea: { build: CRIMEA },
+
+  // Itàlia, del 1943 al 1945.
+  'italian-social-republic': {
+    build: () =>
+      within(ITALY(), 'ITA', [
+        ...inRegions('ITA', [
+          'Piemonte',
+          "Valle d'Aosta",
+          'Lombardia',
+          'Liguria',
+          'Emilia-Romagna',
+          'Veneto',
+        ]).filter((name) => name !== 'Belluno'),
+      ]),
+  },
+  'central-italy': {
+    build: () =>
+      within(ITALY(), 'ITA', inRegions('ITA', ['Toscana', 'Umbria', 'Marche', 'Lazio', 'Abruzzo'])),
+  },
+  'alpine-foothills': {
+    build: () => within(ITALY(), 'ITA', ['Bozen', 'Trento', 'Belluno']),
+  },
+  'adriatic-littoral': {
+    line: true,
+    build: async () =>
+      union(
+        await within(ITALY(), 'ITA', inRegions('ITA', ['Friuli-Venezia Giulia'])),
+        JULIAN_MARCH(),
+      ),
+  },
+
+  // L'oest: el que faltava.
+  'channel-islands': { build: () => union(adminUnits('JEY'), adminUnits('GGY')) },
+  'eupen-malmedy': {
+    line: true,
+    build: () => intersect(state(211, '1940-01-01'), ring(LINES.eupenMalmedy)),
+  },
 }
 
 // ── La sortida ───────────────────────────────────────────────────────────────
@@ -515,6 +1058,7 @@ if (withoutShape.length > 0 || withoutContent.length > 0) {
 await loadAdmins()
 const features = []
 for (const id of ids.sort()) {
+  usesAdmin = false
   const geometry = round(await ZONES[id].build())
   if (geometry.length === 0) throw new Error(`La zona ${id} ha quedat buida`)
   // El nom va al pol d'inaccessibilitat del tros més gran, com el dels estats.
@@ -524,7 +1068,8 @@ for (const id of ids.sort()) {
     type: 'Feature',
     properties: {
       id,
-      approx: ZONES[id].approx ?? null,
+      // D'on surten les vores que no són de CShapes, si n'hi ha: la fitxa ho diu.
+      approx: [...(ZONES[id].line ? ['line'] : []), ...(usesAdmin ? ['admin'] : [])],
       label: [+x.toFixed(3), +y.toFixed(3)],
       rank: -Math.round(ringArea(largest[0])),
     },

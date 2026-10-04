@@ -1,0 +1,32 @@
+start: 1943-09-10
+control:
+  - { until: 1943-09-22, by: 255, kind: occupation }
+  - { until: 1944-06-04, by: 255, kind: client }
+countries: [325]
+title:
+  ca: Roma i la Itàlia central
+  es: Roma y la Italia central
+  en: Rome and central Italy
+label:
+  ca: Itàlia central
+  es: Italia central
+  en: Central Italy
+summary:
+  ca: >-
+    Els alemanys van ocupar Roma entre el 8 i el 10 de setembre del 1943, i la Itàlia central va
+    quedar sota el seu control i, sobre el paper, sota la República Social Italiana. A Roma, el març
+    del 1944, van matar 335 persones a les Fosses Ardeatines en represàlia per un atemptat. Els
+    Aliats hi van entrar el 4 de juny del 1944; la Toscana i les Marques es van alliberar aquell
+    estiu.
+  es: >-
+    Los alemanes ocuparon Roma entre el 8 y el 10 de septiembre de 1943, y la Italia central quedó
+    bajo su control y, sobre el papel, bajo la República Social Italiana. En Roma, en marzo de 1944,
+    mataron a 335 personas en las Fosas Ardeatinas en represalia por un atentado. Los Aliados
+    entraron el 4 de junio de 1944; la Toscana y las Marcas se liberaron aquel verano.
+  en: >-
+    The Germans occupied Rome between 8 and 10 September 1943, and central Italy came under their
+    control and, on paper, under the Italian Social Republic. In Rome, in March 1944, they killed
+    335 people at the Ardeatine Caves in reprisal for an attack. The Allies entered the city on 4
+    June 1944; Tuscany and the Marche were liberated that summer.
+wikipedia:
+  en: German occupation of Rome

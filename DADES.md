@@ -80,9 +80,13 @@ aquí. Els fitxers generats no es toquen mai a mà.
   primer arbitratge de Viena (1938), les annexions soviètiques del 1940— però no el territori pres
   per la força, ni el segon arbitratge de Viena (1940), que va donar el nord de Transsilvània a
   Hongria. Entre el 1938 i el 1945, Àustria, Bohèmia-Moràvia i Polònia hi segueixen sortint. Ho
-  explica la capa d'ocupacions (§1.3), que encara no és sencera.
+  explica la capa d'ocupacions (§1.3).
 - **Dàntzig** surt dins d'Alemanya des del 30 de setembre del 1938. Va ser ciutat lliure fins a
   l'1 de setembre del 1939, quan el Reich se la va annexionar.
+- **La frontera italiana del 1920 al 1947.** L'Ístria, Fiume, el Litoral eslovè amb Postojna i
+  les illes de Cres i Lošinj hi surten dins de Iugoslàvia, i el Dodecanès, dins de Grècia, quan
+  eren italians. La capa d'ocupacions no els compta al repartiment de Iugoslàvia del 1941; corregir
+  les fronteres és al [full de ruta](FULL-DE-RUTA.md), §3.
 - **Sense microestats.** Andorra, Liechtenstein, Mònaco, San Marino i el Vaticà no són a CShapes.
 - **Criteris de sobirania.** Algunes decisions són de la llista de Gleditsch i Ward: Montenegro és
   part de Iugoslàvia del 1918 al 2006, i l'Alemanya Occidental comença el 1945, amb les zones
@@ -101,34 +105,45 @@ i la font, i una forma que fa `npm run data:occupations` (`scripts/build-occupat
 **Les dates.** Una zona comença el dia que l'ocupant en pren el control —la capitulació,
 l'armistici, l'annexió o la presa de la capital— i s'acaba el dia que el perd: la retirada, la
 capitulació o l'alliberament de la capital. Mentre es lluitava, el que surt al mapa és el
-conflicte, no la zona; els fronts no s'hi dibuixen.
+conflicte, no la zona; els fronts no s'hi dibuixen. A les zones grans, la capital marca totes dues
+dates encara que una part canviés de mans abans o després: Ucraïna ocupada va de la presa de Kíiv,
+el setembre del 1941, al seu alliberament, el novembre del 1943, tot i que l'oest no es va
+alliberar fins al 1944.
 
 **La forma** es fa amb peces que ja existeixen, perquè les vores coincideixin amb les del mapa:
 
 | D'on | Per a què | Exemple |
 | --- | --- | --- |
 | Un estat de CShapes, de la mateixa època o d'una altra | La majoria de les zones | Àustria és l'Àustria del 1938; Bohèmia i Moràvia, la Txecoslovàquia del 1939 dins de la Txèquia d'avui |
-| Les divisions administratives d'avui, de [Natural Earth](https://www.naturalearthdata.com/) (domini públic) | Les vores que seguien una divisió que encara existeix | Alsàcia i Mosel·la són tres departaments; la zona italiana de França, vuit |
-| Línies dibuixades a mà (`LINES` a l'script), amb la font al costat | On no hi ha res més | La partició de Polònia, la línia de demarcació francesa, Memel, Zaolzie |
+| Les divisions administratives d'avui, de [Natural Earth](https://www.naturalearthdata.com/) (domini públic) | Les vores que seguien una divisió que encara existeix | Alsàcia i Mosel·la són tres departaments; la República Social Italiana, les províncies del nord d'Itàlia; Kosovo, repartit per municipis |
+| Línies dibuixades a mà (`LINES` a l'script), amb la font al costat | On no hi ha res més | La partició de Polònia, la línia de demarcació francesa, el segon arbitratge de Viena, Transnístria |
 
 Les línies dibuixades a mà són **aproximades**, amb un error d'uns 10-20 km; les divisions d'avui,
-tant com s'hagin mogut des d'aleshores. La fitxa de cada zona ho diu.
+tant com s'hagin mogut des d'aleshores. La fitxa de cada zona ho diu, i cita Natural Earth si se'n
+fan servir les divisions. Un test comprova que dues zones de les mateixes dates no es trepitgin.
 
-**Què hi ha.** L'expansió alemanya del 1938-1939 (Àustria, Bohèmia i Moràvia, l'Estat Eslovac,
-Memel), Zaolzie i la Rutènia hongaresa; la partició de Polònia, també l'est ocupat per Alemanya
-del 1941 al 1944; Albània; l'ocupació de Dinamarca, Noruega, els Països Baixos, Bèlgica i
-Luxemburg, i la de França: la zona ocupada, la de Vichy, Alsàcia i Mosel·la, les zones del 1942 i
-Còrsega.
+**Què hi ha**, en 57 zones:
 
-**Què hi falta**, i és la feina que ve:
+- **L'oest i el centre**: l'expansió alemanya del 1938-1939 (Àustria, Bohèmia i Moràvia, l'Estat
+  Eslovac, Memel), Zaolzie i la Rutènia hongaresa; la partició de Polònia; l'ocupació de
+  Dinamarca, Noruega, els Països Baixos, Bèlgica, Eupen-Malmedy, Luxemburg i les illes del Canal,
+  i la de França: la zona ocupada, la de Vichy, Alsàcia i Mosel·la, les zones del 1942 i Còrsega.
+- **Els Balcans**: Albània; el repartiment de Iugoslàvia (l'Estat Independent de Croàcia, Sèrbia,
+  l'Eslovènia alemanya i la italiana, Dalmàcia, Montenegro, Kosovo i l'oest de Macedònia units a
+  Albània, la Macedònia búlgara, la Bačka i el Prekmurje hongaresos) i el de Grècia (les zones
+  alemanya, italiana i búlgara, i Creta).
+- **El Danubi i l'Est**: el nord de Transsilvània, Bessaràbia, el nord de Bucovina i Transnístria;
+  els països bàltics, Bielorússia, Ucraïna i Crimea, ocupats del 1941 al 1944, i l'Hongria ocupada
+  del 1944.
+- **Itàlia del 1943 al 1945**: la República Social Italiana, Roma i la Itàlia central, i les dues
+  zones d'operacions que Alemanya es va annexionar de fet.
 
-- **Iugoslàvia i Grècia**, repartides el 1941 entre Alemanya, Itàlia, Hongria i Bulgària.
-- **El nord de Transsilvània**, hongarès del 1940 al 1944, i les annexions búlgares.
-- **El front de l'Est**: els països bàltics, Bielorússia, Ucraïna i Rússia ocupats del 1941 al
-  1944, i Transnístria. Les zones depenien del front, i aniran amb la capa dels fronts.
-- **Itàlia del 1943 al 1945**: la República Social Italiana i les zones que Alemanya es va
-  annexionar de fet.
-- Els territoris petits: les illes del Canal i Eupen-Malmedy.
+**Què hi falta**:
+
+- **La Rússia ocupada** del 1941 al 1943, de Smolensk al Caucas: va canviar de mans amb el front, i
+  anirà amb la capa dels fronts.
+- **Trossos petits de les annexions italianes del 1941**: el que es va afegir a la província de
+  Fiume (Sušak, Kastav, Krk i Rab) i, des de la tardor, Hvar i Pag. Surten dins de Croàcia.
 
 ---
 

@@ -1,0 +1,24 @@
+start: 1941-06-01
+control:
+  - { until: 1943-09-08, by: 325, kind: occupation }
+  - { until: 1944-10-13, by: 255, kind: occupation }
+countries: [350]
+title:
+  ca: Lassithi
+  es: Lasithi
+  en: Lasithi
+summary:
+  ca: >-
+    L'extrem oriental de Creta, la prefectura de Lassithi, el va ocupar Itàlia. Quan va signar
+    l'armistici, el setembre del 1943, en va prendre el control Alemanya, que se'n va retirar
+    l'octubre del 1944 per concentrar-se a Khanià.
+  es: >-
+    El extremo oriental de Creta, la prefectura de Lasithi, lo ocupó Italia. Cuando firmó el
+    armisticio, en septiembre de 1943, tomó el control Alemania, que se retiró en octubre de 1944
+    para concentrarse en Chania.
+  en: >-
+    Italy occupied the eastern end of Crete, the prefecture of Lasithi. When Italy signed the
+    armistice in September 1943, Germany took control, and withdrew in October 1944 to concentrate
+    around Chania.
+wikipedia:
+  en: Fortress Crete

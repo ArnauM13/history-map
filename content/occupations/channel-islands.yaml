@@ -1,0 +1,26 @@
+start: 1940-06-30
+control:
+  - { until: 1945-05-09, by: 255, kind: occupation }
+countries: [200]
+title:
+  ca: Illes del Canal
+  es: Islas del Canal
+  en: Channel Islands
+summary:
+  ca: >-
+    Després de la caiguda de França, el Regne Unit va desmilitaritzar les illes del Canal, i
+    Alemanya les va ocupar el 30 de juny del 1940: va ser l'únic territori britànic d'Europa que va
+    ocupar. Hi va fer construir fortificacions amb treballadors forçats. Les illes es van alliberar
+    el 9 de maig del 1945, l'endemà de la capitulació alemanya.
+  es: >-
+    Tras la caída de Francia, el Reino Unido desmilitarizó las islas del Canal, y Alemania las ocupó
+    el 30 de junio de 1940: fue el único territorio británico de Europa que ocupó. Hizo construir
+    allí fortificaciones con trabajadores forzados. Las islas se liberaron el 9 de mayo de 1945, el
+    día después de la capitulación alemana.
+  en: >-
+    After the fall of France, the United Kingdom demilitarised the Channel Islands, and Germany
+    occupied them on 30 June 1940: they were the only British territory in Europe it occupied. It
+    had fortifications built there with forced labourers. The islands were liberated on 9 May 1945,
+    the day after the German capitulation.
+wikipedia:
+  en: German occupation of the Channel Islands

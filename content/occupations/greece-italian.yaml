@@ -1,0 +1,31 @@
+start: 1941-04-23
+control:
+  - { until: 1943-09-08, by: 325, kind: occupation }
+  - { until: 1944-10-12, by: 255, kind: occupation }
+countries: [350]
+title:
+  ca: Grècia ocupada per Itàlia
+  es: Grecia ocupada por Italia
+  en: Italian-occupied Greece
+label:
+  ca: Zona italiana
+  es: Zona italiana
+  en: Italian zone
+summary:
+  ca: >-
+    Itàlia, que havia envaït Grècia l'octubre del 1940 sense poder-la vèncer, se'n va quedar la
+    major part: el continent, les illes Jòniques, les Cíclades i l'est de Creta. Quan va signar
+    l'armistici, el setembre del 1943, la seva zona la va ocupar Alemanya, que la va mantenir fins a
+    la retirada de l'octubre del 1944.
+  es: >-
+    Italia, que había invadido Grecia en octubre de 1940 sin poder vencerla, se quedó la mayor
+    parte: el continente, las islas Jónicas, las Cícladas y el este de Creta. Cuando firmó el
+    armisticio, en septiembre de 1943, su zona la ocupó Alemania, que la mantuvo hasta la retirada
+    de octubre de 1944.
+  en: >-
+    Italy, which had invaded Greece in October 1940 without managing to defeat it, kept most of it:
+    the mainland, the Ionian Islands, the Cyclades and eastern Crete. When Italy signed the
+    armistice in September 1943, Germany occupied its zone and held it until the withdrawal of
+    October 1944.
+wikipedia:
+  en: Axis occupation of Greece
