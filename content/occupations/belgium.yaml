@@ -1,0 +1,26 @@
+start: 1940-05-28
+control:
+  - { until: 1944-09-03, by: 255, kind: occupation }
+countries: [211, 220]
+title:
+  ca: Bèlgica i el nord de França
+  es: Bélgica y el norte de Francia
+  en: Belgium and northern France
+summary:
+  ca: >-
+    Bèlgica va capitular el 28 de maig del 1940, després de divuit dies de combats. Alemanya la va
+    posar sota una administració militar que també governava els departaments francesos del Nord i
+    del Pas de Calais, separats de la resta de la França ocupada. Brussel·les i Lilla es van
+    alliberar el 3 de setembre del 1944.
+  es: >-
+    Bélgica capituló el 28 de mayo de 1940, tras dieciocho días de combates. Alemania la puso bajo
+    una administración militar que también gobernaba los departamentos franceses del Norte y del
+    Paso de Calais, separados del resto de la Francia ocupada. Bruselas y Lille se liberaron el 3
+    de septiembre de 1944.
+  en: >-
+    Belgium surrendered on 28 May 1940, after eighteen days of fighting. Germany put it under a
+    military administration that also ruled the French departments of Nord and Pas-de-Calais,
+    separated from the rest of occupied France. Brussels and Lille were liberated on 3 September
+    1944.
+wikipedia:
+  en: Military Administration in Belgium and Northern France

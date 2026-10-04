@@ -25,10 +25,17 @@ un component, vol dir que falta un token.
 | `--c-brand-ink` | = marca | marca cap al text | La marca **quan fa de lletra** |
 | `--c-conflict` | `#d32f2f` | `#ef5350` | Conflictes: llista, mapa i línia |
 | `--c-event` | `#d97706` | `#ff9800` | Fets: llista, mapa i línia |
+| `--c-occupation` | `#7b1fa2` | `#ce93d8` | Ocupacions: la llista i la fitxa (al mapa, el color és el de l'ocupant) |
 | `--c-success` | `#2e7d32` | `#66bb6a` | La xapa «Nova» d'una bandera |
 
 El mapa té els seus colors a `src/map/style.ts`: el mar, les fronteres i la paleta d'atles de paper
 dels estats. No segueixen el tema: un mapa antic és clar també de nit.
+
+Les zones de la capa d'ocupacions es pinten amb el color de qui les controlava: una annexió, plena
+(Àustria es veu com una part més d'Alemanya); una ocupació, ratllada espessa; un estat client,
+ratllada clara. Sempre amb la vora discontínua, i les ratlles deixen veure el color de l'estat de
+sota, que és de qui era. La llegenda (`.map-legend`) només surt si en la data n'hi ha alguna, i
+només amb les maneres que hi surten.
 
 **Mides**: marge de pàgina 16 px, espai entre targetes 12 px, dins d'una targeta `14px 14px 16px`.
 **Radis**: targeta 18, fila 14, pastilla 20, botó rodó 50 %. **Ombra**: `0 2px 10px var(--c-shadow)`.
@@ -87,8 +94,9 @@ mateix radi i la mateixa ombra.
 - `.segmented`: el selector lliscant de dues opcions del panell (Banderes / Fets). La pastilla es
   mou; el text triat va amb `--c-brand-ink`.
 - `.chip`: la xapa d'una categoria o de «Nova», tenyida amb `--ic`.
-- `.map-toggle`: l'interruptor que flota sobre el mapa. L'estat va també a la icona (bandera plena
-  o buida) i a `aria-pressed`, no només al color.
+- `.map-toggle`: els interruptors que floten sobre el mapa (banderes, ocupacions), un sota l'altre
+  dins de `.map-toggles`. L'estat va també a la icona (plena o buida) i a `aria-pressed`, no només
+  al color.
 
 ## 5. Buits
 

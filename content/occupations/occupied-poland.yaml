@@ -1,0 +1,30 @@
+start: 1939-09-28
+control:
+  - { until: 1939-10-25, by: 255, kind: occupation }
+countries: [290]
+title:
+  ca: Polònia ocupada per Alemanya
+  es: Polonia ocupada por Alemania
+  en: German-occupied Poland
+label:
+  ca: Polònia ocupada
+  es: Polonia ocupada
+  en: Occupied Poland
+summary:
+  ca: >-
+    Alemanya va envair Polònia l'1 de setembre del 1939, i la Unió Soviètica, el 17. El 28 de
+    setembre, el dia que va capitular Varsòvia, es van repartir el país amb un tractat de
+    fronteres. Fins al 25 d'octubre la meitat alemanya va estar sota administració militar; després,
+    una part es va annexionar al Reich i la resta va ser el Govern General.
+  es: >-
+    Alemania invadió Polonia el 1 de septiembre de 1939, y la Unión Soviética, el 17. El 28 de
+    septiembre, el día en que capituló Varsovia, se repartieron el país con un tratado de
+    fronteras. Hasta el 25 de octubre la mitad alemana estuvo bajo administración militar; después,
+    una parte se anexionó al Reich y el resto fue el Gobierno General.
+  en: >-
+    Germany invaded Poland on 1 September 1939, and the Soviet Union on the 17th. On 28 September,
+    the day Warsaw surrendered, they divided the country with a frontier treaty. Until 25 October
+    the German half was under military administration; then part of it was annexed to the Reich
+    and the rest became the General Government.
+wikipedia:
+  en: German–Soviet Frontier Treaty

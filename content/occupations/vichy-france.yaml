@@ -1,0 +1,27 @@
+start: 1940-06-25
+control:
+  - { until: 1942-11-10, by: 255, kind: client }
+countries: [220]
+flag: fr
+title:
+  ca: França de Vichy
+  es: Francia de Vichy
+  en: Vichy France
+summary:
+  ca: >-
+    La zona que l'armistici va deixar sense ocupar, governada des de Vichy pel mariscal Pétain, a
+    qui l'Assemblea Nacional va donar plens poders el 10 de juliol del 1940. L'Estat francès va
+    col·laborar amb Alemanya, també en la deportació dels jueus. Quan els aliats van desembarcar
+    al nord d'Àfrica, Alemanya i Itàlia la van ocupar, l'11 de novembre del 1942.
+  es: >-
+    La zona que el armisticio dejó sin ocupar, gobernada desde Vichy por el mariscal Pétain, a
+    quien la Asamblea Nacional dio plenos poderes el 10 de julio de 1940. El Estado francés
+    colaboró con Alemania, también en la deportación de los judíos. Cuando los aliados
+    desembarcaron en el norte de África, Alemania e Italia la ocuparon, el 11 de noviembre de 1942.
+  en: >-
+    The zone the armistice left unoccupied, ruled from Vichy by Marshal Pétain, to whom the
+    National Assembly gave full powers on 10 July 1940. The French State collaborated with
+    Germany, including in the deportation of Jews. When the Allies landed in North Africa, Germany
+    and Italy occupied it on 11 November 1942.
+wikipedia:
+  en: Vichy France

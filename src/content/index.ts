@@ -1,16 +1,19 @@
 import { parse } from 'yaml'
 import { z } from 'zod'
 import { fallbackOrder, type Lang } from '../i18n'
-import { isWithin, type IsoDate } from '../lib/date'
+import { addDays, isWithin, type IsoDate } from '../lib/date'
 import {
   conflictSchema,
   capitalsSchema,
   countryNamesSchema,
   eventSchema,
   flagsSchema,
+  occupationSchema,
   type Conflict,
   type HistoricalEvent,
   type LocalizedText,
+  type Occupation,
+  type OccupationKind,
   type WikipediaTitles,
 } from './schema'
 
@@ -20,6 +23,11 @@ const eventFiles = import.meta.glob<string>('/content/events/*.yaml', {
   eager: true,
 })
 const conflictFiles = import.meta.glob<string>('/content/conflicts/*.yaml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+})
+const occupationFiles = import.meta.glob<string>('/content/occupations/*.yaml', {
   query: '?raw',
   import: 'default',
   eager: true,
@@ -73,6 +81,9 @@ export const EVENTS: HistoricalEvent[] = loadCollection(eventFiles, eventSchema)
 )
 export const CONFLICTS: Conflict[] = loadCollection(conflictFiles, conflictSchema).sort((a, b) =>
   a.start.localeCompare(b.start),
+)
+export const OCCUPATIONS: Occupation[] = loadCollection(occupationFiles, occupationSchema).sort(
+  (a, b) => a.start.localeCompare(b.start),
 )
 export const COUNTRY_NAMES = loadFile('/content/countries.yaml', countryNamesSchema, {})
 export const CAPITALS = loadFile('/content/capitals.yaml', capitalsSchema, {})
@@ -141,13 +152,43 @@ export const capitalName = (capname: string, lang: Lang) =>
 export const activeConflicts = (date: IsoDate) =>
   CONFLICTS.filter((c) => isWithin(date, c.start, c.end))
 
+/** Un tram de control d'una zona, amb el primer dia ja calculat. */
+export interface ControlPeriod {
+  from: IsoDate
+  until?: IsoDate
+  by: number
+  kind: OccupationKind
+}
+
+/** Qui va controlar una zona i com, tram a tram: cada un comença l'endemà de l'anterior. */
+export const controlPeriods = (zone: Occupation): ControlPeriod[] =>
+  zone.control.map((p, i) => ({
+    ...p,
+    from: i === 0 ? zone.start : addDays(zone.control[i - 1].until!, 1),
+  }))
+
+/** Qui controlava la zona en una data, o res si aquell dia no hi era. */
+export const controlOn = (zone: Occupation, date: IsoDate) =>
+  controlPeriods(zone).find((p) => isWithin(date, p.from, p.until))
+
+/** L'últim dia de la zona; sense, encara dura. */
+export const occupationEnd = (zone: Occupation) => zone.control.at(-1)!.until
+
+export const activeOccupations = (date: IsoDate) => OCCUPATIONS.filter((o) => controlOn(o, date))
+
 export const eventsOfYear = (year: number) =>
   EVENTS.filter((e) => e.date.startsWith(String(year).padStart(4, '0')))
 
-/** Les dates on salta la línia temporal a la pestanya Fets: els fets i l'inici i final dels conflictes. */
+/**
+ * Les dates on salta la línia temporal a la pestanya Fets: els fets, l'inici i el final dels
+ * conflictes, i cada canvi de les ocupacions.
+ */
 export const KEY_DATES: IsoDate[] = [
   ...new Set([
     ...EVENTS.map((e) => e.date),
     ...CONFLICTS.flatMap((c) => (c.end ? [c.start, c.end] : [c.start])),
+    ...OCCUPATIONS.flatMap((o) =>
+      controlPeriods(o).flatMap((p) => (p.until ? [p.from, p.until] : [p.from])),
+    ),
   ]),
 ].sort()

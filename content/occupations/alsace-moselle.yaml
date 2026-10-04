@@ -1,0 +1,26 @@
+start: 1940-06-25
+control:
+  - { until: 1944-11-23, by: 255, kind: annexation }
+countries: [220]
+title:
+  ca: Alsàcia i Mosel·la
+  es: Alsacia y Mosela
+  en: Alsace and Moselle
+summary:
+  ca: >-
+    Després de l'armistici, Alemanya es va annexionar de fet, sense cap tractat, els departaments
+    d'Alsàcia i de la Mosel·la, que ja havien estat alemanys del 1871 al 1918. Hi va imposar
+    l'alemany i, des del 1942, en va reclutar els joves per la Wehrmacht: els malgré-nous. Metz es
+    va alliberar el 22 de novembre del 1944, i Estrasburg, l'endemà.
+  es: >-
+    Tras el armisticio, Alemania se anexionó de hecho, sin ningún tratado, los departamentos de
+    Alsacia y del Mosela, que ya habían sido alemanes de 1871 a 1918. Impuso allí el alemán y,
+    desde 1942, reclutó a sus jóvenes para la Wehrmacht: los malgré-nous. Metz se liberó el 22 de
+    noviembre de 1944, y Estrasburgo, al día siguiente.
+  en: >-
+    After the armistice, Germany annexed the departments of Alsace and Moselle in all but name,
+    without any treaty; they had already been German from 1871 to 1918. It imposed German there
+    and, from 1942, conscripted their young men into the Wehrmacht: the malgré-nous. Metz was
+    liberated on 22 November 1944, and Strasbourg the next day.
+wikipedia:
+  en: Malgré-nous

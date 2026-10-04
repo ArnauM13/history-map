@@ -3,15 +3,21 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 // MapLibre busca el seu worker al costat del mòdul, i un cop empaquetat no hi és: que el posi Vite.
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { useEffect, useRef, useState } from 'react'
-import { countryName } from '../content'
+import { OCCUPATIONS, controlOn, countryName, localize } from '../content'
 import { flagOn } from '../content/flags'
 import type { Conflict, HistoricalEvent } from '../content/schema'
 import { useI18n } from '../i18n'
 import { toDateNumber, type IsoDate } from '../lib/date'
 import type { BorderProperties, Selection } from '../selection'
-import { featuresOn, loadBorderData, type LabelCollection } from './data'
+import {
+  featuresOn,
+  insideMultiPolygon,
+  loadBorderData,
+  type LabelCollection,
+  type OccupationCollection,
+} from './data'
 import { ensureFlagImage } from './flagImages'
-import { EUROPE_BOUNDS, MAX_BOUNDS, createStyle, validOn } from './style'
+import { EUROPE_BOUNDS, MAX_BOUNDS, addHatches, createStyle, validOn } from './style'
 
 const ATTRIBUTION =
   '<a href="https://icr.ethz.ch/data/cshapes/" target="_blank" rel="noopener">CShapes 2.0</a> (CC BY-NC-SA 4.0) · <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · <a href="https://www.wikipedia.org/" target="_blank" rel="noopener">Wikipedia</a>'
@@ -21,6 +27,7 @@ maplibregl.setWorkerUrl(workerUrl)
 interface Props {
   date: IsoDate
   showFlags: boolean
+  showOccupations: boolean
   events: HistoricalEvent[]
   conflicts: Conflict[]
   selection: Selection | null
@@ -29,11 +36,35 @@ interface Props {
 
 const geojson = (map: maplibregl.Map, id: string) => map.getSource(id) as maplibregl.GeoJSONSource
 
-export function MapView({ date, showFlags, events, conflicts, selection, onSelect }: Props) {
+const ZONES = new Map(OCCUPATIONS.map((o) => [o.id, o]))
+
+/** Les zones de la capa d'ocupacions que valen en una data, amb qui les controlava i com. */
+function zonesOn(collection: OccupationCollection, date: IsoDate) {
+  return collection.features.flatMap((feature) => {
+    const zone = ZONES.get(feature.properties.id)
+    const period = zone && controlOn(zone, date)
+    return zone && period ? [{ feature, zone, period }] : []
+  })
+}
+
+const ZONE_LAYERS = ['occupations-fill', 'occupations-hatch']
+
+export function MapView({
+  date,
+  showFlags,
+  showOccupations,
+  events,
+  conflicts,
+  selection,
+  onSelect,
+}: Props) {
   const { lang, t } = useI18n()
   const container = useRef<HTMLDivElement>(null)
   const mapRef = useRef<maplibregl.Map | null>(null)
   const labelsRef = useRef<LabelCollection | null>(null)
+  const occupationsRef = useRef<OccupationCollection | null>(null)
+  /** El color de cada estat (l'índex `c` de la paleta), per pintar les zones del de qui les controla. */
+  const coloursRef = useRef(new Map<number, number>())
   const onSelectRef = useRef(onSelect)
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
 
@@ -67,27 +98,34 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     }
     map.on('mousemove', 'borders-fill', (e) => setHover(e.features?.[0]?.id))
     map.on('mouseleave', 'borders-fill', () => setHover(undefined))
-    for (const layer of ['borders-fill', 'events', 'conflicts']) {
+    for (const layer of ['borders-fill', ...ZONE_LAYERS, 'events', 'conflicts']) {
       map.on('mouseenter', layer, () => (map.getCanvas().style.cursor = 'pointer'))
       map.on('mouseleave', layer, () => (map.getCanvas().style.cursor = ''))
     }
 
     map.on('click', (e) => {
       const [hit] = map.queryRenderedFeatures(e.point, {
-        layers: ['conflicts', 'events', 'borders-fill'],
+        layers: ['conflicts', 'events', ...ZONE_LAYERS, 'borders-fill'],
       })
       if (!hit) return onSelectRef.current(null)
       const id = String(hit.properties.id)
       if (hit.layer.id === 'conflicts') onSelectRef.current({ kind: 'conflict', id })
       else if (hit.layer.id === 'events') onSelectRef.current({ kind: 'event', id })
+      else if (ZONE_LAYERS.includes(hit.layer.id)) onSelectRef.current({ kind: 'occupation', id })
       else onSelectRef.current({ kind: 'country', feature: hit.properties as BorderProperties })
     })
 
     const styleReady = new Promise((resolve) => map.once('load', resolve))
+    map.once('load', () => addHatches(map))
     Promise.all([loadBorderData(), styleReady])
-      .then(([{ borders, labels }]) => {
+      .then(([{ borders, labels, occupations }]) => {
         if (mapRef.current !== map) return
         geojson(map, 'borders').setData(borders)
+        for (const f of borders.features) {
+          const { gwcode, c } = f.properties as BorderProperties
+          if (!coloursRef.current.has(gwcode)) coloursRef.current.set(gwcode, c)
+        }
+        occupationsRef.current = occupations
         // MapLibre obre el crèdit en carregar i no el plega fins que es mou el mapa: en una
         // pantalla estreta tapava una franja sencera. Hi és igualment, rere la «i».
         if (map.getContainer().clientWidth < 640) {
@@ -119,43 +157,79 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     map.setFilter('borders-line', filter)
   }, [date, status])
 
-  // Les etiquetes, amb el nom (i la bandera) que tenia cada estat en aquella data.
+  // Les zones de la capa d'ocupacions, del color de qui les controlava.
+  useEffect(() => {
+    const map = mapRef.current
+    const occupations = occupationsRef.current
+    if (!map || !occupations || status !== 'ready') return
+    const zones = showOccupations ? zonesOn(occupations, date) : []
+    geojson(map, 'occupations').setData({
+      type: 'FeatureCollection',
+      features: zones.map(({ feature, period }) => ({
+        type: 'Feature',
+        geometry: feature.geometry,
+        properties: {
+          id: feature.properties.id,
+          kind: period.kind,
+          c: coloursRef.current.get(period.by) ?? 0,
+        },
+      })),
+    })
+  }, [date, showOccupations, status])
+
+  // Les etiquetes, amb el nom (i la bandera) que tenia cada estat en aquella data. On hi ha una
+  // zona ocupada, el nom de la zona substitueix el de l'estat que queda a sota.
   useEffect(() => {
     const map = mapRef.current
     const labels = labelsRef.current
-    if (!map || !labels || status !== 'ready') return
+    const occupations = occupationsRef.current
+    if (!map || !labels || !occupations || status !== 'ready') return
     let cancelled = false
-    const features = featuresOn(labels, toDateNumber(date)).map((f) => ({
-      ...f,
+    const zones = showOccupations ? zonesOn(occupations, date) : []
+    const states = featuresOn(labels, toDateNumber(date))
+      .filter((f) =>
+        zones.every(({ feature }) => !insideMultiPolygon(f.geometry.coordinates, feature.geometry)),
+      )
+      .map((f) => ({
+        type: 'Feature' as const,
+        geometry: f.geometry,
+        properties: {
+          ...f.properties,
+          name: countryName(f.properties.gwcode, date, lang, f.properties.country_name),
+        },
+        flagId: flagOn(f.properties.gwcode, date)?.flag,
+      }))
+    const zoneLabels = zones.map(({ feature, zone }) => ({
+      type: 'Feature' as const,
+      geometry: { type: 'Point' as const, coordinates: feature.properties.label },
+      // `status` diferent d'«independent»: el nom va en cursiva, com el dels territoris dependents.
       properties: {
-        ...f.properties,
-        name: countryName(f.properties.gwcode, date, lang, f.properties.country_name),
+        name: localize(zone.label ?? zone.title, lang),
+        status: 'zone',
+        // Abans que el de cap estat: el nom de la zona és el que explica què hi passava.
+        rank: feature.properties.rank - 10_000,
       },
+      flagId: zone.flag,
     }))
-    const flags = new Map<number, string>()
-    if (showFlags) {
-      for (const f of features) {
-        const flag = flagOn(f.properties.gwcode, date)?.flag
-        if (flag) flags.set(f.properties.gwcode, flag)
-      }
-    }
-    const ids = [...new Set(flags.values())]
+    const features = [...states, ...zoneLabels]
+    const ids = showFlags ? [...new Set(features.flatMap((f) => (f.flagId ? [f.flagId] : [])))] : []
     Promise.all(ids.map((id) => ensureFlagImage(map, id))).then((loaded) => {
       if (cancelled) return
       const available = new Set(ids.filter((_, i) => loaded[i]))
       geojson(map, 'labels').setData({
         type: 'FeatureCollection',
-        features: features.map((f) => {
-          const flag = flags.get(f.properties.gwcode)
+        features: features.map(({ flagId, ...f }) =>
           // `flag` només si la imatge hi és: l'estil ho mira amb ['has', 'flag'] per deixar lloc al nom.
-          return flag && available.has(flag) ? { ...f, properties: { ...f.properties, flag } } : f
-        }),
+          flagId && available.has(flagId)
+            ? { ...f, properties: { ...f.properties, flag: flagId } }
+            : f,
+        ),
       })
     })
     return () => {
       cancelled = true
     }
-  }, [date, lang, showFlags, status])
+  }, [date, lang, showFlags, showOccupations, status])
 
   // El contorn de l'estat triat.
   useEffect(() => {
@@ -167,6 +241,8 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
       ['==', ['get', 'gwcode'], gwcode],
       validOn(toDateNumber(date)),
     ])
+    const zone = selection?.kind === 'occupation' ? selection.id : ''
+    map.setFilter('occupations-selected', ['==', ['get', 'id'], zone])
   }, [selection, date, status])
 
   // Les marques dels fets de l'any i dels conflictes oberts.
@@ -195,16 +271,19 @@ export function MapView({ date, showFlags, events, conflicts, selection, onSelec
     })
   }, [events, conflicts, selection, date, status])
 
-  // Si el fet o el conflicte triat queda fora de la vista, s'hi va.
+  // Si el fet, el conflicte o la zona triats queden fora de la vista, s'hi va.
   useEffect(() => {
     const map = mapRef.current
     if (!map || !selection || selection.kind === 'country') return
-    const item =
+    const location =
       selection.kind === 'event'
-        ? events.find((e) => e.id === selection.id)
-        : conflicts.find((c) => c.id === selection.id)
-    if (item?.location && !map.getBounds().contains(item.location)) {
-      map.easeTo({ center: item.location, duration: 800 })
+        ? events.find((e) => e.id === selection.id)?.location
+        : selection.kind === 'conflict'
+          ? conflicts.find((c) => c.id === selection.id)?.location
+          : occupationsRef.current?.features.find((f) => f.properties.id === selection.id)
+              ?.properties.label
+    if (location && !map.getBounds().contains(location)) {
+      map.easeTo({ center: location, duration: 800 })
     }
   }, [selection, events, conflicts])
 

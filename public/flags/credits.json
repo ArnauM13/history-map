@@ -462,6 +462,10 @@
     "license": "Public domain",
     "artist": "See below."
   },
+  "protectorate": {
+    "file": "Flag of the Protectorate of Bohemia and Moravia.svg",
+    "license": "Public domain"
+  },
   "pt": {
     "file": "Flag of Portugal.svg",
     "license": "Public domain",
@@ -536,6 +540,11 @@
     "file": "Flag of Slovakia.svg",
     "license": "Public domain",
     "artist": "Original: Ladislav Čisárik and Ladislav Vrtel Vector: SKopp"
+  },
+  "sk-1939": {
+    "file": "Flag of Slovakia (1939–1945).svg",
+    "license": "Public domain",
+    "artist": "DarkEvil, PhiLiP"
   },
   "su": {
     "file": "Flag of the Soviet Union.svg",

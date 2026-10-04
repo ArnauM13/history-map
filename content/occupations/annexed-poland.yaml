@@ -1,0 +1,33 @@
+start: 1939-10-26
+control:
+  - { until: 1945-02-02, by: 255, kind: annexation }
+countries: [290]
+title:
+  ca: Polònia annexionada al Reich
+  es: Polonia anexionada al Reich
+  en: Polish areas annexed by Germany
+label:
+  ca: Annexionada al Reich
+  es: Anexionada al Reich
+  en: Annexed to the Reich
+summary:
+  ca: >-
+    Per un decret del 8 d'octubre del 1939, Alemanya es va annexionar l'oest i el nord de la
+    Polònia ocupada, repartits entre el Wartheland, Danzig-Prússia Occidental, Prússia Oriental i
+    Silèsia. En va expulsar centenars de milers de polonesos i jueus cap al Govern General per
+    instal·lar-hi colons alemanys; Auschwitz era en aquest territori. L'ofensiva soviètica del
+    Vístula a l'Oder, acabada el 2 de febrer del 1945, la va prendre gairebé tota.
+  es: >-
+    Por un decreto del 8 de octubre de 1939, Alemania se anexionó el oeste y el norte de la
+    Polonia ocupada, repartidos entre el Wartheland, Danzig-Prusia Occidental, Prusia Oriental y
+    Silesia. Expulsó a cientos de miles de polacos y judíos hacia el Gobierno General para instalar
+    colonos alemanes; Auschwitz estaba en este territorio. La ofensiva soviética del Vístula al
+    Óder, terminada el 2 de febrero de 1945, la tomó casi entera.
+  en: >-
+    By a decree of 8 October 1939, Germany annexed the west and north of occupied Poland, divided
+    between the Wartheland, Danzig-West Prussia, East Prussia and Silesia. It expelled hundreds of
+    thousands of Poles and Jews to the General Government to settle Germans there; Auschwitz lay
+    in this territory. The Soviet Vistula–Oder offensive, which ended on 2 February 1945, took
+    almost all of it.
+wikipedia:
+  en: Polish areas annexed by Nazi Germany

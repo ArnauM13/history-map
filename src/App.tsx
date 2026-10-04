@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Icon } from './components/Icon'
+import { OccupationLegend } from './components/OccupationLegend'
 import { Sidebar, type SidebarTab } from './components/Sidebar'
 import { Timeline } from './components/Timeline'
-import { activeConflicts, eventsOfYear } from './content'
+import { activeConflicts, activeOccupations, controlOn, eventsOfYear } from './content'
 import type { HistoricalEvent } from './content/schema'
 import {
   LANGUAGES,
@@ -41,6 +42,7 @@ function initialState(maxDate: IsoDate) {
     date: isValidIsoDate(d) ? clampDate(d, maxDate) : DEFAULT_DATE,
     lang: isLang(lang) ? lang : detectLanguage(),
     showFlags: params.get('flags') !== '0',
+    showOccupations: params.get('occ') !== '0',
   }
 }
 
@@ -53,6 +55,7 @@ export default function App() {
   const [selection, setSelection] = useState<Selection | null>(null)
   const [playing, setPlaying] = useState(false)
   const [showFlags, setShowFlags] = useState(initial.showFlags)
+  const [showOccupations, setShowOccupations] = useState(initial.showOccupations)
   const [tab, setTab] = useState<SidebarTab>('flags')
   const labels = useLabels()
   const { t } = translator(lang)
@@ -60,6 +63,7 @@ export default function App() {
   const year = yearOf(date)
   const yearEvents = useMemo(() => eventsOfYear(year), [year])
   const conflicts = useMemo(() => activeConflicts(date), [date])
+  const occupations = useMemo(() => activeOccupations(date), [date])
 
   // L'adreça es pot compartir: ?d=1914-06-28&lang=ca obre el mateix mapa a qui la rebi.
   useEffect(() => {
@@ -68,8 +72,10 @@ export default function App() {
     params.set('lang', lang)
     if (showFlags) params.delete('flags')
     else params.set('flags', '0')
+    if (showOccupations) params.delete('occ')
+    else params.set('occ', '0')
     history.replaceState(null, '', `?${params}`)
-  }, [date, lang, showFlags])
+  }, [date, lang, showFlags, showOccupations])
 
   useEffect(() => {
     document.documentElement.lang = lang
@@ -144,21 +150,37 @@ export default function App() {
           <MapView
             date={date}
             showFlags={showFlags}
+            showOccupations={showOccupations}
             events={yearEvents}
             conflicts={conflicts}
             selection={selection}
             onSelect={setSelection}
           />
-          <button
-            type="button"
-            className="map-toggle"
-            aria-pressed={showFlags}
-            aria-label={t('showFlagsLabel')}
-            onClick={() => setShowFlags(!showFlags)}
-          >
-            <Icon name={showFlags ? 'flag_fill' : 'flag'} />
-            {t('showFlags')}
-          </button>
+          <div className="map-toggles">
+            <button
+              type="button"
+              className="map-toggle"
+              aria-pressed={showFlags}
+              aria-label={t('showFlagsLabel')}
+              onClick={() => setShowFlags(!showFlags)}
+            >
+              <Icon name={showFlags ? 'flag_fill' : 'flag'} />
+              {t('showFlags')}
+            </button>
+            <button
+              type="button"
+              className="map-toggle"
+              aria-pressed={showOccupations}
+              aria-label={t('showOccupationsLabel')}
+              onClick={() => setShowOccupations(!showOccupations)}
+            >
+              <Icon name={showOccupations ? 'layers_fill' : 'layers'} />
+              {t('showOccupations')}
+            </button>
+          </div>
+          {showOccupations && occupations.length > 0 && (
+            <OccupationLegend kinds={new Set(occupations.map((o) => controlOn(o, date)!.kind))} />
+          )}
         </main>
 
         <Timeline
@@ -180,6 +202,8 @@ export default function App() {
           selection={selection}
           yearEvents={yearEvents}
           conflicts={conflicts}
+          occupations={occupations}
+          showOccupations={showOccupations}
           onTabChange={setTab}
           onSelect={setSelection}
           onGoToEvent={goToEvent}

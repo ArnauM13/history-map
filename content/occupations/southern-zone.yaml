@@ -1,0 +1,29 @@
+start: 1942-11-11
+control:
+  - { until: 1944-08-25, by: 255, kind: occupation }
+countries: [220]
+title:
+  ca: La zona sud ocupada
+  es: La zona sur ocupada
+  en: The occupied southern zone
+label:
+  ca: Zona sud ocupada
+  es: Zona sur ocupada
+  en: Occupied south
+summary:
+  ca: >-
+    L'11 de novembre del 1942 Alemanya va ocupar la zona lliure, tot i que el govern de Vichy va
+    continuar existint. El 27 de novembre la flota francesa es va enfonsar ella mateixa a Toló
+    perquè no la capturessin. El desembarcament aliat a Provença, el 15 d'agost del 1944, va
+    alliberar el sud en poques setmanes.
+  es: >-
+    El 11 de noviembre de 1942 Alemania ocupó la zona libre, aunque el gobierno de Vichy siguió
+    existiendo. El 27 de noviembre la flota francesa se hundió a sí misma en Tolón para que no la
+    capturaran. El desembarco aliado en Provenza, el 15 de agosto de 1944, liberó el sur en pocas
+    semanas.
+  en: >-
+    On 11 November 1942 Germany occupied the free zone, although the Vichy government carried on.
+    On 27 November the French fleet scuttled itself at Toulon to avoid capture. The Allied landing
+    in Provence on 15 August 1944 liberated the south within a few weeks.
+wikipedia:
+  en: Case Anton

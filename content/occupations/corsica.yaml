@@ -1,0 +1,26 @@
+start: 1942-11-11
+control:
+  - { until: 1943-09-08, by: 325, kind: occupation }
+countries: [220]
+title:
+  ca: Còrsega ocupada
+  es: Córcega ocupada
+  en: Occupied Corsica
+summary:
+  ca: >-
+    Itàlia, que la reclamava, va ocupar Còrsega l'11 de novembre del 1942 amb desenes de milers de
+    soldats. Després de l'armistici italià, la resistència corsa, les tropes de la França Lliure i
+    els mateixos italians en van fer fora els alemanys: el 4 d'octubre del 1943 va ser el primer
+    departament francès alliberat.
+  es: >-
+    Italia, que la reclamaba, ocupó Córcega el 11 de noviembre de 1942 con decenas de miles de
+    soldados. Tras el armisticio italiano, la resistencia corsa, las tropas de la Francia Libre y
+    los propios italianos expulsaron a los alemanes: el 4 de octubre de 1943 fue el primer
+    departamento francés liberado.
+  en: >-
+    Italy, which claimed the island, occupied Corsica on 11 November 1942 with tens of thousands of
+    soldiers. After the Italian armistice, the Corsican resistance, Free French troops and the
+    Italians themselves drove the Germans out: on 4 October 1943 it became the first French
+    department to be liberated.
+wikipedia:
+  en: Liberation of Corsica

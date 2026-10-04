@@ -14,7 +14,7 @@
 [![Texts: CC BY-SA 4.0](https://img.shields.io/badge/texts-CC%20BY--SA%204.0-006874)](content/README.md)
 [![Borders: CC BY-NC-SA 4.0](https://img.shields.io/badge/borders-CC%20BY--NC--SA%204.0-006874)](DADES.en.md)
 
-<img src=".github/readme/en-mapa.gif" width="900" alt="The map goes through twelve dates: 1914, 1919, 1923, 1938, 1945, 1950, 1975, 1989, 1991, 1993, 2008 and today. Borders, names and flags change at each one.">
+<img src=".github/readme/en-mapa.gif" width="900" alt="The map goes through thirteen dates: 1914, 1919, 1923, 1938, 1942, 1945, 1950, 1975, 1989, 1991, 1993, 2008 and today. Borders, names, flags and occupations change at each one.">
 
 </div>
 
@@ -33,6 +33,7 @@ map changes every few months. Here you can follow it day by day.
 | **The borders on any day** | From 1886 to today, with the exact day of every change and the name each state had at the time: the Russian Empire, Soviet Russia, the Soviet Union, Russia. |
 | **Every flag in its time** | About a hundred flags of some seventy states: on the map, in a gallery for each date and on each state's card, with what the ones with the most history mean. |
 | **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and marked on the timeline. |
+| **Occupations, from 1938 to 1945** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France. Hatched in the occupier's colour, each zone with its own card. |
 | **The source of every piece of data** | Every card says where its borders, name, flag dates and events come from, with the link to check it. |
 | **Three languages** | Catalan, Spanish and English: the interface, the names of states and capitals, the texts and the Wikipedia links. |
 | **A link for every date** | `?d=1914-06-28&lang=en` opens exactly the same map for whoever gets it. |
@@ -52,8 +53,8 @@ map changes every few months. Here you can follow it day by day.
   </tr>
   <tr>
     <td valign="top">
-      <img src=".github/readme/en-fets.png" alt="The Events tab on 1 September 1939, with the Second World War ongoing and the invasion of Poland.">
-      <p><b>Events and conflicts.</b> What was ongoing that day and what happened that year, in two or three sentences.</p>
+      <img src=".github/readme/en-fets.png" alt="The Events tab on 1 June 1942: the General Government's card, the Second World War ongoing and that day's occupations.">
+      <p><b>Events, conflicts and occupations.</b> What was ongoing that day, what happened that year and who controlled each territory: in 1942, the General Government.</p>
     </td>
     <td valign="top">
       <img src=".github/readme/en-mobil.png" width="300" alt="The map on a phone, in dark mode, on 26 December 1991.">
@@ -73,6 +74,7 @@ No piece of data gets in without a source, and the source is shown on the card w
 | Flag dates | The Wikipedia articles on each state's flags |
 | Flag images | [Wikimedia Commons](https://commons.wikimedia.org/), with each one's licence and author |
 | Events and conflicts | Wikipedia and external sources, such as UN resolution 68/262 on Crimea |
+| Occupied and annexed zones | CShapes borders from other years, today's divisions from [Natural Earth](https://www.naturalearthdata.com/) and hand-drawn lines, with each zone's Wikipedia article |
 
 The tests let nothing in without a source, and the "Fonts" workflow checks every Monday that all
 articles and links still exist. The details, corrections and limitations are in
@@ -80,9 +82,9 @@ articles and links still exist. The details, corrections and limitations are in
 
 ## What it doesn't do (on purpose)
 
-- **It doesn't draw occupations or front lines, for now.** Borders are those set by treaties:
-  between 1938 and 1945, Austria and Poland are still on the map. The occupations layer is the next
-  big piece of work.
+- **It doesn't draw front lines, for now.** The occupations layer says who controlled each
+  territory, not where the armies were. Yugoslavia, Greece and the Eastern Front are still
+  missing.
 - **It isn't an encyclopaedia.** Two or three sentences and the link to the source; the rest is
   well explained there.
 - **It asks you for nothing.** No account, no cookies, no personal data.
@@ -96,7 +98,8 @@ map on a given day is a filter: `start <= day <= end`.
 
 ```mermaid
 flowchart LR
-  cshapes["CShapes 2.0"] -- "npm run data:borders" --> data["public/data<br/>borders"]
+  cshapes["CShapes 2.0"] -- "npm run data:borders" --> data["public/data<br/>borders and occupations"]
+  ne["Natural Earth"] -- "npm run data:occupations" --> data
   commons["Wikimedia Commons"] -- "Flags workflow" --> flags["public/flags<br/>flags"]
   wiki["Wikipedia"] -- "Fonts workflow" --> titles["content/wikipedia.json<br/>Catalan and Spanish titles"]
   yaml["content/*.yaml<br/>events, conflicts, names, flags"] --> app(("The website"))
@@ -127,14 +130,15 @@ npm run dev        # http://localhost:5173
 | `npm test` | The tests, which also validate all the content and its sources |
 | `npm run lint` · `npm run format` | oxlint and Prettier |
 | `npm run data:borders` | Rebuilds the borders from CShapes 2.0 |
+| `npm run data:occupations` | Rebuilds the zones of the occupations layer |
 | `npm run data:flags` | Downloads the flags listed in `content/flags.yaml` |
 | `npm run data:sources` | Checks the sources and translates the Wikipedia titles |
 
 ## Structure
 
 ```
-content/        the content: events, conflicts, state and capital names, flags (YAML)
-public/data/    the borders, generated from CShapes
+content/        the content: events, conflicts, occupations, state and capital names, flags (YAML)
+public/data/    the borders and occupied zones, generated from CShapes
 public/flags/   the flags, downloaded from Wikimedia Commons
 scripts/        the ones that generate or check the data
 src/            the website: the map, the timeline, the panel
@@ -152,7 +156,7 @@ You can write in Catalan, Spanish or English.
 
 ## What's next
 
-- **The occupations layer**: what was under de facto control between 1938 and 1945, and today's
+- **The rest of the occupations layer**: Yugoslavia, Greece and the Eastern Front, and today's
   disputed territories.
 - **More content**: about a hundred events and thirty conflicts, with academic sources as well as
   Wikipedia.
@@ -166,7 +170,7 @@ The rest is in [FULL-DE-RUTA.md](FULL-DE-RUTA.md) (in Catalan).
 | --- | --- |
 | The code | [MIT](LICENSE) |
 | The texts in `content/` | [CC BY-SA 4.0](content/README.md) |
-| The borders in `public/data/` | CC BY-NC-SA 4.0, like CShapes 2.0: **non-commercial use only** |
+| The borders and occupations in `public/data/` | CC BY-NC-SA 4.0, like CShapes 2.0: **non-commercial use only** |
 | The flags in `public/flags/` | Each image's own, almost all public domain (`credits.json`) |
 | Fonts and icons | Open Sans and Material Symbols (Apache 2.0), Roboto (OFL 1.1) |
 
@@ -175,6 +179,7 @@ The rest is in [FULL-DE-RUTA.md](FULL-DE-RUTA.md) (in Catalan).
 - Guy Schvitz, Luc Girardin, Seraina Rüegger, Nils B. Weidmann, Lars-Erik Cederman and Kristian
   Skrede Gleditsch, for [CShapes 2.0](https://icr.ethz.ch/data/cshapes/).
 - Everyone who draws flags on Wikimedia Commons and writes Wikipedia, in every language.
+- [Natural Earth](https://www.naturalearthdata.com/), for the administrative divisions.
 - [MapLibre](https://maplibre.org/), [OpenMapTiles](https://github.com/openmaptiles/fonts),
   [Fontsource](https://fontsource.org/) and [Material Symbols](https://fonts.google.com/icons).
 - The visual language comes from Petja.

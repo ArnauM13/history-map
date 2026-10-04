@@ -77,6 +77,51 @@ export const conflictSchema = z
   })
   .refine((c) => !c.end || c.end >= c.start, 'El final no pot ser abans del començament')
 
+const flagId = z
+  .string()
+  .regex(/^[a-z0-9-]+$/, "L'identificador d'una bandera va en minúscules, xifres i guions")
+
+/**
+ * Com es controlava un territori que les fronteres reconegudes no donen a qui el tenia: annexionat
+ * (incorporat a l'estat que el prenia, com Àustria al Reich), ocupat (sota administració militar o
+ * civil de l'ocupant) o un estat client (un govern propi, però sotmès, com l'Estat Eslovac).
+ */
+export const OCCUPATION_KINDS = ['annexation', 'occupation', 'client'] as const
+
+const controlPeriod = z.strictObject({
+  /** L'últim dia d'aquest tram. Només l'últim pot anar sense, si encara dura. */
+  until: isoDate.optional(),
+  /** Qui el controlava: un codi de Gleditsch i Ward. */
+  by: z.number().int().positive(),
+  kind: z.enum(OCCUPATION_KINDS),
+})
+
+export const occupationSchema = z
+  .strictObject({
+    /** El primer dia: la capitulació, l'armistici, l'annexió o la presa de la capital. */
+    start: isoDate,
+    /** Qui el controlava i com, per ordre: Albània va ser italiana i després alemanya. */
+    control: z.array(controlPeriod).min(1),
+    title: localizedText,
+    /** El nom que va al mapa, si el títol hi és massa llarg. */
+    label: localizedText.optional(),
+    summary: localizedText,
+    /** De quins estats era el territori segons les fronteres reconegudes. */
+    countries,
+    /** Una bandera del catàleg, si el territori en feia servir una de pròpia (l'Estat Eslovac). */
+    flag: flagId.optional(),
+    wikipedia: wikipedia.optional(),
+    sources,
+  })
+  .refine(
+    (o) => o.control.slice(0, -1).every((p) => p.until),
+    "Només l'últim tram de `control` pot anar sense `until`",
+  )
+  .refine((o) => {
+    const untils = o.control.flatMap((p) => (p.until ? [p.until] : []))
+    return untils.every((u, i) => u >= (i === 0 ? o.start : untils[i - 1]))
+  }, "Els trams de `control` han d'anar per ordre, i després de `start`")
+
 /** Un nom, i l'article de la Viquipèdia (en anglès) que explica l'estat amb aquell nom. */
 const nameEntry = z.strictObject({
   /** L'últim dia que va valer aquest nom. L'última entrada no en porta. */
@@ -91,10 +136,6 @@ export const countryNamesSchema = z.record(
   z.string().regex(/^\d+$/, 'La clau és un codi de Gleditsch i Ward'),
   z.union([nameEntry.omit({ until: true }), z.array(nameEntry).min(1)]),
 )
-
-const flagId = z
-  .string()
-  .regex(/^[a-z0-9-]+$/, "L'identificador d'una bandera va en minúscules, xifres i guions")
 
 const flagEntry = z.strictObject({
   /** L'últim dia que es va fer servir. L'última entrada no en porta. */
@@ -122,5 +163,7 @@ export type WikipediaTitles = z.infer<typeof wikipedia>
 export type ExternalSource = z.infer<typeof externalSource>
 export type HistoricalEvent = z.infer<typeof eventSchema> & { id: string }
 export type Conflict = z.infer<typeof conflictSchema> & { id: string }
+export type Occupation = z.infer<typeof occupationSchema> & { id: string }
+export type OccupationKind = (typeof OCCUPATION_KINDS)[number]
 export type CountryNames = z.infer<typeof countryNamesSchema>
 export type Flags = z.infer<typeof flagsSchema>

@@ -1,4 +1,7 @@
 {
+  "1939 German ultimatum to Lithuania": {
+    "es": "Ultimátum alemán a Lituania de 1939"
+  },
   "2004 enlargement of the European Union": {
     "ca": "Ampliació de la Unió Europea de 2004"
   },
@@ -95,6 +98,13 @@
   "Carnation Revolution": {
     "ca": "Revolució dels Clavells",
     "es": "Revolución de los Claveles"
+  },
+  "Carpatho-Ukraine": {
+    "es": "Ucrania de los Cárpatos"
+  },
+  "Case Anton": {
+    "ca": "Operació Anton",
+    "es": "Operación Anton"
   },
   "China": {
     "ca": "República Popular de la Xina",
@@ -456,6 +466,10 @@
     "ca": "Franja de Gaza",
     "es": "Franja de Gaza"
   },
+  "General Government": {
+    "ca": "Govern General",
+    "es": "Gobierno General"
+  },
   "Georgia (country)": {
     "ca": "Geòrgia",
     "es": "Georgia"
@@ -468,9 +482,24 @@
     "ca": "Actes de capitulació del Tercer Reich",
     "es": "Capitulación alemana de mayo de 1945"
   },
+  "German military administration in occupied France during World War II": {
+    "ca": "Administració militar alemanya a la França ocupada durant la Segona Guerra Mundial",
+    "es": "Ocupación de Francia por las Fuerzas del Eje"
+  },
+  "German occupation of Luxembourg during World War II": {
+    "ca": "Ocupació de Luxemburg durant la Segona Guerra Mundial"
+  },
+  "German occupation of Norway": {
+    "es": "Ocupación de Noruega por la Alemania nazi"
+  },
+  "German occupation of the Netherlands": {},
   "German reunification": {
     "ca": "Reunificació alemanya",
     "es": "Reunificación alemana"
+  },
+  "German–Soviet Frontier Treaty": {
+    "ca": "Tractat germano-soviètic d'amistat, cooperació i demarcació",
+    "es": "Tratado Germano-Soviético de Amistad, Cooperación y Demarcación"
   },
   "Germany": {
     "ca": "Alemanya",
@@ -528,6 +557,13 @@
     "ca": "Israel",
     "es": "Israel"
   },
+  "Italian invasion of Albania": {
+    "ca": "Invasió italiana d'Albània",
+    "es": "Invasión italiana de Albania"
+  },
+  "Italian occupation of France": {
+    "es": "Ocupación italiana de Francia (1940-1944)"
+  },
   "Italy": {
     "ca": "Itàlia",
     "es": "Italia"
@@ -570,6 +606,9 @@
     "ca": "Líban",
     "es": "Líbano"
   },
+  "Liberation of Corsica": {
+    "es": "Ocupación italiana de Córcega"
+  },
   "Libya": {
     "ca": "Líbia",
     "es": "Libia"
@@ -584,6 +623,9 @@
     "ca": "Luxemburg",
     "es": "Luxemburgo"
   },
+  "Malgré-nous": {
+    "es": "Malgré-nous"
+  },
   "Malta": {
     "ca": "Malta",
     "es": "Malta"
@@ -591,6 +633,9 @@
   "Mandatory Palestine": {
     "ca": "Mandat britànic de Palestina",
     "es": "Mandato británico de Palestina"
+  },
+  "Military Administration in Belgium and Northern France": {
+    "es": "Administración Militar del Norte de Francia y Bélgica"
   },
   "Moldova": {
     "ca": "República de Moldàvia",
@@ -624,6 +669,14 @@
     "ca": "Noruega",
     "es": "Noruega"
   },
+  "Occupation of Denmark": {
+    "ca": "Ocupació de Dinamarca per l'Alemanya nazi",
+    "es": "Ocupación de Dinamarca por la Alemania nazi"
+  },
+  "Occupation of Poland (1939–1945)": {
+    "ca": "Ocupació de Polònia",
+    "es": "Ocupación de Polonia (1939-1945)"
+  },
   "October Revolution": {
     "ca": "Revolució d'Octubre de 1917",
     "es": "Revolución de Octubre"
@@ -640,9 +693,16 @@
     "ca": "Polònia",
     "es": "Polonia"
   },
+  "Polish areas annexed by Nazi Germany": {
+    "es": "Territorios polacos anexionados por la Alemania nazi"
+  },
   "Portugal": {
     "ca": "Portugal",
     "es": "Portugal"
+  },
+  "Protectorate of Bohemia and Moravia": {
+    "ca": "Protectorat de Bohèmia i Moràvia",
+    "es": "Protectorado de Bohemia y Moravia"
   },
   "Qajar Iran": {
     "ca": "Imperi Qajar",
@@ -699,6 +759,10 @@
     "ca": "Sèrbia i Montenegro",
     "es": "Serbia y Montenegro"
   },
+  "Slovak Republic (1939–1945)": {
+    "ca": "República Eslovaca (1939-1945)",
+    "es": "República Eslovaca (1939-1945)"
+  },
   "Slovakia": {
     "ca": "Eslovàquia",
     "es": "Eslovaquia"
@@ -707,6 +771,10 @@
     "ca": "Eslovènia",
     "es": "Eslovenia"
   },
+  "Soviet invasion of Poland": {
+    "ca": "Invasió soviètica de Polònia",
+    "es": "Invasión soviética de Polonia de 1939"
+  },
   "Soviet occupation zone in Germany": {
     "ca": "Zona d'ocupació soviètica",
     "es": "Zona de ocupación soviética"
@@ -714,6 +782,10 @@
   "Soviet Union": {
     "ca": "Unió de Repúbliques Socialistes Soviètiques",
     "es": "Unión Soviética"
+  },
+  "Soviet–Lithuanian Mutual Assistance Treaty": {
+    "ca": "Tractat lituanosoviètic d'Assistència Mútua",
+    "es": "Tratado lituano-soviético de asistencia mutua"
   },
   "Spain": {
     "ca": "Espanya",
@@ -746,6 +818,9 @@
   "Tajikistan": {
     "ca": "Tadjikistan",
     "es": "Tayikistán"
+  },
+  "Trans-Olza": {
+    "es": "Zaolzie"
   },
   "Treaty of Rome": {
     "ca": "Tractats de Roma",
@@ -785,6 +860,10 @@
   "Uzbekistan": {
     "ca": "Uzbekistan",
     "es": "Uzbekistán"
+  },
+  "Vichy France": {
+    "ca": "Govern de Vichy",
+    "es": "Francia de Vichy"
   },
   "Weimar Republic": {
     "ca": "República de Weimar",

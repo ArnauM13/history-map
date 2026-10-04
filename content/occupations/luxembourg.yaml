@@ -1,0 +1,26 @@
+start: 1940-05-10
+control:
+  - { until: 1944-09-10, by: 255, kind: annexation }
+countries: [212]
+title:
+  ca: Luxemburg annexionat
+  es: Luxemburgo anexionado
+  en: Annexed Luxembourg
+summary:
+  ca: >-
+    Alemanya va ocupar Luxemburg el 10 de maig del 1940 sense trobar resistència, i la gran
+    duquessa i el govern van marxar a l'exili. El país es va annexionar de fet al Reich: s'hi va
+    prohibir el francès i, des del 1942, els joves van ser reclutats per la Wehrmacht. Els
+    nord-americans van alliberar la capital el 10 de setembre del 1944.
+  es: >-
+    Alemania ocupó Luxemburgo el 10 de mayo de 1940 sin encontrar resistencia, y la gran duquesa y
+    el gobierno marcharon al exilio. El país se anexionó de hecho al Reich: se prohibió el francés
+    y, desde 1942, los jóvenes fueron reclutados por la Wehrmacht. Los estadounidenses liberaron
+    la capital el 10 de septiembre de 1944.
+  en: >-
+    Germany occupied Luxembourg on 10 May 1940 without resistance, and the grand duchess and the
+    government went into exile. The country was annexed to the Reich in all but name: French was
+    banned and, from 1942, young men were conscripted into the Wehrmacht. The Americans liberated
+    the capital on 10 September 1944.
+wikipedia:
+  en: German occupation of Luxembourg during World War II

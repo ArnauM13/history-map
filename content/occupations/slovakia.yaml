@@ -1,0 +1,27 @@
+start: 1939-03-14
+control:
+  - { until: 1945-04-04, by: 255, kind: client }
+countries: [315]
+flag: sk-1939
+title:
+  ca: Estat Eslovac
+  es: Estado Eslovaco
+  en: Slovak State
+summary:
+  ca: >-
+    Amb el suport de Hitler, el parlament eslovac va proclamar la independència el 14 de març del
+    1939, un dia abans que Alemanya ocupés Bohèmia i Moràvia. Governat pel capellà Jozef Tiso i el
+    Partit Popular Eslovac, va ser un estat client del Reich: va combatre al costat de l'Eix i va
+    deportar els jueus del país. L'Exèrcit Roig va prendre Bratislava el 4 d'abril del 1945.
+  es: >-
+    Con el apoyo de Hitler, el parlamento eslovaco proclamó la independencia el 14 de marzo de
+    1939, un día antes de que Alemania ocupara Bohemia y Moravia. Gobernado por el sacerdote Jozef
+    Tiso y el Partido Popular Eslovaco, fue un estado cliente del Reich: combatió junto al Eje y
+    deportó a los judíos del país. El Ejército Rojo tomó Bratislava el 4 de abril de 1945.
+  en: >-
+    With Hitler's backing, the Slovak parliament declared independence on 14 March 1939, a day
+    before Germany occupied Bohemia and Moravia. Ruled by the priest Jozef Tiso and the Slovak
+    People's Party, it was a client state of the Reich: it fought alongside the Axis and deported
+    the country's Jews. The Red Army took Bratislava on 4 April 1945.
+wikipedia:
+  en: Slovak Republic (1939–1945)

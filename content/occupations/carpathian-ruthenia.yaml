@@ -1,0 +1,28 @@
+start: 1939-03-18
+control:
+  - { until: 1944-10-27, by: 310, kind: annexation }
+countries: [315]
+title:
+  ca: Rutènia Subcarpàtica hongaresa
+  es: Rutenia Subcarpática húngara
+  en: Hungarian Carpathian Ruthenia
+label:
+  ca: Rutènia hongaresa
+  es: Rutenia húngara
+  en: Hungarian Ruthenia
+summary:
+  ca: >-
+    L'extrem oriental de Txecoslovàquia es va proclamar independent el 15 de març del 1939 amb el
+    nom d'Ucraïna Carpàtica, i Hongria la va ocupar en tres dies. Va ser hongaresa fins que
+    l'Exèrcit Roig va prendre Úzhhorod, el 27 d'octubre del 1944; després de la guerra va passar a
+    la Unió Soviètica.
+  es: >-
+    El extremo oriental de Checoslovaquia se proclamó independiente el 15 de marzo de 1939 con el
+    nombre de Ucrania Carpática, y Hungría la ocupó en tres días. Fue húngara hasta que el Ejército
+    Rojo tomó Úzhgorod, el 27 de octubre de 1944; después de la guerra pasó a la Unión Soviética.
+  en: >-
+    The easternmost part of Czechoslovakia declared independence on 15 March 1939 as
+    Carpatho-Ukraine, and Hungary occupied it within three days. It remained Hungarian until the
+    Red Army took Uzhhorod on 27 October 1944; after the war it passed to the Soviet Union.
+wikipedia:
+  en: Carpatho-Ukraine

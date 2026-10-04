@@ -1,0 +1,30 @@
+start: 1941-06-22
+control:
+  - { until: 1944-07-27, by: 255, kind: occupation }
+countries: [290]
+title:
+  ca: Polònia oriental ocupada per Alemanya
+  es: Polonia oriental ocupada por Alemania
+  en: German-occupied eastern Poland
+label:
+  ca: Polònia oriental ocupada
+  es: Polonia oriental ocupada
+  en: Occupied eastern Poland
+summary:
+  ca: >-
+    Alemanya va ocupar la meitat soviètica de Polònia les primeres setmanes de la invasió de la
+    Unió Soviètica, el juny del 1941. La va repartir entre el districte de Białystok, el de
+    Galítsia, que va afegir al Govern General, i els comissariats del Reich d'Ucraïna i d'Ostland.
+    L'Exèrcit Roig la va recuperar l'estiu del 1944: Lviv i Białystok, el 27 de juliol.
+  es: >-
+    Alemania ocupó la mitad soviética de Polonia en las primeras semanas de la invasión de la
+    Unión Soviética, en junio de 1941. La repartió entre el distrito de Białystok, el de Galitzia,
+    que añadió al Gobierno General, y los comisariados del Reich de Ucrania y de Ostland. El
+    Ejército Rojo la recuperó en el verano de 1944: Leópolis y Białystok, el 27 de julio.
+  en: >-
+    Germany occupied the Soviet half of Poland in the first weeks of its invasion of the Soviet
+    Union, in June 1941. It split it between the Białystok district, the district of Galicia,
+    which it added to the General Government, and the Reich commissariats of Ukraine and Ostland.
+    The Red Army took it back in the summer of 1944: Lviv and Białystok on 27 July.
+wikipedia:
+  en: Occupation of Poland (1939–1945)

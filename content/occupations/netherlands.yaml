@@ -1,0 +1,29 @@
+start: 1940-05-15
+control:
+  - { until: 1945-05-05, by: 255, kind: occupation }
+countries: [210]
+title:
+  ca: Països Baixos ocupats
+  es: Países Bajos ocupados
+  en: Occupied Netherlands
+summary:
+  ca: >-
+    Alemanya va envair els Països Baixos el 10 de maig del 1940, i després del bombardeig de
+    Rotterdam l'exèrcit neerlandès va capitular el 15. La reina i el govern van marxar a Londres,
+    i el país el va governar un comissari del Reich, Arthur Seyss-Inquart. El sud es va alliberar
+    la tardor del 1944; la resta va passar la fam de l'hivern i no va ser lliure fins a la
+    capitulació alemanya del 5 de maig del 1945.
+  es: >-
+    Alemania invadió los Países Bajos el 10 de mayo de 1940, y tras el bombardeo de Róterdam el
+    ejército neerlandés capituló el 15. La reina y el gobierno se marcharon a Londres, y el país
+    lo gobernó un comisario del Reich, Arthur Seyss-Inquart. El sur se liberó en otoño de 1944; el
+    resto pasó el hambre del invierno y no fue libre hasta la capitulación alemana del 5 de mayo
+    de 1945.
+  en: >-
+    Germany invaded the Netherlands on 10 May 1940, and after the bombing of Rotterdam the Dutch
+    army surrendered on the 15th. The queen and the government left for London, and the country
+    was ruled by a Reich commissioner, Arthur Seyss-Inquart. The south was liberated in the autumn
+    of 1944; the rest went through the Hunger Winter and was not free until the German surrender
+    of 5 May 1945.
+wikipedia:
+  en: German occupation of the Netherlands

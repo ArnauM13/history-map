@@ -5,8 +5,8 @@
 Gracias por querer echar una mano. Hay tres maneras de ayudar:
 
 1. **Contenido**: hechos, conflictos, nombres de estados y banderas. No hace falta programar.
-2. **Datos**: arreglar una frontera o dibujar la capa de ocupaciones (ver la
-   [hoja de ruta](FULL-DE-RUTA.md), §3, en catalán).
+2. **Datos**: arreglar una frontera o añadir zonas a la capa de ocupaciones, como Yugoslavia o
+   Grecia (ver la [hoja de ruta](FULL-DE-RUTA.md), §3, en catalán).
 3. **Código**: funcionalidades, diseño, accesibilidad.
 
 Si no sabes por dónde empezar, mira los *issues* con la etiqueta `content`, o abre uno y lo
@@ -127,6 +127,33 @@ traducen en `content/capitals.yaml`. El código de un estado está en `public/da
 `public/data/` no se toca a mano: lo genera `npm run data:borders`. Una corrección a CShapes va en
 la lista `CORRECTIONS` de `scripts/build-borders.mjs`, con su fila y la fuente en
 [DADES.es.md](DADES.es.md).
+
+## Ocupaciones
+
+Una zona de la capa de ocupaciones tiene dos partes. El texto, en
+`content/occupations/nombre-corto.yaml`:
+
+```yaml
+start: 1939-10-26 # el día en que el ocupante toma el control
+control: # quién la controlaba y cómo, por orden; until = el último día
+  - { until: 1945-01-19, by: 255, kind: occupation } # annexation | occupation | client
+countries: [290] # de quién era el territorio según las fronteras reconocidas
+title:
+  es: Gobierno General
+label: # opcional: el nombre corto que va en el mapa
+  es: …
+summary:
+  es: >-
+    Dos o tres frases, como un hecho.
+flag: sk-1939 # opcional: si el territorio usaba una propia
+wikipedia:
+  en: General Government
+```
+
+Y la forma, en `ZONES` de `scripts/build-occupations.mjs`: con un estado de CShapes, con las
+divisiones actuales de Natural Earth o, si no hay nada más, con una línea dibujada a mano y la
+fuente al lado. Después, `npm run data:occupations`. Cómo se hacen y qué fechas se usan, en
+[DADES.es.md](DADES.es.md) §1.3.
 
 ## Código
 

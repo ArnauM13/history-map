@@ -1,6 +1,9 @@
 # Les fronteres
 
-Les fa `npm run data:borders` (`scripts/build-borders.mjs`). No es toquen a mà.
+Les fa `npm run data:borders` (`scripts/build-borders.mjs`), i les zones de la capa d'ocupacions
+(`occupations.geojson`), `npm run data:occupations` (`scripts/build-occupations.mjs`). No es toquen
+a mà. Algunes vores de les zones surten de [Natural Earth](https://www.naturalearthdata.com/), de
+domini públic.
 
 Derivades de **CShapes 2.0** (ETH Zuric i Universitat de Constança): Schvitz et al. (2022),
 _Mapping the International System, 1886–2019: The CShapes 2.0 Dataset_, Journal of Conflict

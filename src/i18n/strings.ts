@@ -35,6 +35,18 @@ const ca = {
   tabFlags: 'Banderes',
   showFlags: 'Banderes',
   showFlagsLabel: 'Mostra les banderes al mapa',
+  showOccupations: 'Ocupacions',
+  showOccupationsLabel: 'Mostra les ocupacions al mapa',
+  occupationsTitle: 'Ocupacions i annexions',
+  occupationsLegend: 'Llegenda de les ocupacions',
+  controlHistory: 'Qui la controlava',
+  territoryOf: 'Territori de',
+  sourceZoneBorders: 'Les vores de la zona',
+  sourceZoneText: 'El text i les dates',
+  zoneApproxLine:
+    "Les vores interiors d'aquesta zona són aproximades: s'han dibuixat a mà a partir dels mapes de les fonts.",
+  zoneApproxAdmin:
+    "Les vores interiors d'aquesta zona segueixen les divisions administratives d'avui, que no són exactament les d'aleshores.",
   activeConflicts: 'Conflictes oberts',
   noActiveConflicts: 'Cap conflicte obert en aquesta data.',
   eventsOfYear: 'Fets del {year}',
@@ -88,6 +100,9 @@ const ca = {
   'category.interstate': 'Guerra entre estats',
   'category.civil-war': 'Guerra civil',
   'category.uprising': 'Revolta',
+  'occupation.annexation': 'Annexió',
+  'occupation.occupation': 'Ocupació',
+  'occupation.client': 'Estat client',
 }
 
 export type MessageKey = keyof typeof ca
@@ -110,6 +125,18 @@ const es: Messages = {
   tabFlags: 'Banderas',
   showFlags: 'Banderas',
   showFlagsLabel: 'Mostrar las banderas en el mapa',
+  showOccupations: 'Ocupaciones',
+  showOccupationsLabel: 'Mostrar las ocupaciones en el mapa',
+  occupationsTitle: 'Ocupaciones y anexiones',
+  occupationsLegend: 'Leyenda de las ocupaciones',
+  controlHistory: 'Quién la controlaba',
+  territoryOf: 'Territorio de',
+  sourceZoneBorders: 'Los bordes de la zona',
+  sourceZoneText: 'El texto y las fechas',
+  zoneApproxLine:
+    'Los bordes interiores de esta zona son aproximados: se han dibujado a mano a partir de los mapas de las fuentes.',
+  zoneApproxAdmin:
+    'Los bordes interiores de esta zona siguen las divisiones administrativas actuales, que no son exactamente las de entonces.',
   activeConflicts: 'Conflictos abiertos',
   noActiveConflicts: 'Ningún conflicto abierto en esta fecha.',
   eventsOfYear: 'Hechos de {year}',
@@ -163,6 +190,9 @@ const es: Messages = {
   'category.interstate': 'Guerra entre estados',
   'category.civil-war': 'Guerra civil',
   'category.uprising': 'Revuelta',
+  'occupation.annexation': 'Anexión',
+  'occupation.occupation': 'Ocupación',
+  'occupation.client': 'Estado cliente',
 }
 
 const en: Messages = {
@@ -182,6 +212,18 @@ const en: Messages = {
   tabFlags: 'Flags',
   showFlags: 'Flags',
   showFlagsLabel: 'Show flags on the map',
+  showOccupations: 'Occupations',
+  showOccupationsLabel: 'Show occupations on the map',
+  occupationsTitle: 'Occupations and annexations',
+  occupationsLegend: 'Occupations legend',
+  controlHistory: 'Who controlled it',
+  territoryOf: 'Territory of',
+  sourceZoneBorders: "The zone's borders",
+  sourceZoneText: 'The text and dates',
+  zoneApproxLine:
+    "This zone's inner borders are approximate: they were drawn by hand from the maps in the sources.",
+  zoneApproxAdmin:
+    "This zone's inner borders follow today's administrative divisions, which are not exactly those of the time.",
   activeConflicts: 'Ongoing conflicts',
   noActiveConflicts: 'No ongoing conflict on this date.',
   eventsOfYear: 'Events in {year}',
@@ -235,6 +277,9 @@ const en: Messages = {
   'category.interstate': 'Interstate war',
   'category.civil-war': 'Civil war',
   'category.uprising': 'Uprising',
+  'occupation.annexation': 'Annexation',
+  'occupation.occupation': 'Occupation',
+  'occupation.client': 'Client state',
 }
 
 export const MESSAGES: Record<Lang, Messages> = { ca: ca as Messages, es, en }

@@ -52,24 +52,31 @@ L'experiència:
 - [ ] Dreceres de teclat i una revisió d'accessibilitat (contrast, lectors de pantalla).
 - [ ] Una pàgina «Sobre el projecte» amb les fonts, traduïda.
 
-## 3. La capa de fet — la gran feina de dades
+## 3. La capa de fet — en marxa
 
 CShapes, com la majoria de dades de fronteres, recull les **pactades** i no les ocupacions. És una
 bona base, però deixa fora bona part del que fa entenedor el segle XX. Aquesta fase hi afegeix, a
-part i ben marcat, el que es controlava de fet:
+part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md) §1.3.
 
-- [ ] 1938-1945: l'Anschluss, el Protectorat de Bohèmia i Moràvia, la partició de Polònia i el
-      Govern General, la França de Vichy i la zona ocupada, l'Estat Independent de Croàcia, les
-      ocupacions de l'Eix als Balcans i a la Unió Soviètica…
-- [ ] 1917-1923: els estats de poca durada de la guerra civil russa, Fiume, Memel, les zones de
+- [x] Com: una zona per fitxer a `content/occupations/` (dates, qui la controlava i com: annexió,
+      ocupació o estat client), i la forma, a `scripts/build-occupations.mjs`. Al mapa, del color
+      de l'ocupant, ratllada, en una capa que es pot amagar.
+- [x] D'on: fronteres de CShapes d'altres dates, les divisions d'avui de Natural Earth (domini
+      públic) i línies dibuixades a mà, amb la font de cada una.
+- [x] 1938-1945, l'expansió alemanya i l'oest: l'Anschluss, Bohèmia i Moràvia, l'Estat Eslovac,
+      Memel, Zaolzie, la Rutènia hongaresa, Albània, la partició de Polònia i el Govern General,
+      Dinamarca, Noruega, els Països Baixos, Bèlgica, Luxemburg i França (la zona ocupada, Vichy,
+      Alsàcia i Mosel·la, la zona italiana i Còrsega).
+- [ ] 1941-1945, els Balcans: l'Estat Independent de Croàcia i la partició de Iugoslàvia, la
+      triple ocupació de Grècia, les annexions hongareses i búlgares, el nord de Transsilvània.
+- [ ] 1941-1944, el front de l'Est: els països bàltics, Bielorússia, Ucraïna, Rússia i
+      Transnístria. Depèn del front, i va amb la capa dels fronts (§4).
+- [ ] 1943-1945, Itàlia: la República Social Italiana i les zones annexionades de fet per
+      Alemanya.
+- [ ] 1917-1923: els estats de poca durada de la guerra civil russa, Fiume, les zones de
       plebiscit.
 - [ ] Del 1990 ençà, els territoris en disputa: Crimea, el Donbàs, Transnístria, Abkhàzia,
       Ossètia del Sud, el nord de Xipre, l'Alt Karabakh.
-- [ ] Com: GeoJSON amb dates, un `kind` (ocupació, annexió, estat titella, en disputa) i un
-      `controlledBy`, dibuixat ratllat i en una capa que es pot amagar.
-- [ ] D'on: [historical-basemaps](https://github.com/aourednik/historical-basemaps) (GPL-3.0),
-      les zones en disputa de Natural Earth (domini públic) i mapes de domini públic digitalitzats
-      a mà.
 
 ## 4. Més maneres de llegir el mapa
 

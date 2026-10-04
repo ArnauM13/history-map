@@ -1,0 +1,27 @@
+start: 1938-10-02
+control:
+  - { until: 1939-08-31, by: 290, kind: annexation }
+  - { until: 1945-05-08, by: 255, kind: annexation }
+countries: [315]
+title:
+  ca: Zaolzie
+  es: Zaolzie
+  en: Trans-Olza
+summary:
+  ca: >-
+    Mentre Alemanya entrava als Sudets, Polònia va exigir a Txecoslovàquia la part de la Silèsia
+    de Cieszyn a l'oest del riu Olza, que es disputaven des del 1919, i la va ocupar el 2
+    d'octubre del 1938. Quan Alemanya va envair Polònia, l'any següent, se la va annexionar.
+    Després de la guerra va tornar a Txecoslovàquia.
+  es: >-
+    Mientras Alemania entraba en los Sudetes, Polonia exigió a Checoslovaquia la parte de la
+    Silesia de Cieszyn al oeste del río Olza, que se disputaban desde 1919, y la ocupó el 2 de
+    octubre de 1938. Cuando Alemania invadió Polonia, al año siguiente, se la anexionó. Después de
+    la guerra volvió a Checoslovaquia.
+  en: >-
+    As Germany marched into the Sudetenland, Poland demanded from Czechoslovakia the part of
+    Cieszyn Silesia west of the Olza river, disputed since 1919, and occupied it on 2 October
+    1938. When Germany invaded Poland the following year, it annexed the area. After the war it
+    returned to Czechoslovakia.
+wikipedia:
+  en: Trans-Olza
