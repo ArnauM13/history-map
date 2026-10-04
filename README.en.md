@@ -2,7 +2,7 @@
 
 # Historical Map of Europe
 
-**Europe from 1900 to today, on a map that moves: the borders, the flags and what happened.**
+**Europe from 1886 to today, on a map that moves: the borders, the flags and what happened.**
 
 [Open the map](https://arnaum13.github.io/history-map/?lang=en) · [Where the information comes from](DADES.en.md) · [Contributing](CONTRIBUTING.en.md) · [Roadmap (in Catalan)](FULL-DE-RUTA.md)
 
@@ -30,7 +30,7 @@ map changes every few months. Here you can follow it day by day.
 
 | | |
 | --- | --- |
-| **The borders on any day** | From 1900 to today, with the exact day of every change and the name each state had at the time: the Russian Empire, Soviet Russia, the Soviet Union, Russia. |
+| **The borders on any day** | From 1886 to today, with the exact day of every change and the name each state had at the time: the Russian Empire, Soviet Russia, the Soviet Union, Russia. |
 | **Every flag in its time** | About a hundred flags of some seventy states: on the map, in a gallery for each date and on each state's card, with what the ones with the most history mean. |
 | **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and marked on the timeline. |
 | **Occupations, from 1938 to 1945** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France. Hatched in the occupier's colour, each zone with its own card. |

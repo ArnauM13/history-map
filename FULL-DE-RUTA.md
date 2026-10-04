@@ -3,12 +3,12 @@
 L'objectiu és un mapa on qualsevol pugui **veure com va canviar Europa** i **entendre per què**.
 Les fronteres són el llenç; el que val és la història que s'hi explica a sobre.
 
-De moment, **Europa del 1900 a avui**. Abans del 1900, potser més endavant (§5).
+De moment, **Europa del 1886 a avui**, que és d'on arrenca CShapes. Abans, unint-hi altres fonts (§5).
 
 ## 0. Els fonaments — fet
 
 - [x] Una web estàtica: React, TypeScript, Vite i MapLibre.
-- [x] Les fronteres del 1900 a avui, de CShapes 2.0, retallades i simplificades per a Europa.
+- [x] Les fronteres del 1886 a avui, de CShapes 2.0, retallades i simplificades per a Europa.
 - [x] El nom de cada estat segons la data, en català, castellà i anglès.
 - [x] La línia temporal, mes a mes, amb reproducció i salts entre dates clau.
 - [x] Fets i conflictes en YAML, validats als tests: 25 fets i 13 conflictes per començar.
@@ -90,8 +90,9 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
 
 ## 5. Més enllà
 
-- [ ] Tirar enrere fins al segle XIX (CShapes comença el 1886; per al 1815-1886 caldran altres
-      fonts).
+- [x] Tirar enrere fins al 1886, on comença CShapes.
+- [ ] Abans del 1886, tan enrere com es pugui: unir diverses fonts de fronteres en una sola
+      capa, amb les mateixes dates i els mateixos codis que CShapes.
 - [ ] *Vector tiles* (PMTiles), si les dades creixen més del que un fitxer pot dur.
 - [ ] Que funcioni sense connexió.
 - [ ] Una manera de contribuir sense Git, per a qui sap història i no vol saber de YAML.

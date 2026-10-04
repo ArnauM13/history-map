@@ -54,7 +54,7 @@ territories that depended on them (colonies, protectorates, mandates, occupied t
   licence: they can be shared and adapted with attribution, **but not for commercial purposes**.
 - **Edition**: the Gleditsch & Ward one shipped with the [`cshapes` R package](https://github.com/cran/cshapes)
   (`cshapes_2_gw.topojson`).
-- **What is done to it** (`npm run data:borders`): keep what is valid from 1900 onwards, clip to
+- **What is done to it** (`npm run data:borders`): take all of it, from 1886 onwards; clip to
   `[-28°, 30°, 78°, 82°]`, simplify to 12 % of the vertices, turn dates into integers and work out
   the colours and where each name goes.
 
