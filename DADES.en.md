@@ -50,7 +50,7 @@ historiography, and settle on a rule that holds for every similar case. The curr
 | When | Rule | Example |
 | --- | --- | --- |
 | A source gives a state territory another state was occupying in a war | The map draws **sovereignty**: the territory belongs to whoever held it until a treaty or a formal annexation changes hands. The long 20th-century occupations go in the occupations layer (§1.3). | Moscow in 1812 is Russian; Hamburg is French from the 1811 annexation, not from the 1806 occupation. |
-| Sources date a change differently | The **day it takes effect**: the proclamation or abdication, for a change of regime; the treaty, for a cession, unless it sets another date; the decree, for an annexation. In the Gregorian calendar. | The French Second Republic, from 24 February 1848 to 2 December 1852. |
+| Sources date a change differently | The **day it takes effect**: the proclamation or abdication, for a change of regime; the treaty, for a cession, on the day it was signed even if it came into force later, unless it sets another day for the handover; the decree, for an annexation. In the Gregorian calendar. | The French Second Republic, from 24 February 1848 to 2 December 1852; Istria, Italian from the signing of the Treaty of Rapallo (12 November 1920), not from its ratification. |
 | Two states share a sovereign | **Separate states** while they keep their own institutions; one when they are united by law. | Saxony and Poland (1697-1763), Hanover and Great Britain (1714-1837) and Scotland and England (1603-1707), separate; Great Britain from 1707. |
 | A state pays tribute to or is a vassal of another | **A state of its own**, if it governed itself. | Wallachia and Moldavia, under the Ottoman Empire. |
 | A revolt | On the map only if it had **a government over the territory**, with that government's dates. | The Hungarian State, from 14 April to 13 August 1849; the Nalyvaiko uprising, inside the Polish-Lithuanian Commonwealth. |
@@ -94,9 +94,26 @@ names come from `content/countries.yaml` and `content/capitals.yaml`, in all thr
 | What | Why |
 | --- | --- |
 | Crimea stays in Ukraine after 18 March 2014 | CShapes moves it to Russia. Here the internationally recognised border is drawn, as UN General Assembly resolution 68/262 and most atlases do. The annexation is explained as an event and will go in the occupations layer. |
+| Danzig, a Free City until 1 September 1939 | CShapes ends it on 31 August 1938 and puts it inside Germany from 30 September 1938: for a month it belongs to no one. It is a one-year slip; the Reich annexed it on 1 September 1939. |
+| The Rapallo border, from 12 November 1920 to 10 February 1947 | CShapes gives Yugoslavia what the Treaty of Rapallo gave Italy: the Slovene Littoral with Idrija and Postojna, Istria, Zara, Cres and Lošinj. It is Italian again until the Treaty of Paris. The line, from Peč to Triglav, Snežnik and the Kvarner Gulf, is drawn by hand from the article on the treaty (an error of some 2-5 km). |
+| The Free State of Fiume (1920-1924) and Italian Fiume (1924-1947) | CShapes lacks the free state Rapallo created and puts it inside Yugoslavia. Here it is a state (with its Wikidata QID as code) until 22 February 1924, the decree annexing it to Italy, and Italian afterwards. Sušak, across the Rječina, stays Yugoslav. |
+| The Dodecanese, Ottoman until 24 July 1923 and Italian until 10 February 1947 | CShapes makes it Greek from 1913. Italy had occupied it since 1912, but Turkey only renounced it at the Treaty of Lausanne; the Treaty of Paris ceded it to Greece. |
+
+**The dates, where sources disagree** (§0.1: a cession goes on the day it was signed):
+
+- **Rapallo** was signed on 12 November 1920; Italy approved it by the law of 19 December, and the
+  new borders came into force in January 1921.
+- **Fiume.** The Treaty of Rome is of 27 January 1924, and the ratification and the annexation
+  decree, of 22 February. On 16 March, the date many books give, the king visited the city to
+  proclaim the annexation: a ceremony, not the change.
+- **Lausanne** was signed on 24 July 1923 and came into force on 6 August 1924.
+- **Paris** was signed on 10 February 1947 and came into force on 15 September: that is when
+  Yugoslavia received Pola and the Free Territory of Trieste was born. Greece administered the
+  Dodecanese from 31 March 1947 and formally annexed it on 7 March 1948.
 
 Every correction is code, in the `CORRECTIONS` list in `scripts/build-borders.mjs`, and has its
-row here. The generated files are never edited by hand.
+row here. New borders are made before simplifying, from CShapes' own pieces, so that they match
+the neighbours'. The generated files are never edited by hand.
 
 ### 1.2 Where it falls short
 
@@ -105,12 +122,12 @@ row here. The generated files are never edited by hand.
   the Second Vienna Award (1940), which gave northern Transylvania to Hungary. Between 1938 and
   1945, Austria, Bohemia-Moravia and Poland are still on the map. The occupations layer explains
   it (§1.3).
-- **Danzig** appears inside Germany from 30 September 1938. It was a free city until 1 September
-  1939, when the Reich annexed it.
-- **The Italian border of 1920 to 1947.** Istria, Fiume, the Slovene Littoral with Postojna and
-  the islands of Cres and Lošinj appear inside Yugoslavia, and the Dodecanese inside Greece, when
-  they were Italian. The occupations layer leaves them out of the 1941 partition of Yugoslavia;
-  fixing the borders is on the [roadmap](FULL-DE-RUTA.md), §3 (in Catalan).
+- **The Adriatic, still half done** (§1.1 fixes the Italian border). From 1919 to 1920, when
+  Istria and Fiume were occupied by Italy and the border had not yet been agreed, CShapes gives
+  them to Yugoslavia, and they are left so here; D'Annunzio's Regency of Carnaro is missing too.
+  From 1947 to 1954, Trieste is Italian and Koper Yugoslav, with no Free Territory of Trieste.
+  Lastovo, Palagruža and Saseno, Italian from 1920 to 1947, and Kastellorizo are not in CShapes;
+  and simplification wipes out almost every Adriatic island, Cres and Krk included.
 - **No microstates.** Andorra, Liechtenstein, Monaco, San Marino and the Vatican are not in
   CShapes.
 - **Sovereignty criteria.** Some choices come from the Gleditsch & Ward list: Montenegro is part
@@ -148,16 +165,18 @@ Hand-drawn lines are **approximate**, within some 10–20 km; today's divisions,
 have moved since. Each zone's card says so, and cites Natural Earth when its divisions are used. A
 test checks that no two zones with the same dates overlap.
 
-**What is there**, in 57 zones:
+**What is there**, in 59 zones:
 
 - **The west and centre**: the German expansion of 1938–1939 (Austria, Bohemia and Moravia, the
   Slovak State, Memel), Trans-Olza and Hungarian Ruthenia; the partition of Poland; the occupation
   of Denmark, Norway, the Netherlands, Belgium, Eupen-Malmedy, Luxembourg and the Channel Islands,
   and that of France: the occupied zone, Vichy, Alsace and Moselle, the 1942 zones and Corsica.
 - **The Balkans**: Albania; the partition of Yugoslavia (the Independent State of Croatia,
-  Serbia, German and Italian Slovenia, Dalmatia, Montenegro, Kosovo and western Macedonia joined to
-  Albania, Bulgarian Macedonia, Hungarian Bačka and Prekmurje) and that of Greece (the German,
-  Italian and Bulgarian zones, and Crete).
+  Serbia, German and Italian Slovenia, Dalmatia, what was added to the province of Fiume —Sušak,
+  Kastav, Krk and Rab—, Pag, Brač and Hvar, occupied by Italy from 7 September 1941, Montenegro,
+  Kosovo and western Macedonia joined to Albania, Bulgarian Macedonia, Hungarian Bačka and
+  Prekmurje) and that of Greece (the German, Italian and Bulgarian zones, and Crete). What was
+  already Italian from 1920 is not in it: it is in the borders (§1.1).
 - **The Danube and the East**: northern Transylvania, Bessarabia, northern Bukovina and
   Transnistria; the Baltic states, Belarus, Ukraine and Crimea, occupied from 1941 to 1944, and
   occupied Hungary in 1944.
@@ -168,8 +187,11 @@ test checks that no two zones with the same dates overlap.
 
 - **Occupied Russia** from 1941 to 1943, from Smolensk to the Caucasus: it changed hands with the
   front, and will come with the front-lines layer.
-- **Small pieces of the 1941 Italian annexations**: what was added to the province of Fiume
-  (Sušak, Kastav, Krk and Rab) and, from the autumn, Hvar and Pag. They appear inside Croatia.
+- **The rest of Zone II**: on 7 September 1941 Italy took over the government of the whole
+  Croatian coastal strip, not just Pag, Brač and Hvar. The strip of land still appears inside
+  Croatia.
+- **The German Dodecanese** from 1943 to 1945, and Zara, which after the armistice stayed under
+  German protection until October 1944.
 
 ### 1.4 Before 1886: Cliopatria
 

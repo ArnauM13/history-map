@@ -76,10 +76,13 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
       fronts (§4).
 - [x] 1943-1945, Itàlia: la República Social Italiana i les zones que Alemanya es va annexionar de
       fet. I les illes del Canal i Eupen-Malmedy.
-- [ ] Els trossos petits que encara hi falten: el que Itàlia va afegir el 1941 a la província de
-      Fiume (Sušak, Kastav, Krk i Rab), i Hvar i Pag, a la tardor.
-- [ ] Corregir CShapes perquè dibuixi la frontera italiana del 1920 al 1947 (l'Ístria, Fiume, el
-      Litoral eslovè) i el Dodecanès italià, com explica [DADES.md](DADES.md) §1.2.
+- [x] Els trossos petits que hi faltaven: el que Itàlia va afegir el 1941 a la província de
+      Fiume (Sušak, Kastav, Krk i Rab), i Pag, Brač i Hvar, des del 7 de setembre del 1941.
+- [ ] La resta de la Zona II, la franja de la costa croata que Itàlia va ocupar el setembre del
+      1941, i el Dodecanès alemany del 1943 al 1945.
+- [x] Corregir CShapes perquè dibuixi la frontera italiana del 1920 al 1947 (l'Ístria, Fiume i
+      l'Estat Lliure de Fiume, el Litoral eslovè, Zara, Cres i Lošinj), el Dodecanès italià i
+      Dàntzig fins al 1939, com explica [DADES.md](DADES.md) §1.1.
 - [ ] 1917-1923: els estats de poca durada de la guerra civil russa, Fiume, les zones de
       plebiscit.
 - [ ] Del 1990 ençà, els territoris en disputa: Crimea, el Donbàs, Transnístria, Abkhàzia,
