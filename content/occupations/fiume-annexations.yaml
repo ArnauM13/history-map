@@ -1,0 +1,57 @@
+start: 1941-04-17
+control:
+  - until: 1941-05-17
+    by: 325
+    kind: occupation
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
+  - until: 1943-09-08
+    by: 325
+    kind: annexation
+    cause:
+      ca: Tractats de Roma, 1941
+      es: Tratados de Roma, 1941
+      en: Treaties of Rome, 1941
+  - until: 1945-05-03
+    by: 255
+    kind: annexation
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
+countries: [345]
+title:
+  ca: Territoris annexionats del Fiumà i el Kupa
+  es: Territorios anexionados del Fiumano y el Kupa
+  en: Annexed Territories of Fiume and the Kupa
+label:
+  ca: Sušak, Krk i Rab
+  es: Sušak, Krk y Rab
+  en: Sušak, Krk and Rab
+summary:
+  ca: >-
+    Pels Tractats de Roma del 18 de maig del 1941, Itàlia es va annexionar el que envoltava Fiume
+    per l'est i pel nord —Sušak, a l'altra riba del Rječina, Kastav, Bakar, Fužine i Čabar— i les
+    illes de Krk i Rab, i ho va afegir a la província de Fiume. Després de l'armistici italià del
+    setembre del 1943 ho va governar Alemanya, dins del Litoral Adriàtic. L'exèrcit iugoslau va
+    entrar a Fiume el 3 de maig del 1945.
+  es: >-
+    Por los Tratados de Roma del 18 de mayo de 1941, Italia se anexionó lo que rodeaba Fiume por el
+    este y por el norte —Sušak, en la otra orilla del Rječina, Kastav, Bakar, Fužine y Čabar— y las
+    islas de Krk y Rab, y lo añadió a la provincia de Fiume. Tras el armisticio italiano de
+    septiembre de 1943 lo gobernó Alemania, dentro del Litoral Adriático. El ejército yugoslavo
+    entró en Fiume el 3 de mayo de 1945.
+  en: >-
+    Under the Treaties of Rome of 18 May 1941, Italy annexed the land around Fiume to the east and
+    north —Sušak, across the Rječina, Kastav, Bakar, Fužine and Čabar— and the islands of Krk and
+    Rab, and added them to the Province of Fiume. After the Italian armistice of September 1943
+    Germany ruled them as part of the Adriatic Littoral. The Yugoslav army entered Fiume on 3 May
+    1945.
+wikipedia:
+  en: Province of Fiume
+sources:
+  - title: R.D.L. 18 maggio 1941, n. 452
+    publisher: Wikisource
+    url: https://it.wikisource.org/wiki/R.D.L._18_maggio_1941,_n._452_-_Sistemazione_dei_territori_che_sono_venuti_a_far_parte_integrante_del_Regno_d%27Italia

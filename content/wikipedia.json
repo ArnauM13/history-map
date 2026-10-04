@@ -770,6 +770,10 @@
     "ca": "Ciutat Lliure de Lübeck",
     "es": "Ciudad Libre de Lübeck"
   },
+  "Free State of Fiume": {
+    "ca": "Estat Lliure de Fiume",
+    "es": "Estado Libre de Fiume"
+  },
   "French Africa": {
     "es": "Colonización francesa de África"
   },
@@ -1464,6 +1468,7 @@
     "ca": "Protectorat de Bohèmia i Moràvia",
     "es": "Protectorado de Bohemia y Moravia"
   },
+  "Province of Fiume": {},
   "Province of Ljubljana": {
     "es": "Provincia de Liubliana"
   },
@@ -1740,6 +1745,10 @@
   },
   "Transnistria Governorate": {
     "es": "Gobernación de Transnistria"
+  },
+  "Treaties of Rome (1941)": {
+    "ca": "Tractats de Roma del 1941",
+    "es": "Tratados de Roma (1941)"
   },
   "Treaty of Rome": {
     "ca": "Tractats de Roma",

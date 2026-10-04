@@ -8,8 +8,10 @@
  *   1. Baixa CShapes 2.0 (l'edició de Gleditsch i Ward) en TopoJSON, si no és a data-raw/.
  *   2. Ho retalla a Europa i ho simplifica (mapshaper). Ho agafa tot: CShapes comença el 1886, i
  *      el mapa també (FIRST_YEAR a src/lib/date.ts).
- *   3. Passa les dates a enters AAAAMMDD (s, e), perquè MapLibre hi pugui filtrar.
- *   4. Aplica les correccions de CORRECTIONS (explicades a DADES.md).
+ *   3. Aplica les correccions de CORRECTIONS (explicades a DADES.md §1.1) a les peces ja
+ *      simplificades, perquè les línies dibuixades a mà no perdin detall i les vores noves
+ *      comparteixin els vèrtexs amb les dels veïns.
+ *   4. Passa les dates a enters AAAAMMDD (s, e), perquè MapLibre hi pugui filtrar.
  *   5. Dona un color a cada grup (un estat i els territoris que controla) de manera que dos grups
  *      veïns que coincideixen en el temps no tinguin mai el mateix, que els colors es reparteixin
  *      i que una zona ocupada (content/occupations/) es distingeixi de l'estat ocupat.
@@ -22,6 +24,7 @@
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import mapshaper from 'mapshaper'
+import polygonClipping from 'polygon-clipping'
 import polylabel from 'polylabel'
 import * as topojson from 'topojson-client'
 import { parse } from 'yaml'
@@ -48,19 +51,297 @@ const BBOX = [-28, 30, 78, 82]
 const LABEL_BBOX = [-25, 30, 56, 74]
 const SIMPLIFY = '12%'
 
+// ── Les correccions ──────────────────────────────────────────────────────────
+
 /**
- * On ens separem de CShapes 2.0, a consciència i explicat a DADES.md. El control de fet d'un
- * territori anirà en una capa a part (FULL-DE-RUTA.md), no barrejat amb les fronteres.
+ * Les vores que CShapes no té, dibuixades a mà. Cada una és un polígon que tanca un territori; només
+ * en compta el tros que cau dins de l'estat que es retalla, i la resta va per mar o per fora. Els
+ * punts són [longitud, latitud] de les poblacions i els cims per on passava, amb un error d'uns
+ * 2-5 km; d'on surt cada traçat, al comentari.
+ */
+const LINES = {
+  /**
+   * La frontera de Rapallo (12 de novembre del 1920) entre Itàlia i Iugoslàvia: de Peč, on
+   * tocava Àustria, per Triglav, a l'est d'Idrija i de Postojna (Rakek, l'estació de frontera,
+   * era iugoslava), fins a Snežnik i el golf de Kvarner a l'oest de Rijeka. Kastav era iugoslava.
+   * Tanca l'Ístria per mar, entre la costa i Cres. Fonts: l'article i el mapa de «Treaty of
+   * Rapallo (1920)».
+   */
+  rapallo: [
+    [13.0, 46.7],
+    [13.715, 46.523],
+    [13.7, 46.49],
+    [13.655, 46.44],
+    [13.68, 46.41],
+    [13.837, 46.378],
+    [13.93, 46.25],
+    [14.0, 46.17],
+    [14.06, 46.08],
+    [14.1, 46.0],
+    [14.18, 45.92],
+    [14.27, 45.83],
+    [14.32, 45.73],
+    [14.44, 45.59],
+    [14.43, 45.5],
+    [14.38, 45.43],
+    // Entre Matulji, italiana, i Kastav; i l'Estat Lliure de Fiume, fins al Rječina.
+    [14.325, 45.385],
+    [14.335, 45.36],
+    [14.37, 45.362],
+    [14.4, 45.37],
+    [14.43, 45.375],
+    [14.447, 45.36],
+    [14.447, 45.3],
+    [14.35, 45.25],
+    [14.26, 45.16],
+    [14.2, 44.95],
+    [14.0, 44.6],
+    [13.0, 44.6],
+  ],
+  /**
+   * L'Estat Lliure de Fiume: el corpus separatum, a l'oest del Rječina (Sušak, a l'altra riba,
+   * era iugoslau), i la franja de costa que el lligava amb l'Ístria italiana, al sud de Kastav.
+   * Fonts: «Free State of Fiume» i «Treaty of Rapallo (1920)», article 4.
+   */
+  fiume: [
+    [14.33, 45.3],
+    [14.335, 45.36],
+    [14.37, 45.362],
+    [14.4, 45.37],
+    [14.43, 45.375],
+    [14.447, 45.36],
+    [14.447, 45.3],
+  ],
+  /** Zara: la ciutat i el seu terme, uns 110 km², a la costa. Font: «Province of Zara». */
+  zara: [
+    [15.17, 44.13],
+    [15.22, 44.17],
+    [15.29, 44.15],
+    [15.31, 44.1],
+    [15.25, 44.07],
+    [15.19, 44.09],
+  ],
+}
+
+/**
+ * On queden les illes que canvien de mans, [oest, sud, est, nord]: una illa hi va sencera si hi
+ * cap sencera. Cres i Lošinj eren italianes; Krk, al costat, iugoslava. Lastovo i Palagruža, també
+ * italianes, no són a CShapes.
+ */
+const ISLANDS = {
+  cresLosinj: [14.2, 44.4, 14.56, 45.2],
+  /** Sense Samos, Icària ni les Cíclades, que eren gregues. */
+  dodecanese: [26.2, 35.3, 28.4, 37.45],
+}
+
+/** L'Estat Lliure de Fiume no és a CShapes: va pel QID de Wikidata, com les entitats d'abans del 1886. */
+const FIUME_STATE = {
+  gwcode: 'Q548114',
+  country_name: 'Free State of Fiume',
+  status: 'independent',
+  owner: null,
+  capname: 'Fiume',
+}
+
+/**
+ * Els territoris que es mouen, fets amb les peces de CShapes d'abans de corregir. Cada un rep
+ * l'estat d'on surt; així les vores coincideixen amb les dels veïns.
+ */
+const AREAS = {
+  danzig: (raw) => rawState(raw, '291', '1930-01-01'),
+  fiume: (raw) => intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.fiume)),
+  rapallo: (raw) => {
+    const yugoslavia = rawState(raw, '345', '1930-01-01')
+    return union(
+      minus(intersect(mainland(yugoslavia), ring(LINES.rapallo)), ring(LINES.fiume)),
+      intersect(mainland(yugoslavia), ring(LINES.zara)),
+      islandsIn(yugoslavia, ISLANDS.cresLosinj),
+    )
+  },
+  dodecanese: (raw) => islandsIn(rawState(raw, '350', '1930-01-01'), ISLANDS.dodecanese),
+}
+
+/**
+ * On ens separem de CShapes 2.0, a consciència i explicat a DADES.md §1.1. El control de fet d'un
+ * territori va en una capa a part (content/occupations/), no barrejat amb les fronteres. Les dates
+ * segueixen el criteri de DADES.md §0.1: una cessió, el dia que es va signar el tractat; una
+ * annexió, el dia del decret.
+ *
+ *   - `drop`: treu les peces d'uns estats que comencen un dia.
+ *   - `extend`: allarga fins a `to` les peces d'uns estats que s'acaben el dia `end`.
+ *   - `transfer`: entre `start` i `end`, un territori (AREAS) passa de `from` a `to`, que és un
+ *     codi o, si l'estat no és a CShapes, les seves propietats. Sense `to`, només surt de `from`.
  */
 const CORRECTIONS = [
   {
     description:
       "Crimea: la frontera reconeguda entre Rússia i Ucraïna, també després de l'annexió del 2014 (resolució 68/262 de l'ONU)",
-    codes: ['365', '369'],
-    dropFeaturesStarting: 20140318,
-    extendFeaturesEnding: 20140317,
+    drop: { codes: ['365', '369'], start: '2014-03-18' },
+    extend: { codes: ['365', '369'], end: '2014-03-17', to: DATASET_END },
+  },
+  {
+    // CShapes l'acaba el 31 d'agost del 1938, un any abans, i del 30 de setembre la posa dins
+    // d'Alemanya: durant un mes no era de ningú.
+    description:
+      "Dàntzig: Ciutat Lliure fins que el Reich se l'annexiona, l'1 de setembre del 1939",
+    extend: { codes: ['291'], end: '1938-08-31', to: '1939-08-31' },
+    transfer: { area: 'danzig', from: '255', start: '1938-09-30', end: '1939-08-31' },
+  },
+  {
+    description:
+      "Rapallo: l'Ístria, Gorízia, el Litoral eslovè amb Postojna, Zara, Cres i Lošinj, italians fins al tractat de París",
+    transfer: { area: 'rapallo', from: '345', to: '325', start: '1920-11-12', end: '1947-02-09' },
+  },
+  {
+    description: "L'Estat Lliure de Fiume, de Rapallo fins que Itàlia se l'annexiona",
+    transfer: {
+      area: 'fiume',
+      from: '345',
+      to: FIUME_STATE,
+      start: '1920-11-12',
+      end: '1924-02-21',
+    },
+  },
+  {
+    description: 'Fiume, italiana pel tractat de Roma (decret del 22 de febrer del 1924)',
+    transfer: { area: 'fiume', from: '345', to: '325', start: '1924-02-22', end: '1947-02-09' },
+  },
+  {
+    // CShapes els fa grecs des del 1913. Els governava Itàlia des del 1912, però eren otomans fins
+    // que Turquia hi va renunciar a Lausana.
+    description: 'El Dodecanès, otomà fins al tractat de Lausana',
+    transfer: {
+      area: 'dodecanese',
+      from: '350',
+      to: '640',
+      start: '1913-05-30',
+      end: '1923-07-23',
+    },
+  },
+  {
+    description: 'El Dodecanès, italià de Lausana al tractat de París',
+    transfer: {
+      area: 'dodecanese',
+      from: '350',
+      to: '325',
+      start: '1923-07-24',
+      end: '1947-02-09',
+    },
   },
 ]
+
+const ring = (points) => [[...points, points[0]]]
+const union = (...geoms) => polygonClipping.union(...geoms.filter((g) => g.length > 0))
+const intersect = (a, ...others) => polygonClipping.intersection(a, ...others)
+const minus = (a, ...others) => polygonClipping.difference(a, ...others.filter((g) => g.length))
+const coordsOf = (g) => (g.type === 'Polygon' ? [g.coordinates] : g.coordinates)
+/** El polígon més gran: el continent, sense les illes. */
+const mainland = (geom) => [geom.reduce((a, b) => (ringArea(b[0]) > ringArea(a[0]) ? b : a))]
+const islandsIn = (geom, [w, s, e, n]) =>
+  geom.filter(([outer]) => outer.every(([x, y]) => x >= w && x <= e && y >= s && y <= n))
+
+/** Un estat de CShapes en una data (AAAA-MM-DD), tal com ve, en un sol MultiPolygon. */
+function rawState(features, code, date) {
+  const found = features.filter(
+    (f) => f.properties.gwcode === code && f.properties.start <= date && date <= f.properties.end,
+  )
+  if (found.length === 0) throw new Error(`CShapes no té l'estat ${code} el ${date}`)
+  return union(...found.map((f) => coordsOf(f.geometry)))
+}
+
+const shiftDay = (date, days) =>
+  new Date(Date.parse(`${date}T00:00:00Z`) + days * 864e5).toISOString().slice(0, 10)
+
+/**
+ * Talla en el temps les peces d'un estat que coincideixen amb [start, end] i en canvia la forma
+ * dins de l'interval; fora, la deixa com era. Si `change` no torna res, la peça no es toca.
+ */
+function reshape(features, code, start, end, change) {
+  return features.flatMap((f) => {
+    const p = f.properties
+    if (p.gwcode !== code || p.end < start || p.start > end) return [f]
+    const changed = change(coordsOf(f.geometry))
+    if (!changed) return [f]
+    const geometry = { type: 'MultiPolygon', coordinates: changed }
+    const pieces = []
+    if (p.start < start) pieces.push({ ...f, properties: { ...p, end: shiftDay(start, -1) } })
+    if (geometry.coordinates.length > 0) {
+      const s = p.start < start ? start : p.start
+      const e = p.end > end ? end : p.end
+      pieces.push({ type: 'Feature', properties: { ...p, start: s, end: e }, geometry })
+    }
+    if (p.end > end) pieces.push({ ...f, properties: { ...p, start: shiftDay(end, 1) } })
+    return pieces
+  })
+}
+
+/** CShapes, en GeoJSON i amb les correccions de CORRECTIONS. */
+function correctedFeatures(simplified) {
+  let features = simplified.features.filter((f) => f.geometry)
+  // El codi va en text: les entitats que no són a CShapes en porten un de Wikidata.
+  for (const f of features) f.properties.gwcode = String(f.properties.gwcode)
+  const areas = Object.fromEntries(
+    Object.entries(AREAS).map(([name, build]) => [name, build(features)]),
+  )
+  for (const fix of CORRECTIONS) {
+    if (fix.drop) {
+      const { codes, start } = fix.drop
+      features = features.filter(
+        (f) => !(codes.includes(f.properties.gwcode) && f.properties.start === start),
+      )
+    }
+    if (fix.extend) {
+      const { codes, end, to } = fix.extend
+      for (const f of features) {
+        if (codes.includes(f.properties.gwcode) && f.properties.end === end) f.properties.end = to
+      }
+    }
+    if (fix.transfer) {
+      const { area, from, to, start, end } = fix.transfer
+      const territory = areas[area]
+      // Només les peces on hi era: les altres no s'han de tallar en el temps.
+      features = reshape(features, from, start, end, (geom) =>
+        intersect(geom, territory).length > 0 ? minus(geom, territory) : undefined,
+      )
+      if (typeof to === 'string') {
+        features = reshape(features, to, start, end, (geom) => union(geom, territory))
+      } else if (to) {
+        features.push({
+          type: 'Feature',
+          properties: { ...to, start, end },
+          geometry: { type: 'MultiPolygon', coordinates: territory },
+        })
+      }
+    }
+  }
+  return { type: 'FeatureCollection', features: mergeConsecutive(features) }
+}
+
+/**
+ * Ajunta les peces seguides d'un estat que han quedat iguals: Iugoslàvia perd Fiume dues vegades
+ * (el 1920, amb l'Estat Lliure, i el 1924, amb Itàlia) i no ha de canviar de peça entremig.
+ */
+function mergeConsecutive(features) {
+  const key = (f) => {
+    const { start: _start, end: _end, ...rest } = f.properties
+    return JSON.stringify([rest, f.geometry.coordinates])
+  }
+  const sorted = [...features].sort((a, b) => (a.properties.start < b.properties.start ? -1 : 1))
+  const out = []
+  const last = new Map()
+  for (const f of sorted) {
+    const k = key(f)
+    const previous = last.get(k)
+    if (previous && shiftDay(previous.properties.end, 1) === f.properties.start) {
+      previous.properties = { ...previous.properties, end: f.properties.end }
+      continue
+    }
+    const copy = { ...f, properties: { ...f.properties } }
+    last.set(k, copy)
+    out.push(copy)
+  }
+  return out
+}
 
 async function ensureRawData() {
   if (existsSync(RAW_FILE)) return
@@ -73,33 +354,31 @@ async function ensureRawData() {
   execFileSync('xz', ['--decompress', '--force', `${RAW_FILE}.xz`])
 }
 
+/**
+ * Primer es retalla i se simplifica CShapes, i després s'hi apliquen les correccions. Al revés, la
+ * simplificació se menjava els detalls de les línies dibuixades a mà: el centre de Fiume queia a
+ * Iugoslàvia i Kastav a Itàlia, i la costa d'Opatija perdia un tros.
+ */
 async function processWithMapshaper(raw, bbox) {
-  const commands = [
+  const simplify = [
     '-i input.topojson name=borders',
     `-clip bbox=${bbox.join(',')} remove-slivers`,
     `-simplify ${SIMPLIFY} keep-shapes`,
-    // El codi va en text: les entitats d'abans del 1886 (build-history.mjs) en porten un de Wikidata.
+    '-o output.json format=topojson no-quantization',
+  ].join(' ')
+  const simplified = JSON.parse(
+    (await mapshaper.applyCommands(simplify, { 'input.topojson': raw }))['output.json'],
+  )
+  const corrected = correctedFeatures(topojson.feature(simplified, simplified.objects.borders))
+  const commands = [
+    '-i input.json name=borders',
+    // El codi ja va en text (correctedFeatures), com el de les entitats d'abans del 1886.
     `-each 's = +start.replace(/-/g, ""), e = end === "${DATASET_END}" ? ${OPEN_END} : +end.replace(/-/g, ""), code = String(gwcode)'`,
     '-filter-fields code,country_name,status,owner,s,e,capname',
     '-o output.json format=topojson quantization=100000',
   ].join(' ')
-  const output = await mapshaper.applyCommands(commands, { 'input.topojson': raw })
-  const topo = JSON.parse(output['output.json'])
-  applyCorrections(topo)
-  return topo
-}
-
-function applyCorrections(topo) {
-  const collection = topo.objects.borders
-  for (const fix of CORRECTIONS) {
-    const affected = (g) => fix.codes.includes(g.properties.code)
-    collection.geometries = collection.geometries.filter(
-      (g) => !(affected(g) && g.properties.s === fix.dropFeaturesStarting),
-    )
-    for (const g of collection.geometries) {
-      if (affected(g) && g.properties.e === fix.extendFeaturesEnding) g.properties.e = OPEN_END
-    }
-  }
+  const output = await mapshaper.applyCommands(commands, { 'input.json': corrected })
+  return JSON.parse(output['output.json'])
 }
 
 const overlaps = (a, b) => a.s <= b.e && b.s <= a.e
