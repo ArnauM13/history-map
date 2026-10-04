@@ -28,8 +28,11 @@ Les fronteres són el llenç; el que val és la història que s'hi explica a sob
 - [x] A la fitxa d'un estat, totes les banderes que ha tingut.
 - [x] Dues frases per a les banderes amb més història: què volen dir i per què van canviar.
 - [x] A la línia temporal, les marques dels canvis de bandera.
-- [ ] Les variants simplificades (vegeu [DADES.md](DADES.md#2-les-banderes-wikimedia-commons)) i
-      els estats de les vores del mapa (Egipte, Síria, l'Iraq…).
+- [x] Les variants de poca durada (Albània del 1912 al 1946, Bulgària, Hongria, el lleó vermell de
+      Finlàndia) i els estats de les vores del mapa (l'Afganistan, la Xina, l'Índia, el Pakistan,
+      el Kirguizistan). Les dates en què les fonts no coincideixen, a
+      [DADES.md](DADES.md#2-les-banderes-wikimedia-commons).
+- [ ] L'Afganistan abans del 1929 i la primera bandera de l'Iraq (1921-1924).
 - [ ] Les banderes de les colònies, dels protectorats i dels estats de poca durada.
 - [ ] Un text per a la resta de banderes.
 

@@ -295,15 +295,37 @@ The chronology —which flag each state used and until when— belongs to this p
 
 - **Light images.** It downloads the 330 px PNG that Wikimedia renders, not the original SVG: some
   are over a megabyte because of detailed coats of arms, and on the map a flag is 14 px tall. The
-  hundred flags take up less than a megabyte.
+  hundred and sixty flags take up a megabyte and a half.
 - **Licences.** Almost all are in the public domain: a flag rarely carries copyright, or it has
   expired. Some drawings of coats of arms are CC BY-SA, and the app then credits the author under
   the flag. All of them are recorded in `public/flags/credits.json`.
 - **Dates.** Those of official adoption, or of first use if that came earlier.
-- **Simplifications**, marked with a comment in the YAML: some short-lived variants are missing
-  (Albania 1914–1946, Bulgaria 1946–1948 and 1967–1971, Hungary 1918–1919 and 1956–1957, Finland's
-  red lion flag of 1917–1918). Colonies, protectorates and mandates have none yet. Occupied
-  Germany (1945–1949) is shown without a flag of its own, because it had none.
+- **When sources disagree**, the date is the day the law, decree or constitution took effect
+  (§0.1), and the YAML comment gives the other source's date. Dates not found on Wikipedia come
+  from [Flags of the World](https://www.fotw.info/), which cites the decrees. The current cases:
+  - **Finland**: the blue cross from the law of 29 May 1918 (Wikipedia says the 28th, the day
+    Parliament voted it). The red lion from when it was first hoisted, on 28 December 1917.
+  - **Bulgaria**: the decree of 27 January 1948 approved the first communist emblem; Wikipedia uses
+    it as the date of the second, and Flags of the World says the first lasted two more months,
+    with no day given. The decree is used. The 1967 change is from the decree of 7 December
+    (Wikipedia says 5 January, unsourced).
+  - **Albania**: the kingdom's flag from the Statute of 1 December 1928 (Flags of the World says
+    22 November, and a decree of August 1929 fixed the design). Commons has a 1928–1934 version
+    without Skanderbeg's helmet that Flags of the World does not record: in 1934 only the red was
+    lightened, and the map uses the helmeted flag for the whole kingdom. From 26 July to
+    7 September 1943 it is not known which flag the state used, and there is a gap.
+  - **Hungary**: the Kossuth arms return to the flag with the revolution, on 23 October 1956
+    (Commons says officially on 12 November). The flag with the hole was never official.
+  - **China**: the Kuomintang flag from when Manchuria joined the Nanjing government (29 December
+    1928), which had used it since 1927 where it ruled. The Qing dynasty's rectangular dragon flag
+    was used by the navy from 1881 and became the national flag in 1888 or 1889, and is shown from
+    1886.
+- **Simplifications**, marked with a comment in the YAML: Afghanistan before 1929, when the flags
+  of the emirate and of Amanullah's kingdom changed often and without exact dates; Iraq's first
+  flag (1921–1924) and that of the Arab Federation (1958). Colonies, protectorates and mandates
+  have none yet (British India had no national flag), nor do Bukhara, Khiva, Bosnia and
+  Herzegovina under Austria-Hungary, Palestine, Gaza, the West Bank and Kashmir. Occupied Germany
+  (1945–1949) is shown without a flag of its own, because it had none.
 - **Flags of regimes such as the Nazi or Soviet ones** are shown in their historical context and
   for educational purposes.
 

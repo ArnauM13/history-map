@@ -52,6 +52,15 @@ describe('les banderes', () => {
     })
   })
 
+  it('porten les variants de poca durada', () => {
+    expect(flagOn('375', '1918-03-01')?.flag).toBe('fi-1917')
+    expect(flagOn('310', '1919-01-01')?.flag).toBe('hu-1918')
+    expect(flagOn('310', '1957-01-01')?.flag).toBe('hu-1946')
+    expect(flagOn('339', '1940-01-01')?.flag).toBe('al-1939')
+    expect(flagOn('355', '1947-01-01')?.flag).toBe('bg')
+    expect(flagOn('355', '1969-01-01')?.flag).toBe('bg-1967')
+  })
+
   it("no posen la primera bandera d'un estat abans del 1886, que no se sap quan va arribar", () => {
     expect(flagOn('220', '1886-01-01')?.flag).toBeDefined()
     expect(flagOn('220', '1700-01-01')).toBeUndefined()
