@@ -297,16 +297,41 @@ baixa `npm run data:flags`, o el workflow «Flags» de GitHub cada cop que el fi
 
 - **Imatges lleugeres.** Es baixa el PNG de 330 px que renderitza Wikimedia, no l'SVG original:
   n'hi ha que passen del mega pels escuts detallats, i al mapa una bandera fa 14 px d'alçada. Les
-  cent banderes fan menys d'un mega.
+  cent seixanta banderes fan un mega i mig.
 - **Llicències.** Quasi totes són de domini públic: una bandera no sol tenir drets d'autor, o ja
   han caducat. Alguns dibuixos d'escuts són CC BY-SA, i llavors l'app en cita l'autor sota la
   bandera. Totes queden apuntades a `public/flags/credits.json`.
 - **Dates.** Les de l'adopció oficial, o la del primer ús si va ser abans.
-- **Simplificacions**, marcades amb un comentari al YAML: falten algunes variants de poca durada
-  (Albània del 1914 al 1946, Bulgària del 1946 al 1948 i del 1967 al 1971, Hongria del 1918 al
-  1919 i del 1956 al 1957, el lleó vermell de Finlàndia del 1917 al 1918). Les colònies, els
-  protectorats i els mandats encara no en porten cap. L'Alemanya ocupada (1945-1949) surt sense
-  bandera pròpia, perquè no en tenia.
+- **Quan les fonts no coincideixen**, es fa servir el dia que té efecte la llei, el decret o la
+  constitució (§0.1), i el comentari del YAML diu quina altra data dona l'altra font. Les dates que
+  no són a la Viquipèdia surten de [Flags of the World](https://www.fotw.info/), que cita els
+  decrets. Els casos d'ara:
+  - **Finlàndia**: la creu blava, des de la llei del 29 de maig del 1918 (la Viquipèdia diu el 28,
+    el dia que la va votar el Parlament). El lleó vermell, des que es va hissar per primer cop, el
+    28 de desembre del 1917.
+  - **Bulgària**: el decret del 27 de gener del 1948 va aprovar el primer escut comunista; la
+    Viquipèdia el fa servir com a data del segon, i Flags of the World diu que el primer va durar
+    dos mesos més, sense dia. Es pren el decret. El canvi del 1967 és del decret del 7 de desembre
+    (la Viquipèdia diu el 5 de gener, sense font).
+  - **Albània**: la bandera del regne, des de l'Estatut de l'1 de desembre del 1928 (Flags of the
+    World diu el 22 de novembre, i el dibuix el va fixar un decret de l'agost del 1929). Commons en
+    té una versió del 1928 al 1934 sense el casc d'Skanderbeg que Flags of the World no recull: el
+    1934 només es va aclarir el vermell, i el mapa fa servir la del casc per a tot el regne. Del
+    26 de juliol al 7 de setembre del 1943 no se sap quina bandera feia servir l'Estat, i hi ha un
+    buit.
+  - **Hongria**: l'escut de Kossuth torna a la bandera amb la revolució, el 23 d'octubre del 1956
+    (Commons diu que oficialment, el 12 de novembre). La bandera amb el forat no va ser mai
+    oficial.
+  - **La Xina**: la bandera del Kuomintang, des que la Manxúria s'adhereix al govern de Nanquín (el
+    29 de desembre del 1928), que la feia servir des del 1927 on governava. El drac rectangular de
+    la dinastia Qing es feia servir a la marina des del 1881 i va ser nacional el 1888 o el 1889, i
+    surt des del 1886.
+- **Simplificacions**, marcades amb un comentari al YAML: l'Afganistan abans del 1929, quan les
+  banderes de l'emirat i del regne d'Amanullah canviaven sovint i sense dates exactes; la primera
+  bandera de l'Iraq (1921-1924) i la de la Federació Àrab (1958). Les colònies, els protectorats i
+  els mandats encara no en porten cap (l'Índia britànica no tenia bandera nacional), ni Bukharà,
+  Khiva, Bòsnia i Hercegovina sota Àustria-Hongria, Palestina, Gaza, Cisjordània i el Caixmir.
+  L'Alemanya ocupada (1945-1949) surt sense bandera pròpia, perquè no en tenia.
 - **Les banderes de règims com el nazi o el soviètic** s'ensenyen en el seu context històric i
   amb finalitat educativa.
 

@@ -301,16 +301,39 @@ descarga `npm run data:flags`, o el workflow «Flags» de GitHub cada vez que el
 
 - **Imágenes ligeras.** Se descarga el PNG de 330 px que renderiza Wikimedia, no el SVG original:
   algunos pasan del mega por los escudos detallados, y en el mapa una bandera mide 14 px de alto.
-  Las cien banderas ocupan menos de un mega.
+  Las ciento sesenta banderas ocupan un mega y medio.
 - **Licencias.** Casi todas son de dominio público: una bandera no suele tener derechos de autor,
   o ya han caducado. Algunos dibujos de escudos son CC BY-SA, y entonces la app cita al autor bajo
   la bandera. Todas quedan anotadas en `public/flags/credits.json`.
 - **Fechas.** Las de la adopción oficial, o la del primer uso si fue antes.
-- **Simplificaciones**, marcadas con un comentario en el YAML: faltan algunas variantes de poca
-  duración (Albania de 1914 a 1946, Bulgaria de 1946 a 1948 y de 1967 a 1971, Hungría de 1918 a
-  1919 y de 1956 a 1957, el león rojo de Finlandia de 1917 a 1918). Las colonias, los
-  protectorados y los mandatos todavía no llevan ninguna. La Alemania ocupada (1945-1949) sale sin
-  bandera propia, porque no la tenía.
+- **Cuando las fuentes no coinciden**, se usa el día en que tiene efecto la ley, el decreto o la
+  constitución (§0.1), y el comentario del YAML dice qué otra fecha da la otra fuente. Las fechas
+  que no están en la Wikipedia salen de [Flags of the World](https://www.fotw.info/), que cita los
+  decretos. Los casos de ahora:
+  - **Finlandia**: la cruz azul, desde la ley del 29 de mayo de 1918 (la Wikipedia dice el 28, el
+    día que la votó el Parlamento). El león rojo, desde que se izó por primera vez, el 28 de
+    diciembre de 1917.
+  - **Bulgaria**: el decreto del 27 de enero de 1948 aprobó el primer escudo comunista; la
+    Wikipedia lo usa como fecha del segundo, y Flags of the World dice que el primero duró dos
+    meses más, sin día. Se toma el decreto. El cambio de 1967 es del decreto del 7 de diciembre (la
+    Wikipedia dice el 5 de enero, sin fuente).
+  - **Albania**: la bandera del reino, desde el Estatuto del 1 de diciembre de 1928 (Flags of the
+    World dice el 22 de noviembre, y el dibujo lo fijó un decreto de agosto de 1929). Commons tiene
+    una versión de 1928 a 1934 sin el casco de Skanderbeg que Flags of the World no recoge: en 1934
+    solo se aclaró el rojo, y el mapa usa la del casco para todo el reino. Del 26 de julio al 7 de
+    septiembre de 1943 no se sabe qué bandera usaba el Estado, y hay un hueco.
+  - **Hungría**: el escudo de Kossuth vuelve a la bandera con la revolución, el 23 de octubre de
+    1956 (Commons dice que oficialmente, el 12 de noviembre). La bandera con el agujero nunca fue
+    oficial.
+  - **China**: la bandera del Kuomintang, desde que Manchuria se adhiere al gobierno de Nankín (el
+    29 de diciembre de 1928), que la usaba desde 1927 donde gobernaba. El dragón rectangular de la
+    dinastía Qing se usaba en la marina desde 1881 y fue nacional en 1888 o 1889, y sale desde 1886.
+- **Simplificaciones**, marcadas con un comentario en el YAML: Afganistán antes de 1929, cuando las
+  banderas del emirato y del reino de Amanulá cambiaban a menudo y sin fechas exactas; la primera
+  bandera de Irak (1921-1924) y la de la Federación Árabe (1958). Las colonias, los protectorados y
+  los mandatos todavía no llevan ninguna (la India británica no tenía bandera nacional), ni Bujará,
+  Jiva, Bosnia y Herzegovina bajo Austria-Hungría, Palestina, Gaza, Cisjordania y Cachemira. La
+  Alemania ocupada (1945-1949) sale sin bandera propia, porque no la tenía.
 - **Las banderas de regímenes como el nazi o el soviético** se enseñan en su contexto histórico y
   con finalidad educativa.
 
