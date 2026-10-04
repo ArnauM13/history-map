@@ -261,6 +261,12 @@ a { color: var(--c-brand-ink); font-weight: 600; }
   &.flag.is-selected { height: 8px; opacity: 1; }
 }
 
+/* Abans del 1886 les fronteres van any a any: la franja ho diu, i el títol explica per què. */
+.timeline-approx {
+  position: absolute; inset: 0 auto 0 0; border-radius: 3px;
+  background: repeating-linear-gradient(135deg, var(--c-border-2) 0 2px, transparent 2px 6px);
+}
+
 .timeline-conflict {
   position: absolute; height: 5px; padding: 0; border: 0; border-radius: 3px;
   background: var(--c-conflict); opacity: 0.7; cursor: pointer;

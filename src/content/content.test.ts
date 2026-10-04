@@ -32,7 +32,7 @@ describe('el contingut', () => {
   })
 
   it("només parla d'estats que són a content/countries.yaml", () => {
-    const known = new Set(Object.keys(COUNTRY_NAMES).map(Number))
+    const known = new Set(Object.keys(COUNTRY_NAMES))
     for (const item of [...EVENTS, ...CONFLICTS]) {
       for (const code of item.countries) {
         expect(known.has(code), `${item.id} parla de l'estat ${code}, que no existeix`).toBe(true)
@@ -52,9 +52,9 @@ describe('el contingut', () => {
   })
 
   it('troba el nom que tenia un estat en una data', () => {
-    expect(countryName(365, '1910-01-01', 'en')).toBe('Russian Empire')
-    expect(countryName(365, '1950-01-01', 'ca')).toBe('Unió Soviètica')
-    expect(countryName(365, '2000-01-01', 'es')).toBe('Rusia')
+    expect(countryName('365', '1910-01-01', 'en')).toBe('Russian Empire')
+    expect(countryName('365', '1950-01-01', 'ca')).toBe('Unió Soviètica')
+    expect(countryName('365', '2000-01-01', 'es')).toBe('Rusia')
   })
 
   it('tradueix totes les capitals de les fronteres als tres idiomes', () => {
@@ -98,7 +98,7 @@ describe('el contingut', () => {
   })
 
   it("cita una font per a cada ocupació, i només parla d'estats que existeixen", () => {
-    const known = new Set(Object.keys(COUNTRY_NAMES).map(Number))
+    const known = new Set(Object.keys(COUNTRY_NAMES))
     for (const zone of OCCUPATIONS) {
       expect(
         zone.wikipedia?.en || zone.sources.length > 0,
@@ -157,8 +157,8 @@ describe('el contingut', () => {
 
   it('troba qui controlava una zona en una data', () => {
     const albania = OCCUPATIONS.find((o) => o.id === 'albania')!
-    expect(controlOn(albania, '1940-01-01')?.by).toBe(325)
-    expect(controlOn(albania, '1944-01-01')).toMatchObject({ by: 255, from: '1943-09-09' })
+    expect(controlOn(albania, '1940-01-01')?.by).toBe('325')
+    expect(controlOn(albania, '1944-01-01')).toMatchObject({ by: '255', from: '1943-09-09' })
     expect(controlOn(albania, '1945-01-01')).toBeUndefined()
     const ids = activeOccupations('1942-01-01').map((o) => o.id)
     expect(ids).toContain('general-government')

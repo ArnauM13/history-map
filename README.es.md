@@ -2,7 +2,7 @@
 
 # Mapa histórico de Europa
 
-**Europa de 1886 a hoy, en un mapa que se mueve: las fronteras, las banderas y lo que pasó.**
+**Europa de 1500 a hoy, en un mapa que se mueve: las fronteras, las banderas y lo que pasó.**
 
 [Abre el mapa](https://arnaum13.github.io/history-map/?lang=es) · [De dónde sale la información](DADES.es.md) · [Cómo contribuir](CONTRIBUTING.es.md) · [Hoja de ruta (en catalán)](FULL-DE-RUTA.md)
 
@@ -31,6 +31,7 @@ ejemplo, el mapa cambia cada pocos meses. Aquí se puede ver día a día.
 | | |
 | --- | --- |
 | **Las fronteras de cualquier día** | De 1886 a hoy, con el día exacto de cada cambio y el nombre que tenía cada estado entonces: el Imperio ruso, la Rusia soviética, la Unión Soviética, Rusia. |
+| **Cuatro siglos más** | De 1500 a 1885, de año en año: el Reino de Francia y la Monarquía de Julio, el Sacro Imperio, la República de las Dos Naciones, el Imperio sueco. Con las ocupaciones que la fuente contaba como anexiones devueltas a quien eran, y el día exacto de cada cambio de régimen. |
 | **Cada bandera en su tiempo** | Un centenar de banderas de unos setenta estados: en el mapa, en una galería para cada fecha y en la ficha de cada estado, con qué significan las que tienen más historia. |
 | **Lo que pasaba a la vez** | Los conflictos abiertos y los hechos del año, junto al mapa y marcados en la línea temporal. |
 | **Las ocupaciones, de 1938 a 1945** | Lo que se controlaba de hecho y las fronteras no enseñan: la anexión de Austria, el Gobierno General, la Francia de Vichy, Yugoslavia y Grecia repartidas, Ucrania ocupada. Del color del ocupante, como una parte más de su territorio, y cada zona con el nombre en el mapa y su ficha. |
@@ -70,6 +71,7 @@ Ningún dato entra sin fuente, y la fuente se ve en la ficha donde aparece.
 | Qué se ve | De dónde sale |
 | --- | --- |
 | Las fronteras y las capitales | [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zúrich y Universidad de Constanza), con el día exacto de cada cambio de 1886 a 2019 |
+| Las fronteras anteriores a 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), de año en año, con las correcciones explicadas en [DADES.es.md](DADES.es.md) |
 | El nombre de cada estado en cada época | Un artículo de Wikipedia para cada nombre |
 | Las fechas de las banderas | Los artículos de Wikipedia sobre las banderas de cada estado |
 | Las imágenes de las banderas | [Wikimedia Commons](https://commons.wikimedia.org/), con la licencia y el autor de cada una |

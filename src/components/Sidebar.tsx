@@ -8,9 +8,10 @@ import {
   controlOn,
   controlPeriods,
   countryName,
-  countryWiki,
   localize,
   occupationEnd,
+  stateName,
+  stateWiki,
   wikipediaLink,
 } from '../content'
 import { commonsUrl, flagHistory, flagOn, loadFlagCredits, type FlagCredit } from '../content/flags'
@@ -23,7 +24,14 @@ import type {
 } from '../content/schema'
 import type { Lang } from '../i18n'
 import { useI18n } from '../i18n'
-import { MIN_DATE, OPEN_END, formatDate, fromDateNumber, yearOf, type IsoDate } from '../lib/date'
+import {
+  EXACT_BORDERS_FROM,
+  OPEN_END,
+  formatDate,
+  fromDateNumber,
+  yearOf,
+  type IsoDate,
+} from '../lib/date'
 import { stateOn, useBorderData, type LabelCollection } from '../map/data'
 import { REPO_URL, docUrl, type BorderProperties, type Selection } from '../selection'
 import { Flag } from './Flag'
@@ -304,7 +312,7 @@ function Detail({
         date={date}
         labels={labels}
         // Les fronteres que tenia l'estat en la data d'ara, que poden no ser les del clic.
-        feature={stateOn(labels, selection.feature.gwcode, date) ?? selection.feature}
+        feature={stateOn(labels, selection.feature.code, date) ?? selection.feature}
         onGoToEvent={onGoToEvent}
         onGoToDate={onGoToDate}
       />
@@ -351,22 +359,33 @@ function CountryDetail({
   onGoToDate: (date: IsoDate) => void
 }) {
   const { lang, t } = useI18n()
-  const name = countryName(feature.gwcode, date, lang, feature.country_name)
-  const dependent =
-    feature.status !== 'independent' && feature.owner && feature.owner !== String(feature.gwcode)
+  const name = stateName(feature, date, lang)
+  const owner =
+    feature.status !== 'independent' && feature.owner && feature.owner !== feature.code
+      ? feature.owner
+      : undefined
+  // Qui el governava, amb el nom que tenia aleshores: el 1840, l'Algèria francesa és de la
+  // Monarquia de Juliol.
+  const ownerPiece = owner ? stateOn(labels, owner, date) : undefined
   const statusKey = `status.${feature.status}` as Parameters<typeof t>[0]
-  const related = EVENTS.filter((e) => e.countries.includes(feature.gwcode))
-  const current = flagOn(feature.gwcode, date)
+  const related = EVENTS.filter((e) => e.countries.includes(feature.code))
+  const current = flagOn(feature.code, date)
   const about = current?.flag ? localize(FLAGS.about[current.flag], lang) : ''
-  const history = flagHistory(feature.gwcode).filter((p) => p.flag !== undefined)
+  const history = flagHistory(feature.code).filter((p) => p.flag !== undefined)
+  // Abans del 1886, les fronteres són de Cliopatria, que les dona any a any.
+  const approximate = feature.qid !== undefined
 
   // Quan surt l'estat al mapa per primer i per últim cop. La primera bandera no té dia
   // d'estrena, i l'última de l'Alemanya nazi no «arriba fins avui»: s'acaba amb l'estat.
-  const spans = labels?.features.filter((f) => f.properties.gwcode === feature.gwcode) ?? []
+  const spans = labels?.features.filter((f) => f.properties.code === feature.code) ?? []
   const firstSeen = Math.min(...spans.map((f) => f.properties.s))
   const lastSeen = Math.max(...spans.map((f) => f.properties.e))
+  // La primera bandera val des del 1886, encara que l'estat surti abans (el 220 és el Regne de
+  // França des del 1500).
   const firstDate =
-    spans.length > 0 && fromDateNumber(firstSeen) > MIN_DATE ? fromDateNumber(firstSeen) : MIN_DATE
+    spans.length > 0 && fromDateNumber(firstSeen) > EXACT_BORDERS_FROM
+      ? fromDateNumber(firstSeen)
+      : EXACT_BORDERS_FROM
   const endLabel = (until?: IsoDate) =>
     until
       ? yearOf(until)
@@ -390,10 +409,14 @@ function CountryDetail({
           <dt>{t('status')}</dt>
           <dd>{t(statusKey)}</dd>
         </div>
-        {dependent && (
+        {owner && (
           <div>
             <dt>{t('controlledBy')}</dt>
-            <dd>{countryName(Number(feature.owner), date, lang, feature.owner ?? '')}</dd>
+            <dd>
+              {ownerPiece
+                ? stateName(ownerPiece, date, lang)
+                : countryName(owner, date, lang, owner)}
+            </dd>
           </div>
         )}
         {feature.capname && (
@@ -410,7 +433,8 @@ function CountryDetail({
           </dd>
         </div>
       </dl>
-      {history.length > 1 && (
+      {approximate && <p className="src-note">{t('bordersApprox')}</p>}
+      {history.length > 1 && !approximate && (
         <>
           <h3>{t('flagHistory')}</h3>
           <ul className="flag-history">
@@ -432,14 +456,12 @@ function CountryDetail({
       )}
       <Sources
         items={[
-          { what: t('sourceBorders'), ...CSHAPES_SOURCE },
-          ...wikipediaSource(
-            countryWiki(feature.gwcode, date),
-            lang,
-            t('wikipedia'),
-            t('sourceName'),
-          ),
-          ...(FLAGS.sources[String(feature.gwcode)] ?? []).flatMap((title) =>
+          approximate
+            ? { what: t('sourceBordersOnly'), ...CLIOPATRIA_SOURCE }
+            : { what: t('sourceBorders'), ...CSHAPES_SOURCE },
+          ...wikipediaSource(stateWiki(feature, date), lang, t('wikipedia'), t('sourceName')),
+          // Les banderes només són documentades des del 1886.
+          ...(approximate ? [] : (FLAGS.sources[feature.code] ?? [])).flatMap((title) =>
             wikipediaSource(title, lang, t('wikipedia'), t('sourceFlags')),
           ),
         ]}
@@ -478,6 +500,13 @@ const CSHAPES_SOURCE = {
   site: 'CShapes 2.0',
   title: 'Schvitz et al. (2022)',
   url: 'https://icr.ethz.ch/data/cshapes/',
+}
+
+/** Les fronteres d'abans del 1886. */
+const CLIOPATRIA_SOURCE = {
+  site: 'Cliopatria (Seshat)',
+  title: 'Scientific Data (2025)',
+  url: 'https://doi.org/10.1038/s41597-025-04516-9',
 }
 
 /** Les divisions administratives d'avui, d'on surten algunes vores de les zones ocupades. */

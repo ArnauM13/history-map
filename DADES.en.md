@@ -10,6 +10,7 @@ check the licence of that part.**
 | The code (`src/`, `scripts/`…) | This project | MIT |
 | The texts (`content/`) | Its contributors | CC BY-SA 4.0 |
 | The borders (`public/data/`) | CShapes 2.0, clipped and simplified here | CC BY-NC-SA 4.0 |
+| The borders before 1886 (`public/data/history/`) | Cliopatria, clipped, simplified and corrected here (§1.4) | CC BY 4.0 |
 | The occupation zones (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) and lines drawn here (§1.3) | CC BY-NC-SA 4.0 |
 | The flags (`public/flags/`) | Wikimedia Commons | Each image's own (§2) |
 | The map lettering (`public/fonts/`) | Open Sans, from [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0 |
@@ -25,7 +26,9 @@ Everything the map shows has a source, and the card where it appears cites it wi
 | What you see | Where it comes from | Where it is cited |
 | --- | --- | --- |
 | Borders and capitals | CShapes 2.0 (§1) | On each state's card |
+| Borders before 1886 | Cliopatria (§1.4) | On each state's card |
 | Each state's name in each period | The Wikipedia article on the state under that name (`wiki` in `content/countries.yaml`) | On the state's card |
+| Each entity's name before 1886 | The Catalan and Spanish title of the Wikipedia article Cliopatria cites, or `content/countries.yaml` by QID (§1.4) | On the state's card |
 | Flag dates | The Wikipedia articles on each state's flags (`sources` in `content/flags.yaml`) | On the state's card |
 | Flag images | Wikimedia Commons (§2, `public/flags/credits.json`) | Under each flag |
 | Occupied and annexed zones (1938–1945) | CShapes borders from other dates, today's divisions from Natural Earth and hand-drawn lines (§1.3); the dates, from each zone's Wikipedia article (`content/occupations/`) | On each zone's card |
@@ -60,9 +63,10 @@ territories that depended on them (colonies, protectorates, mandates, occupied t
   twelve colours are spread out, and an occupier never takes the occupied state's, so the zone
   stands out.
 
-States are identified by their **Gleditsch & Ward codes** (`gwcode`), the same ones used by
+States are identified by their **Gleditsch & Ward codes** (`code`), the same ones used by
 CShapes and much of political science (UCDP conflict data, for instance). Events, conflicts, names
-and flags refer to states by these codes. CShapes names states and capitals in English; the app's
+and flags refer to states by these codes. Entities before 1886 that do not continue any CShapes
+state use their Wikidata QID (`Q207162`) as their code (§1.4). CShapes names states and capitals in English; the app's
 names come from `content/countries.yaml` and `content/capitals.yaml`, in all three languages.
 
 ### 1.1 Where we depart from it
@@ -146,6 +150,69 @@ test checks that no two zones with the same dates overlap.
   front, and will come with the front-lines layer.
 - **Small pieces of the 1941 Italian annexations**: what was added to the province of Fiume
   (Sušak, Kastav, Krk and Rab) and, from the autumn, Hvar and Pag. They appear inside Croatia.
+
+### 1.4 Before 1886: Cliopatria
+
+[Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria), from the Seshat Global
+History Databank, maps the world's political entities from 3400 BCE to 2024, each with the year
+every shape starts and ends. The map uses Europe's, from 1500 to 1885.
+
+> Seshat Global History Databank. Cliopatria, version 0.2.1. _Scientific Data_ (2025).
+> https://doi.org/10.1038/s41597-025-04516-9
+
+- **Licence**: CC BY 4.0. The files in `public/data/history/` are a derivative work under the same
+  licence.
+- **What is done to it** (`npm run data:history`, after `npm run data:borders`, which provides the
+  colours):
+  - The groupings (the rows in brackets, which repeat other rows' pieces) are dropped, and it is
+    clipped and simplified like CShapes.
+  - Each entity carries its Wikidata QID. If in 1885 it covers the same place as a CShapes state of
+    1886, or it is on the `SAME_STATE` list, it takes that state's code and colour: the Kingdom of
+    France, the Republic and both Empires are 220, like CShapes's France. The list adds the
+    predecessors Gleditsch & Ward already count as the same state (Prussia, 255; the Kingdom of
+    Sardinia, 325) and those that were its core (England, 200; the Habsburg Monarchy, 300).
+  - The name is the Catalan and Spanish title of the Wikipedia article Cliopatria cites
+    (`content/wikipedia.json`). When there is none, or it is not about the entity,
+    `content/countries.yaml` sets it by QID.
+  - It comes in one file per century, and the app only downloads the century on screen: together
+    they weigh ten times CShapes's borders.
+
+**Precision.** Cliopatria samples the map every few years —every year in turbulent times, every ten
+or more in quiet ones— and each shape holds until the next sample. So borders change on 1 January
+rather than on the day it happened, and a change can arrive a year or two late. Each state's card
+says so, and the timeline marks it with a hatched band up to 1886. Where we know the day, the name
+does change on the exact day (§1.4.1).
+
+#### 1.4.1 Where we depart from it
+
+Corrections are code, in `scripts/build-history.mjs`: `CORRECTIONS` changes who a piece belongs to
+and until when; `SHAPES` gives a territory back to its owner, taking it only from whoever occupied
+it, so that the neighbours' real changes are left alone. Each one carries its description and
+dates.
+
+| What | Why |
+| --- | --- |
+| Prussia, 1809 to 1867 | Cliopatria names it after the Confederation of the Rhine (1809-1814), which it never joined, and the German Confederation (1815-1867), which was not a state. Its "Kingdom of Prussia" row covers less than 2,000 km². |
+| Occupations counted as sovereignty | Cliopatria draws military control as if it were annexation, and the sampling stretches it. Given back: Vienna, Ottoman in 1529-1533 and 1683-1686 for two sieges that failed; Moscow and Lithuania, French in 1812-1813 for a six-month campaign; Vienna (1805, 1809), Prussia and Warsaw (1807-1808) and Spain (1809-1811), French; Paris, German in 1870-1872; Barcelona, English in 1706-1712; Saxony, Swedish and Prussian in the Thirty Years' and Seven Years' Wars, and Prussian in 1815-1819 and 1866; Bohemia, Prussian in 1744 and 1866; Brandenburg, Swedish in 1632-1647; Lombardy, Sardinian in 1848. |
+| Composite monarchies | Ferdinand I's Austria and Bohemia appear as part of Spain (1529-1555); Saxony under the elector who was king of Poland, as Poland (1700-1756); Habsburg-Lorraine Tuscany, as Austria; Hanover, as British or Prussian. They were separate states. |
+| Scotland | A separate kingdom until 1 May 1707, except under Cromwell's Commonwealth. Cliopatria makes it English from 1609 and leaves it blank from 1640 to 1652. |
+| Revolts of a few months | The Hungarian State (14 April - 13 August 1849), the Republic of Baden (1 June - 23 July 1849), Sicily in 1848 and the November Uprising government (29 November 1830 - 21 October 1831), with their own dates; the sampling stretched them by up to three years. The Nalyvaiko and Huguenot revolts, inside their state. |
+| The day a regime changes | France (1792, 1795, 1799, 1804, 1814, 1830, 1848, 1852, 1870), Spain (1873, 1874), Great Britain (1707) and the United Kingdom (1801), Denmark and Norway (1814), Sweden (1721), Prussia (1701), Austria-Hungary (1867), Italy (1861), Napoleonic Italy (1805), Naples (1806), Tuscany (1569), Greece (1832), Serbia (1882) and Romania (1862, 1881). |
+| Wrong names and articles | "Serbs", the people, for the Principality of Serbia; the County of Urgell for Andorra; a "Kingdom of Monaco"; present-day Catalonia's QID and article for the 1641 Catalan Republic, and present-day Italy's for the 1802 Italian Republic; 1885 Egypt linked to the "Scramble for Africa"; the Livonian Confederation, to the Livonian language. |
+| France in 1814 | Cliopatria gives 100,000 km² around Paris to the Grand Duchy of Berg, which had 15,000, on the Rhine. |
+
+#### 1.4.2 Where it falls short
+
+- **Year by year.** See "Precision", above.
+- **More de facto control.** Some occupations are still counted as sovereignty: Sweden in southern
+  Germany during the Thirty Years' War, Russia in Wallachia and Moldavia, French Hamburg from 1806.
+- **Small German and Italian states.** Those of the Holy Roman Empire go together, under the
+  Empire's name, including the Italian ones until 1740. Some carry a neighbour's: Frankfurt appears
+  inside Berg and Würzburg (1807-1819), Parma inside Modena (1815-1847) and Lucca inside Tuscany.
+- **Coarser outlines** than CShapes's, with a small jump on 1 January 1886, when CShapes's start.
+  Geneva, independent and Swiss since 1815, falls on the wrong side of the border.
+- **Gaps.** From 1659 to 1661, Kyiv belongs to nobody.
+- **No flags.** They start in 1886: earlier ones are not documented yet.
 
 ---
 

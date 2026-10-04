@@ -2,7 +2,7 @@
 
 # Mapa històric d'Europa
 
-**Europa del 1886 a avui, en un mapa que es mou: les fronteres, les banderes i el que hi va passar.**
+**Europa del 1500 a avui, en un mapa que es mou: les fronteres, les banderes i el que hi va passar.**
 
 [Obre el mapa](https://arnaum13.github.io/history-map/?lang=ca) · [D'on surt la informació](DADES.md) · [Com s'hi contribueix](CONTRIBUTING.md) · [Full de ruta](FULL-DE-RUTA.md)
 
@@ -31,6 +31,7 @@ el del 1945 i el del 1991— i el que passa entre l'un i l'altre s'ha d'imaginar
 | | |
 | --- | --- |
 | **Les fronteres de qualsevol dia** | Del 1886 a avui, amb el dia exacte de cada canvi i el nom que tenia cada estat aleshores: l'Imperi Rus, la Rússia soviètica, la Unió Soviètica, Rússia. |
+| **Quatre segles més** | Del 1500 al 1885, d'any en any: el Regne de França i la Monarquia de Juliol, el Sacre Imperi, la República de les Dues Nacions, l'Imperi Suec. Amb les ocupacions que la font comptava com a annexions retornades a qui eren, i el dia exacte de cada canvi de règim. |
 | **Cada bandera al seu temps** | Un centenar de banderes d'una setantena d'estats: al mapa, en una galeria per a cada data i a la fitxa de cada estat, amb què volen dir les que tenen més història. |
 | **El que passava alhora** | Els conflictes oberts i els fets de l'any, al costat del mapa i marcats a la línia temporal. |
 | **Les ocupacions, del 1938 al 1945** | El que es controlava de fet i les fronteres no ensenyen: l'annexió d'Àustria, el Govern General, la França de Vichy, Iugoslàvia i Grècia repartides, Ucraïna ocupada. Del color de l'ocupant, com una part més del seu territori, i cada zona amb el nom al mapa i la seva fitxa. |
@@ -70,6 +71,7 @@ Cap dada no hi entra sense font, i la font es veu a la fitxa on surt.
 | Què es veu | D'on surt |
 | --- | --- |
 | Les fronteres i les capitals | [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zuric i Universitat de Constança), amb el dia exacte de cada canvi del 1886 al 2019 |
+| Les fronteres d'abans del 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), d'any en any, amb les correccions explicades a [DADES.md](DADES.md) |
 | El nom de cada estat en cada època | Un article de la Viquipèdia per a cada nom |
 | Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat |
 | Les imatges de les banderes | [Wikimedia Commons](https://commons.wikimedia.org/), amb la llicència i l'autor de cadascuna |

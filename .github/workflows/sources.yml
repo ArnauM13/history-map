@@ -8,6 +8,7 @@ on:
     paths:
       - content/**
       - scripts/check-sources.mjs
+      - public/data/history/**
   schedule:
     - cron: '17 6 * * 1'
   workflow_dispatch:

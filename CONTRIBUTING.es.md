@@ -111,7 +111,11 @@ sources: # de dónde salen las fechas: artículos de la Wikipedia en inglés
 un nombre que no le tocaba en esa fecha, es aquí. Cada nombre cita el artículo de la Wikipedia en
 inglés sobre el estado con ese nombre (`wiki: Russian Empire`). Las capitales vienen de CShapes en inglés y se
 traducen en `content/capitals.yaml`. El código de un estado está en `public/data/labels.geojson`
-(`gwcode`).
+(`code`).
+
+Antes de 1886, el nombre sale solo del título del artículo de Wikipedia, en catalán y castellano.
+Si no es bueno, va en `content/countries.yaml` con el QID de Wikidata de la entidad como clave
+(`Q33698:`), que está en `public/data/history/*.labels.geojson` (`qid`).
 
 ## Cómo se escribe
 
@@ -127,6 +131,11 @@ traducen en `content/capitals.yaml`. El código de un estado está en `public/da
 `public/data/` no se toca a mano: lo genera `npm run data:borders`. Una corrección a CShapes va en
 la lista `CORRECTIONS` de `scripts/build-borders.mjs`, con su fila y la fuente en
 [DADES.es.md](DADES.es.md).
+
+Las anteriores a 1886 (`public/data/history/`) las genera `npm run data:history`, a partir de
+Cliopatria. Si una entidad lleva un nombre que no le toca o dura más de lo que duró, va en
+`CORRECTIONS` de `scripts/build-history.mjs`; si un territorio sale de quien lo ocupaba y no de
+quien era, en `SHAPES`. Las dos, con la fecha exacta y una fila en [DADES.es.md](DADES.es.md) §1.4.
 
 ## Ocupaciones
 

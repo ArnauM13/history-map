@@ -42,20 +42,25 @@ describe('les banderes', () => {
   })
 
   it("troben la bandera d'un estat en una data", () => {
-    expect(flagOn(255, '1914-06-28')?.flag).toBe('de-1867')
-    expect(flagOn(255, '1925-01-01')?.flag).toBe('de-1919')
-    expect(flagOn(260, '1947-01-01')?.flag).toBeNull()
-    expect(flagOn(365, '1950-01-01')).toEqual({
+    expect(flagOn('255', '1914-06-28')?.flag).toBe('de-1867')
+    expect(flagOn('255', '1925-01-01')?.flag).toBe('de-1919')
+    expect(flagOn('260', '1947-01-01')?.flag).toBeNull()
+    expect(flagOn('365', '1950-01-01')).toEqual({
       flag: 'su-1923',
       from: '1923-11-12',
       until: '1955-08-18',
     })
   })
 
+  it("no posen la primera bandera d'un estat abans del 1886, que no se sap quan va arribar", () => {
+    expect(flagOn('220', '1886-01-01')?.flag).toBeDefined()
+    expect(flagOn('220', '1700-01-01')).toBeUndefined()
+  })
+
   it('llisten les banderes estrenades en un període', () => {
     const changes = flagChangesBetween('1931-01-01', '1931-12-31')
     expect(changes.map((c) => c.period.flag)).toContain('es-1931')
-    expect(flagHistory(230)[1].from).toBe('1931-04-14')
+    expect(flagHistory('230')[1].from).toBe('1931-04-14')
   })
 
   it("citen d'on surten les dates de cada estat amb banderes", () => {

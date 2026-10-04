@@ -2,6 +2,7 @@ import { parse } from 'yaml'
 import { z } from 'zod'
 import { fallbackOrder, type Lang } from '../i18n'
 import { addDays, isWithin, type IsoDate } from '../lib/date'
+import type { BorderProperties } from '../selection'
 import {
   conflictSchema,
   capitalsSchema,
@@ -131,18 +132,54 @@ export function wikipediaLink(
 }
 
 /** El nom d'un estat en una data: l'Imperi Rus, la Unió Soviètica i Rússia són el mateix codi. */
-function nameOn(gwcode: number, date: IsoDate) {
-  const entry = COUNTRY_NAMES[String(gwcode)]
+function nameOn(code: string, date: IsoDate) {
+  const entry = COUNTRY_NAMES[code]
   if (!entry || !Array.isArray(entry)) return entry
   return entry.find((e) => !e.until || date <= e.until) ?? entry[entry.length - 1]
 }
 
-export function countryName(gwcode: number, date: IsoDate, lang: Lang, fallback = ''): string {
-  return localize(nameOn(gwcode, date), lang) || fallback
+export function countryName(code: string, date: IsoDate, lang: Lang, fallback = ''): string {
+  return localize(nameOn(code, date), lang) || fallback
 }
 
 /** La font del nom: l'article de la Viquipèdia sobre l'estat tal com era en aquella data. */
-export const countryWiki = (gwcode: number, date: IsoDate) => nameOn(gwcode, date)?.wiki
+export const countryWiki = (code: string, date: IsoDate) => nameOn(code, date)?.wiki
+
+/**
+ * El títol d'un article com a nom: sense la precisió entre parèntesis («Regne d'Itàlia
+ * (1861-1946)»), ni l'àncora que hi deixen alguns enllaços entre idiomes («Trípoli otomana#top»).
+ */
+const plainTitle = (title: string | undefined) =>
+  title?.replace(/#.*$/, '').replace(/\s*\([^)]*\)$/, '') || undefined
+
+type NamedPiece = Pick<BorderProperties, 'code' | 'country_name' | 'qid' | 'wiki'>
+
+/**
+ * El nom d'una peça del mapa. Abans del 1886, el de l'entitat de Cliopatria, que diu el règim: el
+ * 1700 és el Regne de França, no «França». Si content/countries.yaml en porta el QID, mana; si
+ * no, el nom és el títol de l'article de la Viquipèdia en català o castellà, que treu
+ * `npm run data:sources`, i el de Cliopatria en anglès.
+ */
+export function stateName(piece: NamedPiece, date: IsoDate, lang: Lang): string {
+  if (!piece.qid) return countryName(piece.code, date, lang, piece.country_name)
+  const entry = nameOn(piece.qid, date)
+  if (entry) return localize(entry, lang)
+  const titles = piece.wiki ? WIKIPEDIA[piece.wiki] : undefined
+  return (
+    localize(
+      {
+        ca: plainTitle(titles?.ca),
+        es: plainTitle(titles?.es),
+        en: plainTitle(piece.country_name),
+      },
+      lang,
+    ) || piece.code
+  )
+}
+
+/** La font del nom d'una peça: l'article que l'explica tal com era en aquella data. */
+export const stateWiki = (piece: NamedPiece, date: IsoDate) =>
+  piece.qid ? (nameOn(piece.qid, date)?.wiki ?? piece.wiki) : countryWiki(piece.code, date)
 
 /** La capital en l'idioma de la pantalla; si no està traduïda, tal com ve de CShapes. */
 export const capitalName = (capname: string, lang: Lang) =>

@@ -17,21 +17,24 @@ import {
 import {
   MIN_DATE,
   clampDate,
-  fromMonthIndex,
+  fromStepIndex,
   isValidIsoDate,
-  monthIndex,
+  stepIndex,
   todayIso,
   yearOf,
   type IsoDate,
   type Precision,
 } from './lib/date'
-import { useLabels } from './map/data'
+import { useHistoryFor, useLabels } from './map/data'
 import { MapView } from './map/MapView'
 import type { Selection } from './selection'
 
 /** El dia de Sarajevo: l'Europa dels imperis, just abans que s'esquerdi. */
 const DEFAULT_DATE = '1914-06-28'
-/** Mil·lisegons per mes quan la línia es reprodueix: un segle passa en uns tres minuts. */
+/**
+ * Mil·lisegons per pas quan la línia es reprodueix: un segle passa en uns tres minuts des del 1886,
+ * i en mig minut abans, on cada pas és de sis mesos.
+ */
 const PLAY_INTERVAL = 150
 
 function initialState(maxDate: IsoDate) {
@@ -58,6 +61,7 @@ export default function App() {
   const [showOccupations, setShowOccupations] = useState(initial.showOccupations)
   const [tab, setTab] = useState<SidebarTab>('flags')
   const labels = useLabels()
+  const historyStatus = useHistoryFor(date)
   const { t } = translator(lang)
 
   const year = yearOf(date)
@@ -86,17 +90,18 @@ export default function App() {
       ?.setAttribute('content', t('metaDescription'))
   }, [lang])
 
-  // Reproduir: un mes a cada tic, fins avui.
+  // Reproduir: un pas a cada tic, fins avui. Si el segle que ve encara no ha arribat, s'espera.
+  const waiting = historyStatus !== 'ready'
   useEffect(() => {
-    if (!playing) return
+    if (!playing || waiting) return
     const id = setInterval(() => {
       setPrecision('month')
-      setDate((d) => fromMonthIndex(Math.min(monthIndex(d) + 1, monthIndex(maxDate))))
+      setDate((d) => fromStepIndex(Math.min(stepIndex(d) + 1, stepIndex(maxDate))))
     }, PLAY_INTERVAL)
     return () => clearInterval(id)
-  }, [playing, maxDate])
+  }, [playing, waiting, maxDate])
 
-  const atEnd = monthIndex(date) >= monthIndex(maxDate)
+  const atEnd = stepIndex(date) >= stepIndex(maxDate)
   if (playing && atEnd) setPlaying(false)
 
   const changeDate = useCallback((next: IsoDate, nextPrecision: Precision) => {
@@ -149,6 +154,7 @@ export default function App() {
         <main className="map-area">
           <MapView
             date={date}
+            historyStatus={historyStatus}
             showFlags={showFlags}
             showOccupations={showOccupations}
             events={yearEvents}
@@ -189,7 +195,7 @@ export default function App() {
           maxDate={maxDate}
           playing={playing}
           tab={tab}
-          selectedGwcode={selection?.kind === 'country' ? selection.feature.gwcode : undefined}
+          selectedCode={selection?.kind === 'country' ? selection.feature.code : undefined}
           onChange={changeDate}
           onTogglePlay={togglePlay}
           onSelectConflict={(id) => setSelection({ kind: 'conflict', id })}

@@ -32,10 +32,12 @@ content/
   occupations/*.yaml    un fitxer per zona ocupada o annexionada: dates, qui la controlava, text
 public/
   data/                 les fronteres i les zones ocupades, generades (no es toquen a mà)
+  data/history/         les fronteres d'abans del 1886, un fitxer per segle (generades)
   flags/                les banderes en PNG i credits.json, baixades (no es toquen a mà)
   fonts/                les lletres de les etiquetes del mapa
 scripts/
   build-borders.mjs     CShapes 2.0 → public/data
+  build-history.mjs     Cliopatria → public/data/history, amb les correccions
   build-occupations.mjs les formes de les zones ocupades: CShapes, Natural Earth i línies a mà
   fetch-flags.mjs       Wikimedia Commons → public/flags
   check-sources.mjs     comprova les fonts i treu els títols de la Viquipèdia en català i castellà
@@ -56,9 +58,14 @@ en text ISO (`1914-06-28`) i una precisió (dia, mes o any) que només canvia co
 
 ### Els estats
 
-S'identifiquen amb el **codi de Gleditsch i Ward** (`gwcode`), el de CShapes. Els noms, les
+S'identifiquen amb el **codi de Gleditsch i Ward** (`code`, en text), el de CShapes. Els noms, les
 banderes, els fets i els conflictes hi fan referència. Un mateix codi pot tenir noms i banderes
 diferents al llarg del temps (365: Imperi Rus, Rússia soviètica, Unió Soviètica, Rússia).
+
+Abans del 1886, les fronteres són de Cliopatria (`scripts/build-history.mjs`), d'any en any i en un
+fitxer per segle que l'app baixa quan cal. Cada peça porta el QID de Wikidata de l'entitat (`qid`):
+el codi és el de Gleditsch i Ward si continua un estat de CShapes (el Regne de França és el 220), i
+el QID si no. El nom va pel QID, no pel codi: el 1700, el 220 és el Regne de França.
 
 ### Decisions
 
@@ -68,7 +75,9 @@ diferents al llarg del temps (365: Imperi Rus, Rússia soviètica, Unió Sovièt
   comparteixen mai color, i un estat el manté tota la vida. Les colònies porten el de qui les
   governa, més clar.
 - **Les correccions a CShapes són codi** (`CORRECTIONS` a `build-borders.mjs`) i tenen una fila a
-  [DADES.md](DADES.md). Els fitxers generats no es toquen mai a mà.
+  [DADES.md](DADES.md). Els fitxers generats no es toquen mai a mà. Les de Cliopatria, també
+  (`CORRECTIONS` i `SHAPES` a `build-history.mjs`), sempre amb la data exacta: la mostra d'any en
+  any no ho és, i el nom i el territori han de ser de qui eren, no de qui els ocupava.
 - **Les ocupacions, a part de les fronteres.** CShapes dona les pactades; el control de fet va en
   una capa pròpia (`content/occupations/`), amb el color de l'ocupant. La forma de cada zona és
   codi (`ZONES` a `build-occupations.mjs`), feta de peces de CShapes sempre que es pot perquè les

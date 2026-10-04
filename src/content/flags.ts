@@ -1,4 +1,4 @@
-import { addDays, type IsoDate } from '../lib/date'
+import { EXACT_BORDERS_FROM, addDays, type IsoDate } from '../lib/date'
 import { FLAGS } from './index'
 
 /** Un tram de temps en què un estat va fer servir una sola bandera. */
@@ -11,29 +11,35 @@ export interface FlagPeriod {
   until?: IsoDate
 }
 
-const histories = new Map<number, FlagPeriod[]>()
+const histories = new Map<string, FlagPeriod[]>()
 
 /** Totes les banderes d'un estat, per ordre. */
-export function flagHistory(gwcode: number): FlagPeriod[] {
-  let history = histories.get(gwcode)
+export function flagHistory(code: string): FlagPeriod[] {
+  let history = histories.get(code)
   if (!history) {
-    const entries = FLAGS.states[String(gwcode)] ?? []
+    const entries = FLAGS.states[code] ?? []
     history = entries.map((entry, i) => ({
       flag: entry.flag,
       from: i > 0 ? addDays(entries[i - 1].until!, 1) : undefined,
       until: entry.until,
     }))
-    histories.set(gwcode, history)
+    histories.set(code, history)
   }
   return history
 }
 
-/** La bandera que feia servir un estat en una data, si està documentada. */
-export const flagOn = (gwcode: number, date: IsoDate): FlagPeriod | undefined =>
-  flagHistory(gwcode).find((p) => !p.until || date <= p.until)
+/**
+ * La bandera que feia servir un estat en una data, si està documentada. La primera de cada estat
+ * no té dia d'estrena: val des del 1886, on comencen les fronteres exactes. Abans, sense un
+ * `from`, no se sap: la França del 1700 no duia la tricolor.
+ */
+export function flagOn(code: string, date: IsoDate): FlagPeriod | undefined {
+  const period = flagHistory(code).find((p) => !p.until || date <= p.until)
+  return period && (period.from ?? EXACT_BORDERS_FROM) <= date ? period : undefined
+}
 
 export interface FlagChange {
-  gwcode: number
+  code: string
   period: FlagPeriod & { flag: string; from: IsoDate }
 }
 
@@ -43,9 +49,9 @@ export interface FlagChange {
  */
 export const ALL_FLAG_CHANGES: FlagChange[] = Object.keys(FLAGS.states)
   .flatMap((code) =>
-    flagHistory(Number(code))
+    flagHistory(code)
       .filter((p): p is FlagChange['period'] => Boolean(p.flag && p.from))
-      .map((period) => ({ gwcode: Number(code), period })),
+      .map((period) => ({ code, period })),
   )
   .sort((a, b) => a.period.from.localeCompare(b.period.from))
 

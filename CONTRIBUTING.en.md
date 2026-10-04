@@ -108,7 +108,11 @@ sources: # where the dates come from: English Wikipedia articles
 `content/countries.yaml` gives the name of each state over time. If a state shows a name it didn't
 have on that date, this is the place. Each name cites the English Wikipedia article on the state
 under that name (`wiki: Russian Empire`). Capitals come from CShapes in English and are translated in
-`content/capitals.yaml`. A state's code is in `public/data/labels.geojson` (`gwcode`).
+`content/capitals.yaml`. A state's code is in `public/data/labels.geojson` (`code`).
+
+Before 1886, the name comes on its own from the Wikipedia article's Catalan and Spanish titles. If
+it is wrong, it goes in `content/countries.yaml` keyed by the entity's Wikidata QID (`Q33698:`),
+which is in `public/data/history/*.labels.geojson` (`qid`).
 
 ## How to write
 
@@ -124,6 +128,11 @@ under that name (`wiki: Russian Empire`). Capitals come from CShapes in English 
 `public/data/` is never edited by hand: `npm run data:borders` generates it. A correction to
 CShapes goes into the `CORRECTIONS` list in `scripts/build-borders.mjs`, with its row and source in
 [DADES.en.md](DADES.en.md).
+
+Those before 1886 (`public/data/history/`) come from Cliopatria through `npm run data:history`. If
+an entity has a name it should not, or lasts longer than it did, the fix goes into `CORRECTIONS` in
+`scripts/build-history.mjs`; if a territory belongs to whoever occupied it rather than its owner,
+into `SHAPES`. Both with the exact date and a row in [DADES.en.md](DADES.en.md) §1.4.
 
 ## Occupations
 

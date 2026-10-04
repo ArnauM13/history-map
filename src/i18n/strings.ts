@@ -20,11 +20,12 @@ export interface Plural {
  */
 const ca = {
   appTitle: "Mapa històric d'Europa",
-  appSubtitle: 'Les fronteres, les banderes i els fets des del final del segle XIX',
+  appSubtitle: 'Les fronteres, les banderes i els fets des del segle XVI',
   metaDescription:
-    'Europa del 1886 a avui en un mapa que es mou: les fronteres, les banderes i els fets de cada data.',
+    'Europa del 1500 a avui en un mapa que es mou: les fronteres, les banderes i els fets de cada data.',
   language: 'Idioma',
   timeline: 'Línia temporal',
+  timelineApprox: "Fins al 1885, les fronteres canvien d'any en any, no el dia que va passar",
   play: 'Reprodueix',
   pause: 'Atura',
   prevMonth: 'Mes anterior',
@@ -56,6 +57,7 @@ const ca = {
   contribute: "N'afegim un?",
   flagChangesOfYear: 'Banderes noves del {year}',
   noFlagChanges: 'Aquest any ningú no va estrenar bandera.',
+  noFlagsBefore: "Les banderes comencen el 1886: les d'abans encara no estan documentades.",
   flagsOn: 'Banderes el {date}',
   statesCount: { one: '{count} estat', other: '{count} estats' } as Plural,
   close: 'Tanca',
@@ -65,6 +67,8 @@ const ca = {
   cause: 'Per què',
   capital: 'Capital',
   bordersValid: 'Fronteres vigents',
+  bordersApprox:
+    "Abans del 1886 les fronteres són aproximades: la font les dona d'any en any, i no sempre l'any exacte del canvi.",
   present: 'avui',
   relatedEvents: 'Fets relacionats',
   ongoing: 'en curs',
@@ -73,6 +77,7 @@ const ca = {
   sourceBorders: 'Fronteres i capital',
   sourceName: 'El nom i la història',
   sourceFlags: 'Les dates de les banderes',
+  sourceBordersOnly: 'Fronteres',
   flagsSourcesNote:
     'Les dates surten dels articles de la Viquipèdia que cita la fitxa de cada estat, i les imatges, de Wikimedia Commons.',
   flagHistory: 'Les seves banderes',
@@ -116,11 +121,12 @@ type Messages = { [K in MessageKey]: (typeof ca)[K] extends Plural ? Plural : st
 
 const es: Messages = {
   appTitle: 'Mapa histórico de Europa',
-  appSubtitle: 'Las fronteras, las banderas y los hechos desde finales del siglo XIX',
+  appSubtitle: 'Las fronteras, las banderas y los hechos desde el siglo XVI',
   metaDescription:
-    'Europa de 1886 a hoy en un mapa que se mueve: las fronteras, las banderas y los hechos de cada fecha.',
+    'Europa de 1500 a hoy en un mapa que se mueve: las fronteras, las banderas y los hechos de cada fecha.',
   language: 'Idioma',
   timeline: 'Línea temporal',
+  timelineApprox: 'Hasta 1885, las fronteras cambian de año en año, no el día en que ocurrió',
   play: 'Reproducir',
   pause: 'Detener',
   prevMonth: 'Mes anterior',
@@ -152,6 +158,7 @@ const es: Messages = {
   contribute: '¿Añadimos uno?',
   flagChangesOfYear: 'Banderas nuevas de {year}',
   noFlagChanges: 'Este año nadie estrenó bandera.',
+  noFlagsBefore: 'Las banderas empiezan en 1886: las anteriores aún no están documentadas.',
   flagsOn: 'Banderas el {date}',
   statesCount: { one: '{count} estado', other: '{count} estados' },
   close: 'Cerrar',
@@ -161,6 +168,8 @@ const es: Messages = {
   cause: 'Por qué',
   capital: 'Capital',
   bordersValid: 'Fronteras vigentes',
+  bordersApprox:
+    'Antes de 1886 las fronteras son aproximadas: la fuente las da de año en año, y no siempre el año exacto del cambio.',
   present: 'hoy',
   relatedEvents: 'Hechos relacionados',
   ongoing: 'en curso',
@@ -169,6 +178,7 @@ const es: Messages = {
   sourceBorders: 'Fronteras y capital',
   sourceName: 'El nombre y la historia',
   sourceFlags: 'Las fechas de las banderas',
+  sourceBordersOnly: 'Fronteras',
   flagsSourcesNote:
     'Las fechas salen de los artículos de Wikipedia que cita la ficha de cada estado, y las imágenes, de Wikimedia Commons.',
   flagHistory: 'Sus banderas',
@@ -209,11 +219,12 @@ const es: Messages = {
 
 const en: Messages = {
   appTitle: 'Historical Map of Europe',
-  appSubtitle: 'Borders, flags and events since the late 19th century',
+  appSubtitle: 'Borders, flags and events since the 16th century',
   metaDescription:
-    'Europe from 1886 to today on a map that moves: the borders, the flags and the events of any date.',
+    'Europe from 1500 to today on a map that moves: the borders, the flags and the events of any date.',
   language: 'Language',
   timeline: 'Timeline',
+  timelineApprox: 'Until 1885, borders change year by year, not on the day it happened',
   play: 'Play',
   pause: 'Stop',
   prevMonth: 'Previous month',
@@ -245,6 +256,7 @@ const en: Messages = {
   contribute: 'Shall we add one?',
   flagChangesOfYear: 'New flags in {year}',
   noFlagChanges: 'No state adopted a new flag this year.',
+  noFlagsBefore: 'Flags start in 1886: earlier ones are not documented yet.',
   flagsOn: 'Flags on {date}',
   statesCount: { one: '{count} state', other: '{count} states' },
   close: 'Close',
@@ -254,6 +266,8 @@ const en: Messages = {
   cause: 'Why',
   capital: 'Capital',
   bordersValid: 'Borders in force',
+  bordersApprox:
+    'Before 1886 the borders are approximate: the source gives them year by year, and not always the exact year of the change.',
   present: 'today',
   relatedEvents: 'Related events',
   ongoing: 'ongoing',
@@ -262,6 +276,7 @@ const en: Messages = {
   sourceBorders: 'Borders and capital',
   sourceName: 'Name and history',
   sourceFlags: 'Flag dates',
+  sourceBordersOnly: 'Borders',
   flagsSourcesNote:
     "Dates come from the Wikipedia articles cited on each state's card, and images from Wikimedia Commons.",
   flagHistory: 'Its flags',

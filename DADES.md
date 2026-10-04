@@ -10,6 +10,7 @@ alguna cosa, mira la llicència d'aquella part.**
 | El codi (`src/`, `scripts/`…) | Aquest projecte | MIT |
 | Els textos (`content/`) | Qui hi contribueix | CC BY-SA 4.0 |
 | Les fronteres (`public/data/`) | CShapes 2.0, retallat i simplificat aquí | CC BY-NC-SA 4.0 |
+| Les fronteres d'abans del 1886 (`public/data/history/`) | Cliopatria, retallat, simplificat i corregit aquí (§1.4) | CC BY 4.0 |
 | Les zones d'ocupació (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) i línies dibuixades aquí (§1.3) | CC BY-NC-SA 4.0 |
 | Les banderes (`public/flags/`) | Wikimedia Commons | La de cada imatge (§2) |
 | Les lletres del mapa (`public/fonts/`) | Open Sans, de [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0 |
@@ -25,7 +26,9 @@ Tot el que ensenya el mapa té una font, i la fitxa on surt la cita amb un enlla
 | Què es veu | D'on surt | On es cita |
 | --- | --- | --- |
 | Les fronteres i les capitals | CShapes 2.0 (§1) | A la fitxa de cada estat |
+| Les fronteres d'abans del 1886 | Cliopatria (§1.4) | A la fitxa de cada estat |
 | El nom de cada estat en cada època | L'article de la Viquipèdia sobre l'estat amb aquell nom (`wiki` a `content/countries.yaml`) | A la fitxa de l'estat |
+| El nom de cada entitat d'abans del 1886 | El títol de l'article de la Viquipèdia que en cita Cliopatria, en català i castellà, o `content/countries.yaml` pel QID (§1.4) | A la fitxa de l'estat |
 | Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat (`sources` a `content/flags.yaml`) | A la fitxa de l'estat |
 | Les imatges de les banderes | Wikimedia Commons (§2, `public/flags/credits.json`) | Sota cada bandera |
 | Les zones ocupades i annexionades (1938-1945) | Fronteres de CShapes d'altres dates, divisions d'avui de Natural Earth i línies dibuixades a mà (§1.3); les dates, de l'article de la Viquipèdia de cada zona (`content/occupations/`) | A la fitxa de cada zona |
@@ -61,9 +64,11 @@ dels territoris que en depenien (colònies, protectorats, mandats, territoris oc
   colors es reparteixen, i un ocupant no fa servir el de l'estat ocupat, perquè la zona es
   distingeixi.
 
-Els estats s'identifiquen amb els **codis de Gleditsch i Ward** (`gwcode`), els mateixos de
+Els estats s'identifiquen amb els **codis de Gleditsch i Ward** (`code`), els mateixos de
 CShapes i de bona part de la ciència política (les dades de conflictes de l'UCDP, per exemple). Els
-fets, els conflictes, els noms i les banderes hi fan referència amb aquests codis. Els noms dels
+fets, els conflictes, els noms i les banderes hi fan referència amb aquests codis. Les entitats
+d'abans del 1886 que no continuen cap estat de CShapes porten el QID de Wikidata (`Q207162`) com a
+codi (§1.4). Els noms dels
 estats i de les capitals de CShapes són en anglès; els de l'app surten de `content/countries.yaml`
 i `content/capitals.yaml`, en els tres idiomes.
 
@@ -148,6 +153,69 @@ fan servir les divisions. Un test comprova que dues zones de les mateixes dates 
   anirà amb la capa dels fronts.
 - **Trossos petits de les annexions italianes del 1941**: el que es va afegir a la província de
   Fiume (Sušak, Kastav, Krk i Rab) i, des de la tardor, Hvar i Pag. Surten dins de Croàcia.
+
+### 1.4 Abans del 1886: Cliopatria
+
+[Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria), de la Seshat Global
+History Databank, dibuixa les entitats polítiques del món del 3400 aC al 2024, cadascuna amb l'any
+en què comença i en què s'acaba cada forma. El mapa en fa servir les d'Europa del 1500 al 1885.
+
+> Seshat Global History Databank. Cliopatria, versió 0.2.1. _Scientific Data_ (2025).
+> https://doi.org/10.1038/s41597-025-04516-9
+
+- **Llicència**: CC BY 4.0. Els fitxers de `public/data/history/` en són una obra derivada amb la
+  mateixa llicència.
+- **Què se'n fa** (`npm run data:history`, després de `npm run data:borders`, que en dona els colors):
+  - Se'n treuen les agrupacions (les files entre parèntesis, que repeteixen les peces d'altres), i es
+    retalla i se simplifica com CShapes.
+  - Cada entitat porta el seu QID de Wikidata. Si el 1885 ocupa el mateix lloc que un estat del
+    1886 de CShapes, o és a la llista `SAME_STATE`, en pren el codi i el color: el Regne de França,
+    la República i els dos Imperis són el 220, com la França de CShapes. La llista hi afegeix els
+    predecessors que Gleditsch i Ward ja compten com el mateix estat (Prússia, el 255; el Regne de
+    Sardenya, el 325) i els que n'eren el nucli (Anglaterra, el 200; la Monarquia dels Habsburg, el 300).
+  - El nom és el títol, en català i castellà, de l'article de la Viquipèdia que cita Cliopatria
+    (`content/wikipedia.json`). Quan no n'hi ha, o no és el de l'entitat, el posa
+    `content/countries.yaml` pel QID.
+  - Va en un fitxer per segle, i l'app només baixa el segle que mira: tots junts pesen deu vegades
+    les fronteres de CShapes.
+
+**La precisió.** Cliopatria mostreja el mapa cada pocs anys —cada any en els moments moguts, cada
+deu o més en els tranquils— i cada forma val fins a la mostra següent. Per això les fronteres
+canvien l'1 de gener i no el dia que va passar, i un canvi pot arribar un o dos anys tard. La fitxa
+de cada estat ho diu, i la línia temporal ho marca amb una franja ratllada fins al 1886. On sabem el
+dia, el nom sí que canvia el dia exacte (§1.4.1).
+
+#### 1.4.1 On ens en separem
+
+Les correccions són codi, a `scripts/build-history.mjs`: `CORRECTIONS` canvia de qui és una peça i
+fins quan; `SHAPES` torna un territori a qui era, i només el pren de qui l'ocupava, perquè no toqui
+els canvis de veritat dels veïns. Cada una porta la descripció i les dates al costat.
+
+| Què | Per què |
+| --- | --- |
+| Prússia, del 1809 al 1867 | Cliopatria li posa el nom de la Confederació del Rin (1809-1814), on no va entrar mai, i el de la Confederació Germànica (1815-1867), que no era un estat. La seva fila «Kingdom of Prussia» no hi fa ni 2.000 km². |
+| Ocupacions comptades com a sobirania | Cliopatria dibuixa el control militar com si fos una annexió, i la mostra l'allarga. Tornen a qui eren: Viena, otomana el 1529-1533 i el 1683-1686 per dos setges que van fracassar; Moscou i Lituània, franceses el 1812-1813 per sis mesos de campanya; Viena (1805, 1809), Prússia i Varsòvia (1807-1808) i Espanya (1809-1811), franceses; París, alemany el 1870-1872; Barcelona, anglesa el 1706-1712; Saxònia, sueca i prussiana a les guerres dels Trenta Anys i dels Set Anys, i prussiana el 1815-1819 i el 1866; Bohèmia, prussiana el 1744 i el 1866; Brandenburg, sueca el 1632-1647; Llombardia, sarda el 1848. |
+| Monarquies compostes | L'Àustria i la Bohèmia de Ferran I hi surten com a part d'Espanya (1529-1555); la Saxònia de l'elector que era rei de Polònia, com a Polònia (1700-1756); la Toscana dels Habsburg-Lorena, com a Àustria; Hannover, com a britànic o prussià. Eren estats a part. |
+| Escòcia | Regne a part fins a l'1 de maig del 1707, menys durant el Commonwealth de Cromwell. Cliopatria la fa anglesa des del 1609 i la deixa en blanc del 1640 al 1652. |
+| Revoltes de pocs mesos | L'Estat Hongarès (14 d'abril - 13 d'agost del 1849), la República de Baden (1 de juny - 23 de juliol del 1849), la Sicília del 1848 i el govern de l'Aixecament de Novembre (29 de novembre del 1830 - 21 d'octubre del 1831), amb les seves dates; la mostra els allargava fins a tres anys. Les revoltes de Nalivaiko i dels hugonots, dins del seu estat. |
+| El dia del canvi de règim | França (1792, 1795, 1799, 1804, 1814, 1830, 1848, 1852, 1870), Espanya (1873, 1874), la Gran Bretanya (1707) i el Regne Unit (1801), Dinamarca i Noruega (1814), Suècia (1721), Prússia (1701), Àustria-Hongria (1867), Itàlia (1861), la Itàlia napoleònica (1805), Nàpols (1806), la Toscana (1569), Grècia (1832), Sèrbia (1882) i Romania (1862, 1881). |
+| Noms i articles equivocats | «Serbs», el poble, per al Principat de Sèrbia; el comtat d'Urgell per Andorra; un «Regne de Mònaco»; els QID i els articles de la Catalunya d'avui per a la República Catalana del 1641, i de la Itàlia d'avui per a la República Italiana del 1802; l'Egipte del 1885, enllaçat a la «Cursa per l'Àfrica»; la Confederació Livoniana, a l'idioma livonià. |
+| França el 1814 | Cliopatria dona 100.000 km² del voltant de París al Gran Ducat de Berg, que en feia 15.000, al Rin. |
+
+#### 1.4.2 On fallen
+
+- **D'any en any.** Vegeu «La precisió», a dalt.
+- **Més control de fet.** Queden ocupacions que Cliopatria compta com a sobirania: les de Suècia a
+  l'Alemanya del sud a la guerra dels Trenta Anys, les russes de Valàquia i Moldàvia, l'Hamburg
+  francès des del 1806.
+- **Estats petits d'Alemanya i d'Itàlia.** Els del Sacre Imperi van junts, amb el nom de l'Imperi,
+  també els d'Itàlia fins al 1740. Alguns porten el d'un veí: Frankfurt hi surt dins de Berg i de
+  Würzburg (1807-1819), Parma dins de Mòdena (1815-1847) i Lucca dins de la Toscana.
+- **Vores menys fines** que les de CShapes, i amb un salt petit l'1 de gener del 1886, quan comencen
+  les de CShapes. Ginebra, que era independent i és suïssa des del 1815, hi cau a l'altra banda de
+  la frontera.
+- **Forats.** Del 1659 al 1661, Kíiv no és de ningú.
+- **Sense banderes.** Comencen el 1886: les d'abans encara no estan documentades.
 
 ---
 

@@ -18,6 +18,7 @@
     "typecheck": "tsc -b",
     "test": "vitest run",
     "data:borders": "node scripts/build-borders.mjs",
+    "data:history": "node scripts/build-history.mjs",
     "data:flags": "node scripts/fetch-flags.mjs",
     "data:sources": "node scripts/check-sources.mjs",
     "data:occupations": "node scripts/build-occupations.mjs"

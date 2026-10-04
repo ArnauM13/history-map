@@ -1,15 +1,24 @@
 import { describe, expect, it } from 'vitest'
-import { formatDate, fromMonthIndex, isWithin, monthIndex, toDateNumber } from './date'
+import { addMonths, formatDate, fromStepIndex, isWithin, stepIndex, toDateNumber } from './date'
 
 describe('les dates', () => {
   it("passen de text a un enter que s'ordena", () => {
     expect(toDateNumber('1914-06-28')).toBe(19140628)
   })
 
-  it('van i tornen del número de mes de la línia temporal', () => {
-    expect(monthIndex('1886-01-15')).toBe(0)
-    expect(monthIndex('1914-06-28')).toBe(341)
-    expect(fromMonthIndex(341)).toBe('1914-06-01')
+  it('van i tornen de la posició a la línia temporal: de sis en sis mesos fins al 1886', () => {
+    expect(stepIndex('1500-01-01')).toBe(0)
+    expect(stepIndex('1500-08-20')).toBe(1)
+    expect(fromStepIndex(1)).toBe('1500-07-01')
+    expect(stepIndex('1885-12-31')).toBe(771)
+    expect(stepIndex('1886-01-15')).toBe(772)
+    expect(stepIndex('1914-06-28')).toBe(772 + 341)
+    expect(fromStepIndex(772 + 341)).toBe('1914-06-01')
+  })
+
+  it('sumen i resten mesos', () => {
+    expect(addMonths('1885-12-31', 1)).toBe('1886-01-01')
+    expect(addMonths('1914-06-28', -6)).toBe('1913-12-01')
   })
 
   it("saben si cauen dins d'un període, també d'un d'obert", () => {

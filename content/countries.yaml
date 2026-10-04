@@ -1,5 +1,5 @@
-# El nom de cada estat o territori, per codi de Gleditsch i Ward (el `gwcode` de les fronteres
-# de CShapes 2.0 que hi ha a public/data/).
+# El nom de cada estat o territori, per codi de Gleditsch i Ward (el `code` de les fronteres
+# de CShapes 2.0 que hi ha a public/data/) o, abans del 1886, pel QID de Wikidata (al final).
 #
 # Un codi porta un sol nom, en els tres idiomes:
 #
@@ -129,3 +129,71 @@
 "7030": { ca: Kanat de Khiva, es: Kanato de Jiva, en: Khanate of Khiva, wiki: Khanate of Khiva }
 "7506": { ca: Jammu i Caixmir, es: Jammu y Cachemira, en: Jammu and Kashmir, wiki: Jammu and Kashmir (princely state) }
 "7708": { ca: Azad Caixmir, es: Azad Cachemira, en: Azad Kashmir, wiki: Azad Kashmir }
+
+# ── Abans del 1886 ───────────────────────────────────────────────────────────
+#
+# Les entitats de Cliopatria van pel QID de Wikidata, si no continuen cap estat de CShapes. El seu
+# nom surt sol: el títol de l'article de la Viquipèdia (`wiki` a public/data/history) en català i
+# castellà. Aquí només hi van les que no en tenen en català, o en tenen un d'una altra cosa (el de
+# la Confederació Livoniana porta a l'idioma livonià).
+
+Q958291:
+  - { until: 1862-01-23, ca: Principats Units de Moldàvia i Valàquia, es: Principados Unidos de Moldavia y Valaquia, en: United Principalities of Moldavia and Wallachia, wiki: United Principalities of Moldavia and Wallachia }
+  - { until: 1881-03-25, ca: Principat de Romania, es: Principado de Rumania, en: Principality of Romania, wiki: United Principalities of Moldavia and Wallachia }
+  - { ca: Regne de Romania, es: Reino de Rumania, en: Kingdom of Romania, wiki: Kingdom of Romania }
+Q307697: { ca: Regne de Tlemcen, es: Reino de Tremecén, en: Kingdom of Tlemcen, wiki: Kingdom of Tlemcen }
+Q33698: { ca: Confederació Livoniana, es: Confederación Livonia, en: Livonian Confederation, wiki: Livonian Confederation }
+Q1794352: { ca: Electorat de Trèveris, es: Electorado de Tréveris, en: Electorate of Trier, wiki: Electorate of Trier }
+Q1760473: { ca: Principat d'Abkhàzia, es: Principado de Abjasia, en: Principality of Abkhazia, wiki: Principality of Abkhazia }
+Q2029317: { ca: Samtskhe-Saatabago, es: Principado de Mesjetia, en: Samtskhe-Saatabago, wiki: Samtskhe-Saatabago }
+Q2907860: { ca: Principat de Mingrèlia, es: Principado de Mingrelia, en: Principality of Mingrelia, wiki: Principality of Mingrelia }
+Q1209822: { ca: Regne de Kakhètia, es: Reino de Kajetia, en: Kingdom of Kakheti, wiki: Kingdom of Kakheti }
+Q2195101: { ca: Principat de Guria, es: Principado de Guria, en: Principality of Guria, wiki: Principality of Guria }
+Q2919545: { ca: Principat de Svanètia, es: Principado de Svanetia, en: Principality of Svaneti, wiki: Principality of Svaneti }
+Q195972: { ca: Regne de Kartli, es: Reino de Kartli, en: Kingdom of Kartli, wiki: Kingdom of Kartli }
+Q2088141: { ca: Imamat del Caucas, es: Imanato del Cáucaso, en: Caucasian Imamate, wiki: Caucasian Imamate }
+Q4210248: { ca: Kanat calmuc, es: Kanato calmuco, en: Kalmyk Khanate, wiki: Kalmyk Khanate }
+Q627449: { ca: Dinastia hotaki, es: Dinastía hotaki, en: Hotak dynasty, wiki: Hotak dynasty }
+Q63149558: { ca: Iran afxàrida, es: Irán afsárida, en: Afsharid Iran, wiki: Afsharid Iran }
+Q97629053: { ca: Dinastia zand, es: Dinastía zand, en: Zand dynasty, wiki: Zand dynasty }
+Q317078: { ca: República de Pskov, es: República de Pskov, en: Pskov Republic, wiki: Pskov Republic }
+Q2070440: { ca: Comtat de Nevers, es: Condado de Nevers, en: County of Nevers, wiki: County of Nevers }
+Q625380: { ca: Regne d'Hongria Oriental, es: Reino de Hungría Oriental, en: Eastern Hungarian Kingdom, wiki: Eastern Hungarian Kingdom }
+Q7245120: { ca: Principat de l'Alta Hongria, es: Principado de la Alta Hungría, en: Principality of Upper Hungary, wiki: Principality of Upper Hungary }
+Q18331029: { ca: Estat Hongarès, es: Estado húngaro, en: Hungarian State, wiki: Hungarian State }
+Q16879646: { ca: Àfrica portuguesa, es: África portuguesa, en: Portuguese Africa, wiki: Portuguese Africa }
+Q80702: { ca: Imperi espanyol, es: Imperio español, en: Spanish Empire, wiki: Spanish Empire }
+Q617219: { ca: Possessions angleses, es: Posesiones inglesas, en: English overseas possessions, wiki: English overseas possessions }
+Q19951607: { ca: Algèria francesa, es: Argelia francesa, en: French Algeria, wiki: French Algeria }
+Q4899891: { ca: Beylicat de Tunis, es: Beylicato de Túnez, en: Beylik of Tunis, wiki: Beylik of Tunis }
+Q3057606: { ca: Egipte de Muhammad Ali, es: Egipto de Mehmet Alí, en: Egypt under Muhammad Ali, wiki: History of Egypt under the Muhammad Ali dynasty }
+Q127861: { ca: Kediviat d'Egipte, es: Jedivato de Egipto, en: Khedivate of Egypt, wiki: Khedivate of Egypt }
+Q179848: { ca: Egipte, es: Egipto, en: Egypt, wiki: Khedivate of Egypt }
+Q600093: { ca: Espanya austriacista, es: España austracista, en: Habsburg-loyalist Spain, wiki: War of the Spanish Succession }
+Q10543737: { ca: Polònia d'Estanislau I, es: Polonia de Estanislao I, en: Poland under Stanisław I, wiki: Stanisław Leszczyński }
+Q462964: { ca: Polònia (Aixecament de Novembre), es: Polonia (Levantamiento de Noviembre), en: Poland (November Uprising), wiki: November Uprising }
+Q2708273: { ca: Regne de Sicília, es: Reino de Sicilia, en: Kingdom of Sicily, wiki: Sicilian revolution of 1848 }
+Q48779892: { ca: Regne de Nàpols, es: Reino de Nápoles, en: Kingdom of Naples, wiki: Kingdom of Naples (Napoleonic) }
+Q16086793: { ca: Sèrbia revolucionària, es: Serbia revolucionaria, en: Revolutionary Serbia, wiki: Revolutionary Serbia }
+Q1077630: { ca: República Septinsular, es: República Septinsular, en: Septinsular Republic, wiki: Septinsular Republic }
+Q1063498: { ca: Estats Units de les Illes Jòniques, es: Estados Unidos de las Islas Jónicas, en: United States of the Ionian Islands, wiki: United States of the Ionian Islands }
+Q774783: { ca: Principat Sobirà dels Països Baixos Units, es: Principado Soberano de los Países Bajos Unidos, en: Sovereign Principality of the United Netherlands, wiki: Sovereign Principality of the United Netherlands }
+Q706018: { ca: Electorat de Hannover, es: Electorado de Hannover, en: Electorate of Hanover, wiki: Electorate of Hanover }
+Q2172530: { ca: Electorat de Württemberg, es: Electorado de Wurtemberg, en: Electorate of Württemberg, wiki: Electorate of Württemberg }
+Q646390: { ca: Electorat de Salzburg, es: Electorado de Salzburgo, en: Electorate of Salzburg, wiki: Electorate of Salzburg }
+Q637238: { ca: Electorat de Baden, es: Electorado de Baden, en: Electorate of Baden, wiki: Electorate of Baden }
+Q701969: { ca: Principat de Ratisbona, es: Principado de Ratisbona, en: Principality of Regensburg, wiki: Principality of Regensburg }
+Q698089: { ca: Gran Ducat de Würzburg, es: Gran Ducado de Wurzburgo, en: Grand Duchy of Würzburg, wiki: Grand Duchy of Würzburg }
+Q547629: { ca: Principat de Lichtenberg, es: Principado de Lichtenberg, en: Principality of Lichtenberg, wiki: Principality of Lichtenberg }
+Q474779: { ca: Ciutat Lliure de Bremen, es: Ciudad Libre de Bremen, en: Free City of Bremen, wiki: History of Bremen (city) }
+Q704300: { ca: Ciutat Lliure de Frankfurt, es: Ciudad Libre de Fráncfort, en: Free City of Frankfurt, wiki: Free City of Frankfurt }
+Q501303: { ca: Ciutat Lliure de Cracòvia, es: Ciudad Libre de Cracovia, en: Free City of Kraków, wiki: Free City of Cracow }
+Q697084: { ca: Ducat d'Oldenburg, es: Ducado de Oldemburgo, en: Duchy of Oldenburg, wiki: Duchy of Oldenburg }
+Q326029: { ca: Ducat de Brunsvic, es: Ducado de Brunswick, en: Duchy of Brunswick, wiki: Duchy of Brunswick }
+Q16550783: { ca: Ducat d'Anhalt, es: Ducado de Anhalt, en: Duchy of Anhalt, wiki: Duchy of Anhalt }
+Q109252949: { ca: Mecklenburg, es: Mecklemburgo, en: Mecklenburg, wiki: Duchy of Mecklenburg }
+Q704288: { ca: Ducat de Holstein, es: Ducado de Holstein, en: Duchy of Holstein, wiki: Duchy of Holstein }
+Q158151: { ca: Saxònia-Altenburg, es: Sajonia-Altemburgo, en: Saxe-Altenburg, wiki: Saxe-Altenburg }
+Q157710: { ca: Saxònia-Meiningen, es: Sajonia-Meiningen, en: Saxe-Meiningen, wiki: Saxe-Meiningen }
+Q639100: { ca: Reuss-Gera, es: Reuss-Gera, en: Reuss-Gera, wiki: Principality of Reuss-Gera }
+Q708821: { ca: Schwarzburg-Sondershausen, es: Schwarzburgo-Sondershausen, en: Schwarzburg-Sondershausen, wiki: House of Schwarzburg }
