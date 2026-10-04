@@ -71,7 +71,7 @@ Cap dada no hi entra sense font, i la font es veu a la fitxa on surt.
 | Què es veu | D'on surt |
 | --- | --- |
 | Les fronteres i les capitals | [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zuric i Universitat de Constança), amb el dia exacte de cada canvi del 1886 al 2019 |
-| Les fronteres d'abans del 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), d'any en any, amb les correccions explicades a [DADES.md](DADES.md) |
+| Les fronteres d'abans del 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), d'any en any, i, a l'Europa central del 1815 al 1870, [OpenHistoricalMap](https://www.openhistoricalmap.org/), amb el dia de cada canvi; amb les correccions explicades a [DADES.md](DADES.md) |
 | El nom de cada estat en cada època | Un article de la Viquipèdia per a cada nom |
 | Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat |
 | Les imatges de les banderes | [Wikimedia Commons](https://commons.wikimedia.org/), amb la llicència i l'autor de cadascuna |

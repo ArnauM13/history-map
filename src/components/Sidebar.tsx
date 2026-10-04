@@ -372,8 +372,10 @@ function CountryDetail({
   const current = flagOn(feature.code, date)
   const about = current?.flag ? localize(FLAGS.about[current.flag], lang) : ''
   const history = flagHistory(feature.code).filter((p) => p.flag !== undefined)
-  // Abans del 1886, les fronteres són de Cliopatria, que les dona any a any.
-  const approximate = feature.qid !== undefined
+  // Abans del 1886, les fronteres són de Cliopatria, que les dona any a any, o d'OpenHistoricalMap,
+  // que té el dia de cada canvi.
+  const fromOhm = feature.src === 'ohm'
+  const approximate = feature.qid !== undefined && !fromOhm
 
   // Quan surt l'estat al mapa per primer i per últim cop. La primera bandera no té dia
   // d'estrena, i l'última de l'Alemanya nazi no «arriba fins avui»: s'acaba amb l'estat.
@@ -434,7 +436,7 @@ function CountryDetail({
         </div>
       </dl>
       {approximate && <p className="src-note">{t('bordersApprox')}</p>}
-      {history.length > 1 && !approximate && (
+      {history.length > 1 && feature.qid === undefined && (
         <>
           <h3>{t('flagHistory')}</h3>
           <ul className="flag-history">
@@ -456,13 +458,15 @@ function CountryDetail({
       )}
       <Sources
         items={[
-          approximate
-            ? { what: t('sourceBordersOnly'), ...CLIOPATRIA_SOURCE }
-            : { what: t('sourceBorders'), ...CSHAPES_SOURCE },
+          fromOhm
+            ? { what: t('sourceBordersOnly'), ...ohmSource(feature.osm) }
+            : approximate
+              ? { what: t('sourceBordersOnly'), ...CLIOPATRIA_SOURCE }
+              : { what: t('sourceBorders'), ...CSHAPES_SOURCE },
           ...wikipediaSource(stateWiki(feature, date), lang, t('wikipedia'), t('sourceName')),
           // Les banderes només són documentades des del 1886.
-          ...(approximate ? [] : (FLAGS.sources[feature.code] ?? [])).flatMap((title) =>
-            wikipediaSource(title, lang, t('wikipedia'), t('sourceFlags')),
+          ...(feature.qid !== undefined ? [] : (FLAGS.sources[feature.code] ?? [])).flatMap(
+            (title) => wikipediaSource(title, lang, t('wikipedia'), t('sourceFlags')),
           ),
         ]}
       />
@@ -508,6 +512,13 @@ const CLIOPATRIA_SOURCE = {
   title: 'Scientific Data (2025)',
   url: 'https://doi.org/10.1038/s41597-025-04516-9',
 }
+
+/** Una versió d'un estat a OpenHistoricalMap: la relació, amb les seves dates i les seves fonts. */
+const ohmSource = (osm?: string) => ({
+  site: 'OpenHistoricalMap',
+  title: osm ? osm.replace('relation/', 'relation ') : 'CC0',
+  url: `https://www.openhistoricalmap.org/${osm ?? ''}`,
+})
 
 /** Les divisions administratives d'avui, d'on surten algunes vores de les zones ocupades. */
 const NATURAL_EARTH_SOURCE = {

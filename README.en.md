@@ -71,7 +71,7 @@ No piece of data gets in without a source, and the source is shown on the card w
 | What you see | Where it comes from |
 | --- | --- |
 | Borders and capitals | [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zurich and University of Konstanz), with the exact day of every change from 1886 to 2019 |
-| Borders before 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), year by year, with the corrections explained in [DADES.en.md](DADES.en.md) |
+| Borders before 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), year by year, and, in central Europe from 1815 to 1870, [OpenHistoricalMap](https://www.openhistoricalmap.org/), with the day of every change; with the corrections explained in [DADES.en.md](DADES.en.md) |
 | Each state's name in each period | A Wikipedia article for every name |
 | Flag dates | The Wikipedia articles on each state's flags |
 | Flag images | [Wikimedia Commons](https://commons.wikimedia.org/), with each one's licence and author |

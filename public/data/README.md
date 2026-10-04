@@ -18,4 +18,6 @@ són derivades de **Cliopatria** (Seshat Global History Databank), versió 0.2.1
 https://github.com/Seshat-Global-History-Databank/cliopatria ·
 https://doi.org/10.1038/s41597-025-04516-9. Llicència
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ca): cal citar-ne l'origen. Les
-correccions són a `DADES.md` §1.4.
+correccions són a `DADES.md` §1.4. A l'Europa central del 1815 al 1870 hi ha també fronteres
+d'**OpenHistoricalMap** (https://www.openhistoricalmap.org/), de domini públic (CC0); com es fan
+servir, a `DADES.md` §1.5.

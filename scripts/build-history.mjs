@@ -28,6 +28,7 @@ import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs'
 import mapshaper from 'mapshaper'
 import polygonClipping from 'polygon-clipping'
+import osmtogeojson from 'osmtogeojson'
 import polylabel from 'polylabel'
 import * as topojson from 'topojson-client'
 
@@ -47,7 +48,11 @@ const LAST_DAY = LAST_YEAR * 10000 + 1231
 /** Com a build-borders.mjs, perquè el 1885 i el 1886 es vegin igual. */
 const BBOX = [-28, 30, 78, 82]
 const LABEL_BBOX = [-25, 30, 56, 74]
-const SIMPLIFY = '12%'
+/**
+ * Per distància, no per percentatge: amb OHM, que té molt més detall, un percentatge treia vores a
+ * les zones de Cliopatria, i Nàpols i Niça quedaven al mar.
+ */
+const SIMPLIFY = 'interval=2500'
 const PALETTE_SIZE = 12
 /** Els identificadors de les peces de CShapes són 0, 1, 2…; els d'aquí comencen més amunt. */
 const ID_OFFSET = 1_000_000
@@ -84,6 +89,7 @@ const SAME_STATE = {
   Q150981: '255', // Confederació d'Alemanya del Nord
   Q200229: '325', // Casa de Savoia
   Q2577303: '325', // Regne de Sardenya
+  Q165154: '325', // Regne de Sardenya, amb el QID que fa servir OpenHistoricalMap
   Q170770: '365', // Gran Principat de Moscou
   Q186096: '365', // Tsarat Rus
   Q684030: '340', // Principat de Sèrbia
@@ -709,6 +715,264 @@ const SHAPES = [
     from: '1871-01-01',
     until: '1872-12-31',
   },
+  // ── Investigades amb la Viquipèdia, segons el criteri de DADES.md §0.1 ──────
+  {
+    description:
+      'La revolta bohèmia: els estats de Bohèmia es governen sols de la defenestració de Praga (23 de maig del 1618) a la Muntanya Blanca (8 de novembre del 1620)',
+    qid: 'Q42585',
+    shape: [{ qid: 'Q42585', year: 1528 }],
+    takeFrom: ['Q66504140', 'Q12548'],
+    from: '1618-05-23',
+    until: '1620-11-08',
+  },
+  {
+    description: 'Bohèmia torna als Habsburg després de la Muntanya Blanca, no al «Sacre Imperi»',
+    qid: 'Q66504140',
+    shape: [{ qid: 'Q66504140', year: 1618 }],
+    takeFrom: ['Q12548', 'Q42585'],
+    from: '1620-11-09',
+    until: '1621-12-31',
+  },
+  {
+    description:
+      "Hamburg i el nord d'Alemanya, dins del Sacre Imperi: ni danesos (1622-1628) ni dels Habsburg (1629-1631); el Mecklenburg de Wallenstein era un feu imperial",
+    qid: 'Q12548',
+    shape: [{ qid: 'Q12548', year: 1618 }],
+    takeFrom: ['Q62651', 'Q66504140'],
+    from: '1622-01-01',
+    until: '1631-12-31',
+  },
+  {
+    description:
+      'Les ocupacions sueques de la guerra dels Trenta Anys (Magúncia, Frankfurt, Würzburg, Mecklenburg, Bremen-Verden…): Suècia no en guanya res fins a Westfàlia, el 1648',
+    qid: 'Q12548',
+    shape: [{ qid: 'Q12548', year: 1618 }],
+    takeFrom: ['Q215443'],
+    from: '1632-01-01',
+    until: '1647-12-31',
+  },
+  {
+    description: 'Valàquia, vassall otomà ocupat per Rússia a la guerra del 1768-1774',
+    qid: 'Q171393',
+    shape: [{ qid: 'Q171393', year: 1775 }],
+    takeFrom: ['Q34266'],
+    from: '1772-01-01',
+    until: '1774-12-31',
+  },
+  {
+    description: 'Moldàvia, vassall otomà ocupat per Rússia a la guerra del 1768-1774',
+    qid: 'Q10957559',
+    shape: [{ qid: 'Q10957559', year: 1775 }],
+    takeFrom: ['Q34266'],
+    from: '1769-01-01',
+    until: '1774-12-31',
+  },
+  {
+    description: 'Valàquia i Moldàvia, ocupades per Àustria i Rússia a la guerra del 1787-1792',
+    qid: 'Q171393',
+    shape: [{ qid: 'Q171393', year: 1792 }],
+    takeFrom: ['Q34266', 'Q66504140'],
+    from: '1791-01-01',
+    until: '1791-12-31',
+  },
+  {
+    description: 'Valàquia i Moldàvia, ocupades per Àustria i Rússia a la guerra del 1787-1792',
+    qid: 'Q10957559',
+    shape: [{ qid: 'Q10957559', year: 1792 }],
+    takeFrom: ['Q34266', 'Q66504140'],
+    from: '1791-01-01',
+    until: '1791-12-31',
+  },
+  {
+    description:
+      'Valàquia, ocupada per Rússia del 1806 al tractat de Bucarest (28 de maig del 1812)',
+    qid: 'Q171393',
+    shape: [{ qid: 'Q171393', year: 1812 }],
+    takeFrom: ['Q34266'],
+    from: '1807-01-01',
+    until: '1811-12-31',
+  },
+  {
+    description:
+      'Moldàvia, amb Besaràbia, fins al tractat de Bucarest (28 de maig del 1812), que la dona a Rússia',
+    qid: 'Q10957559',
+    shape: [{ qid: 'Q10957559', year: 1806 }],
+    takeFrom: ['Q34266'],
+    from: '1807-01-01',
+    until: '1812-05-27',
+  },
+  {
+    description: 'Moldàvia, sense Besaràbia, després del tractat de Bucarest',
+    qid: 'Q10957559',
+    shape: [{ qid: 'Q10957559', year: 1814 }],
+    takeFrom: ['Q34266'],
+    from: '1812-05-28',
+    until: '1813-12-31',
+  },
+  {
+    description:
+      'Valàquia i Moldàvia, sota administració russa del 1828 al 1834, però vassalls otomans',
+    qid: 'Q171393',
+    shape: [{ qid: 'Q171393', year: 1834 }],
+    takeFrom: ['Q34266'],
+    from: '1828-01-01',
+    until: '1833-12-31',
+  },
+  {
+    description:
+      'Valàquia i Moldàvia, sota administració russa del 1828 al 1834, però vassalls otomans',
+    qid: 'Q10957559',
+    shape: [{ qid: 'Q10957559', year: 1834 }],
+    takeFrom: ['Q34266'],
+    from: '1828-01-01',
+    until: '1833-12-31',
+  },
+  {
+    description:
+      'Valàquia i Moldàvia, ocupades per Rússia (1848-1851, 1853-1854) i per Àustria (1854-1857)',
+    qid: 'Q171393',
+    shape: [{ qid: 'Q171393', year: 1857 }],
+    takeFrom: ['Q34266', 'Q131964'],
+    from: '1849-01-01',
+    until: '1856-12-31',
+  },
+  {
+    description:
+      'Valàquia i Moldàvia, ocupades per Rússia (1848-1851, 1853-1854) i per Àustria (1854-1857)',
+    qid: 'Q10957559',
+    shape: [{ qid: 'Q10957559', year: 1848 }],
+    takeFrom: ['Q34266', 'Q131964'],
+    from: '1849-01-01',
+    until: '1856-12-31',
+  },
+  {
+    description:
+      "Hamburg, ciutat lliure des del 1806: França l'ocupa aquell any, però no se l'annexiona fins al 1811",
+    qid: 'Q1055',
+    shape: [{ qid: 'Q1055', year: 1815 }],
+    takeFrom: ['Q71084'],
+    from: '1806-01-01',
+    until: '1810-12-31',
+  },
+  {
+    description: "Bremen, ciutat lliure fins a l'annexió francesa del 1811",
+    qid: 'Q474779',
+    shape: [{ qid: 'Q474779', year: 1815 }],
+    takeFrom: ['Q71084'],
+    from: '1807-01-01',
+    until: '1810-12-31',
+  },
+  {
+    description:
+      "Alsàcia i Lorena, franceses fins al tractat de Frankfurt (10 de maig del 1871), no des de l'1 de gener",
+    qid: 'Q70802',
+    shape: [{ qid: 'Q71092', year: 1869 }],
+    takeFrom: ['Q43287'],
+    from: '1871-01-01',
+    until: '1871-05-09',
+  },
+  {
+    description: 'Lübeck, annexionada per França del 1811 al 1813, que Cliopatria deixa lliure',
+    qid: 'Q71084',
+    shape: [{ qid: 'Q950240', year: 1815 }],
+    takeFrom: ['Q950240'],
+    from: '1811-01-01',
+    until: '1813-12-31',
+  },
+]
+
+/**
+ * Els tractats grans, el dia que es van signar. Cliopatria dibuixa el mapa de després del tractat
+ * des de l'1 de gener de l'any de la mostra: el de Westfàlia, deu mesos abans d'hora. Les peces
+ * dels estats que canvien aquell any dins de `bbox` ([oest, sud, est, nord]) passen a començar el
+ * dia del tractat, i les d'abans, a acabar la vigília. `sample` és l'any de la mostra de
+ * Cliopatria que el recull, que de vegades és el d'abans (la segona partició de Polònia surt el
+ * 1792).
+ */
+const TRANSITIONS = [
+  { description: 'Pau de Westfàlia', date: '1648-10-24', sample: 1648, bbox: [3, 45, 24, 56] },
+  { description: 'Pau dels Pirineus', date: '1659-11-07', sample: 1659, bbox: [-2, 41, 5, 51.5] },
+  { description: "Tractat d'Utrecht", date: '1713-04-11', sample: 1713, bbox: [-10, 35, 20, 53] },
+  {
+    description: 'Tractat de Passarowitz',
+    date: '1718-07-21',
+    sample: 1718,
+    bbox: [14, 42, 26, 47],
+  },
+  { description: 'Tractat de Nystad', date: '1721-09-10', sample: 1721, bbox: [18, 54, 32, 62] },
+  {
+    description: "Tractat d'Aquisgrà",
+    date: '1748-10-18',
+    sample: 1748,
+    bbox: [6, 43, 18, 52],
+  },
+  {
+    description: 'Primera partició de Polònia',
+    date: '1772-08-05',
+    sample: 1772,
+    bbox: [14, 48, 33, 58],
+  },
+  {
+    description: 'Annexió de Crimea per Rússia',
+    date: '1783-04-19',
+    sample: 1783,
+    bbox: [32, 44, 37, 47],
+  },
+  {
+    description:
+      'Segona partició de Polònia (tractat entre Prússia i Rússia); Cliopatria la posa el 1792',
+    date: '1793-01-23',
+    sample: 1792,
+    bbox: [14, 45, 33, 58],
+  },
+  {
+    description:
+      "Tercera partició de Polònia: l'acord del 24 d'octubre del 1795 (el tractat final és del 26 de gener del 1797); Cliopatria la posa el 1794",
+    date: '1795-10-24',
+    sample: 1794,
+    bbox: [14, 48, 33, 58],
+  },
+  {
+    description: 'Tractat de Campo Formio',
+    date: '1797-10-17',
+    sample: 1797,
+    bbox: [2, 43, 16, 52],
+  },
+  { description: 'Tractats de Tilsit', date: '1807-07-09', sample: 1807, bbox: [6, 49, 28, 57] },
+  {
+    description: 'Tractat de Schönbrunn',
+    date: '1809-10-14',
+    sample: 1809,
+    bbox: [9, 43, 26, 52],
+  },
+  {
+    description: 'Acta final del Congrés de Viena',
+    date: '1815-06-09',
+    sample: 1815,
+    bbox: [-5, 40, 30, 60],
+  },
+  {
+    description: 'Independència de Bèlgica',
+    date: '1830-10-04',
+    sample: 1830,
+    bbox: [2, 49, 7, 52],
+  },
+  { description: 'Tractat de Zúric', date: '1859-11-10', sample: 1859, bbox: [8, 44, 12, 47] },
+  {
+    description: 'Tractat de Torí: Niça i Savoia, i les annexions de la Itàlia central',
+    date: '1860-03-24',
+    sample: 1860,
+    bbox: [6, 42, 13, 47],
+  },
+  { description: 'Tractat de Viena', date: '1864-10-30', sample: 1864, bbox: [8, 53, 12, 56] },
+  { description: 'Pau de Praga', date: '1866-08-23', sample: 1866, bbox: [5, 44, 24, 56] },
+  {
+    description:
+      "La Confederació d'Alemanya del Nord, que neix l'1 de juliol del 1867; Cliopatria la posa el 1868",
+    date: '1867-07-01',
+    sample: 1868,
+    bbox: [5, 47, 23, 56],
+  },
 ]
 
 // ── Les dades ────────────────────────────────────────────────────────────────
@@ -908,6 +1172,358 @@ function applyShapes(pieces, rows, identityOf) {
     out = next
   }
   return out
+}
+
+/** Graus quadrats: uns 800 km² a la latitud d'Europa. */
+const EXCHANGE_MIN = 0.1
+
+/** Aplica TRANSITIONS: el canvi, el dia del tractat i no l'1 de gener de la mostra. */
+function applyTransitions(pieces) {
+  for (const t of TRANSITIONS) {
+    const start = t.sample * 10000 + 101
+    const lastBefore = (t.sample - 1) * 10000 + 1231
+    const day = toNumber(t.date)
+    // Tots els trossos d'un estat que canvia, també els de fora del requadre: si no, la mateixa
+    // frontera canviaria en dos dies diferents a banda i banda.
+    const area = [
+      [
+        [t.bbox[0], t.bbox[1]],
+        [t.bbox[2], t.bbox[1]],
+        [t.bbox[2], t.bbox[3]],
+        [t.bbox[0], t.bbox[3]],
+        [t.bbox[0], t.bbox[1]],
+      ],
+    ]
+    const inArea = (p) =>
+      touch(bboxOf(toMulti(p.geometry)), t.bbox) &&
+      polygonClipping.intersection(toMulti(p.geometry), area).length > 0
+    // Els estats de la zona que canvien aquell any, i tots els que s'intercanvien territori amb
+    // ells: el 1809, Rússia és a la zona de Schönbrunn i guanya Finlàndia a Suècia, que no hi
+    // és; si només es mogués Rússia, Finlàndia quedaria en blanc del gener a l'octubre.
+    const before = pieces.filter((p) => p.e === lastBefore)
+    const after = pieces.filter((p) => p.s === start)
+    const changing = new Set([...before, ...after].filter(inArea).map((p) => p.qid))
+    const exchanges = []
+    for (const b of before) {
+      for (const a of after) {
+        if (a.qid === b.qid || !touch(bboxOf(toMulti(a.geometry)), bboxOf(toMulti(b.geometry))))
+          continue
+        const shared = polygonClipping.intersection(toMulti(a.geometry), toMulti(b.geometry))
+        // Menys d'uns 800 km² no és un canvi de mans: Cliopatria torna a dibuixar una mica
+        // diferent la mateixa frontera d'una mostra a l'altra (França i els Països Baixos, el 1830).
+        if (multiArea(shared) > EXCHANGE_MIN) exchanges.push([a.qid, b.qid, multiArea(shared)])
+      }
+    }
+    for (let grew = true; grew;) {
+      grew = false
+      for (const [x, y] of exchanges) {
+        if (changing.has(x) !== changing.has(y)) {
+          changing.add(x)
+          changing.add(y)
+          grew = true
+        }
+      }
+    }
+    // Un estat que aquell any ja canvia abans del tractat per una altra raó (la República
+    // Francesa el setembre del 1792) es queda amb les seves dates.
+    const keep = new Set(pieces.filter((p) => p.s === start && p.e < day).map((p) => p.qid))
+    for (const qid of keep) {
+      // Si s'intercanviava territori amb un estat que sí que es mou, quedaria un forat o una
+      // peça repetida fins al dia del tractat: val més no posar-hi el tractat.
+      if (changing.has(qid) && exchanges.some(([x, y]) => (x === qid || y === qid) && x !== y)) {
+        throw new Error(
+          `TRANSITIONS: «${t.description}» xoca amb les dates pròpies de ${qid}: ${JSON.stringify(exchanges.filter((e) => e.includes(qid)))}`,
+        )
+      }
+      changing.delete(qid)
+    }
+    for (const p of pieces) {
+      if (!changing.has(p.qid)) continue
+      if (p.s === start) p.s = day
+      if (p.e === lastBefore) p.e = previousDay(day)
+      if (p.s > p.e) {
+        throw new Error(`TRANSITIONS: «${t.description}» deixa ${p.qid} sense dies (${p.s}-${p.e})`)
+      }
+    }
+  }
+  return pieces
+}
+
+// ── OpenHistoricalMap ────────────────────────────────────────────────────────
+
+/**
+ * A l'Europa central del 1815 al 1867, Cliopatria no distingeix els estats petits: posa Kassel a
+ * Hannover, Frankfurt a Hessen-Darmstadt i Gotha dins de Prússia. OpenHistoricalMap (CC0) els té
+ * tots, amb el dia de cada canvi. Allà on n'hi ha, mana OHM; la resta, Cliopatria.
+ *
+ * Hi entren els estats de la Confederació Germànica i els d'Itàlia, també els governs
+ * revolucionaris que van governar un territori (Milà i Venècia el 1848, Garibaldi el 1860). En
+ * queden fora els veïns, que segueixen sent de Cliopatria: OHM hi té errors que Cliopatria no té
+ * (l'Imperi Otomà s'endinsa a Àustria, Suècia es queda la Pomerània després del 1815).
+ */
+const OHM = {
+  url: 'https://overpass-api.openhistoricalmap.org/api/interpreter',
+  file: `${RAW_DIR}/ohm-confederacio.json`,
+  from: '1815-06-09',
+  // Fins a l'Imperi Alemany. OHM el fa començar amb la constitució del 4 de maig del 1871, però els
+  // tractats d'adhesió dels estats del sud van entrar en vigor l'1 de gener (DADES.md §0.1).
+  until: '1870-12-31',
+  // [sud, oest, nord, est], com a Overpass.
+  bbox: [36, 5, 56, 24],
+  exclude: [
+    'Q12560', // Imperi Otomà
+    'Q221457', // Regne de Polònia
+    'Q34266', // Imperi Rus
+    'Q15864', // Països Baixos
+    'Q29999', // Països Baixos
+    'Q376009', // Ducat de Limburg: un tros dels Països Baixos
+    'Q31', // Bèlgica
+    'Q207162', // França
+    'Q71092', // França
+    'Q218272', // Algèria francesa
+    'Q35', // Dinamarca
+    'Q878461', // Dinamarca
+    'Q62589', // Suècia-Noruega
+    'Q39', // Suïssa
+    'Q7886026', // Suïssa
+    'Q3324486', // Montenegro
+    'Q779011', // Montenegro
+    'Q6744657', // Malta
+    'Q3038', // Heligoland, colònia britànica
+  ],
+  // Les que OHM no lliga a Wikidata.
+  qids: {
+    'Hohenzollern-Hechingen': 'Q673865',
+    'Hohenzollern-Sigmaringen': 'Q157013',
+    'Provisional government of Milan': 'Q623164',
+  },
+}
+
+const UA = { 'User-Agent': 'HistoryMap/0.1 (https://github.com/ArnauM13/history-map)' }
+
+async function overpass(query) {
+  for (let attempt = 1; ; attempt++) {
+    const res = await fetch(OHM.url, {
+      method: 'POST',
+      headers: { ...UA, 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ data: query }),
+    })
+    if (res.ok) return res.json()
+    if (attempt >= 4) throw new Error(`OpenHistoricalMap: HTTP ${res.status}`)
+    await new Promise((resolve) => setTimeout(resolve, 10_000 * attempt))
+  }
+}
+
+/** Una data d'OHM («1845», «1860-10», «1815-06-09»), com a enter AAAAMMDD. */
+const ohmDate = (value) => {
+  const [y, m = '01', d = '01'] = value.split('-')
+  return Number(`${y}${m.padStart(2, '0')}${d.padStart(2, '0')}`)
+}
+
+/** El nom anglès i l'article de la Viquipèdia anglesa d'un QID, de Wikidata. */
+async function wikidataNames(qids) {
+  const out = {}
+  for (const qid of qids) {
+    const res = await fetch(`https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`, {
+      headers: UA,
+    })
+    if (!res.ok) throw new Error(`Wikidata ${qid}: HTTP ${res.status}`)
+    const entity = Object.values((await res.json()).entities)[0]
+    out[qid] = { name: entity.labels?.en?.value, wiki: entity.sitelinks?.enwiki?.title }
+    await new Promise((resolve) => setTimeout(resolve, 300))
+  }
+  return out
+}
+
+/**
+ * Les versions dels estats d'OHM que valen entre OHM.from i OHM.until, amb la geometria. Es
+ * baixen un cop, a data-raw/: pesen uns quants centenars de MB.
+ */
+async function readOhm() {
+  if (!existsSync(OHM.file)) {
+    const [s, w, n, e] = OHM.bbox
+    console.log('Baixant els estats de la Confederació Germànica i d’Itàlia d’OpenHistoricalMap')
+    const listed = await overpass(
+      `[out:json][timeout:300];relation["boundary"="administrative"]["admin_level"="2"]["start_date"~"^1[78]"](${s},${w},${n},${e});out tags;`,
+    )
+    const from = toNumber(OHM.from)
+    const until = toNumber(OHM.until)
+    const wanted = listed.elements.filter(({ tags: t }) => {
+      const qid = t.wikidata ?? OHM.qids[t['name:en'] ?? t.name]
+      return (
+        qid &&
+        !OHM.exclude.includes(qid) &&
+        ohmDate(t.start_date) <= until &&
+        (!t.end_date || ohmDate(t.end_date) > from)
+      )
+    })
+    const raw = await overpass(
+      `[out:json][timeout:600];relation(id:${wanted.map((r) => r.id).join(',')});out geom;`,
+    )
+    const qids = [
+      ...new Set(wanted.map(({ tags: t }) => t.wikidata ?? OHM.qids[t['name:en'] ?? t.name])),
+    ]
+    writeFileSync(OHM.file, JSON.stringify({ raw, names: await wikidataNames(qids) }))
+  }
+  const { raw, names } = JSON.parse(readFileSync(OHM.file, 'utf8'))
+  const from = toNumber(OHM.from)
+  const until = toNumber(OHM.until)
+  const features = osmtogeojson(raw, { flatProperties: true }).features.filter(
+    (f) => f.id.startsWith('relation/') && /Polygon/.test(f.geometry?.type ?? ''),
+  )
+  const versions = []
+  for (const { geometry, properties: t, id } of features) {
+    const qid = t.wikidata ?? OHM.qids[t['name:en'] ?? t.name]
+    const s = Math.max(ohmDate(t.start_date), from)
+    const e = Math.min(t.end_date ? previousDay(ohmDate(t.end_date)) : until, until)
+    // OHM també té errors de dates: una versió de l'Imperi Francès s'hi acaba abans de començar.
+    if (s > e) {
+      console.warn(`  OHM: ${id} (${t.name}) s'acaba abans de començar; no hi entra`)
+      continue
+    }
+    versions.push({ qid, osm: id, ...names[qid], s, e, geometry })
+  }
+  // A la resolució d'OHM, cada resta trigaria minuts; amb la de Cliopatria, n'hi ha prou.
+  const output = await mapshaper.applyCommands(
+    '-i input.json -simplify interval=250 keep-shapes -o output.json format=geojson',
+    {
+      'input.json': {
+        type: 'FeatureCollection',
+        features: versions.map(({ geometry }, k) => ({
+          type: 'Feature',
+          geometry,
+          properties: { k },
+        })),
+      },
+    },
+  )
+  for (const f of JSON.parse(output['output.json']).features)
+    versions[f.properties.k].geometry = f.geometry
+  return versions
+}
+
+/**
+ * On la frontera no va canviar fins al 1886, mana CShapes, que és la font més precisa del mapa.
+ * La Prússia d'OHM del 1829 al 1834 s'endinsa 13.000 km² a la Polònia russa; la Polònia d'OHM i
+ * CShapes coincideixen. La frontera occidental de Rússia no es mou del 1815 al 1914.
+ */
+function fixOhmWithCShapes(versions, cshapes) {
+  const day = toNumber(`${LAST_YEAR + 1}-01-01`)
+  const russia = polygonClipping.union(
+    ...cshapes
+      .filter(
+        (f) =>
+          f.geometry &&
+          f.properties.code === '365' &&
+          f.properties.s <= day &&
+          day <= f.properties.e,
+      )
+      .map((f) => toMulti(f.geometry)),
+  )
+  const box = bboxOf(russia)
+  for (const v of versions) {
+    if (!touch(bboxOf(toMulti(v.geometry)), box)) continue
+    v.geometry = fromMulti(polygonClipping.difference(toMulti(v.geometry), russia))
+  }
+  return versions.filter((v) => v.geometry)
+}
+
+/**
+ * Posa les versions d'OHM al lloc de Cliopatria. Per a cada tram entre dos canvis d'OHM, es treu
+ * de les peces de Cliopatria el territori que cobreix OHM aquell tram, i s'hi afegeixen les d'OHM.
+ */
+function applyOhm(pieces, versions) {
+  const from = toNumber(OHM.from)
+  const until = toNumber(OHM.until)
+  const cuts = [...new Set([from, ...versions.flatMap((v) => [v.s, nextDay(v.e)]), nextDay(until)])]
+    .filter((d) => d >= from && d <= nextDay(until))
+    .sort((a, b) => a - b)
+  const out = pieces.filter((p) => p.e < from || p.s > until)
+  // El que cau fora de la finestra, com era.
+  for (const p of pieces) {
+    if (p.e < from || p.s > until) continue
+    if (p.s < from) out.push({ ...p, e: previousDay(from) })
+    if (p.e > until) out.push({ ...p, s: nextDay(until) })
+  }
+  // Les peces que OHM no toca mai (Rússia, l'Imperi Otomà) no cal retallar-les a cada tram.
+  const all = polygonClipping.union(...versions.map((v) => toMulti(v.geometry)))
+  const allBox = bboxOf(all)
+  const touched = new Set(
+    pieces.filter(
+      (p) =>
+        p.e >= from &&
+        p.s <= until &&
+        touch(bboxOf(toMulti(p.geometry)), allBox) &&
+        polygonClipping.intersection(toMulti(p.geometry), all).length > 0,
+    ),
+  )
+  for (let i = 0; i < cuts.length - 1; i++) {
+    const s = cuts[i]
+    const e = previousDay(cuts[i + 1])
+    const covered = versions.filter((v) => v.s <= e && v.e >= s)
+    const union = covered.length
+      ? polygonClipping.union(...covered.map((v) => toMulti(v.geometry)))
+      : []
+    const box = bboxOf(union)
+    for (const p of pieces) {
+      if (p.e < s || p.s > e) continue
+      const geometry =
+        union.length && touched.has(p) && touch(bboxOf(toMulti(p.geometry)), box)
+          ? fromMulti(polygonClipping.difference(toMulti(p.geometry), union))
+          : p.geometry
+      if (geometry) out.push({ ...p, s: Math.max(p.s, s), e: Math.min(p.e, e), geometry })
+    }
+  }
+  for (const v of versions) {
+    out.push({
+      qid: v.qid,
+      name: v.name,
+      wiki: v.wiki,
+      s: v.s,
+      e: v.e,
+      geometry: v.geometry,
+      src: 'ohm',
+      osm: v.osm,
+    })
+  }
+  return splitErnestine(out)
+}
+
+/**
+ * OHM no té Saxònia-Gotha-Altenburg, Saxònia-Hildburghausen ni Saxònia-Coburg-Saalfeld abans de
+ * la reorganització del 1826, i Cliopatria hi posa trossos de Prússia, de Baviera i de Berg. On queda aquest buit, el mapa
+ * diu el que se'n sap: que eren els ducats ernestins, sense separar-los.
+ */
+const THURINGIA = [9.8, 50.1, 12.6, 51.5]
+const ERNESTINE = { qid: 'Q672502', name: 'Ernestine duchies', wiki: 'Ernestine duchies' }
+
+function splitErnestine(pieces) {
+  const from = toNumber(OHM.from)
+  const reorganised = toNumber('1826-11-12')
+  return pieces.flatMap((p) => {
+    if (p.src || p.s < from || p.s >= reorganised) return [p]
+    const inside = (polygon) => {
+      const [w, s, e, n] = bboxOf([polygon])
+      const [x, y] = [(w + e) / 2, (s + n) / 2]
+      return x >= THURINGIA[0] && x <= THURINGIA[2] && y >= THURINGIA[1] && y <= THURINGIA[3]
+    }
+    const parts = toMulti(p.geometry)
+    const thuringian = parts.filter(inside)
+    if (thuringian.length === 0) return [p]
+    const rest = parts.filter((polygon) => !inside(polygon))
+    return [
+      {
+        ...p,
+        ...ERNESTINE,
+        e: Math.min(p.e, previousDay(reorganised)),
+        geometry: fromMulti(thuringian),
+      },
+      ...(p.e >= reorganised ? [{ ...p, s: reorganised, geometry: p.geometry }] : []),
+      ...(rest.length
+        ? [{ ...p, e: Math.min(p.e, previousDay(reorganised)), geometry: fromMulti(rest) }]
+        : []),
+    ]
+  })
 }
 
 // ── Els codis ────────────────────────────────────────────────────────────────
@@ -1131,17 +1747,22 @@ function mergeUnchanged(geometries) {
 
 function labelProperties(p) {
   // `country_name`, com a les peces de CShapes: el nom de recanvi si no n'hi ha cap de traduït.
-  return { ...borderProperties(p), country_name: p.name, wiki: p.wiki, qid: p.qid }
+  // `src`, la font de les fronteres, si no és Cliopatria: la fitxa la cita.
+  const out = { ...borderProperties(p), country_name: p.name, wiki: p.wiki, qid: p.qid }
+  return p.src ? { ...out, src: p.src, osm: p.osm } : out
 }
 
 // ── Tot plegat ───────────────────────────────────────────────────────────────
 
 const rows = selectRows(await readCliopatria())
 const identityOf = identities(rows)
-const pieces = applyShapes(toPieces(rows, identityOf), rows, identityOf)
-
 const cshapesTopo = JSON.parse(readFileSync(BORDERS, 'utf8'))
 const cshapes = topojson.feature(cshapesTopo, cshapesTopo.objects.borders).features
+const pieces = applyOhm(
+  applyTransitions(applyShapes(toPieces(rows, identityOf), rows, identityOf)),
+  fixOhmWithCShapes(await readOhm(), cshapes),
+)
+
 const fixedColours = new Map(cshapes.map((f) => [groupOfCShapes(f.properties), f.properties.c]))
 function groupOfCShapes(p) {
   return p.status === 'independent' || !p.owner ? p.code : p.owner
@@ -1185,13 +1806,43 @@ const labels = [...labelGeometries]
     }
   })
 
+/**
+ * Com mergeUnchanged, per als noms: dos noms seguits del mateix estat, al mateix punt i amb les
+ * mateixes dades, són un de sol. Els trams d'OHM partien cada peça de Cliopatria en desenes.
+ */
+function mergeLabels(features) {
+  const runs = new Map()
+  for (const f of features) {
+    const { s: _s, e: _e, ...rest } = f.properties
+    const key = JSON.stringify([rest, f.geometry.coordinates])
+    if (!runs.has(key)) runs.set(key, [])
+    runs.get(key).push(f)
+  }
+  const merged = []
+  for (const run of runs.values()) {
+    run.sort((a, b) => a.properties.s - b.properties.s)
+    let current = run[0]
+    for (const f of run.slice(1)) {
+      if (f.properties.s <= nextDay(current.properties.e)) {
+        current.properties.e = Math.max(current.properties.e, f.properties.e)
+      } else {
+        merged.push(current)
+        current = f
+      }
+    }
+    merged.push(current)
+  }
+  return merged.sort((a, b) => a.id - b.id)
+}
+const mergedLabels = mergeLabels(labels)
+
 rmSync(OUT_DIR, { recursive: true, force: true })
 mkdirSync(OUT_DIR, { recursive: true })
 const centuries = []
 for (let century = Math.floor(FIRST_YEAR / 100) * 100; century <= LAST_YEAR; century += 100) {
   const span = { s: century * 10000 + 101, e: (century + 99) * 10000 + 1231 }
   const part = await centuryTopology(topo, (g) => overlaps(g.properties, span))
-  const partLabels = labels.filter((f) => overlaps(f.properties, span))
+  const partLabels = mergedLabels.filter((f) => overlaps(f.properties, span))
   writeFileSync(`${OUT_DIR}/${century}.topo.json`, JSON.stringify(part))
   writeFileSync(
     `${OUT_DIR}/${century}.labels.geojson`,
@@ -1202,7 +1853,7 @@ for (let century = Math.floor(FIRST_YEAR / 100) * 100; century <= LAST_YEAR; cen
 
 const continued = [...new Set([...codes.values()])].sort()
 console.log(
-  `✔ ${topo.objects.borders.geometries.length} peces de ${new Set(pieces.map((p) => p.qid)).size} entitats, ${colours} colors, ${labels.length} noms`,
+  `✔ ${topo.objects.borders.geometries.length} peces de ${new Set(pieces.map((p) => p.qid)).size} entitats, ${colours} colors, ${mergedLabels.length} noms`,
 )
 console.log(`  Per segles: ${centuries.join(', ')}`)
 console.log(`  Continuen un estat de CShapes: ${continued.join(', ')}`)

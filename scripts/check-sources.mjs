@@ -59,7 +59,10 @@ for (const [code, titles] of Object.entries(read('content/flags.yaml').sources ?
 // El nom en català i castellà d'aquestes entitats és el títol de l'article: per això hi són.
 for (const name of readdirSync(HISTORY_DIR).filter((n) => n.endsWith('.labels.geojson'))) {
   const { features } = JSON.parse(readFileSync(`${HISTORY_DIR}/${name}`, 'utf8'))
-  for (const { properties: p } of features) cite(p.wiki, `${HISTORY_DIR}/${name} ${p.qid}`)
+  for (const { properties: p } of features) {
+    // Sense article anglès, el nom i la font els posa content/countries.yaml pel QID.
+    if (p.wiki) cite(p.wiki, `${HISTORY_DIR}/${name} ${p.qid}`)
+  }
 }
 
 // ── La Viquipèdia ────────────────────────────────────────────────────────────

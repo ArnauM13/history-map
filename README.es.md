@@ -71,7 +71,7 @@ Ningún dato entra sin fuente, y la fuente se ve en la ficha donde aparece.
 | Qué se ve | De dónde sale |
 | --- | --- |
 | Las fronteras y las capitales | [CShapes 2.0](https://icr.ethz.ch/data/cshapes/) (ETH Zúrich y Universidad de Constanza), con el día exacto de cada cambio de 1886 a 2019 |
-| Las fronteras anteriores a 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), de año en año, con las correcciones explicadas en [DADES.es.md](DADES.es.md) |
+| Las fronteras anteriores a 1886 | [Cliopatria](https://github.com/Seshat-Global-History-Databank/cliopatria) (Seshat Global History Databank), de año en año, y, en la Europa central de 1815 a 1870, [OpenHistoricalMap](https://www.openhistoricalmap.org/), con el día de cada cambio; con las correcciones explicadas en [DADES.es.md](DADES.es.md) |
 | El nombre de cada estado en cada época | Un artículo de Wikipedia para cada nombre |
 | Las fechas de las banderas | Los artículos de Wikipedia sobre las banderas de cada estado |
 | Las imágenes de las banderas | [Wikimedia Commons](https://commons.wikimedia.org/), con la licencia y el autor de cada una |

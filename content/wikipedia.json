@@ -32,6 +32,18 @@
     "ca": "Andorra",
     "es": "Andorra"
   },
+  "Anhalt-Bernburg": {
+    "ca": "Anhalt-Bernburg",
+    "es": "Anhalt-Bernburg"
+  },
+  "Anhalt-Dessau": {
+    "ca": "Anhalt-Dessau",
+    "es": "Anhalt-Dessau"
+  },
+  "Anhalt-Köthen": {
+    "ca": "Anhalt-Köthen",
+    "es": "Anhalt-Köthen"
+  },
   "Annexation of Crimea by the Russian Federation": {
     "ca": "Annexió de Crimea a la Federació de Rússia",
     "es": "Anexión de Crimea por Rusia"
@@ -127,6 +139,10 @@
   "Brandenburg-Prussia": {
     "ca": "Brandenburg-Prússia",
     "es": "Brandeburgo-Prusia"
+  },
+  "Bremen (state)": {
+    "ca": "Estat de Bremen",
+    "es": "Bremen (estado)"
   },
   "Brexit": {
     "ca": "Sortida del Regne Unit de la Unió Europea",
@@ -238,6 +254,7 @@
     "ca": "Regne de Dinamarca i Noruega",
     "es": "Reino de Dinamarca y Noruega"
   },
+  "Dictatorship of Giuseppe Garibaldi": {},
   "Dissolution of Czechoslovakia": {
     "ca": "Dissolució de Txecoslovàquia",
     "es": "Disolución de Checoslovaquia"
@@ -274,7 +291,21 @@
     "ca": "Ducat de Lorena",
     "es": "Ducado de Lorena"
   },
+  "Duchy of Lucca": {
+    "ca": "Ducat de Lucca",
+    "es": "Ducado de Lucca"
+  },
+  "Duchy of Massa and Carrara": {
+    "es": "Ducado de Massa y Carrara"
+  },
   "Duchy of Mecklenburg": {},
+  "Duchy of Mecklenburg-Schwerin": {
+    "ca": "Ducat de Mecklenburg-Schwerin",
+    "es": "Ducado de Mecklemburgo-Schwerin"
+  },
+  "Duchy of Mecklenburg-Strelitz": {
+    "es": "Ducado de Mecklemburgo-Strelitz"
+  },
   "Duchy of Milan": {
     "ca": "Ducat de Milà",
     "es": "Ducado de Milán"
@@ -359,9 +390,16 @@
   "English overseas possessions": {
     "es": "Posesiones inglesas de ultramar"
   },
+  "Ernestine duchies": {
+    "es": "Ducados ernestinos"
+  },
   "Estonia": {
     "ca": "Estònia",
     "es": "Estonia"
+  },
+  "Expedition of the Thousand": {
+    "ca": "Expedició dels Mil",
+    "es": "Expedición de los Mil"
   },
   "Fall of the Berlin Wall": {
     "ca": "Caiguda del mur de Berlín",
@@ -390,6 +428,10 @@
   "First Spanish Republic": {
     "ca": "Primera República Espanyola",
     "es": "Primera República española"
+  },
+  "Five Days of Milan": {
+    "ca": "Cinc dies de Milà",
+    "es": "Cinco jornadas de Milán"
   },
   "Flag of Albania": {
     "ca": "Bandera d'Albània",
@@ -805,6 +847,16 @@
     "ca": "Gran ducat de Hessen i del Rin",
     "es": "Hesse-Darmstadt"
   },
+  "Grand Duchy of Mecklenburg-Schwerin": {
+    "ca": "Gran Ducat de Mecklenburg-Schwerin",
+    "es": "Gran Ducado de Mecklemburgo-Schwerin"
+  },
+  "Grand Duchy of Mecklenburg-Strelitz": {
+    "es": "Gran Ducado de Mecklemburgo-Strelitz"
+  },
+  "Grand Duchy of Oldenburg": {
+    "es": "Gran Ducado de Oldemburgo"
+  },
   "Grand Duchy of Tuscany": {
     "ca": "Gran Ducat de Toscana",
     "es": "Gran Ducado de Toscana"
@@ -849,11 +901,17 @@
     "ca": "República Helvètica",
     "es": "República Helvética"
   },
+  "Hesse-Homburg": {
+    "es": "Hesse-Homburg"
+  },
   "History of Bremen (city)": {
     "es": "Historia de Bremen"
   },
   "History of Egypt under the Muhammad Ali dynasty": {},
   "History of Spain (1808–1874)": {},
+  "Hohenzollern-Hechingen": {
+    "es": "Hohenzollern-Hechingen"
+  },
   "Hohenzollern-Sigmaringen": {
     "ca": "Hohenzollern-Sigmaringen",
     "es": "Hohenzollern-Sigmaringen"
@@ -1075,6 +1133,10 @@
     "ca": "Regne de Romania",
     "es": "Reino de Rumania"
   },
+  "Kingdom of Sardinia": {
+    "ca": "Regne de Sardenya",
+    "es": "Reino de Cerdeña"
+  },
   "Kingdom of Sardinia (1720-1861)": {
     "ca": "Regne de Sardenya-Piemont",
     "es": "Reino de Cerdeña (1720-1861)"
@@ -1090,6 +1152,10 @@
   "Kingdom of Serbia": {
     "ca": "Regne de Sèrbia",
     "es": "Reino de Serbia"
+  },
+  "Kingdom of Sicily": {
+    "ca": "Regne de Sicília",
+    "es": "Reino de Sicilia"
   },
   "Kingdom of the Two Sicilies": {
     "ca": "Regne de les Dues Sicílies",
@@ -1330,6 +1396,9 @@
   "Principality of Reuss-Gera": {
     "es": "Principado de Reuss-Gera"
   },
+  "Principality of Reuss-Greiz": {
+    "es": "Principado de Reuss-Greiz"
+  },
   "Principality of Serbia": {
     "ca": "Principat de Sèrbia",
     "es": "Principado de Serbia"
@@ -1399,6 +1468,9 @@
   "Republic of Ragusa": {
     "ca": "República de Ragusa",
     "es": "República de Ragusa"
+  },
+  "Republic of San Marco": {
+    "es": "República de San Marco"
   },
   "Republic of Venice": {
     "ca": "República de Venècia",
@@ -1478,6 +1550,16 @@
   "Saxe-Weimar-Eisenach": {
     "ca": "Saxònia-Weimar-Eisenach",
     "es": "Ducado de Sajonia-Weimar-Eisenach"
+  },
+  "Schaumburg-Lippe": {
+    "ca": "Schaumburg-Lippe",
+    "es": "Schaumburg-Lippe"
+  },
+  "Schwarzburg-Rudolstadt": {
+    "es": "Schwarzburgo-Rudolstadt"
+  },
+  "Schwarzburg-Sondershausen": {
+    "es": "Schwarzburgo-Sondershausen"
   },
   "Scramble for Africa": {
     "ca": "Cursa per l'Àfrica",
@@ -1668,6 +1750,10 @@
   "United Principalities of Moldavia and Wallachia": {
     "ca": "Principat de Romania",
     "es": "Principado de Rumania"
+  },
+  "United Provinces of Central Italy": {
+    "ca": "Províncies Unides de la Itàlia Central",
+    "es": "Provincias Unidas de Italia Central"
   },
   "United States of the Ionian Islands": {
     "es": "Estados Unidos de las Islas Jónicas"

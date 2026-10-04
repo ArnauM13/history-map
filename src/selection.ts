@@ -22,6 +22,12 @@ export interface BorderProperties {
   qid?: string
   /** Abans del 1886: l'article de la Viquipèdia anglesa sobre l'entitat. */
   wiki?: string
+  /**
+   * D'on surt la frontera, si no és CShapes ni Cliopatria: `ohm`, OpenHistoricalMap, que té el dia
+   * de cada canvi. `osm` és la relació d'OHM, per enllaçar-la.
+   */
+  src?: 'ohm'
+  osm?: string
 }
 
 export type Selection =
