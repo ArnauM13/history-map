@@ -106,9 +106,14 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
       signar, i els estats que s'intercanvien territori canviant el mateix dia.
 - [x] L'Europa central del 1815 al 1870, d'OpenHistoricalMap, amb el dia de cada canvi (§1.5).
 - [ ] Les banderes d'abans del 1886.
-- [ ] OpenHistoricalMap a l'època napoleònica (1806–1815), on Cliopatria s'equivoca més.
-- [ ] Els errors que queden ([DADES.md](DADES.md) §1.4.2): Gdańsk i Toruń del 1772 al 1793,
-      Cracòvia, els estats petits d'abans del 1815.
+- [ ] OpenHistoricalMap a l'època napoleònica (1806–1815), on Cliopatria s'equivoca més. De
+      moment, només la forma d'alguns estats (`OHM_SHAPES`): les ciutats lliures, Ginebra,
+      Dàntzig, Hessen-Kassel i Brunsvic.
+- [x] Gdańsk i Toruń del 1772 al 1793, Finlàndia el 1809, el forat de Kíiv, Cracòvia, Ginebra, les
+      ciutats lliures d'abans del 1815 i les ocupacions breus, buscades peça a peça
+      ([DADES.md](DADES.md) §1.4.1).
+- [ ] Els errors que queden ([DADES.md](DADES.md) §1.4.2): Luxemburg i l'esquerra del Rin el
+      1814-1815, Podòlia, l'Hetmanat cosac, els estats petits del Sacre Imperi.
 - [ ] Més enrere del 1500: la font hi arriba; cal la línia temporal i revisar-ho igual.
 - [ ] *Vector tiles* (PMTiles), si les dades creixen més del que un fitxer pot dur.
 - [ ] Que funcioni sense connexió.

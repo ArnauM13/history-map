@@ -55,6 +55,8 @@ criteris d'ara:
 | Dos estats tenen el mateix sobirà | **Estats separats** mentre mantenen institucions pròpies; un de sol quan s'uneixen per llei. | Saxònia i Polònia (1697-1763), Hannover i la Gran Bretanya (1714-1837) i Escòcia i Anglaterra (1603-1707), separats; la Gran Bretanya des del 1707. |
 | Un estat paga tribut o és vassall d'un altre | **Estat propi**, si es governava sol. | Valàquia i Moldàvia, sota l'Imperi Otomà. |
 | Una revolta | Al mapa, només si va tenir **un govern sobre el territori**, i amb les dates d'aquest govern. | L'Estat Hongarès, del 14 d'abril al 13 d'agost del 1849; la revolta de Nalivaiko, dins de la República de les Dues Nacions. |
+| Un territori es deslliura abans de la pau | Torna al seu govern **el dia que es restaura**; si l'ocupant no se'n va, segueix sent seu fins al tractat. | Ginebra, república des del 31 de desembre del 1813; Hamburg, francesa fins al tractat de París (30 de maig del 1814), perquè Davout no la va deixar. |
+| Un territori cedit que encara no té amo | El **govern provisional** que el governava, si n'hi ha. | Bèlgica, del tractat de París al Congrés de Viena: el Govern General dels aliats, no França ni els Països Baixos. |
 | El nom | El que tenia l'estat **aleshores**, com l'anomena la Viquipèdia de cada idioma. | El 1700, el Regne de França; el 1810, el Primer Imperi Francès. |
 
 Si la discrepància té importància històrica (una frontera en disputa, una data que cada
@@ -211,7 +213,14 @@ Les correccions són codi, a `scripts/build-history.mjs`, i segueixen els criter
 `CORRECTIONS` canvia de qui és una peça i fins quan; `SHAPES` torna un territori a qui era, i només
 el pren de qui l'ocupava, perquè no toqui els canvis de veritat dels veïns; `TRANSITIONS` posa el
 canvi dels tractats grans el dia que es van signar. Cada una porta la descripció i les dates al
-costat, comprovades a la Viquipèdia.
+costat, comprovades a la Viquipèdia. On Cliopatria no té la forma bona (les ciutats lliures,
+Ginebra, els enclavaments de Gdańsk i Toruń), `SHAPES` la pren d'OpenHistoricalMap (`OHM_SHAPES`)
+i, per a la Catalunya que França es va annexionar el 1812, de les províncies de Natural Earth.
+
+Les ocupacions s'han buscat peça a peça: un script recorre una graella de punts cada mig grau i
+apunta on un territori canvia de mans i torna a qui el tenia en menys de vuit anys. Cada cas s'ha
+mirat a la Viquipèdia; els que eren control militar tornen a qui eren, i els que eren una cessió de
+veritat (Podòlia, el 1672) es queden.
 
 | Què | Per què |
 | --- | --- |
@@ -220,13 +229,19 @@ costat, comprovades a la Viquipèdia.
 | La guerra dels Trenta Anys | Magúncia, Frankfurt, Würzburg, Erfurt, Mecklenburg i Bremen-Verden hi surten suecs del 1632 al 1647, Hamburg danès del 1622 al 1628, i Mecklenburg, Hamburg i Lübeck dels Habsburg del 1629 al 1631. Suècia no en guanya res fins a Westfàlia (1648); el Mecklenburg de Wallenstein era un feu imperial. Tot torna al Sacre Imperi. |
 | Valàquia i Moldàvia | Vassalls otomans, però estats propis (§0.1). Cliopatria les fa russes o austríaques a cada guerra (1769-1774, 1791, 1807-1812, 1828-1834, 1849-1856). Besaràbia és russa des del tractat de Bucarest, el 28 de maig del 1812, no des del 1807. |
 | La revolta bohèmia | Del 23 de maig del 1618 (la defenestració de Praga) a la Muntanya Blanca, el 8 de novembre del 1620, Bohèmia es governa sola; Cliopatria la posa dins del «Sacre Imperi» fins al 1621. |
-| Les ciutats hanseàtiques | Hamburg i Bremen, lliures del 1806 al 1810: França les ocupa, però no se les annexiona fins al 1811. Lübeck, al revés: Cliopatria la deixa lliure quan era francesa (1811-1813). |
+| Més ocupacions, buscades peça a peça | Smolensk, Vílnius i Kíiv, russos del 1654-1655 a la treva d'Andrusovo (9-2-1667), i la Livònia sueca, russa del 1656 al 1661; Rússia, amb unes quantes viles de la guerra de Smolensk (1632-1634) i amb la invasió sueca del 1708-1709; Finlàndia, russa del 1713 al 1721 (la Gran Ira); Holstein i Jutlàndia, dels Habsburg el 1627-1629; Silèsia, Bohèmia i Baviera, sueques a la guerra dels Trenta Anys; Utrecht, francesa el 1672-1673; Savoia i Niça, franceses el 1691-1696 i el 1702-1705; l'oest d'Espanya, portuguès el 1706-1708; Bohèmia i el sud d'Alemanya, francesos el 1741-1743; a la guerra dels Set Anys, Bohèmia prussiana, la Prússia Oriental i la Pomerània russes i Hessen i la Westfàlia franceses; el Budjak, rus el 1769-1774 i el 1791; la Baixa Baviera, austríaca el 1778-1779 (a Teschen, el 13 de maig del 1779, Àustria només es queda l'Innviertel); el sud-oest d'Alemanya, francès el 1796; Bulgària, russa el 1877-1879: otomana fins al tractat de Berlín (13-7-1878), i després el Principat de Bulgària i la Rumèlia Oriental. Menorca, espanyola des del 1783: la Gran Bretanya la va ocupar del 1798 al 1802, i Cliopatria la hi torna a posar del 1806 al 1819. |
+| L'època napoleònica | Hannover, francès el 1803-1805; Portugal, francès el 1811; Espanya, francesa el 1812-1813, quan l'Imperi només es va annexionar Catalunya (26 de gener del 1812); la Pomerània sueca, francesa el 1812-1813; Cracòvia, del Gran Ducat de Varsòvia des de Schönbrunn (14-10-1809) i no el 1811; el Gran Ducat de Varsòvia, rus del 1813 al Congrés de Viena, quan va deixar d'existir; Hannover, Hessen-Kassel i Brunsvic, restaurats el 1813-1814 i que Cliopatria fa prussians fins al 1815. Bèlgica, del tractat de París (30 de maig del 1814) al Congrés de Viena, és del Govern General dels aliats (§0.1), no de França. Luxemburg i l'esquerra del Rin, no (§1.4.2). |
+| Les ciutats lliures | Hamburg, Bremen i Lübeck, lliures del 1806 al 1810: França les ocupa, però no se les annexiona fins al 1811. Lliures de nou, Bremen i Lübeck, el 1813, i Hamburg, al tractat de París (30 de maig del 1814), perquè Davout la va defensar fins al final. Frankfurt, ciutat imperial fins al 1806, de Dalberg (principat i, des del 16 de febrer del 1810, gran ducat) fins al 1813, i lliure després. Bremen, ciutat imperial, mai sueca, danesa ni de Hannover, que en tenien el voltant. Cliopatria les dibuixa desplaçades (Bremen i Frankfurt, uns quilòmetres a l'oest) o confon Lübeck amb dos trossos de Mecklenburg: la forma és la d'OpenHistoricalMap del 1815. |
+| Gdańsk i Toruń | Poloneses fins a la segona partició (23-1-1793): el 1772 Prússia es queda el voltant, però no les ciutats. La Ciutat Lliure de Dàntzig, del 21 de juliol del 1807 al 2 de gener del 1814, i amb el QID i l'article de la napoleònica, no de la del 1920. |
+| Finlàndia | Russa des del tractat de Fredrikshamn (17 de setembre del 1809), no des del de Schönbrunn: la mateixa mostra de Cliopatria recull els dos canvis. |
+| Ginebra | República del 1534 a l'annexió francesa (15 d'abril del 1798) i del 31 de desembre del 1813 al 19 de maig del 1815, quan entra a Suïssa. Cliopatria la posa dins de Savoia i, des del 1860, de França. |
+| Encavalcaments | Cliopatria deixa el Piemont al Regne de Sardenya després de l'annexió francesa (11 de setembre del 1802), i Roma i el Laci als Estats Pontificis després de la del 17 de maig del 1809: les dues peces se sobreposaven. Wismar, que Suècia va empenyorar a Mecklenburg el 26 de juny del 1803, hi era sueca i de Mecklenburg alhora. |
 | Monarquies compostes | L'Àustria i la Bohèmia de Ferran I hi surten com a part d'Espanya (1529-1555); la Saxònia de l'elector que era rei de Polònia, com a Polònia (1700-1756); la Toscana dels Habsburg-Lorena, com a Àustria; Hannover, com a britànic o prussià. Eren estats a part. |
 | Escòcia | Regne a part fins a l'1 de maig del 1707, menys durant el Commonwealth de Cromwell. Cliopatria la fa anglesa des del 1609 i la deixa en blanc del 1640 al 1652. |
 | Revoltes de pocs mesos | L'Estat Hongarès (14 d'abril - 13 d'agost del 1849), la República de Baden (1 de juny - 23 de juliol del 1849), la Sicília del 1848 i el govern de l'Aixecament de Novembre (29 de novembre del 1830 - 21 d'octubre del 1831), amb les seves dates; la mostra els allargava fins a tres anys. Les revoltes de Nalivaiko i dels hugonots, dins del seu estat. |
-| Els tractats, el dia que es van signar | Westfàlia (24-10-1648), els Pirineus (7-11-1659), Utrecht (11-4-1713), Passarowitz (21-7-1718), Nystad (10-9-1721), Aquisgrà (18-10-1748), les particions de Polònia (5-8-1772, 23-1-1793 i 24-10-1795), Crimea (19-4-1783), Campo Formio (17-10-1797), Tilsit (9-7-1807), Schönbrunn (14-10-1809), Viena (9-6-1815), Bèlgica (4-10-1830), Zuric (10-11-1859), Torí (24-3-1860), Viena (30-10-1864), Praga (23-8-1866) i la Confederació d'Alemanya del Nord (1-7-1867). Cliopatria els posa l'1 de gener de la mostra, i la segona i la tercera partició de Polònia, un any abans. Canvien el mateix dia tots els estats que s'intercanvien territori, també els de fora de la zona del tractat (el 1809, Suècia, que perd Finlàndia). |
+| Els tractats, el dia que es van signar | Westfàlia (24-10-1648), els Pirineus (7-11-1659), Utrecht (11-4-1713), Passarowitz (21-7-1718), Nystad (10-9-1721), Aquisgrà (18-10-1748), les particions de Polònia (5-8-1772, 23-1-1793 i 24-10-1795), Crimea (19-4-1783), Campo Formio (17-10-1797), Tilsit (9-7-1807), Schönbrunn (14-10-1809), Viena (9-6-1815), Bèlgica (4-10-1830), Zuric (10-11-1859), Torí (24-3-1860), Viena (30-10-1864), Praga (23-8-1866) i la Confederació d'Alemanya del Nord (1-7-1867); i, d'un en un, Andrusovo (9-2-1667), Fredrikshamn (17-9-1809) i Berlín (13-7-1878). Cliopatria els posa l'1 de gener de la mostra, i la segona i la tercera partició de Polònia, un any abans. Canvien el mateix dia tots els estats que s'intercanvien territori, també els de fora de la zona del tractat (el 1809, Suècia, que perd Finlàndia). |
 | El dia del canvi de règim | França (1792, 1795, 1799, 1804, 1814, 1830, 1848, 1852, 1870), Espanya (1873, 1874), la Gran Bretanya (1707) i el Regne Unit (1801), Dinamarca i Noruega (1814), Suècia (1721), Prússia (1701), Àustria-Hongria (1867), Itàlia (1861), la Itàlia napoleònica (1805), Nàpols (1806), la Toscana (1569), Grècia (1832), Sèrbia (1882) i Romania (1862, 1881). |
-| Noms i articles equivocats | «Serbs», el poble, per al Principat de Sèrbia; el comtat d'Urgell per Andorra; un «Regne de Mònaco»; els QID i els articles de la Catalunya d'avui per a la República Catalana del 1641, i de la Itàlia d'avui per a la República Italiana del 1802; l'Egipte del 1885, enllaçat a la «Cursa per l'Àfrica»; la Confederació Livoniana, a l'idioma livonià. |
+| Noms i articles equivocats | «Serbs», el poble, per al Principat de Sèrbia; el comtat d'Urgell per Andorra; un «Regne de Mònaco»; els QID i els articles de la Catalunya d'avui per a la República Catalana del 1641, i de la Itàlia d'avui per a la República Italiana del 1802; l'Egipte del 1885, enllaçat a la «Cursa per l'Àfrica»; la Confederació Livoniana, a l'idioma livonià; la Ciutat Lliure de Dàntzig del 1920 per a la napoleònica; un «Regne de Hannover» el 1803, quan ho va ser des del 1814. |
 | França el 1814 | Cliopatria dona 100.000 km² del voltant de París al Gran Ducat de Berg, que en feia 15.000, al Rin. |
 | Alsàcia i Lorena | Franceses fins al tractat de Frankfurt (10 de maig del 1871), no fins a l'1 de gener. |
 
@@ -239,24 +254,40 @@ costat, comprovades a la Viquipèdia.
   vigor l'1 de gener del 1871; l'emperador es va proclamar el 18 de gener, i la constitució de
   l'Imperi és del 4 de maig, la data que fa servir OpenHistoricalMap. El mapa fa servir l'1 de
   gener, quan els estats del sud deixen de ser independents.
+- **Kíiv del 1654 al 1667.** Hi ha una guarnició russa des del 1654, però la República de les Dues
+  Nacions no el cedeix fins a la treva d'Andrusovo, i encara per dos anys: la pau perpètua del 1686
+  ho fa definitiu. El mapa segueix la sobirania: polonès fins a Andrusovo, i rus des d'aleshores.
+- **Bèlgica el 1815.** Guillem d'Orange s'hi proclama rei el 16 de març, i el Congrés de Viena la
+  uneix als Països Baixos el 9 de juny. El mapa fa servir el 9 de juny, com per a la resta de
+  canvis del Congrés.
+- **Frankfurt del 1813 al 1815.** La Viquipèdia la fa lliure des del 1813; OpenHistoricalMap, des
+  del 9 de juliol del 1815, quan torna la constitució d'abans de Napoleó. El mapa la fa lliure des
+  de l'1 de gener del 1814, quan ja no hi ha gran duc.
 
 #### 1.4.2 On fallen
 
 - **D'any en any**, on no hi ha un tractat o un règim amb la data posada. Vegeu «La precisió», a dalt.
-- **Més control de fet.** Queden ocupacions breus que Cliopatria compta com a sobirania, sobretot a
-  l'època napoleònica (Brussel·les el 1814) i a les fronteres de l'est.
+- **Més control de fet**, on no hi ha una forma bona per tornar el territori a qui era:
+  - **Luxemburg i l'esquerra del Rin**, francesos fins al Congrés de Viena, quan des del tractat de
+    París (30 de maig del 1814) eren dels governs provisionals dels aliats.
+  - **Podòlia**, otomana del tractat de Buczacz (1672) al de Karlowitz (1699): Cliopatria només la
+    fa otomana del 1673 al 1676.
+  - **Sardenya i Sicília**, espanyoles del 1718 al 1720, quan Espanya les havia reconquerit però el
+    tractat d'Utrecht les donava a Àustria i a Savoia.
+  - **Polònia del 1706 al 1713**, amb el rei que va posar Suècia (Estanislau I) com si fos un altre
+    estat.
+  - **El Període Tumultuós** (1610-1618), amb l'oest de Rússia polonès; **el Piemont** del 1799,
+    francès; **Lorena** al segle XVIII, entre França i el duc.
 - **Estats petits fora del 1815-1870.** Els del Sacre Imperi van junts, amb el nom de l'Imperi,
-  també els d'Itàlia fins al 1740. Abans del 1815, Frankfurt surt dins de Berg i de Würzburg, i les
-  formes de Bremen i Lübeck queden desplaçades uns quilòmetres de les ciutats. Del 1815 al 1870 ho
-  arregla OpenHistoricalMap (§1.5).
-- **Gdańsk i Toruń**, prussianes des del 1772: van ser poloneses fins al 1793. Cliopatria no les
-  separa del seu voltant, que sí que va passar a Prússia el 1772.
-- **Finlàndia**, sueca fins al 14 d'octubre del 1809 (Schönbrunn), quan el tractat de Fredrikshamn
-  és del 17 de setembre: la mateixa mostra de Cliopatria recull els dos canvis.
+  també els d'Itàlia fins al 1740. Les ciutats lliures sí que hi són (§1.4.1), però no la resta del
+  Gran Ducat de Frankfurt (Aschaffenburg, Fulda, Hanau): hi surten Würzburg i Berg.
 - **Vores menys fines** que les de CShapes, i amb un salt petit l'1 de gener del 1886, quan comencen
-  les de CShapes. Ginebra, que era independent i és suïssa des del 1815, hi cau a l'altra banda de
-  la frontera.
-- **Forats.** Del 1659 al 1661, Kíiv no és de ningú.
+  les de CShapes.
+- **Forats.** L'Hetmanat cosac, que governava la Ucraïna central des del 1648, no és a Cliopatria:
+  del 1653 al 1661 aquella zona no és de ningú. L'estepa, al sud de Rússia, és en blanc fins que hi
+  arriba l'Imperi Rus.
+- **Peces que se sobreposen**, petites: Espanya i Nàpols a Sicília (1762), Espanya, Àustria i Savoia
+  a Sardenya i Sicília (1721), el comtat de Foix i la casa de Borbó dins de França (1540-1563).
 - **Sense banderes.** Comencen el 1886: les d'abans encara no estan documentades.
 
 ### 1.5 L'Europa central del 1815 al 1870: OpenHistoricalMap
@@ -273,7 +304,10 @@ de desembre del 1870 (l'Imperi Alemany), allà on hi ha OHM mana OHM, i Cliopatr
   1848-1849, les Províncies Unides de la Itàlia Central, Garibaldi el 1860). Els veïns segueixen
   sent de Cliopatria: OHM hi té errors que Cliopatria no té.
 - **On s'hi corregeix OHM**: la Prússia del 1829 al 1834 s'endinsa 13.000 km² a la Polònia russa.
-  La frontera occidental de Rússia no es va moure del 1815 al 1914, i allà mana CShapes.
+  La frontera occidental de Rússia no es va moure del 1815 al 1914, i allà mana CShapes. A la vora
+  de la Ciutat Lliure de Cracòvia li falten dos trams, un al nord i el del Vístula, que passa per la
+  ciutat, i el centre en quedava fora: es cusen amb una recta (`OHM.repair`), amb un error d'un o
+  dos quilòmetres.
 - **Els noms**, de Wikidata (el nom anglès i l'article de la Viquipèdia), traduïts com els altres
   (§1.4), o de `content/countries.yaml`.
 - **Es baixa un sol cop** (`npm run data:history`), a `data-raw/`: són uns quants centenars de MB.
@@ -284,8 +318,6 @@ On falla:
   Saxònia-Coburg-Saalfeld abans de la reorganització del 12 de novembre del 1826. En comptes de
   posar-hi el que diu Cliopatria (Prússia, Baviera, Berg), el mapa diu el que se'n sap: **els
   ducats ernestins**, sense separar-los.
-- **Cracòvia.** La forma d'OHM de la Ciutat Lliure no tanca bé i deixa fora el centre de la ciutat;
-  on falta, hi surt Cliopatria.
 
 ---
 
