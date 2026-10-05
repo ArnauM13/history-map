@@ -52,6 +52,7 @@ catalogue:
   at-hu: Flag of Austria-Hungary (1869-1918).svg
   at: Flag of Austria.svg
   hu-1915: Flag of Hungary (1915-1918, 1919-1946).svg
+  hu-1918: Flag of Hungary (1918–1919).svg
   hu-1919: Flag of Hungarian Soviet Republic.svg
   hu-1946: Flag of Hungary (1946-1949, 1956-1957).svg
   hu-1949: Flag of Hungary (1949-1956).svg
@@ -70,6 +71,8 @@ catalogue:
   'no': Flag of Norway.svg # entre cometes: el YAML antic llegeix un no sol com a «fals»
   se-1844: Swedish civil ensign (1844–1905).svg
   se: Flag of Sweden.svg
+  fi-1917: Flag of Finland 1918 (state).svg
+  fi-1918: Flag of Finland (1918–1920).svg
   fi: Flag of Finland.svg
   ee: Flag of Estonia.svg
   lv: Flag of Latvia.svg
@@ -95,7 +98,9 @@ catalogue:
   ro-1952: Flag of Romania (1952–1965).svg
   ro-1965: Flag of Romania (1965–1989).svg
   bg: Flag of Bulgaria.svg
+  bg-1947: Flag of Bulgaria (1946–1948).svg
   bg-1948: Flag of Bulgaria (1948–1967).svg
+  bg-1967: Flag of Bulgaria (1967–1971).svg
   bg-1971: Flag of Bulgaria (1971–1990).svg
   yu-1918: Flag of Yugoslavia (1918–1941).svg
   yu-1946: Flag of Yugoslavia (1946–1992).svg
@@ -113,6 +118,14 @@ catalogue:
   mk: Flag of North Macedonia.svg
   xk: Flag of Kosovo.svg
   al: Flag of Albania.svg
+  al-1912: Flag of the Provisional Government of Albania (1912–1914).svg
+  al-1914: Flag of Albania (1914–1920).svg
+  al-1920: Flag of Albania (1920–1926).svg
+  # La del regne, amb el casc d'Skanderbeg. Commons en té una «1928–1934» sense el casc, però Flags
+  # of the World diu que el casc hi és des del 1929 i que el 1934 només es va aclarir el vermell.
+  al-1928: Flag of Albania (1934–1939).svg
+  al-1939: Flag of Albania (1939–1943).svg
+  al-1944: Flag of the Democratic Government of Albania (1944–1946).svg
   al-1946: Flag of Albania (1946–1992).svg
   gr-1822: Flag of Greece (1822-1978).svg
   gr: Flag of Greece.svg
@@ -155,9 +168,36 @@ catalogue:
   ir-1907: State flag of Persia (1907–1933).svg
   ir: Flag of Iran.svg
   kz: Flag of Kazakhstan.svg
+  kg-1952: Flag of the Kirghiz Soviet Socialist Republic (1952–1991); Flag of Kyrgyzstan (1991–1992).svg
+  kg-1992: Flag of Kyrgyzstan (1992–2023).svg
+  kg: Flag of Kyrgyzstan.svg
   uz: Flag of Uzbekistan.svg
   tm: Flag of Turkmenistan.svg
   tj: Flag of Tajikistan.svg
+  af-1929: Flag of Afghanistan (17 Jan 1929 - 13 Oct 1929).svg
+  af-1929b: Flag of Afghanistan (1929–1931).svg
+  af-1931: Flag of Afghanistan (1931–1973).svg
+  af-1973: Flag of Afghanistan (1973–1974).svg
+  af-1974: Flag of Afghanistan (1974–1978).svg
+  af-1978: Flag of Afghanistan (1978).svg
+  af-1978b: Flag of Afghanistan (1978–1980).svg
+  af-1980: Flag of Afghanistan (1980–1987).svg
+  af-1987: Flag of Afghanistan (1987–1992).svg
+  af-1992: Flag of Afghanistan (1992).svg
+  af-1992b: Flag of Afghanistan (1992–2001).svg
+  af-1996: Flag of Taliban (original).svg
+  af-taliban: Flag of the Taliban.svg
+  af-2001: Flag of Afghanistan (2001–2002).svg
+  af-2002: Flag of Afghanistan (2002–2004).svg
+  af-2002b: Flag of Afghanistan (2002–2004, variant with golden arms).svg
+  af-2004: Flag of Afghanistan (2004–2021, variant).svg
+  af-2013: Flag of Afghanistan (2013–2021).svg
+  in: Flag of India.svg
+  pk: Flag of Pakistan.svg
+  cn-1889: Flag of China (1889–1912).svg
+  cn-1912: Flag of China (1912–1928).svg
+  cn-1928: Flag of the Republic of China.svg
+  cn: Flag of the People's Republic of China.svg
 
 about:
   de-1867:
@@ -449,6 +489,32 @@ about:
       The flag of the Syrian Republic from 1930, under the French mandate, and at independence in
       1946. It was dropped in 1963, the opposition took it up during the civil war, and it has
       been Syria's flag again since the fall of the Assad regime in December 2024.
+  fi-1917:
+    ca: >-
+      El lleó de l'escut de Finlàndia, groc sobre vermell. Va ser la primera bandera de l'Estat
+      independent; després de la guerra civil, el vermell recordava massa els vençuts, i el
+      Parlament va triar la creu blava el maig del 1918.
+    es: >-
+      El león del escudo de Finlandia, amarillo sobre rojo. Fue la primera bandera del Estado
+      independiente; tras la guerra civil, el rojo recordaba demasiado a los vencidos, y el
+      Parlamento eligió la cruz azul en mayo de 1918.
+    en: >-
+      The lion from Finland's coat of arms, yellow on red. It was the first flag of the
+      independent state; after the civil war, red was too closely tied to the defeated Reds, and
+      Parliament chose the blue cross in May 1918.
+  al-1939:
+    ca: >-
+      Amb la unió a Itàlia, l'àguila bicèfala va quedar entre els feixos del lictor, el símbol del
+      feixisme, i sota el nus i el lema FERT de la casa de Savoia. Es va deixar de fer servir quan
+      va caure Mussolini, el juliol del 1943.
+    es: >-
+      Con la unión a Italia, el águila bicéfala quedó entre las fasces del lictor, el símbolo del
+      fascismo, y bajo el nudo y el lema FERT de la casa de Saboya. Dejó de usarse cuando cayó
+      Mussolini, en julio de 1943.
+    en: >-
+      Under the union with Italy, the double-headed eagle was set between the lictor's fasces, the
+      symbol of Fascism, beneath the knot and FERT motto of the House of Savoy. It was dropped when
+      Mussolini fell, in July 1943.
 
 states:
   '200': [{ flag: gb }]
@@ -484,13 +550,19 @@ states:
   '291': [{ flag: danzig }]
   '300': [{ flag: at-hu }]
   '305': [{ flag: at }]
+  # L'escut sense corona de la república, des del decret 5746/1918 del 29 de novembre; torna la
+  # setmana del govern de Peidl, a l'agost del 1919. L'escut de Kossuth, sense corona, torna amb la
+  # revolució del 1956 i dura fins a la reforma constitucional del 23 de maig del 1957. La bandera
+  # amb el forat de la revolució no va ser mai oficial (vegeu el text de hu-1949).
   '310':
-    - { until: 1919-03-20, flag: hu-1915 }
+    - { until: 1918-11-28, flag: hu-1915 }
+    - { until: 1919-03-20, flag: hu-1918 }
     - { until: 1919-08-01, flag: hu-1919 }
+    - { until: 1919-08-08, flag: hu-1918 }
     - { until: 1946-01-31, flag: hu-1915 }
     - { until: 1949-08-19, flag: hu-1946 }
-    # Simplificat: des de la revolució del 1956, la tricolor sense escut en lloc de la de Rákosi.
     - { until: 1956-10-22, flag: hu-1949 }
+    - { until: 1957-05-22, flag: hu-1946 }
     - { flag: hu }
   '315':
     - { until: 1920-03-29, flag: cs-1918 }
@@ -503,9 +575,22 @@ states:
   '338':
     - { until: 1964-09-20 }
     - { flag: mt }
-  # Simplificat: falten les variants del 1914 al 1946 (principat, regne, protectorat italià).
+  # Les dates, de Flags of the World i de la Viquipèdia: el principat des que els delegats albanesos
+  # ofereixen la corona a Wied (21-2-1914); la del 1920, des del Congrés de Lushnjë; la del regne,
+  # des de l'Estatut del 1928 (Flags of the World diu 22 de novembre i el decret del dibuix és de
+  # l'agost del 1929); la feixista, de la constitució del 3 de juny del 1939 a la caiguda de
+  # Mussolini. Del 26 de juliol al 7 de setembre del 1943 no se sap quina es feia servir. Durant
+  # l'ocupació alemanya es torna a la del regne, i des de l'alliberament de Tirana, a la del govern
+  # democràtic, amb l'estrella.
   '339':
-    - { until: 1946-01-10, flag: al }
+    - { until: 1914-02-20, flag: al-1912 }
+    - { until: 1920-01-30, flag: al-1914 }
+    - { until: 1928-11-30, flag: al-1920 }
+    - { until: 1939-06-02, flag: al-1928 }
+    - { until: 1943-07-25, flag: al-1939 }
+    - { until: 1943-09-07 }
+    - { until: 1944-11-28, flag: al-1928 }
+    - { until: 1946-01-10, flag: al-1944 }
     - { until: 1992-04-06, flag: al-1946 }
     - { flag: al }
   # Sèrbia i Montenegro van ser part de Iugoslàvia (345) del 1918 al 2006.
@@ -538,10 +623,16 @@ states:
   '352':
     - { until: 1960-08-15 }
     - { flag: cy }
-  # Simplificat: falten les variants de l'escut del 1946-1948 i del 1967-1971.
+  # L'escut entra a la bandera amb la constitució de Dimitrov (en vigor el 6-12-1947); fins
+  # llavors, també amb la República Popular, la tricolor sola. El primer escut el va aprovar el
+  # decret 88, del 27-1-1948, que la Viquipèdia fa servir com a data del segon: segons Flags of the
+  # World, el primer va durar dos mesos més, però no se'n sap el dia. El del 1967, del decret 954,
+  # del 7-12-1967 (Flags of the World; la Viquipèdia diu «5 de gener del 1967», sense font).
   '355':
-    - { until: 1946-09-14, flag: bg }
-    - { until: 1971-05-17, flag: bg-1948 }
+    - { until: 1947-12-05, flag: bg }
+    - { until: 1948-01-26, flag: bg-1947 }
+    - { until: 1967-12-06, flag: bg-1948 }
+    - { until: 1971-05-17, flag: bg-1967 }
     - { until: 1990-11-21, flag: bg-1971 }
     - { flag: bg }
   '359': [{ flag: md }]
@@ -569,7 +660,14 @@ states:
     - { until: 2004-01-13, flag: ge-1990 }
     - { flag: ge }
   '373': [{ flag: az }]
-  '375': [{ flag: fi }]
+  # El lleó, des que es va hissar per primer cop (28-12-1917); la creu blava, des de la llei del
+  # 29-5-1918 (Flags of the World; la Viquipèdia dona el 28, el dia que la va votar el Parlament).
+  # El blau es va enfosquir amb la llei del 1920.
+  '375':
+    - { until: 1917-12-27 }
+    - { until: 1918-05-28, flag: fi-1917 }
+    - { until: 1920-02-11, flag: fi-1918 }
+    - { flag: fi }
   '380':
     - { until: 1905-10-31, flag: se-1844 }
     - { flag: se }
@@ -653,10 +751,52 @@ states:
   '690':
     - { until: 1961-09-06, flag: kw-1915 }
     - { flag: kw }
+  # Simplificat: abans del 1929 les banderes de l'emirat i del regne d'Amanullah van canviar sovint i
+  # sense dates exactes. Del 1996 al 2001, la dels talibans, que governaven Kabul.
+  '700':
+    - { until: 1929-01-16 }
+    - { until: 1929-10-13, flag: af-1929 }
+    - { until: 1931-03-26, flag: af-1929b }
+    - { until: 1973-07-16, flag: af-1931 }
+    - { until: 1974-05-08, flag: af-1973 }
+    - { until: 1978-04-26, flag: af-1974 }
+    - { until: 1978-10-18, flag: af-1978 }
+    - { until: 1980-04-21, flag: af-1978b }
+    - { until: 1987-11-29, flag: af-1980 }
+    - { until: 1992-04-26, flag: af-1987 }
+    - { until: 1992-12-06, flag: af-1992 }
+    - { until: 1996-09-26, flag: af-1992b }
+    - { until: 1997-10-26, flag: af-1996 }
+    - { until: 2001-11-12, flag: af-taliban }
+    - { until: 2002-01-27, flag: af-2001 }
+    - { until: 2002-06-26, flag: af-2002 }
+    - { until: 2004-10-08, flag: af-2002b }
+    - { until: 2013-08-18, flag: af-2004 }
+    - { until: 2021-08-14, flag: af-2013 }
+    - { flag: af-taliban }
   '701': [{ flag: tm }]
   '702': [{ flag: tj }]
+  # La de la RSS de Kirguísia fins a la del sol (3-3-1992), que el 2023 va perdre els raigs ondulats.
+  '703':
+    - { until: 1992-03-02, flag: kg-1952 }
+    - { until: 2023-12-25, flag: kg-1992 }
+    - { flag: kg }
   '704': [{ flag: uz }]
   '705': [{ flag: kz }]
+  # La rectangular del drac es feia servir a la marina des del 1881 i va ser la bandera nacional el
+  # 1888 o el 1889: el mapa l'ensenya des del 1886. La dels cinc colors, fins a l'abdicació de Puyi;
+  # la del Kuomintang, des que la Manxúria s'hi adhereix (29-12-1928) i la Xina queda unificada sota
+  # el govern de Nanquín, que ja la feia servir des del 1927 on governava.
+  '710':
+    - { until: 1912-02-12, flag: cn-1889 }
+    - { until: 1928-12-28, flag: cn-1912 }
+    - { until: 1949-09-30, flag: cn-1928 }
+    - { flag: cn }
+  # L'Índia britànica no tenia bandera nacional.
+  '750':
+    - { until: 1947-08-14 }
+    - { flag: in }
+  '770': [{ flag: pk }]
 
 sources:
   '200': [Flag of the United Kingdom]
@@ -675,13 +815,13 @@ sources:
   '291': [Free City of Danzig]
   '300': [Flag of Austria-Hungary]
   '305': [Flag of Austria]
-  '310': [Flag of Hungary]
+  '310': [Flag of Hungary, Coat of arms of Hungary]
   '315': [Flag of the Czech Republic]
   '316': [Flag of the Czech Republic]
   '317': [Flag of Slovakia]
   '325': [Flag of Italy]
   '338': [Flag of Malta]
-  '339': [Flag of Albania]
+  '339': [Flag of Albania, Albanian Kingdom (1928–1939), Democratic Government of Albania]
   '340': [Flag of Serbia]
   '341': [Flag of Montenegro]
   '343': [Flag of North Macedonia]
@@ -692,7 +832,7 @@ sources:
   '349': [Flag of Slovenia]
   '350': [Flag of Greece]
   '352': [Flag of Cyprus]
-  '355': [Flag of Bulgaria]
+  '355': [Flag of Bulgaria, Emblem of the People's Republic of Bulgaria, Dimitrov Constitution]
   '359': [Flag of Moldova]
   '360': [Flag of Romania]
   '365': [Flag of Russia, Flag of the Soviet Union]
@@ -724,7 +864,18 @@ sources:
   '666': [Flag of Israel]
   '670': [Flag of Saudi Arabia]
   '690': [Flag of Kuwait]
+  '700': [Flag of Afghanistan]
   '701': [Flag of Turkmenistan]
   '702': [Flag of Tajikistan]
+  '703': [Flag of Kyrgyzstan]
   '704': [Flag of Uzbekistan]
   '705': [Flag of Kazakhstan]
+  '710':
+    [
+      Flag of the Qing dynasty,
+      Five Races Under One Union,
+      Flag of the Republic of China,
+      Flag of China,
+    ]
+  '750': [Flag of India]
+  '770': [Flag of Pakistan]

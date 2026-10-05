@@ -60,6 +60,8 @@
   - { until: 1929-10-02, ca: "Regne dels Serbis, Croats i Eslovens", es: "Reino de los Serbios, Croatas y Eslovenos", en: "Kingdom of Serbs, Croats and Slovenes", wiki: Kingdom of Yugoslavia }
   - { until: 2003-02-03, ca: Iugoslàvia, es: Yugoslavia, en: Yugoslavia, wiki: Yugoslavia }
   - { ca: Sèrbia i Montenegro, es: Serbia y Montenegro, en: Serbia and Montenegro, wiki: Serbia and Montenegro }
+# L'Estat Lliure de Fiume (1920-1924) no és a CShapes: el dibuixa build-borders.mjs, i va pel QID.
+"Q548114": { ca: Estat Lliure de Fiume, es: Estado Libre de Fiume, en: Free State of Fiume, wiki: Free State of Fiume }
 "346": { ca: Bòsnia i Hercegovina, es: Bosnia y Herzegovina, en: Bosnia and Herzegovina, wiki: Bosnia and Herzegovina }
 "347": { ca: Kosovo, es: Kosovo, en: Kosovo, wiki: Kosovo }
 "349": { ca: Eslovènia, es: Eslovenia, en: Slovenia, wiki: Slovenia }
@@ -123,8 +125,12 @@
 "770": { ca: Pakistan, es: Pakistán, en: Pakistan, wiki: Pakistan }
 "3461": { ca: Bòsnia, es: Bosnia, en: Bosnia, wiki: Austro-Hungarian rule in Bosnia and Herzegovina }
 "3462": { ca: Hercegovina, es: Herzegovina, en: Herzegovina, wiki: Austro-Hungarian rule in Bosnia and Herzegovina }
-"6511": { ca: Franja de Gaza, es: Franja de Gaza, en: Gaza Strip, wiki: Gaza Strip }
-"6631": { ca: Cisjordània, es: Cisjordania, en: West Bank, wiki: West Bank }
+"6511":
+  - { until: 1988-11-14, ca: Franja de Gaza, es: Franja de Gaza, en: Gaza Strip, wiki: Gaza Strip }
+  - { ca: Palestina, es: Palestina, en: Palestine, wiki: State of Palestine }
+"6631":
+  - { until: 1988-11-14, ca: Cisjordània, es: Cisjordania, en: West Bank, wiki: West Bank }
+  - { ca: Palestina, es: Palestina, en: Palestine, wiki: State of Palestine }
 "7020": { ca: Emirat de Bukharà, es: Emirato de Bujará, en: Emirate of Bukhara, wiki: Emirate of Bukhara }
 "7030": { ca: Kanat de Khiva, es: Kanato de Jiva, en: Khanate of Khiva, wiki: Khanate of Khiva }
 "7506": { ca: Jammu i Caixmir, es: Jammu y Cachemira, en: Jammu and Kashmir, wiki: Jammu and Kashmir (princely state) }
@@ -204,6 +210,13 @@ Q698089: { ca: Gran Ducat de Würzburg, es: Gran Ducado de Wurzburgo, en: Grand 
 Q547629: { ca: Principat de Lichtenberg, es: Principado de Lichtenberg, en: Principality of Lichtenberg, wiki: Principality of Lichtenberg }
 Q474779: { ca: Ciutat Lliure de Bremen, es: Ciudad Libre de Bremen, en: Free City of Bremen, wiki: History of Bremen (city) }
 Q704300: { ca: Ciutat Lliure de Frankfurt, es: Ciudad Libre de Fráncfort, en: Free City of Frankfurt, wiki: Free City of Frankfurt }
+# Frankfurt de Dalberg: «Principality of Frankfurt» redirigeix a l'article del gran ducat.
+Q704312:
+  - { until: 1810-02-15, ca: Principat de Frankfurt, es: Principado de Fráncfort, en: Principality of Frankfurt, wiki: Grand Duchy of Frankfurt }
+  - { ca: Gran Ducat de Frankfurt, es: Gran Ducado de Fráncfort, en: Grand Duchy of Frankfurt, wiki: Grand Duchy of Frankfurt }
+Q901974: { ca: Ciutat Lliure de Dàntzig, es: Ciudad Libre de Dánzig, en: Free City of Danzig, wiki: Free City of Danzig (Napoleonic) }
+Q23366230: { ca: República de Ginebra, es: República de Ginebra, en: Republic of Geneva, wiki: Republic of Geneva }
+Q2536329: { ca: Govern General de Bèlgica, es: Gobierno General de Bélgica, en: General Government of Belgium, wiki: "Provisional Government of Belgium (1814–1815)" }
 Q501303: { ca: Ciutat Lliure de Cracòvia, es: Ciudad Libre de Cracovia, en: Free City of Kraków, wiki: Free City of Cracow }
 Q697084: { ca: Ducat d'Oldenburg, es: Ducado de Oldemburgo, en: Duchy of Oldenburg, wiki: Duchy of Oldenburg }
 Q326029: { ca: Ducat de Brunsvic, es: Ducado de Brunswick, en: Duchy of Brunswick, wiki: Duchy of Brunswick }

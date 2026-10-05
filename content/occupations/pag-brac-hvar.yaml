@@ -1,0 +1,49 @@
+start: 1941-04-10
+control:
+  - until: 1941-09-06
+    by: 255
+    kind: client
+    cause:
+      ca: Invasió de Iugoslàvia, 1941
+      es: Invasión de Yugoslavia, 1941
+      en: Invasion of Yugoslavia, 1941
+  - until: 1943-09-08
+    by: 325
+    kind: occupation
+    cause:
+      ca: Reocupació italiana de la costa, 1941
+      es: Reocupación italiana de la costa, 1941
+      en: Italian reoccupation of the coast, 1941
+  - until: 1945-05-08
+    by: 255
+    kind: client
+    cause:
+      ca: Armistici italià, 1943
+      es: Armisticio italiano, 1943
+      en: Italian armistice, 1943
+countries: [345]
+title:
+  ca: Pag, Brač i Hvar
+  es: Pag, Brač y Hvar
+  en: Pag, Brač and Hvar
+summary:
+  ca: >-
+    Els Tractats de Roma del maig del 1941 van deixar aquestes tres illes a l'Estat Independent de
+    Croàcia, quan Itàlia es quedava gairebé totes les altres. El 7 de setembre del 1941, però, Itàlia
+    va prendre el govern militar i civil de tota la costa croata, i les illes van quedar ocupades
+    fins a l'armistici italià del setembre del 1943. Després van tornar a l'Estat Independent de
+    Croàcia.
+  es: >-
+    Los Tratados de Roma de mayo de 1941 dejaron estas tres islas al Estado Independiente de
+    Croacia, cuando Italia se quedaba casi todas las demás. El 7 de septiembre de 1941, sin embargo,
+    Italia tomó el gobierno militar y civil de toda la costa croata, y las islas quedaron ocupadas
+    hasta el armisticio italiano de septiembre de 1943. Después volvieron al Estado Independiente de
+    Croacia.
+  en: >-
+    The Treaties of Rome of May 1941 left these three islands to the Independent State of Croatia,
+    while Italy took almost all the others. On 7 September 1941, however, Italy took over the
+    military and civil administration of the whole Croatian coast, and the islands stayed occupied
+    until the Italian armistice of September 1943. They then went back to the Independent State of
+    Croatia.
+wikipedia:
+  en: Treaties of Rome (1941)

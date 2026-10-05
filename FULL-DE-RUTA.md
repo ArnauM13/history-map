@@ -28,8 +28,11 @@ Les fronteres són el llenç; el que val és la història que s'hi explica a sob
 - [x] A la fitxa d'un estat, totes les banderes que ha tingut.
 - [x] Dues frases per a les banderes amb més història: què volen dir i per què van canviar.
 - [x] A la línia temporal, les marques dels canvis de bandera.
-- [ ] Les variants simplificades (vegeu [DADES.md](DADES.md#2-les-banderes-wikimedia-commons)) i
-      els estats de les vores del mapa (Egipte, Síria, l'Iraq…).
+- [x] Les variants de poca durada (Albània del 1912 al 1946, Bulgària, Hongria, el lleó vermell de
+      Finlàndia) i els estats de les vores del mapa (l'Afganistan, la Xina, l'Índia, el Pakistan,
+      el Kirguizistan). Les dates en què les fonts no coincideixen, a
+      [DADES.md](DADES.md#2-les-banderes-wikimedia-commons).
+- [ ] L'Afganistan abans del 1929 i la primera bandera de l'Iraq (1921-1924).
 - [ ] Les banderes de les colònies, dels protectorats i dels estats de poca durada.
 - [ ] Un text per a la resta de banderes.
 
@@ -76,12 +79,20 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
       fronts (§4).
 - [x] 1943-1945, Itàlia: la República Social Italiana i les zones que Alemanya es va annexionar de
       fet. I les illes del Canal i Eupen-Malmedy.
-- [ ] Els trossos petits que encara hi falten: el que Itàlia va afegir el 1941 a la província de
-      Fiume (Sušak, Kastav, Krk i Rab), i Hvar i Pag, a la tardor.
-- [ ] Corregir CShapes perquè dibuixi la frontera italiana del 1920 al 1947 (l'Ístria, Fiume, el
-      Litoral eslovè) i el Dodecanès italià, com explica [DADES.md](DADES.md) §1.2.
+- [x] Els trossos petits que hi faltaven: el que Itàlia va afegir el 1941 a la província de
+      Fiume (Sušak, Kastav, Krk i Rab), i Pag, Brač i Hvar, des del 7 de setembre del 1941.
+- [ ] La resta de la Zona II, la franja de la costa croata que Itàlia va ocupar el setembre del
+      1941, i el Dodecanès alemany del 1943 al 1945.
+- [x] Corregir CShapes perquè dibuixi la frontera italiana del 1920 al 1947 (l'Ístria, Fiume i
+      l'Estat Lliure de Fiume, el Litoral eslovè, Zara, Cres i Lošinj), el Dodecanès italià i
+      Dàntzig fins al 1939, com explica [DADES.md](DADES.md) §1.1.
 - [ ] 1917-1923: els estats de poca durada de la guerra civil russa, Fiume, les zones de
       plebiscit.
+- [x] Des del 1967, els territoris que ocupa Israel: Cisjordània, Gaza (fins al 2005), el Golan i
+      el Sinaí (fins al 1973). Israel, a les fronteres, dins de la Línia Verda.
+- [ ] El Sinaí del 1973 al 1982, amb les línies dels acords del 1974, el 1975 i el 1979, i la
+      Línia Verda més ben dibuixada que a CShapes, amb Jerusalem Est a Cisjordània
+      ([DADES.md](DADES.md) §1.2 i §1.3).
 - [ ] Del 1990 ençà, els territoris en disputa: Crimea, el Donbàs, Transnístria, Abkhàzia,
       Ossètia del Sud, el nord de Xipre, l'Alt Karabakh.
 
@@ -106,9 +117,14 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
       signar, i els estats que s'intercanvien territori canviant el mateix dia.
 - [x] L'Europa central del 1815 al 1870, d'OpenHistoricalMap, amb el dia de cada canvi (§1.5).
 - [ ] Les banderes d'abans del 1886.
-- [ ] OpenHistoricalMap a l'època napoleònica (1806–1815), on Cliopatria s'equivoca més.
-- [ ] Els errors que queden ([DADES.md](DADES.md) §1.4.2): Gdańsk i Toruń del 1772 al 1793,
-      Cracòvia, els estats petits d'abans del 1815.
+- [ ] OpenHistoricalMap a l'època napoleònica (1806–1815), on Cliopatria s'equivoca més. De
+      moment, només la forma d'alguns estats (`OHM_SHAPES`): les ciutats lliures, Ginebra,
+      Dàntzig, Hessen-Kassel i Brunsvic.
+- [x] Gdańsk i Toruń del 1772 al 1793, Finlàndia el 1809, el forat de Kíiv, Cracòvia, Ginebra, les
+      ciutats lliures d'abans del 1815 i les ocupacions breus, buscades peça a peça
+      ([DADES.md](DADES.md) §1.4.1).
+- [ ] Els errors que queden ([DADES.md](DADES.md) §1.4.2): Luxemburg i l'esquerra del Rin el
+      1814-1815, Podòlia, l'Hetmanat cosac, els estats petits del Sacre Imperi.
 - [ ] Més enrere del 1500: la font hi arriba; cal la línia temporal i revisar-ho igual.
 - [ ] *Vector tiles* (PMTiles), si les dades creixen més del que un fitxer pot dur.
 - [ ] Que funcioni sense connexió.

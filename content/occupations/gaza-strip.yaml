@@ -1,0 +1,41 @@
+start: 1967-06-06
+control:
+  - until: 2005-09-12
+    by: 666
+    kind: occupation
+    cause:
+      ca: Guerra dels Sis Dies, 1967
+      es: Guerra de los Seis Días, 1967
+      en: Six-Day War, 1967
+countries: [6511]
+title:
+  ca: Franja de Gaza ocupada
+  es: Franja de Gaza ocupada
+  en: Occupied Gaza Strip
+summary:
+  ca: >-
+    Israel va prendre la Franja de Gaza a Egipte el 6 de juny del 1967 i hi va fer 21 assentaments.
+    El 12 de setembre del 2005 en va retirar l'últim soldat, però en conserva les fronteres, l'espai
+    aeri i el mar, i l'ONU i el Tribunal Internacional de Justícia la consideren encara ocupada.
+    Hamas la governa des del 2007. Des de la guerra del 2023, l'exèrcit israelià n'ocupa una part,
+    que el mapa encara no dibuixa.
+  es: >-
+    Israel tomó la Franja de Gaza a Egipto el 6 de junio de 1967 y construyó en ella 21
+    asentamientos. El 12 de septiembre de 2005 retiró a su último soldado, pero conserva el control
+    de las fronteras, el espacio aéreo y el mar, y la ONU y la Corte Internacional de Justicia la
+    consideran todavía ocupada. Hamás la gobierna desde 2007. Desde la guerra de 2023, el ejército
+    israelí ocupa una parte, que el mapa aún no dibuja.
+  en: >-
+    Israel took the Gaza Strip from Egypt on 6 June 1967 and built 21 settlements there. Its last
+    soldier left on 12 September 2005, but Israel kept control of the borders, the airspace and the
+    sea, and the UN and the International Court of Justice still regard the Strip as occupied.
+    Hamas has governed it since 2007. Since the 2023 war, the Israeli army has occupied part of it,
+    which the map does not yet show.
+wikipedia:
+  en: Israeli occupation of the Gaza Strip
+sources:
+  - title: >-
+      Legal Consequences arising from the Policies and Practices of Israel in the Occupied
+      Palestinian Territory, including East Jerusalem (advisory opinion, 19 July 2024)
+    publisher: International Court of Justice
+    url: https://www.icj-cij.org/case/186

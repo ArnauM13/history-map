@@ -1,0 +1,26 @@
+start: 2023-10-07
+category: interstate
+location: [34.4, 31.45]
+countries: [666, 6511]
+title:
+  ca: Guerra de Gaza
+  es: Guerra de Gaza
+  en: Gaza war
+summary:
+  ca: >-
+    Va començar amb l'atac de Hamas a Israel del 7 d'octubre del 2023, en què van morir unes 1.200
+    persones i se'n van segrestar 251. L'ofensiva israeliana que va seguir ha matat més de 70.000
+    palestins i ha destruït la major part de Gaza. Des de l'alto el foc del 10 d'octubre del 2025,
+    l'exèrcit israelià n'ocupa una part.
+  es: >-
+    Empezó con el ataque de Hamás a Israel del 7 de octubre de 2023, en el que murieron unas 1.200
+    personas y 251 fueron secuestradas. La ofensiva israelí que siguió ha matado a más de 70.000
+    palestinos y ha destruido la mayor parte de Gaza. Desde el alto el fuego del 10 de octubre de
+    2025, el ejército israelí ocupa una parte.
+  en: >-
+    It began with the Hamas attack on Israel of 7 October 2023, in which some 1,200 people were
+    killed and 251 taken hostage. The Israeli offensive that followed has killed more than 70,000
+    Palestinians and destroyed most of Gaza. Since the ceasefire of 10 October 2025, the Israeli
+    army has occupied part of the Strip.
+wikipedia:
+  en: Gaza war
