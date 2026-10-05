@@ -3,14 +3,13 @@ import { CONFLICTS, EVENTS, KEY_DATES, countryName, localize } from '../content'
 import { ALL_FLAG_CHANGES } from '../content/flags'
 import { useI18n } from '../i18n'
 import {
-  EXACT_BORDERS_FROM,
-  FIRST_YEAR,
-  MIN_DATE,
   addMonths,
   formatDate,
   fromStepIndex,
+  isWithin,
   stepIndex,
   yearOf,
+  type Era,
   type IsoDate,
   type Precision,
 } from '../lib/date'
@@ -20,7 +19,8 @@ import { Icon } from './Icon'
 interface Props {
   date: IsoDate
   precision: Precision
-  maxDate: IsoDate
+  /** La part del mapa: la línia només va de la primera a l'última data d'aquesta part. */
+  era: Era
   playing: boolean
   /** La pestanya del panell decideix què marca la línia i entre quines dates salta. */
   tab: SidebarTab
@@ -30,24 +30,25 @@ interface Props {
   onSelectConflict: (id: string) => void
 }
 
-/** Cada conflicte al primer carril on no en trepitja cap altre. */
-function useConflictLanes(maxDate: IsoDate) {
+/** Cada conflicte de la part del mapa al primer carril on no en trepitja cap altre. */
+function useConflictLanes({ min, max }: Era) {
   return useMemo(() => {
     const laneEnds: string[] = []
-    return CONFLICTS.map((conflict) => {
-      const end = conflict.end ?? maxDate
+    const inside = CONFLICTS.filter((c) => c.start <= max && (c.end ?? max) >= min)
+    return inside.map((conflict) => {
+      const end = conflict.end ?? max
       let lane = laneEnds.findIndex((laneEnd) => laneEnd < conflict.start)
       if (lane === -1) lane = laneEnds.length
       laneEnds[lane] = end
       return { conflict, lane, end }
     })
-  }, [maxDate])
+  }, [min, max])
 }
 
 export function Timeline({
   date,
   precision,
-  maxDate,
+  era,
   playing,
   tab,
   selectedCode,
@@ -56,42 +57,42 @@ export function Timeline({
   onSelectConflict,
 }: Props) {
   const { lang, t } = useI18n()
-  const max = stepIndex(maxDate)
-  const current = stepIndex(date)
-  const pct = (iso: IsoDate) => `${(stepIndex(iso) / max) * 100}%`
-  const lanes = useConflictLanes(maxDate)
+  const max = stepIndex(era.max, era)
+  const current = stepIndex(date, era)
+  const pct = (iso: IsoDate) => `${(stepIndex(iso, era) / max) * 100}%`
+  const lanes = useConflictLanes(era)
   const laneCount = Math.max(1, ...lanes.map((l) => l.lane + 1))
+  const inEra = (iso: IsoDate) => isWithin(iso, era.min, era.max)
 
-  // Les marques van als anys rodons: 1890, 1900…, no 1886, 1896… Abans del 1886, on cada pas és
-  // de sis mesos, cada cinquanta anys. En una pantalla estreta només hi caben les grosses: cada vint
-  // anys des del 1886 i, abans, el 1500 i el 1800; amb els quatre segles, s'enganxaven.
-  const exactYear = yearOf(EXACT_BORDERS_FROM)
+  // Les marques van als anys rodons: 1890, 1900…, no 1886, 1896… En una pantalla estreta només hi
+  // caben les grosses (majorTicks): cada vint anys, o cada segle a la secció d'abans del 1886.
   const decades: { year: number; minor: boolean }[] = []
-  for (let y = Math.ceil(FIRST_YEAR / 50) * 50; y < exactYear; y += 50) {
-    decades.push({ year: y, minor: (y - FIRST_YEAR) % 300 !== 0 })
-  }
-  for (let y = Math.ceil(exactYear / 10) * 10; y <= yearOf(maxDate); y += 10) {
-    decades.push({ year: y, minor: y % 20 !== 0 })
+  const first = Math.ceil(yearOf(era.min) / era.ticks) * era.ticks
+  for (let y = first; y <= yearOf(era.max); y += era.ticks) {
+    decades.push({ year: y, minor: y % era.majorTicks !== 0 })
   }
 
   // A Banderes, les dates clau són els canvis de bandera: tots, o només els de l'estat triat,
   // que és el que vols recórrer quan mires com ha canviat la d'un país.
-  const flagChanges =
-    tab === 'flags' && selectedCode !== undefined
-      ? ALL_FLAG_CHANGES.filter((c) => c.code === selectedCode)
-      : ALL_FLAG_CHANGES
-  const keyDates =
+  const flagChanges = ALL_FLAG_CHANGES.filter(
+    (c) =>
+      inEra(c.period.from) &&
+      (tab !== 'flags' || selectedCode === undefined || c.code === selectedCode),
+  )
+  const events = EVENTS.filter((e) => inEra(e.date))
+  const keyDates = (
     tab === 'flags' ? [...new Set(flagChanges.map((c) => c.period.from))].sort() : KEY_DATES
+  ).filter(inEra)
 
   const goToStep = (index: number) =>
-    onChange(fromStepIndex(Math.min(max, Math.max(0, index))), 'month')
+    onChange(fromStepIndex(Math.min(max, Math.max(0, index)), era), 'month')
   // Els botons van de mes en mes també abans del 1886, on un pas de la línia en són sis.
   const goToMonth = (months: number) => {
     const next = addMonths(date, months)
-    if (next >= MIN_DATE && next <= maxDate) onChange(next, 'month')
+    if (inEra(next)) onChange(next, 'month')
   }
   const previousKeyDate = [...keyDates].reverse().find((d) => d < date)
-  const nextKeyDate = keyDates.find((d) => d > date && d <= maxDate)
+  const nextKeyDate = keyDates.find((d) => d > date)
 
   return (
     <section className="timeline" aria-label={t('timeline')}>
@@ -110,7 +111,7 @@ export function Timeline({
           type="button"
           className="icon-btn"
           onClick={() => goToMonth(-1)}
-          disabled={addMonths(date, -1) < MIN_DATE}
+          disabled={addMonths(date, -1) < era.min}
           aria-label={t('prevMonth')}
           title={t('prevMonth')}
         >
@@ -153,11 +154,6 @@ export function Timeline({
 
       <div className="timeline-track">
         <div className="timeline-strip" style={{ height: `${laneCount * 7 + 10}px` }}>
-          <span
-            className="timeline-approx"
-            style={{ width: pct(EXACT_BORDERS_FROM) }}
-            title={t('timelineApprox')}
-          />
           {tab === 'flags'
             ? flagChanges.map(({ code, period }) => (
                 <span
@@ -167,7 +163,7 @@ export function Timeline({
                   title={`${formatDate(period.from, lang)} · ${countryName(code, period.from, lang)}`}
                 />
               ))
-            : EVENTS.map((event) => (
+            : events.map((event) => (
                 <span
                   key={event.id}
                   className="timeline-tick"

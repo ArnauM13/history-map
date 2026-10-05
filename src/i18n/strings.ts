@@ -20,12 +20,20 @@ export interface Plural {
  */
 const ca = {
   appTitle: "Mapa històric d'Europa",
-  appSubtitle: 'Les fronteres, les banderes i els fets des del segle XVI',
+  appSubtitle: 'Les fronteres, les banderes i els fets des del 1886',
   metaDescription:
-    'Europa del 1500 a avui en un mapa que es mou: les fronteres, les banderes i els fets de cada data.',
+    'Europa del 1886 a avui en un mapa que es mou: les fronteres, les banderes i els fets de cada data.',
   language: 'Idioma',
+  earlyTitle: 'Abans del 1886',
+  earlySubtitle: "Les fronteres del 1500 al 1885, d'any en any",
+  experimental: 'Experimental',
+  earlyLink: 'Abans del 1886',
+  earlyLinkLabel: "Obre la secció d'abans del 1886, experimental",
+  mainLink: 'Des del 1886',
+  mainLinkLabel: 'Torna al mapa principal, des del 1886',
+  earlyNotice:
+    "Secció en procés. Les fronteres surten de Cliopatria i OpenHistoricalMap, ajustades a la costa del 1886; canvien d'any en any, no el dia que va passar, i encara n'hi ha per corregir.",
   timeline: 'Línia temporal',
-  timelineApprox: "Fins al 1885, les fronteres canvien d'any en any, no el dia que va passar",
   play: 'Reprodueix',
   pause: 'Atura',
   prevMonth: 'Mes anterior',
@@ -121,12 +129,20 @@ type Messages = { [K in MessageKey]: (typeof ca)[K] extends Plural ? Plural : st
 
 const es: Messages = {
   appTitle: 'Mapa histórico de Europa',
-  appSubtitle: 'Las fronteras, las banderas y los hechos desde el siglo XVI',
+  appSubtitle: 'Las fronteras, las banderas y los hechos desde 1886',
   metaDescription:
-    'Europa de 1500 a hoy en un mapa que se mueve: las fronteras, las banderas y los hechos de cada fecha.',
+    'Europa de 1886 a hoy en un mapa que se mueve: las fronteras, las banderas y los hechos de cada fecha.',
   language: 'Idioma',
+  earlyTitle: 'Antes de 1886',
+  earlySubtitle: 'Las fronteras de 1500 a 1885, año a año',
+  experimental: 'Experimental',
+  earlyLink: 'Antes de 1886',
+  earlyLinkLabel: 'Abre la sección de antes de 1886, experimental',
+  mainLink: 'Desde 1886',
+  mainLinkLabel: 'Vuelve al mapa principal, desde 1886',
+  earlyNotice:
+    'Sección en proceso. Las fronteras salen de Cliopatria y OpenHistoricalMap, ajustadas a la costa de 1886; cambian año a año, no el día en que ocurrió, y aún quedan por corregir.',
   timeline: 'Línea temporal',
-  timelineApprox: 'Hasta 1885, las fronteras cambian de año en año, no el día en que ocurrió',
   play: 'Reproducir',
   pause: 'Detener',
   prevMonth: 'Mes anterior',
@@ -219,12 +235,20 @@ const es: Messages = {
 
 const en: Messages = {
   appTitle: 'Historical Map of Europe',
-  appSubtitle: 'Borders, flags and events since the 16th century',
+  appSubtitle: 'Borders, flags and events since 1886',
   metaDescription:
-    'Europe from 1500 to today on a map that moves: the borders, the flags and the events of any date.',
+    'Europe from 1886 to today on a moving map: the borders, flags and events of every date.',
   language: 'Language',
+  earlyTitle: 'Before 1886',
+  earlySubtitle: 'Borders from 1500 to 1885, year by year',
+  experimental: 'Experimental',
+  earlyLink: 'Before 1886',
+  earlyLinkLabel: 'Open the experimental section before 1886',
+  mainLink: 'Since 1886',
+  mainLinkLabel: 'Back to the main map, since 1886',
+  earlyNotice:
+    'Work in progress. Borders come from Cliopatria and OpenHistoricalMap, fitted to the 1886 coastline; they change year by year, not on the day it happened, and some still need fixing.',
   timeline: 'Timeline',
-  timelineApprox: 'Until 1885, borders change year by year, not on the day it happened',
   play: 'Play',
   pause: 'Stop',
   prevMonth: 'Previous month',

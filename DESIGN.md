@@ -63,6 +63,13 @@ Escriptori: el mapa i la línia temporal a l'esquerra, el panell a la dreta (400
 estreta (< 860 px): mapa, línia i panell, un sota l'altre. **El mapa és una targeta més**, amb el
 mateix radi i la mateixa ombra.
 
+**Dues parts.** El mapa principal va del 1886 a avui; la secció d'abans del 1886 és a part i es
+passa de l'una a l'altra amb la pastilla `.era-link` de la capçalera, al costat de l'idioma. Que la
+secció d'abans és experimental es diu tres cops, perquè no se'n prengui cap mapa com a referència:
+la xapa `.badge` al títol (ambre, el color de l'avís), la nota `.map-notice` on hi ha els
+interruptors al mapa principal (que aquí sobren: abans del 1886 no hi ha banderes documentades ni
+ocupacions) i el subtítol, que diu que les fronteres hi van d'any en any.
+
 ## 3. Targetes i files
 
 ```html

@@ -2,7 +2,7 @@
 
 # Mapa histórico de Europa
 
-**Europa de 1500 a hoy, en un mapa que se mueve: las fronteras, las banderas y lo que pasó.**
+**Europa de 1886 a hoy, en un mapa que se mueve: las fronteras, las banderas y lo que pasó.**
 
 [Abre el mapa](https://arnaum13.github.io/history-map/?lang=es) · [De dónde sale la información](DADES.es.md) · [Cómo contribuir](CONTRIBUTING.es.md) · [Hoja de ruta (en catalán)](FULL-DE-RUTA.md)
 
@@ -31,7 +31,7 @@ ejemplo, el mapa cambia cada pocos meses. Aquí se puede ver día a día.
 | | |
 | --- | --- |
 | **Las fronteras de cualquier día** | De 1886 a hoy, con el día exacto de cada cambio y el nombre que tenía cada estado entonces: el Imperio ruso, la Rusia soviética, la Unión Soviética, Rusia. |
-| **Cuatro siglos más** | De 1500 a 1885, de año en año: el Reino de Francia y la Monarquía de Julio, el Sacro Imperio, la República de las Dos Naciones, el Imperio sueco. Con las ocupaciones que la fuente contaba como anexiones devueltas a quien eran, y el día exacto de cada cambio de régimen. |
+| **Antes de 1886, en pruebas** | Una sección aparte y experimental ([ábrela](https://arnaum13.github.io/history-map/?era=early&lang=es)): de 1500 a 1885, de año en año, sobre la misma costa que el resto del mapa: el Reino de Francia y la Monarquía de Julio, el Sacro Imperio, la República de las Dos Naciones, el Imperio sueco. Con las ocupaciones que la fuente contaba como anexiones devueltas a quien eran, y el día exacto de cada cambio de régimen. |
 | **Cada bandera en su tiempo** | Un centenar de banderas de unos setenta estados: en el mapa, en una galería para cada fecha y en la ficha de cada estado, con qué significan las que tienen más historia. |
 | **Lo que pasaba a la vez** | Los conflictos abiertos y los hechos del año, junto al mapa y marcados en la línea temporal. |
 | **Las ocupaciones, de 1938 a 1945** | Lo que se controlaba de hecho y las fronteras no enseñan: la anexión de Austria, el Gobierno General, la Francia de Vichy, Yugoslavia y Grecia repartidas, Ucrania ocupada. Del color del ocupante, como una parte más de su territorio, y cada zona con el nombre en el mapa y su ficha. |

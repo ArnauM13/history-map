@@ -84,8 +84,10 @@ S'identifiquen amb el **codi de Gleditsch i Ward** (`code`, en text), el de CSha
 banderes, els fets i els conflictes hi fan referència. Un mateix codi pot tenir noms i banderes
 diferents al llarg del temps (365: Imperi Rus, Rússia soviètica, Unió Soviètica, Rússia).
 
-Abans del 1886, les fronteres són de Cliopatria (`scripts/build-history.mjs`), d'any en any i en un
-fitxer per segle que l'app baixa quan cal; a l'Europa central del 1815 al 1870, d'OpenHistoricalMap,
+El mapa principal comença el 1886. Abans, les fronteres són de Cliopatria
+(`scripts/build-history.mjs`), d'any en any, en una secció a part i experimental (`?era=early`) i en
+un fitxer per segle que l'app baixa quan cal; es retallen a la terra de CShapes del 1886, perquè
+la costa sigui la mateixa; a l'Europa central del 1815 al 1870, d'OpenHistoricalMap,
 amb el dia de cada canvi (DADES.md §1.5). Cada peça porta el QID de Wikidata de l'entitat (`qid`):
 el codi és el de Gleditsch i Ward si continua un estat de CShapes (el Regne de França és el 220), i
 el QID si no. El nom va pel QID, no pel codi: el 1700, el 220 és el Regne de França.

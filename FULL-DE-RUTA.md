@@ -3,7 +3,7 @@
 L'objectiu és un mapa on qualsevol pugui **veure com va canviar Europa** i **entendre per què**.
 Les fronteres són el llenç; el que val és la història que s'hi explica a sobre.
 
-**Europa del 1500 a avui**: del 1886 ençà, amb CShapes, dia a dia; abans, amb Cliopatria, d'any en any (§5).
+**Europa del 1886 a avui**, amb CShapes, dia a dia. Del 1500 al 1885, amb Cliopatria, d'any en any, en una secció a part i experimental fins que sigui tan fiable com la resta (§5).
 
 ## 0. Els fonaments — fet
 
@@ -116,6 +116,13 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
 - [x] Els tractats grans (Westfàlia, Utrecht, les particions de Polònia…) el dia que es van
       signar, i els estats que s'intercanvien territori canviant el mateix dia.
 - [x] L'Europa central del 1815 al 1870, d'OpenHistoricalMap, amb el dia de cada canvi (§1.5).
+- [x] Una secció a part i experimental per a tot el que és d'abans del 1886: el mapa principal
+      comença on comença CShapes.
+- [x] Les fronteres d'abans del 1886 sobre la base de CShapes: la mateixa costa, i les franges que
+      la diferència deixava sense ningú, a l'estat que hi toca ([DADES.md](DADES.md) §1.4).
+- [ ] Les fronteres interiors d'abans del 1886 sobre les de CShapes allà on no van canviar fins al
+      1886, com ja es fa amb la frontera occidental de Rússia.
+- [ ] Tornar la secció d'abans del 1886 al mapa principal quan sigui tan fiable com la resta.
 - [ ] Les banderes d'abans del 1886.
 - [ ] OpenHistoricalMap a l'època napoleònica (1806–1815), on Cliopatria s'equivoca més. De
       moment, només la forma d'alguns estats (`OHM_SHAPES`): les ciutats lliures, Ginebra,

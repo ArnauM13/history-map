@@ -5,16 +5,50 @@
 export type IsoDate = string
 
 /**
- * El primer any del mapa: fins al 1885 les fronteres són de Cliopatria (scripts/build-history.mjs,
- * que porta el mateix FIRST_YEAR), i des del 1886, de CShapes 2.0.
- */
-export const FIRST_YEAR = 1500
-export const MIN_DATE: IsoDate = `${FIRST_YEAR}-01-01`
-/**
- * El primer dia de CShapes. Abans, les fronteres canvien d'any en any, no el dia que va passar, i
- * no sabem quan es va estrenar la primera bandera de cada estat.
+ * El primer dia de CShapes, i el de la part principal del mapa: des d'aquí, les fronteres canvien
+ * el dia que va passar.
  */
 export const EXACT_BORDERS_FROM: IsoDate = '1886-01-01'
+/**
+ * El primer any de la secció d'abans del 1886: fins al 1885 les fronteres són de Cliopatria
+ * (scripts/build-history.mjs, que porta el mateix FIRST_YEAR).
+ */
+export const FIRST_YEAR = 1500
+
+/**
+ * Les dues parts del mapa. La principal va del 1886 a avui, amb CShapes, i és la que ha de ser
+ * una referència. La d'abans del 1886 és una secció a part i experimental: les fronteres hi
+ * canvien d'any en any, no el dia que va passar, i encara n'hi ha moltes per corregir.
+ */
+export type EraId = 'main' | 'early'
+
+export interface Era {
+  id: EraId
+  min: IsoDate
+  max: IsoDate
+  /**
+   * Quants mesos és un pas de la línia temporal. A la secció d'abans, sis: de mes en mes, quatre
+   * segles eren gairebé cinc mil passos, i reproduir-los durava dotze minuts.
+   */
+  stepMonths: number
+  /** Cada quants anys hi ha una marca a la línia, i cada quants una de les que caben al mòbil. */
+  ticks: number
+  majorTicks: number
+}
+
+export function eraOf(id: EraId, today: IsoDate): Era {
+  return id === 'main'
+    ? { id, min: EXACT_BORDERS_FROM, max: today, stepMonths: 1, ticks: 10, majorTicks: 20 }
+    : {
+        id,
+        min: `${FIRST_YEAR}-01-01`,
+        max: addDays(EXACT_BORDERS_FROM, -1),
+        stepMonths: 6,
+        ticks: 50,
+        majorTicks: 100,
+      }
+}
+
 /** El final de les fronteres que encara valen avui. */
 export const OPEN_END = 99991231
 
@@ -37,49 +71,33 @@ export function todayIso(now = new Date()): IsoDate {
   return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`
 }
 
-/**
- * La línia temporal va a dos ritmes: abans del 1886, a passos de sis mesos, perquè les fronteres
- * hi canvien d'any en any; després, de mes en mes. Tota a passos d'un mes, del 1886 a avui en
- * quedava només una quarta part, i és on hi ha més per veure.
- */
-const SLOW_STEP_MONTHS = 6
-const SLOW_MONTHS = (yearOf(EXACT_BORDERS_FROM) - FIRST_YEAR) * 12
-const SLOW_STEPS = SLOW_MONTHS / SLOW_STEP_MONTHS
-
-const monthsSinceStart = (iso: IsoDate) => {
+const monthsOf = (iso: IsoDate) => {
   const [y, m] = iso.split('-').map(Number)
-  return (y - FIRST_YEAR) * 12 + (m - 1)
+  return y * 12 + (m - 1)
 }
 
 const fromMonths = (months: number): IsoDate =>
-  `${FIRST_YEAR + Math.floor(months / 12)}-${pad((months % 12) + 1)}-01`
+  `${Math.floor(months / 12)}-${pad((months % 12) + 1)}-01`
 
-/** La posició d'una data a la línia temporal, en passos des del gener de FIRST_YEAR. */
-export function stepIndex(iso: IsoDate): number {
-  const months = monthsSinceStart(iso)
-  return months < SLOW_MONTHS
-    ? Math.floor(months / SLOW_STEP_MONTHS)
-    : SLOW_STEPS + (months - SLOW_MONTHS)
-}
+/** La posició d'una data a la línia temporal d'una part del mapa, en passos des del principi. */
+export const stepIndex = (iso: IsoDate, era: Era): number =>
+  Math.floor((monthsOf(iso) - monthsOf(era.min)) / era.stepMonths)
 
 /** El primer dia del pas `index` de la línia temporal. */
-export function fromStepIndex(index: number): IsoDate {
-  return fromMonths(
-    index < SLOW_STEPS ? index * SLOW_STEP_MONTHS : SLOW_MONTHS + (index - SLOW_STEPS),
-  )
-}
+export const fromStepIndex = (index: number, era: Era): IsoDate =>
+  fromMonths(monthsOf(era.min) + index * era.stepMonths)
 
 /** L'1 del mes que és `months` mesos abans o després. */
 export const addMonths = (iso: IsoDate, months: number): IsoDate =>
-  fromMonths(monthsSinceStart(iso) + months)
+  fromMonths(monthsOf(iso) + months)
 
 export function addDays(iso: IsoDate, days: number): IsoDate {
   const [y, m, d] = iso.split('-').map(Number)
   return new Date(Date.UTC(y, m - 1, d + days)).toISOString().slice(0, 10)
 }
 
-export const clampDate = (iso: IsoDate, max: IsoDate): IsoDate =>
-  iso < MIN_DATE ? MIN_DATE : iso > max ? max : iso
+export const clampDate = (iso: IsoDate, era: Era): IsoDate =>
+  iso < era.min ? era.min : iso > era.max ? era.max : iso
 
 /** Si `date` cau dins de [start, end]; sense final, encara dura. */
 export const isWithin = (date: IsoDate, start: IsoDate, end?: IsoDate) =>

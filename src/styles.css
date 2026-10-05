@@ -101,6 +101,24 @@ a { color: var(--c-brand-ink); font-weight: 600; }
 
 .subtitle { margin: 2px 0 0; font-size: 13px; font-weight: 500; color: var(--c-text-3); }
 
+.header-actions { display: flex; align-items: center; gap: 8px; }
+
+/* La xapa de la secció d'abans del 1886: que es vegi, al títol, que no és la part de referència. */
+.badge {
+  display: inline-block; margin-left: 8px; padding: 2px 8px; border-radius: 20px; vertical-align: 3px;
+  background: color-mix(in srgb, var(--c-amber) 16%, var(--c-card));
+  font-size: 11px; font-weight: 700; letter-spacing: 0.2px; color: var(--c-text-2);
+}
+
+/* L'enllaç entre les dues parts del mapa, amb la forma de la pastilla de l'idioma. */
+.era-link {
+  display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px 0 10px;
+  border: 1px solid var(--c-border); border-radius: 20px; background: var(--c-card);
+  font-size: 13px; font-weight: 700; color: var(--c-text-2); text-decoration: none; white-space: nowrap;
+  .ms { font-size: 16px; }
+  &:hover { background: color-mix(in srgb, var(--c-text) 4%, var(--c-card)); }
+}
+
 .lang select {
   height: 36px; padding: 0 12px; border: 1px solid var(--c-border); border-radius: 20px;
   background: var(--c-card); font-size: 13px; font-weight: 700; cursor: pointer;
@@ -134,6 +152,15 @@ a { color: var(--c-brand-ink); font-weight: 600; }
   .ms { font-size: 15px; }
   &[aria-pressed='true'] { color: var(--c-brand-ink); border-color: color-mix(in srgb, var(--c-brand) 35%, transparent); }
   &:active { transform: scale(0.97); }
+}
+
+/* A la secció d'abans del 1886, on són els interruptors: què és i per què no és com la resta. */
+.map-notice {
+  position: absolute; top: 10px; right: 10px; display: flex; gap: 8px; max-width: 340px; margin: 0;
+  padding: 10px 14px 10px 10px; border-radius: 14px; background: var(--c-card);
+  box-shadow: 0 2px 10px var(--c-shadow-md);
+  font-size: 12px; font-weight: 500; line-height: 1.5; color: var(--c-text-2);
+  .ms { flex: none; font-size: 16px; color: var(--c-amber); }
 }
 
 /* La llegenda de les ocupacions. Les mostres són grises: al mapa, el color és el de l'ocupant, i
@@ -262,11 +289,6 @@ a { color: var(--c-brand-ink); font-weight: 600; }
 }
 
 /* Abans del 1886 les fronteres van any a any: la franja ho diu, i el títol explica per què. */
-.timeline-approx {
-  position: absolute; inset: 0 auto 0 0; border-radius: 3px;
-  background: repeating-linear-gradient(135deg, var(--c-border-2) 0 2px, transparent 2px 6px);
-}
-
 .timeline-conflict {
   position: absolute; height: 5px; padding: 0; border: 0; border-radius: 3px;
   background: var(--c-conflict); opacity: 0.7; cursor: pointer;
@@ -441,12 +463,16 @@ a { color: var(--c-brand-ink); font-weight: 600; }
     grid-template-areas: 'header' 'map' 'timeline' 'sidebar';
   }
   .subtitle { display: none; }
+  .map-notice { left: 52px; max-width: none; }
   .timeline-date { font-size: 15px; }
   .sidebar { overflow: visible; }
 }
 
 /* Per l'any i no per la posició: si no, en començar al 1890 desapareixerien el 1900 i el 2000. */
 @media (max-width: 560px) {
+  /* El títol sencer en una línia i, a sota, l'enllaç a l'altra part i l'idioma. */
+  .app-header { flex-wrap: wrap; gap: 8px; }
+  .header-actions { width: 100%; justify-content: space-between; }
   .timeline-decades button.is-minor { display: none; }
   /* En una fila, perquè no tapi mig mapa. */
   .map-legend { flex-direction: row; flex-wrap: wrap; gap: 4px 10px; right: 52px; padding: 6px 10px; font-size: 11px; }
