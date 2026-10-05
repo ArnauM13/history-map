@@ -35,6 +35,7 @@ const RAW_DIR = 'data-raw'
 const RAW_FILE = `${RAW_DIR}/cshapes_2_gw.topojson`
 const OUT_DIR = 'public/data'
 const OCCUPATIONS_DIR = 'content/occupations'
+const HISTORY_DIR = 'public/data/history'
 /**
  * Quants colors té la paleta del mapa (PALETTE a src/map/style.ts). L'acolorit els fa servir
  * tots, repartits; si un grup té tants veïns que no n'hi ha prou, en fa servir un de més i
@@ -414,6 +415,30 @@ function readOccupations() {
  */
 const COST = { occupied: 1000, occupiedNeighbour: 100, near: 10 }
 
+/**
+ * Els estats que no són veïns a CShapes però sí abans del 1886, on build-history.mjs els pinta
+ * amb el mateix color. Es llegeixen de les fronteres d'abans del 1886 que hi ha al repo: quan les
+ * correccions d'Itàlia i Grècia van canviar l'acolorit, el Regne Unit i Grècia van sortir del
+ * mateix color i les illes Jòniques (britàniques del 1815 al 1864) no es distingien de Grècia.
+ * Només hi compten els codis de CShapes: les entitats amb QID tenen el color a part.
+ */
+function historicNeighbours() {
+  if (!existsSync(HISTORY_DIR)) return []
+  const pairs = []
+  for (const name of readdirSync(HISTORY_DIR).filter((n) => n.endsWith('.topo.json'))) {
+    const topo = JSON.parse(readFileSync(`${HISTORY_DIR}/${name}`, 'utf8'))
+    const geoms = topo.objects.borders.geometries
+    topojson.neighbors(geoms).forEach((list, i) => {
+      const a = geoms[i].properties
+      for (const j of list) {
+        const b = geoms[j].properties
+        if (groupOf(a) !== groupOf(b) && overlaps(a, b)) pairs.push([groupOf(a), groupOf(b)])
+      }
+    })
+  }
+  return pairs
+}
+
 function assignColours(topo, occupations) {
   const geoms = topo.objects.borders.geometries
   const neighbours = topojson.neighbors(geoms)
@@ -434,6 +459,13 @@ function assignColours(topo, occupations) {
       }
     }
   })
+
+  for (const [a, b] of historicNeighbours()) {
+    if (adjacency.has(a) && adjacency.has(b)) {
+      adjacency.get(a).add(b)
+      adjacency.get(b).add(a)
+    }
+  }
 
   // Les penalitzacions, en els dos sentits: el primer dels dos que tria color ja les paga.
   const penalties = new Map([...adjacency.keys()].map((g) => [g, new Map()]))
