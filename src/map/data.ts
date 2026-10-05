@@ -91,6 +91,29 @@ const EXACT_YEAR = yearOf(EXACT_BORDERS_FROM)
 export const centuryOf = (year: number): number | undefined =>
   year >= EXACT_YEAR ? undefined : Math.floor(Math.max(year, FIRST_YEAR) / 100) * 100
 
+const notifyHistory = () => {
+  historyVersion++
+  historyListeners.forEach((listener) => listener())
+}
+
+/**
+ * Deixa a memòria només aquests segles (com a molt, el de la data i el del costat) i descarta els
+ * altres. Si s'hi quedaven tots, navegar de
+ * l'1500 al 1885 feia créixer el procés del navegador fins a 1,1 GB (el worker de MapLibre
+ * trosseja tota la geometria que li donem), i Chrome al mòbil tancava la pestanya. Un segle
+ * descartat es torna a baixar de la memòria cau HTTP si cal.
+ */
+export function keepHistory(centuries: number[]) {
+  const wanted = new Set(centuries)
+  let evicted = false
+  for (const century of [...historyRequests.keys()]) {
+    if (wanted.has(century)) continue
+    historyRequests.delete(century)
+    evicted = historyParts.delete(century) || evicted
+  }
+  if (evicted) notifyHistory()
+}
+
 export function loadHistory(century: number): Promise<HistoryPart> {
   let request = historyRequests.get(century)
   if (!request) {
@@ -106,12 +129,13 @@ export function loadHistory(century: number): Promise<HistoryPart> {
     historyRequests.set(century, request)
     request.then(
       (part) => {
+        // Si la línia ja ha passat de llarg mentre baixava, no té on anar: s'hi quedaria per sempre.
+        if (historyRequests.get(century) !== request) return
         historyParts.set(century, part)
-        historyVersion++
-        historyListeners.forEach((listener) => listener())
+        notifyHistory()
       },
       // Si falla, el proper cop que calgui es torna a demanar.
-      () => historyRequests.delete(century),
+      () => historyRequests.get(century) === request && historyRequests.delete(century),
     )
   }
   return request
@@ -135,11 +159,13 @@ export function useHistoryFor(date: IsoDate): 'ready' | 'loading' | 'error' {
   const century = centuryOf(year)
   const [failed, setFailed] = useState<number | undefined>()
   useEffect(() => {
-    if (century === undefined) return
+    if (century === undefined) return keepHistory([])
     let active = true
-    loadHistory(century).catch(() => active && setFailed(century))
     const near = centuryOf(year % 100 >= 90 ? year + 10 : year - 10)
-    if (near !== undefined && near !== century) loadHistory(near).catch(() => {})
+    const needed = near !== undefined && near !== century ? [century, near] : [century]
+    keepHistory(needed)
+    loadHistory(century).catch(() => active && setFailed(century))
+    if (needed.length > 1) loadHistory(near!).catch(() => {})
     return () => {
       active = false
     }
