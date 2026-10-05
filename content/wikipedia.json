@@ -763,6 +763,10 @@
     "ca": "Ciutat Lliure de Danzig",
     "es": "Ciudad Libre de Dánzig"
   },
+  "Free City of Danzig (Napoleonic)": {
+    "ca": "República de Danzig",
+    "es": "Ciudad Libre de Dánzig (napoleónica)"
+  },
   "Free City of Frankfurt": {
     "es": "Ciudad Libre de Fráncfort"
   },
@@ -891,6 +895,9 @@
   "Grand Duchy of Berg": {
     "ca": "Gran Ducat de Berg",
     "es": "Gran Ducado de Berg"
+  },
+  "Grand Duchy of Frankfurt": {
+    "es": "Gran Ducado de Fráncfort"
   },
   "Grand Duchy of Hesse": {
     "ca": "Gran ducat de Hessen i del Rin",
@@ -1472,6 +1479,9 @@
   "Province of Ljubljana": {
     "es": "Provincia de Liubliana"
   },
+  "Provisional Government of Belgium (1814–1815)": {
+    "es": "Gobierno provisional de Bélgica (1814-1815)"
+  },
   "Pskov Republic": {
     "es": "República de Pskov"
   },
@@ -1507,6 +1517,7 @@
     "ca": "República de Florència",
     "es": "República de Florencia"
   },
+  "Republic of Geneva": {},
   "Republic of Genoa": {
     "ca": "República de Gènova",
     "es": "República de Génova"
