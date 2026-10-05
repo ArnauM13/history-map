@@ -20,6 +20,9 @@
     "ca": "Albània",
     "es": "Albania"
   },
+  "Albanian Kingdom (1928–1939)": {
+    "es": "Reino de Albania"
+  },
   "Algeria": {
     "ca": "Algèria",
     "es": "Argelia"
@@ -191,6 +194,10 @@
     "ca": "República Cispadana",
     "es": "República Cispadana"
   },
+  "Coat of arms of Hungary": {
+    "ca": "Escut d'Hongria",
+    "es": "Escudo de Hungría"
+  },
   "Commonwealth of England": {
     "ca": "Commonwealth d'Anglaterra",
     "es": "Mancomunidad de Inglaterra"
@@ -246,6 +253,9 @@
     "ca": "Txecoslovàquia",
     "es": "Checoslovaquia"
   },
+  "Democratic Government of Albania": {
+    "es": "Gobierno Democrático (Albania)"
+  },
   "Denmark": {
     "ca": "Dinamarca",
     "es": "Dinamarca"
@@ -255,6 +265,7 @@
     "es": "Reino de Dinamarca y Noruega"
   },
   "Dictatorship of Giuseppe Garibaldi": {},
+  "Dimitrov Constitution": {},
   "Dissolution of Czechoslovakia": {
     "ca": "Dissolució de Txecoslovàquia",
     "es": "Disolución de Checoslovaquia"
@@ -375,6 +386,9 @@
   "Electorate of Württemberg": {
     "es": "Electorado de Wurtemberg"
   },
+  "Emblem of the People's Republic of Bulgaria": {
+    "es": "Emblema de la República Popular de Bulgaria"
+  },
   "Emirate of Bukhara": {
     "ca": "Emirat de Bukharà",
     "es": "Emirato de Bujará"
@@ -433,6 +447,14 @@
     "ca": "Cinc dies de Milà",
     "es": "Cinco jornadas de Milán"
   },
+  "Five Races Under One Union": {
+    "ca": "Cinc races sota una unió",
+    "es": "Cinco razas bajo una unión"
+  },
+  "Flag of Afghanistan": {
+    "ca": "Bandera de l'Afganistan",
+    "es": "Bandera de Afganistán"
+  },
   "Flag of Albania": {
     "ca": "Bandera d'Albània",
     "es": "Bandera de Albania"
@@ -471,6 +493,10 @@
   "Flag of Bulgaria": {
     "ca": "Bandera de Bulgària",
     "es": "Bandera de Bulgaria"
+  },
+  "Flag of China": {
+    "ca": "Bandera de la República Popular de la Xina",
+    "es": "Bandera de la República Popular China"
   },
   "Flag of Croatia": {
     "ca": "Bandera de Croàcia",
@@ -523,6 +549,10 @@
     "ca": "Bandera d'Islàndia",
     "es": "Bandera de Islandia"
   },
+  "Flag of India": {
+    "ca": "Bandera de l'Índia",
+    "es": "Bandera de la India"
+  },
   "Flag of Iran": {
     "ca": "Bandera de l'Iran",
     "es": "Bandera de Irán"
@@ -558,6 +588,10 @@
   "Flag of Kuwait": {
     "ca": "Bandera de Kuwait",
     "es": "Bandera de Kuwait"
+  },
+  "Flag of Kyrgyzstan": {
+    "ca": "Bandera del Kirguizstan",
+    "es": "Bandera de Kirguistán"
   },
   "Flag of Latvia": {
     "ca": "Bandera de Letònia",
@@ -605,6 +639,10 @@
   "Flag of Norway": {
     "ca": "Bandera de Noruega",
     "es": "Bandera de Noruega"
+  },
+  "Flag of Pakistan": {
+    "ca": "Bandera del Pakistan",
+    "es": "Bandera de Pakistán"
   },
   "Flag of Poland": {
     "ca": "Bandera de Polònia",
@@ -674,6 +712,13 @@
   "Flag of the Ottoman Empire": {
     "es": "Bandera del Imperio otomano"
   },
+  "Flag of the Qing dynasty": {
+    "es": "Bandera de la dinastía Qing"
+  },
+  "Flag of the Republic of China": {
+    "ca": "Bandera de la República de la Xina",
+    "es": "Bandera de la República de China"
+  },
   "Flag of the Soviet Union": {
     "ca": "Bandera de la Unió de Repúbliques Socialistes Soviètiques",
     "es": "Bandera de la Unión Soviética"
@@ -718,12 +763,20 @@
     "ca": "Ciutat Lliure de Danzig",
     "es": "Ciudad Libre de Dánzig"
   },
+  "Free City of Danzig (Napoleonic)": {
+    "ca": "República de Danzig",
+    "es": "Ciudad Libre de Dánzig (napoleónica)"
+  },
   "Free City of Frankfurt": {
     "es": "Ciudad Libre de Fráncfort"
   },
   "Free City of Lübeck": {
     "ca": "Ciutat Lliure de Lübeck",
     "es": "Ciudad Libre de Lübeck"
+  },
+  "Free State of Fiume": {
+    "ca": "Estat Lliure de Fiume",
+    "es": "Estado Libre de Fiume"
   },
   "French Africa": {
     "es": "Colonización francesa de África"
@@ -842,6 +895,9 @@
   "Grand Duchy of Berg": {
     "ca": "Gran Ducat de Berg",
     "es": "Gran Ducado de Berg"
+  },
+  "Grand Duchy of Frankfurt": {
+    "es": "Gran Ducado de Fráncfort"
   },
   "Grand Duchy of Hesse": {
     "ca": "Gran ducat de Hessen i del Rin",
@@ -1419,8 +1475,12 @@
     "ca": "Protectorat de Bohèmia i Moràvia",
     "es": "Protectorado de Bohemia y Moravia"
   },
+  "Province of Fiume": {},
   "Province of Ljubljana": {
     "es": "Provincia de Liubliana"
+  },
+  "Provisional Government of Belgium (1814–1815)": {
+    "es": "Gobierno provisional de Bélgica (1814-1815)"
   },
   "Pskov Republic": {
     "es": "República de Pskov"
@@ -1457,6 +1517,7 @@
     "ca": "República de Florència",
     "es": "República de Florencia"
   },
+  "Republic of Geneva": {},
   "Republic of Genoa": {
     "ca": "República de Gènova",
     "es": "República de Génova"
@@ -1695,6 +1756,10 @@
   },
   "Transnistria Governorate": {
     "es": "Gobernación de Transnistria"
+  },
+  "Treaties of Rome (1941)": {
+    "ca": "Tractats de Roma del 1941",
+    "es": "Tratados de Roma (1941)"
   },
   "Treaty of Rome": {
     "ca": "Tractats de Roma",
