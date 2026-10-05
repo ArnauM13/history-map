@@ -34,7 +34,7 @@ el del 1945 i el del 1991— i el que passa entre l'un i l'altre s'ha d'imaginar
 | **Quatre segles més** | Del 1500 al 1885, d'any en any: el Regne de França i la Monarquia de Juliol, el Sacre Imperi, la República de les Dues Nacions, l'Imperi Suec. Amb les ocupacions que la font comptava com a annexions retornades a qui eren, i el dia exacte de cada canvi de règim. |
 | **Cada bandera al seu temps** | Un centenar de banderes d'una setantena d'estats: al mapa, en una galeria per a cada data i a la fitxa de cada estat, amb què volen dir les que tenen més història. |
 | **El que passava alhora** | Els conflictes oberts i els fets de l'any, al costat del mapa i marcats a la línia temporal. |
-| **Les ocupacions, del 1938 al 1945** | El que es controlava de fet i les fronteres no ensenyen: l'annexió d'Àustria, el Govern General, la França de Vichy, Iugoslàvia i Grècia repartides, Ucraïna ocupada. Del color de l'ocupant, com una part més del seu territori, i cada zona amb el nom al mapa i la seva fitxa. |
+| **Les ocupacions, del 1938 a avui** | El que es controlava de fet i les fronteres no ensenyen: l'annexió d'Àustria, el Govern General, la França de Vichy, Iugoslàvia i Grècia repartides, Ucraïna ocupada; i, des del 2014, Crimea, el Donbàs i el front de la guerra russoucraïnesa, fase a fase. Del color de l'ocupant, com una part més del seu territori, i cada zona amb el nom al mapa i la seva fitxa. |
 | **La font de cada dada** | Cada fitxa diu d'on surten les fronteres, el nom, les dates de les banderes i els fets, amb l'enllaç per comprovar-ho. |
 | **Tres idiomes** | Català, castellà i anglès: la interfície, els noms dels estats i de les capitals, els textos i els enllaços a la Viquipèdia. |
 | **Un enllaç per a cada data** | `?d=1914-06-28&lang=ca` obre exactament el mateix mapa a qui el rebi. |
@@ -76,7 +76,7 @@ Cap dada no hi entra sense font, i la font es veu a la fitxa on surt.
 | Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat |
 | Les imatges de les banderes | [Wikimedia Commons](https://commons.wikimedia.org/), amb la llicència i l'autor de cadascuna |
 | Els fets i els conflictes | La Viquipèdia i fonts externes, com la resolució 68/262 de l'ONU sobre Crimea |
-| Les zones ocupades i annexionades | Les fronteres de CShapes d'altres anys, les divisions d'avui de [Natural Earth](https://www.naturalearthdata.com/) i línies dibuixades a mà, amb l'article de la Viquipèdia de cada zona |
+| Les zones ocupades i annexionades | Les fronteres de CShapes d'altres anys, les divisions d'avui de [Natural Earth](https://www.naturalearthdata.com/) línies dibuixades a mà i, a Ucraïna, el front de [DeepStateMap](https://deepstatemap.live/), amb l'article de la Viquipèdia de cada zona |
 
 Els tests no deixen entrar res sense font, i el workflow «Fonts» comprova cada dilluns que tots els
 articles i enllaços encara existeixen. El detall, les correccions i les limitacions són a
@@ -84,9 +84,10 @@ articles i enllaços encara existeixen. El detall, les correccions i les limitac
 
 ## Què no fa (i és volgut)
 
-- **No dibuixa els fronts, de moment.** La capa d'ocupacions diu qui controlava cada territori, no
-  on eren els exèrcits. Per això encara hi falta la Rússia ocupada, que va canviar de mans amb el
-  front.
+- **No dibuixa els fronts, de moment, tret del de la guerra russoucraïnesa.** La capa d'ocupacions
+  diu qui controlava cada territori, no on eren els exèrcits. Per això encara hi falta la Rússia
+  ocupada, que va canviar de mans amb el front. A Ucraïna, on el front es mou des del 2022, va per
+  fases, cadascuna amb la línia d'un dia.
 - **No és una enciclopèdia.** Dues o tres frases i l'enllaç a la font; la resta hi és ben explicada.
 - **No et demana res.** Ni compte, ni galetes, ni dades teves.
 - **No es pot fer servir comercialment.** Les fronteres de CShapes són CC BY-NC-SA.
@@ -156,8 +157,8 @@ que no toca. S'hi pot escriure en català, castellà o anglès.
 
 ## El que ve
 
-- **La resta de la capa d'ocupacions**: la Rússia ocupada, amb els fronts, i els territoris en
-  disputa d'avui.
+- **La resta de la capa d'ocupacions**: la Rússia ocupada, amb els fronts, i els altres territoris
+  en disputa d'avui.
 - **Més contingut**: uns cent fets i una trentena de conflictes, amb fonts acadèmiques a més de la
   Viquipèdia.
 - **Un cercador i històries guiades** que moguin el mapa pas a pas.
@@ -180,6 +181,7 @@ La resta, a [FULL-DE-RUTA.md](FULL-DE-RUTA.md).
   Skrede Gleditsch, per [CShapes 2.0](https://icr.ethz.ch/data/cshapes/).
 - Qui dibuixa les banderes de Wikimedia Commons i qui escriu la Viquipèdia, en tots els idiomes.
 - [Natural Earth](https://www.naturalearthdata.com/), per les divisions administratives.
+- [DeepStateMap](https://deepstatemap.live/), pel front de la guerra russoucraïnesa.
 - [MapLibre](https://maplibre.org/), [OpenMapTiles](https://github.com/openmaptiles/fonts),
   [Fontsource](https://fontsource.org/) i [Material Symbols](https://fonts.google.com/icons).
 - El llenguatge visual és el de Petja.

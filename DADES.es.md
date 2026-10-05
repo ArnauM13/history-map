@@ -11,7 +11,7 @@ mira la licencia de esa parte.**
 | Los textos (`content/`) | Quien contribuye | CC BY-SA 4.0 |
 | Las fronteras (`public/data/`) | CShapes 2.0, recortado y simplificado aquí | CC BY-NC-SA 4.0 |
 | Las fronteras anteriores a 1886 (`public/data/history/`) | Cliopatria y, de 1815 a 1870 en la Europa central, OpenHistoricalMap, recortados, simplificados y corregidos aquí (§1.4, §1.5) | CC BY 4.0 |
-| Las zonas de ocupación (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) y líneas dibujadas aquí (§1.3) | CC BY-NC-SA 4.0 |
+| Las zonas de ocupación (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) líneas dibujadas aquí y, en Ucrania, el frente de [DeepStateMap](https://deepstatemap.live/) simplificado (§1.3) | CC BY-NC-SA 4.0 |
 | Las banderas (`public/flags/`) | Wikimedia Commons | La de cada imagen (§2) |
 | Las letras del mapa (`public/fonts/`) | Open Sans, de [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0 |
 | La letra de la interfaz | Roboto ([Fontsource](https://fontsource.org/)) | OFL 1.1 |
@@ -31,7 +31,7 @@ Todo lo que enseña el mapa tiene una fuente, y la ficha donde aparece la cita c
 | El nombre de cada entidad anterior a 1886 | El título del artículo de Wikipedia que cita Cliopatria, en catalán y castellano, o `content/countries.yaml` por el QID (§1.4) | En la ficha del estado |
 | Las fechas de las banderas | Los artículos de Wikipedia sobre las banderas de cada estado (`sources` en `content/flags.yaml`) | En la ficha del estado |
 | Las imágenes de las banderas | Wikimedia Commons (§2, `public/flags/credits.json`) | Bajo cada bandera |
-| Las zonas ocupadas y anexionadas (1938-1945 y, en Oriente Próximo, desde 1967) | Fronteras de CShapes de otras fechas, divisiones actuales de Natural Earth y líneas dibujadas a mano (§1.3); las fechas, del artículo de Wikipedia de cada zona (`content/occupations/`) | En la ficha de cada zona |
+| Las zonas ocupadas y anexionadas (1938-1945, en Oriente Próximo desde 1967 y en Ucrania y Rusia desde 2014) | Fronteras de CShapes de otras fechas, divisiones actuales de Natural Earth, líneas dibujadas a mano y, en Ucrania, el frente de DeepStateMap (§1.3); las fechas, del artículo de Wikipedia de cada zona (`content/occupations/`) | En la ficha de cada zona |
 | Los textos de las banderas, los hechos, los conflictos y las ocupaciones | Escritos por este proyecto a partir de las fuentes que citan (§3) | En la ficha de cada uno |
 | Los títulos de Wikipedia en catalán y castellano | Los enlaces entre idiomas de la propia Wikipedia (`content/wikipedia.json`) | — |
 | La traducción de los nombres de los estados y de las capitales | Este proyecto | — |
@@ -60,6 +60,7 @@ iguales. Los criterios de ahora:
 | Un territorio cedido que aún no tiene dueño | El **gobierno provisional** que lo gobernaba, si lo hay. | Bélgica, del tratado de París al Congreso de Viena: el Gobierno General de los aliados, ni Francia ni los Países Bajos. |
 | Una anexión por la fuerza, después de 1945, que la ONU declara nula | **No cambia la soberanía**: el territorio sigue siendo de quien era, y la anexión va en la capa de ocupaciones. La Carta de la ONU prohíbe ganar territorio por la fuerza, y la resolución 242 lo repite para 1967. | Jerusalén Este (1980), el Golán (1981) y Crimea (2014). |
 | Un territorio ocupado que no era de ningún otro estado | **Pieza propia**, con su nombre y el estatus de territorio ocupado; el ocupante, en la capa de ocupaciones. | Cisjordania y Gaza desde 1967, y desde el 15 de noviembre de 1988 con el nombre de Palestina, el estado que se proclamó allí y que reconocen 157 de los 193 miembros de la ONU. |
+| Una guerra larga, con un frente que se mueve durante años | **Por fases**: una zona para cada tramo en que el frente se movió poco, con las fechas de los hechos que lo abren y lo cierran y la línea de un día de dentro del tramo, que la ficha dice. Entre dos fases, el frente no se dibuja día a día. Si el tramo no tiene ningún hecho que lo cierre, se parte por semestres. | La guerra ruso-ucraniana: del 2 de marzo al 2 de abril de 2022 (de la toma de Jersón a la retirada del norte), del 11 de noviembre de 2022 al 16 de febrero de 2024 (de Jersón a Avdiivka). |
 | El nombre | El que tenía el estado **entonces**, como lo llama la Wikipedia de cada idioma. | En 1700, el Reino de Francia; en 1810, el Primer Imperio francés. |
 
 Si la discrepancia tiene importancia histórica (una frontera en disputa, una fecha que cada
@@ -101,7 +102,7 @@ nombres de los estados y de las capitales de CShapes están en inglés; los de l
 
 | Qué | Por qué |
 | --- | --- |
-| Crimea sigue en Ucrania después del 18 de marzo de 2014 | CShapes la pasa a Rusia. Aquí se dibuja la frontera reconocida internacionalmente, como hacen la resolución 68/262 de la Asamblea General de la ONU y la mayoría de atlas. La anexión se explica como hecho, e irá en la capa de ocupaciones. |
+| Crimea sigue en Ucrania después del 18 de marzo de 2014 | CShapes la pasa a Rusia. Aquí se dibuja la frontera reconocida internacionalmente, como hacen la resolución 68/262 de la Asamblea General de la ONU y la mayoría de atlas. La anexión se explica como hecho, y está en la capa de ocupaciones (§1.3). |
 | Danzig, Ciudad Libre hasta el 1 de septiembre de 1939 | CShapes la termina el 31 de agosto de 1938 y la pone dentro de Alemania desde el 30 de septiembre de 1938: durante un mes no es de nadie. Es un error de un año; el Reich se la anexionó el 1 de septiembre de 1939. |
 | La frontera de Rapallo, del 12 de noviembre de 1920 al 10 de febrero de 1947 | CShapes da a Yugoslavia lo que el tratado de Rapallo dio a Italia: el Litoral esloveno con Idrija y Postojna, Istria, Zara, Cres y Lošinj. Vuelve a ser italiano hasta el tratado de París. La línea, de Peč a Triglav, Snežnik y el golfo de Kvarner, está dibujada a mano a partir del artículo sobre el tratado (unos 2-5 km de error). |
 | El Estado Libre de Fiume (1920-1924) y Fiume italiana (1924-1947) | CShapes no tiene el estado libre que creó Rapallo, y lo pone dentro de Yugoslavia. Aquí es un estado (con el QID de Wikidata como código) hasta el 22 de febrero de 1924, el decreto de anexión a Italia, y después italiano. Sušak, en la otra orilla del Rječina, sigue yugoslava. |
@@ -135,11 +136,13 @@ año por año. Los archivos generados no se tocan nunca a mano.
   Transilvania a Hungría. Entre 1938 y 1945, Austria, Bohemia-Moravia y Polonia siguen saliendo.
   Lo explica la capa de ocupaciones (§1.3).
 - **El Adriático, todavía a medias** (§1.1 corrige la frontera italiana). De 1919 a 1920, cuando
-  Istria y Fiume estaban ocupadas por Italia y aún no se había pactado la frontera, CShapes las da
-  a Yugoslavia, y aquí se deja así; tampoco está la Regencia del Carnaro de D'Annunzio. De 1947 a
-  1954, Trieste sale italiana y Koper yugoslava, sin el Territorio Libre de Trieste. Lastovo,
-  Palagruža y Saseno, italianas de 1920 a 1947, y Kastellorizo, no están en CShapes; y la
-  simplificación borra casi todas las islas del Adriático, también Cres y Krk.
+  Istria y Fiume estaban ocupadas por Italia y aún no se había pactado la frontera, CShapes las da a
+  Yugoslavia, y aquí se deja así; tampoco está la Regencia del Carnaro de D'Annunzio. La
+  investigación para corregirlo, con las fechas y las fuentes, está en el lote
+  [1919-fiume](treball/lots/1919-fiume.md) (en catalán). De 1947 a 1954, Trieste sale italiana y
+  Koper yugoslava, sin el Territorio Libre de Trieste. Lastovo, Palagruža y Saseno, italianas de
+  1920 a 1947, y Kastellorizo, no están en CShapes; y la simplificación borra casi todas las islas
+  del Adriático, también Cres y Krk.
 - **Sin microestados.** Andorra, Liechtenstein, Mónaco, San Marino y el Vaticano no están en
   CShapes.
 - **Criterios de soberanía.** Algunas decisiones son de la lista de Gleditsch y Ward: Montenegro
@@ -158,7 +161,7 @@ año por año. Los archivos generados no se tocan nunca a mano.
 ### 1.3 La capa de ocupaciones
 
 Lo que se controlaba de hecho en las ocupaciones largas —entre 1938 y 1945, y los territorios
-que ocupa Israel desde 1967— va en una capa aparte, que se puede ocultar y
+que ocupa Israel desde 1967 y los de Ucrania y Rusia desde 2014— va en una capa aparte, que se puede ocultar y
 que pinta cada zona del color del estado que la controlaba, con el nombre, quién la controlaba y
 por qué. Cada zona tiene un archivo en `content/occupations/`, con el texto, las fechas, quién la
 controlaba, por qué (`cause`, un hecho con el año, sacado del texto de la zona) y la fuente, y
@@ -172,12 +175,25 @@ fechas aunque una parte cambiara de manos antes o después: Ucrania ocupada va d
 en septiembre de 1941, a su liberación, en noviembre de 1943, aunque el oeste no se liberó hasta
 1944.
 
+**La guerra ruso-ucraniana** es la excepción: el frente se mueve desde 2022, hace años que dura,
+y sin dibujarlo no se puede decir quién controla qué. Por eso va por fases (§0.1), cada una con la
+línea de [DeepStateMap](https://deepstatemap.live/) de un día concreto: Crimea, desde el 27 de
+febrero de 2014; el Donbás de las «repúblicas populares», del protocolo de Minsk (5 de septiembre
+de 2014) a la invasión; diez fases desde el 2 de marzo de 2022, partidas por los hechos que mueven
+el frente (Jersón, la retirada del norte, Lisichansk, Izium, Jersón, Avdiivka, Vuhledar) y, desde
+abril de 2025, por semestres; y la parte de la provincia rusa de Kursk que tuvo Ucrania, del 15 de
+agosto de 2024 al 12 de marzo de 2025, en dos. Desde el 30 de septiembre de 2022 cada fase tiene
+dos zonas: lo que Rusia dice haberse anexionado (las provincias de Donetsk, Lugansk, Zaporiyia y
+Jersón, por las divisiones de Natural Earth) y lo que ocupa fuera de ellas (Járkov, Sumy,
+Dnipropetrovsk y la flecha de Kinburn), que no se ha anexionado ni sobre el papel.
+
 **La forma** se hace con piezas que ya existen, para que los bordes coincidan con los del mapa:
 
 | De dónde | Para qué | Ejemplo |
 | --- | --- | --- |
 | Un estado de CShapes, de la misma época o de otra | La mayoría de las zonas | Austria es la Austria de 1938; Bohemia y Moravia, la Checoslovaquia de 1939 dentro de la Chequia actual |
 | Las divisiones administrativas actuales, de [Natural Earth](https://www.naturalearthdata.com/) (dominio público) | Los bordes que seguían una división que todavía existe | Alsacia y Mosela son tres departamentos; la República Social Italiana, las provincias del norte de Italia; Kosovo, repartido por municipios |
+| La línea del frente de [DeepStateMap](https://deepstatemap.live/) de un día (`FRONTS` en el script) | La guerra ruso-ucraniana, desde 2022, y el Donbás de antes | Las fases de la invasión y Kursk |
 | Líneas dibujadas a mano (`LINES` en el script), con la fuente al lado | Donde no hay nada más | El reparto de Polonia, la línea de demarcación francesa, el segundo arbitraje de Viena, Transnistria |
 
 Las líneas dibujadas a mano son **aproximadas**, con un error de unos 10-20 km; las divisiones
@@ -185,7 +201,20 @@ actuales, tanto como se hayan movido desde entonces. La ficha de cada zona lo di
 Natural Earth si se usan sus divisiones. Un test comprueba que dos zonas de las mismas fechas no se
 pisen.
 
-**Qué hay**, en 63 zonas:
+**DeepStateMap** es un proyecto ucraniano de OSINT que redibuja el frente cada día a partir de
+fuentes abiertas (vídeos geolocalizados, informes de los dos ejércitos), y guarda su historial desde
+el 3 de abril de 2022. El script descarga la instantánea de cada fase, saca lo que pinta de rojo
+(ocupado desde 2022) y de granate (Crimea y el Donbás de antes de 2022) dentro de Ucrania, o de
+verde y azul (ucraniano) dentro de la provincia de Kursk, y lo simplifica a unos 2,5 km. La franja
+gris, que DeepStateMap no da a nadie, no entra. La línea tiene, pues, un error de pocos
+kilómetros, y es la de una fuente ucraniana: el [ISW](https://understandingwar.org/) la dibuja
+parecida, pero no idéntica. Su licencia permite usar los materiales visuales citándola, pero no
+dice nada de las geometrías; por eso el mapa usa solo la línea simplificada, la cita en cada ficha
+y no redistribuye sus datos. Para la fase de marzo de 2022, anterior al historial, la zona es lo
+ocupado en la primera instantánea más lo que ya sale liberado: el máximo de marzo, aunque no todo
+a la vez. La bolsa de Debáltseve de 2014, que DeepStateMap no dibuja, es una línea hecha a mano.
+
+**Qué hay**, en 85 zonas:
 
 - **El oeste y el centro**: la expansión alemana de 1938-1939 (Austria, Bohemia y Moravia, el
   Estado Eslovaco, Memel), Zaolzie y la Rutenia húngara; el reparto de Polonia; la ocupación de
@@ -207,9 +236,18 @@ pisen.
   guerra del Yom Kipur. Las fechas, del artículo de la Wikipedia de cada zona; las formas, de
   CShapes: Cisjordania y Gaza son sus piezas, y el Golán y el Sinaí, lo que CShapes quita a Siria
   y a Egipto en 1967.
+- **Ucrania y Rusia, desde 2014**: Crimea; el Donbás separatista de 2014-2015 y de 2015-2022; la
+  Ucrania ocupada por Rusia en diez fases, de marzo de 2022 a hoy, con la anexión de cuatro
+  provincias del 30 de septiembre de 2022; y Kursk, ocupado por Ucrania de 2024 a 2025.
 
 **Qué falta**:
 
+- **El Donbás de abril a agosto de 2014.** Las «repúblicas populares» se proclamaron en abril, pero
+  el frente se movió cada semana hasta el protocolo de Minsk, y no hay ninguna línea de una fecha
+  con una fuente fiable: hasta el 5 de septiembre de 2014 solo sale el conflicto.
+- **Lo que se mueve por debajo del error de la línea**: la isla de las Serpientes (del 24 de
+  febrero al 30 de junio de 2022), los pueblos de Kursk que Ucrania aún tenía tras perder Sudzha y
+  las incursiones en la provincia de Bélgorod de 2025, de pocos km² cada una.
 - **La Rusia ocupada** de 1941 a 1943, de Smolensk al Cáucaso: cambió de manos con el frente, e
   irá con la capa de los frentes.
 - **El resto de la Zona II**: el 7 de septiembre de 1941 Italia tomó el gobierno de toda la

@@ -1,0 +1,50 @@
+start: 2022-09-10
+control:
+  - until: 2022-09-29
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+  - until: 2022-11-10
+    by: 365
+    kind: annexation
+    cause:
+      ca: Annexió de quatre províncies, 2022
+      es: Anexión de cuatro provincias, 2022
+      en: Annexation of four oblasts, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada i annexionada per Rússia (setembre-novembre del 2022)
+  es: Ucrania ocupada y anexionada por Rusia (septiembre-noviembre de 2022)
+  en: Ukraine occupied and annexed by Russia (September–November 2022)
+label:
+  ca: Annexionada per Rússia
+  es: Anexionada por Rusia
+  en: Annexed by Russia
+summary:
+  ca: >-
+    La contraofensiva ucraïnesa de Khàrkiv va recuperar Balakliia, Kupiansk i Izium entre el 8 i
+    el 10 de setembre del 2022, i Lyman l'1 d'octubre. Entremig, el 30 de setembre, Rússia es va
+    annexionar les províncies de Donetsk, Luhansk, Zaporíjia i Kherson, senceres sobre el paper
+    encara que no les controlava. L'Assemblea General de l'ONU va declarar nul·la l'annexió
+    (resolució ES-11/4). La línia és la del 15 d'octubre.
+  es: >-
+    La contraofensiva ucraniana de Járkov recuperó Balakliia, Kupiansk e Izium entre el 8 y el
+    10 de septiembre de 2022, y Limán el 1 de octubre. Entretanto, el 30 de septiembre, Rusia se
+    anexionó las provincias de Donetsk, Lugansk, Zaporiyia y Jersón, enteras sobre el papel
+    aunque no las controlaba. La Asamblea General de la ONU declaró nula la anexión (resolución
+    ES-11/4). La línea es la del 15 de octubre.
+  en: >-
+    The Ukrainian Kharkiv counter-offensive retook Balakliia, Kupiansk and Izium between 8 and
+    10 September 2022, and Lyman on 1 October. In between, on 30 September, Russia annexed
+    Donetsk, Luhansk, Zaporizhzhia and Kherson oblasts, whole on paper although it did not
+    control them. The UN General Assembly declared the annexation invalid (Resolution ES-11/4).
+    The line is that of 15 October.
+wikipedia:
+  en: 2022 Kharkiv counteroffensive
+sources:
+  - title: 'Resolution ES-11/4: Territorial integrity of Ukraine: defending the principles of the Charter of the United Nations'
+    publisher: United Nations General Assembly
+    url: https://undocs.org/A/RES/ES-11/4

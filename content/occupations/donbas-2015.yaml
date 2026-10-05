@@ -1,0 +1,37 @@
+start: 2015-02-18
+control:
+  - until: 2022-03-01
+    by: 365
+    kind: client
+    cause:
+      ca: Batalla de Debaltseve, 2015
+      es: Batalla de Debáltseve, 2015
+      en: Battle of Debaltseve, 2015
+countries: [369]
+title:
+  ca: Repúbliques populars de Donetsk i Luhansk (2015-2022)
+  es: Repúblicas populares de Donetsk y Lugansk (2015-2022)
+  en: "Donetsk and Luhansk people's republics (2015–2022)"
+label:
+  ca: Donetsk i Luhansk
+  es: Donetsk y Lugansk
+  en: Donetsk and Luhansk
+summary:
+  ca: >-
+    Els separatistes i l'exèrcit rus van prendre Debaltseve el 18 de febrer del 2015, tres dies
+    després que entrés en vigor l'alto el foc de Minsk II, i la línia de contacte ja no es va
+    moure fins al 2022. Rússia va reconèixer les dues repúbliques el 21 de febrer del 2022, tres
+    dies abans d'envair Ucraïna. La línia és aquesta de contacte, tal com la dibuixa
+    DeepStateMap.
+  es: >-
+    Los separatistas y el ejército ruso tomaron Debáltseve el 18 de febrero de 2015, tres días
+    después de que entrara en vigor el alto el fuego de Minsk II, y la línea de contacto ya no
+    se movió hasta 2022. Rusia reconoció las dos repúblicas el 21 de febrero de 2022, tres días
+    antes de invadir Ucrania. La línea es esta de contacto, tal como la dibuja DeepStateMap.
+  en: >-
+    The separatists and the Russian army took Debaltseve on 18 February 2015, three days after
+    the Minsk II ceasefire came into force, and the line of contact did not move again until
+    2022. Russia recognised the two republics on 21 February 2022, three days before invading
+    Ukraine. The line is that line of contact, as drawn by DeepStateMap.
+wikipedia:
+  en: Battle of Debaltseve

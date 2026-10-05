@@ -1,25 +1,21 @@
 # 1918-iugoslavia
 
-**Pregunta**: on comença el territori de l'Estat i del Regne dels Serbis, Croats i Eslovens, del
-1918-10-29 a Trianon (1920-06-04).
+**Pregunta**: de qui són Eslovènia, Croàcia-Eslavònia, Dalmàcia i Bòsnia entre la fi
+d'Àustria-Hongria i els tractats de Saint-Germain (1919-09-10) i Trianon (1920-06-04).
 
-**Abast**: Eslovènia, Croàcia-Eslavònia, Dalmàcia, Bòsnia i Hercegovina i la Vojvodina, a les
-fronteres. No hi entren l'Adriàtic del nord ni la Dalmàcia ocupada per Itàlia (`1919-fiume`), ni
-la frontera amb Hongria després de Trianon (`1919-hongria`).
+**Abast**: del 1918-10-29 (l'Estat dels Serbis, Croats i Eslovens) al 1920-06-04, a la capa de
+fronteres. Fiume, l'Ístria, la Venezia Giulia i la Dalmàcia ocupada per Itàlia, no: són del lot
+[1919-fiume](1919-fiume.md). El Banat i la Vojvodina, del lot [1919-hongria](1919-hongria.md).
 
-**Estat**: obert — sortit de la recerca de `1919-fiume`, el 2026-10-05.
+**Estat**: obert — fase 2 (recerca), sortit del lot 1919-fiume el 2026-10-05.
 
 ## Context
 
-- CShapes talla Àustria-Hongria el 1918-11-03 i dona cada tros a l'hereu legal fins al tractat:
-  Eslovènia, Dalmàcia i Ljubljana, a Àustria (305) fins al 1919-09-09; Zagreb i Sušak, a Hongria
-  (310) fins al 1920-06-03. L'Estat SHS les governava des del 1918-10-29, i el Regne SHS (345)
-  des del 1918-12-01. Comprovat amb una consulta a `public/data/borders.topo.json` (taula a
-  `1919-fiume.md`, «Què dibuixa ara CShapes»).
-- Criteri proposat a `1919-fiume.md`, decisió 1: el territori va a qui el governava des del dia
-  que l'imperi es desfà, no a un hereu legal que no el reclamava.
-- Es toca amb `1919-hongria` (el 310, les peces del 1918-11-03, 1918-12-01, 1919-09-10 i
-  1920-06-04).
+- CShapes (consultat el 2026-10-05) deixa Ljubljana i Šibenik dins d'Àustria (305) fins al
+  1919-09-09, i Zagreb i Sušak dins d'Hongria (310) fins al 1920-06-03, mentre que l'Estat SCS
+  (1918-10-29) i el Regne SCS (1918-12-01) les governaven.
+- Criteris de DADES §0.1: la sobirania (fila 1) i la revolta amb govern (fila 5). Cal decidir quina
+  mana quan el govern nou és el que després reconeixen els tractats.
 
 ## Troballes
 
@@ -29,6 +25,12 @@ la frontera amb Hongria després de Trianon (`1919-hongria`).
 
 ## Pendent
 
-- Recerca: què mirar a Bòsnia i a la Vojvodina (Banat, Bačka, Baranya: ocupació sèrbia des del
-  novembre del 1918, Trianon el 1920); l'Estat SHS (29 d'octubre – 1 de desembre del 1918) com a
-  peça pròpia o ja com a 345; Montenegro, unit el 26 de novembre del 1918.
+- Recerca: les dates de l'Estat SCS, la unió del 1918-12-01 i qui governava cada província.
+
+## Relleu
+
+- **Fase**: 2 (recerca), sense començar.
+- **Primera tasca**: les dates de l'Estat SCS (1918-10-29) i de la unió (1918-12-01), i qui
+  governava cada província.
+- **Llegir**: aquest fitxer, el «Context» i la decisió 1 de [1919-fiume](1919-fiume.md), i DADES
+  §0.1. **No cal** refer la consulta de CShapes de la taula de `1919-fiume`.

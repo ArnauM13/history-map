@@ -93,8 +93,11 @@ part i ben marcat, el que es controlava de fet. Com es fa, a [DADES.md](DADES.md
 - [ ] El Sinaí del 1973 al 1982, amb les línies dels acords del 1974, el 1975 i el 1979, i la
       Línia Verda més ben dibuixada que a CShapes, amb Jerusalem Est a Cisjordània
       ([DADES.md](DADES.md) §1.2 i §1.3).
-- [ ] Del 1990 ençà, els territoris en disputa: Crimea, el Donbàs, Transnístria, Abkhàzia,
-      Ossètia del Sud, el nord de Xipre, l'Alt Karabakh.
+- [x] La guerra russoucraïnesa, del 2014 a avui: Crimea, el Donbàs separatista, la Ucraïna ocupada
+      per Rússia en deu fases, amb la línia de DeepStateMap d'un dia de cadascuna, i Kursk, ocupat
+      per Ucraïna ([DADES.md](DADES.md) §1.3).
+- [ ] Del 1990 ençà, la resta de territoris en disputa: Transnístria, Abkhàzia, Ossètia del Sud,
+      el nord de Xipre, l'Alt Karabakh.
 
 ## 4. Més maneres de llegir el mapa
 

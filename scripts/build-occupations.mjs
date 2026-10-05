@@ -519,6 +519,34 @@ const LINES = {
     [35.79, 33.349],
   ],
 
+  /**
+   * La bossa de Debaltseve, que Ucraïna va tenir fins al 18 de febrer del 2015: de Svitlodarsk,
+   * al nord, a Vuhlehirsk, a l'oest, i Txornukhine, a l'est, amb Lohvinove a la carretera de
+   * Luhansk. Fonts: el mapa de «Battle of Debaltseve» i l'annex del memoràndum de Minsk del 19
+   * de setembre del 2014.
+   */
+  debaltseve: [
+    [38.2, 48.41],
+    [38.24, 48.33],
+    [38.27, 48.29],
+    [38.36, 48.27],
+    [38.46, 48.26],
+    [38.56, 48.24],
+    [38.63, 48.27],
+    [38.61, 48.33],
+    [38.55, 48.38],
+    [38.45, 48.41],
+    [38.33, 48.43],
+  ],
+
+  /** La província de Kursk, on Ucraïna va entrar l'agost del 2024: només hi compta aquest tros. */
+  kursk: [
+    [34.4, 50.9],
+    [35.9, 50.9],
+    [35.9, 51.7],
+    [34.4, 51.7],
+  ],
+
   /** Crimea, al sud de l'istme de Perekop. */
   crimea: [
     [32.3, 46.16],
@@ -705,6 +733,83 @@ async function within(base, country, names) {
   return minus(intersect(base, await buffer(union(...inside), ADMIN_MARGIN)), union(...outside))
 }
 
+// ── Els fronts de la guerra russoucraïnesa ──────────────────────────────────
+
+/**
+ * Les instantànies de DeepStateMap que fan cada fase de la guerra, pel dia de la instantània: el
+ * número és el de l'historial públic (deepstatemap.live/api/history/public). Cada fase de
+ * content/occupations/ diu quin dia fa servir, i per què aquell. DeepStateMap és un projecte
+ * ucraïnès d'OSINT que redibuixa el front cada dia a partir de fonts obertes; la llicència no en
+ * diu res de les geometries, i per això només en fem servir la línia, simplificada a uns quants
+ * quilòmetres, i el citem (DADES.md §1.3).
+ */
+const FRONTS = {
+  '2022-04-03': 1648989208,
+  '2022-06-01': 1654066641,
+  '2022-08-16': 1660682177,
+  '2022-10-15': 1665871137,
+  '2023-06-02': 1685748729,
+  '2024-07-01': 1719866623,
+  '2024-09-15': 1726432458,
+  '2025-01-01': 1735766502,
+  '2025-01-15': 1736977750,
+  '2025-07-01': 1751400934,
+  '2026-01-01': 1767300846,
+  '2026-10-04': 1791147415,
+}
+const DEEPSTATE_DIR = 'data-raw/deepstate'
+/**
+ * Com pinta DeepStateMap cada cosa, que és més fiable que el nom: el nom ha canviat d'escriptura
+ * diverses vegades des del 2022, i el color no. Vermell fosc, el que ocupa Rússia des del 2022;
+ * granat, Crimea i el Donbàs d'abans del 2022 (en negre a les primeres instantànies); verd i
+ * blau, el que Ucraïna ha recuperat o pres. El gris, «estat desconegut», no és de ningú i no hi
+ * entra.
+ */
+const DEEPSTATE_FILLS = {
+  occupied: ['#a52714', '#880e4f', '#000000'],
+  ukrainian: ['#0f9d58', '#0288d1', '#01579b'],
+}
+/** Quines formes de DeepStateMap es fan servir: d'un color, o el Donbàs d'abans del 2022. */
+const DEEPSTATE_SIDES = {
+  occupied: (f) => DEEPSTATE_FILLS.occupied.includes(f.properties.fill),
+  ukrainian: (f) => DEEPSTATE_FILLS.ukrainian.includes(f.properties.fill),
+  donbas: (f) => f.properties.name.startsWith('ОРДЛО'),
+}
+
+/** El que DeepStateMap pinta d'una banda en una instantània, simplificat a uns 2,5 km. */
+async function front(date, side) {
+  const id = FRONTS[date]
+  if (!id) throw new Error(`No hi ha cap instantània de DeepStateMap del ${date} a FRONTS`)
+  const file = `${DEEPSTATE_DIR}/${id}.json`
+  if (!existsSync(file)) {
+    const url = `https://deepstatemap.live/api/history/${id}/geojson`
+    console.log(`Baixant ${url}`)
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(`No s'ha pogut baixar DeepStateMap: HTTP ${res.status}`)
+    mkdirSync(DEEPSTATE_DIR, { recursive: true })
+    writeFileSync(file, Buffer.from(await res.arrayBuffer()))
+  }
+  // Les formes van soles o dins d'una GeometryCollection, amb el punt de l'etiqueta.
+  const polygonsOf = (g) =>
+    g.type === 'GeometryCollection'
+      ? g.geometries.flatMap(polygonsOf)
+      : g.type === 'Polygon' || g.type === 'MultiPolygon'
+        ? [{ type: 'Feature', properties: {}, geometry: g }]
+        : []
+  const features = JSON.parse(readFileSync(file, 'utf8'))
+    .features.filter(DEEPSTATE_SIDES[side])
+    .flatMap((f) => polygonsOf(f.geometry))
+  // DeepStateMap dibuixa en 3D (amb una alçada a zero) i amb punts cada pocs metres.
+  for (const f of features) f.geometry.coordinates = flat2d(f.geometry.coordinates)
+  const out = await mapshaper.applyCommands(
+    '-i in.json -dissolve2 -simplify interval=2500 keep-shapes -o out.json format=geojson',
+    { 'in.json': { type: 'FeatureCollection', features } },
+  )
+  const { geometries } = JSON.parse(out['out.json'])
+  return union(...geometries.map(coordsOf))
+}
+const flat2d = (c) => (typeof c[0] === 'number' ? [c[0], c[1]] : c.map(flat2d))
+
 // ── Les zones ────────────────────────────────────────────────────────────────
 
 const FRANCE = () => state(220, '1940-01-01')
@@ -853,6 +958,41 @@ const BUKOVINA = async () =>
   intersect(ROMANIA_LOST(), await within(state(369, '2020-01-01'), 'UKR', ['Chernivtsi']))
 const TRANSNISTRIA = () => minus(intersect(USSR(), ring(LINES.transnistria)), ROMANIA())
 const CRIMEA = () => intersect(USSR(), ring(LINES.crimea))
+const UKRAINE = () => state(369, '2020-01-01')
+/**
+ * Crimea, del 2014: amb la punta de la fletxa d'Arabat i Txonhar, que són de la província de
+ * Kherson però Rússia va ocupar amb la península.
+ */
+const CRIMEA_2014 = () => intersect(UKRAINE(), ring(LINES.crimea))
+/** El Donbàs de les «repúbliques populars» d'abans del 2022, segons DeepStateMap. */
+const DONBAS = async () => intersect(UKRAINE(), await front('2022-04-03', 'donbas'))
+/** El que Rússia ocupa d'Ucraïna en una instantània, fora de Crimea, que és una zona a part. */
+const OCCUPIED = async (date) =>
+  minus(intersect(UKRAINE(), await front(date, 'occupied')), CRIMEA_2014())
+/** El que Ucraïna ha recuperat, a la primera instantània: el que Rússia havia ocupat al març. */
+const RETAKEN = async (date) =>
+  minus(intersect(UKRAINE(), await front(date, 'ukrainian')), CRIMEA_2014())
+/** Les quatre províncies que Rússia es va annexionar el 30 de setembre del 2022. */
+const ANNEXED_OBLASTS = ["Donets'k", "Luhans'k", 'Zaporizhzhya', 'Kherson']
+/**
+ * Una fase del front des del setembre del 2022, en dues zones: el que Rússia diu que s'ha
+ * annexionat (les quatre províncies) i el que ocupa fora d'elles (Khàrkiv, i des del 2025
+ * Dnipropetrovsk i Sumi), que no s'ha annexionat ni de paraula.
+ */
+const occupiedPhase = (phase, date) => ({
+  [`ukraine-${phase}`]: {
+    front: date,
+    build: async () => within(await OCCUPIED(date), 'UKR', ANNEXED_OBLASTS),
+  },
+  [`ukraine-${phase}-outside`]: {
+    front: date,
+    build: async () =>
+      minus(await OCCUPIED(date), await within(await OCCUPIED(date), 'UKR', ANNEXED_OBLASTS)),
+  },
+})
+/** El que Ucraïna tenia de la província de Kursk en una instantània. */
+const KURSK = async (date) =>
+  intersect(state(365, '2020-01-01'), ring(LINES.kursk), await front(date, 'ukrainian'))
 /** La Unió Soviètica d'abans del 1939 dins d'un estat d'avui: sense el que era polonès o romanès. */
 const SOVIET = (gwcode) =>
   minus(intersect(USSR(), state(gwcode, '2020-01-01')), POLAND(), CZECHOSLOVAKIA(), ROMANIA())
@@ -1058,6 +1198,31 @@ const ZONES = {
   ukraine: { line: true, build: () => minus(SOVIET(369), TRANSNISTRIA(), CRIMEA()) },
   crimea: { build: CRIMEA },
 
+  // La guerra russoucraïnesa, des del 2014. El front, de DeepStateMap (FRONTS); `front` és el
+  // dia de la instantània, que la fitxa diu.
+  'crimea-2014': { line: true, build: CRIMEA_2014 },
+  'donbas-2014': {
+    line: true,
+    front: '2022-04-03',
+    build: async () => minus(await DONBAS(), ring(LINES.debaltseve)),
+  },
+  'donbas-2015': { front: '2022-04-03', build: DONBAS },
+  'ukraine-2022-03': {
+    front: '2022-04-03',
+    build: async () => union(await OCCUPIED('2022-04-03'), await RETAKEN('2022-04-03')),
+  },
+  'ukraine-2022-04': { front: '2022-06-01', build: () => OCCUPIED('2022-06-01') },
+  'ukraine-2022-07': { front: '2022-08-16', build: () => OCCUPIED('2022-08-16') },
+  ...occupiedPhase('2022-09', '2022-10-15'),
+  ...occupiedPhase('2022-11', '2023-06-02'),
+  ...occupiedPhase('2024-02', '2024-07-01'),
+  ...occupiedPhase('2024-10', '2025-01-01'),
+  ...occupiedPhase('2025-04', '2025-07-01'),
+  ...occupiedPhase('2025-10', '2026-01-01'),
+  ...occupiedPhase('2026-04', '2026-10-04'),
+  'kursk-2024-08': { front: '2024-09-15', build: () => KURSK('2024-09-15') },
+  'kursk-2024-11': { front: '2025-01-15', build: () => KURSK('2025-01-15') },
+
   // Els territoris que Israel ocupa des de la guerra dels Sis Dies, el 1967.
   'west-bank': { build: () => state(6631, '1970-01-01') },
   'gaza-strip': { build: () => state(6511, '1970-01-01') },
@@ -1155,6 +1320,8 @@ for (const id of ids.sort()) {
       id,
       // D'on surten les vores que no són de CShapes, si n'hi ha: la fitxa ho diu.
       approx: [...(ZONES[id].line ? ['line'] : []), ...(usesAdmin ? ['admin'] : [])],
+      // El dia de la instantània de DeepStateMap d'on surt el front, si n'hi ha.
+      ...(ZONES[id].front ? { front: ZONES[id].front } : {}),
       label: [+x.toFixed(3), +y.toFixed(3)],
       rank: -Math.round(ringArea(largest[0])),
     },

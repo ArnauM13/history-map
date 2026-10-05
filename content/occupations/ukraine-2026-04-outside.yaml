@@ -1,0 +1,29 @@
+start: 2026-04-01
+control:
+  - by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: "Ucraïna ocupada per Rússia, fora de les províncies annexionades (des de l'abril del 2026)"
+  es: Ucrania ocupada por Rusia, fuera de las provincias anexionadas (desde abril de 2026)
+  en: Ukraine occupied by Russia, outside the annexed oblasts (since April 2026)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    Les franges de Khàrkiv i Sumi, uns pobles de Dnipropetrovsk i la fletxa de Kinburn. La línia
+    és la del 4 d'octubre del 2026.
+  es: >-
+    Las franjas de Járkov y Sumy, unos pueblos de Dnipropetrovsk y la flecha de Kinburn. La
+    línea es la del 4 de octubre de 2026.
+  en: >-
+    The strips in Kharkiv and Sumy oblasts, a few villages in Dnipropetrovsk Oblast and the
+    Kinburn Spit. The line is that of 4 October 2026.
+wikipedia:
+  en: Russian occupation of Kharkiv Oblast
