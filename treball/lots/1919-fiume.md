@@ -195,3 +195,18 @@ Proposades per a la integració; les marcades amb ★ passen a DADES §0.1.
    - `1921-fiume`: l'Estat Lliure del 1921 al 1924, amb el cop feixista (1922-03-03) i l'ocupació
      militar italiana (1922-03-17 → 1924-02-22), i Sušak i Port Baross. Fora d'aquest encàrrec si
      no s'hi vol afegir.
+
+## Relleu
+
+- **Fase**: 2 (recerca) feta; ve la 3 (integració), en una sessió nova des de `main` amb la PR de
+  la recerca fusionada (branca `history-map/recerca-1919-fiume`).
+- **Primera tasca**: tancar les dates de «Pendent», punt 2 (Krk, les zones de Dalmàcia, Logatec) i
+  els QID; després, la integració en l'ordre del punt 1, començant per `build-borders.mjs`.
+- **Llegir**: aquest fitxer, DADES §0.1, §1.1 (Rapallo i Fiume) i §1.3, i a `build-borders.mjs`,
+  `LINES` i les correccions de Rapallo i Fiume. **No cal** tornar a llegir els articles citats a
+  «Troballes» ni refer la consulta de CShapes: la taula de dalt és el resultat.
+- **Abans d'integrar**, confirmar amb l'usuari les decisions 2 i 4 (peces en disputa i l'Estat
+  Lliure des del 1921-01-01), perquè canvien una fila de DADES §1.1 que ja estava decidida.
+- **Consulta útil**: un script curt amb `topojson-client` i `@turf/boolean-point-in-polygon`, des
+  de `scripts/` (des de fora del repo no troba els paquets), que diu a quin estat cau cada punt en
+  cada data.
