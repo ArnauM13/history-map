@@ -19,11 +19,14 @@
  *      tractats, i OHM, l'Europa central del 1815 al 1870.
  *   3. Dona el territori que Cliopatria deixa en blanc durant una guerra a l'estat que el tenia
  *      abans, fins que una altra peça el torna a cobrir (fillWarGaps).
- *   4. Dona a cada peça un codi: el de Gleditsch i Ward si continua un estat de CShapes (el que hi
+ *   4. Ho simplifica com build-borders.mjs, ho retalla a la terra de CShapes del 1886, perquè la
+ *      costa sigui la mateixa, i dona les franges que queden sense ningú a l'estat que hi toca
+ *      (fitToCShapes).
+ *   5. Dona a cada peça un codi: el de Gleditsch i Ward si continua un estat de CShapes (el que hi
  *      ha a sota el 1886, o SAME_STATE), o el QID de Wikidata si no.
- *   5. Ho retalla i ho simplifica com build-borders.mjs, i hi posa colors i noms de la mateixa
- *      manera: dos veïns no en comparteixen mai, i un estat el manté tota la vida.
- *   6. Ho parteix per segles: l'app només baixa el segle que mira.
+ *   6. Hi posa colors i noms com build-borders.mjs: dos veïns no en comparteixen mai, i un estat el
+ *      manté tota la vida.
+ *   7. Ho parteix per segles: l'app només baixa el segle que mira.
  *
  * Deixa (al repo; la llicència és a public/data/README.md):
  *   public/data/history/{segle}.topo.json
@@ -2559,6 +2562,267 @@ function fillWarGaps(pieces) {
   return { pieces: out, filled }
 }
 
+// ── La base de CShapes ───────────────────────────────────────────────────────
+
+/**
+ * La costa de Cliopatria no és la de CShapes: més grollera, i desplaçada fins a deu o vint
+ * quilòmetres. El 1885 i el 1886 es veien com dos mapes diferents (els estats sortien al mar, o
+ * la terra de fons hi treia el cap per sota), i davant de cada costa quedava una franja sense
+ * ningú. Tot es retalla a la terra de CShapes del 1886, que és la del fons del mapa, i cada
+ * franja que queda buida va a l'estat que hi toca.
+ *
+ * Només les franges primes (FIT_WIDTH) o petites (FIT_AREA), o les que un sol estat envolta del
+ * tot: són la diferència de dibuix entre les dues fonts. Una zona gran sense ningú (el Sàhara al
+ * sud de l'Algèria francesa, l'estepa del 1550) és terra que les fonts no donen a ningú, i es
+ * queda així (DADES.md §0.1: un buit és millor que una dada falsa).
+ */
+const FIT_WIDTH = 15
+const FIT_AREA = 2000
+const KM_PER_DEGREE = 111.32
+
+/** En quilòmetres, amb els graus de longitud escurçats a la seva latitud. */
+const project = ([x, y]) => [x * KM_PER_DEGREE * Math.cos((y * Math.PI) / 180), y * KM_PER_DEGREE]
+const ringKm2 = (ring) => ringArea(ring.map(project))
+const lineKm = (line) => {
+  let sum = 0
+  for (let i = 1; i < line.length; i++) {
+    const [x1, y1] = project(line[i - 1])
+    const [x2, y2] = project(line[i])
+    sum += Math.hypot(x2 - x1, y2 - y1)
+  }
+  return sum
+}
+
+/** Els índexs de tots els arcs d'una geometria de TopoJSON, girats o no. */
+function arcsOf(arcs, out = []) {
+  for (const a of arcs) {
+    if (Array.isArray(a)) arcsOf(a, out)
+    else out.push(a < 0 ? ~a : a)
+  }
+  return out
+}
+
+/** Els punts d'un arc de TopoJSON, en graus, també si és quantitzat. */
+function arcPoints(topo, a) {
+  if (!topo.transform) return topo.arcs[a]
+  const { scale, translate } = topo.transform
+  let x = 0
+  let y = 0
+  return topo.arcs[a].map(([dx, dy]) => [
+    (x += dx) * scale[0] + translate[0],
+    (y += dy) * scale[1] + translate[1],
+  ])
+}
+
+/**
+ * Retalla les peces a la terra de CShapes del 1886 i hi afegeix les franges, dia a dia: una
+ * franja va a qui hi toca aquell dia, i quan canvia, la peça es parteix.
+ *
+ * Tot surt d'un mosaic: la terra i totes les peces, de tots els anys, tallades en cares que no se
+ * sobreposen, cadascuna amb les peces que la cobreixen. Les franges d'un dia són les cares de
+ * terra que no cobreix ningú, i la forma de cada peça, les cares que cobreix més les franges que
+ * se li donen. Com que totes surten de la mateixa topologia, les vores de dos veïns coincideixen
+ * vèrtex a vèrtex; fetes dia a dia per separat, no, i mapshaper s'hi ofegava.
+ *
+ * Les peces ja surten simplificades: si es simplifiquessin després, la costa es tornaria a moure.
+ */
+async function fitToCShapes(pieces, cshapesTopo) {
+  const land = topojson.merge(
+    cshapesTopo,
+    cshapesTopo.objects.borders.geometries.filter(
+      ({ properties: p }) => p.s <= CSHAPES_DAY && CSHAPES_DAY <= p.e,
+    ),
+  )
+  const input = {
+    type: 'FeatureCollection',
+    features: pieces.map(({ geometry }, k) => ({ type: 'Feature', geometry, properties: { k } })),
+  }
+  const simplified = JSON.parse(
+    (
+      await mapshaper.applyCommands(
+        `-i input.json -clip bbox=${BBOX.join(',')} remove-slivers -simplify ${SIMPLIFY} keep-shapes -o output.json format=geojson`,
+        { 'input.json': input },
+      )
+    )['output.json'],
+  )
+  // La terra, a part: amb la mateixa ordre, la simplificació també en mouria la costa.
+  simplified.features.push({ type: 'Feature', geometry: land, properties: { k: -1 } })
+  const topo = JSON.parse(
+    (
+      await mapshaper.applyCommands('-i input.json -mosaic -o output.json format=topojson', {
+        'input.json': simplified,
+      })
+    )['output.json'],
+  )
+  // Qui cobreix cada cara, amb un punt de dins: el `calc` del mateix -mosaic, amb milers de peces
+  // sobreposades, en posava de més (l'Imperi Otomà del 1707 cobria la Valàquia i la Valtellina).
+  const shapes = Object.values(topo.objects)[0].geometries.filter((g) => g.arcs)
+  const points = shapes.map((g, i) => {
+    const polygons = polygonsOf(topojson.feature(topo, g).geometry)
+    const largest = polygons.reduce((a, b) => (ringArea(b[0]) > ringArea(a[0]) ? b : a))
+    const [x, y] = polylabel(largest, 0.0001)
+    return { type: 'Feature', geometry: { type: 'Point', coordinates: [x, y] }, properties: { i } }
+  })
+  const joined = JSON.parse(
+    (
+      await mapshaper.applyCommands(
+        `-i points.json -join pieces.json calc='ks = collect(k)' -o output.json format=geojson`,
+        {
+          'points.json': { type: 'FeatureCollection', features: points },
+          'pieces.json': simplified,
+        },
+      )
+    )['output.json'],
+  )
+  const coverers = new Map(joined.features.map((f) => [f.properties.i, f.properties.ks ?? []]))
+
+  // Només les cares de terra: la resta és el mar que Cliopatria donava als estats.
+  const faces = shapes
+    .map((g, i) => ({ g, ks: coverers.get(i) ?? [] }))
+    .filter(({ ks }) => ks.includes(-1))
+    .map(({ g, ks }) => ({
+      geometry: g,
+      ks: ks.filter((k) => k >= 0),
+      arcs: arcsOf(g.arcs),
+      width: 0,
+      area: polygonsOf(topojson.feature(topo, g).geometry).reduce(
+        (sum, [outer, ...holes]) =>
+          sum + ringKm2(outer) - holes.reduce((h, ring) => h + ringKm2(ring), 0),
+        0,
+      ),
+    }))
+  const facesOfArc = new Map()
+  faces.forEach((f, i) => {
+    for (const a of f.arcs) {
+      if (!facesOfArc.has(a)) facesOfArc.set(a, [])
+      facesOfArc.get(a).push(i)
+    }
+  })
+  const length = new Map([...facesOfArc.keys()].map((a) => [a, lineKm(arcPoints(topo, a))]))
+  for (const f of faces) f.width = (2 * f.area) / f.arcs.reduce((sum, a) => sum + length.get(a), 0)
+  const facesOf = new Map()
+  faces.forEach((f, i) => {
+    for (const k of f.ks) {
+      if (!facesOf.has(k)) facesOf.set(k, [])
+      facesOf.get(k).push(i)
+    }
+  })
+
+  /**
+   * Cada cara d'una franja, al veí amb qui en comparteix més vora, de fora cap endins. Sencera, una
+   * xarxa de franges primes entre les peces de Cliopatria anava a un sol estat, i Suïssa acabava
+   * tocant l'Imperi Otomà.
+   */
+  function growInto(members, covered, active) {
+    const owner = new Map()
+    let pending = members
+    while (pending.length > 0) {
+      const found = []
+      for (const i of pending) {
+        const score = new Map()
+        for (const a of faces[i].arcs) {
+          for (const j of facesOfArc.get(a)) {
+            if (j === i) continue
+            const near = covered[j]
+              ? faces[j].ks.filter((k) => active[k])
+              : owner.has(j)
+                ? [owner.get(j)]
+                : []
+            for (const k of near) score.set(k, (score.get(k) ?? 0) + length.get(a))
+          }
+        }
+        if (score.size > 0) found.push([i, [...score].reduce((x, y) => (y[1] > x[1] ? y : x))[0]])
+      }
+      if (found.length === 0) break
+      for (const [i, k] of found) owner.set(i, k)
+      pending = pending.filter((i) => !owner.has(i))
+    }
+    return owner
+  }
+
+  const days = [...new Set(pieces.flatMap((p) => [p.s, nextDay(p.e)]))]
+    .filter((d) => d <= LAST_DAY)
+    .sort((a, b) => a - b)
+  const active = new Uint8Array(pieces.length)
+  /** Per peça, els trams amb les mateixes franges: { s, key, faces }. */
+  const runs = new Map()
+  for (const day of days) {
+    active.fill(0)
+    for (const k of facesOf.keys()) if (pieces[k].s <= day && day <= pieces[k].e) active[k] = 1
+    const covered = faces.map((f) => f.ks.some((k) => active[k]))
+
+    // Les franges: les cares sense ningú, ajuntades amb les veïnes que tampoc no en tenen.
+    const strip = new Int32Array(faces.length).fill(-1)
+    const given = new Map()
+    for (let start = 0; start < faces.length; start++) {
+      if (covered[start] || strip[start] >= 0) continue
+      const members = [start]
+      strip[start] = start
+      for (let m = 0; m < members.length; m++) {
+        for (const a of faces[members[m]].arcs) {
+          for (const j of facesOfArc.get(a)) {
+            if (!covered[j] && strip[j] < 0) {
+              strip[j] = start
+              members.push(j)
+            }
+          }
+        }
+      }
+      let perimeter = 0
+      let area = 0
+      const shared = new Map()
+      for (const i of members) {
+        area += faces[i].area
+        for (const a of faces[i].arcs) {
+          const other = facesOfArc.get(a).filter((j) => j !== i)
+          if (other.some((j) => strip[j] === start)) continue
+          perimeter += length.get(a)
+          for (const j of other) {
+            for (const k of faces[j].ks) {
+              if (active[k]) shared.set(k, (shared.get(k) ?? 0) + length.get(a))
+            }
+          }
+        }
+      }
+      if (shared.size === 0) continue
+      // Una zona gran que no envolta un sol estat és terra sense ningú: només se n'omplen les
+      // cares primes, les vores que les dues fonts dibuixen diferent. La resta queda buida i fa de
+      // tap, perquè les franges del costat no s'hi escolin.
+      const border = Math.max(...shared.values())
+      const whole = area <= FIT_AREA || border >= 0.99 * perimeter
+      const candidates = whole ? members : members.filter((i) => faces[i].width <= FIT_WIDTH)
+      for (const [i, k] of growInto(candidates, covered, active)) {
+        if (!given.has(k)) given.set(k, [])
+        given.get(k).push(i)
+      }
+    }
+
+    for (const k of facesOf.keys()) {
+      if (!active[k]) continue
+      const extra = (given.get(k) ?? []).sort((x, y) => x - y)
+      const key = extra.join()
+      const list = runs.get(k) ?? []
+      if (list.at(-1)?.key !== key) list.push({ s: day, key, faces: [...facesOf.get(k), ...extra] })
+      runs.set(k, list)
+    }
+  }
+
+  const out = []
+  let widened = 0
+  for (const [k, list] of runs) {
+    list.forEach((run, i) => {
+      const e = i + 1 < list.length ? previousDay(list[i + 1].s) : pieces[k].e
+      const geometry = topojson.merge(
+        topo,
+        run.faces.map((f) => faces[f].geometry),
+      )
+      out.push({ ...pieces[k], s: run.s, e, geometry })
+      if (run.key) widened++
+    })
+  }
+  return { pieces: out, widened, days: days.length }
+}
+
 // ── Els codis ────────────────────────────────────────────────────────────────
 
 const ringArea = (ring) => {
@@ -2694,6 +2958,7 @@ function assignColours(topo, fixed) {
 
 // ── Els fitxers ──────────────────────────────────────────────────────────────
 
+/** Les peces ja surten simplificades de fitToCShapes: aquí només es retallen i es fa la topologia. */
 async function simplify(pieces, bbox) {
   const input = {
     type: 'FeatureCollection',
@@ -2707,7 +2972,6 @@ async function simplify(pieces, bbox) {
     [
       '-i input.json',
       `-clip bbox=${bbox.join(',')} remove-slivers`,
-      `-simplify ${SIMPLIFY} keep-shapes`,
       '-rename-layers borders',
       '-o output.json format=topojson quantization=100000',
     ].join(' '),
@@ -2793,7 +3057,7 @@ const cshapesTopo = JSON.parse(readFileSync(BORDERS, 'utf8'))
 const cshapes = topojson.feature(cshapesTopo, cshapesTopo.objects.borders).features
 // Les formes de SHAPES: Cliopatria, i OHM i Natural Earth on Cliopatria no en té cap de bona.
 const sources = { rows, ohm: await readOhmShapes(), naturalEarth: await readNaturalEarth() }
-const { pieces, filled } = fillWarGaps(
+const { pieces: raw, filled } = fillWarGaps(
   applyOhm(
     applyShapes(
       applyTransitions(applyShapes(toPieces(rows, identityOf), sources, identityOf, false)),
@@ -2804,6 +3068,8 @@ const { pieces, filled } = fillWarGaps(
     fixOhmWithCShapes(await readOhm(), cshapes),
   ),
 )
+
+const { pieces, widened, days } = await fitToCShapes(raw, cshapesTopo)
 
 const fixedColours = new Map(cshapes.map((f) => [groupOfCShapes(f.properties), f.properties.c]))
 function groupOfCShapes(p) {
@@ -2900,6 +3166,9 @@ console.log(
   `✔ ${topo.objects.borders.geometries.length} peces de ${new Set(pieces.map((p) => p.qid)).size} entitats, ${colours} colors, ${mergedLabels.length} noms`,
 )
 console.log(`  Per segles: ${centuries.join(', ')}`)
+console.log(
+  `  Retallat a la costa de CShapes en ${days} dies; trams amb franges afegides: ${widened}`,
+)
 // Els buits grans (més d'uns 4.000 km²), perquè es vegi què s'ha omplert i es pugui comprovar.
 const bigGaps = filled.filter((f) => f.area >= 0.5)
 console.log(

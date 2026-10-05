@@ -247,6 +247,13 @@ en que empieza y en que termina cada forma. El mapa usa las de Europa de 1500 a 
 - **Qué se hace** (`npm run data:history`, después de `npm run data:borders`, que da los colores):
   - Se quitan las agrupaciones (las filas entre paréntesis, que repiten las piezas de otras), y se
     recorta y se simplifica como CShapes.
+  - **Sobre la base de CShapes.** Cada pieza se recorta a la tierra de CShapes de 1886, la misma
+    del fondo del mapa, y las franjas de tierra que quedan sin nadie van al estado que las toca, al
+    que comparte más borde con ellas. La costa de Cliopatria es más tosca y está desplazada hasta
+    diez o veinte kilómetros: los estados salían al mar, la tierra de fondo asomaba por debajo, y
+    1885 y 1886 parecían dos mapas distintos. Solo se rellenan las franjas finas (menos de 15 km
+    de ancho), las pequeñas (menos de 2.000 km²) y las que rodea un solo estado; una zona más
+    grande sin nadie se queda vacía (§1.4.2, «Tierra sin estado»).
   - Cada entidad lleva su QID de Wikidata. Si en 1885 ocupa el mismo lugar que un estado de CShapes
     de 1886, o está en la lista `SAME_STATE`, toma su código y su color: el Reino de Francia, la
     República y los dos Imperios son el 220, como la Francia de CShapes. La lista añade los
@@ -261,8 +268,9 @@ en que empieza y en que termina cada forma. El mapa usa las de Europa de 1500 a 
 **La precisión.** Cliopatria muestrea el mapa cada pocos años —cada año en los momentos agitados,
 cada diez o más en los tranquilos— y cada forma vale hasta la muestra siguiente. Por eso las
 fronteras cambian el 1 de enero y no el día en que ocurrió, y un cambio puede llegar uno o dos años
-tarde. La ficha de cada estado lo dice, y la línea temporal lo marca con una franja rayada hasta
-1886. Donde sabemos el día, el nombre sí cambia el día exacto (§1.4.1).
+tarde. La ficha de cada estado lo dice. Por eso, y porque aún quedan errores por corregir (§1.4.2),
+esta parte no está en el mapa principal, que empieza en 1886: es una sección aparte, marcada como
+experimental (`?era=early`). Donde sabemos el día, el nombre sí cambia el día exacto (§1.4.1).
 
 #### 1.4.1 Dónde nos separamos
 
@@ -340,12 +348,11 @@ eran una cesión de verdad (Podolia, en 1672) se quedan.
 - **Estados pequeños fuera de 1815-1870.** Los del Sacro Imperio van juntos, con el nombre del
   Imperio, también los de Italia hasta 1740. Las ciudades libres sí están (§1.4.1), pero no el resto
   del Gran Ducado de Fráncfort (Aschaffenburg, Fulda, Hanau): salen Wurzburgo y Berg.
-- **Bordes menos finos** que los de CShapes, y con un salto pequeño el 1 de enero de 1886, cuando
-  empiezan los de CShapes.
+- **Bordes interiores menos finos** que los de CShapes. La costa ya es la de CShapes (§1.4), pero
+  las fronteras entre estados son las de Cliopatria, simplificadas.
 - **Tierra sin estado.** Donde Cliopatria no pone a nadie durante más de veinte años (la estepa del
   Volga y del Don en el siglo XVI, el desierto de Argelia), el mapa muestra la tierra en gris, sin
-  ficha: la de hoy, la misma de CShapes. La costa de Cliopatria y la de CShapes no coinciden del
-  todo, y en algunos tramos la tierra en gris hace de borde.
+  ficha: la de hoy, la misma de CShapes.
 - **El Hetmanato cosaco**, que gobernaba la Ucrania central desde 1648, no está en Cliopatria: de
   1653 a 1661 esa zona queda en blanco, y el mapa se la da a la República de las Dos Naciones, que
   la tenía antes (§0.1), hasta que Cliopatria la vuelve a cubrir.

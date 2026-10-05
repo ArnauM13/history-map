@@ -242,6 +242,13 @@ every shape starts and ends. The map uses Europe's, from 1500 to 1885.
   colours):
   - The groupings (the rows in brackets, which repeat other rows' pieces) are dropped, and it is
     clipped and simplified like CShapes.
+  - **On CShapes's base.** Each piece is clipped to CShapes's 1886 land, the same as the map's
+    background, and the strips of land left with nobody go to the state that touches them, the one
+    sharing the longest edge. Cliopatria's coastline is coarser and shifted by up to ten or twenty
+    kilometres: states spilled into the sea, the background land peeked out underneath, and 1885
+    and 1886 looked like two different maps. Only thin strips (under 15 km wide), small ones
+    (under 2,000 km²) and those enclosed by a single state are filled; a larger area with nobody
+    stays empty (§1.4.2, "Land with no state").
   - Each entity carries its Wikidata QID. If in 1885 it covers the same place as a CShapes state of
     1886, or it is on the `SAME_STATE` list, it takes that state's code and colour: the Kingdom of
     France, the Republic and both Empires are 220, like CShapes's France. The list adds the
@@ -256,8 +263,9 @@ every shape starts and ends. The map uses Europe's, from 1500 to 1885.
 **Precision.** Cliopatria samples the map every few years —every year in turbulent times, every ten
 or more in quiet ones— and each shape holds until the next sample. So borders change on 1 January
 rather than on the day it happened, and a change can arrive a year or two late. Each state's card
-says so, and the timeline marks it with a hatched band up to 1886. Where we know the day, the name
-does change on the exact day (§1.4.1).
+says so. That, and the errors still to fix (§1.4.2), is why this part is not on the main map,
+which starts in 1886: it is a separate section, marked as experimental (`?era=early`). Where we
+know the day, the name does change on the exact day (§1.4.1).
 
 #### 1.4.1 Where we depart from it
 
@@ -336,11 +344,11 @@ that were a real cession (Podolia, in 1672) stay.
   Empire's name, including the Italian ones until 1740. The free cities are there (§1.4.1), but not
   the rest of the Grand Duchy of Frankfurt (Aschaffenburg, Fulda, Hanau): Würzburg and Berg show
   instead.
-- **Coarser outlines** than CShapes's, with a small jump on 1 January 1886, when CShapes's start.
+- **Coarser inner borders** than CShapes's. The coastline is now CShapes's (§1.4), but the borders
+  between states are Cliopatria's, simplified.
 - **Land with no state.** Where Cliopatria puts nobody for more than twenty years (the Volga and Don
   steppe in the 16th century, the Algerian desert), the map shows the land in grey, with no card:
-  today's land, the same as CShapes. Cliopatria's coastline and CShapes' don't match exactly, and
-  in places the grey land shows as a rim.
+  today's land, the same as CShapes.
 - **The Cossack Hetmanate**, which ruled central Ukraine from 1648, is not in Cliopatria: from 1653
   to 1661 that area is left blank, and the map gives it to the Polish-Lithuanian Commonwealth,
   which held it before (§0.1), until Cliopatria covers it again.

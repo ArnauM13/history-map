@@ -245,6 +245,13 @@ en què comença i en què s'acaba cada forma. El mapa en fa servir les d'Europa
 - **Què se'n fa** (`npm run data:history`, després de `npm run data:borders`, que en dona els colors):
   - Se'n treuen les agrupacions (les files entre parèntesis, que repeteixen les peces d'altres), i es
     retalla i se simplifica com CShapes.
+  - **Sobre la base de CShapes.** Cada peça es retalla a la terra de CShapes del 1886, la mateixa
+    del fons del mapa, i les franges de terra que queden sense ningú van a l'estat que hi toca, al
+    que en comparteix més vora. La costa de Cliopatria és més grollera i està desplaçada fins a
+    deu o vint quilòmetres: els estats sortien al mar, la terra de fons treia el cap per sota, i el
+    1885 i el 1886 semblaven dos mapes diferents. Només s'omplen les franges primes (menys de
+    15 km d'amplada), les petites (menys de 2.000 km²) i les que envolta un sol estat; una zona
+    més gran sense ningú es queda buida (§1.4.2, «Terra sense estat»).
   - Cada entitat porta el seu QID de Wikidata. Si el 1885 ocupa el mateix lloc que un estat del
     1886 de CShapes, o és a la llista `SAME_STATE`, en pren el codi i el color: el Regne de França,
     la República i els dos Imperis són el 220, com la França de CShapes. La llista hi afegeix els
@@ -259,8 +266,9 @@ en què comença i en què s'acaba cada forma. El mapa en fa servir les d'Europa
 **La precisió.** Cliopatria mostreja el mapa cada pocs anys —cada any en els moments moguts, cada
 deu o més en els tranquils— i cada forma val fins a la mostra següent. Per això les fronteres
 canvien l'1 de gener i no el dia que va passar, i un canvi pot arribar un o dos anys tard. La fitxa
-de cada estat ho diu, i la línia temporal ho marca amb una franja ratllada fins al 1886. On sabem el
-dia, el nom sí que canvia el dia exacte (§1.4.1).
+de cada estat ho diu. Per això, i perquè encara hi ha errors per corregir (§1.4.2), aquesta part
+no és al mapa principal, que comença el 1886: és una secció a part, marcada com a experimental
+(`?era=early`). On sabem el dia, el nom sí que canvia el dia exacte (§1.4.1).
 
 #### 1.4.1 On ens en separem
 
@@ -337,12 +345,11 @@ veritat (Podòlia, el 1672) es queden.
 - **Estats petits fora del 1815-1870.** Els del Sacre Imperi van junts, amb el nom de l'Imperi,
   també els d'Itàlia fins al 1740. Les ciutats lliures sí que hi són (§1.4.1), però no la resta del
   Gran Ducat de Frankfurt (Aschaffenburg, Fulda, Hanau): hi surten Würzburg i Berg.
-- **Vores menys fines** que les de CShapes, i amb un salt petit l'1 de gener del 1886, quan comencen
-  les de CShapes.
+- **Vores interiors menys fines** que les de CShapes. La costa ja és la de CShapes (§1.4), però les
+  fronteres entre estats són les de Cliopatria, simplificades.
 - **Terra sense estat.** On Cliopatria no posa ningú durant més de vint anys (l'estepa del Volga i
   del Don al segle XVI, el desert d'Algèria), el mapa ensenya la terra en gris, sense fitxa: la
-  d'avui, la mateixa de CShapes. La costa de Cliopatria i la de CShapes no coincideixen del tot, i
-  en alguns trams la terra en gris fa de vora.
+  d'avui, la mateixa de CShapes.
 - **L'Hetmanat cosac**, que governava la Ucraïna central des del 1648, no és a Cliopatria: del 1653
   al 1661, aquella zona hi queda en blanc, i el mapa la dona a la República de les Dues Nacions,
   que la tenia abans (§0.1), fins que Cliopatria la torna a cobrir.
