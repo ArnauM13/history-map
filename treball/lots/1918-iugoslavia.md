@@ -26,3 +26,11 @@ fronteres. Fiume, l'Ístria, la Venezia Giulia i la Dalmàcia ocupada per Itàli
 ## Pendent
 
 - Recerca: les dates de l'Estat SCS, la unió del 1918-12-01 i qui governava cada província.
+
+## Relleu
+
+- **Fase**: 2 (recerca), sense començar.
+- **Primera tasca**: les dates de l'Estat SCS (1918-10-29) i de la unió (1918-12-01), i qui
+  governava cada província.
+- **Llegir**: aquest fitxer, el «Context» i la decisió 1 de [1919-fiume](1919-fiume.md), i DADES
+  §0.1. **No cal** refer la consulta de CShapes de la taula de `1919-fiume`.

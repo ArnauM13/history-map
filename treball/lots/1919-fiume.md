@@ -251,6 +251,15 @@ Per a la fase 3, en aquest ordre:
   fins a l'annexió [25]; i Sušak, el Delta i Port Baross, ocupats per Itàlia fins al març del 1923
   [18]. Van a la capa d'ocupacions; no tenen lot.
 
+## Relleu
+
+- **Fase**: 2 (recerca) feta i contrastada; ve la 3 (integració), en una sessió nova des de `main`.
+- **Primera tasca**: tancar les dates de «Pendent», punt 1 (Krk, Rab, tercera zona de Dalmàcia);
+  després, la integració en l'ordre dels punts 3 a 5, començant per `build-borders.mjs`.
+- **Llegir**: aquest fitxer, DADES §0.1, §1.1 i §1.3, i `LINES` i les correccions de Rapallo i
+  Fiume a `build-borders.mjs`. **No cal** tornar a llegir els articles de «Fonts» ni refer la
+  consulta de CShapes: la taula de «Context» és el resultat.
+
 ## Fonts
 
 1. «Armistice of Villa Giusti», Viquipèdia en anglès.

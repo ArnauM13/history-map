@@ -46,6 +46,15 @@ el tema), fet a partir de [la plantilla](treball/lots/_plantilla.md). La sessió
 l'actualitza **abans d'acabar**, encara que no hagi acabat la feina. Ha de servir perquè una sessió
 que no sap res en pugui continuar llegint només aquell fitxer.
 
+**Cada fase d'un lot, una branca i una PR.** La sessió acaba la fase, escriu el relleu i obre la
+PR (`history-map/<fase>-<lot>`, per exemple `history-map/recerca-1919-fiume`). La fase següent
+comença en una sessió nova, des de `main` amb la PR ja fusionada, i no abans: així cada fase es
+revisa sola i la següent parteix del que s'ha acceptat.
+
+**El relleu, sempre**, encara que la fase quedi a mitges. A més de les troballes i les decisions,
+el lot acaba amb la secció «Relleu»: en quina fase és, què ha de fer la sessió següent (la primera
+tasca, concreta), què ha de llegir i què no cal que torni a mirar.
+
 Quan un lot es tanca, el que val per sempre (un criteri, una correcció, una font) passa a
 [DADES.md](DADES.md) i a [FULL-DE-RUTA.md](FULL-DE-RUTA.md); el fitxer del lot queda com a
 història de com es va decidir.
@@ -65,4 +74,5 @@ història de com es va decidir.
 1. Llegir [treball/README.md](treball/README.md) i triar un lot obert (o fer el pla si no n'hi ha).
 2. Llegir el fitxer del lot i les seccions de DADES que cita.
 3. Treballar dins de l'abast del lot. El que surti de fora s'apunta com a lot nou, no es fa.
-4. Abans d'acabar o d'arribar al pressupost: actualitzar el lot i l'índex, i fer el commit.
+4. Abans d'acabar o d'arribar al pressupost: actualitzar el lot (també el «Relleu») i l'índex,
+   fer el commit i obrir la PR de la fase.

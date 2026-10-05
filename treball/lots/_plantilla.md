@@ -28,3 +28,8 @@ Fitxers tocats i commits.
 ## Pendent
 
 El que falta, en ordre, perquè la sessió següent comenci directament. Lots nous que n'hagin sortit.
+
+## Relleu
+
+Per a la sessió següent: en quina fase és el lot, la primera tasca concreta, què ha de llegir (i
+què no cal que torni a mirar). La PR d'aquesta fase.
