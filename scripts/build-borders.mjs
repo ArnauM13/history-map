@@ -51,6 +51,12 @@ const BBOX = [-28, 30, 78, 82]
 /** Els noms van dins d'aquesta àrea més petita: el de Rússia, a la part europea, que és la que es veu. */
 const LABEL_BBOX = [-25, 30, 56, 74]
 const SIMPLIFY = '12%'
+/**
+ * Els territoris petits que se simplifiquen menys: amb el 12 %, la Franja de Gaza quedava en un
+ * triangle que deixava la ciutat de Gaza a Israel.
+ */
+const DETAILED = ['6511', '6631']
+const DETAILED_SIMPLIFY = '100%'
 
 // ── Les correccions ──────────────────────────────────────────────────────────
 
@@ -172,6 +178,9 @@ const AREAS = {
  *   - `extend`: allarga fins a `to` les peces d'uns estats que s'acaben el dia `end`.
  *   - `transfer`: entre `start` i `end`, un territori (AREAS) passa de `from` a `to`, que és un
  *     codi o, si l'estat no és a CShapes, les seves propietats. Sense `to`, només surt de `from`.
+ *   - `continue`: les peces d'uns estats que s'acaben el dia abans de `start` continuen fins avui,
+ *     amb la mateixa forma i aquest `status`, i sense dependre de ningú: un territori ocupat que
+ *     no és de cap altre estat.
  */
 const CORRECTIONS = [
   {
@@ -179,6 +188,24 @@ const CORRECTIONS = [
       "Crimea: la frontera reconeguda entre Rússia i Ucraïna, també després de l'annexió del 2014 (resolució 68/262 de l'ONU)",
     drop: { codes: ['365', '369'], start: '2014-03-18' },
     extend: { codes: ['365', '369'], end: '2014-03-17', to: DATASET_END },
+  },
+  {
+    // CShapes hi suma Cisjordània, Gaza, el Golan i el Sinaí, que Israel va ocupar a la guerra dels
+    // Sis Dies, i no torna el Sinaí a Egipte fins al 1979. Les formes d'abans i de després
+    // coincideixen: n'hi ha prou d'allargar les del 1967.
+    description:
+      "Israel, després del 1967: la línia de l'armistici del 1949 (la Línia Verda); el Golan, sirià, i el Sinaí, egipci (resolució 242 de l'ONU)",
+    drop: { codes: ['666', '651', '652'], start: '1967-06-10' },
+    extend: { codes: ['666', '651', '652'], end: '1967-06-09', to: DATASET_END },
+  },
+  {
+    description: 'Israel i Egipte, sense la peça del 1979: ja ve allargada de la del 1967',
+    drop: { codes: ['666', '651'], start: '1979-05-26' },
+  },
+  {
+    description:
+      "Cisjordània i Gaza, després del 1967: territori palestí ocupat, no part d'Israel (resolucions 242 i 2334 de l'ONU; Tribunal Internacional de Justícia, 2004 i 2024)",
+    continue: { codes: ['6511', '6631'], start: '1967-06-10', status: 'occupied' },
   },
   {
     // CShapes l'acaba el 31 d'agost del 1938, un any abans, i del 30 de setembre la posa dins
@@ -297,6 +324,19 @@ function correctedFeatures(simplified) {
         if (codes.includes(f.properties.gwcode) && f.properties.end === end) f.properties.end = to
       }
     }
+    if (fix.continue) {
+      const { codes, start, status } = fix.continue
+      const before = shiftDay(start, -1)
+      for (const f of [...features]) {
+        const p = f.properties
+        if (codes.includes(p.gwcode) && p.end === before) {
+          features.push({
+            ...f,
+            properties: { ...p, start, end: DATASET_END, status, owner: p.gwcode },
+          })
+        }
+      }
+    }
     if (fix.transfer) {
       const { area, from, to, start, end } = fix.transfer
       const territory = areas[area]
@@ -364,7 +404,7 @@ async function processWithMapshaper(raw, bbox) {
   const simplify = [
     '-i input.topojson name=borders',
     `-clip bbox=${bbox.join(',')} remove-slivers`,
-    `-simplify ${SIMPLIFY} keep-shapes`,
+    `-simplify variable percentage='${JSON.stringify(DETAILED)}.includes(String(gwcode)) ? "${DETAILED_SIMPLIFY}" : "${SIMPLIFY}"' keep-shapes`,
     '-o output.json format=topojson no-quantization',
   ].join(' ')
   const simplified = JSON.parse(

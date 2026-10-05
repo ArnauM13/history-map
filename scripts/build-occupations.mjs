@@ -491,6 +491,34 @@ const LINES = {
     [26.55, 45.0],
   ],
 
+  /**
+   * L'oest del canal de Suez i del golf de Suez: tot el que queda a l'altra banda és el Sinaí. Els
+   * punts del canal són els de la vora de CShapes entre Egipte i el Sinaí ocupat, del 1967 al 1979.
+   */
+  sinai: [
+    [32.29, 31.6],
+    [35.5, 31.6],
+    [35.5, 27.5],
+    [32.8, 27.5],
+    [32.575, 30.003],
+    [32.593, 30.265],
+    [32.352, 30.497],
+    [32.29, 31.169],
+  ],
+
+  /**
+   * El Golan que Israel controla des del 1967: el polígon que CShapes 2.0 treu de Síria i suma a
+   * Israel el 10 de juny del 1967. La retirada de Quneitra del 1974 (uns 25 km²) no s'hi veu.
+   */
+  golan: [
+    [35.626, 33.246],
+    [35.643, 32.694],
+    [35.77, 32.748],
+    [35.884, 32.955],
+    [35.781, 33.22],
+    [35.79, 33.349],
+  ],
+
   /** Crimea, al sud de l'istme de Perekop. */
   crimea: [
     [32.3, 46.16],
@@ -1029,6 +1057,12 @@ const ZONES = {
   belarus: { build: () => minus(SOVIET(370), state(367, '1940-01-01'), LITHUANIA()) },
   ukraine: { line: true, build: () => minus(SOVIET(369), TRANSNISTRIA(), CRIMEA()) },
   crimea: { build: CRIMEA },
+
+  // Els territoris que Israel ocupa des de la guerra dels Sis Dies, el 1967.
+  'west-bank': { build: () => state(6631, '1970-01-01') },
+  'gaza-strip': { build: () => state(6511, '1970-01-01') },
+  'golan-heights': { build: () => intersect(state(652, '1970-01-01'), ring(LINES.golan)) },
+  sinai: { build: () => intersect(state(651, '1970-01-01'), ring(LINES.sinai)) },
 
   // Itàlia, del 1943 al 1945.
   'italian-social-republic': {
