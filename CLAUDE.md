@@ -38,6 +38,12 @@ veu sigui cert, i com més exacte millor.
   resultat: a quin estat cau cada capital any per any, que no hi hagi peces que se sobreposin ni
   forats, i com queda al navegador.
 
+## Com es treballa
+
+Per fases i en lots petits, amb un document de relleu per lot: [TREBALL.md](TREBALL.md). Cada
+sessió comença llegint [treball/README.md](treball/README.md) i, abans d'acabar o d'arribar als
+200.000–250.000 tokens de context, deixa escrit al lot el que ha trobat i el que falta.
+
 ## Com està fet
 
 Una web estàtica: React 19, TypeScript, Vite i MapLibre GL. Sense servidor, sense base de dades.
