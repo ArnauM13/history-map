@@ -1,0 +1,37 @@
+start: 2025-10-01
+control:
+  - until: 2026-03-31
+    by: 365
+    kind: annexation
+    cause:
+      ca: Annexió de quatre províncies, 2022
+      es: Anexión de cuatro provincias, 2022
+      en: Annexation of four oblasts, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada i annexionada per Rússia (octubre del 2025 - març del 2026)
+  es: Ucrania ocupada y anexionada por Rusia (octubre de 2025 - marzo de 2026)
+  en: Ukraine occupied and annexed by Russia (October 2025 – March 2026)
+label:
+  ca: Annexionada per Rússia
+  es: Anexionada por Rusia
+  en: Annexed by Russia
+summary:
+  ca: >-
+    Rússia va entrar a Pokrovsk el novembre del 2025 i, entre el desembre i el gener, en va
+    acabar de prendre les ruïnes, amb Myrnohrad, i també Siversk i Huliaipole. La línia és la de
+    l'1 de gener del 2026.
+  es: >-
+    Rusia entró en Pokrovsk en noviembre de 2025 y, entre diciembre y enero, acabó de tomar sus
+    ruinas, con Myrnohrad, y también Siversk y Huliaipole. La línea es la del 1 de enero de
+    2026.
+  en: >-
+    Russia entered Pokrovsk in November 2025 and, between December and January, finished taking
+    its ruins, together with Myrnohrad, as well as Siversk and Huliaipole. The line is that of 1
+    January 2026.
+wikipedia:
+  en: Pokrovsk offensive
+sources:
+  - title: 'Resolution ES-11/4: Territorial integrity of Ukraine: defending the principles of the Charter of the United Nations'
+    publisher: United Nations General Assembly
+    url: https://undocs.org/A/RES/ES-11/4

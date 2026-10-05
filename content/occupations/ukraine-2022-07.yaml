@@ -1,0 +1,33 @@
+start: 2022-07-03
+control:
+  - until: 2022-09-09
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada per Rússia (juliol-setembre del 2022)
+  es: Ucrania ocupada por Rusia (julio-septiembre de 2022)
+  en: Ukraine occupied by Russia (July–September 2022)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    Amb Lisitxansk, presa el 3 de juliol, Rússia va completar l'ocupació de la província de
+    Luhansk. Va ser el màxim que va arribar a ocupar al mateix temps: amb Crimea, prop d'una
+    cinquena part d'Ucraïna. La línia és la del 16 d'agost del 2022.
+  es: >-
+    Con Lisichansk, tomada el 3 de julio, Rusia completó la ocupación de la provincia de
+    Lugansk. Fue lo máximo que llegó a ocupar al mismo tiempo: con Crimea, cerca de una quinta
+    parte de Ucrania. La línea es la del 16 de agosto de 2022.
+  en: >-
+    With Lysychansk, taken on 3 July, Russia completed the occupation of Luhansk Oblast. It was
+    the most it ever held at the same time: with Crimea, nearly a fifth of Ukraine. The line is
+    that of 16 August 2022.
+wikipedia:
+  en: Battle of Lysychansk

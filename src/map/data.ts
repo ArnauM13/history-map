@@ -14,6 +14,8 @@ export interface OccupationProperties {
   id: string
   /** D'on surten les vores que no són de CShapes: `line`, dibuixades a mà; `admin`, divisions d'avui. */
   approx: ('line' | 'admin')[]
+  /** El dia de la instantània de DeepStateMap d'on surt el front (la guerra russoucraïnesa). */
+  front?: IsoDate
   /** On va el nom: [longitud, latitud]. */
   label: [number, number]
   /** Com el `rank` dels estats: si dos noms es trepitgen, guanya la zona més gran. */

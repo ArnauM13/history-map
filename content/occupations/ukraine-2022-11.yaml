@@ -1,0 +1,40 @@
+start: 2022-11-11
+control:
+  - until: 2024-02-16
+    by: 365
+    kind: annexation
+    cause:
+      ca: Annexió de quatre províncies, 2022
+      es: Anexión de cuatro provincias, 2022
+      en: Annexation of four oblasts, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada i annexionada per Rússia (2022-2024)
+  es: Ucrania ocupada y anexionada por Rusia (2022-2024)
+  en: Ukraine occupied and annexed by Russia (2022–2024)
+label:
+  ca: Annexionada per Rússia
+  es: Anexionada por Rusia
+  en: Annexed by Russia
+summary:
+  ca: >-
+    L'11 de novembre del 2022 Ucraïna va recuperar Kherson i tota la riba dreta del Dnipre.
+    Després el front es va moure poc durant més d'un any: Rússia va prendre Soledar i Bakhmut
+    (20 de maig del 2023), i la contraofensiva ucraïnesa de l'estiu del 2023 només va avançar
+    uns quilòmetres, fins a Robotine. La línia és la del 2 de juny del 2023.
+  es: >-
+    El 11 de noviembre de 2022 Ucrania recuperó Jersón y toda la orilla derecha del Dniéper.
+    Después el frente se movió poco durante más de un año: Rusia tomó Soledar y Bajmut (20 de
+    mayo de 2023), y la contraofensiva ucraniana del verano de 2023 solo avanzó unos kilómetros,
+    hasta Robotyne. La línea es la del 2 de junio de 2023.
+  en: >-
+    On 11 November 2022 Ukraine retook Kherson and the whole right bank of the Dnipro. The front
+    then barely moved for more than a year: Russia took Soledar and Bakhmut (20 May 2023), and
+    the Ukrainian counter-offensive of summer 2023 advanced only a few kilometres, as far as
+    Robotyne. The line is that of 2 June 2023.
+wikipedia:
+  en: 2022 Kherson counteroffensive
+sources:
+  - title: 'Resolution ES-11/4: Territorial integrity of Ukraine: defending the principles of the Charter of the United Nations'
+    publisher: United Nations General Assembly
+    url: https://undocs.org/A/RES/ES-11/4

@@ -1,0 +1,33 @@
+start: 2022-09-10
+control:
+  - until: 2022-11-10
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada per Rússia, fora de les províncies annexionades (setembre-novembre del 2022)
+  es: Ucrania ocupada por Rusia, fuera de las provincias anexionadas (septiembre-noviembre de 2022)
+  en: Ukraine occupied by Russia, outside the annexed oblasts (September–November 2022)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    Després de la contraofensiva de Khàrkiv, Rússia conservava una franja de la província de
+    Khàrkiv a l'est de l'Oskil i, a la de Mikolaiv, Snihurivka i la fletxa de Kinburn. No se les
+    va annexionar ni sobre el paper. La línia és la del 15 d'octubre del 2022.
+  es: >-
+    Tras la contraofensiva de Járkov, Rusia conservaba una franja de la provincia de Járkov al
+    este del Oskil y, en la de Mykolaiv, Snihurivka y la flecha de Kinburn. No se las anexionó
+    ni sobre el papel. La línea es la del 15 de octubre de 2022.
+  en: >-
+    After the Kharkiv counter-offensive, Russia still held a strip of Kharkiv Oblast east of the
+    Oskil and, in Mykolaiv Oblast, Snihurivka and the Kinburn Spit. It did not annex them, even
+    on paper. The line is that of 15 October 2022.
+wikipedia:
+  en: 2022 Kharkiv counteroffensive

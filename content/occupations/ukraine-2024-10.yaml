@@ -1,0 +1,37 @@
+start: 2024-10-01
+control:
+  - until: 2025-03-31
+    by: 365
+    kind: annexation
+    cause:
+      ca: Annexió de quatre províncies, 2022
+      es: Anexión de cuatro provincias, 2022
+      en: Annexation of four oblasts, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada i annexionada per Rússia (octubre del 2024 - març del 2025)
+  es: Ucrania ocupada y anexionada por Rusia (octubre de 2024 - marzo de 2025)
+  en: Ukraine occupied and annexed by Russia (October 2024 – March 2025)
+label:
+  ca: Annexionada per Rússia
+  es: Anexionada por Rusia
+  en: Annexed by Russia
+summary:
+  ca: >-
+    Rússia va prendre Vuhledar l'1 d'octubre del 2024, Selidove a final d'octubre i Kurakhove a
+    començament del 2025. Del febrer al desembre del 2024 va guanyar més territori que en tot el
+    2023, gairebé tot a la província de Donetsk. La línia és la de l'1 de gener del 2025.
+  es: >-
+    Rusia tomó Vuhledar el 1 de octubre de 2024, Selidove a finales de octubre y Kurájove a
+    comienzos de 2025. De febrero a diciembre de 2024 ganó más territorio que en todo 2023, casi
+    todo en la provincia de Donetsk. La línea es la del 1 de enero de 2025.
+  en: >-
+    Russia took Vuhledar on 1 October 2024, Selydove at the end of October and Kurakhove at the
+    start of 2025. From February to December 2024 it gained more territory than in the whole of
+    2023, almost all of it in Donetsk Oblast. The line is that of 1 January 2025.
+wikipedia:
+  en: Battle of Vuhledar
+sources:
+  - title: 'Resolution ES-11/4: Territorial integrity of Ukraine: defending the principles of the Charter of the United Nations'
+    publisher: United Nations General Assembly
+    url: https://undocs.org/A/RES/ES-11/4

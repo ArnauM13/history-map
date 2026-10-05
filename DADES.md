@@ -11,7 +11,7 @@ alguna cosa, mira la llicència d'aquella part.**
 | Els textos (`content/`) | Qui hi contribueix | CC BY-SA 4.0 |
 | Les fronteres (`public/data/`) | CShapes 2.0, retallat i simplificat aquí | CC BY-NC-SA 4.0 |
 | Les fronteres d'abans del 1886 (`public/data/history/`) | Cliopatria i, del 1815 al 1870 a l'Europa central, OpenHistoricalMap, retallats, simplificats i corregits aquí (§1.4, §1.5) | CC BY 4.0 |
-| Les zones d'ocupació (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) i línies dibuixades aquí (§1.3) | CC BY-NC-SA 4.0 |
+| Les zones d'ocupació (`public/data/occupations.geojson`) | CShapes 2.0, [Natural Earth](https://www.naturalearthdata.com/) línies dibuixades aquí i, a Ucraïna, el front de [DeepStateMap](https://deepstatemap.live/) simplificat (§1.3) | CC BY-NC-SA 4.0 |
 | Les banderes (`public/flags/`) | Wikimedia Commons | La de cada imatge (§2) |
 | Les lletres del mapa (`public/fonts/`) | Open Sans, de [openmaptiles/fonts](https://github.com/openmaptiles/fonts) | Apache 2.0 |
 | La lletra de la interfície | Roboto ([Fontsource](https://fontsource.org/)) | OFL 1.1 |
@@ -31,7 +31,7 @@ Tot el que ensenya el mapa té una font, i la fitxa on surt la cita amb un enlla
 | El nom de cada entitat d'abans del 1886 | El títol de l'article de la Viquipèdia que en cita Cliopatria, en català i castellà, o `content/countries.yaml` pel QID (§1.4) | A la fitxa de l'estat |
 | Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat (`sources` a `content/flags.yaml`) | A la fitxa de l'estat |
 | Les imatges de les banderes | Wikimedia Commons (§2, `public/flags/credits.json`) | Sota cada bandera |
-| Les zones ocupades i annexionades (1938-1945 i, a l'Orient Pròxim, des del 1967) | Fronteres de CShapes d'altres dates, divisions d'avui de Natural Earth i línies dibuixades a mà (§1.3); les dates, de l'article de la Viquipèdia de cada zona (`content/occupations/`) | A la fitxa de cada zona |
+| Les zones ocupades i annexionades (1938-1945, a l'Orient Pròxim des del 1967 i a Ucraïna i Rússia des del 2014) | Fronteres de CShapes d'altres dates, divisions d'avui de Natural Earth, línies dibuixades a mà i, a Ucraïna, el front de DeepStateMap (§1.3); les dates, de l'article de la Viquipèdia de cada zona (`content/occupations/`) | A la fitxa de cada zona |
 | Els textos de les banderes, els fets, els conflictes i les ocupacions | Escrits per aquest projecte a partir de les fonts que citen (§3) | A la fitxa de cada un |
 | Els títols de la Viquipèdia en català i castellà | Els enllaços entre idiomes de la mateixa Viquipèdia (`content/wikipedia.json`) | — |
 | La traducció dels noms dels estats i de les capitals | Aquest projecte | — |
@@ -60,6 +60,7 @@ criteris d'ara:
 | Un territori cedit que encara no té amo | El **govern provisional** que el governava, si n'hi ha. | Bèlgica, del tractat de París al Congrés de Viena: el Govern General dels aliats, no França ni els Països Baixos. |
 | Una annexió per la força, després del 1945, que l'ONU declara nul·la | **No canvia la sobirania**: el territori continua sent de qui era, i l'annexió va a la capa d'ocupacions. La Carta de l'ONU prohibeix guanyar territori per la força, i la resolució 242 ho repeteix per al 1967. | Jerusalem Est (1980), el Golan (1981) i Crimea (2014). |
 | Un territori ocupat que no era de cap altre estat | **Peça pròpia**, amb el seu nom i l'estatus de territori ocupat; l'ocupant, a la capa d'ocupacions. | Cisjordània i Gaza des del 1967, i des del 15 de novembre del 1988 amb el nom de Palestina, l'estat que s'hi va proclamar i que reconeixen 157 dels 193 membres de l'ONU. |
+| Una guerra llarga, amb un front que es mou durant anys | **Per fases**: una zona per a cada tram en què el front es va moure poc, amb les dates dels fets que l'obren i el tanquen i la línia d'un dia de dins del tram, que la fitxa diu. Entre dues fases, el front no es dibuixa dia a dia. Si el tram no té cap fet que el tanqui, es parteix per semestres. | La guerra russoucraïnesa: del 2 de març al 2 d'abril del 2022 (de la presa de Kherson a la retirada del nord), de l'11 de novembre del 2022 al 16 de febrer del 2024 (de Kherson a Avdiivka). |
 | El nom | El que tenia l'estat **aleshores**, com l'anomena la Viquipèdia de cada idioma. | El 1700, el Regne de França; el 1810, el Primer Imperi Francès. |
 
 Si la discrepància té importància històrica (una frontera en disputa, una data que cada
@@ -101,7 +102,7 @@ i `content/capitals.yaml`, en els tres idiomes.
 
 | Què | Per què |
 | --- | --- |
-| Crimea segueix a Ucraïna després del 18 de març del 2014 | CShapes la passa a Rússia. Aquí es dibuixa la frontera reconeguda internacionalment, com fan la resolució 68/262 de l'Assemblea General de l'ONU i la majoria d'atles. L'annexió s'explica com a fet, i anirà a la capa d'ocupacions. |
+| Crimea segueix a Ucraïna després del 18 de març del 2014 | CShapes la passa a Rússia. Aquí es dibuixa la frontera reconeguda internacionalment, com fan la resolució 68/262 de l'Assemblea General de l'ONU i la majoria d'atles. L'annexió s'explica com a fet, i és a la capa d'ocupacions (§1.3). |
 | Dàntzig, Ciutat Lliure fins a l'1 de setembre del 1939 | CShapes l'acaba el 31 d'agost del 1938 i la posa dins d'Alemanya des del 30 de setembre del 1938: durant un mes no és de ningú. És una errada d'un any; el Reich se la va annexionar l'1 de setembre del 1939. |
 | La frontera de Rapallo, del 12 de novembre del 1920 al 10 de febrer del 1947 | CShapes dona a Iugoslàvia el que el tractat de Rapallo va donar a Itàlia: el Litoral eslovè amb Idrija i Postojna, l'Ístria, Zara, Cres i Lošinj. Torna a ser italià fins al tractat de París. La línia, de Peč a Triglav, Snežnik i el golf de Kvarner, és dibuixada a mà a partir de l'article sobre el tractat (uns 2-5 km d'error). |
 | L'Estat Lliure de Fiume (1920-1924) i Fiume italiana (1924-1947) | CShapes no té l'estat lliure que va crear Rapallo, i el posa dins de Iugoslàvia. Aquí és un estat (amb el QID de Wikidata com a codi) fins al 22 de febrer del 1924, el decret d'annexió a Itàlia, i després italià. Sušak, a l'altra riba del Rječina, segueix iugoslava. |
@@ -157,7 +158,7 @@ fitxers generats no es toquen mai a mà.
 ### 1.3 La capa d'ocupacions
 
 El que es controlava de fet en les ocupacions llargues —entre el 1938 i el 1945, i els territoris
-que ocupa Israel des del 1967— va en una capa a part, que es pot amagar i
+que ocupa Israel des del 1967 i els d'Ucraïna i Rússia des del 2014— va en una capa a part, que es pot amagar i
 que pinta cada zona del color de l'estat que la controlava, amb el nom, qui la controlava i per
 què. Cada zona té un fitxer a `content/occupations/`, amb el text, les dates, qui la controlava,
 per què (`cause`, un fet amb l'any, tret del text de la zona) i la font, i una forma que fa
@@ -171,19 +172,45 @@ dates encara que una part canviés de mans abans o després: Ucraïna ocupada va
 el setembre del 1941, al seu alliberament, el novembre del 1943, tot i que l'oest no es va
 alliberar fins al 1944.
 
+**La guerra russoucraïnesa** n'és l'excepció: el front es mou des del 2022, fa anys que dura, i
+sense dibuixar-lo no es pot dir qui controla què. Per això va per fases (§0.1), cadascuna amb la
+línia de [DeepStateMap](https://deepstatemap.live/) d'un dia concret: Crimea, des del 27 de febrer
+del 2014; el Donbàs de les «repúbliques populars», del protocol de Minsk (5 de setembre del 2014) a
+la invasió; deu fases del 2 de març del 2022 ençà, partides pels fets que mouen el front (Kherson,
+la retirada del nord, Lisitxansk, Izium, Kherson, Avdiivka, Vuhledar) i, des de l'abril del 2025,
+per semestres; i la part de la província russa de Kursk que va tenir Ucraïna, del 15 d'agost del
+2024 al 12 de març del 2025, en dues. Des del 30 de setembre del 2022 cada fase té dues zones: el
+que Rússia diu que s'ha annexionat (les províncies de Donetsk, Luhansk, Zaporíjia i Kherson, per les
+divisions de Natural Earth) i el que ocupa fora d'aquestes (Khàrkiv, Sumi, Dnipropetrovsk i la
+fletxa de Kinburn), que no s'ha annexionat ni sobre el paper.
+
 **La forma** es fa amb peces que ja existeixen, perquè les vores coincideixin amb les del mapa:
 
 | D'on | Per a què | Exemple |
 | --- | --- | --- |
 | Un estat de CShapes, de la mateixa època o d'una altra | La majoria de les zones | Àustria és l'Àustria del 1938; Bohèmia i Moràvia, la Txecoslovàquia del 1939 dins de la Txèquia d'avui |
 | Les divisions administratives d'avui, de [Natural Earth](https://www.naturalearthdata.com/) (domini públic) | Les vores que seguien una divisió que encara existeix | Alsàcia i Mosel·la són tres departaments; la República Social Italiana, les províncies del nord d'Itàlia; Kosovo, repartit per municipis |
+| La línia del front de [DeepStateMap](https://deepstatemap.live/) d'un dia (`FRONTS` a l'script) | La guerra russoucraïnesa, del 2022 ençà, i el Donbàs d'abans | Les fases de la invasió i Kursk |
 | Línies dibuixades a mà (`LINES` a l'script), amb la font al costat | On no hi ha res més | La partició de Polònia, la línia de demarcació francesa, el segon arbitratge de Viena, Transnístria |
 
 Les línies dibuixades a mà són **aproximades**, amb un error d'uns 10-20 km; les divisions d'avui,
 tant com s'hagin mogut des d'aleshores. La fitxa de cada zona ho diu, i cita Natural Earth si se'n
 fan servir les divisions. Un test comprova que dues zones de les mateixes dates no es trepitgin.
 
-**Què hi ha**, en 63 zones:
+**DeepStateMap** és un projecte ucraïnès d'OSINT que redibuixa el front cada dia a partir de fonts
+obertes (vídeos geolocalitzats, informes dels dos exèrcits), i en guarda l'historial des del 3
+d'abril del 2022. L'script en baixa la instantània de cada fase, en treu el que pinta de vermell
+(ocupat des del 2022) i de granat (Crimea i el Donbàs d'abans del 2022) dins d'Ucraïna, o de verd i
+blau (ucraïnès) dins de la província de Kursk, i ho simplifica a uns 2,5 km. La franja grisa, que
+DeepStateMap no dona a ningú, no hi entra. La línia té, doncs, un error de pocs quilòmetres, i és
+la d'una font ucraïnesa: l'[ISW](https://understandingwar.org/) la dibuixa semblant, però no
+idèntica. La seva llicència permet fer servir els materials visuals citant-la, però no diu res de
+les geometries; per això el mapa en fa servir només la línia simplificada, la cita a cada fitxa i
+no en redistribueix les dades. Per a la fase del març del 2022, anterior a l'historial, la zona és
+l'ocupat a la primera instantània més el que ja hi surt alliberat: el màxim del març, encara que no
+tot alhora. La bossa de Debaltseve del 2014, que DeepStateMap no dibuixa, és una línia feta a mà.
+
+**Què hi ha**, en 85 zones:
 
 - **L'oest i el centre**: l'expansió alemanya del 1938-1939 (Àustria, Bohèmia i Moràvia, l'Estat
   Eslovac, Memel), Zaolzie i la Rutènia hongaresa; la partició de Polònia; l'ocupació de
@@ -205,9 +232,18 @@ fan servir les divisions. Un test comprova que dues zones de les mateixes dates 
   la guerra del Yom Kippur. Les dates, de l'article de la Viquipèdia de cada zona; les formes, de
   CShapes: Cisjordània i Gaza són les seves peces, i el Golan i el Sinaí, el que CShapes treu de
   Síria i d'Egipte el 1967.
+- **Ucraïna i Rússia, des del 2014**: Crimea; el Donbàs separatista del 2014-2015 i del 2015-2022;
+  la Ucraïna ocupada per Rússia en deu fases, del març del 2022 a avui, amb l'annexió de quatre
+  províncies del 30 de setembre del 2022; i Kursk, ocupat per Ucraïna del 2024 al 2025.
 
 **Què hi falta**:
 
+- **El Donbàs de l'abril a l'agost del 2014.** Les «repúbliques populars» es van proclamar
+  l'abril, però el front es va moure cada setmana fins al protocol de Minsk, i no hi ha cap línia
+  d'una data amb una font fiable: fins al 5 de setembre del 2014 només surt el conflicte.
+- **El que es mou per sota de l'error de la línia**: l'illa de les Serps (del 24 de febrer al 30 de
+  juny del 2022), els pobles de Kursk que Ucraïna encara tenia després de perdre Sudja i les
+  incursions a la província de Belgorod del 2025, de pocs km² cadascuna.
 - **La Rússia ocupada** del 1941 al 1943, de Smolensk al Caucas: va canviar de mans amb el front, i
   anirà amb la capa dels fronts.
 - **La resta de la Zona II**: el 7 de setembre del 1941 Itàlia va prendre el govern de tota la
