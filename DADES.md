@@ -55,6 +55,7 @@ criteris d'ara:
 | Dos estats tenen el mateix sobirà | **Estats separats** mentre mantenen institucions pròpies; un de sol quan s'uneixen per llei. | Saxònia i Polònia (1697-1763), Hannover i la Gran Bretanya (1714-1837) i Escòcia i Anglaterra (1603-1707), separats; la Gran Bretanya des del 1707. |
 | Un estat paga tribut o és vassall d'un altre | **Estat propi**, si es governava sol. | Valàquia i Moldàvia, sota l'Imperi Otomà. |
 | Una revolta | Al mapa, només si va tenir **un govern sobre el territori**, i amb les dates d'aquest govern. | L'Estat Hongarès, del 14 d'abril al 13 d'agost del 1849; la revolta de Nalivaiko, dins de la República de les Dues Nacions. |
+| Una font deixa un territori en blanc durant una guerra | Continua sent de **qui el tenia abans**, fins que la font el torna a donar a algú, si passa en menys de vint anys. Si no, és terra que les fonts no donen a ningú: el mapa la pinta en gris, sense fitxa. | La Rússia del 1609-1611, amb els polonesos a Moscou; Kíiv, del 1653 al 1661; l'Ulster, a la guerra dels Nou Anys. L'estepa del Volga, després de la Gran Horda, en gris. |
 | Un territori es deslliura abans de la pau | Torna al seu govern **el dia que es restaura**; si l'ocupant no se'n va, segueix sent seu fins al tractat. | Ginebra, república des del 31 de desembre del 1813; Hamburg, francesa fins al tractat de París (30 de maig del 1814), perquè Davout no la va deixar. |
 | Un territori cedit que encara no té amo | El **govern provisional** que el governava, si n'hi ha. | Bèlgica, del tractat de París al Congrés de Viena: el Govern General dels aliats, no França ni els Països Baixos. |
 | Una annexió per la força, després del 1945, que l'ONU declara nul·la | **No canvia la sobirania**: el territori continua sent de qui era, i l'annexió va a la capa d'ocupacions. La Carta de l'ONU prohibeix guanyar territori per la força, i la resolució 242 ho repeteix per al 1967. | Jerusalem Est (1980), el Golan (1981) i Crimea (2014). |
@@ -298,6 +299,7 @@ veritat (Podòlia, el 1672) es queden.
 | Noms i articles equivocats | «Serbs», el poble, per al Principat de Sèrbia; el comtat d'Urgell per Andorra; un «Regne de Mònaco»; els QID i els articles de la Catalunya d'avui per a la República Catalana del 1641, i de la Itàlia d'avui per a la República Italiana del 1802; l'Egipte del 1885, enllaçat a la «Cursa per l'Àfrica»; la Confederació Livoniana, a l'idioma livonià; la Ciutat Lliure de Dàntzig del 1920 per a la napoleònica; un «Regne de Hannover» el 1803, quan ho va ser des del 1814. |
 | França el 1814 | Cliopatria dona 100.000 km² del voltant de París al Gran Ducat de Berg, que en feia 15.000, al Rin. |
 | Alsàcia i Lorena | Franceses fins al tractat de Frankfurt (10 de maig del 1871), no fins a l'1 de gener. |
+| Territori en blanc durant una guerra | Torna a l'estat que el tenia (§0.1), fins que Cliopatria el dona a algú, si passa en menys de vint anys (`fillWarGaps`): Rússia (1609-1611), la República de les Dues Nacions a Ucraïna (1653-1661), Anglaterra a Irlanda (Munster, 1582-1587; l'Ulster, 1595-1608) i a la guerra civil (1640-1652), Espanya a Holanda i Zelanda (1572-1578), Suècia a la Lapònia (1718-1721). També els buits que Cliopatria deixa d'una mostra a l'altra: la Itàlia, la Dalmàcia austrohongaresa, la Grècia i la França del 1871 al 1885. L'script en fa la llista cada cop que corre. |
 
 **Discrepàncies que ho són de veritat**, entre fonts fiables, i el criteri que se n'ha pres:
 
@@ -337,9 +339,13 @@ veritat (Podòlia, el 1672) es queden.
   Gran Ducat de Frankfurt (Aschaffenburg, Fulda, Hanau): hi surten Würzburg i Berg.
 - **Vores menys fines** que les de CShapes, i amb un salt petit l'1 de gener del 1886, quan comencen
   les de CShapes.
-- **Forats.** L'Hetmanat cosac, que governava la Ucraïna central des del 1648, no és a Cliopatria:
-  del 1653 al 1661 aquella zona no és de ningú. L'estepa, al sud de Rússia, és en blanc fins que hi
-  arriba l'Imperi Rus.
+- **Terra sense estat.** On Cliopatria no posa ningú durant més de vint anys (l'estepa del Volga i
+  del Don al segle XVI, el desert d'Algèria), el mapa ensenya la terra en gris, sense fitxa: la
+  d'avui, la mateixa de CShapes. La costa de Cliopatria i la de CShapes no coincideixen del tot, i
+  en alguns trams la terra en gris fa de vora.
+- **L'Hetmanat cosac**, que governava la Ucraïna central des del 1648, no és a Cliopatria: del 1653
+  al 1661, aquella zona hi queda en blanc, i el mapa la dona a la República de les Dues Nacions,
+  que la tenia abans (§0.1), fins que Cliopatria la torna a cobrir.
 - **Peces que se sobreposen**, petites: Espanya i Nàpols a Sicília (1762), Espanya, Àustria i Savoia
   a Sardenya i Sicília (1721), el comtat de Foix i la casa de Borbó dins de França (1540-1563).
 - **Sense banderes.** Comencen el 1886: les d'abans encara no estan documentades.

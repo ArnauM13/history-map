@@ -17,11 +17,13 @@
  *      Cliopatria dona a qui els ocupava, amb formes de Cliopatria, d'OpenHistoricalMap
  *      (OHM_SHAPES, que es baixen a data-raw/) o de Natural Earth; TRANSITIONS, el dia dels
  *      tractats, i OHM, l'Europa central del 1815 al 1870.
- *   3. Dona a cada peça un codi: el de Gleditsch i Ward si continua un estat de CShapes (el que hi
+ *   3. Dona el territori que Cliopatria deixa en blanc durant una guerra a l'estat que el tenia
+ *      abans, fins que una altra peça el torna a cobrir (fillWarGaps).
+ *   4. Dona a cada peça un codi: el de Gleditsch i Ward si continua un estat de CShapes (el que hi
  *      ha a sota el 1886, o SAME_STATE), o el QID de Wikidata si no.
- *   4. Ho retalla i ho simplifica com build-borders.mjs, i hi posa colors i noms de la mateixa
+ *   5. Ho retalla i ho simplifica com build-borders.mjs, i hi posa colors i noms de la mateixa
  *      manera: dos veïns no en comparteixen mai, i un estat el manté tota la vida.
- *   5. Ho parteix per segles: l'app només baixa el segle que mira.
+ *   6. Ho parteix per segles: l'app només baixa el segle que mira.
  *
  * Deixa (al repo; la llicència és a public/data/README.md):
  *   public/data/history/{segle}.topo.json
@@ -2356,6 +2358,207 @@ function splitErnestine(pieces) {
   })
 }
 
+// ── Els buits de les guerres ─────────────────────────────────────────────────
+
+/**
+ * Cliopatria deixa en blanc, sovint, el territori que es disputava en una guerra: la Rússia del
+ * 1609 al 1611, mentre els polonesos eren a Moscou; l'Ulster, a la guerra dels Nou Anys; la
+ * Lapònia sueca, a la Gran Guerra del Nord. També el que no dibuixa d'una mostra a l'altra: a la
+ * Itàlia del 1871 al 1885 li falten trossos del sud. Pel criteri de sobirania (DADES.md §0.1),
+ * aquell territori continua sent de qui el tenia, i el mapa li dona fins que una altra peça el
+ * torna a cobrir.
+ *
+ * Només si l'estat continua existint i el buit es tanca en GAP_YEARS anys (o arriba al 1886, on
+ * CShapes ho cobreix tot). Si no, no és una guerra: és terra que les fonts no donen a ningú
+ * (l'estepa després de la Gran Horda), i el mapa hi ensenya la terra sense estat.
+ */
+const GAP_YEARS = 20
+/** La quadrícula per trobar els buits de pressa, en graus: uns 20 km. */
+const GAP_CELL = 0.2
+/** Quina part d'un buit s'ha de tornar a cobrir perquè compti com a tancat. */
+const GAP_CLOSED = 0.9
+const GAP_COLUMNS = Math.ceil((BBOX[2] - BBOX[0]) / GAP_CELL)
+const GAP_ROWS = Math.ceil((BBOX[3] - BBOX[1]) / GAP_CELL)
+const CSHAPES_DAY = nextDay(LAST_DAY)
+
+/** Les cel·les de la quadrícula que té dins una geometria, pel centre. */
+function cellsOf(geometry) {
+  const crossings = new Map()
+  for (const polygon of toMulti(geometry)) {
+    for (const ring of polygon) {
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+        const [x1, y1] = ring[j]
+        const [x2, y2] = ring[i]
+        const from = Math.max(0, Math.ceil((Math.min(y1, y2) - BBOX[1]) / GAP_CELL - 0.5))
+        const to = Math.min(GAP_ROWS - 1, Math.floor((Math.max(y1, y2) - BBOX[1]) / GAP_CELL - 0.5))
+        for (let row = from; row <= to; row++) {
+          const y = BBOX[1] + (row + 0.5) * GAP_CELL
+          if (y1 > y === y2 > y) continue
+          if (!crossings.has(row)) crossings.set(row, [])
+          crossings.get(row).push(x1 + ((y - y1) * (x2 - x1)) / (y2 - y1))
+        }
+      }
+    }
+  }
+  const cells = []
+  for (const [row, xs] of crossings) {
+    xs.sort((a, b) => a - b)
+    for (let k = 0; k + 1 < xs.length; k += 2) {
+      const first = Math.max(0, Math.ceil((xs[k] - BBOX[0]) / GAP_CELL - 0.5))
+      const last = Math.min(GAP_COLUMNS - 1, Math.floor((xs[k + 1] - BBOX[0]) / GAP_CELL - 0.5))
+      for (let column = first; column <= last; column++) cells.push(row * GAP_COLUMNS + column)
+    }
+  }
+  return cells
+}
+
+/** El requadre d'unes cel·les, amb una de marge. */
+function cellBox(cells) {
+  const box = [Infinity, Infinity, -Infinity, -Infinity]
+  for (const c of cells) {
+    const x = BBOX[0] + (c % GAP_COLUMNS) * GAP_CELL
+    const y = BBOX[1] + Math.floor(c / GAP_COLUMNS) * GAP_CELL
+    box[0] = Math.min(box[0], x - GAP_CELL)
+    box[1] = Math.min(box[1], y - GAP_CELL)
+    box[2] = Math.max(box[2], x + 2 * GAP_CELL)
+    box[3] = Math.max(box[3], y + 2 * GAP_CELL)
+  }
+  return box
+}
+
+const rectangle = ([w, s, e, n]) => [
+  [
+    [w, s],
+    [e, s],
+    [e, n],
+    [w, n],
+    [w, s],
+  ],
+]
+
+/**
+ * polygon-clipping falla de vegades amb els vèrtexs gairebé alineats de Cliopatria (la Khiva del
+ * 1866); amb les coordenades arrodonides a uns 10 cm, no.
+ */
+function clip(operation, a, b) {
+  try {
+    return polygonClipping[operation](a, b)
+  } catch {
+    const round = (multi) =>
+      multi.map((polygon) =>
+        polygon.map((ring) => ring.map(([x, y]) => [+x.toFixed(6), +y.toFixed(6)])),
+      )
+    return polygonClipping[operation](round(a), round(b))
+  }
+}
+
+/** Treu les peces d'una en una: amb totes alhora, polygon-clipping es perd. */
+function subtract(multi, pieces) {
+  let rest = multi
+  for (const p of pieces) {
+    if (rest.length === 0) break
+    if (touch(bboxOf(rest), bboxOf(toMulti(p.geometry)))) {
+      rest = clip('difference', rest, toMulti(p.geometry))
+    }
+  }
+  return rest
+}
+
+function fillWarGaps(pieces) {
+  const out = [...pieces]
+  const box = new Map(out.map((p) => [p, bboxOf(toMulti(p.geometry))]))
+  const cells = new Map(out.map((p) => [p, cellsOf(p.geometry)]))
+  const add = (p) => {
+    out.push(p)
+    box.set(p, bboxOf(toMulti(p.geometry)))
+    cells.set(p, cellsOf(p.geometry))
+  }
+  // La guerra, no la fi de l'estat: el buit és seu mentre l'estat té alguna peça.
+  const exists = (qid, day) => out.some((p) => p.qid === qid && p.s <= day && day <= p.e && !p.gap)
+
+  /** El buit, a la peça de l'estat d'aquells dies (perquè no hi hagi una frontera pel mig), o a una de nova. */
+  function give(piece, s, e, gap) {
+    const own = out.filter(
+      (p) =>
+        p.qid === piece.qid &&
+        p.status === piece.status &&
+        p.owner === piece.owner &&
+        p.s <= e &&
+        p.e >= s &&
+        touch(box.get(p), bboxOf(gap)),
+    )
+    if (own.length === 0) return add({ ...piece, s, e, geometry: fromMulti(gap), gap: true })
+    for (const p of own) {
+      out.splice(out.indexOf(p), 1)
+      if (p.s < s) add({ ...p, e: previousDay(s) })
+      if (p.e > e) add({ ...p, s: nextDay(e) })
+      const geometry = fromMulti(clip('union', toMulti(p.geometry), gap))
+      add({ ...p, s: Math.max(p.s, s), e: Math.min(p.e, e), geometry })
+    }
+  }
+
+  const mark = new Uint8Array(GAP_COLUMNS * GAP_ROWS)
+  const filled = []
+  for (const piece of pieces) {
+    if (piece.e >= LAST_DAY || cells.get(piece).length === 0) continue
+    const day = nextDay(piece.e)
+    if (!exists(piece.qid, day)) continue
+    const limit = Math.min(shiftDay(day, GAP_YEARS * 366), CSHAPES_DAY)
+    const near = out.filter(
+      (p) => p !== piece && p.e >= day && p.s <= limit && touch(box.get(p), box.get(piece)),
+    )
+    const onDay = near.filter((p) => p.s <= day)
+
+    // Primer, a la quadrícula: on no hi ha ningú l'endemà, i si s'hi torna a posar algú a temps.
+    for (const p of onDay) for (const c of cells.get(p)) mark[c] = 1
+    const orphan = cells.get(piece).filter((c) => !mark[c])
+    for (const p of onDay) for (const c of cells.get(p)) mark[c] = 0
+    if (orphan.length === 0) continue
+    for (const c of orphan) mark[c] = 1
+    for (const p of near) {
+      if (p.s > day) for (const c of cells.get(p)) if (mark[c] === 1) mark[c] = 2
+    }
+    const open = new Set(limit < CSHAPES_DAY ? orphan.filter((c) => mark[c] === 1) : [])
+    for (const c of orphan) mark[c] = 0
+
+    // Després, la forma exacta, només a la zona del buit, polígon a polígon: el que es tanca a
+    // temps, se'l queda l'estat; el que no, es queda sense ningú.
+    const area = cellBox(orphan)
+    let gap = subtract(
+      clip('intersection', toMulti(piece.geometry), rectangle(area)),
+      onDay.filter((p) => touch(box.get(p), area)),
+    ).filter((polygon) => {
+      const inside = cellsOf(fromMulti([polygon]))
+      return (
+        inside.length > 0 && inside.filter((c) => !open.has(c)).length >= GAP_CLOSED * inside.length
+      )
+    })
+    if (gap.length === 0) continue
+    const initial = multiArea(gap)
+    const starts = [...new Set(near.filter((p) => p.s > day && p.s < limit).map((p) => p.s))]
+    let from = day
+    for (const t of [...starts.sort((a, b) => a - b), limit]) {
+      const rest =
+        t < limit
+          ? subtract(
+              gap,
+              near.filter((p) => p.s === t && touch(box.get(p), bboxOf(gap))),
+            )
+          : []
+      const ended = t >= limit || !exists(piece.qid, t)
+      // Un tram nou només quan el buit canvia o s'acaba: si no, cada peça veïna el partiria.
+      if (!ended && multiArea(rest) === multiArea(gap)) continue
+      const { geometry: _, ...identity } = piece
+      give(identity, from, previousDay(t), gap)
+      filled.push({ name: piece.name, s: from, e: previousDay(t), area: multiArea(gap) })
+      from = t
+      gap = rest
+      if (ended || gap.length === 0 || multiArea(gap) < (1 - GAP_CLOSED) * initial) break
+    }
+  }
+  return { pieces: out, filled }
+}
+
 // ── Els codis ────────────────────────────────────────────────────────────────
 
 const ringArea = (ring) => {
@@ -2590,14 +2793,16 @@ const cshapesTopo = JSON.parse(readFileSync(BORDERS, 'utf8'))
 const cshapes = topojson.feature(cshapesTopo, cshapesTopo.objects.borders).features
 // Les formes de SHAPES: Cliopatria, i OHM i Natural Earth on Cliopatria no en té cap de bona.
 const sources = { rows, ohm: await readOhmShapes(), naturalEarth: await readNaturalEarth() }
-const pieces = applyOhm(
-  applyShapes(
-    applyTransitions(applyShapes(toPieces(rows, identityOf), sources, identityOf, false)),
-    sources,
-    identityOf,
-    true,
+const { pieces, filled } = fillWarGaps(
+  applyOhm(
+    applyShapes(
+      applyTransitions(applyShapes(toPieces(rows, identityOf), sources, identityOf, false)),
+      sources,
+      identityOf,
+      true,
+    ),
+    fixOhmWithCShapes(await readOhm(), cshapes),
   ),
-  fixOhmWithCShapes(await readOhm(), cshapes),
 )
 
 const fixedColours = new Map(cshapes.map((f) => [groupOfCShapes(f.properties), f.properties.c]))
@@ -2695,6 +2900,11 @@ console.log(
   `✔ ${topo.objects.borders.geometries.length} peces de ${new Set(pieces.map((p) => p.qid)).size} entitats, ${colours} colors, ${mergedLabels.length} noms`,
 )
 console.log(`  Per segles: ${centuries.join(', ')}`)
+// Els buits grans (més d'uns 4.000 km²), perquè es vegi què s'ha omplert i es pugui comprovar.
+const bigGaps = filled.filter((f) => f.area >= 0.5)
+console.log(
+  `  Buits de guerra omplerts: ${filled.length}; els grans:\n${bigGaps.map((f) => `    ${f.name}, ${f.s}-${f.e}`).join('\n')}`,
+)
 console.log(`  Continuen un estat de CShapes: ${continued.join(', ')}`)
 if (readdirSync(OUT_DIR).length === 0) process.exit(1)
 if (clashes.length > 0) {

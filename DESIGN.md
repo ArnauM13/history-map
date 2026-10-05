@@ -28,8 +28,12 @@ un component, vol dir que falta un token.
 | `--c-occupation` | `#7b1fa2` | `#ce93d8` | Ocupacions: la llista i la fitxa (al mapa, el color és el de l'ocupant) |
 | `--c-success` | `#2e7d32` | `#66bb6a` | La xapa «Nova» d'una bandera |
 
-El mapa té els seus colors a `src/map/style.ts`: el mar, les fronteres i la paleta d'atles de paper
-dels estats. No segueixen el tema: un mapa antic és clar també de nit.
+El mapa té els seus colors a `src/map/style.ts`: el mar, la terra, les fronteres i la paleta
+d'atles de paper dels estats. No segueixen el tema: un mapa antic és clar també de nit.
+
+La terra és sempre la mateixa, la d'avui, i va sota els estats: on en una data no hi ha cap estat
+(l'estepa del 1550, que les fonts no donen a ningú), es veu la terra en un gris neutre i no s'hi
+pot clicar. Un tros de continent no desapareix mai perquè no en tinguem dades.
 
 Les zones de la capa d'ocupacions es pinten opaques i del color de qui les controlava, tal com es
 veu el seu territori: la França ocupada és una part més d'Alemanya. Una annexió, plena; una

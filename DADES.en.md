@@ -54,6 +54,7 @@ historiography, and settle on a rule that holds for every similar case. The curr
 | Two states share a sovereign | **Separate states** while they keep their own institutions; one when they are united by law. | Saxony and Poland (1697-1763), Hanover and Great Britain (1714-1837) and Scotland and England (1603-1707), separate; Great Britain from 1707. |
 | A state pays tribute to or is a vassal of another | **A state of its own**, if it governed itself. | Wallachia and Moldavia, under the Ottoman Empire. |
 | A revolt | On the map only if it had **a government over the territory**, with that government's dates. | The Hungarian State, from 14 April to 13 August 1849; the Nalyvaiko uprising, inside the Polish-Lithuanian Commonwealth. |
+| A source leaves a territory blank during a war | It still belongs to **whoever held it before**, until the source gives it to someone again, if that happens within twenty years. If not, it is land the sources give to nobody: the map paints it grey, with no card. | Russia in 1609-1611, with the Poles in Moscow; Kyiv, from 1653 to 1661; Ulster, in the Nine Years' War. The Volga steppe, after the Great Horde, in grey. |
 | A territory is freed before the peace | It goes back to its own government **on the day that government is restored**; if the occupier does not leave, it stays the occupier's until the treaty. | Geneva, a republic from 31 December 1813; Hamburg, French until the Treaty of Paris (30 May 1814), because Davout would not give it up. |
 | A ceded territory that has no owner yet | The **provisional government** that ran it, if there was one. | Belgium, from the Treaty of Paris to the Congress of Vienna: the Allies' General Government, neither France nor the Netherlands. |
 | An annexation by force, after 1945, that the UN declares null and void | **Sovereignty does not change**: the territory still belongs to whoever held it, and the annexation goes in the occupations layer. The UN Charter forbids gaining territory by force, and Resolution 242 repeats it for 1967. | East Jerusalem (1980), the Golan (1981) and Crimea (2014). |
@@ -295,6 +296,7 @@ that were a real cession (Podolia, in 1672) stay.
 | Wrong names and articles | "Serbs", the people, for the Principality of Serbia; the County of Urgell for Andorra; a "Kingdom of Monaco"; present-day Catalonia's QID and article for the 1641 Catalan Republic, and present-day Italy's for the 1802 Italian Republic; 1885 Egypt linked to the "Scramble for Africa"; the Livonian Confederation, to the Livonian language; the 1920 Free City of Danzig for the Napoleonic one; a "Kingdom of Hanover" in 1803, when it became one in 1814. |
 | France in 1814 | Cliopatria gives 100,000 km² around Paris to the Grand Duchy of Berg, which had 15,000, on the Rhine. |
 | Alsace and Lorraine | French until the Treaty of Frankfurt (10 May 1871), not until 1 January. |
+| Territory left blank during a war | Goes back to the state that held it (§0.1), until Cliopatria gives it to someone, if that happens within twenty years (`fillWarGaps`): Russia (1609-1611), the Polish-Lithuanian Commonwealth in Ukraine (1653-1661), England in Ireland (Munster, 1582-1587; Ulster, 1595-1608) and in the Civil War (1640-1652), Spain in Holland and Zeeland (1572-1578), Sweden in Lapland (1718-1721). Also the holes Cliopatria leaves from one sample to the next: Italy, Austro-Hungarian Dalmatia, Greece and France from 1871 to 1885. The script lists them every time it runs. |
 
 **Genuine disagreements** between reliable sources, and the rule taken:
 
@@ -335,9 +337,13 @@ that were a real cession (Podolia, in 1672) stay.
   the rest of the Grand Duchy of Frankfurt (Aschaffenburg, Fulda, Hanau): Würzburg and Berg show
   instead.
 - **Coarser outlines** than CShapes's, with a small jump on 1 January 1886, when CShapes's start.
-- **Gaps.** The Cossack Hetmanate, which ruled central Ukraine from 1648, is not in Cliopatria:
-  from 1653 to 1661 that area belongs to nobody. The steppe, south of Russia, is blank until the
-  Russian Empire reaches it.
+- **Land with no state.** Where Cliopatria puts nobody for more than twenty years (the Volga and Don
+  steppe in the 16th century, the Algerian desert), the map shows the land in grey, with no card:
+  today's land, the same as CShapes. Cliopatria's coastline and CShapes' don't match exactly, and
+  in places the grey land shows as a rim.
+- **The Cossack Hetmanate**, which ruled central Ukraine from 1648, is not in Cliopatria: from 1653
+  to 1661 that area is left blank, and the map gives it to the Polish-Lithuanian Commonwealth,
+  which held it before (§0.1), until Cliopatria covers it again.
 - **Overlapping pieces**, small ones: Spain and Naples in Sicily (1762), Spain, Austria and Savoy
   in Sardinia and Sicily (1721), the County of Foix and the House of Bourbon inside France
   (1540-1563).
