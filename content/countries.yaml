@@ -123,8 +123,12 @@
 "770": { ca: Pakistan, es: Pakistán, en: Pakistan, wiki: Pakistan }
 "3461": { ca: Bòsnia, es: Bosnia, en: Bosnia, wiki: Austro-Hungarian rule in Bosnia and Herzegovina }
 "3462": { ca: Hercegovina, es: Herzegovina, en: Herzegovina, wiki: Austro-Hungarian rule in Bosnia and Herzegovina }
-"6511": { ca: Franja de Gaza, es: Franja de Gaza, en: Gaza Strip, wiki: Gaza Strip }
-"6631": { ca: Cisjordània, es: Cisjordania, en: West Bank, wiki: West Bank }
+"6511":
+  - { until: 1988-11-14, ca: Franja de Gaza, es: Franja de Gaza, en: Gaza Strip, wiki: Gaza Strip }
+  - { ca: Palestina, es: Palestina, en: Palestine, wiki: State of Palestine }
+"6631":
+  - { until: 1988-11-14, ca: Cisjordània, es: Cisjordania, en: West Bank, wiki: West Bank }
+  - { ca: Palestina, es: Palestina, en: Palestine, wiki: State of Palestine }
 "7020": { ca: Emirat de Bukharà, es: Emirato de Bujará, en: Emirate of Bukhara, wiki: Emirate of Bukhara }
 "7030": { ca: Kanat de Khiva, es: Kanato de Jiva, en: Khanate of Khiva, wiki: Khanate of Khiva }
 "7506": { ca: Jammu i Caixmir, es: Jammu y Cachemira, en: Jammu and Kashmir, wiki: Jammu and Kashmir (princely state) }

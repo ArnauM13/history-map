@@ -1,0 +1,34 @@
+start: 1967-06-08
+control:
+  - until: 1973-10-05
+    by: 666
+    kind: occupation
+    cause:
+      ca: Guerra dels Sis Dies, 1967
+      es: Guerra de los Seis Días, 1967
+      en: Six-Day War, 1967
+countries: [651]
+title:
+  ca: Sinaí ocupat
+  es: Sinaí ocupado
+  en: Occupied Sinai
+summary:
+  ca: >-
+    Israel va ocupar el Sinaí fins al canal de Suez en quatre dies; Egipte va acceptar l'alto el foc
+    el 8 de juny del 1967. A la guerra del Yom Kippur, el 1973, Egipte en va recuperar bona part de
+    la riba oriental del canal.
+    Israel es va retirar de la resta per etapes, pels acords del 1974 i el 1975 i el tractat de pau
+    del 1979, fins al 25 d'abril del 1982; el mapa encara no dibuixa aquestes etapes.
+  es: >-
+    Israel ocupó el Sinaí hasta el canal de Suez en cuatro días; Egipto aceptó el alto el fuego el 8
+    de junio de 1967. En la guerra del Yom Kipur, en 1973, Egipto recuperó buena parte de la orilla
+    oriental del canal. Israel
+    se retiró del resto por etapas, por los acuerdos de 1974 y 1975 y el tratado de paz de 1979,
+    hasta el 25 de abril de 1982; el mapa aún no dibuja esas etapas.
+  en: >-
+    Israel occupied the Sinai up to the Suez Canal in four days; Egypt accepted the ceasefire on 8
+    June 1967. In the Yom Kippur War of 1973, Egypt retook most of the east bank of the canal. Israel withdrew from the rest in
+    stages, under the 1974 and 1975 agreements and the 1979 peace treaty, until 25 April 1982; the
+    map does not yet show those stages.
+wikipedia:
+  en: Israeli occupation of the Sinai Peninsula

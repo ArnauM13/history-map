@@ -31,7 +31,7 @@ Everything the map shows has a source, and the card where it appears cites it wi
 | Each entity's name before 1886 | The Catalan and Spanish title of the Wikipedia article Cliopatria cites, or `content/countries.yaml` by QID (§1.4) | On the state's card |
 | Flag dates | The Wikipedia articles on each state's flags (`sources` in `content/flags.yaml`) | On the state's card |
 | Flag images | Wikimedia Commons (§2, `public/flags/credits.json`) | Under each flag |
-| Occupied and annexed zones (1938–1945) | CShapes borders from other dates, today's divisions from Natural Earth and hand-drawn lines (§1.3); the dates, from each zone's Wikipedia article (`content/occupations/`) | On each zone's card |
+| Occupied and annexed zones (1938–1945 and, in the Middle East, from 1967) | CShapes borders from other dates, today's divisions from Natural Earth and hand-drawn lines (§1.3); the dates, from each zone's Wikipedia article (`content/occupations/`) | On each zone's card |
 | Flag texts, events, conflicts and occupations | Written by this project from the sources they cite (§3) | On each one's card |
 | Catalan and Spanish Wikipedia titles | Wikipedia's own interlanguage links (`content/wikipedia.json`) | — |
 | Translations of state and capital names | This project | — |
@@ -54,6 +54,8 @@ historiography, and settle on a rule that holds for every similar case. The curr
 | Two states share a sovereign | **Separate states** while they keep their own institutions; one when they are united by law. | Saxony and Poland (1697-1763), Hanover and Great Britain (1714-1837) and Scotland and England (1603-1707), separate; Great Britain from 1707. |
 | A state pays tribute to or is a vassal of another | **A state of its own**, if it governed itself. | Wallachia and Moldavia, under the Ottoman Empire. |
 | A revolt | On the map only if it had **a government over the territory**, with that government's dates. | The Hungarian State, from 14 April to 13 August 1849; the Nalyvaiko uprising, inside the Polish-Lithuanian Commonwealth. |
+| An annexation by force, after 1945, that the UN declares null and void | **Sovereignty does not change**: the territory still belongs to whoever held it, and the annexation goes in the occupations layer. The UN Charter forbids gaining territory by force, and Resolution 242 repeats it for 1967. | East Jerusalem (1980), the Golan (1981) and Crimea (2014). |
+| An occupied territory that belonged to no other state | **A piece of its own**, with its own name and the status of occupied territory; the occupier, in the occupations layer. | The West Bank and Gaza from 1967, and from 15 November 1988 under the name of Palestine, the state proclaimed there and recognised by 157 of the 193 UN members. |
 | The name | The one the state had **at the time**, as each language's Wikipedia calls it. | In 1700, the Kingdom of France; in 1810, the First French Empire. |
 
 If the disagreement matters historically (a disputed border, a date each historiography sets
@@ -94,6 +96,8 @@ names come from `content/countries.yaml` and `content/capitals.yaml`, in all thr
 | What | Why |
 | --- | --- |
 | Crimea stays in Ukraine after 18 March 2014 | CShapes moves it to Russia. Here the internationally recognised border is drawn, as UN General Assembly resolution 68/262 and most atlases do. The annexation is explained as an event and will go in the occupations layer. |
+| Israel, from 10 June 1967, within the Green Line | CShapes adds the West Bank, East Jerusalem, Gaza, the Golan and the Sinai, which Israel occupied in the Six-Day War, and does not return the Sinai to Egypt until 1979. Here Israel stays within the 1949 armistice line, as drawn by the UN (Resolutions 242 and 2334) and the International Court of Justice (2004 and 2024); the Golan is Syrian and the Sinai Egyptian. Israeli control goes in the occupations layer (§1.3). |
+| The West Bank and Gaza continue after 1967 | CShapes makes them disappear into Israel. Here they continue with their 1967 shape, as occupied territory depending on no state: until 1988, named the West Bank and the Gaza Strip; from 15 November 1988, Palestine. Jordan had annexed the West Bank in 1950, but almost nobody recognised it, and it gave up its claim on 31 July 1988. |
 
 Every correction is code, in the `CORRECTIONS` list in `scripts/build-borders.mjs`, and has its
 row here. The generated files are never edited by hand.
@@ -119,10 +123,16 @@ row here. The generated files are never edited by hand.
 - **It ends in 2019.** We assume no recognised border in Europe has changed since; if one does, it
   will be added by hand.
 - **Simplified geometry.** Good enough to see the continent; not to measure distances or areas.
+  Gaza and the West Bank are not simplified: at 12%, Gaza became a triangle that put Gaza City
+  in Israel.
+- **The Green Line, a few kilometres off.** CShapes draws it with few points, and Qalqilya and
+  Tulkarm, which touch the line, end up on the Israeli side. Natural Earth draws it better, but
+  puts East Jerusalem inside Israel. Fixing it is on the [roadmap](FULL-DE-RUTA.md), §3.
 
 ### 1.3 The occupations layer
 
-What was under de facto control between 1938 and 1945 goes in a separate layer that can be
+What was under de facto control in the long occupations —between 1938 and 1945, and the
+territories Israel has occupied since 1967— goes in a separate layer that can be
 hidden and paints each zone in the colour of the state that controlled it, with its name, who
 controlled it and why. Each zone has a file in `content/occupations/`, with the text, the dates,
 who controlled it, why (`cause`, an event with its year, taken from the zone's text) and the
@@ -148,7 +158,7 @@ Hand-drawn lines are **approximate**, within some 10–20 km; today's divisions,
 have moved since. Each zone's card says so, and cites Natural Earth when its divisions are used. A
 test checks that no two zones with the same dates overlap.
 
-**What is there**, in 57 zones:
+**What is there**, in 61 zones:
 
 - **The west and centre**: the German expansion of 1938–1939 (Austria, Bohemia and Moravia, the
   Slovak State, Memel), Trans-Olza and Hungarian Ruthenia; the partition of Poland; the occupation
@@ -163,6 +173,11 @@ test checks that no two zones with the same dates overlap.
   occupied Hungary in 1944.
 - **Italy from 1943 to 1945**: the Italian Social Republic, Rome and central Italy, and the two
   operational zones Germany annexed in all but name.
+- **The Middle East, from 1967**: the West Bank with East Jerusalem, the Gaza Strip until the
+  Israeli withdrawal of 12 September 2005, the Golan, annexed in 1981, and the Sinai until the Yom
+  Kippur War. The dates come from each zone's Wikipedia article; the shapes, from CShapes: the West
+  Bank and Gaza are its pieces, and the Golan and the Sinai, what CShapes takes from Syria and
+  Egypt in 1967.
 
 **What is missing**:
 
@@ -170,6 +185,20 @@ test checks that no two zones with the same dates overlap.
   front, and will come with the front-lines layer.
 - **Small pieces of the 1941 Italian annexations**: what was added to the province of Fiume
   (Sušak, Kastav, Krk and Rab) and, from the autumn, Hvar and Pag. They appear inside Croatia.
+- **The Sinai from 1973 to 1982.** Egypt retook the east bank of the canal in the Yom Kippur War,
+  and Israel withdrew from the rest in stages (1974, 1975, 1979-1980) until 25 April 1982. The
+  lines of each agreement are needed; until then, the Sinai appears Egyptian with no occupation.
+- **Gaza after 2005.** With no soldiers inside, the zone ends, but the UN and the International
+  Court of Justice still regard it as occupied, because Israel controls its borders, airspace and
+  sea: that is why the Gaza piece remains an occupied territory. The part the Israeli army has
+  held since the 2023 war is not there either: the front moves and there is no agreed line with a
+  reliable source.
+- **Areas A and B of the West Bank** (Oslo Accords, 1995), governed by the Palestinian National
+  Authority: they are dozens of patches, and Israel enters them at will; the whole West Bank
+  appears as occupied, as the UN treats it.
+- **Short Israeli occupations, or ones off the map**: the Sinai and Gaza from 1956 to 1957,
+  southern Lebanon from 1982 to 2000 and the Golan buffer zone, which Israel occupied in December
+  2024.
 
 ### 1.4 Before 1886: Cliopatria
 

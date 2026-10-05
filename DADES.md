@@ -31,7 +31,7 @@ Tot el que ensenya el mapa té una font, i la fitxa on surt la cita amb un enlla
 | El nom de cada entitat d'abans del 1886 | El títol de l'article de la Viquipèdia que en cita Cliopatria, en català i castellà, o `content/countries.yaml` pel QID (§1.4) | A la fitxa de l'estat |
 | Les dates de les banderes | Els articles de la Viquipèdia sobre les banderes de cada estat (`sources` a `content/flags.yaml`) | A la fitxa de l'estat |
 | Les imatges de les banderes | Wikimedia Commons (§2, `public/flags/credits.json`) | Sota cada bandera |
-| Les zones ocupades i annexionades (1938-1945) | Fronteres de CShapes d'altres dates, divisions d'avui de Natural Earth i línies dibuixades a mà (§1.3); les dates, de l'article de la Viquipèdia de cada zona (`content/occupations/`) | A la fitxa de cada zona |
+| Les zones ocupades i annexionades (1938-1945 i, a l'Orient Pròxim, des del 1967) | Fronteres de CShapes d'altres dates, divisions d'avui de Natural Earth i línies dibuixades a mà (§1.3); les dates, de l'article de la Viquipèdia de cada zona (`content/occupations/`) | A la fitxa de cada zona |
 | Els textos de les banderes, els fets, els conflictes i les ocupacions | Escrits per aquest projecte a partir de les fonts que citen (§3) | A la fitxa de cada un |
 | Els títols de la Viquipèdia en català i castellà | Els enllaços entre idiomes de la mateixa Viquipèdia (`content/wikipedia.json`) | — |
 | La traducció dels noms dels estats i de les capitals | Aquest projecte | — |
@@ -55,6 +55,8 @@ criteris d'ara:
 | Dos estats tenen el mateix sobirà | **Estats separats** mentre mantenen institucions pròpies; un de sol quan s'uneixen per llei. | Saxònia i Polònia (1697-1763), Hannover i la Gran Bretanya (1714-1837) i Escòcia i Anglaterra (1603-1707), separats; la Gran Bretanya des del 1707. |
 | Un estat paga tribut o és vassall d'un altre | **Estat propi**, si es governava sol. | Valàquia i Moldàvia, sota l'Imperi Otomà. |
 | Una revolta | Al mapa, només si va tenir **un govern sobre el territori**, i amb les dates d'aquest govern. | L'Estat Hongarès, del 14 d'abril al 13 d'agost del 1849; la revolta de Nalivaiko, dins de la República de les Dues Nacions. |
+| Una annexió per la força, després del 1945, que l'ONU declara nul·la | **No canvia la sobirania**: el territori continua sent de qui era, i l'annexió va a la capa d'ocupacions. La Carta de l'ONU prohibeix guanyar territori per la força, i la resolució 242 ho repeteix per al 1967. | Jerusalem Est (1980), el Golan (1981) i Crimea (2014). |
+| Un territori ocupat que no era de cap altre estat | **Peça pròpia**, amb el seu nom i l'estatus de territori ocupat; l'ocupant, a la capa d'ocupacions. | Cisjordània i Gaza des del 1967, i des del 15 de novembre del 1988 amb el nom de Palestina, l'estat que s'hi va proclamar i que reconeixen 157 dels 193 membres de l'ONU. |
 | El nom | El que tenia l'estat **aleshores**, com l'anomena la Viquipèdia de cada idioma. | El 1700, el Regne de França; el 1810, el Primer Imperi Francès. |
 
 Si la discrepància té importància històrica (una frontera en disputa, una data que cada
@@ -97,6 +99,8 @@ i `content/capitals.yaml`, en els tres idiomes.
 | Què | Per què |
 | --- | --- |
 | Crimea segueix a Ucraïna després del 18 de març del 2014 | CShapes la passa a Rússia. Aquí es dibuixa la frontera reconeguda internacionalment, com fan la resolució 68/262 de l'Assemblea General de l'ONU i la majoria d'atles. L'annexió s'explica com a fet, i anirà a la capa d'ocupacions. |
+| Israel, des del 10 de juny del 1967, dins de la Línia Verda | CShapes hi suma Cisjordània, Jerusalem Est, Gaza, el Golan i el Sinaí, que Israel va ocupar a la guerra dels Sis Dies, i el Sinaí no el torna a Egipte fins al 1979. Aquí Israel queda dins de la línia dels armisticis del 1949, com la dibuixen l'ONU (resolucions 242 i 2334) i el Tribunal Internacional de Justícia (2004 i 2024); el Golan és de Síria i el Sinaí, d'Egipte. El control israelià va a la capa d'ocupacions (§1.3). |
+| Cisjordània i Gaza continuen després del 1967 | CShapes les fa desaparèixer dins d'Israel. Aquí continuen amb la forma del 1967, com a territori ocupat i sense dependre de cap estat: fins al 1988, amb el nom de Cisjordània i de Franja de Gaza; des del 15 de novembre del 1988, el de Palestina. Jordània s'havia annexionat Cisjordània el 1950, però gairebé ningú ho va reconèixer, i hi va renunciar el 31 de juliol del 1988. |
 
 Cada correcció és codi, a la llista `CORRECTIONS` de `scripts/build-borders.mjs`, i té la seva fila
 aquí. Els fitxers generats no es toquen mai a mà.
@@ -121,11 +125,17 @@ aquí. Els fitxers generats no es toquen mai a mà.
 - **S'acaba el 2019.** Es dona per fet que cap frontera reconeguda d'Europa ha canviat després;
   si en canvia alguna, s'afegirà a mà.
 - **Geometria simplificada.** Per veure el continent n'hi ha prou; per mesurar distàncies o
-  superfícies, no.
+  superfícies, no. Gaza i Cisjordània no se simplifiquen: al 12 %, Gaza quedava en un triangle
+  que deixava la ciutat de Gaza a Israel.
+- **La Línia Verda, a uns quants quilòmetres.** CShapes la dibuixa amb pocs punts, i Qalqilya i
+  Tulkarem, que toquen la línia, hi queden a la banda israeliana. Natural Earth la té més ben
+  dibuixada, però hi posa Jerusalem Est dins d'Israel. Corregir-la és al
+  [full de ruta](FULL-DE-RUTA.md), §3.
 
 ### 1.3 La capa d'ocupacions
 
-El que es controlava de fet entre el 1938 i el 1945 va en una capa a part, que es pot amagar i
+El que es controlava de fet en les ocupacions llargues —entre el 1938 i el 1945, i els territoris
+que ocupa Israel des del 1967— va en una capa a part, que es pot amagar i
 que pinta cada zona del color de l'estat que la controlava, amb el nom, qui la controlava i per
 què. Cada zona té un fitxer a `content/occupations/`, amb el text, les dates, qui la controlava,
 per què (`cause`, un fet amb l'any, tret del text de la zona) i la font, i una forma que fa
@@ -151,7 +161,7 @@ Les línies dibuixades a mà són **aproximades**, amb un error d'uns 10-20 km; 
 tant com s'hagin mogut des d'aleshores. La fitxa de cada zona ho diu, i cita Natural Earth si se'n
 fan servir les divisions. Un test comprova que dues zones de les mateixes dates no es trepitgin.
 
-**Què hi ha**, en 57 zones:
+**Què hi ha**, en 61 zones:
 
 - **L'oest i el centre**: l'expansió alemanya del 1938-1939 (Àustria, Bohèmia i Moràvia, l'Estat
   Eslovac, Memel), Zaolzie i la Rutènia hongaresa; la partició de Polònia; l'ocupació de
@@ -166,6 +176,11 @@ fan servir les divisions. Un test comprova que dues zones de les mateixes dates 
   del 1944.
 - **Itàlia del 1943 al 1945**: la República Social Italiana, Roma i la Itàlia central, i les dues
   zones d'operacions que Alemanya es va annexionar de fet.
+- **L'Orient Pròxim, des del 1967**: Cisjordània amb Jerusalem Est, la Franja de Gaza fins a la
+  retirada israeliana del 12 de setembre del 2005, el Golan, annexionat el 1981, i el Sinaí fins a
+  la guerra del Yom Kippur. Les dates, de l'article de la Viquipèdia de cada zona; les formes, de
+  CShapes: Cisjordània i Gaza són les seves peces, i el Golan i el Sinaí, el que CShapes treu de
+  Síria i d'Egipte el 1967.
 
 **Què hi falta**:
 
@@ -173,6 +188,21 @@ fan servir les divisions. Un test comprova que dues zones de les mateixes dates 
   anirà amb la capa dels fronts.
 - **Trossos petits de les annexions italianes del 1941**: el que es va afegir a la província de
   Fiume (Sušak, Kastav, Krk i Rab) i, des de la tardor, Hvar i Pag. Surten dins de Croàcia.
+- **El Sinaí del 1973 al 1982.** Egipte va recuperar la riba oriental del canal a la guerra del
+  Yom Kippur, i Israel es va retirar de la resta per etapes (1974, 1975, 1979-1980) fins al 25
+  d'abril del 1982. Calen les línies de cada acord; fins aleshores, el Sinaí surt egipci sense
+  ocupació.
+- **Gaza després del 2005.** Sense soldats a dins, la zona s'acaba, però l'ONU i el Tribunal
+  Internacional de Justícia la consideren encara ocupada, perquè Israel en controla les
+  fronteres, l'espai aeri i el mar: per això la peça de Gaza continua sent un territori ocupat.
+  La part que ocupa l'exèrcit israelià des de la guerra del 2023 tampoc no hi és: el front es
+  mou i no hi ha cap línia pactada amb una font fiable.
+- **Les àrees A i B de Cisjordània** (acords d'Oslo, 1995), que governa l'Autoritat Nacional
+  Palestina: són desenes de taques, i Israel hi entra quan vol; Cisjordània surt sencera com a
+  ocupada, com la tracta l'ONU.
+- **Les ocupacions israelianes curtes o fora del mapa**: el Sinaí i Gaza del 1956 al 1957, el
+  sud del Líban del 1982 al 2000 i la zona d'amortiment del Golan, que Israel va ocupar el
+  desembre del 2024.
 
 ### 1.4 Abans del 1886: Cliopatria
 

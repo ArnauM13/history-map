@@ -47,21 +47,45 @@ const BBOX = [-28, 30, 78, 82]
 /** Els noms van dins d'aquesta àrea més petita: el de Rússia, a la part europea, que és la que es veu. */
 const LABEL_BBOX = [-25, 30, 56, 74]
 const SIMPLIFY = '12%'
+/**
+ * Els territoris petits que se simplifiquen menys: amb el 12 %, la Franja de Gaza quedava en un
+ * triangle que deixava la ciutat de Gaza a Israel.
+ */
+const DETAILED = ['6511', '6631']
+const DETAILED_SIMPLIFY = '100%'
 
 /**
- * On ens separem de CShapes 2.0, a consciència i explicat a DADES.md. El control de fet d'un
- * territori anirà en una capa a part (FULL-DE-RUTA.md), no barrejat amb les fronteres.
+ * On ens separem de CShapes 2.0, a consciència i explicat a DADES.md §1.1. El control de fet d'un
+ * territori va a la capa d'ocupacions (content/occupations/), no barrejat amb les fronteres.
+ *
+ *   - `drop`: les peces d'aquests estats que comencen aquests dies es llencen;
+ *   - `extend`: les que s'acaben aquest dia s'allarguen fins a la següent peça del mateix estat,
+ *     o fins avui si no n'hi ha cap;
+ *   - `continue`: les que s'acaben aquest dia continuen l'endemà, amb la mateixa forma i aquest
+ *     estatus, i sense dependre de ningú: un territori ocupat que no és de cap altre estat.
  */
 const CORRECTIONS = [
   {
     description:
       "Crimea: la frontera reconeguda entre Rússia i Ucraïna, també després de l'annexió del 2014 (resolució 68/262 de l'ONU)",
     codes: ['365', '369'],
-    dropFeaturesStarting: 20140318,
-    extendFeaturesEnding: 20140317,
+    drop: [20140318],
+    extend: 20140317,
+  },
+  {
+    description:
+      "Israel, després del 1967: la línia de l'armistici del 1949 (la Línia Verda). CShapes hi suma Cisjordània, Gaza, el Golan i el Sinaí, que Israel va ocupar a la guerra dels Sis Dies (resolució 242 de l'ONU)",
+    codes: ['666', '651', '652'],
+    drop: [19670610, 19790526],
+    extend: 19670609,
+  },
+  {
+    description:
+      "Cisjordània i Gaza, després del 1967: territori palestí ocupat, no part d'Israel (resolucions 242 i 2334 de l'ONU; Tribunal Internacional de Justícia, 2004 i 2024)",
+    codes: ['6511', '6631'],
+    continue: { from: 19670610, status: 'occupied' },
   },
 ]
-
 async function ensureRawData() {
   if (existsSync(RAW_FILE)) return
   mkdirSync(RAW_DIR, { recursive: true })
@@ -77,7 +101,7 @@ async function processWithMapshaper(raw, bbox) {
   const commands = [
     '-i input.topojson name=borders',
     `-clip bbox=${bbox.join(',')} remove-slivers`,
-    `-simplify ${SIMPLIFY} keep-shapes`,
+    `-simplify variable percentage='${JSON.stringify(DETAILED)}.includes(String(gwcode)) ? "${DETAILED_SIMPLIFY}" : "${SIMPLIFY}"' keep-shapes`,
     // El codi va en text: les entitats d'abans del 1886 (build-history.mjs) en porten un de Wikidata.
     `-each 's = +start.replace(/-/g, ""), e = end === "${DATASET_END}" ? ${OPEN_END} : +end.replace(/-/g, ""), code = String(gwcode)'`,
     '-filter-fields code,country_name,status,owner,s,e,capname',
@@ -93,13 +117,43 @@ function applyCorrections(topo) {
   const collection = topo.objects.borders
   for (const fix of CORRECTIONS) {
     const affected = (g) => fix.codes.includes(g.properties.code)
-    collection.geometries = collection.geometries.filter(
-      (g) => !(affected(g) && g.properties.s === fix.dropFeaturesStarting),
-    )
-    for (const g of collection.geometries) {
-      if (affected(g) && g.properties.e === fix.extendFeaturesEnding) g.properties.e = OPEN_END
+    if (fix.drop) {
+      collection.geometries = collection.geometries.filter(
+        (g) => !(affected(g) && fix.drop.includes(g.properties.s)),
+      )
+    }
+    for (const g of [...collection.geometries]) {
+      const p = g.properties
+      if (!affected(g)) continue
+      if (fix.extend && p.e === fix.extend) {
+        const next = collection.geometries
+          .filter((n) => n.properties.code === p.code && n.properties.s > p.e)
+          .map((n) => n.properties.s)
+        p.e = next.length > 0 ? dayBefore(Math.min(...next)) : OPEN_END
+      }
+      if (fix.continue && p.e === dayBefore(fix.continue.from)) {
+        collection.geometries.push({
+          ...g,
+          properties: {
+            ...p,
+            s: fix.continue.from,
+            e: OPEN_END,
+            status: fix.continue.status,
+            owner: p.code,
+          },
+        })
+      }
     }
   }
+}
+
+/** El dia abans d'un AAAAMMDD, com a AAAAMMDD. */
+function dayBefore(day) {
+  const d = new Date(
+    Date.UTC(Math.floor(day / 10000), (Math.floor(day / 100) % 100) - 1, day % 100),
+  )
+  d.setUTCDate(d.getUTCDate() - 1)
+  return d.getUTCFullYear() * 10000 + (d.getUTCMonth() + 1) * 100 + d.getUTCDate()
 }
 
 const overlaps = (a, b) => a.s <= b.e && b.s <= a.e

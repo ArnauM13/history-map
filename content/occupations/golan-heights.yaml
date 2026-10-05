@@ -1,0 +1,42 @@
+start: 1967-06-10
+control:
+  - until: 1981-12-13
+    by: 666
+    kind: occupation
+    cause:
+      ca: Guerra dels Sis Dies, 1967
+      es: Guerra de los Seis Días, 1967
+      en: Six-Day War, 1967
+  - by: 666
+    kind: annexation
+    cause:
+      ca: Llei dels Alts del Golan, 1981
+      es: Ley de los Altos del Golán, 1981
+      en: Golan Heights Law, 1981
+countries: [652]
+title:
+  ca: Alts del Golan
+  es: Altos del Golán
+  en: Golan Heights
+summary:
+  ca: >-
+    Israel va prendre els Alts del Golan a Síria el 10 de juny del 1967, l'últim dia de la guerra
+    dels Sis Dies. Pels acords del 1974 en va tornar Quneitra, i el 14 de desembre del 1981 se'ls va
+    annexionar. El Consell de Seguretat de l'ONU va declarar nul·la l'annexió (resolució 497), i
+    només els Estats Units la reconeixen, des del 2019.
+  es: >-
+    Israel tomó los Altos del Golán a Siria el 10 de junio de 1967, el último día de la guerra de
+    los Seis Días. Por los acuerdos de 1974 devolvió Quneitra, y el 14 de diciembre de 1981 se los
+    anexionó. El Consejo de Seguridad de la ONU declaró nula la anexión (resolución 497), y solo
+    Estados Unidos la reconoce, desde 2019.
+  en: >-
+    Israel took the Golan Heights from Syria on 10 June 1967, the last day of the Six-Day War. It
+    returned Quneitra under the 1974 agreement, and annexed the Heights on 14 December 1981. The UN
+    Security Council declared the annexation null and void (Resolution 497), and only the United
+    States has recognised it, since 2019.
+wikipedia:
+  en: Golan Heights Law
+sources:
+  - title: 'Resolution 497 (1981)'
+    publisher: United Nations Security Council
+    url: https://undocs.org/S/RES/497(1981)

@@ -31,7 +31,7 @@ Todo lo que enseña el mapa tiene una fuente, y la ficha donde aparece la cita c
 | El nombre de cada entidad anterior a 1886 | El título del artículo de Wikipedia que cita Cliopatria, en catalán y castellano, o `content/countries.yaml` por el QID (§1.4) | En la ficha del estado |
 | Las fechas de las banderas | Los artículos de Wikipedia sobre las banderas de cada estado (`sources` en `content/flags.yaml`) | En la ficha del estado |
 | Las imágenes de las banderas | Wikimedia Commons (§2, `public/flags/credits.json`) | Bajo cada bandera |
-| Las zonas ocupadas y anexionadas (1938-1945) | Fronteras de CShapes de otras fechas, divisiones actuales de Natural Earth y líneas dibujadas a mano (§1.3); las fechas, del artículo de Wikipedia de cada zona (`content/occupations/`) | En la ficha de cada zona |
+| Las zonas ocupadas y anexionadas (1938-1945 y, en Oriente Próximo, desde 1967) | Fronteras de CShapes de otras fechas, divisiones actuales de Natural Earth y líneas dibujadas a mano (§1.3); las fechas, del artículo de Wikipedia de cada zona (`content/occupations/`) | En la ficha de cada zona |
 | Los textos de las banderas, los hechos, los conflictos y las ocupaciones | Escritos por este proyecto a partir de las fuentes que citan (§3) | En la ficha de cada uno |
 | Los títulos de Wikipedia en catalán y castellano | Los enlaces entre idiomas de la propia Wikipedia (`content/wikipedia.json`) | — |
 | La traducción de los nombres de los estados y de las capitales | Este proyecto | — |
@@ -55,6 +55,8 @@ iguales. Los criterios de ahora:
 | Dos estados tienen el mismo soberano | **Estados separados** mientras mantienen instituciones propias; uno solo cuando se unen por ley. | Sajonia y Polonia (1697-1763), Hannover y Gran Bretaña (1714-1837) y Escocia e Inglaterra (1603-1707), separados; Gran Bretaña desde 1707. |
 | Un estado paga tributo o es vasallo de otro | **Estado propio**, si se gobernaba solo. | Valaquia y Moldavia, bajo el Imperio otomano. |
 | Una revuelta | En el mapa, solo si tuvo **un gobierno sobre el territorio**, y con las fechas de ese gobierno. | El Estado Húngaro, del 14 de abril al 13 de agosto de 1849; la revuelta de Nalivaiko, dentro de la República de las Dos Naciones. |
+| Una anexión por la fuerza, después de 1945, que la ONU declara nula | **No cambia la soberanía**: el territorio sigue siendo de quien era, y la anexión va en la capa de ocupaciones. La Carta de la ONU prohíbe ganar territorio por la fuerza, y la resolución 242 lo repite para 1967. | Jerusalén Este (1980), el Golán (1981) y Crimea (2014). |
+| Un territorio ocupado que no era de ningún otro estado | **Pieza propia**, con su nombre y el estatus de territorio ocupado; el ocupante, en la capa de ocupaciones. | Cisjordania y Gaza desde 1967, y desde el 15 de noviembre de 1988 con el nombre de Palestina, el estado que se proclamó allí y que reconocen 157 de los 193 miembros de la ONU. |
 | El nombre | El que tenía el estado **entonces**, como lo llama la Wikipedia de cada idioma. | En 1700, el Reino de Francia; en 1810, el Primer Imperio francés. |
 
 Si la discrepancia tiene importancia histórica (una frontera en disputa, una fecha que cada
@@ -97,6 +99,8 @@ nombres de los estados y de las capitales de CShapes están en inglés; los de l
 | Qué | Por qué |
 | --- | --- |
 | Crimea sigue en Ucrania después del 18 de marzo de 2014 | CShapes la pasa a Rusia. Aquí se dibuja la frontera reconocida internacionalmente, como hacen la resolución 68/262 de la Asamblea General de la ONU y la mayoría de atlas. La anexión se explica como hecho, e irá en la capa de ocupaciones. |
+| Israel, desde el 10 de junio de 1967, dentro de la Línea Verde | CShapes le suma Cisjordania, Jerusalén Este, Gaza, el Golán y el Sinaí, que Israel ocupó en la guerra de los Seis Días, y no devuelve el Sinaí a Egipto hasta 1979. Aquí Israel queda dentro de la línea de los armisticios de 1949, como la dibujan la ONU (resoluciones 242 y 2334) y la Corte Internacional de Justicia (2004 y 2024); el Golán es de Siria y el Sinaí, de Egipto. El control israelí va en la capa de ocupaciones (§1.3). |
+| Cisjordania y Gaza siguen después de 1967 | CShapes las hace desaparecer dentro de Israel. Aquí siguen con la forma de 1967, como territorio ocupado y sin depender de ningún estado: hasta 1988, con el nombre de Cisjordania y de Franja de Gaza; desde el 15 de noviembre de 1988, con el de Palestina. Jordania se había anexionado Cisjordania en 1950, pero casi nadie lo reconoció, y renunció a ella el 31 de julio de 1988. |
 
 Cada corrección es código, en la lista `CORRECTIONS` de `scripts/build-borders.mjs`, y tiene su
 fila aquí. Los archivos generados no se tocan nunca a mano.
@@ -122,11 +126,17 @@ fila aquí. Los archivos generados no se tocan nunca a mano.
 - **Se acaba en 2019.** Se da por hecho que ninguna frontera reconocida de Europa ha cambiado
   después; si cambia alguna, se añadirá a mano.
 - **Geometría simplificada.** Para ver el continente basta; para medir distancias o superficies,
-  no.
+  no. Gaza y Cisjordania no se simplifican: al 12 %, Gaza quedaba en un triángulo que dejaba la
+  ciudad de Gaza en Israel.
+- **La Línea Verde, a unos kilómetros.** CShapes la dibuja con pocos puntos, y Qalqilya y
+  Tulkarem, que tocan la línea, quedan en el lado israelí. Natural Earth la tiene mejor dibujada,
+  pero pone Jerusalén Este dentro de Israel. Corregirla está en la
+  [hoja de ruta](FULL-DE-RUTA.md), §3.
 
 ### 1.3 La capa de ocupaciones
 
-Lo que se controlaba de hecho entre 1938 y 1945 va en una capa aparte, que se puede ocultar y
+Lo que se controlaba de hecho en las ocupaciones largas —entre 1938 y 1945, y los territorios
+que ocupa Israel desde 1967— va en una capa aparte, que se puede ocultar y
 que pinta cada zona del color del estado que la controlaba, con el nombre, quién la controlaba y
 por qué. Cada zona tiene un archivo en `content/occupations/`, con el texto, las fechas, quién la
 controlaba, por qué (`cause`, un hecho con el año, sacado del texto de la zona) y la fuente, y
@@ -153,7 +163,7 @@ actuales, tanto como se hayan movido desde entonces. La ficha de cada zona lo di
 Natural Earth si se usan sus divisiones. Un test comprueba que dos zonas de las mismas fechas no se
 pisen.
 
-**Qué hay**, en 57 zonas:
+**Qué hay**, en 61 zonas:
 
 - **El oeste y el centro**: la expansión alemana de 1938-1939 (Austria, Bohemia y Moravia, el
   Estado Eslovaco, Memel), Zaolzie y la Rutenia húngara; el reparto de Polonia; la ocupación de
@@ -168,6 +178,11 @@ pisen.
   Hungría ocupada de 1944.
 - **Italia de 1943 a 1945**: la República Social Italiana, Roma y la Italia central, y las dos
   zonas de operaciones que Alemania se anexionó de hecho.
+- **Oriente Próximo, desde 1967**: Cisjordania con Jerusalén Este, la Franja de Gaza hasta la
+  retirada israelí del 12 de septiembre de 2005, el Golán, anexionado en 1981, y el Sinaí hasta la
+  guerra del Yom Kipur. Las fechas, del artículo de la Wikipedia de cada zona; las formas, de
+  CShapes: Cisjordania y Gaza son sus piezas, y el Golán y el Sinaí, lo que CShapes quita a Siria
+  y a Egipto en 1967.
 
 **Qué falta**:
 
@@ -175,6 +190,21 @@ pisen.
   irá con la capa de los frentes.
 - **Trozos pequeños de las anexiones italianas de 1941**: lo que se añadió a la provincia de
   Fiume (Sušak, Kastav, Krk y Rab) y, desde el otoño, Hvar y Pag. Salen dentro de Croacia.
+- **El Sinaí de 1973 a 1982.** Egipto recuperó la orilla oriental del canal en la guerra del Yom
+  Kipur, e Israel se retiró del resto por etapas (1974, 1975, 1979-1980) hasta el 25 de abril de
+  1982. Hacen falta las líneas de cada acuerdo; hasta entonces, el Sinaí sale egipcio sin
+  ocupación.
+- **Gaza después de 2005.** Sin soldados dentro, la zona se acaba, pero la ONU y la Corte
+  Internacional de Justicia la consideran todavía ocupada, porque Israel controla sus fronteras,
+  el espacio aéreo y el mar: por eso la pieza de Gaza sigue siendo un territorio ocupado. La parte
+  que ocupa el ejército israelí desde la guerra de 2023 tampoco está: el frente se mueve y no hay
+  ninguna línea pactada con una fuente fiable.
+- **Las áreas A y B de Cisjordania** (acuerdos de Oslo, 1995), que gobierna la Autoridad Nacional
+  Palestina: son decenas de manchas, e Israel entra en ellas cuando quiere; Cisjordania sale
+  entera como ocupada, como la trata la ONU.
+- **Las ocupaciones israelíes cortas o fuera del mapa**: el Sinaí y Gaza de 1956 a 1957, el sur
+  del Líbano de 1982 a 2000 y la zona de separación del Golán, que Israel ocupó en diciembre de
+  2024.
 
 ### 1.4 Antes de 1886: Cliopatria
 
