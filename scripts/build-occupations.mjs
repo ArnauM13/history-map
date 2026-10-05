@@ -528,33 +528,25 @@ const LINES = {
   ],
 
   /**
-   * La frontera entre Itàlia i Iugoslàvia del 1920 al 1947 (els tractats de Rapallo i de Roma),
-   * que CShapes no té: el Litoral eslovè amb Postojna, l'Ístria, Fiume i les illes de Cres i
-   * Lošinj eren italians, i CShapes els fa iugoslaus. Kastav, Sušak i Krk eren iugoslaus. Font:
-   * el mapa de «Treaty of Rapallo (1920)».
+   * El que Itàlia va afegir el 1941 a la província de Fiume, a més de Krk i Rab: Sušak, Kastav,
+   * Bakar, Čavle, Grobnik, Fužine, Čabar, Gerovo, Crni Lug i, a Eslovènia, Osilnica, Draga i
+   * Trava; Delnice i Kraljevica van quedar a Croàcia. Fonts: la llista de municipis de «Province
+   * of Fiume» i «Treaties of Rome (1941)».
    */
-  julianMarch: [
-    [13.0, 46.7],
-    [13.72, 46.55],
-    [13.7, 46.47],
-    [13.84, 46.38],
-    [13.9, 46.3],
-    [13.98, 46.2],
-    [14.03, 46.1],
-    [14.08, 46.0],
-    [14.12, 45.93],
-    [14.2, 45.85],
-    [14.3, 45.72],
-    [14.4, 45.62],
-    [14.45, 45.5],
-    [14.38, 45.45],
-    [14.4, 45.36],
-    [14.44, 45.33],
-    [14.47, 45.15],
-    [14.5, 44.95],
-    [14.55, 44.6],
-    [14.4, 44.4],
-    [13.0, 44.4],
+  fiumeAnnexed: [
+    [14.3, 45.3],
+    [14.3, 45.5],
+    [14.45, 45.66],
+    [14.6, 45.72],
+    [14.75, 45.66],
+    [14.85, 45.58],
+    [14.78, 45.47],
+    [14.76, 45.38],
+    [14.78, 45.3],
+    [14.62, 45.28],
+    [14.56, 45.27],
+    [14.5, 45.25],
+    [14.4, 45.29],
   ],
 
   /**
@@ -578,9 +570,23 @@ const LINES = {
 
 const ring = (points) => [[...points, points[0]]]
 const rings = (list) => union(...list.map(ring))
-const union = (...geoms) => polygonClipping.union(...geoms.filter((g) => g.length > 0))
-const intersect = (a, ...others) => polygonClipping.intersection(a, ...others)
-const minus = (a, ...others) => polygonClipping.difference(a, ...others.filter((g) => g.length))
+/**
+ * polygon-clipping de vegades no sap tancar un anell quan dues vores gairebé es toquen (la zona
+ * italiana de Grècia, quan les fronteres es corregeixen després de simplificar). Llavors es torna
+ * a provar amb les coordenades arrodonides a 1e-6 graus, uns 10 cm.
+ */
+const clip = (op, ...geoms) => {
+  try {
+    return polygonClipping[op](...geoms)
+  } catch {
+    const rounded = (g) =>
+      g.map((p) => p.map((r) => r.map(([x, y]) => [+x.toFixed(6), +y.toFixed(6)])))
+    return polygonClipping[op](...geoms.map(rounded))
+  }
+}
+const union = (...geoms) => clip('union', ...geoms.filter((g) => g.length > 0))
+const intersect = (a, ...others) => clip('intersection', a, ...others)
+const minus = (a, ...others) => clip('difference', a, ...others.filter((g) => g.length))
 
 const topo = JSON.parse(readFileSync(BORDERS, 'utf8'))
 const pieces = topojson.feature(topo, topo.objects.borders).features.filter((f) => f.geometry)
@@ -665,6 +671,21 @@ const adminUnits = (country) => {
 }
 
 /**
+ * Les illes d'una unitat de Natural Earth que cauen senceres dins de [oest, sud, est, nord]. CShapes,
+ * simplificat, no en dibuixa gairebé cap de l'Adriàtic: Krk, Rab, Brač o Hvar no hi són.
+ */
+const islands = (country, name, [w, s, e, n]) => {
+  usesAdmin = true
+  const unit = admins.find((f) => f.properties.adm0_a3 === country && f.properties.name === name)
+  if (!unit) throw new Error(`Natural Earth no té ${name} (${country})`)
+  const found = coordsOf(unit.geometry).filter(([outer]) =>
+    outer.every(([x, y]) => x >= w && x <= e && y >= s && y <= n),
+  )
+  if (found.length === 0) throw new Error(`Cap illa de ${name} dins de ${[w, s, e, n]}`)
+  return union(...found.map((polygon) => [polygon]))
+}
+
+/**
  * La part de `base` (un estat de CShapes) que cau dins d'unes unitats de Natural Earth. La línia
  * interior és la de Natural Earth; l'exterior, la de CShapes, perquè la unitat s'eixampla abans
  * de retallar i les altres unitats del país se'n treuen després.
@@ -708,9 +729,21 @@ const ITALIAN_FRANCE = [
 const CORSICA = ['Haute-Corse', 'Corse-du-Sud']
 
 const YUGOSLAVIA = () => state(345, '1941-01-01')
-/** El que era italià abans del 1941 i CShapes fa iugoslau: no entrava al repartiment. */
-const JULIAN_MARCH = () => intersect(YUGOSLAVIA(), ring(LINES.julianMarch))
 const ITALY = () => state(325, '1943-01-01')
+/**
+ * El que Itàlia tenia del 1920 al 1947 i ara és d'Eslovènia i Croàcia: el Litoral eslovè,
+ * l'Ístria, Fiume, Cres i Lošinj. Sense Zara, que no va entrar al Litoral Adriàtic alemany.
+ */
+const JULIAN_MARCH = () =>
+  intersect(
+    minus(ITALY(), state(325, '2000-01-01')),
+    ring([
+      [13.0, 46.7],
+      [14.7, 46.7],
+      [14.7, 44.4],
+      [13.0, 44.4],
+    ]),
+  )
 const GREECE = () => state(350, '1941-01-01')
 /** La Iugoslàvia del 1941 dins d'un estat d'avui: Croàcia (344), Eslovènia (349)… */
 const YUGOSLAV = (gwcode) => intersect(YUGOSLAVIA(), state(gwcode, '2020-01-01'))
@@ -777,6 +810,21 @@ const ALBANIAN_MACEDONIA = [
   'Drugovo',
 ]
 const ALBANIAN_MONTENEGRO = ['Ulcinj', 'Plav', 'Rožaje']
+/** Krk i Rab, que es van afegir a la província de Fiume. */
+const KRK_RAB = () =>
+  union(
+    islands('HRV', 'Primorsko-Goranska', [14.4, 44.9, 14.85, 45.3]),
+    islands('HRV', 'Primorsko-Goranska', [14.6, 44.65, 14.9, 44.9]),
+  )
+const FIUME_LAND = () => intersect(YUGOSLAVIA(), ring(LINES.fiumeAnnexed))
+const FIUME_ANNEXED = () => union(FIUME_LAND(), KRK_RAB())
+/** Les tres illes que els Tractats de Roma van deixar a Croàcia i Itàlia va ocupar al setembre. */
+const PAG_BRAC_HVAR = () =>
+  union(
+    islands('HRV', 'Licko-Senjska', [14.7, 44.25, 15.3, 44.75]),
+    islands('HRV', 'Splitsko-Dalmatinska', [16.35, 43.24, 16.95, 43.42]),
+    islands('HRV', 'Splitsko-Dalmatinska', [16.3, 43.05, 17.25, 43.25]),
+  )
 const DALMATIA = () =>
   intersect(YUGOSLAV(344), union(ring(LINES.dalmatia), rings(LINES.dalmatianIslands)))
 const CRETE = () => within(GREECE(), 'GRC', ['Kriti'])
@@ -892,7 +940,8 @@ const ZONES = {
         await yugoslav('SRB', BACKA),
         ring(LINES.baranja),
         DALMATIA(),
-        JULIAN_MARCH(),
+        FIUME_ANNEXED(),
+        PAG_BRAC_HVAR(),
       ),
   },
   serbia: {
@@ -911,12 +960,14 @@ const ZONES = {
   'german-slovenia': {
     line: true,
     build: async () =>
-      minus(YUGOSLAV(349), ring(LINES.ljubljana), await yugoslav('SVN', PREKMURJE), JULIAN_MARCH()),
+      minus(YUGOSLAV(349), ring(LINES.ljubljana), await yugoslav('SVN', PREKMURJE)),
   },
   ljubljana: {
     line: true,
-    build: () => minus(intersect(YUGOSLAV(349), ring(LINES.ljubljana)), JULIAN_MARCH()),
+    build: () => minus(intersect(YUGOSLAV(349), ring(LINES.ljubljana)), FIUME_LAND()),
   },
+  'fiume-annexations': { line: true, build: FIUME_ANNEXED },
+  'pag-brac-hvar': { build: PAG_BRAC_HVAR },
   dalmatia: {
     line: true,
     build: async () => union(DALMATIA(), await yugoslav('MNE', KOTOR)),
