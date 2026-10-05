@@ -134,6 +134,8 @@ generated files are never edited by hand.
 - **The Adriatic, still half done** (§1.1 fixes the Italian border). From 1919 to 1920, when
   Istria and Fiume were occupied by Italy and the border had not yet been agreed, CShapes gives
   them to Yugoslavia, and they are left so here; D'Annunzio's Regency of Carnaro is missing too.
+  The research to fix it, with dates and sources, is in the work batch
+  [1919-fiume](treball/lots/1919-fiume.md) (in Catalan).
   From 1947 to 1954, Trieste is Italian and Koper Yugoslav, with no Free Territory of Trieste.
   Lastovo, Palagruža and Saseno, Italian from 1920 to 1947, and Kastellorizo are not in CShapes;
   and simplification wipes out almost every Adriatic island, Cres and Krk included.

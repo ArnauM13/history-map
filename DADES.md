@@ -137,8 +137,9 @@ fitxers generats no es toquen mai a mà.
 - **L'Adriàtic, encara a mitges** (§1.1 en corregeix la frontera italiana). Del 1919 al 1920,
   quan l'Ístria i Fiume eren ocupades per Itàlia i encara no s'havia pactat la frontera, CShapes
   les dona a Iugoslàvia, i aquí es deixa així; tampoc no hi ha la Regència del Carnaro de
-  D'Annunzio. Del 1947 al 1954, Trieste surt italiana i Koper iugoslava, sense el Territori Lliure
-  de Trieste. Lastovo, Palagruža i Saseno, italianes del 1920 al 1947, i Kastellorizo, no són a
+  D'Annunzio. La recerca per corregir-ho, amb les dates i les fonts, és al lot
+  [1919-fiume](treball/lots/1919-fiume.md). Del 1947 al 1954, Trieste surt italiana i Koper
+  iugoslava, sense el Territori Lliure de Trieste. Lastovo, Palagruža i Saseno, italianes del 1920 al 1947, i Kastellorizo, no són a
   CShapes; i la simplificació esborra gairebé totes les illes de l'Adriàtic, també Cres i Krk.
 - **Sense microestats.** Andorra, Liechtenstein, Mònaco, San Marino i el Vaticà no són a CShapes.
 - **Criteris de sobirania.** Algunes decisions són de la llista de Gleditsch i Ward: Montenegro és

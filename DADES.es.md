@@ -135,11 +135,13 @@ año por año. Los archivos generados no se tocan nunca a mano.
   Transilvania a Hungría. Entre 1938 y 1945, Austria, Bohemia-Moravia y Polonia siguen saliendo.
   Lo explica la capa de ocupaciones (§1.3).
 - **El Adriático, todavía a medias** (§1.1 corrige la frontera italiana). De 1919 a 1920, cuando
-  Istria y Fiume estaban ocupadas por Italia y aún no se había pactado la frontera, CShapes las da
-  a Yugoslavia, y aquí se deja así; tampoco está la Regencia del Carnaro de D'Annunzio. De 1947 a
-  1954, Trieste sale italiana y Koper yugoslava, sin el Territorio Libre de Trieste. Lastovo,
-  Palagruža y Saseno, italianas de 1920 a 1947, y Kastellorizo, no están en CShapes; y la
-  simplificación borra casi todas las islas del Adriático, también Cres y Krk.
+  Istria y Fiume estaban ocupadas por Italia y aún no se había pactado la frontera, CShapes las da a
+  Yugoslavia, y aquí se deja así; tampoco está la Regencia del Carnaro de D'Annunzio. La
+  investigación para corregirlo, con las fechas y las fuentes, está en el lote
+  [1919-fiume](treball/lots/1919-fiume.md) (en catalán). De 1947 a 1954, Trieste sale italiana y
+  Koper yugoslava, sin el Territorio Libre de Trieste. Lastovo, Palagruža y Saseno, italianas de
+  1920 a 1947, y Kastellorizo, no están en CShapes; y la simplificación borra casi todas las islas
+  del Adriático, también Cres y Krk.
 - **Sin microestados.** Andorra, Liechtenstein, Mónaco, San Marino y el Vaticano no están en
   CShapes.
 - **Criterios de soberanía.** Algunas decisiones son de la lista de Gleditsch y Ward: Montenegro
