@@ -133,6 +133,7 @@ export function MapView({
         if (mapRef.current !== map) return
         baseRef.current = data
         occupationsRef.current = data.occupations
+        geojson(map, 'land').setData(data.land)
         // MapLibre obre el crèdit en carregar i no el plega fins que es mou el mapa: en una
         // pantalla estreta tapava una franja sencera. Hi és igualment, rere la «i».
         if (map.getContainer().clientWidth < 640) {

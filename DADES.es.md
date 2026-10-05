@@ -55,6 +55,7 @@ iguales. Los criterios de ahora:
 | Dos estados tienen el mismo soberano | **Estados separados** mientras mantienen instituciones propias; uno solo cuando se unen por ley. | Sajonia y Polonia (1697-1763), Hannover y Gran Bretaña (1714-1837) y Escocia e Inglaterra (1603-1707), separados; Gran Bretaña desde 1707. |
 | Un estado paga tributo o es vasallo de otro | **Estado propio**, si se gobernaba solo. | Valaquia y Moldavia, bajo el Imperio otomano. |
 | Una revuelta | En el mapa, solo si tuvo **un gobierno sobre el territorio**, y con las fechas de ese gobierno. | El Estado Húngaro, del 14 de abril al 13 de agosto de 1849; la revuelta de Nalivaiko, dentro de la República de las Dos Naciones. |
+| Una fuente deja un territorio en blanco durante una guerra | Sigue siendo de **quien lo tenía antes**, hasta que la fuente se lo vuelve a dar a alguien, si pasa en menos de veinte años. Si no, es tierra que las fuentes no dan a nadie: el mapa la pinta en gris, sin ficha. | La Rusia de 1609-1611, con los polacos en Moscú; Kiev, de 1653 a 1661; el Úlster, en la guerra de los Nueve Años. La estepa del Volga, tras la Gran Horda, en gris. |
 | El nombre | El que tenía el estado **entonces**, como lo llama la Wikipedia de cada idioma. | En 1700, el Reino de Francia; en 1810, el Primer Imperio francés. |
 
 Si la discrepancia tiene importancia histórica (una frontera en disputa, una fecha que cada
@@ -231,6 +232,7 @@ descripción y las fechas al lado, comprobadas en Wikipedia.
 | Nombres y artículos equivocados | «Serbs», el pueblo, para el Principado de Serbia; el condado de Urgel por Andorra; un «Reino de Mónaco»; los QID y los artículos de la Cataluña de hoy para la República Catalana de 1641, y de la Italia de hoy para la República Italiana de 1802; el Egipto de 1885, enlazado al «Reparto de África»; la Confederación Livonia, al idioma livonio. |
 | Francia en 1814 | Cliopatria da 100.000 km² alrededor de París al Gran Ducado de Berg, que tenía 15.000, en el Rin. |
 | Alsacia y Lorena | Francesas hasta el tratado de Fráncfort (10 de mayo de 1871), no hasta el 1 de enero. |
+| Territorio en blanco durante una guerra | Vuelve al estado que lo tenía (§0.1), hasta que Cliopatria se lo da a alguien, si pasa en menos de veinte años (`fillWarGaps`): Rusia (1609-1611), la República de las Dos Naciones en Ucrania (1653-1661), Inglaterra en Irlanda (Munster, 1582-1587; el Úlster, 1595-1608) y en la guerra civil (1640-1652), España en Holanda y Zelanda (1572-1578), Suecia en Laponia (1718-1721). También los huecos que Cliopatria deja de una muestra a otra: la Italia, la Dalmacia austrohúngara, la Grecia y la Francia de 1871 a 1885. El script hace la lista cada vez que se ejecuta. |
 
 **Discrepancias que lo son de verdad**, entre fuentes fiables, y el criterio que se ha tomado:
 
@@ -259,7 +261,10 @@ descripción y las fechas al lado, comprobadas en Wikipedia.
 - **Bordes menos finos** que los de CShapes, y con un salto pequeño el 1 de enero de 1886, cuando
   empiezan los de CShapes. Ginebra, que era independiente y es suiza desde 1815, cae al otro lado
   de la frontera.
-- **Huecos.** De 1659 a 1661, Kiev no es de nadie.
+- **Tierra sin estado.** Donde Cliopatria no pone a nadie durante más de veinte años (la estepa del
+  Volga y del Don en el siglo XVI, el desierto de Argelia), el mapa muestra la tierra en gris, sin
+  ficha: la de hoy, la misma de CShapes. La costa de Cliopatria y la de CShapes no coinciden del
+  todo, y en algunos tramos la tierra en gris hace de borde.
 - **Sin banderas.** Empiezan en 1886: las anteriores aún no están documentadas.
 
 ### 1.5 La Europa central de 1815 a 1870: OpenHistoricalMap

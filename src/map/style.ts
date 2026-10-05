@@ -23,6 +23,8 @@ export const PALETTE = [
 
 export const COLORS = {
   sea: '#d4e4ec',
+  /** La terra sense cap estat: neutra i més fosca que el mar, perquè no sembli aigua. */
+  land: '#e3ded5',
   border: '#7a6a58',
   selected: '#006874',
   label: '#3b3329',
@@ -42,14 +44,14 @@ export const MAX_BOUNDS: [[number, number], [number, number]] = [
   [76, 83],
 ]
 
-/** Com es veu un estat independent i un territori dependent: el color, amb el mar al darrere. */
+/** Com es veu un estat independent i un territori dependent: el color, amb la terra al darrere. */
 const OPACITY = { independent: 0.85, dependent: 0.5 }
 
-/** Un color de la paleta barrejat amb el del mar, com queda quan es pinta amb opacitat. */
-function overSea(hex: string, opacity: number) {
+/** Un color de la paleta barrejat amb el de la terra, com queda quan es pinta amb opacitat. */
+function overLand(hex: string, opacity: number) {
   const channels = (h: string) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16))
-  const sea = channels(COLORS.sea)
-  const mixed = channels(hex).map((v, i) => Math.round(v * opacity + sea[i] * (1 - opacity)))
+  const land = channels(COLORS.land)
+  const mixed = channels(hex).map((v, i) => Math.round(v * opacity + land[i] * (1 - opacity)))
   return `#${mixed.map((v) => v.toString(16).padStart(2, '0')).join('')}`
 }
 
@@ -67,13 +69,13 @@ const zoneColor: ExpressionSpecification = [
   [
     'match',
     ['get', 'c'],
-    ...PALETTE.flatMap((color, i) => [i, overSea(color, OPACITY.dependent)]),
+    ...PALETTE.flatMap((color, i) => [i, overLand(color, OPACITY.dependent)]),
     '#dddddd',
   ],
   [
     'match',
     ['get', 'c'],
-    ...PALETTE.flatMap((color, i) => [i, overSea(color, OPACITY.independent)]),
+    ...PALETTE.flatMap((color, i) => [i, overLand(color, OPACITY.independent)]),
     '#dddddd',
   ],
 ] as unknown as ExpressionSpecification
@@ -156,6 +158,7 @@ export function createStyle(glyphsUrl: string): StyleSpecification {
     version: 8,
     glyphs: glyphsUrl,
     sources: {
+      land: { type: 'geojson', data: emptyCollection },
       borders: { type: 'geojson', data: emptyCollection },
       labels: { type: 'geojson', data: emptyCollection },
       occupations: { type: 'geojson', data: emptyCollection },
@@ -164,6 +167,9 @@ export function createStyle(glyphsUrl: string): StyleSpecification {
     },
     layers: [
       { id: 'sea', type: 'background', paint: { 'background-color': COLORS.sea } },
+      // Sota els estats i fora del clic: on no hi ha dades, la terra hi és igual, però no s'obre
+      // cap fitxa.
+      { id: 'land', type: 'fill', source: 'land', paint: { 'fill-color': COLORS.land } },
       {
         id: 'borders-fill',
         type: 'fill',

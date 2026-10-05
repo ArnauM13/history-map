@@ -1,6 +1,6 @@
 import type { Feature, FeatureCollection, MultiPolygon, Point, Position } from 'geojson'
 import { useEffect, useState, useSyncExternalStore } from 'react'
-import { feature } from 'topojson-client'
+import { feature, merge } from 'topojson-client'
 import type { GeometryCollection, Topology } from 'topojson-specification'
 import { EXACT_BORDERS_FROM, FIRST_YEAR, toDateNumber, yearOf, type IsoDate } from '../lib/date'
 import type { BorderProperties } from '../selection'
@@ -27,7 +27,15 @@ export interface BorderData {
   /** Un punt per peça de frontera, amb les mateixes propietats: on va el nom. */
   labels: LabelCollection
   occupations: OccupationCollection
+  /**
+   * Tota la terra del mapa: el fons sobre el qual es pinten els estats. On en una data no hi ha
+   * cap estat (l'estepa del 1550, que Cliopatria no dona a ningú), es veu la terra, no el mar.
+   */
+  land: MultiPolygon
 }
+
+/** El final de les peces que encara valen avui (scripts/build-borders.mjs). */
+const OPEN_END = 99991231
 
 let data: Promise<BorderData> | undefined
 
@@ -42,8 +50,17 @@ export function loadBorderData(): Promise<BorderData> {
         (r) => r.json() as Promise<OccupationCollection>,
       ),
     ])
-    const borders = feature(topo, topo.objects.borders as GeometryCollection) as FeatureCollection
-    return { borders, labels, occupations }
+    const object = topo.objects.borders as GeometryCollection
+    const borders = feature(topo, object) as FeatureCollection
+    // Les fronteres d'avui cobreixen tota la terra, i amb els mateixos arcs: la costa del fons
+    // és la mateixa que la dels estats.
+    const land = merge(
+      topo,
+      object.geometries.filter((g) => (g.properties as { e: number }).e === OPEN_END) as Parameters<
+        typeof merge
+      >[1],
+    )
+    return { borders, labels, occupations, land }
   })()
   data.catch(() => (data = undefined))
   return data

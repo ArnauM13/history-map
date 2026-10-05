@@ -55,6 +55,7 @@ criteris d'ara:
 | Dos estats tenen el mateix sobirà | **Estats separats** mentre mantenen institucions pròpies; un de sol quan s'uneixen per llei. | Saxònia i Polònia (1697-1763), Hannover i la Gran Bretanya (1714-1837) i Escòcia i Anglaterra (1603-1707), separats; la Gran Bretanya des del 1707. |
 | Un estat paga tribut o és vassall d'un altre | **Estat propi**, si es governava sol. | Valàquia i Moldàvia, sota l'Imperi Otomà. |
 | Una revolta | Al mapa, només si va tenir **un govern sobre el territori**, i amb les dates d'aquest govern. | L'Estat Hongarès, del 14 d'abril al 13 d'agost del 1849; la revolta de Nalivaiko, dins de la República de les Dues Nacions. |
+| Una font deixa un territori en blanc durant una guerra | Continua sent de **qui el tenia abans**, fins que la font el torna a donar a algú, si passa en menys de vint anys. Si no, és terra que les fonts no donen a ningú: el mapa la pinta en gris, sense fitxa. | La Rússia del 1609-1611, amb els polonesos a Moscou; Kíiv, del 1653 al 1661; l'Ulster, a la guerra dels Nou Anys. L'estepa del Volga, després de la Gran Horda, en gris. |
 | El nom | El que tenia l'estat **aleshores**, com l'anomena la Viquipèdia de cada idioma. | El 1700, el Regne de França; el 1810, el Primer Imperi Francès. |
 
 Si la discrepància té importància històrica (una frontera en disputa, una data que cada
@@ -229,6 +230,7 @@ costat, comprovades a la Viquipèdia.
 | Noms i articles equivocats | «Serbs», el poble, per al Principat de Sèrbia; el comtat d'Urgell per Andorra; un «Regne de Mònaco»; els QID i els articles de la Catalunya d'avui per a la República Catalana del 1641, i de la Itàlia d'avui per a la República Italiana del 1802; l'Egipte del 1885, enllaçat a la «Cursa per l'Àfrica»; la Confederació Livoniana, a l'idioma livonià. |
 | França el 1814 | Cliopatria dona 100.000 km² del voltant de París al Gran Ducat de Berg, que en feia 15.000, al Rin. |
 | Alsàcia i Lorena | Franceses fins al tractat de Frankfurt (10 de maig del 1871), no fins a l'1 de gener. |
+| Territori en blanc durant una guerra | Torna a l'estat que el tenia (§0.1), fins que Cliopatria el dona a algú, si passa en menys de vint anys (`fillWarGaps`): Rússia (1609-1611), la República de les Dues Nacions a Ucraïna (1653-1661), Anglaterra a Irlanda (Munster, 1582-1587; l'Ulster, 1595-1608) i a la guerra civil (1640-1652), Espanya a Holanda i Zelanda (1572-1578), Suècia a la Lapònia (1718-1721). També els buits que Cliopatria deixa d'una mostra a l'altra: la Itàlia, la Dalmàcia austrohongaresa, la Grècia i la França del 1871 al 1885. L'script en fa la llista cada cop que corre. |
 
 **Discrepàncies que ho són de veritat**, entre fonts fiables, i el criteri que se n'ha pres:
 
@@ -256,7 +258,10 @@ costat, comprovades a la Viquipèdia.
 - **Vores menys fines** que les de CShapes, i amb un salt petit l'1 de gener del 1886, quan comencen
   les de CShapes. Ginebra, que era independent i és suïssa des del 1815, hi cau a l'altra banda de
   la frontera.
-- **Forats.** Del 1659 al 1661, Kíiv no és de ningú.
+- **Terra sense estat.** On Cliopatria no posa ningú durant més de vint anys (l'estepa del Volga i del
+  Don al segle XVI, el desert d'Algèria), el mapa ensenya la terra en gris, sense fitxa: la d'avui,
+  la mateixa de CShapes. La costa de Cliopatria i la de CShapes no coincideixen del tot, i en alguns
+  trams la terra en gris fa de vora.
 - **Sense banderes.** Comencen el 1886: les d'abans encara no estan documentades.
 
 ### 1.5 L'Europa central del 1815 al 1870: OpenHistoricalMap
