@@ -20,9 +20,10 @@ compartits): fiume, plebiscits, hongria, turquia, caucas, ucraina, belarus-balti
 | [1918-belarus-baltics](lots/1918-belarus-baltics.md) | Bielorússia, Lituània Central, Memel | 2. Recerca | obert | — |
 | [1919-polonia](lots/1919-polonia.md) | La frontera oriental i Teschen | 2. Recerca | obert | — |
 | [1920-plebiscits](lots/1920-plebiscits.md) | Les zones de plebiscit | 2. Recerca | obert | — |
-| [1919-fiume](lots/1919-fiume.md) | L'Adriàtic del nord fins a Rapallo | 2. Recerca | obert | — |
+| [1919-fiume](lots/1919-fiume.md) | L'Adriàtic del nord fins a Rapallo | 3. Integració | integrar | 2026-10-05 |
 | [1919-hongria](lots/1919-hongria.md) | Hongria fins a Trianon | 2. Recerca | obert | — |
 | [1919-turquia](lots/1919-turquia.md) | Anatòlia i Tràcia fins a Lausana | 2. Recerca | obert | — |
+| [1918-iugoslavia](lots/1918-iugoslavia.md) | Eslovènia, Croàcia i Dalmàcia, d'Àustria-Hongria al Regne SCS | 2. Recerca | obert | — |
 
 ## Fora d'encàrrec
 
