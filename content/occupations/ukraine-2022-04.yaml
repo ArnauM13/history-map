@@ -1,0 +1,33 @@
+start: 2022-04-03
+control:
+  - until: 2022-07-02
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada per Rússia (abril-juliol del 2022)
+  es: Ucrania ocupada por Rusia (abril-julio de 2022)
+  en: Ukraine occupied by Russia (April–July 2022)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    Retirat del nord, l'exèrcit rus es va concentrar al Donbàs i al sud. Mariúpol va caure el 20
+    de maig, després de gairebé tres mesos de setge, i Sievierodonetsk, el 25 de juny. La línia
+    és la de l'1 de juny del 2022.
+  es: >-
+    Tras retirarse del norte, el ejército ruso se concentró en el Donbás y en el sur. Mariúpol
+    cayó el 20 de mayo, después de casi tres meses de asedio, y Severodonetsk, el 25 de junio.
+    La línea es la del 1 de junio de 2022.
+  en: >-
+    Having withdrawn from the north, the Russian army concentrated on Donbas and the south.
+    Mariupol fell on 20 May, after almost three months of siege, and Sievierodonetsk on 25 June.
+    The line is that of 1 June 2022.
+wikipedia:
+  en: Eastern Ukraine campaign

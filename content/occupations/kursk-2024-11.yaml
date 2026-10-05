@@ -1,0 +1,35 @@
+start: 2024-11-01
+control:
+  - until: 2025-03-12
+    by: 369
+    kind: occupation
+    cause:
+      ca: Ofensiva de Kursk, 2024
+      es: Ofensiva de Kursk, 2024
+      en: Kursk offensive, 2024
+countries: [365]
+title:
+  ca: Kursk ocupat per Ucraïna (2024-2025)
+  es: Kursk ocupado por Ucrania (2024-2025)
+  en: Kursk occupied by Ukraine (2024–2025)
+label:
+  ca: Kursk ocupat
+  es: Kursk ocupado
+  en: Occupied Kursk
+summary:
+  ca: >-
+    Amb l'ajuda de soldats nord-coreans, Rússia va anar reduint la bossa durant l'hivern, i el
+    13 de març del 2025 va recuperar Sudja. Ucraïna es va retirar de la província les setmanes
+    següents; Rússia la va donar per recuperada el 26 d'abril. La línia és la del 15 de gener
+    del 2025.
+  es: >-
+    Con la ayuda de soldados norcoreanos, Rusia fue reduciendo la bolsa durante el invierno, y
+    el 13 de marzo de 2025 recuperó Sudzha. Ucrania se retiró de la provincia las semanas
+    siguientes; Rusia la dio por recuperada el 26 de abril. La línea es la del 15 de enero de
+    2025.
+  en: >-
+    With the help of North Korean soldiers, Russia shrank the salient over the winter, and on 13
+    March 2025 it retook Sudzha. Ukraine withdrew from the oblast over the following weeks;
+    Russia declared it recaptured on 26 April. The line is that of 15 January 2025.
+wikipedia:
+  en: Kursk campaign

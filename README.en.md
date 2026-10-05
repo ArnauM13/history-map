@@ -34,7 +34,7 @@ map changes every few months. Here you can follow it day by day.
 | **Four more centuries** | From 1500 to 1885, year by year: the Kingdom of France and the July Monarchy, the Holy Roman Empire, the Polish-Lithuanian Commonwealth, the Swedish Empire. With the occupations the source counted as annexations given back to their owners, and the exact day of every change of regime. |
 | **Every flag in its time** | About a hundred flags of some seventy states: on the map, in a gallery for each date and on each state's card, with what the ones with the most history mean. |
 | **What happened at the same time** | Ongoing conflicts and the year's events, next to the map and marked on the timeline. |
-| **Occupations, from 1938 to 1945** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France, Yugoslavia and Greece carved up, occupied Ukraine. In the occupier's colour, as one more part of its territory, and each zone with its name on the map and its own card. |
+| **Occupations, from 1938 to today** | What was controlled in practice and the borders don't show: the annexation of Austria, the General Government, Vichy France, Yugoslavia and Greece carved up, occupied Ukraine; and, since 2014, Crimea, the Donbas and the front of the Russo-Ukrainian war, phase by phase. In the occupier's colour, as one more part of its territory, and each zone with its name on the map and its own card. |
 | **The source of every piece of data** | Every card says where its borders, name, flag dates and events come from, with the link to check it. |
 | **Three languages** | Catalan, Spanish and English: the interface, the names of states and capitals, the texts and the Wikipedia links. |
 | **A link for every date** | `?d=1914-06-28&lang=en` opens exactly the same map for whoever gets it. |
@@ -76,7 +76,7 @@ No piece of data gets in without a source, and the source is shown on the card w
 | Flag dates | The Wikipedia articles on each state's flags |
 | Flag images | [Wikimedia Commons](https://commons.wikimedia.org/), with each one's licence and author |
 | Events and conflicts | Wikipedia and external sources, such as UN resolution 68/262 on Crimea |
-| Occupied and annexed zones | CShapes borders from other years, today's divisions from [Natural Earth](https://www.naturalearthdata.com/) and hand-drawn lines, with each zone's Wikipedia article |
+| Occupied and annexed zones | CShapes borders from other years, today's divisions from [Natural Earth](https://www.naturalearthdata.com/) hand-drawn lines and, in Ukraine, the [DeepStateMap](https://deepstatemap.live/) front line, with each zone's Wikipedia article |
 
 The tests let nothing in without a source, and the "Fonts" workflow checks every Monday that all
 articles and links still exist. The details, corrections and limitations are in
@@ -84,9 +84,10 @@ articles and links still exist. The details, corrections and limitations are in
 
 ## What it doesn't do (on purpose)
 
-- **It doesn't draw front lines, for now.** The occupations layer says who controlled each
-  territory, not where the armies were. That is why occupied Russia is still missing: it changed
-  hands with the front.
+- **It doesn't draw front lines, for now, except that of the Russo-Ukrainian war.** The occupations
+  layer says who controlled each territory, not where the armies were. That is why occupied Russia
+  is still missing: it changed hands with the front. In Ukraine, where the front has been moving
+  since 2022, it goes in phases, each with the line of a given day.
 - **It isn't an encyclopaedia.** Two or three sentences and the link to the source; the rest is
   well explained there.
 - **It asks you for nothing.** No account, no cookies, no personal data.
@@ -158,7 +159,7 @@ You can write in Catalan, Spanish or English.
 
 ## What's next
 
-- **The rest of the occupations layer**: occupied Russia, with the front lines, and today's
+- **The rest of the occupations layer**: occupied Russia, with the front lines, and today's other
   disputed territories.
 - **More content**: about a hundred events and thirty conflicts, with academic sources as well as
   Wikipedia.
@@ -182,6 +183,7 @@ The rest is in [FULL-DE-RUTA.md](FULL-DE-RUTA.md) (in Catalan).
   Skrede Gleditsch, for [CShapes 2.0](https://icr.ethz.ch/data/cshapes/).
 - Everyone who draws flags on Wikimedia Commons and writes Wikipedia, in every language.
 - [Natural Earth](https://www.naturalearthdata.com/), for the administrative divisions.
+- [DeepStateMap](https://deepstatemap.live/), for the front line of the Russo-Ukrainian war.
 - [MapLibre](https://maplibre.org/), [OpenMapTiles](https://github.com/openmaptiles/fonts),
   [Fontsource](https://fontsource.org/) and [Material Symbols](https://fonts.google.com/icons).
 - The visual language comes from Petja.

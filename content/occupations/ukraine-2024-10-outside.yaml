@@ -1,0 +1,30 @@
+start: 2024-10-01
+control:
+  - until: 2025-03-31
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada per Rússia, fora de les províncies annexionades (octubre del 2024 - març del 2025)
+  es: Ucrania ocupada por Rusia, fuera de las provincias anexionadas (octubre de 2024 - marzo de 2025)
+  en: Ukraine occupied by Russia, outside the annexed oblasts (October 2024 – March 2025)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    Les franges de Kupiansk i del nord de Khàrkiv, i la fletxa de Kinburn. La línia és la de l'1
+    de gener del 2025.
+  es: >-
+    Las franjas de Kupiansk y del norte de Járkov, y la flecha de Kinburn. La línea es la del 1
+    de enero de 2025.
+  en: >-
+    The strips near Kupiansk and north of Kharkiv, and the Kinburn Spit. The line is that of 1
+    January 2025.
+wikipedia:
+  en: Russian occupation of Kharkiv Oblast

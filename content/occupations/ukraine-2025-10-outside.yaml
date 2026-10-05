@@ -1,0 +1,35 @@
+start: 2025-10-01
+control:
+  - until: 2026-03-31
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada per Rússia, fora de les províncies annexionades (octubre del 2025 - març del 2026)
+  es: Ucrania ocupada por Rusia, fuera de las provincias anexionadas (octubre de 2025 - marzo de 2026)
+  en: Ukraine occupied by Russia, outside the annexed oblasts (October 2025 – March 2026)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    A més de les franges de Khàrkiv i Sumi i de la fletxa de Kinburn, la tardor del 2025 Rússia
+    va entrar a la província de Dnipropetrovsk, al nord de Huliaipole. A Kupiansk, que Rússia va
+    dir que havia pres el novembre, la línia de DeepStateMap la manté ucraïnesa. La línia és la
+    de l'1 de gener del 2026.
+  es: >-
+    Además de las franjas de Járkov y Sumy y de la flecha de Kinburn, en otoño de 2025 Rusia
+    entró en la provincia de Dnipropetrovsk, al norte de Huliaipole. En Kupiansk, que Rusia dijo
+    haber tomado en noviembre, la línea de DeepStateMap la mantiene ucraniana. La línea es la
+    del 1 de enero de 2026.
+  en: >-
+    Besides the strips in Kharkiv and Sumy oblasts and the Kinburn Spit, in autumn 2025 Russia
+    entered Dnipropetrovsk Oblast, north of Huliaipole. Kupiansk, which Russia said it had taken
+    in November, stays Ukrainian on the DeepStateMap line. The line is that of 1 January 2026.
+wikipedia:
+  en: Russian occupation of Kharkiv Oblast

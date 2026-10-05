@@ -1,0 +1,37 @@
+start: 2025-04-01
+control:
+  - until: 2025-09-30
+    by: 365
+    kind: annexation
+    cause:
+      ca: Annexió de quatre províncies, 2022
+      es: Anexión de cuatro provincias, 2022
+      en: Annexation of four oblasts, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada i annexionada per Rússia (abril-setembre del 2025)
+  es: Ucrania ocupada y anexionada por Rusia (abril-septiembre de 2025)
+  en: Ukraine occupied and annexed by Russia (April–September 2025)
+label:
+  ca: Annexionada per Rússia
+  es: Anexionada por Rusia
+  en: Annexed by Russia
+summary:
+  ca: >-
+    El 2025 Rússia va continuar avançant per la província de Donetsk. A la línia de l'1 de
+    juliol del 2025 ja tenia Velika Novosilka, Toretsk i Txassiv Iar, i s'acostava a Pokrovsk
+    per l'est i pel sud.
+  es: >-
+    En 2025 Rusia siguió avanzando por la provincia de Donetsk. En la línea del 1 de julio de
+    2025 ya tenía Velyka Novosilka, Toretsk y Chásiv Yar, y se acercaba a Pokrovsk por el este y
+    por el sur.
+  en: >-
+    In 2025 Russia kept advancing through Donetsk Oblast. On the line of 1 July 2025 it already
+    held Velyka Novosilka, Toretsk and Chasiv Yar, and was closing on Pokrovsk from the east and
+    the south.
+wikipedia:
+  en: Russian-occupied territories of Ukraine
+sources:
+  - title: 'Resolution ES-11/4: Territorial integrity of Ukraine: defending the principles of the Charter of the United Nations'
+    publisher: United Nations General Assembly
+    url: https://undocs.org/A/RES/ES-11/4

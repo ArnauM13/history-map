@@ -1,0 +1,39 @@
+start: 2022-03-02
+control:
+  - until: 2022-04-02
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada per Rússia (març del 2022)
+  es: Ucrania ocupada por Rusia (marzo de 2022)
+  en: Ukraine occupied by Russia (March 2022)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    Rússia va envair Ucraïna el 24 de febrer del 2022 pel nord, l'est i el sud, i el 2 de març
+    va prendre Kherson, la primera capital de província. Al nord va arribar a les portes de
+    Kíiv, Txerníhiv i Sumi, però no les va poder prendre i se'n va retirar: el 2 d'abril Ucraïna
+    va donar per alliberada la província de Kíiv. La zona és tot el que Rússia va ocupar al
+    març, encara que no tot alhora, amb el Donbàs que ja tenien les repúbliques populars.
+  es: >-
+    Rusia invadió Ucrania el 24 de febrero de 2022 por el norte, el este y el sur, y el 2 de
+    marzo tomó Jersón, la primera capital de provincia. En el norte llegó a las puertas de Kiev,
+    Chernígov y Sumy, pero no pudo tomarlas y se retiró: el 2 de abril Ucrania dio por liberada
+    la provincia de Kiev. La zona es todo lo que Rusia ocupó en marzo, aunque no todo a la vez,
+    con el Donbás que ya tenían las repúblicas populares.
+  en: >-
+    Russia invaded Ukraine on 24 February 2022 from the north, east and south, and on 2 March
+    took Kherson, the first regional capital to fall. In the north it reached the outskirts of
+    Kyiv, Chernihiv and Sumy, but could not take them and withdrew: on 2 April Ukraine declared
+    Kyiv Oblast liberated. The zone is everything Russia occupied in March, though not all at
+    once, together with the part of Donbas the people's republics already held.
+wikipedia:
+  en: Northern Ukraine campaign

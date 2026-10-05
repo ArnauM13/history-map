@@ -24,3 +24,9 @@ compartits): fiume, plebiscits, hongria, turquia, caucas, ucraina, belarus-balti
 | [1919-hongria](lots/1919-hongria.md) | Hongria fins a Trianon | 2. Recerca | obert | — |
 | [1919-turquia](lots/1919-turquia.md) | Anatòlia i Tràcia fins a Lausana | 2. Recerca | obert | — |
 | [1918-iugoslavia](lots/1918-iugoslavia.md) | Eslovènia, Croàcia i Dalmàcia, d'Àustria-Hongria al Regne SCS | 2. Recerca | obert | — |
+
+## Fora d'encàrrec
+
+| Lot | Què | Fase | Estat | Última sessió |
+| --- | --- | --- | --- | --- |
+| [2014-ucraina-guerra](lots/2014-ucraina-guerra.md) | La guerra russoucraïnesa, fase a fase | 4. Comprovació | tancat | 2026-10-05 |

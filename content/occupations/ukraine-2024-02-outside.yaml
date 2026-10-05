@@ -1,0 +1,33 @@
+start: 2024-02-17
+control:
+  - until: 2024-09-30
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada per Rússia, fora de les províncies annexionades (febrer-setembre del 2024)
+  es: Ucrania ocupada por Rusia, fuera de las provincias anexionadas (febrero-septiembre de 2024)
+  en: Ukraine occupied by Russia, outside the annexed oblasts (February–September 2024)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    La franja de l'est de Kupiansk i, des del 10 de maig del 2024, una altra al nord de Khàrkiv,
+    on Rússia va obrir un front nou i va entrar a Vovtxansk sense arribar a prendre-la. I la
+    fletxa de Kinburn. La línia és la de l'1 de juliol del 2024.
+  es: >-
+    La franja del este de Kupiansk y, desde el 10 de mayo de 2024, otra al norte de Járkov,
+    donde Rusia abrió un frente nuevo y entró en Vovchansk sin llegar a tomarla. Y la flecha de
+    Kinburn. La línea es la del 1 de julio de 2024.
+  en: >-
+    The strip east of Kupiansk and, from 10 May 2024, another north of Kharkiv, where Russia
+    opened a new front and entered Vovchansk without taking it. And the Kinburn Spit. The line
+    is that of 1 July 2024.
+wikipedia:
+  en: Russian occupation of Kharkiv Oblast

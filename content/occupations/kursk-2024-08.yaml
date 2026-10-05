@@ -1,0 +1,36 @@
+start: 2024-08-15
+control:
+  - until: 2024-10-31
+    by: 369
+    kind: occupation
+    cause:
+      ca: Ofensiva de Kursk, 2024
+      es: Ofensiva de Kursk, 2024
+      en: Kursk offensive, 2024
+countries: [365]
+title:
+  ca: Kursk ocupat per Ucraïna (2024)
+  es: Kursk ocupado por Ucrania (2024)
+  en: Kursk occupied by Ukraine (2024)
+label:
+  ca: Kursk ocupat
+  es: Kursk ocupado
+  en: Occupied Kursk
+summary:
+  ca: >-
+    El 6 d'agost del 2024 l'exèrcit ucraïnès va entrar a la província russa de Kursk, el primer
+    exèrcit estranger que ocupava territori rus des de la Segona Guerra Mundial. El 15 d'agost
+    va prendre Sudja, on va obrir una comandància militar. La contraofensiva russa de mitjan
+    setembre en va recuperar el flanc oest. La línia és la del 15 de setembre del 2024.
+  es: >-
+    El 6 de agosto de 2024 el ejército ucraniano entró en la provincia rusa de Kursk, el primer
+    ejército extranjero que ocupaba territorio ruso desde la Segunda Guerra Mundial. El 15 de
+    agosto tomó Sudzha, donde abrió una comandancia militar. La contraofensiva rusa de mediados
+    de septiembre recuperó su flanco oeste. La línea es la del 15 de septiembre de 2024.
+  en: >-
+    On 6 August 2024 the Ukrainian army entered Russia's Kursk Oblast, the first foreign army to
+    occupy Russian territory since the Second World War. On 15 August it took Sudzha, where it
+    set up a military commandant's office. The Russian counter-offensive of mid-September retook
+    its western flank. The line is that of 15 September 2024.
+wikipedia:
+  en: Kursk campaign

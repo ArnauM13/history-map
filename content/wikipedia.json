@@ -13,6 +13,13 @@
     "ca": "Independència de Kosovo",
     "es": "Declaración de independencia de Kosovo"
   },
+  "2022 Kharkiv counteroffensive": {
+    "ca": "Contraofensiva de Khàrkiv de 2022",
+    "es": "Contraofensiva del este de Ucrania de 2022"
+  },
+  "2022 Kherson counteroffensive": {
+    "es": "Contraofensiva del sur de Ucrania de 2022"
+  },
   "Afghanistan": {
     "ca": "Afganistan",
     "es": "Afganistán"
@@ -112,6 +119,21 @@
   "Batavian Republic": {
     "ca": "República Batava",
     "es": "República Bátava"
+  },
+  "Battle of Avdiivka (2023–2024)": {
+    "ca": "Batalla d'Avdíivka",
+    "es": "Batalla de Avdíivka (2022-2024)"
+  },
+  "Battle of Debaltseve": {
+    "es": "Batalla de Debáltseve"
+  },
+  "Battle of Lysychansk": {
+    "ca": "Batalla de Lissitxansk",
+    "es": "Batalla de Lisichansk"
+  },
+  "Battle of Vuhledar": {
+    "ca": "Batalla de Vuhledar",
+    "es": "Batalla de Vugledar"
   },
   "Belarus": {
     "ca": "Belarús",
@@ -362,6 +384,10 @@
   },
   "Eastern Hungarian Kingdom": {
     "es": "Reino de Hungría del Este"
+  },
+  "Eastern Ukraine campaign": {
+    "ca": "Ofensiva de l'est d'Ucraïna",
+    "es": "Frente oriental de la invasión rusa de Ucrania"
   },
   "Egypt": {
     "ca": "Egipte",
@@ -1259,6 +1285,10 @@
     "es": "Kosovo"
   },
   "Kosovo during World War II": {},
+  "Kursk campaign": {
+    "ca": "Ofensiva ucraïnesa de Kursk de 2024",
+    "es": "Ofensiva de Kursk (2024-2025)"
+  },
   "Kuwait": {
     "ca": "Kuwait",
     "es": "Kuwait"
@@ -1330,6 +1360,7 @@
   "Military Administration in Belgium and Northern France": {
     "es": "Administración Militar del Norte de Francia y Bélgica"
   },
+  "Minsk agreements": {},
   "Moldavia": {
     "ca": "Principat de Moldàvia",
     "es": "Principado de Moldavia"
@@ -1374,6 +1405,7 @@
     "ca": "Macedònia del Nord",
     "es": "Macedonia del Norte"
   },
+  "Northern Ukraine campaign": {},
   "Norway": {
     "ca": "Noruega",
     "es": "Noruega"
@@ -1425,6 +1457,10 @@
   "Papal States": {
     "ca": "Estats Pontificis",
     "es": "Estados Pontificios"
+  },
+  "Pokrovsk offensive": {
+    "ca": "Ofensiva de Pokrovsk",
+    "es": "Batalla de Pokrovsk"
   },
   "Poland": {
     "ca": "Polònia",
@@ -1592,12 +1628,19 @@
     "ca": "Invasió russa d'Ucraïna del 2022",
     "es": "Guerra ruso-ucraniana"
   },
+  "Russian occupation of Kharkiv Oblast": {
+    "es": "Ocupación rusa del óblast de Járkov"
+  },
   "Russian Republic": {
     "es": "República Rusa"
   },
   "Russian Soviet Federative Socialist Republic": {
     "ca": "República Socialista Federativa Soviètica de Rússia",
     "es": "República Socialista Federativa Soviética de Rusia"
+  },
+  "Russian-occupied territories of Ukraine": {
+    "ca": "Territoris ucraïnesos ocupats per Rússia",
+    "es": "Territorios ocupados de Ucrania por Rusia"
   },
   "Russo-Ukrainian war": {
     "ca": "Guerra russo-ucraïnesa",

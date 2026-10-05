@@ -44,6 +44,9 @@ const ca = {
   territoryOf: 'Territori de',
   sourceZoneBorders: 'Les vores de la zona',
   sourceZoneText: 'El text i les dates',
+  sourceZoneFront: 'El front',
+  zoneFront:
+    'La línia del front és la de DeepStateMap del {date}, simplificada: té un error de pocs quilòmetres, i la franja en disputa no hi surt.',
   zoneApproxLine:
     "Les vores interiors d'aquesta zona són aproximades: s'han dibuixat a mà a partir dels mapes de les fonts.",
   zoneApproxAdmin:
@@ -145,6 +148,9 @@ const es: Messages = {
   territoryOf: 'Territorio de',
   sourceZoneBorders: 'Los bordes de la zona',
   sourceZoneText: 'El texto y las fechas',
+  sourceZoneFront: 'El frente',
+  zoneFront:
+    'La línea del frente es la de DeepStateMap del {date}, simplificada: tiene un error de pocos kilómetros, y la franja en disputa no aparece.',
   zoneApproxLine:
     'Los bordes interiores de esta zona son aproximados: se han dibujado a mano a partir de los mapas de las fuentes.',
   zoneApproxAdmin:
@@ -243,6 +249,9 @@ const en: Messages = {
   territoryOf: 'Territory of',
   sourceZoneBorders: "The zone's borders",
   sourceZoneText: 'The text and dates',
+  sourceZoneFront: 'The front line',
+  zoneFront:
+    'The front line is the DeepStateMap line of {date}, simplified: it is off by a few kilometres, and the contested strip is left out.',
   zoneApproxLine:
     "This zone's inner borders are approximate: they were drawn by hand from the maps in the sources.",
   zoneApproxAdmin:

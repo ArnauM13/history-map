@@ -34,7 +34,7 @@ ejemplo, el mapa cambia cada pocos meses. Aquí se puede ver día a día.
 | **Cuatro siglos más** | De 1500 a 1885, de año en año: el Reino de Francia y la Monarquía de Julio, el Sacro Imperio, la República de las Dos Naciones, el Imperio sueco. Con las ocupaciones que la fuente contaba como anexiones devueltas a quien eran, y el día exacto de cada cambio de régimen. |
 | **Cada bandera en su tiempo** | Un centenar de banderas de unos setenta estados: en el mapa, en una galería para cada fecha y en la ficha de cada estado, con qué significan las que tienen más historia. |
 | **Lo que pasaba a la vez** | Los conflictos abiertos y los hechos del año, junto al mapa y marcados en la línea temporal. |
-| **Las ocupaciones, de 1938 a 1945** | Lo que se controlaba de hecho y las fronteras no enseñan: la anexión de Austria, el Gobierno General, la Francia de Vichy, Yugoslavia y Grecia repartidas, Ucrania ocupada. Del color del ocupante, como una parte más de su territorio, y cada zona con el nombre en el mapa y su ficha. |
+| **Las ocupaciones, de 1938 a hoy** | Lo que se controlaba de hecho y las fronteras no enseñan: la anexión de Austria, el Gobierno General, la Francia de Vichy, Yugoslavia y Grecia repartidas, Ucrania ocupada; y, desde 2014, Crimea, el Donbás y el frente de la guerra ruso-ucraniana, fase a fase. Del color del ocupante, como una parte más de su territorio, y cada zona con el nombre en el mapa y su ficha. |
 | **La fuente de cada dato** | Cada ficha dice de dónde salen las fronteras, el nombre, las fechas de las banderas y los hechos, con el enlace para comprobarlo. |
 | **Tres idiomas** | Catalán, castellano e inglés: la interfaz, los nombres de los estados y de las capitales, los textos y los enlaces a Wikipedia. |
 | **Un enlace para cada fecha** | `?d=1914-06-28&lang=es` abre exactamente el mismo mapa a quien lo reciba. |
@@ -76,7 +76,7 @@ Ningún dato entra sin fuente, y la fuente se ve en la ficha donde aparece.
 | Las fechas de las banderas | Los artículos de Wikipedia sobre las banderas de cada estado |
 | Las imágenes de las banderas | [Wikimedia Commons](https://commons.wikimedia.org/), con la licencia y el autor de cada una |
 | Los hechos y los conflictos | Wikipedia y fuentes externas, como la resolución 68/262 de la ONU sobre Crimea |
-| Las zonas ocupadas y anexionadas | Las fronteras de CShapes de otros años, las divisiones actuales de [Natural Earth](https://www.naturalearthdata.com/) y líneas dibujadas a mano, con el artículo de Wikipedia de cada zona |
+| Las zonas ocupadas y anexionadas | Las fronteras de CShapes de otros años, las divisiones actuales de [Natural Earth](https://www.naturalearthdata.com/) líneas dibujadas a mano y, en Ucrania, el frente de [DeepStateMap](https://deepstatemap.live/), con el artículo de Wikipedia de cada zona |
 
 Los tests no dejan entrar nada sin fuente, y el workflow «Fonts» comprueba cada lunes que todos
 los artículos y enlaces siguen existiendo. El detalle, las correcciones y las limitaciones están en
@@ -84,9 +84,10 @@ los artículos y enlaces siguen existiendo. El detalle, las correcciones y las l
 
 ## Qué no hace (y es a propósito)
 
-- **No dibuja los frentes, de momento.** La capa de ocupaciones dice quién controlaba cada
-  territorio, no dónde estaban los ejércitos. Por eso todavía falta la Rusia ocupada, que cambió
-  de manos con el frente.
+- **No dibuja los frentes, de momento, salvo el de la guerra ruso-ucraniana.** La capa de
+  ocupaciones dice quién controlaba cada territorio, no dónde estaban los ejércitos. Por eso todavía
+  falta la Rusia ocupada, que cambió de manos con el frente. En Ucrania, donde el frente se mueve
+  desde 2022, va por fases, cada una con la línea de un día.
 - **No es una enciclopedia.** Dos o tres frases y el enlace a la fuente; el resto está bien
   explicado allí.
 - **No te pide nada.** Ni cuenta, ni cookies, ni datos tuyos.
@@ -159,8 +160,8 @@ en catalán, castellano o inglés.
 
 ## Lo que viene
 
-- **El resto de la capa de ocupaciones**: la Rusia ocupada, con los frentes, y los territorios en
-  disputa de hoy.
+- **El resto de la capa de ocupaciones**: la Rusia ocupada, con los frentes, y los otros territorios
+  en disputa de hoy.
 - **Más contenido**: unos cien hechos y una treintena de conflictos, con fuentes académicas además
   de Wikipedia.
 - **Un buscador e historias guiadas** que muevan el mapa paso a paso.
@@ -183,6 +184,7 @@ El resto, en [FULL-DE-RUTA.md](FULL-DE-RUTA.md) (en catalán).
   Skrede Gleditsch, por [CShapes 2.0](https://icr.ethz.ch/data/cshapes/).
 - A quienes dibujan las banderas de Wikimedia Commons y escriben Wikipedia, en todos los idiomas.
 - [Natural Earth](https://www.naturalearthdata.com/), por las divisiones administrativas.
+- [DeepStateMap](https://deepstatemap.live/), por el frente de la guerra ruso-ucraniana.
 - [MapLibre](https://maplibre.org/), [OpenMapTiles](https://github.com/openmaptiles/fonts),
   [Fontsource](https://fontsource.org/) y [Material Symbols](https://fonts.google.com/icons).
 - El lenguaje visual es el de Petja.

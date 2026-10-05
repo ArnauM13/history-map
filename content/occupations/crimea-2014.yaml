@@ -1,0 +1,46 @@
+start: 2014-02-27
+control:
+  - until: 2014-03-17
+    by: 365
+    kind: occupation
+    cause:
+      ca: Ocupació russa de Crimea, 2014
+      es: Ocupación rusa de Crimea, 2014
+      en: Russian occupation of Crimea, 2014
+  - by: 365
+    kind: annexation
+    cause:
+      ca: Annexió de Crimea, 2014
+      es: Anexión de Crimea, 2014
+      en: Annexation of Crimea, 2014
+countries: [369]
+title:
+  ca: Crimea annexionada per Rússia
+  es: Crimea anexionada por Rusia
+  en: Crimea annexed by Russia
+label:
+  ca: Crimea
+  es: Crimea
+  en: Crimea
+summary:
+  ca: >-
+    El 27 de febrer del 2014 soldats russos sense distintius van prendre el parlament de Crimea,
+    i en poques setmanes, tota la península. Rússia se la va annexionar el 18 de març, després
+    d'un referèndum que l'Assemblea General de l'ONU no va reconèixer (resolució 68/262). Per a
+    Ucraïna i la gran majoria d'estats, és territori ucraïnès ocupat.
+  es: >-
+    El 27 de febrero de 2014 soldados rusos sin distintivos tomaron el parlamento de Crimea y,
+    en pocas semanas, toda la península. Rusia se la anexionó el 18 de marzo, después de un
+    referéndum que la Asamblea General de la ONU no reconoció (resolución 68/262). Para Ucrania
+    y la gran mayoría de estados, es territorio ucraniano ocupado.
+  en: >-
+    On 27 February 2014 Russian soldiers without insignia seized the Crimean parliament and,
+    within weeks, the whole peninsula. Russia annexed it on 18 March, after a referendum the UN
+    General Assembly did not recognise (Resolution 68/262). For Ukraine and the great majority
+    of states, it is occupied Ukrainian territory.
+wikipedia:
+  en: Annexation of Crimea by the Russian Federation
+sources:
+  - title: 'Resolution 68/262: Territorial integrity of Ukraine'
+    publisher: United Nations General Assembly
+    url: https://undocs.org/A/RES/68/262

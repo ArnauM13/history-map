@@ -1,0 +1,30 @@
+start: 2022-11-11
+control:
+  - until: 2024-02-16
+    by: 365
+    kind: occupation
+    cause:
+      ca: "Invasió russa d'Ucraïna, 2022"
+      es: Invasión rusa de Ucrania, 2022
+      en: Russian invasion of Ukraine, 2022
+countries: [369]
+title:
+  ca: Ucraïna ocupada per Rússia, fora de les províncies annexionades (2022-2024)
+  es: Ucrania ocupada por Rusia, fuera de las provincias anexionadas (2022-2024)
+  en: Ukraine occupied by Russia, outside the annexed oblasts (2022–2024)
+label:
+  ca: Ucraïna ocupada
+  es: Ucrania ocupada
+  en: Occupied Ukraine
+summary:
+  ca: >-
+    Una franja de la província de Khàrkiv, a l'est de Kupiansk, i la fletxa de Kinburn, a la de
+    Mikolaiv. La línia és la del 2 de juny del 2023.
+  es: >-
+    Una franja de la provincia de Járkov, al este de Kupiansk, y la flecha de Kinburn, en la de
+    Mykolaiv. La línea es la del 2 de junio de 2023.
+  en: >-
+    A strip of Kharkiv Oblast, east of Kupiansk, and the Kinburn Spit, in Mykolaiv Oblast. The
+    line is that of 2 June 2023.
+wikipedia:
+  en: Russian occupation of Kharkiv Oblast

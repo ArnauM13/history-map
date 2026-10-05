@@ -1,0 +1,38 @@
+start: 2026-04-01
+control:
+  - by: 365
+    kind: annexation
+    cause:
+      ca: Annexió de quatre províncies, 2022
+      es: Anexión de cuatro provincias, 2022
+      en: Annexation of four oblasts, 2022
+countries: [369]
+title:
+  ca: "Ucraïna ocupada i annexionada per Rússia (des de l'abril del 2026)"
+  es: Ucrania ocupada y anexionada por Rusia (desde abril de 2026)
+  en: Ukraine occupied and annexed by Russia (since April 2026)
+label:
+  ca: Annexionada per Rússia
+  es: Anexionada por Rusia
+  en: Annexed by Russia
+summary:
+  ca: >-
+    Des del començament del 2026 el front s'ha mogut menys: Rússia hi ha guanyat terreny
+    sobretot a l'oest de la província de Donetsk i al voltant de Huliaipole, i Ucraïna n'ha
+    recuperat una part a les províncies de Dnipropetrovsk i Zaporíjia. La línia és la més
+    recent, del 4 d'octubre del 2026.
+  es: >-
+    Desde el comienzo de 2026 el frente se ha movido menos: Rusia ha ganado terreno sobre todo
+    en el oeste de la provincia de Donetsk y alrededor de Huliaipole, y Ucrania ha recuperado
+    una parte en las provincias de Dnipropetrovsk y Zaporiyia. La línea es la más reciente, del
+    4 de octubre de 2026.
+  en: >-
+    Since the start of 2026 the front has moved less: Russia has gained ground mainly in western
+    Donetsk Oblast and around Huliaipole, and Ukraine has retaken some in Dnipropetrovsk and
+    Zaporizhzhia oblasts. The line is the most recent one, of 4 October 2026.
+wikipedia:
+  en: Russian-occupied territories of Ukraine
+sources:
+  - title: 'Resolution ES-11/4: Territorial integrity of Ukraine: defending the principles of the Charter of the United Nations'
+    publisher: United Nations General Assembly
+    url: https://undocs.org/A/RES/ES-11/4

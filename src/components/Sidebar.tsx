@@ -527,6 +527,13 @@ const NATURAL_EARTH_SOURCE = {
   url: 'https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-1-states-provinces/',
 }
 
+/** El front de la guerra russoucraïnesa, dia a dia des de l'abril del 2022. */
+const DEEPSTATE_SOURCE = {
+  site: 'DeepStateMap',
+  title: 'deepstatemap.live',
+  url: 'https://deepstatemap.live/',
+}
+
 /** La Viquipèdia, en l'idioma de la pantalla si es pot, com a font. */
 function wikipediaSource(
   source: WikipediaTitles | string | undefined,
@@ -607,9 +614,9 @@ function OccupationDetail({
         : date
   const end = occupationEnd(zone)
   const title = localize(zone.title, lang)
-  const approx =
-    useBorderData()?.occupations.features.find((f) => f.properties.id === zone.id)?.properties
-      .approx ?? []
+  const shape = useBorderData()?.occupations.features.find((f) => f.properties.id === zone.id)
+  const approx = shape?.properties.approx ?? []
+  const front = shape?.properties.front
   const periodYears = (p: (typeof periods)[number]) =>
     `${yearOf(p.from)} – ${p.until ? yearOf(p.until) : t('present')}`
 
@@ -679,6 +686,7 @@ function OccupationDetail({
           </dl>
         </>
       )}
+      {front && <p className="src-note">{t('zoneFront', { date: formatDate(front, lang) })}</p>}
       {approx.length > 0 && (
         <p className="src-note">
           {t(
@@ -695,6 +703,7 @@ function OccupationDetail({
           ...wikipediaSource(zone.wikipedia, lang, t('wikipedia'), t('sourceZoneText')),
           ...externalSources(zone.sources).map((s) => ({ what: t('sourceZoneText'), ...s })),
           { what: t('sourceZoneBorders'), ...CSHAPES_SOURCE },
+          ...(front ? [{ what: t('sourceZoneFront'), ...DEEPSTATE_SOURCE }] : []),
           ...(approx.includes('admin')
             ? [{ what: t('sourceZoneBorders'), ...NATURAL_EARTH_SOURCE }]
             : []),

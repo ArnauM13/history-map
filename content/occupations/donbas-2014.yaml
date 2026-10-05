@@ -1,0 +1,39 @@
+start: 2014-09-05
+control:
+  - until: 2015-02-17
+    by: 365
+    kind: client
+    cause:
+      ca: Protocol de Minsk, 2014
+      es: Protocolo de Minsk, 2014
+      en: Minsk Protocol, 2014
+countries: [369]
+title:
+  ca: Repúbliques populars de Donetsk i Luhansk (2014-2015)
+  es: Repúblicas populares de Donetsk y Lugansk (2014-2015)
+  en: "Donetsk and Luhansk people's republics (2014–2015)"
+label:
+  ca: Donetsk i Luhansk
+  es: Donetsk y Lugansk
+  en: Donetsk and Luhansk
+summary:
+  ca: >-
+    Les «repúbliques populars» de Donetsk i Luhansk es van proclamar l'abril del 2014 amb el
+    suport de Rússia. Després de la contraofensiva ucraïnesa de l'estiu i de l'entrada de tropes
+    russes a l'agost, el protocol de Minsk del 5 de setembre va aturar el front gairebé aquí.
+    Ucraïna conservava la bossa de Debaltseve, entre les dues capitals. La línia és la de
+    contacte d'abans del 2022, de DeepStateMap, amb la bossa dibuixada a mà.
+  es: >-
+    Las «repúblicas populares» de Donetsk y Lugansk se proclamaron en abril de 2014 con el apoyo
+    de Rusia. Tras la contraofensiva ucraniana del verano y la entrada de tropas rusas en
+    agosto, el protocolo de Minsk del 5 de septiembre detuvo el frente casi aquí. Ucrania
+    conservaba la bolsa de Debáltseve, entre las dos capitales. La línea es la de contacto de
+    antes de 2022, de DeepStateMap, con la bolsa dibujada a mano.
+  en: >-
+    The Donetsk and Luhansk «people's republics» were proclaimed in April 2014 with Russian
+    backing. After the Ukrainian counter-offensive in the summer and the entry of Russian troops
+    in August, the Minsk Protocol of 5 September froze the front roughly here. Ukraine kept the
+    Debaltseve salient, between the two capitals. The line is the pre-2022 line of contact, from
+    DeepStateMap, with the salient drawn by hand.
+wikipedia:
+  en: Minsk agreements
