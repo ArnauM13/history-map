@@ -55,6 +55,8 @@ iguales. Los criterios de ahora:
 | Dos estados tienen el mismo soberano | **Estados separados** mientras mantienen instituciones propias; uno solo cuando se unen por ley. | Sajonia y Polonia (1697-1763), Hannover y Gran Bretaña (1714-1837) y Escocia e Inglaterra (1603-1707), separados; Gran Bretaña desde 1707. |
 | Un estado paga tributo o es vasallo de otro | **Estado propio**, si se gobernaba solo. | Valaquia y Moldavia, bajo el Imperio otomano. |
 | Una revuelta | En el mapa, solo si tuvo **un gobierno sobre el territorio**, y con las fechas de ese gobierno. | El Estado Húngaro, del 14 de abril al 13 de agosto de 1849; la revuelta de Nalivaiko, dentro de la República de las Dos Naciones. |
+| Un territorio se libera antes de la paz | Vuelve a su gobierno **el día en que se restaura**; si el ocupante no se va, sigue siendo suyo hasta el tratado. | Ginebra, república desde el 31 de diciembre de 1813; Hamburgo, francesa hasta el tratado de París (30 de mayo de 1814), porque Davout no la dejó. |
+| Un territorio cedido que aún no tiene dueño | El **gobierno provisional** que lo gobernaba, si lo hay. | Bélgica, del tratado de París al Congreso de Viena: el Gobierno General de los aliados, ni Francia ni los Países Bajos. |
 | El nombre | El que tenía el estado **entonces**, como lo llama la Wikipedia de cada idioma. | En 1700, el Reino de Francia; en 1810, el Primer Imperio francés. |
 
 Si la discrepancia tiene importancia histórica (una frontera en disputa, una fecha que cada
@@ -237,7 +239,15 @@ Las correcciones son código, en `scripts/build-history.mjs`, y siguen los crite
 `CORRECTIONS` cambia de quién es una pieza y hasta cuándo; `SHAPES` devuelve un territorio a quien
 era, y solo lo toma de quien lo ocupaba, para no tocar los cambios de verdad de los vecinos;
 `TRANSITIONS` pone el cambio de los grandes tratados el día en que se firmaron. Cada una lleva la
-descripción y las fechas al lado, comprobadas en Wikipedia.
+descripción y las fechas al lado, comprobadas en Wikipedia. Donde Cliopatria no tiene la forma
+buena (las ciudades libres, Ginebra, los enclaves de Gdansk y Toruń), `SHAPES` la toma de
+OpenHistoricalMap (`OHM_SHAPES`) y, para la Cataluña que Francia se anexionó en 1812, de las
+provincias de Natural Earth.
+
+Las ocupaciones se han buscado pieza a pieza: un script recorre una cuadrícula de puntos cada medio
+grado y apunta dónde un territorio cambia de manos y vuelve a quien lo tenía en menos de ocho años.
+Cada caso se ha mirado en Wikipedia; los que eran control militar vuelven a quien eran, y los que
+eran una cesión de verdad (Podolia, en 1672) se quedan.
 
 | Qué | Por qué |
 | --- | --- |
@@ -246,13 +256,19 @@ descripción y las fechas al lado, comprobadas en Wikipedia.
 | La guerra de los Treinta Años | Maguncia, Fráncfort, Wurzburgo, Erfurt, Mecklemburgo y Bremen-Verden salen suecos de 1632 a 1647, Hamburgo danés de 1622 a 1628, y Mecklemburgo, Hamburgo y Lübeck de los Habsburgo de 1629 a 1631. Suecia no gana nada hasta Westfalia (1648); el Mecklemburgo de Wallenstein era un feudo imperial. Todo vuelve al Sacro Imperio. |
 | Valaquia y Moldavia | Vasallos otomanos, pero estados propios (§0.1). Cliopatria las hace rusas o austriacas en cada guerra (1769-1774, 1791, 1807-1812, 1828-1834, 1849-1856). Besarabia es rusa desde el tratado de Bucarest, el 28 de mayo de 1812, no desde 1807. |
 | La revuelta bohemia | Del 23 de mayo de 1618 (la defenestración de Praga) a la Montaña Blanca, el 8 de noviembre de 1620, Bohemia se gobierna sola; Cliopatria la pone dentro del «Sacro Imperio» hasta 1621. |
-| Las ciudades hanseáticas | Hamburgo y Bremen, libres de 1806 a 1810: Francia las ocupa, pero no se las anexiona hasta 1811. Lübeck, al revés: Cliopatria la deja libre cuando era francesa (1811-1813). |
+| Más ocupaciones, buscadas pieza a pieza | Smolensk, Vilna y Kiev, rusos de 1654-1655 a la tregua de Andrusovo (9-2-1667), y la Livonia sueca, rusa de 1656 a 1661; Rusia, con unas cuantas villas de la guerra de Smolensk (1632-1634) y con la invasión sueca de 1708-1709; Finlandia, rusa de 1713 a 1721 (la Gran Ira); Holstein y Jutlandia, de los Habsburgo en 1627-1629; Silesia, Bohemia y Baviera, suecas en la guerra de los Treinta Años; Utrecht, francesa en 1672-1673; Saboya y Niza, francesas en 1691-1696 y en 1702-1705; el oeste de España, portugués en 1706-1708; Bohemia y el sur de Alemania, franceses en 1741-1743; en la guerra de los Siete Años, Bohemia prusiana, la Prusia Oriental y Pomerania rusas y Hesse y Westfalia francesas; el Budjak, ruso en 1769-1774 y en 1791; la Baja Baviera, austriaca en 1778-1779 (en Teschen, el 13 de mayo de 1779, Austria solo se queda el Innviertel); el suroeste de Alemania, francés en 1796; Bulgaria, rusa en 1877-1879: otomana hasta el tratado de Berlín (13-7-1878), y después el Principado de Bulgaria y Rumelia Oriental. Menorca, española desde 1783: Gran Bretaña la ocupó de 1798 a 1802, y Cliopatria se la vuelve a dar de 1806 a 1819. |
+| La época napoleónica | Hannover, francés en 1803-1805; Portugal, francés en 1811; España, francesa en 1812-1813, cuando el Imperio solo se anexionó Cataluña (26 de enero de 1812); la Pomerania sueca, francesa en 1812-1813; Cracovia, del Gran Ducado de Varsovia desde Schönbrunn (14-10-1809) y no desde 1811; el Gran Ducado de Varsovia, ruso de 1813 al Congreso de Viena, cuando dejó de existir; Hannover, Hesse-Kassel y Brunswick, restaurados en 1813-1814 y que Cliopatria hace prusianos hasta 1815. Bélgica, del tratado de París (30 de mayo de 1814) al Congreso de Viena, es del Gobierno General de los aliados (§0.1), no de Francia. Luxemburgo y la orilla izquierda del Rin, no (§1.4.2). |
+| Las ciudades libres | Hamburgo, Bremen y Lübeck, libres de 1806 a 1810: Francia las ocupa, pero no se las anexiona hasta 1811. Libres de nuevo, Bremen y Lübeck, en 1813, y Hamburgo, en el tratado de París (30 de mayo de 1814), porque Davout la defendió hasta el final. Fráncfort, ciudad imperial hasta 1806, de Dalberg (principado y, desde el 16 de febrero de 1810, gran ducado) hasta 1813, y libre después. Bremen, ciudad imperial, nunca sueca, danesa ni de Hannover, que tenían su entorno. Cliopatria las dibuja desplazadas (Bremen y Fráncfort, unos kilómetros al oeste) o confunde Lübeck con dos trozos de Mecklemburgo: la forma es la de OpenHistoricalMap de 1815. |
+| Gdansk y Toruń | Polacas hasta la segunda partición (23-1-1793): en 1772 Prusia se queda el entorno, pero no las ciudades. La Ciudad Libre de Dánzig, del 21 de julio de 1807 al 2 de enero de 1814, y con el QID y el artículo de la napoleónica, no de la de 1920. |
+| Finlandia | Rusa desde el tratado de Fredrikshamn (17 de septiembre de 1809), no desde el de Schönbrunn: la misma muestra de Cliopatria recoge los dos cambios. |
+| Ginebra | República de 1534 a la anexión francesa (15 de abril de 1798) y del 31 de diciembre de 1813 al 19 de mayo de 1815, cuando entra en Suiza. Cliopatria la pone dentro de Saboya y, desde 1860, de Francia. |
+| Solapamientos | Cliopatria deja el Piamonte al Reino de Cerdeña después de la anexión francesa (11 de septiembre de 1802), y Roma y el Lacio a los Estados Pontificios después de la del 17 de mayo de 1809: las dos piezas se solapaban. Wismar, que Suecia empeñó a Mecklemburgo el 26 de junio de 1803, era sueca y de Mecklemburgo a la vez. |
 | Monarquías compuestas | La Austria y la Bohemia de Fernando I salen como parte de España (1529-1555); la Sajonia del elector que era rey de Polonia, como Polonia (1700-1756); la Toscana de los Habsburgo-Lorena, como Austria; Hannover, como británico o prusiano. Eran estados aparte. |
 | Escocia | Reino aparte hasta el 1 de mayo de 1707, salvo durante la Commonwealth de Cromwell. Cliopatria la hace inglesa desde 1609 y la deja en blanco de 1640 a 1652. |
 | Revueltas de pocos meses | El Estado Húngaro (14 de abril - 13 de agosto de 1849), la República de Baden (1 de junio - 23 de julio de 1849), la Sicilia de 1848 y el gobierno del Levantamiento de Noviembre (29 de noviembre de 1830 - 21 de octubre de 1831), con sus fechas; la muestra los alargaba hasta tres años. Las revueltas de Nalivaiko y de los hugonotes, dentro de su estado. |
-| Los tratados, el día en que se firmaron | Westfalia (24-10-1648), los Pirineos (7-11-1659), Utrecht (11-4-1713), Passarowitz (21-7-1718), Nystad (10-9-1721), Aquisgrán (18-10-1748), las particiones de Polonia (5-8-1772, 23-1-1793 y 24-10-1795), Crimea (19-4-1783), Campo Formio (17-10-1797), Tilsit (9-7-1807), Schönbrunn (14-10-1809), Viena (9-6-1815), Bélgica (4-10-1830), Zúrich (10-11-1859), Turín (24-3-1860), Viena (30-10-1864), Praga (23-8-1866) y la Confederación de Alemania del Norte (1-7-1867). Cliopatria los pone el 1 de enero de la muestra, y la segunda y la tercera partición de Polonia, un año antes. Cambian el mismo día todos los estados que se intercambian territorio, también los de fuera de la zona del tratado (en 1809, Suecia, que pierde Finlandia). |
+| Los tratados, el día en que se firmaron | Westfalia (24-10-1648), los Pirineos (7-11-1659), Utrecht (11-4-1713), Passarowitz (21-7-1718), Nystad (10-9-1721), Aquisgrán (18-10-1748), las particiones de Polonia (5-8-1772, 23-1-1793 y 24-10-1795), Crimea (19-4-1783), Campo Formio (17-10-1797), Tilsit (9-7-1807), Schönbrunn (14-10-1809), Viena (9-6-1815), Bélgica (4-10-1830), Zúrich (10-11-1859), Turín (24-3-1860), Viena (30-10-1864), Praga (23-8-1866) y la Confederación de Alemania del Norte (1-7-1867); y, uno a uno, Andrusovo (9-2-1667), Fredrikshamn (17-9-1809) y Berlín (13-7-1878). Cliopatria los pone el 1 de enero de la muestra, y la segunda y la tercera partición de Polonia, un año antes. Cambian el mismo día todos los estados que se intercambian territorio, también los de fuera de la zona del tratado (en 1809, Suecia, que pierde Finlandia). |
 | El día del cambio de régimen | Francia (1792, 1795, 1799, 1804, 1814, 1830, 1848, 1852, 1870), España (1873, 1874), Gran Bretaña (1707) y el Reino Unido (1801), Dinamarca y Noruega (1814), Suecia (1721), Prusia (1701), Austria-Hungría (1867), Italia (1861), la Italia napoleónica (1805), Nápoles (1806), la Toscana (1569), Grecia (1832), Serbia (1882) y Rumania (1862, 1881). |
-| Nombres y artículos equivocados | «Serbs», el pueblo, para el Principado de Serbia; el condado de Urgel por Andorra; un «Reino de Mónaco»; los QID y los artículos de la Cataluña de hoy para la República Catalana de 1641, y de la Italia de hoy para la República Italiana de 1802; el Egipto de 1885, enlazado al «Reparto de África»; la Confederación Livonia, al idioma livonio. |
+| Nombres y artículos equivocados | «Serbs», el pueblo, para el Principado de Serbia; el condado de Urgel por Andorra; un «Reino de Mónaco»; los QID y los artículos de la Cataluña de hoy para la República Catalana de 1641, y de la Italia de hoy para la República Italiana de 1802; el Egipto de 1885, enlazado al «Reparto de África»; la Confederación Livonia, al idioma livonio; la Ciudad Libre de Dánzig de 1920 para la napoleónica; un «Reino de Hannover» en 1803, cuando lo fue desde 1814. |
 | Francia en 1814 | Cliopatria da 100.000 km² alrededor de París al Gran Ducado de Berg, que tenía 15.000, en el Rin. |
 | Alsacia y Lorena | Francesas hasta el tratado de Fráncfort (10 de mayo de 1871), no hasta el 1 de enero. |
 
@@ -265,25 +281,40 @@ descripción y las fechas al lado, comprobadas en Wikipedia.
   vigor el 1 de enero de 1871; el emperador se proclamó el 18 de enero, y la constitución del
   Imperio es del 4 de mayo, la fecha que usa OpenHistoricalMap. El mapa usa el 1 de enero, cuando
   los estados del sur dejan de ser independientes.
+- **Kiev de 1654 a 1667.** Tiene una guarnición rusa desde 1654, pero la República de las Dos
+  Naciones no la cede hasta la tregua de Andrusovo, y aún por dos años: la paz perpetua de 1686 lo
+  hace definitivo. El mapa sigue la soberanía: polaca hasta Andrusovo, y rusa desde entonces.
+- **Bélgica en 1815.** Guillermo de Orange se proclama rey el 16 de marzo, y el Congreso de Viena la
+  une a los Países Bajos el 9 de junio. El mapa usa el 9 de junio, como para el resto de cambios
+  del Congreso.
+- **Fráncfort de 1813 a 1815.** Wikipedia la hace libre desde 1813; OpenHistoricalMap, desde el 9 de
+  julio de 1815, cuando vuelve la constitución de antes de Napoleón. El mapa la hace libre desde el
+  1 de enero de 1814, cuando ya no hay gran duque.
 
 #### 1.4.2 Dónde fallan
 
 - **De año en año**, donde no hay un tratado o un régimen con la fecha puesta. Véase «La precisión»,
   arriba.
-- **Más control de hecho.** Quedan ocupaciones breves que Cliopatria cuenta como soberanía, sobre
-  todo en la época napoleónica (Bruselas en 1814) y en las fronteras del este.
+- **Más control de hecho**, donde no hay una forma buena para devolver el territorio a quien era:
+  - **Luxemburgo y la orilla izquierda del Rin**, franceses hasta el Congreso de Viena, cuando desde
+    el tratado de París (30 de mayo de 1814) eran de los gobiernos provisionales de los aliados.
+  - **Podolia**, otomana del tratado de Buczacz (1672) al de Karlowitz (1699): Cliopatria solo la
+    hace otomana de 1673 a 1676.
+  - **Cerdeña y Sicilia**, españolas de 1718 a 1720, cuando España las había reconquistado pero el
+    tratado de Utrecht las daba a Austria y a Saboya.
+  - **Polonia de 1706 a 1713**, con el rey que puso Suecia (Estanislao I) como si fuera otro estado.
+  - **El Período Tumultuoso** (1610-1618), con el oeste de Rusia polaco; **el Piamonte** de 1799,
+    francés; **Lorena** en el siglo XVIII, entre Francia y el duque.
 - **Estados pequeños fuera de 1815-1870.** Los del Sacro Imperio van juntos, con el nombre del
-  Imperio, también los de Italia hasta 1740. Antes de 1815, Fráncfort sale dentro de Berg y de
-  Wurzburgo, y las formas de Bremen y Lübeck quedan desplazadas unos kilómetros de las ciudades. De
-  1815 a 1870 lo arregla OpenHistoricalMap (§1.5).
-- **Gdansk y Toruń**, prusianas desde 1772: fueron polacas hasta 1793. Cliopatria no las separa de
-  su entorno, que sí pasó a Prusia en 1772.
-- **Finlandia**, sueca hasta el 14 de octubre de 1809 (Schönbrunn), cuando el tratado de
-  Fredrikshamn es del 17 de septiembre: la misma muestra de Cliopatria recoge los dos cambios.
+  Imperio, también los de Italia hasta 1740. Las ciudades libres sí están (§1.4.1), pero no el resto
+  del Gran Ducado de Fráncfort (Aschaffenburg, Fulda, Hanau): salen Wurzburgo y Berg.
 - **Bordes menos finos** que los de CShapes, y con un salto pequeño el 1 de enero de 1886, cuando
-  empiezan los de CShapes. Ginebra, que era independiente y es suiza desde 1815, cae al otro lado
-  de la frontera.
-- **Huecos.** De 1659 a 1661, Kiev no es de nadie.
+  empiezan los de CShapes.
+- **Huecos.** El Hetmanato cosaco, que gobernaba la Ucrania central desde 1648, no está en
+  Cliopatria: de 1653 a 1661 esa zona no es de nadie. La estepa, al sur de Rusia, está en blanco
+  hasta que llega el Imperio ruso.
+- **Piezas que se solapan**, pequeñas: España y Nápoles en Sicilia (1762), España, Austria y Saboya
+  en Cerdeña y Sicilia (1721), el condado de Foix y la casa de Borbón dentro de Francia (1540-1563).
 - **Sin banderas.** Empiezan en 1886: las anteriores aún no están documentadas.
 
 ### 1.5 La Europa central de 1815 a 1870: OpenHistoricalMap
@@ -301,7 +332,10 @@ el resto.
   Sicilia en 1848-1849, las Provincias Unidas de Italia Central, Garibaldi en 1860). Los vecinos
   siguen siendo de Cliopatria: OHM tiene ahí errores que Cliopatria no tiene.
 - **Dónde se corrige OHM**: la Prusia de 1829 a 1834 se adentra 13.000 km² en la Polonia rusa. La
-  frontera occidental de Rusia no se movió de 1815 a 1914, y ahí manda CShapes.
+  frontera occidental de Rusia no se movió de 1815 a 1914, y ahí manda CShapes. Al borde de la
+  Ciudad Libre de Cracovia le faltan dos tramos, uno al norte y el del Vístula, que pasa por la
+  ciudad, y el centro quedaba fuera: se cosen con una recta (`OHM.repair`), con un error de uno o
+  dos kilómetros.
 - **Los nombres**, de Wikidata (el nombre inglés y el artículo de Wikipedia), traducidos como los
   demás (§1.4), o de `content/countries.yaml`.
 - **Se descarga una sola vez** (`npm run data:history`), en `data-raw/`: son unos cientos de MB.
@@ -312,8 +346,6 @@ Dónde falla:
   Sajonia-Coburgo-Saalfeld antes de la reorganización del 12 de noviembre de 1826. En vez de poner
   lo que dice Cliopatria (Prusia, Baviera, Berg), el mapa dice lo que se sabe: **los ducados
   ernestinos**, sin separarlos.
-- **Cracovia.** La forma de OHM de la Ciudad Libre no cierra bien y deja fuera el centro de la
-  ciudad; donde falta, sale Cliopatria.
 
 ---
 
