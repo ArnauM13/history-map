@@ -59,3 +59,118 @@ Cada font té un número, que remet a la llista de [Fonts](#fonts), al final.
 - 1920-08-16 — La comissió d'Allenstein torna el govern al Regierungspräsident von Oppen. [9]
   Marienwerder, el mateix dia segons una font filatèlica [10]; no l'he pogut confirmar en cap
   altra.
+
+### L'Alta Silèsia
+
+- 1920-01-31 — Les primeres tropes franceses arriben a Opole; la Reichswehr ja ha deixat les
+  estacions. [14]
+- 1920-02-11 — La Comissió Interaliada de Govern i Plebiscit comença a governar, amb seu a Opole.
+  [12] Té el poder «von Februar 1920 bis Juli 1922» [12]; «Since February, 1920, to July, 1922»,
+  amb ministeris, controladors de districte i tribunals propis. [14] Versalles, art. 88 i annex,
+  §2: «immediately placed under the authority of an International Commission». [15]
+- 1921-03-20 — Vot. [11] [12]
+- 1921-05-03 — Comença la tercera insurrecció polonesa (vaga general el 2, combats el 3 a les
+  3 de la matinada); alto el foc el 7 de juliol. [12]
+- 1921-10-20 — La Conferència d'Ambaixadors, que fa seva el 19 la proposta del Consell de la
+  Societat de Nacions, comunica la partició als dos governs. [12] [11]
+- 1922-05-15 — Conveni germanopolonès sobre l'Alta Silèsia (Ginebra), en vigor el 15 de juny.
+  [12]
+- 1922-06-15 — La comissió avisa Polònia i Alemanya que han de prendre la seva part en un mes, per
+  etapes. [13]
+- 1922-06-20 → 07-04 — Polònia la pren districte a districte: Katowice el 20 de juny (el 17 hi
+  arriba la policia polonesa i el 19 l'starosta signa l'acta amb el controlador francès),
+  Königshütte el 23, Tarnowitz el 26, Pless el 29 i Rybnik el 4 de juliol. [13] Alemanya fa el
+  mateix a la seva part, alhora, sense dies concrets a les fonts llegides. [13] La WP alemanya diu
+  que la comissió acaba la feina el 29 de juny i posa la cerimònia de Rybnik el 2 de juliol (peu
+  de foto, sense font). [12]
+- 1922-07-16 — Acta de presa de possessió a Katowice. [13]
+
+### Eupen-Malmedy
+
+- Versalles, art. 34: Alemanya «renounces in favour of Belgium all rights and title» sobre els
+  Kreise d'Eupen i Malmedy; durant els sis mesos després d'entrar en vigor el tractat, l'autoritat
+  belga obre registres per als qui vulguin continuar alemanys, i Bèlgica accepta el que decideixi
+  la Societat de Nacions. Art. 32 i 33: Moresnet neutral i el Moresnet prussià, a Bèlgica. [15]
+- 1920-01-10 — El tinent general Baltia hi governa com a alt comissari reial, des del dia que
+  Versalles entra en vigor. [18] La WP alemanya ho diu igual, sense dia: «mit Inkrafttreten des
+  Vertrags von Versailles». [17]
+- 1920-01-23 (o 26) → 07-23 — Els registres oberts. [17] [19] 271 protestes. [16]
+- 1920-09-20 — La Societat de Nacions dona el territori a Bèlgica. [17] (Un resum de cerca atribuïa
+  a les anotacions del Departament d'Estat al tractat una resolució del 16 de setembre; no l'he
+  pogut llegir.)
+- 1925-06-01 — S'acaba el govern de Baltia (llei del 6 de març del 1925) [18]; la WP alemanya
+  dona l'1 de juliol i el 6 de març com a dates de l'annexió [17].
+
+### Caríntia
+
+- 1918-11-05 — Les tropes del Regne SCS entren al sud-est de Caríntia; el 30 de novembre, a
+  Völkermarkt. [21] La resistència carintiana les fa recular: el 7 de maig del 1919 ja han deixat el
+  que ocupaven. [20]
+- 1919-05-28 — Ofensiva del Regne SCS; el 6 de juny pren Klagenfurt, i en surt el 31 de juliol. [20]
+  [21] Des d'aleshores en té la zona A (I), i Àustria la B (II). [21]
+- 1919-09-10 — Saint-Germain: el plebiscit, i la vall de la Meža i Jezersko al Regne SCS sense
+  vot. [20] En vigor el 16 de juliol del 1920. [21]
+- 1920-07-21 — Es constitueix la Comissió Interaliada; el 13 de setembre l'exèrcit SCS acaba de
+  sortir de la zona A, llevat d'especialistes; l'administració civil hi continua. [21]
+- 1920-10-10 — Vot a la zona A: 59 % per Àustria; a la zona B ja no es vota. [20] [21] El 14
+  d'octubre dos batallons SCS tornen a entrar a la zona; la comissió n'exigeix la retirada. [21]
+- 1920-10-18 — La comissió pren l'administració de la zona A en nom d'Àustria; la Conferència
+  d'Ambaixadors ho confirma el 3 de novembre. [21]
+- 1920-11-18 — Àustria acaba de recuperar l'administració, i la comissió plega (Wambaugh). [21]
+  La WP anglesa afegeix que el 22 de novembre es declara part d'Àustria. [20]
+- 1922-10-01 — Intercanvi de Libeliče (a Iugoslàvia) per Rabenstein i Lorenzenberg. [20]
+
+### Sopron i el Burgenland
+
+- 1920-06-04 — Trianon dona l'Hongria occidental (el Burgenland, amb Sopron) a Àustria. [24] En
+  vigor el 26 de juliol del 1921.
+- 1921-08-28 — Dia fixat per al lliurament: la gendarmeria austríaca hi entra i els irregulars
+  hongaresos l'aturen. [24] [25] [23]
+- 1921-10-04 → 11-10 — La Lajtabánság, proclamada a Felsőőr (Oberwart), amb govern i segells
+  propis; els irregulars se'n van el 10 de novembre. [23]
+- 1921-10-13 — Protocol de Venècia: Hongria lliura el Burgenland i hi haurà plebiscit a Sopron i
+  vuit pobles. [24] [25] [26] (La WP anglesa de la Lajtabánság parla de negociacions l'11 i el 12.
+  [23])
+- 1921-11-13 — L'exèrcit austríac entra al nord (fins al 17); el centre i el sud, del 25 al 29 de
+  novembre. L'ordre de la comissió interaliada de generals és de l'11. [25] Incorporació oficial,
+  el 5 de desembre. [26]
+- 1921-12-14 → 16 — Vot a Sopron (14 i 15) i als vuit pobles (16): 65 % per Hongria. [22] [27]
+- 1922-01-01 — L'Entesa lliura Sopron a Hongria; les tropes se'n van el 5. [27] No he trobat el
+  dia que la comissió de generals hi va prendre el govern abans del vot.
+- 1922-09-17 i 11-22 — La comissió de límits torna deu pobles a Hongria, i dos a Àustria. [24]
+
+### El Sarre
+
+- 1918-11-22 — Les tropes franceses d'ocupació entren al territori; administració militar
+  francesa. [29]
+- 1920-01-10 — Versalles en vigor. [28] Art. 49: Alemanya renuncia «in favour of the League of
+  Nations, in the capacity of trustee, the government of the territory»; al cap de quinze anys,
+  plebiscit. [15]
+- 1920-02-26 — La Comissió de Govern, presidida per Victor Rault, pren possessió [28]; la WP
+  alemanya diu el 27 en un lloc i el 26 en un altre, i que l'administració militar francesa dura
+  fins al 13 de febrer, quan la Societat de Nacions nomena la comissió. [29]
+- 1935-01-13 — Plebiscit: 90,7 % per Alemanya. [28] [29]
+- 1935-03-01 — Torna a Alemanya, per decisió del Consell de la Societat de Nacions. [28] [29]
+- Territori: 1.912 km², un quart menys que el Saarland d'avui; peces prussianes (Saarbrücken,
+  Ottweiler, Saarlouis, part de Merzig i de Sankt Wendel) i bavareses (Sankt Ingbert, part
+  d'Homburg i de Zweibrücken). [29]
+
+### Què dona el mapa ara
+
+Consultat a `public/data/borders.topo.json` (copia de `where.mjs`, amb els llocs del lot):
+
+| Lloc | Què hi surt | Què hauria de ser |
+| --- | --- | --- |
+| Tønder, Aabenraa, Haderslev | 255 fins al 1920-02-09; 390 des del 1920-02-10 (el dia del vot) | 255 fins al 1920-06-14; 390 des del 15 |
+| Sønderborg, Nordborg (Als), Sylt | Cap peça, cap any | Als, alemanya i danesa des del 1920; Sylt, alemanya |
+| Allenstein, Marienwerder, Stuhm | 255 | 255 (bé) |
+| Soldau | 290 des del 1919-06-28 | Polònia des del lliurament, el 1920 (lot [1919-polonia](1919-polonia.md)) |
+| Katowice, Königshütte, Rybnik, Pless | **290 des del 1919-06-28** | 255 fins al 1922-06-19 |
+| Beuthen, Gleiwitz, Oppeln | 255 | 255 (bé) |
+| Hultschin | **300 fins al 1918, 315 des del 1918-10-28** | Alemanya fins al 1920 (fora d'abast: lot nou) |
+| Klagenfurt, Völkermarkt, Bleiburg, Ferlach | 305 | 305 (bé) |
+| Mežica, Jezersko | 345 des del 1919-09-10 | 345 des del 1919-09-10 (bé) |
+| Eisenstadt, Oberwart | **305 des del 1918-11-12** | 310 fins al 1921-11-12 |
+| Sopron | 310 | 310 (bé) |
+| Saarbrücken, Saarlouis, Homburg | 255 | Territori del Sarre del 1920-01-10 al 1935-02-28 |
+| Eupen, Malmedy, Sankt Vith | **211 des del 1886** | 255 fins al 1920-01-09 |
