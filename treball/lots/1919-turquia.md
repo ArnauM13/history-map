@@ -279,7 +279,7 @@ Proposades per a la integració. Les marcades amb ⇒ són criteri nou o canvi p
   entrada a `ZONES`). **No cal** tornar a buscar les dates que ja hi ha: només les de Pendent.
 - Les fases del front grec (decisió 4) necessiten primer el punt 3 de Pendent; es poden deixar per
   a una segona sessió d'integració.
-- PR d'aquesta fase: (la posa la sessió en obrir-la).
+- PR d'aquesta fase: <https://github.com/ArnauM13/history-map/pull/16>.
 
 ## Fonts
 
