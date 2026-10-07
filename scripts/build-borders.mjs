@@ -245,7 +245,13 @@ const AREAS = {
       islandsIn(yugoslavia, ISLANDS.cresLosinj),
     )
   },
-  dalmatia: (raw) => intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.london)),
+  // Sense la Lika, que era de Croàcia-Eslavònia: la línia de Londres hi entra uns quilòmetres, i
+  // fins a Trianon CShapes la dona a Hongria, de manera que les dues peces se sobreposaven.
+  dalmatia: (raw) =>
+    minus(
+      intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.london)),
+      rawState(raw, '310', '1920-01-01'),
+    ),
   dodecanese: (raw) => islandsIn(rawState(raw, '350', '1930-01-01'), ISLANDS.dodecanese),
 }
 

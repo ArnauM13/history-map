@@ -100,6 +100,17 @@ describe('les fronteres corregides', () => {
       ],
     ],
     ['Trogir', [16.25, 43.52], [['1920-01-01', '345']]],
+    ['Knin', [16.2, 44.04], [['1920-01-01', 'Q2552789']]],
+    // La línia de Londres, dibuixada a mà, entrava uns quilòmetres a la Lika, que fins a Trianon era
+    // hongaresa: les dues peces se sobreposaven.
+    [
+      'la Lika, vora Knin',
+      [16.02, 44.2],
+      [
+        ['1920-01-01', '310'],
+        ['1920-08-01', '345'],
+      ],
+    ],
     [
       'Kastav',
       [14.349, 45.3725],
