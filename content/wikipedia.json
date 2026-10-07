@@ -38,6 +38,7 @@
     "ca": "Algèria",
     "es": "Argelia"
   },
+  "Allied occupation of the eastern Adriatic": {},
   "Allied-occupied Germany": {
     "ca": "Zones d'ocupació aliada a Alemanya",
     "es": "Ocupación aliada de Alemania"
@@ -77,6 +78,10 @@
   "Armistice of 11 November 1918": {
     "ca": "Armistici de Compiègne",
     "es": "Armisticio del 11 de noviembre de 1918"
+  },
+  "Armistice of Villa Giusti": {
+    "ca": "Armistici de Villa Giusti",
+    "es": "Armisticio de Padua"
   },
   "Assassination of Archduke Franz Ferdinand": {
     "ca": "Assassinat de Sarajevo",
@@ -292,6 +297,7 @@
   },
   "Dictatorship of Giuseppe Garibaldi": {},
   "Dimitrov Constitution": {},
+  "Diplomatic struggle for Zadar": {},
   "Dissolution of Czechoslovakia": {
     "ca": "Dissolució de Txecoslovàquia",
     "es": "Disolución de Checoslovaquia"
@@ -1102,8 +1108,13 @@
     "ca": "Invasió italiana d'Albània",
     "es": "Invasión italiana de Albania"
   },
+  "Italian National Council of Fiume": {},
   "Italian occupation of France": {
     "es": "Ocupación italiana de Francia (1940-1944)"
+  },
+  "Italian Regency of Carnaro": {
+    "ca": "Regència Italiana del Carnaro",
+    "es": "Regencia italiana de Carnaro"
   },
   "Italian Republic (Napoleonic)": {
     "ca": "República d'Itàlia",
@@ -1127,6 +1138,9 @@
   "Jordan": {
     "ca": "Jordània",
     "es": "Jordania"
+  },
+  "Julian March": {
+    "es": "Venecia Julia"
   },
   "July Monarchy": {
     "ca": "Monarquia de Juliol",

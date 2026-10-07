@@ -1,0 +1,60 @@
+start: 1918-11-26
+control:
+  - until: 1920-11-12
+    by: 325
+    kind: occupation
+    cause:
+      ca: Armistici de Villa Giusti, 1918
+      es: Armisticio de Villa Giusti, 1918
+      en: Armistice of Villa Giusti, 1918
+  - until: 1921-01-09
+    by: Q1423581
+    kind: occupation
+    cause:
+      ca: Desembarcament dels legionaris, 1920
+      es: Desembarco de los legionarios, 1920
+      en: Legionaries' landing, 1920
+  - until: 1921-04-25
+    by: 325
+    kind: occupation
+    cause:
+      ca: Acord d'Abbazia, 1920
+      es: Acuerdo de Abbazia, 1920
+      en: Abbazia agreement, 1920
+countries: [300, 345]
+title:
+  ca: Krk i Rab ocupades
+  es: Krk y Rab ocupadas
+  en: Occupied Krk and Rab
+label:
+  ca: Krk i Rab
+  es: Krk y Rab
+  en: Krk and Rab
+summary:
+  ca: >-
+    Itàlia va ocupar Krk i Rab el 26 de novembre del 1918, més enllà del que li donava el pacte de
+    Londres. Rapallo les va deixar al Regne dels Serbis, Croats i Eslovens, i l'endemà hi van
+    desembarcar els legionaris de D'Annunzio, que se'n van anar de Krk el 9 de gener del 1921.
+    L'exèrcit italià va lliurar Rab el 23 d'abril i va sortir de Krk el 25.
+  es: >-
+    Italia ocupó Krk y Rab el 26 de noviembre de 1918, más allá de lo que le daba el pacto de
+    Londres. Rapallo las dejó al Reino de los Serbios, Croatas y Eslovenos, y al día siguiente
+    desembarcaron en ellas los legionarios de D'Annunzio, que dejaron Krk el 9 de enero de 1921. El
+    ejército italiano entregó Rab el 23 de abril y salió de Krk el 25.
+  en: >-
+    Italy occupied Krk and Rab on 26 November 1918, beyond what the Treaty of London granted it.
+    Rapallo left them to the Kingdom of Serbs, Croats and Slovenes, and the next day D'Annunzio's
+    legionaries landed there; they left Krk on 9 January 1921. The Italian army handed over Rab on
+    23 April and left Krk on the 25th.
+wikipedia:
+  en: Italian Regency of Carnaro
+sources:
+  - title: T. Božić, «Hrvatsko-talijanski odnosi na otoku Krku u međuratnom razdoblju (1918.-1941.)»
+    publisher: Agencija za odgoj i obrazovanje
+    url: https://www.azoo.hr/app/uploads/uvezeno/manjine/08.html
+  - title: I. Martinaš, «Prve krčke poštanske marke. D'Annunzijeva okupacija kvarnerskih otoka Krka i Raba 1920. godine»
+    publisher: Hrčak
+    url: https://hrcak.srce.hr/284379
+  - title: Rab (grad)
+    publisher: Wikipedija
+    url: https://hr.wikipedia.org/wiki/Rab_(grad)

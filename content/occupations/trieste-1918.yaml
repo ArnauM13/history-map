@@ -1,0 +1,33 @@
+start: 1918-11-03
+control:
+  - until: 1919-09-09
+    by: 325
+    kind: occupation
+    cause:
+      ca: Armistici de Villa Giusti, 1918
+      es: Armisticio de Villa Giusti, 1918
+      en: Armistice of Villa Giusti, 1918
+countries: [305]
+title:
+  ca: Trieste i Gorízia ocupades
+  es: Trieste y Gorizia ocupadas
+  en: Occupied Trieste and Gorizia
+label:
+  ca: Trieste i Gorízia
+  es: Trieste y Gorizia
+  en: Trieste and Gorizia
+summary:
+  ca: >-
+    Les tropes italianes van entrar a Trieste el 3 de novembre del 1918, el dia que es va signar
+    l'armistici de Villa Giusti, i van ocupar Gorízia, la vall de l'Isonzo i Tarvisio. Àustria hi
+    va renunciar a favor d'Itàlia pel tractat de Saint-Germain, el 10 de setembre del 1919.
+  es: >-
+    Las tropas italianas entraron en Trieste el 3 de noviembre de 1918, el día en que se firmó el
+    armisticio de Villa Giusti, y ocuparon Gorizia, el valle del Isonzo y Tarvisio. Austria
+    renunció a ellos en favor de Italia por el tratado de Saint-Germain, el 10 de septiembre de 1919.
+  en: >-
+    Italian troops entered Trieste on 3 November 1918, the day the Armistice of Villa Giusti was
+    signed, and occupied Gorizia, the Isonzo valley and Tarvisio. Austria renounced them in favour
+    of Italy by the Treaty of Saint-Germain on 10 September 1919.
+wikipedia:
+  en: Armistice of Villa Giusti

@@ -58,7 +58,7 @@ historiography, and settle on a rule that holds for every similar case. The curr
 | A territory is freed before the peace | It goes back to its own government **on the day that government is restored**; if the occupier does not leave, it stays the occupier's until the treaty. | Geneva, a republic from 31 December 1813; Hamburg, French until the Treaty of Paris (30 May 1814), because Davout would not give it up. |
 | A ceded territory that has no owner yet | The **provisional government** that ran it, if there was one. | Belgium, from the Treaty of Paris to the Congress of Vienna: the Allies' General Government, neither France nor the Netherlands. |
 | An annexation by force, after 1945, that the UN declares null and void | **Sovereignty does not change**: the territory still belongs to whoever held it, and the annexation goes in the occupations layer. The UN Charter forbids gaining territory by force, and Resolution 242 repeats it for 1967. | East Jerusalem (1980), the Golan (1981) and Crimea (2014). |
-| An occupied territory that belonged to no other state | **A piece of its own**, with its own name and the status of occupied territory; the occupier, in the occupations layer. | The West Bank and Gaza from 1967, and from 15 November 1988 under the name of Palestine, the state proclaimed there and recognised by 157 of the 193 UN members. |
+| An occupied territory that belonged to no other state | **A piece of its own**, with its own name and the status of occupied territory; the occupier, in the occupations layer. | The West Bank and Gaza from 1967, and from 15 November 1988 under the name of Palestine, the state proclaimed there and recognised by 157 of the 193 UN members. The Julian March and Dalmatia, from 1919 to 1920: Austria-Hungary had renounced them at Saint-Germain, and nobody held them until Rapallo fixed the border. |
 | A long war, with a front that moves for years | **In phases**: one zone for each stretch in which the front moved little, with the dates of the events that open and close it and the line of one day within the stretch, which the card states. Between two phases, the front is not drawn day by day. If the stretch has no event that closes it, it is split by half-years. | The Russo-Ukrainian war: from 2 March to 2 April 2022 (from the capture of Kherson to the withdrawal from the north), from 11 November 2022 to 16 February 2024 (from Kherson to Avdiivka). |
 | The name | The one the state had **at the time**, as each language's Wikipedia calls it. | In 1700, the Kingdom of France; in 1810, the First French Empire. |
 
@@ -102,7 +102,8 @@ names come from `content/countries.yaml` and `content/capitals.yaml`, in all thr
 | Crimea stays in Ukraine after 18 March 2014 | CShapes moves it to Russia. Here the internationally recognised border is drawn, as UN General Assembly resolution 68/262 and most atlases do. The annexation is explained as an event and is in the occupations layer (§1.3). |
 | Danzig, a Free City until 1 September 1939 | CShapes ends it on 31 August 1938 and puts it inside Germany from 30 September 1938: for a month it belongs to no one. It is a one-year slip; the Reich annexed it on 1 September 1939. |
 | The Rapallo border, from 12 November 1920 to 10 February 1947 | CShapes gives Yugoslavia what the Treaty of Rapallo gave Italy: the Slovene Littoral with Idrija and Postojna, Istria, Zara, Cres and Lošinj. It is Italian again until the Treaty of Paris. The line, from Peč to Triglav, Snežnik and the Kvarner Gulf, is drawn by hand from the article on the treaty (an error of some 2-5 km). |
-| The Free State of Fiume (1920-1924) and Italian Fiume (1924-1947) | CShapes lacks the free state Rapallo created and puts it inside Yugoslavia. Here it is a state (with its Wikidata QID as code) until 22 February 1924, the decree annexing it to Italy, and Italian afterwards. Sušak, across the Rječina, stays Yugoslav. |
+| Fiume, from 1918 to 1947 | CShapes makes it Austrian in 1918 and Yugoslav from 1919 to 1920, and lacks the free state Rapallo created. Here it has its own government from 30 October 1918, when the Hungarian governor left and the Italian National Council took over (the corpus separatum, about 21 km²); it is D'Annunzio's Italian Regency of Carnaro from 8 September to 27 December 1920, and the Free State of Fiume, with the coastal strip Rapallo gave it, until 22 February 1924, the decree annexing it to Italy. Italian afterwards. Sušak, across the Rječina, stays Yugoslav. Fiume carries the Free State's QID, with its name by date, and the Regency its own. |
+| The Julian March and Dalmatia, from 10 September 1919 to 11 November 1920 | CShapes makes them Yugoslav from Saint-Germain, with Istria and the Karst up to the gates of Trieste. Austria had renounced them, but the border between Italy and the Kingdom of SCS was not fixed until Rapallo, and until then Italy governed them. Here they are occupied territory belonging to no state (§0.1): the Julian March (what Rapallo gave Italy, without Zara) and Dalmatia up to the line of the Treaty of London, drawn by hand (about 5-10 km off), with Zara, Knin, Drniš and Šibenik. Trieste and Gorizia, Italian from Saint-Germain, as in CShapes: no border proposal gave them to the Kingdom of SCS. |
 | The Dodecanese, Ottoman until 24 July 1923 and Italian until 10 February 1947 | CShapes makes it Greek from 1913. Italy had occupied it since 1912, but Turkey only renounced it at the Treaty of Lausanne; the Treaty of Paris ceded it to Greece. |
 | Israel, from 10 June 1967, within the Green Line | CShapes adds the West Bank, East Jerusalem, Gaza, the Golan and the Sinai, which Israel occupied in the Six-Day War, and does not return the Sinai to Egypt until 1979. Here Israel stays within the 1949 armistice line, as drawn by the UN (Resolutions 242 and 2334) and the International Court of Justice (2004 and 2024); the Golan is Syrian and the Sinai Egyptian. Israeli control goes in the occupations layer (§1.3). |
 | The West Bank and Gaza continue after 1967 | CShapes makes them disappear into Israel. Here they continue with their 1967 shape, as occupied territory depending on no state: until 1988, named the West Bank and the Gaza Strip; from 15 November 1988, Palestine. Jordan had annexed the West Bank in 1950, but almost nobody recognised it, and it gave up its claim on 31 July 1988. |
@@ -132,11 +133,10 @@ generated files are never edited by hand.
   the Second Vienna Award (1940), which gave northern Transylvania to Hungary. Between 1938 and
   1945, Austria, Bohemia-Moravia and Poland are still on the map. The occupations layer explains
   it (§1.3).
-- **The Adriatic, still half done** (§1.1 fixes the Italian border). From 1919 to 1920, when
-  Istria and Fiume were occupied by Italy and the border had not yet been agreed, CShapes gives
-  them to Yugoslavia, and they are left so here; D'Annunzio's Regency of Carnaro is missing too.
-  The research to fix it, with dates and sources, is in the work batch
-  [1919-fiume](treball/lots/1919-fiume.md) (in Catalan).
+- **The Adriatic, still half done** (§1.1 fixes 1918-1947). From 1918 to 1919, CShapes leaves
+  Slovenia and Dalmatia inside Austria and Croatia inside Hungary, while the State of Slovenes,
+  Croats and Serbs governed them (work batch [1918-iugoslavia](treball/lots/1918-iugoslavia.md),
+  in Catalan).
   From 1947 to 1954, Trieste is Italian and Koper Yugoslav, with no Free Territory of Trieste.
   Lastovo, Palagruža and Saseno, Italian from 1920 to 1947, and Kastellorizo are not in CShapes;
   and simplification wipes out almost every Adriatic island, Cres and Krk included.
@@ -156,7 +156,7 @@ generated files are never edited by hand.
 
 ### 1.3 The occupations layer
 
-What was under de facto control in the long occupations —between 1938 and 1945, and the
+What was under de facto control in the long occupations —the Adriatic from 1918 to 1923, between 1938 and 1945, and the
 territories Israel has occupied since 1967 and those of Ukraine and Russia since 2014— goes in a separate layer that can be
 hidden and paints each zone in the colour of the state that controlled it, with its name, who
 controlled it and why. Each zone has a file in `content/occupations/`, with the text, the dates,
@@ -209,7 +209,14 @@ only the simplified line, cites it on every card and does not redistribute its d
 already appears as liberated: the March maximum, though not all at once. The 2014 Debaltseve
 salient, which DeepStateMap does not draw, is a hand-drawn line.
 
-**What is there**, in 85 zones:
+**What is there**, in 91 zones:
+
+- **The Adriatic, from 1918 to 1923**: what Italy occupied under the Armistice of Villa Giusti up
+  to the line of the Treaty of London —Trieste and Gorizia until Saint-Germain, the Julian March
+  until Rapallo and Dalmatia until the 1921 evacuation—, Fiume under Inter-Allied occupation until
+  D'Annunzio entered it, the Zara hinterland until March 1923, and Krk and Rab, where the
+  legionaries of the Regency of Carnaro landed after Rapallo. Dates and sources in the work batch
+  [1919-fiume](treball/lots/1919-fiume.md) (in Catalan).
 
 - **The west and centre**: the German expansion of 1938–1939 (Austria, Bohemia and Moravia, the
   Slovak State, Memel), Trans-Olza and Hungarian Ruthenia; the partition of Poland; the occupation
@@ -236,6 +243,14 @@ salient, which DeepStateMap does not draw, is a hand-drawn line.
   oblasts on 30 September 2022; and Kursk, occupied by Ukraine from 2024 to 2025.
 
 **What is missing**:
+
+- **Zara from 1918 to 1919.** The city is left out of the hinterland zone, as it is Italian from
+  Rapallo, and until Saint-Germain it shows as Austrian without the occupation.
+- **South Tyrol and Trentino** from 1918 to 1919, occupied by Italy until Saint-Germain: they show
+  as Austrian without the occupation.
+- **Fiume from 1922 to 1924**: the fascist coup of 3 March 1922 and the Italian occupation from
+  the 17th until the annexation; and Sušak, the Delta and Porto Baross, occupied by Italy until
+  March 1923.
 
 - **The Donbas from April to August 2014.** The «people's republics» were proclaimed in April, but
   the front moved every week until the Minsk Protocol, and there is no line for a given date with
