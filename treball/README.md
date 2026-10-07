@@ -13,16 +13,19 @@ Fiume i les zones de plebiscit. Pla fet el 2026-10-05: vuit lots de recerca inde
 poden fer en paral·lel. La integració, d'un en un i en aquest ordre (de menys a més fitxers
 compartits): fiume, plebiscits, hongria, turquia, caucas, ucraina, belarus-baltics, polonia.
 
+On es va quedar l'última sessió, què ha de fer la següent i les decisions obertes:
+[relleu-2026-10-07.md](relleu-2026-10-07.md).
+
 | Lot | Què | Fase | Estat | Última sessió |
 | --- | --- | --- | --- | --- |
 | [1917-ucraina](lots/1917-ucraina.md) | Els estats ucraïnesos | 2. Recerca | obert | — |
-| [1918-caucas](lots/1918-caucas.md) | Geòrgia, Armènia, l'Azerbaidjan | 2. Recerca | obert | — |
+| [1918-caucas](lots/1918-caucas.md) | Geòrgia, Armènia, l'Azerbaidjan | 2. Recerca | obert | 2026-10-07 |
 | [1918-belarus-baltics](lots/1918-belarus-baltics.md) | Bielorússia, Lituània Central, Memel | 2. Recerca | obert | — |
 | [1919-polonia](lots/1919-polonia.md) | La frontera oriental i Teschen | 2. Recerca | obert | — |
-| [1920-plebiscits](lots/1920-plebiscits.md) | Les zones de plebiscit | 2. Recerca | obert | — |
-| [1919-fiume](lots/1919-fiume.md) | L'Adriàtic del nord fins a Rapallo | 4. Comprovació | obert | 2026-10-07 |
-| [1919-hongria](lots/1919-hongria.md) | Hongria fins a Trianon | 2. Recerca | obert | — |
-| [1919-turquia](lots/1919-turquia.md) | Anatòlia i Tràcia fins a Lausana | 2. Recerca | obert | — |
+| [1920-plebiscits](lots/1920-plebiscits.md) | Les zones de plebiscit | 2. Recerca | en marxa (branca, sense PR) | 2026-10-07 |
+| [1919-fiume](lots/1919-fiume.md) | L'Adriàtic del nord fins a Rapallo | 4. Comprovació | en marxa (branca, sense PR) | 2026-10-07 |
+| [1919-hongria](lots/1919-hongria.md) | Hongria fins a Trianon | 3. Integració | integrar (quan es fusioni la PR #17) | 2026-10-07 |
+| [1919-turquia](lots/1919-turquia.md) | Anatòlia i Tràcia fins a Lausana | 3. Integració | integrar (quan es fusioni la PR #16) | 2026-10-07 |
 | [1918-iugoslavia](lots/1918-iugoslavia.md) | Eslovènia, Croàcia i Dalmàcia, d'Àustria-Hongria al Regne SCS | 2. Recerca | obert | — |
 
 ## Fora d'encàrrec
