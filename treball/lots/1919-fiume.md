@@ -8,8 +8,7 @@ ha mostrat que tres coses d'aquest lot continuen després de Rapallo i hi entren
 no accepta el tractat fins al 1920-12-28; Krk i Rab, on els legionaris desembarquen l'endemà de
 Rapallo; i la Dalmàcia ocupada, que Itàlia evacua del 1921 al 1923.
 
-**Estat**: integrar — fase 2 (recerca) feta el 2026-10-05, amb una segona passada per contrastar
-les fonts i buscar-hi consens; falta la fase 3.
+**Estat**: obert — fase 3 (integració) feta el 2026-10-07; falta la fase 4, la comprovació al mapa.
 
 ## Context
 
@@ -150,8 +149,18 @@ Trattato di Rapallo» [14], que segueix L. Monzali, *Gli italiani di Dalmazia*.
   italià, ajornada. [14]
 - 1921-06-12 — Els italians deixen Šibenik; el 13 hi entra l'exèrcit iugoslau. [32] (Fiorio cita
   l'informe de l'evacuació, del 13 de juny [14].)
-- 1921-04-25 — Fi de l'ocupació italiana de Krk, segons un resum de cerca que no he pogut lligar a
-  cap text; l'article de Bozanić [7] diu només «1918-1921». No es fa servir fins que es confirmi.
+- 1921-01-09 — Els arditi de D'Annunzio deixen Krk, després de l'intent fallit de defensar
+  Dobrinj; 1921-04-25, dia de Sant Marc, l'exèrcit italià (bersaglieri, carabinieri i finanzieri)
+  surt de l'illa amb el vapor «Stocco». [35]
+- 1921-04-23 — Rab passa al Regne SCS: s'acaba l'ocupació italiana. [36] El dia que en surten els
+  legionaris no és documentat; l'acord d'Abbazia en fixa l'evacuació des del 5 de gener. [29]
+- 1923-03 — La tercera zona: Itàlia aprova els acords de Santa Margherita per la llei del 21 de
+  febrer del 1923 [14] [33], i l'1 de març Mussolini diu al Consell de Ministres que les dues
+  delegacions de la comissió per a l'evacuació de la tercera zona ja són a Zara i que la feina
+  «can begin at once» [37]. Un article croat sobre Novigrad posa
+  la retirada del 3 a l'11 de març, però només l'he vist en un resum de cerca (Hrčak demana un
+  captcha) i no es fa servir: la zona s'acaba el 1923-03-01, l'últim dia segur, i el text diu
+  «al començament del març».
 - 1922-10-23 — Acords de Santa Margherita; Itàlia els aprova per la llei del 21 de febrer del
   1923, n. 281. [14] [33] La «III zona» al voltant de Zara, ocupada «fino al 1923». [34]
 - Sušak: Rapallo la deixa iugoslava, però l'exèrcit italià no se'n va fins al març del 1923. [18]
@@ -221,26 +230,48 @@ Proposades per a la integració. Les marcades amb ⇒ són criteri nou o canvi p
   Es fixen el QID de la Regència i els dies de Šibenik, de l'entrada a Fiume i de Krk i Rab.
   Cap canvi al codi.
 
+- 2026-10-07 — Fase 3, la integració. Dates tancades: Krk, Rab i la tercera zona (troballes). Al
+  codi:
+  - `build-borders.mjs`: les línies `corpusSeparatum` i `london` (la Dalmàcia del pacte de Londres,
+    a mà, uns 5-10 km d'error); Fiume, peça pròpia des del 1918-10-30 (Q548114, amb el nom per
+    dates: «Fiume» fins al 1920-09-07, Estat Lliure des del 1920-12-28); la Regència (Q1423581),
+    del 1920-09-08 al 1920-12-27; la Venezia Giulia (Q958521) i la Dalmàcia (Q2552789), territori
+    ocupat del 1919-09-10 al 1920-11-11. Tests a `src/map/borders.test.ts`.
+  - Sis zones a `content/occupations/`: `trieste-1918`, `venezia-giulia-1918`, `fiume-1918`,
+    `dalmatia-1918`, `zara-hinterland` i `krk-rab-1918`.
+  - DADES §0.1 (fila 10), §1.1, §1.2 i §1.3, als tres idiomes.
+  - Els colors de tots els estats s'han tornat a repartir (l'acolorit és voraç i hi ha quatre
+    entitats noves), i per això també canvien els fitxers de `public/data/history/`.
+
+  Decisions preses en integrar, que el lot no deia:
+  - **La franja de costa de Rapallo**, del 1920-11-12 al 1920-12-27, va amb la Regència: el
+    tractat la dona a Fiume, i Fiume no tenia cap altre govern. Abans de Rapallo segueix sent com
+    la dona CShapes (305 i 345).
+  - **Trieste i Gorízia** no entren a la peça de territori ocupat: CShapes ja les fa italianes des
+    de Saint-Germain, i cap proposta de frontera (tampoc la línia Wilson) no les donava al Regne
+    SCS. L'ocupació del 1918-1919 hi és amb una zona pròpia, `trieste-1918`.
+  - **Zara** va dins de la peça de Dalmàcia (la governava el Governatorato des del gener del
+    1919), no de la Venezia Giulia. La ciutat queda fora de les zones d'ocupació, perquè des de
+    Rapallo és italiana: del 1918-11-04 al 1919-09-09 surt austríaca sense ocupació.
+  - **Krk i Rab** no són a les fronteres (la simplificació de CShapes les esborra); només a la
+    capa d'ocupacions, amb les formes de Natural Earth.
+  - La Dalmàcia ocupada, a la capa, en dues zones: fins a l'evacuació de Šibenik (1921-06-12) i
+    la tercera zona, als voltants de Zara, fins al 1923-03-01.
+
 ## Pendent
 
-Per a la fase 3, en aquest ordre:
+Per a la fase 4, la comprovació:
 
-1. Dates que falten: el dia que els legionaris surten de Krk i de Rab (el gener del 1921) i el dia
-   que Itàlia els lliura (l'abril del 1921?); el de la tercera zona de Dalmàcia (1923). Les
-   fonts per mirar: D. L. Massagrande, *Italia e Fiume 1921-1924* (1982), i el text sencer de
-   Martinaš [26] i Bozanić [7] (Hrčak demana un captcha).
-2. Si no es troben, la zona s'acaba el dia que se sap segur i el text ho diu («fins al gener del
-   1921»): un buit és millor que una dada falsa.
-3. `build-borders.mjs`: una línia `corpusSeparatum` a `LINES` (el límit del terme de Fiume a
-   l'oest, a Kantrida); una correcció que dona el corpus separatum a la peça de Fiume des del
-   1918-10-30 (traient-lo de 300, 305 i 345); les dues peces de territori ocupat (decisió 2) del
-   1919-09-10 al 1920-11-11; l'Estat Lliure, des del 1920-12-28.
-4. `content/occupations/`: les zones de la decisió 3, amb les fonts d'aquest fitxer.
-5. DADES: l'exemple nou de la fila 10 de §0.1, les files de §1.1, i treure l'Adriàtic del
-   1919-1920 de §1.2.
-6. Comprovar al mapa (fase 4): Trieste, Koper, Pazin, Postojna, Fiume, Sušak, Kastav, Krk, Zara i
-   Šibenik, a 1918-11-02, 1918-11-03, 1918-11-17, 1919-09-10, 1919-09-12, 1920-06-04, 1920-09-08,
-   1920-11-13, 1920-12-28 i 1921-07-01.
+1. Mirar al navegador Trieste, Koper, Pazin, Postojna, Fiume, Preluka, Sušak, Kastav, Krk, Zara,
+   Knin i Šibenik a 1918-10-29, 1918-10-30, 1918-11-03, 1918-11-17, 1919-09-10, 1919-09-12,
+   1920-06-04, 1920-09-08, 1920-11-13, 1920-12-28, 1921-04-26, 1921-07-01 i 1923-03-02; també en
+   fosc i en una pantalla estreta. L'script de consulta de la fase 3 (a quin estat cau cada lloc
+   per dates) va donar el que s'esperava; el test de `borders.test.ts` en fixa una part.
+2. Mirar que la línia `london` deixi Trogir i Split fora i Drniš i Knin dins, i que la tercera
+   zona no es mengi Benkovac.
+3. Les fitxes de les quatre entitats noves (Fiume, la Regència, la Venezia Giulia i la Dalmàcia):
+   nom per dates, estatus, capital i enllaç a la Viquipèdia. Cap té bandera: la de la Regència i la
+   de Fiume del 1918-1920 estan per documentar a `flags.yaml`.
 
 **Lots nous que n'han sortit**
 
@@ -249,16 +280,17 @@ Per a la fase 3, en aquest ordre:
   Eslovens (1918-10-29) i el Regne SCS (1918-12-01) les governaven.
 - Fiume del 1922 al 1924: el cop feixista (1922-03-03) i l'ocupació italiana (des del 1922-03-17)
   fins a l'annexió [25]; i Sušak, el Delta i Port Baross, ocupats per Itàlia fins al març del 1923
-  [18]. Van a la capa d'ocupacions; no tenen lot.
+  [18]. Van a la capa d'ocupacions; no tenen lot. Apuntat a DADES §1.3, «Què hi falta».
+- El Tirol del Sud i el Trentino, ocupats per Itàlia del 1918-11-03 a Saint-Germain: surten
+  austríacs sense ocupació. Apuntat a DADES §1.3.
 
 ## Relleu
 
-- **Fase**: 2 (recerca) feta i contrastada; ve la 3 (integració), en una sessió nova des de `main`.
-- **Primera tasca**: tancar les dates de «Pendent», punt 1 (Krk, Rab, tercera zona de Dalmàcia);
-  després, la integració en l'ordre dels punts 3 a 5, començant per `build-borders.mjs`.
-- **Llegir**: aquest fitxer, DADES §0.1, §1.1 i §1.3, i `LINES` i les correccions de Rapallo i
-  Fiume a `build-borders.mjs`. **No cal** tornar a llegir els articles de «Fonts» ni refer la
-  consulta de CShapes: la taula de «Context» és el resultat.
+- **Fase**: 3 (integració) feta; ve la 4 (comprovació), en una sessió nova des de `main`.
+- **Primera tasca**: el punt 1 de «Pendent», al navegador (`npm run build && npx vite preview`, i
+  l'adreça `?d=AAAA-MM-DD`).
+- **Llegir**: aquest fitxer (Context, Decisions, Fet i Pendent), DADES §1.1 i §1.3. **No cal**
+  tornar a llegir les fonts ni refer la recerca de dates.
 
 ## Fonts
 
@@ -329,3 +361,9 @@ Per a la fase 3, en aquest ordre:
     <http://www.prassi.cnr.it/prassi/content.html?id=1047>
 34. «Dalmazia», Enciclopedia Italiana (Treccani).
     <https://www.treccani.it/enciclopedia/dalmazia_res-929a0466-87e5-11dc-8e9d-0016357eee51_(Enciclopedia-Italiana)/>
+35. T. Božić, «Hrvatsko-talijanski odnosi na otoku Krku u međuratnom razdoblju (1918.-1941.)»,
+    *Hrvati i manjine u Hrvatskoj: moderni identiteti*.
+    <https://www.azoo.hr/app/uploads/uvezeno/manjine/08.html>
+36. «Rab (grad)», Viquipèdia en croat. <https://hr.wikipedia.org/wiki/Rab_(grad)>
+37. B. Mussolini, discurs al Consell de Ministres de l'1 de març del 1923, Biblioteca Fascista.
+    <http://bibliotecafascista.blogspot.com/2012/03/speech-to-council-of-ministers-march-1.html>

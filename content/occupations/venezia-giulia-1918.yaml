@@ -1,0 +1,38 @@
+start: 1918-11-03
+control:
+  - until: 1920-11-11
+    by: 325
+    kind: occupation
+    cause:
+      ca: Armistici de Villa Giusti, 1918
+      es: Armisticio de Villa Giusti, 1918
+      en: Armistice of Villa Giusti, 1918
+countries: [305, Q958521]
+title:
+  ca: Venezia Giulia ocupada
+  es: Venecia Julia ocupada
+  en: Occupied Julian March
+label:
+  ca: Venezia Giulia
+  es: Venecia Julia
+  en: Julian March
+summary:
+  ca: >-
+    Per l'armistici de Villa Giusti, Itàlia va ocupar l'Ístria i el Carst fins a la línia del pacte
+    de Londres a partir del 3 de novembre del 1918, i els va governar des de Trieste. Àustria hi va
+    renunciar a Saint-Germain (1919), però la frontera amb el Regne dels Serbis, Croats i Eslovens
+    no es va fixar fins al tractat de Rapallo, el 12 de novembre del 1920, que en va fer territori
+    italià.
+  es: >-
+    Por el armisticio de Villa Giusti, Italia ocupó Istria y el Carso hasta la línea del pacto de
+    Londres a partir del 3 de noviembre de 1918, y los gobernó desde Trieste. Austria renunció a
+    ellos en Saint-Germain (1919), pero la frontera con el Reino de los Serbios, Croatas y Eslovenos
+    no se fijó hasta el tratado de Rapallo, el 12 de noviembre de 1920, que los hizo territorio
+    italiano.
+  en: >-
+    Under the Armistice of Villa Giusti, Italy occupied Istria and the Karst up to the line of the
+    Treaty of London from 3 November 1918, and governed them from Trieste. Austria renounced them
+    at Saint-Germain (1919), but the border with the Kingdom of Serbs, Croats and Slovenes was not
+    fixed until the Treaty of Rapallo, on 12 November 1920, which made them Italian territory.
+wikipedia:
+  en: Allied occupation of the eastern Adriatic
