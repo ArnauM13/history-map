@@ -59,7 +59,7 @@ criteris d'ara:
 | Un territori es deslliura abans de la pau | Torna al seu govern **el dia que es restaura**; si l'ocupant no se'n va, segueix sent seu fins al tractat. | Ginebra, república des del 31 de desembre del 1813; Hamburg, francesa fins al tractat de París (30 de maig del 1814), perquè Davout no la va deixar. |
 | Un territori cedit que encara no té amo | El **govern provisional** que el governava, si n'hi ha. | Bèlgica, del tractat de París al Congrés de Viena: el Govern General dels aliats, no França ni els Països Baixos. |
 | Una annexió per la força, després del 1945, que l'ONU declara nul·la | **No canvia la sobirania**: el territori continua sent de qui era, i l'annexió va a la capa d'ocupacions. La Carta de l'ONU prohibeix guanyar territori per la força, i la resolució 242 ho repeteix per al 1967. | Jerusalem Est (1980), el Golan (1981) i Crimea (2014). |
-| Un territori ocupat que no era de cap altre estat | **Peça pròpia**, amb el seu nom i l'estatus de territori ocupat; l'ocupant, a la capa d'ocupacions. | Cisjordània i Gaza des del 1967, i des del 15 de novembre del 1988 amb el nom de Palestina, l'estat que s'hi va proclamar i que reconeixen 157 dels 193 membres de l'ONU. |
+| Un territori ocupat que no era de cap altre estat | **Peça pròpia**, amb el seu nom i l'estatus de territori ocupat; l'ocupant, a la capa d'ocupacions. | Cisjordània i Gaza des del 1967, i des del 15 de novembre del 1988 amb el nom de Palestina, l'estat que s'hi va proclamar i que reconeixen 157 dels 193 membres de l'ONU. La Venezia Giulia i la Dalmàcia, del 1919 al 1920: Àustria-Hongria hi havia renunciat a Saint-Germain, i ningú no les va tenir fins que Rapallo en va fixar la frontera. |
 | Una guerra llarga, amb un front que es mou durant anys | **Per fases**: una zona per a cada tram en què el front es va moure poc, amb les dates dels fets que l'obren i el tanquen i la línia d'un dia de dins del tram, que la fitxa diu. Entre dues fases, el front no es dibuixa dia a dia. Si el tram no té cap fet que el tanqui, es parteix per semestres. | La guerra russoucraïnesa: del 2 de març al 2 d'abril del 2022 (de la presa de Kherson a la retirada del nord), de l'11 de novembre del 2022 al 16 de febrer del 2024 (de Kherson a Avdiivka). |
 | El nom | El que tenia l'estat **aleshores**, com l'anomena la Viquipèdia de cada idioma. | El 1700, el Regne de França; el 1810, el Primer Imperi Francès. |
 
@@ -105,7 +105,8 @@ i `content/capitals.yaml`, en els tres idiomes.
 | Crimea segueix a Ucraïna després del 18 de març del 2014 | CShapes la passa a Rússia. Aquí es dibuixa la frontera reconeguda internacionalment, com fan la resolució 68/262 de l'Assemblea General de l'ONU i la majoria d'atles. L'annexió s'explica com a fet, i és a la capa d'ocupacions (§1.3). |
 | Dàntzig, Ciutat Lliure fins a l'1 de setembre del 1939 | CShapes l'acaba el 31 d'agost del 1938 i la posa dins d'Alemanya des del 30 de setembre del 1938: durant un mes no és de ningú. És una errada d'un any; el Reich se la va annexionar l'1 de setembre del 1939. |
 | La frontera de Rapallo, del 12 de novembre del 1920 al 10 de febrer del 1947 | CShapes dona a Iugoslàvia el que el tractat de Rapallo va donar a Itàlia: el Litoral eslovè amb Idrija i Postojna, l'Ístria, Zara, Cres i Lošinj. Torna a ser italià fins al tractat de París. La línia, de Peč a Triglav, Snežnik i el golf de Kvarner, és dibuixada a mà a partir de l'article sobre el tractat (uns 2-5 km d'error). |
-| L'Estat Lliure de Fiume (1920-1924) i Fiume italiana (1924-1947) | CShapes no té l'estat lliure que va crear Rapallo, i el posa dins de Iugoslàvia. Aquí és un estat (amb el QID de Wikidata com a codi) fins al 22 de febrer del 1924, el decret d'annexió a Itàlia, i després italià. Sušak, a l'altra riba del Rječina, segueix iugoslava. |
+| Fiume, del 1918 al 1947 | CShapes la fa austríaca el 1918 i iugoslava del 1919 al 1920, i no té l'estat lliure que va crear Rapallo. Aquí té govern propi des del 30 d'octubre del 1918, quan el governador hongarès se'n va anar i el Consiglio Nazionale se'n va fer càrrec (el corpus separatum, uns 21 km²); és la Regència Italiana del Carnaro de D'Annunzio del 8 de setembre al 27 de desembre del 1920, i l'Estat Lliure de Fiume, amb la franja de costa que li va donar Rapallo, fins al 22 de febrer del 1924, el decret d'annexió a Itàlia. Després és italiana. Sušak, a l'altra riba del Rječina, segueix iugoslava. Fiume va pel QID de l'Estat Lliure, amb el nom segons la data, i la Regència, pel seu. |
+| La Venezia Giulia i la Dalmàcia, del 10 de setembre del 1919 a l'11 de novembre del 1920 | CShapes les fa iugoslaves des de Saint-Germain, amb l'Ístria i el Carst fins a les portes de Trieste. Àustria hi havia renunciat, però la frontera entre Itàlia i el Regne SCS no es va fixar fins a Rapallo, i fins aleshores les governava Itàlia. Aquí són territori ocupat que no és de cap estat (§0.1): la Venezia Giulia (el que Rapallo va donar a Itàlia, sense Zara) i la Dalmàcia fins a la línia del pacte de Londres, dibuixada a mà (uns 5-10 km d'error), amb Zara, Knin, Drniš i Šibenik. Trieste i Gorízia, italianes des de Saint-Germain, com a CShapes: cap proposta de frontera no les donava al Regne SCS. |
 | El Dodecanès, otomà fins al 24 de juliol del 1923 i italià fins al 10 de febrer del 1947 | CShapes el fa grec des del 1913. Itàlia l'ocupava des del 1912, però Turquia no hi va renunciar fins al tractat de Lausana; el tractat de París el va cedir a Grècia. |
 | Israel, des del 10 de juny del 1967, dins de la Línia Verda | CShapes hi suma Cisjordània, Jerusalem Est, Gaza, el Golan i el Sinaí, que Israel va ocupar a la guerra dels Sis Dies, i el Sinaí no el torna a Egipte fins al 1979. Aquí Israel queda dins de la línia dels armisticis del 1949, com la dibuixen l'ONU (resolucions 242 i 2334) i el Tribunal Internacional de Justícia (2004 i 2024); el Golan és de Síria i el Sinaí, d'Egipte. El control israelià va a la capa d'ocupacions (§1.3). |
 | Cisjordània i Gaza continuen després del 1967 | CShapes les fa desaparèixer dins d'Israel. Aquí continuen amb la forma del 1967, com a territori ocupat i sense dependre de cap estat: fins al 1988, amb el nom de Cisjordània i de Franja de Gaza; des del 15 de novembre del 1988, el de Palestina. Jordània s'havia annexionat Cisjordània el 1950, però gairebé ningú ho va reconèixer, i hi va renunciar el 31 de juliol del 1988. |
@@ -135,11 +136,10 @@ fitxers generats no es toquen mai a mà.
   per la força, ni el segon arbitratge de Viena (1940), que va donar el nord de Transsilvània a
   Hongria. Entre el 1938 i el 1945, Àustria, Bohèmia-Moràvia i Polònia hi segueixen sortint. Ho
   explica la capa d'ocupacions (§1.3).
-- **L'Adriàtic, encara a mitges** (§1.1 en corregeix la frontera italiana). Del 1919 al 1920,
-  quan l'Ístria i Fiume eren ocupades per Itàlia i encara no s'havia pactat la frontera, CShapes
-  les dona a Iugoslàvia, i aquí es deixa així; tampoc no hi ha la Regència del Carnaro de
-  D'Annunzio. La recerca per corregir-ho, amb les dates i les fonts, és al lot
-  [1919-fiume](treball/lots/1919-fiume.md). Del 1947 al 1954, Trieste surt italiana i Koper
+- **L'Adriàtic, encara a mitges** (§1.1 en corregeix el 1918-1947). Del 1918 al 1919, CShapes
+  deixa Eslovènia i Dalmàcia dins d'Àustria i Croàcia dins d'Hongria, mentre les governava
+  l'Estat dels Serbis, Croats i Eslovens (lot [1918-iugoslavia](treball/lots/1918-iugoslavia.md)).
+  Del 1947 al 1954, Trieste surt italiana i Koper
   iugoslava, sense el Territori Lliure de Trieste. Lastovo, Palagruža i Saseno, italianes del 1920 al 1947, i Kastellorizo, no són a
   CShapes; i la simplificació esborra gairebé totes les illes de l'Adriàtic, també Cres i Krk.
 - **Sense microestats.** Andorra, Liechtenstein, Mònaco, San Marino i el Vaticà no són a CShapes.
@@ -158,7 +158,7 @@ fitxers generats no es toquen mai a mà.
 
 ### 1.3 La capa d'ocupacions
 
-El que es controlava de fet en les ocupacions llargues —entre el 1938 i el 1945, i els territoris
+El que es controlava de fet en les ocupacions llargues —l'Adriàtic del 1918 al 1923, entre el 1938 i el 1945, i els territoris
 que ocupa Israel des del 1967 i els d'Ucraïna i Rússia des del 2014— va en una capa a part, que es pot amagar i
 que pinta cada zona del color de l'estat que la controlava, amb el nom, qui la controlava i per
 què. Cada zona té un fitxer a `content/occupations/`, amb el text, les dates, qui la controlava,
@@ -211,7 +211,14 @@ no en redistribueix les dades. Per a la fase del març del 2022, anterior a l'hi
 l'ocupat a la primera instantània més el que ja hi surt alliberat: el màxim del març, encara que no
 tot alhora. La bossa de Debaltseve del 2014, que DeepStateMap no dibuixa, és una línia feta a mà.
 
-**Què hi ha**, en 85 zones:
+**Què hi ha**, en 91 zones:
+
+- **L'Adriàtic, del 1918 al 1923**: el que Itàlia va ocupar per l'armistici de Villa Giusti fins
+  a la línia del pacte de Londres —Trieste i Gorízia fins a Saint-Germain, la Venezia Giulia fins
+  a Rapallo i la Dalmàcia fins a l'evacuació del 1921—, Fiume sota l'ocupació interaliada fins que
+  hi va entrar D'Annunzio, els voltants de Zara fins al març del 1923, i Krk i Rab, on van
+  desembarcar els legionaris de la Regència del Carnaro després de Rapallo. Les dates i les fonts,
+  al lot [1919-fiume](treball/lots/1919-fiume.md).
 
 - **L'oest i el centre**: l'expansió alemanya del 1938-1939 (Àustria, Bohèmia i Moràvia, l'Estat
   Eslovac, Memel), Zaolzie i la Rutènia hongaresa; la partició de Polònia; l'ocupació de
@@ -238,6 +245,13 @@ tot alhora. La bossa de Debaltseve del 2014, que DeepStateMap no dibuixa, és un
   províncies del 30 de setembre del 2022; i Kursk, ocupat per Ucraïna del 2024 al 2025.
 
 **Què hi falta**:
+
+- **Zara del 1918 al 1919.** La ciutat no entra a la zona dels voltants, perquè des de Rapallo és
+  italiana, i fins a Saint-Germain surt austríaca sense l'ocupació.
+- **El Tirol del Sud i el Trentino** del 1918 al 1919, ocupats per Itàlia fins a Saint-Germain:
+  surten austríacs sense l'ocupació.
+- **Fiume del 1922 al 1924**: el cop feixista del 3 de març del 1922 i l'ocupació italiana des del
+  17 fins a l'annexió; i Sušak, el Delta i Port Baross, ocupats per Itàlia fins al març del 1923.
 
 - **El Donbàs de l'abril a l'agost del 2014.** Les «repúbliques populars» es van proclamar
   l'abril, però el front es va moure cada setmana fins al protocol de Minsk, i no hi ha cap línia

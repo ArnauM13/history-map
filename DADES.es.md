@@ -59,7 +59,7 @@ iguales. Los criterios de ahora:
 | Un territorio se libera antes de la paz | Vuelve a su gobierno **el día en que se restaura**; si el ocupante no se va, sigue siendo suyo hasta el tratado. | Ginebra, república desde el 31 de diciembre de 1813; Hamburgo, francesa hasta el tratado de París (30 de mayo de 1814), porque Davout no la dejó. |
 | Un territorio cedido que aún no tiene dueño | El **gobierno provisional** que lo gobernaba, si lo hay. | Bélgica, del tratado de París al Congreso de Viena: el Gobierno General de los aliados, ni Francia ni los Países Bajos. |
 | Una anexión por la fuerza, después de 1945, que la ONU declara nula | **No cambia la soberanía**: el territorio sigue siendo de quien era, y la anexión va en la capa de ocupaciones. La Carta de la ONU prohíbe ganar territorio por la fuerza, y la resolución 242 lo repite para 1967. | Jerusalén Este (1980), el Golán (1981) y Crimea (2014). |
-| Un territorio ocupado que no era de ningún otro estado | **Pieza propia**, con su nombre y el estatus de territorio ocupado; el ocupante, en la capa de ocupaciones. | Cisjordania y Gaza desde 1967, y desde el 15 de noviembre de 1988 con el nombre de Palestina, el estado que se proclamó allí y que reconocen 157 de los 193 miembros de la ONU. |
+| Un territorio ocupado que no era de ningún otro estado | **Pieza propia**, con su nombre y el estatus de territorio ocupado; el ocupante, en la capa de ocupaciones. | Cisjordania y Gaza desde 1967, y desde el 15 de noviembre de 1988 con el nombre de Palestina, el estado que se proclamó allí y que reconocen 157 de los 193 miembros de la ONU. Venecia Julia y Dalmacia, de 1919 a 1920: Austria-Hungría había renunciado a ellas en Saint-Germain, y nadie las tuvo hasta que Rapallo fijó la frontera. |
 | Una guerra larga, con un frente que se mueve durante años | **Por fases**: una zona para cada tramo en que el frente se movió poco, con las fechas de los hechos que lo abren y lo cierran y la línea de un día de dentro del tramo, que la ficha dice. Entre dos fases, el frente no se dibuja día a día. Si el tramo no tiene ningún hecho que lo cierre, se parte por semestres. | La guerra ruso-ucraniana: del 2 de marzo al 2 de abril de 2022 (de la toma de Jersón a la retirada del norte), del 11 de noviembre de 2022 al 16 de febrero de 2024 (de Jersón a Avdiivka). |
 | El nombre | El que tenía el estado **entonces**, como lo llama la Wikipedia de cada idioma. | En 1700, el Reino de Francia; en 1810, el Primer Imperio francés. |
 
@@ -105,7 +105,8 @@ nombres de los estados y de las capitales de CShapes están en inglés; los de l
 | Crimea sigue en Ucrania después del 18 de marzo de 2014 | CShapes la pasa a Rusia. Aquí se dibuja la frontera reconocida internacionalmente, como hacen la resolución 68/262 de la Asamblea General de la ONU y la mayoría de atlas. La anexión se explica como hecho, y está en la capa de ocupaciones (§1.3). |
 | Danzig, Ciudad Libre hasta el 1 de septiembre de 1939 | CShapes la termina el 31 de agosto de 1938 y la pone dentro de Alemania desde el 30 de septiembre de 1938: durante un mes no es de nadie. Es un error de un año; el Reich se la anexionó el 1 de septiembre de 1939. |
 | La frontera de Rapallo, del 12 de noviembre de 1920 al 10 de febrero de 1947 | CShapes da a Yugoslavia lo que el tratado de Rapallo dio a Italia: el Litoral esloveno con Idrija y Postojna, Istria, Zara, Cres y Lošinj. Vuelve a ser italiano hasta el tratado de París. La línea, de Peč a Triglav, Snežnik y el golfo de Kvarner, está dibujada a mano a partir del artículo sobre el tratado (unos 2-5 km de error). |
-| El Estado Libre de Fiume (1920-1924) y Fiume italiana (1924-1947) | CShapes no tiene el estado libre que creó Rapallo, y lo pone dentro de Yugoslavia. Aquí es un estado (con el QID de Wikidata como código) hasta el 22 de febrero de 1924, el decreto de anexión a Italia, y después italiano. Sušak, en la otra orilla del Rječina, sigue yugoslava. |
+| Fiume, de 1918 a 1947 | CShapes la hace austríaca en 1918 y yugoslava de 1919 a 1920, y no tiene el estado libre que creó Rapallo. Aquí tiene gobierno propio desde el 30 de octubre de 1918, cuando el gobernador húngaro se marchó y el Consiglio Nazionale se hizo cargo (el corpus separatum, unos 21 km²); es la Regencia italiana de Carnaro de D'Annunzio del 8 de septiembre al 27 de diciembre de 1920, y el Estado Libre de Fiume, con la franja de costa que le dio Rapallo, hasta el 22 de febrero de 1924, el decreto de anexión a Italia. Después es italiana. Sušak, en la otra orilla del Rječina, sigue yugoslava. Fiume va con el QID del Estado Libre, con el nombre según la fecha, y la Regencia, con el suyo. |
+| Venecia Julia y Dalmacia, del 10 de septiembre de 1919 al 11 de noviembre de 1920 | CShapes las hace yugoslavas desde Saint-Germain, con Istria y el Carso hasta las puertas de Trieste. Austria había renunciado a ellas, pero la frontera entre Italia y el Reino SCS no se fijó hasta Rapallo, y hasta entonces las gobernaba Italia. Aquí son territorio ocupado que no es de ningún estado (§0.1): Venecia Julia (lo que Rapallo dio a Italia, sin Zara) y Dalmacia hasta la línea del pacto de Londres, dibujada a mano (unos 5-10 km de error), con Zara, Knin, Drniš y Šibenik. Trieste y Gorizia, italianas desde Saint-Germain, como en CShapes: ninguna propuesta de frontera las daba al Reino SCS. |
 | El Dodecaneso, otomano hasta el 24 de julio de 1923 e italiano hasta el 10 de febrero de 1947 | CShapes lo hace griego desde 1913. Italia lo ocupaba desde 1912, pero Turquía no renunció a él hasta el tratado de Lausana; el tratado de París lo cedió a Grecia. |
 | Israel, desde el 10 de junio de 1967, dentro de la Línea Verde | CShapes le suma Cisjordania, Jerusalén Este, Gaza, el Golán y el Sinaí, que Israel ocupó en la guerra de los Seis Días, y no devuelve el Sinaí a Egipto hasta 1979. Aquí Israel queda dentro de la línea de los armisticios de 1949, como la dibujan la ONU (resoluciones 242 y 2334) y la Corte Internacional de Justicia (2004 y 2024); el Golán es de Siria y el Sinaí, de Egipto. El control israelí va en la capa de ocupaciones (§1.3). |
 | Cisjordania y Gaza siguen después de 1967 | CShapes las hace desaparecer dentro de Israel. Aquí siguen con la forma de 1967, como territorio ocupado y sin depender de ningún estado: hasta 1988, con el nombre de Cisjordania y de Franja de Gaza; desde el 15 de noviembre de 1988, con el de Palestina. Jordania se había anexionado Cisjordania en 1950, pero casi nadie lo reconoció, y renunció a ella el 31 de julio de 1988. |
@@ -135,11 +136,10 @@ año por año. Los archivos generados no se tocan nunca a mano.
   territorio tomado por la fuerza, ni el segundo arbitraje de Viena (1940), que dio el norte de
   Transilvania a Hungría. Entre 1938 y 1945, Austria, Bohemia-Moravia y Polonia siguen saliendo.
   Lo explica la capa de ocupaciones (§1.3).
-- **El Adriático, todavía a medias** (§1.1 corrige la frontera italiana). De 1919 a 1920, cuando
-  Istria y Fiume estaban ocupadas por Italia y aún no se había pactado la frontera, CShapes las da a
-  Yugoslavia, y aquí se deja así; tampoco está la Regencia del Carnaro de D'Annunzio. La
-  investigación para corregirlo, con las fechas y las fuentes, está en el lote
-  [1919-fiume](treball/lots/1919-fiume.md) (en catalán). De 1947 a 1954, Trieste sale italiana y
+- **El Adriático, todavía a medias** (§1.1 corrige 1918-1947). De 1918 a 1919, CShapes deja
+  Eslovenia y Dalmacia dentro de Austria y Croacia dentro de Hungría, mientras las gobernaba el
+  Estado de los Eslovenos, Croatas y Serbios (lote [1918-iugoslavia](treball/lots/1918-iugoslavia.md),
+  en catalán). De 1947 a 1954, Trieste sale italiana y
   Koper yugoslava, sin el Territorio Libre de Trieste. Lastovo, Palagruža y Saseno, italianas de
   1920 a 1947, y Kastellorizo, no están en CShapes; y la simplificación borra casi todas las islas
   del Adriático, también Cres y Krk.
@@ -160,7 +160,7 @@ año por año. Los archivos generados no se tocan nunca a mano.
 
 ### 1.3 La capa de ocupaciones
 
-Lo que se controlaba de hecho en las ocupaciones largas —entre 1938 y 1945, y los territorios
+Lo que se controlaba de hecho en las ocupaciones largas —el Adriático de 1918 a 1923, entre 1938 y 1945, y los territorios
 que ocupa Israel desde 1967 y los de Ucrania y Rusia desde 2014— va en una capa aparte, que se puede ocultar y
 que pinta cada zona del color del estado que la controlaba, con el nombre, quién la controlaba y
 por qué. Cada zona tiene un archivo en `content/occupations/`, con el texto, las fechas, quién la
@@ -214,7 +214,14 @@ y no redistribuye sus datos. Para la fase de marzo de 2022, anterior al historia
 ocupado en la primera instantánea más lo que ya sale liberado: el máximo de marzo, aunque no todo
 a la vez. La bolsa de Debáltseve de 2014, que DeepStateMap no dibuja, es una línea hecha a mano.
 
-**Qué hay**, en 85 zonas:
+**Qué hay**, en 91 zonas:
+
+- **El Adriático, de 1918 a 1923**: lo que Italia ocupó por el armisticio de Villa Giusti hasta la
+  línea del pacto de Londres —Trieste y Gorizia hasta Saint-Germain, Venecia Julia hasta Rapallo y
+  Dalmacia hasta la evacuación de 1921—, Fiume bajo la ocupación interaliada hasta que entró
+  D'Annunzio, los alrededores de Zara hasta marzo de 1923, y Krk y Rab, donde desembarcaron los
+  legionarios de la Regencia de Carnaro tras Rapallo. Las fechas y las fuentes, en el lote
+  [1919-fiume](treball/lots/1919-fiume.md) (en catalán).
 
 - **El oeste y el centro**: la expansión alemana de 1938-1939 (Austria, Bohemia y Moravia, el
   Estado Eslovaco, Memel), Zaolzie y la Rutenia húngara; el reparto de Polonia; la ocupación de
@@ -241,6 +248,13 @@ a la vez. La bolsa de Debáltseve de 2014, que DeepStateMap no dibuja, es una l�
   provincias del 30 de septiembre de 2022; y Kursk, ocupado por Ucrania de 2024 a 2025.
 
 **Qué falta**:
+
+- **Zara de 1918 a 1919.** La ciudad no entra en la zona de los alrededores, porque desde Rapallo
+  es italiana, y hasta Saint-Germain sale austríaca sin la ocupación.
+- **El Tirol del Sur y el Trentino** de 1918 a 1919, ocupados por Italia hasta Saint-Germain: salen
+  austríacos sin la ocupación.
+- **Fiume de 1922 a 1924**: el golpe fascista del 3 de marzo de 1922 y la ocupación italiana desde
+  el 17 hasta la anexión; y Sušak, el Delta y Puerto Baross, ocupados por Italia hasta marzo de 1923.
 
 - **El Donbás de abril a agosto de 2014.** Las «repúblicas populares» se proclamaron en abril, pero
   el frente se movió cada semana hasta el protocolo de Minsk, y no hay ninguna línea de una fecha

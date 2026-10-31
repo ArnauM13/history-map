@@ -60,8 +60,15 @@
   - { until: 1929-10-02, ca: "Regne dels Serbis, Croats i Eslovens", es: "Reino de los Serbios, Croatas y Eslovenos", en: "Kingdom of Serbs, Croats and Slovenes", wiki: Kingdom of Yugoslavia }
   - { until: 2003-02-03, ca: Iugoslàvia, es: Yugoslavia, en: Yugoslavia, wiki: Yugoslavia }
   - { ca: Sèrbia i Montenegro, es: Serbia y Montenegro, en: Serbia and Montenegro, wiki: Serbia and Montenegro }
-# L'Estat Lliure de Fiume (1920-1924) no és a CShapes: el dibuixa build-borders.mjs, i va pel QID.
-"Q548114": { ca: Estat Lliure de Fiume, es: Estado Libre de Fiume, en: Free State of Fiume, wiki: Free State of Fiume }
+# Fiume (1918-1924) no és a CShapes: la dibuixa build-borders.mjs, i va pel QID de l'Estat Lliure.
+# Abans de Rapallo la governava el Consiglio Nazionale; entremig, la Regència del Carnaro.
+"Q548114":
+  - { until: 1920-09-07, ca: Fiume, es: Fiume, en: Fiume, wiki: Italian National Council of Fiume }
+  - { ca: Estat Lliure de Fiume, es: Estado Libre de Fiume, en: Free State of Fiume, wiki: Free State of Fiume }
+"Q1423581": { ca: Regència Italiana del Carnaro, es: Regencia italiana de Carnaro, en: Italian Regency of Carnaro, wiki: Italian Regency of Carnaro }
+# El que Itàlia governava de Saint-Germain a Rapallo, sense frontera fixada: territori ocupat.
+"Q958521": { ca: Venezia Giulia, es: Venecia Julia, en: Julian March, wiki: Julian March }
+"Q2552789": { ca: Dalmàcia, es: Dalmacia, en: Dalmatia, wiki: Governorate of Dalmatia }
 "346": { ca: Bòsnia i Hercegovina, es: Bosnia y Herzegovina, en: Bosnia and Herzegovina, wiki: Bosnia and Herzegovina }
 "347": { ca: Kosovo, es: Kosovo, en: Kosovo, wiki: Kosovo }
 "349": { ca: Eslovènia, es: Eslovenia, en: Slovenia, wiki: Slovenia }

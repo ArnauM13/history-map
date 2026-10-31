@@ -578,6 +578,21 @@ const LINES = {
   ],
 
   /**
+   * La tercera zona de la Dalmàcia ocupada, la de Zara, que Itàlia no va evacuar fins al març del
+   * 1923: el districte de Zara i el de Zaravecchia, de Nin a Novigrad i Biograd, sense Benkovac,
+   * de la segona zona. Font: A. Fiorio, «Tra Italia e Jugoslavia» (Università di Trieste).
+   */
+  zaraHinterland: [
+    [15.05, 44.3],
+    [15.3, 44.3],
+    [15.6, 44.22],
+    [15.52, 44.1],
+    [15.45, 43.92],
+    [15.3, 43.88],
+    [14.9, 44.1],
+  ],
+
+  /**
    * Eupen-Malmedy: els cantons d'Eupen, Malmedy i Sankt Vith, i els deu municipis de l'entorn de
    * Montzen que Alemanya s'hi va annexionar també. Font: el mapa de «Eupen-Malmedy».
    */
@@ -930,6 +945,17 @@ const PAG_BRAC_HVAR = () =>
     islands('HRV', 'Splitsko-Dalmatinska', [16.35, 43.24, 16.95, 43.42]),
     islands('HRV', 'Splitsko-Dalmatinska', [16.3, 43.05, 17.25, 43.25]),
   )
+/**
+ * L'Adriàtic del 1918 al 1923: les peces que dibuixa build-borders.mjs (Fiume, i la Venezia Giulia i
+ * la Dalmàcia, territori ocupat de Saint-Germain a Rapallo) i el que Itàlia va guanyar el 1919.
+ */
+const ADRIATIC_BOX = ring([
+  [13.0, 46.7],
+  [14.7, 46.7],
+  [14.7, 44.4],
+  [13.0, 44.4],
+])
+const OCCUPIED_DALMATIA = () => state('Q2552789', '1920-01-01')
 const DALMATIA = () =>
   intersect(YUGOSLAV(344), union(ring(LINES.dalmatia), rings(LINES.dalmatianIslands)))
 const CRETE = () => within(GREECE(), 'GRC', ['Kriti'])
@@ -1108,6 +1134,24 @@ const ZONES = {
   },
   'fiume-annexations': { line: true, build: FIUME_ANNEXED },
   'pag-brac-hvar': { build: PAG_BRAC_HVAR },
+  // L'Adriàtic, del 1918 al 1923.
+  'trieste-1918': {
+    build: () => intersect(minus(state(325, '1920-01-01'), state(325, '1919-01-01')), ADRIATIC_BOX),
+  },
+  'venezia-giulia-1918': { line: true, build: () => state('Q958521', '1920-01-01') },
+  'fiume-1918': { line: true, build: () => state('Q548114', '1919-01-01') },
+  'dalmatia-1918': {
+    line: true,
+    build: () => minus(OCCUPIED_DALMATIA(), ring(LINES.zaraHinterland)),
+  },
+  // Sense la ciutat, italiana des de Rapallo.
+  'zara-hinterland': {
+    line: true,
+    build: () =>
+      minus(intersect(OCCUPIED_DALMATIA(), ring(LINES.zaraHinterland)), state(325, '1921-01-01')),
+  },
+  'krk-rab-1918': { build: KRK_RAB },
+
   dalmatia: {
     line: true,
     build: async () => union(DALMATIA(), await yugoslav('MNE', KOTOR)),

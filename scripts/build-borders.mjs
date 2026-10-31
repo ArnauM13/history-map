@@ -119,6 +119,41 @@ const LINES = {
     [14.447, 45.36],
     [14.447, 45.3],
   ],
+  /**
+   * El corpus separatum de Fiume, el terme de la ciutat abans de Rapallo: la ciutat, Kozala, Drenova
+   * i Plase, uns 21 km². A l'oest s'acabava a Kantrida; la franja de costa fins a Preluka la hi va
+   * afegir Rapallo. Fonts: «Corpus separatum (Fiume)» i el lot treball/lots/1919-fiume.md.
+   */
+  corpusSeparatum: [
+    [14.39, 45.3],
+    [14.39, 45.355],
+    [14.4, 45.37],
+    [14.43, 45.375],
+    [14.447, 45.36],
+    [14.447, 45.3],
+  ],
+  /**
+   * La Dalmàcia que Itàlia va ocupar per l'armistici, fins a la línia del pacte de Londres (1915):
+   * del límit de Dalmàcia amb la Lika, al Velebit, fins a la Dinara, i d'allà per la Svilaja fins
+   * al cap Planka. Hi queden Zara, Benkovac, Obrovac, Knin, Drniš i Šibenik; Trogir i Split, no.
+   * Fonts: «Governorate of Dalmatia» i «Treaty of London (1915)», article 5.
+   */
+  london: [
+    [15.0, 44.6],
+    [15.25, 44.4],
+    [15.45, 44.32],
+    [15.75, 44.25],
+    [16.05, 44.2],
+    [16.25, 44.12],
+    [16.39, 44.06],
+    [16.45, 43.93],
+    [16.42, 43.8],
+    [16.3, 43.68],
+    [16.1, 43.56],
+    [15.94, 43.49],
+    [15.7, 43.4],
+    [14.8, 44.0],
+  ],
   /** Zara: la ciutat i el seu terme, uns 110 km², a la costa. Font: «Province of Zara». */
   zara: [
     [15.17, 44.13],
@@ -151,12 +186,49 @@ const FIUME_STATE = {
 }
 
 /**
+ * Fiume del 1918 al 1920, abans que Rapallo en fes l'Estat Lliure: governada pel Consiglio Nazionale,
+ * i el mateix QID, perquè el nom va per dates (content/countries.yaml).
+ */
+const FIUME_COUNCIL = FIUME_STATE
+
+/** La Regència Italiana del Carnaro de D'Annunzio, del 8 de setembre al 27 de desembre del 1920. */
+const CARNARO = {
+  gwcode: 'Q1423581',
+  country_name: 'Italian Regency of Carnaro',
+  status: 'independent',
+  owner: null,
+  capname: 'Fiume',
+}
+
+/**
+ * El que Àustria-Hongria va deixar a Saint-Germain i Itàlia governava fins que Rapallo en fixés la
+ * frontera: territori ocupat que no era de cap estat (DADES.md §0.1). Van pel QID de la regió i
+ * del Governatorato della Dalmazia.
+ */
+const VENEZIA_GIULIA = {
+  gwcode: 'Q958521',
+  country_name: 'Julian March',
+  status: 'occupied',
+  owner: 'Q958521',
+  capname: 'Trieste',
+}
+const OCCUPIED_DALMATIA = {
+  gwcode: 'Q2552789',
+  country_name: 'Governorate of Dalmatia',
+  status: 'occupied',
+  owner: 'Q2552789',
+  capname: 'Zara',
+}
+
+/**
  * Els territoris que es mouen, fets amb les peces de CShapes d'abans de corregir. Cada un rep
  * l'estat d'on surt; així les vores coincideixen amb les dels veïns.
  */
 const AREAS = {
   danzig: (raw) => rawState(raw, '291', '1930-01-01'),
   fiume: (raw) => intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.fiume)),
+  corpusSeparatum: (raw) =>
+    intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.corpusSeparatum)),
   rapallo: (raw) => {
     const yugoslavia = rawState(raw, '345', '1930-01-01')
     return union(
@@ -165,6 +237,15 @@ const AREAS = {
       islandsIn(yugoslavia, ISLANDS.cresLosinj),
     )
   },
+  // Zara va amb la Dalmàcia, on la governava el Governatorato.
+  veneziaGiulia: (raw) => {
+    const yugoslavia = rawState(raw, '345', '1930-01-01')
+    return union(
+      minus(intersect(mainland(yugoslavia), ring(LINES.rapallo)), ring(LINES.fiume)),
+      islandsIn(yugoslavia, ISLANDS.cresLosinj),
+    )
+  },
+  dalmatia: (raw) => intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.london)),
   dodecanese: (raw) => islandsIn(rawState(raw, '350', '1930-01-01'), ISLANDS.dodecanese),
 }
 
@@ -215,18 +296,93 @@ const CORRECTIONS = [
     extend: { codes: ['291'], end: '1938-08-31', to: '1939-08-31' },
     transfer: { area: 'danzig', from: '255', start: '1938-09-30', end: '1939-08-31' },
   },
+  // CShapes fa iugoslau, de Saint-Germain a Rapallo, el que Itàlia governava i ningú no tenia
+  // encara: Àustria hi havia renunciat i la frontera no es va fixar fins a Rapallo. Trieste i
+  // Gorízia, que cap proposta no donava al Regne SCS, ja les fa italianes des de Saint-Germain.
+  {
+    description:
+      'La Venezia Giulia, de Saint-Germain a Rapallo: territori ocupat per Itàlia, que no era de cap estat',
+    transfer: {
+      area: 'veneziaGiulia',
+      from: '345',
+      to: VENEZIA_GIULIA,
+      start: '1919-09-10',
+      end: '1920-11-11',
+    },
+  },
+  {
+    description:
+      'La Dalmàcia de la línia de Londres, de Saint-Germain a Rapallo: territori ocupat per Itàlia, que no era de cap estat',
+    transfer: {
+      area: 'dalmatia',
+      from: '345',
+      to: OCCUPIED_DALMATIA,
+      start: '1919-09-10',
+      end: '1920-11-11',
+    },
+  },
   {
     description:
       "Rapallo: l'Ístria, Gorízia, el Litoral eslovè amb Postojna, Zara, Cres i Lošinj, italians fins al tractat de París",
     transfer: { area: 'rapallo', from: '345', to: '325', start: '1920-11-12', end: '1947-02-09' },
   },
+  // Fiume no va ser mai austríaca ni iugoslava, com la fa CShapes: hongaresa fins que el governador
+  // se'n va anar, i des del 30 d'octubre del 1918 la governa el Consiglio Nazionale.
   {
-    description: "L'Estat Lliure de Fiume, de Rapallo fins que Itàlia se l'annexiona",
+    description: "Fiume, governada pel Consiglio Nazionale des del 30 d'octubre del 1918",
+    transfer: {
+      area: 'corpusSeparatum',
+      from: '300',
+      to: FIUME_COUNCIL,
+      start: '1918-10-30',
+      end: '1918-11-02',
+    },
+  },
+  {
+    description: 'Fiume, del Consiglio Nazionale, i no austríaca, fins a Saint-Germain',
+    transfer: {
+      area: 'corpusSeparatum',
+      from: '305',
+      to: FIUME_COUNCIL,
+      start: '1918-11-03',
+      end: '1919-09-09',
+    },
+  },
+  {
+    description: 'Fiume, del Consiglio Nazionale, i no iugoslava, fins a la Regència del Carnaro',
+    transfer: {
+      area: 'corpusSeparatum',
+      from: '345',
+      to: FIUME_COUNCIL,
+      start: '1919-09-10',
+      end: '1920-09-07',
+    },
+  },
+  {
+    description: 'La Regència Italiana del Carnaro, proclamada el 8 de setembre del 1920',
+    transfer: {
+      area: 'corpusSeparatum',
+      from: '345',
+      to: CARNARO,
+      start: '1920-09-08',
+      end: '1920-11-11',
+    },
+  },
+  {
+    // Rapallo crea l'Estat Lliure, però la Regència no l'accepta i governa fins que dimiteix. La
+    // franja de costa que el tractat hi afegeix va amb Fiume, que només té aquell govern.
+    description:
+      'La Regència del Carnaro, que no accepta Rapallo, fins que dimiteix el 28 de desembre',
+    transfer: { area: 'fiume', from: '345', to: CARNARO, start: '1920-11-12', end: '1920-12-27' },
+  },
+  {
+    description:
+      "L'Estat Lliure de Fiume, de la dimissió de D'Annunzio fins que Itàlia se l'annexiona",
     transfer: {
       area: 'fiume',
       from: '345',
       to: FIUME_STATE,
-      start: '1920-11-12',
+      start: '1920-12-28',
       end: '1924-02-21',
     },
   },

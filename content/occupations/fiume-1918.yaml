@@ -1,0 +1,43 @@
+start: 1918-11-17
+control:
+  - until: 1919-09-11
+    by: 325
+    kind: occupation
+    cause:
+      ca: Ocupació interaliada de Fiume, 1918
+      es: Ocupación interaliada de Fiume, 1918
+      en: Inter-Allied occupation of Fiume, 1918
+countries: [Q548114]
+title:
+  ca: Fiume, sota ocupació interaliada
+  es: Fiume, bajo ocupación interaliada
+  en: Fiume under Inter-Allied occupation
+label:
+  ca: Fiume
+  es: Fiume
+  en: Fiume
+summary:
+  ca: >-
+    Les tropes italianes del general San Marzano van entrar a Fiume el 17 de novembre del 1918, en
+    una ocupació interaliada (amb francesos, britànics i americans) sota comandament italià. La
+    ciutat la governava el Consiglio Nazionale Italiano, que s'havia proclamat el 30 d'octubre i en
+    demanava l'annexió a Itàlia. L'ocupació es va acabar quan D'Annunzio hi va entrar, el 12 de
+    setembre del 1919.
+  es: >-
+    Las tropas italianas del general San Marzano entraron en Fiume el 17 de noviembre de 1918, en
+    una ocupación interaliada (con franceses, británicos y estadounidenses) bajo mando italiano. La
+    ciudad la gobernaba el Consiglio Nazionale Italiano, que se había proclamado el 30 de octubre y
+    pedía su anexión a Italia. La ocupación terminó cuando D'Annunzio entró en ella, el 12 de
+    septiembre de 1919.
+  en: >-
+    General San Marzano's Italian troops entered Fiume on 17 November 1918, in an Inter-Allied
+    occupation (with French, British and American troops) under Italian command. The city was
+    governed by the Italian National Council, which had proclaimed itself on 30 October and asked
+    for annexation to Italy. The occupation ended when D'Annunzio entered the city on 12 September
+    1919.
+wikipedia:
+  en: Italian National Council of Fiume
+sources:
+  - title: D. L. Massagrande, «I governi di Fiume indipendente 1918-1924»
+    publisher: Fiume Mondo
+    url: https://www.fiumemondo.com/wp-content/uploads/2021/05/Fiume-1918_1924_Massagrande.pdf

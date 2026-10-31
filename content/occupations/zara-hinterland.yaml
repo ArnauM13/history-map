@@ -1,0 +1,42 @@
+start: 1918-11-04
+control:
+  - until: 1923-03-01
+    by: 325
+    kind: occupation
+    cause:
+      ca: Armistici de Villa Giusti, 1918
+      es: Armisticio de Villa Giusti, 1918
+      en: Armistice of Villa Giusti, 1918
+countries: [305, Q2552789, 345]
+title:
+  ca: La tercera zona de Zara
+  es: La tercera zona de Zara
+  en: Third zone of Zara
+label:
+  ca: Voltants de Zara
+  es: Alrededores de Zara
+  en: Zara hinterland
+summary:
+  ca: >-
+    Rapallo (1920) només va donar a Itàlia la ciutat de Zara, però l'exèrcit italià es va quedar
+    als voltants, de Nin a Biograd, fins que els acords de Santa Margherita (1922) en van fixar
+    l'evacuació, l'última de la Dalmàcia ocupada. Itàlia els va ratificar el febrer del 1923, i la
+    zona es va lliurar al Regne dels Serbis, Croats i Eslovens al començament del març; el dia
+    exacte no és documentat.
+  es: >-
+    Rapallo (1920) solo dio a Italia la ciudad de Zara, pero el ejército italiano se quedó en los
+    alrededores, de Nin a Biograd, hasta que los acuerdos de Santa Margherita (1922) fijaron su
+    evacuación, la última de la Dalmacia ocupada. Italia los ratificó en febrero de 1923, y la zona
+    se entregó al Reino de los Serbios, Croatas y Eslovenos a principios de marzo; el día exacto no
+    está documentado.
+  en: >-
+    Rapallo (1920) gave Italy only the city of Zara, but the Italian army stayed in the surrounding
+    area, from Nin to Biograd, until the Santa Margherita agreements (1922) set its evacuation, the
+    last of occupied Dalmatia. Italy ratified them in February 1923, and the zone was handed over to
+    the Kingdom of Serbs, Croats and Slovenes in early March; the exact day is not documented.
+wikipedia:
+  en: Diplomatic struggle for Zadar
+sources:
+  - title: A. Fiorio, «Tra Italia e Jugoslavia. La Dalmazia e la difficile applicazione del Trattato di Rapallo»
+    publisher: Università di Trieste
+    url: https://www.openstarts.units.it/bitstream/10077/32190/3/07-Fiorio.pdf

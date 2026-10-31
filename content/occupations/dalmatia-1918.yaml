@@ -1,0 +1,43 @@
+start: 1918-11-04
+control:
+  - until: 1921-06-12
+    by: 325
+    kind: occupation
+    cause:
+      ca: Armistici de Villa Giusti, 1918
+      es: Armisticio de Villa Giusti, 1918
+      en: Armistice of Villa Giusti, 1918
+countries: [305, Q2552789, 345]
+title:
+  ca: Governació de Dalmàcia
+  es: Gobernación de Dalmacia
+  en: Governorate of Dalmatia
+label:
+  ca: Dalmàcia ocupada
+  es: Dalmacia ocupada
+  en: Occupied Dalmatia
+summary:
+  ca: >-
+    Itàlia va desembarcar a Zara el 4 de novembre del 1918 i va ocupar la Dalmàcia del nord fins a
+    la línia del pacte de Londres, amb Šibenik, Knin i Drniš, que va governar l'almirall Millo. El
+    tractat de Rapallo (1920) la va donar al Regne dels Serbis, Croats i Eslovens, tret de Zara, i
+    Itàlia la va evacuar per fases: l'exèrcit va sortir de Šibenik el 12 de juny del 1921.
+  es: >-
+    Italia desembarcó en Zara el 4 de noviembre de 1918 y ocupó la Dalmacia del norte hasta la línea
+    del pacto de Londres, con Šibenik, Knin y Drniš, que gobernó el almirante Millo. El tratado de
+    Rapallo (1920) la dio al Reino de los Serbios, Croatas y Eslovenos, salvo Zara, e Italia la
+    evacuó por fases: el ejército salió de Šibenik el 12 de junio de 1921.
+  en: >-
+    Italy landed at Zara on 4 November 1918 and occupied northern Dalmatia up to the line of the
+    Treaty of London, with Šibenik, Knin and Drniš, which Admiral Millo governed. The Treaty of
+    Rapallo (1920) gave it to the Kingdom of Serbs, Croats and Slovenes, except Zara, and Italy
+    evacuated it in stages: the army left Šibenik on 12 June 1921.
+wikipedia:
+  en: Governorate of Dalmatia
+sources:
+  - title: A. Fiorio, «Tra Italia e Jugoslavia. La Dalmazia e la difficile applicazione del Trattato di Rapallo»
+    publisher: Università di Trieste
+    url: https://www.openstarts.units.it/bitstream/10077/32190/3/07-Fiorio.pdf
+  - title: Na današnji dan, 06. studenog 1918. godine
+    publisher: Grad Šibenik
+    url: https://www.sibenik.hr/clanci/na-danasnji-dan-06-studenog-1918-godine/4432.html
