@@ -7,7 +7,7 @@ territori, i com s'han de dibuixar.
 Occidental i la Ucraïna soviètica fins a la Pau de Riga. Les fronteres amb Polònia són de
 [1919-polonia](1919-polonia.md); aquí només s'hi enllacen.
 
-**Estat**: obert — fase 2 (recerca), pla del 2026-10-05.
+**Estat**: en marxa — fase 2 (recerca), començada el 2026-11-01.
 
 ## Context
 
