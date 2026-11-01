@@ -60,7 +60,25 @@ describe('les fronteres corregides', () => {
         ['1947-02-10', '345'],
       ],
     ],
-    ['Sušak', [14.455, 45.327], [['1930-01-01', '345']]],
+    // La vora est de Fiume és el Rječina, la de la Croàcia de CShapes. Amb la línia a mà, entre
+    // la ciutat i Sušak hi quedava una falca austríaca el 1918 i iugoslava el 1919.
+    [
+      'entre Fiume i Sušak',
+      [14.452, 45.34],
+      [
+        ['1918-11-03', 'Q548114'],
+        ['1919-09-10', 'Q548114'],
+      ],
+    ],
+    [
+      'Sušak',
+      [14.455, 45.327],
+      [
+        ['1918-11-03', '310'],
+        ['1920-06-04', '345'],
+        ['1930-01-01', '345'],
+      ],
+    ],
     // La franja de costa que Rapallo va afegir a Fiume: abans, del Regne SCS, com la dona CShapes.
     [
       'Preluka',
@@ -100,6 +118,17 @@ describe('les fronteres corregides', () => {
       ],
     ],
     ['Trogir', [16.25, 43.52], [['1920-01-01', '345']]],
+    ['Knin', [16.2, 44.04], [['1920-01-01', 'Q2552789']]],
+    // La línia de Londres, dibuixada a mà, entrava uns quilòmetres a la Lika, que fins a Trianon era
+    // hongaresa: les dues peces se sobreposaven.
+    [
+      'la Lika, vora Knin',
+      [16.02, 44.2],
+      [
+        ['1920-01-01', '310'],
+        ['1920-08-01', '345'],
+      ],
+    ],
     [
       'Kastav',
       [14.349, 45.3725],

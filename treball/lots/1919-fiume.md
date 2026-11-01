@@ -8,7 +8,7 @@ ha mostrat que tres coses d'aquest lot continuen després de Rapallo i hi entren
 no accepta el tractat fins al 1920-12-28; Krk i Rab, on els legionaris desembarquen l'endemà de
 Rapallo; i la Dalmàcia ocupada, que Itàlia evacua del 1921 al 1923.
 
-**Estat**: obert — fase 3 (integració) feta el 2026-10-07; falta la fase 4, la comprovació al mapa.
+**Estat**: tancat — fase 4 (comprovació) feta el 2026-10-31.
 
 ## Context
 
@@ -258,20 +258,41 @@ Proposades per a la integració. Les marcades amb ⇒ són criteri nou o canvi p
   - La Dalmàcia ocupada, a la capa, en dues zones: fins a l'evacuació de Šibenik (1921-06-12) i
     la tercera zona, als voltants de Zara, fins al 1923-03-01.
 
+- 2026-10-07 i 2026-10-31 — Fase 4, la comprovació. Dues correccions a `build-borders.mjs`:
+  - La Dalmàcia ocupada es menjava uns quilòmetres de la Lika del 1919-09-10 al 1920-06-03, on
+    CShapes té Hongria: ara es retalla amb la Croàcia-Eslavònia de CShapes (commit `f9ba536`).
+  - Entre Fiume i Sušak hi quedava una falca austríaca el 1918 i iugoslava el 1919, perquè la
+    línia a mà acabava al meridià 14,447 i no a la vora de la Croàcia de CShapes. Ara Fiume i el
+    corpus separatum es retallen amb la Croàcia hongaresa (310 el 1919), i el parell Fiume-Hongria
+    va a `TOUCHING`, perquè la topologia no els veia veïns i sortien del mateix color (11 i 11).
+    Amb el nou acolorit canvien els colors de catorze estats, i es tornen a generar
+    `public/data/history/`.
+  - Tests a `borders.test.ts`: Knin dins i un punt de la Lika fora; un punt entre Fiume i Sušak, de
+    Fiume el 1918 i el 1919; Sušak, hongaresa fins a Trianon.
+
+  Comprovat:
+  - Al navegador, l'Adriàtic del nord a 1918-11-03, 1918-11-17, 1919-09-10, 1919-09-12,
+    1920-09-08, 1920-11-13, 1920-12-28 i 1921-07-01, també en fosc i a 390 px d'ample; i, amb
+    l'script de consulta, a quin estat cau cada lloc de la llista del pendent a totes les dates.
+    Tot surt com diuen les decisions.
+  - La línia `london` deixa Trogir i Split fora i Drniš i Knin dins; la tercera zona
+    (`zara-hinterland`) va de Nin a Biograd i no es menja Benkovac.
+  - Les fitxes de les quatre entitats: nom per dates, estatus, capital, anys i enllaç a la
+    Viquipèdia. La capital de la Venezia Giulia és Trieste, que no és dins de la peça (és italiana
+    des de Saint-Germain): era la seu del Governatorato, i la capital només surt com a text.
+  - Krk i Rab surten ocupades per la Regència fins al 1921-01-09, encara que la Regència s'acaba el
+    1920-12-27: són els legionaris, que no van sortir de Krk fins aleshores. És el que diuen les
+    fonts [7] [26].
+
 ## Pendent
 
-Per a la fase 4, la comprovació:
+El lot es tanca. Queda fora, per a qui hi torni:
 
-1. Mirar al navegador Trieste, Koper, Pazin, Postojna, Fiume, Preluka, Sušak, Kastav, Krk, Zara,
-   Knin i Šibenik a 1918-10-29, 1918-10-30, 1918-11-03, 1918-11-17, 1919-09-10, 1919-09-12,
-   1920-06-04, 1920-09-08, 1920-11-13, 1920-12-28, 1921-04-26, 1921-07-01 i 1923-03-02; també en
-   fosc i en una pantalla estreta. L'script de consulta de la fase 3 (a quin estat cau cada lloc
-   per dates) va donar el que s'esperava; el test de `borders.test.ts` en fixa una part.
-2. Mirar que la línia `london` deixi Trogir i Split fora i Drniš i Knin dins, i que la tercera
-   zona no es mengi Benkovac.
-3. Les fitxes de les quatre entitats noves (Fiume, la Regència, la Venezia Giulia i la Dalmàcia):
-   nom per dates, estatus, capital i enllaç a la Viquipèdia. Cap té bandera: la de la Regència i la
-   de Fiume del 1918-1920 estan per documentar a `flags.yaml`.
+1. **Les banderes** de Fiume del 1918-1920 i de la Regència, per documentar a `flags.yaml`.
+2. **L'estatus de Fiume del 1918 al 1920.** La fitxa diu «Estat independent», perquè l'app només
+   té els estatus de CShapes; però el Consiglio Nazionale havia proclamat la unió a Itàlia i
+   ningú no el reconeixia. És la mateixa pregunta que la de qualsevol revolta amb govern (§0.1,
+   fila 5): si cal un estatus propi («govern no reconegut»), s'ha de decidir per a totes.
 
 **Lots nous que n'han sortit**
 
@@ -286,11 +307,9 @@ Per a la fase 4, la comprovació:
 
 ## Relleu
 
-- **Fase**: 3 (integració) feta; ve la 4 (comprovació), en una sessió nova des de `main`.
-- **Primera tasca**: el punt 1 de «Pendent», al navegador (`npm run build && npx vite preview`, i
-  l'adreça `?d=AAAA-MM-DD`).
-- **Llegir**: aquest fitxer (Context, Decisions, Fet i Pendent), DADES §1.1 i §1.3. **No cal**
-  tornar a llegir les fonts ni refer la recerca de dates.
+- **Fase**: 4 (comprovació) feta; el lot és tancat.
+- **Si s'hi torna**: el «Pendent» d'aquí sobre. Llegir Decisions i Fet; **no cal** refer la
+  recerca ni la comprovació.
 
 ## Fonts
 
