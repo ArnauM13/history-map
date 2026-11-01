@@ -596,7 +596,7 @@ states:
   # Sèrbia i Montenegro van ser part de Iugoslàvia (345) del 1918 al 2006.
   '340':
     - { until: 1918-11-30, flag: rs-1882 }
-    - { until: 2006-06-02 }
+    - { until: 2006-06-04 }
     - { flag: rs }
   '341':
     - { until: 1905-12-18, flag: me-1860 }
@@ -614,7 +614,9 @@ states:
   '346':
     - { until: 1998-02-03, flag: ba-1992 }
     - { flag: ba }
-  '347': [{ flag: xk }]
+  '347':
+    - { until: 2008-02-16 }
+    - { flag: xk }
   '349': [{ flag: si }]
   # La de la creu blanca era la de terra fins al 1978; la de les franges, la del mar.
   '350':

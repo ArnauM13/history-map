@@ -110,6 +110,7 @@ nombres de los estados y de las capitales de CShapes están en inglés; los de l
 | El Dodecaneso, otomano hasta el 24 de julio de 1923 e italiano hasta el 10 de febrero de 1947 | CShapes lo hace griego desde 1913. Italia lo ocupaba desde 1912, pero Turquía no renunció a él hasta el tratado de Lausana; el tratado de París lo cedió a Grecia. |
 | Israel, desde el 10 de junio de 1967, dentro de la Línea Verde | CShapes le suma Cisjordania, Jerusalén Este, Gaza, el Golán y el Sinaí, que Israel ocupó en la guerra de los Seis Días, y no devuelve el Sinaí a Egipto hasta 1979. Aquí Israel queda dentro de la línea de los armisticios de 1949, como la dibujan la ONU (resoluciones 242 y 2334) y la Corte Internacional de Justicia (2004 y 2024); el Golán es de Siria y el Sinaí, de Egipto. El control israelí va en la capa de ocupaciones (§1.3). |
 | Cisjordania y Gaza siguen después de 1967 | CShapes las hace desaparecer dentro de Israel. Aquí siguen con la forma de 1967, como territorio ocupado y sin depender de ningún estado: hasta 1988, con el nombre de Cisjordania y de Franja de Gaza; desde el 15 de noviembre de 1988, con el de Palestina. Jordania se había anexionado Cisjordania en 1950, pero casi nadie lo reconoció, y renunció a ella el 31 de julio de 1988. |
+| Montenegro, Serbia y Kosovo, el día de la proclamación | CShapes los hace empezar el día en que fueron reconocidos —Montenegro el 12 de junio de 2006 (la Unión Europea), Serbia el 6 y Kosovo el 20 de febrero de 2008— y entretanto los deja en blanco. Aquí, el día en que se proclamaron (§0.1): Montenegro, el 3 de junio de 2006, cuando el parlamento declara la independencia; Serbia y Montenegro dura en Serbia hasta que el parlamento serbio se proclama su sucesor, el 5; Kosovo, el 17 de febrero de 2008, la declaración de la Asamblea. Kosovo sale como estado, como en CShapes y en Gleditsch y Ward, pero Serbia y un centenar de estados miembros de la ONU no lo reconocen: el hecho de la declaración lo dice. |
 
 **Las fechas, cuando las fuentes discrepan** (§0.1: una cesión va el día en que se firmó):
 
@@ -150,6 +151,7 @@ año por año. Los archivos generados no se tocan nunca a mano.
   ocupación aliadas.
 - **Se acaba en 2019.** Se da por hecho que ninguna frontera reconocida de Europa ha cambiado
   después; si cambia alguna, se añadirá a mano.
+- **Las fronteras de hoy, a medias.** CShapes no tiene Svalbard, la Tierra de Francisco José, las Feroe ni Groenlandia; tampoco Gibraltar, Ceuta y Melilla, las bases británicas de Chipre ni los enclaves (Llívia, Campione, Büsingen), y Vaduz sale suizo; las Åland están, pero la simplificación se las come. Desde el 2000, le falta la cesión del Pamir oriental de Tayikistán a China (unos 1.100 km², ratificada el 12 de enero de 2011). Los lotes están en [treball/README.md](treball/README.md).
 - **Geometría simplificada.** Para ver el continente basta; para medir distancias o superficies,
   no. Gaza y Cisjordania no se simplifican: al 12 %, Gaza quedaba en un triángulo que dejaba la
   ciudad de Gaza en Israel.

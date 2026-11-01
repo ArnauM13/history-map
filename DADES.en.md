@@ -107,6 +107,7 @@ names come from `content/countries.yaml` and `content/capitals.yaml`, in all thr
 | The Dodecanese, Ottoman until 24 July 1923 and Italian until 10 February 1947 | CShapes makes it Greek from 1913. Italy had occupied it since 1912, but Turkey only renounced it at the Treaty of Lausanne; the Treaty of Paris ceded it to Greece. |
 | Israel, from 10 June 1967, within the Green Line | CShapes adds the West Bank, East Jerusalem, Gaza, the Golan and the Sinai, which Israel occupied in the Six-Day War, and does not return the Sinai to Egypt until 1979. Here Israel stays within the 1949 armistice line, as drawn by the UN (Resolutions 242 and 2334) and the International Court of Justice (2004 and 2024); the Golan is Syrian and the Sinai Egyptian. Israeli control goes in the occupations layer (§1.3). |
 | The West Bank and Gaza continue after 1967 | CShapes makes them disappear into Israel. Here they continue with their 1967 shape, as occupied territory depending on no state: until 1988, named the West Bank and the Gaza Strip; from 15 November 1988, Palestine. Jordan had annexed the West Bank in 1950, but almost nobody recognised it, and it gave up its claim on 31 July 1988. |
+| Montenegro, Serbia and Kosovo, on the day they were proclaimed | CShapes starts them on the day they were recognised —Montenegro on 12 June 2006 (the European Union), Serbia on the 6th and Kosovo on 20 February 2008— and leaves them blank in between. Here, on the day they were proclaimed (§0.1): Montenegro on 3 June 2006, when its parliament declares independence; Serbia and Montenegro lasts in Serbia until the Serbian parliament proclaims itself its successor, on the 5th; Kosovo on 17 February 2008, the Assembly's declaration. Kosovo is shown as a state, as in CShapes and Gleditsch and Ward, but Serbia and about a hundred UN member states do not recognise it: the event of the declaration says so. |
 
 **The dates, where sources disagree** (§0.1: a cession goes on the day it was signed):
 
@@ -147,6 +148,7 @@ generated files are never edited by hand.
   zones.
 - **It ends in 2019.** We assume no recognised border in Europe has changed since; if one does, it
   will be added by hand.
+- **Today's borders, half done.** CShapes lacks Svalbard, Franz Josef Land, the Faroes and Greenland; also Gibraltar, Ceuta and Melilla, the British bases on Cyprus and the enclaves (Llívia, Campione, Büsingen), and Vaduz comes out Swiss; the Åland Islands are there, but simplification eats them. Since 2000, it misses Tajikistan's cession of the eastern Pamir to China (about 1,100 km², ratified on 12 January 2011). The work packages are in [treball/README.md](treball/README.md).
 - **Simplified geometry.** Good enough to see the continent; not to measure distances or areas.
   Gaza and the West Bank are not simplified: at 12%, Gaza became a triangle that put Gaza City
   in Israel.

@@ -225,6 +225,7 @@ const OCCUPIED_DALMATIA = {
  * l'estat d'on surt; així les vores coincideixen amb les dels veïns.
  */
 const AREAS = {
+  montenegro: (raw) => rawState(raw, '341', '2010-01-01'),
   danzig: (raw) => rawState(raw, '291', '1930-01-01'),
   fiume: (raw) => intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.fiume)),
   corpusSeparatum: (raw) =>
@@ -256,6 +257,7 @@ const AREAS = {
  * annexió, el dia del decret.
  *
  *   - `drop`: treu les peces d'uns estats que comencen un dia.
+ *   - `begin`: les peces d'uns estats que comencen el dia `from` comencen el dia `to`.
  *   - `extend`: allarga fins a `to` les peces d'uns estats que s'acaben el dia `end`.
  *   - `transfer`: entre `start` i `end`, un territori (AREAS) passa de `from` a `to`, que és un
  *     codi o, si l'estat no és a CShapes, les seves propietats. Sense `to`, només surt de `from`.
@@ -264,6 +266,27 @@ const AREAS = {
  *     no és de cap altre estat.
  */
 const CORRECTIONS = [
+  // CShapes posa Montenegro i Kosovo el dia que la Unió Europea i els Estats Units els van
+  // reconèixer, no el de la proclamació, i els deixa en blanc entremig: Podgorica no era de ningú
+  // del 3 a l'11 de juny del 2006, ni Belgrad del 3 al 5, ni Prixtina del 17 al 19 de febrer del
+  // 2008. El criteri de DADES.md §0.1 és el de la proclamació.
+  {
+    description:
+      'Montenegro, independent des que el parlament ho proclama el 3 de juny del 2006, i no des que la Unió Europea el reconeix el 12',
+    begin: { codes: ['341'], from: '2006-06-12', to: '2006-06-03' },
+  },
+  {
+    description:
+      'Sèrbia i Montenegro, que dura a Sèrbia fins que el parlament serbi en proclama la successió el 5 de juny del 2006',
+    extend: { codes: ['345'], end: '2006-06-02', to: '2006-06-04' },
+    transfer: { area: 'montenegro', from: '345', start: '2006-06-03', end: '2006-06-04' },
+    begin: { codes: ['340'], from: '2006-06-06', to: '2006-06-05' },
+  },
+  {
+    description:
+      "Kosovo, independent des que l'Assemblea ho proclama el 17 de febrer del 2008, i no des del 20",
+    begin: { codes: ['347'], from: '2008-02-20', to: '2008-02-17' },
+  },
   {
     description:
       "Crimea: la frontera reconeguda entre Rússia i Ucraïna, també després de l'annexió del 2014 (resolució 68/262 de l'ONU)",
@@ -473,6 +496,13 @@ function correctedFeatures(simplified) {
       features = features.filter(
         (f) => !(codes.includes(f.properties.gwcode) && f.properties.start === start),
       )
+    }
+    if (fix.begin) {
+      const { codes, from, to } = fix.begin
+      for (const f of features) {
+        if (codes.includes(f.properties.gwcode) && f.properties.start === from)
+          f.properties.start = to
+      }
     }
     if (fix.extend) {
       const { codes, end, to } = fix.extend

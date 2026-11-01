@@ -28,6 +28,21 @@ On es va quedar l'última sessió, què ha de fer la següent i les decisions ob
 | [1919-turquia](lots/1919-turquia.md) | Anatòlia i Tràcia fins a Lausana | 3. Integració | integrar | 2026-10-07 |
 | [1918-iugoslavia](lots/1918-iugoslavia.md) | Eslovènia, Croàcia i Dalmàcia, d'Àustria-Hongria al Regne SCS | 2. Recerca | obert | — |
 
+## Encàrrec: el segle XXI
+
+Que les fronteres del 2000 ençà siguin exactes. Pla fet el 2026-11-01, a partir d'una auditoria
+de tot el mapa (forats i sobreposicions, dia a dia) i de llocs concrets. Les fronteres reconegudes
+primer (lots 1-4); el control de fet, després (5-6).
+
+| Lot | Què | Fase | Estat | Última sessió |
+| --- | --- | --- | --- | --- |
+| [2006-montenegro-kosovo](lots/2006-montenegro-kosovo.md) | Els forats del 2006 i el 2008 | 4. Comprovació | tancat | 2026-11-01 |
+| [2000-territoris-que-falten](lots/2000-territoris-que-falten.md) | Svalbard, Francesc Josep, les Fèroe, Grenlàndia, les Åland | 1. Pla | obert | — |
+| [2000-microestats-enclavaments](lots/2000-microestats-enclavaments.md) | Microestats, Gibraltar, Ceuta i Melilla, les bases de Xipre, Llívia | 1. Pla | obert | — |
+| [2000-asia-central](lots/2000-asia-central.md) | Els tractats de frontera del Pamir, Fergana i el Caucas | 1. Pla | obert | — |
+| [1991-territoris-en-disputa](lots/1991-territoris-en-disputa.md) | Transnístria, Geòrgia, el Karabakh, Xipre, Kosovo | 1. Pla | obert | — |
+| [2011-orient-mitja](lots/2011-orient-mitja.md) | El Líban, Síria, el Golan i Gaza | 1. Pla | obert | — |
+
 ## Fora d'encàrrec
 
 | Lot | Què | Fase | Estat | Última sessió |

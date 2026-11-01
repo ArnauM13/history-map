@@ -110,6 +110,7 @@ i `content/capitals.yaml`, en els tres idiomes.
 | El Dodecanès, otomà fins al 24 de juliol del 1923 i italià fins al 10 de febrer del 1947 | CShapes el fa grec des del 1913. Itàlia l'ocupava des del 1912, però Turquia no hi va renunciar fins al tractat de Lausana; el tractat de París el va cedir a Grècia. |
 | Israel, des del 10 de juny del 1967, dins de la Línia Verda | CShapes hi suma Cisjordània, Jerusalem Est, Gaza, el Golan i el Sinaí, que Israel va ocupar a la guerra dels Sis Dies, i el Sinaí no el torna a Egipte fins al 1979. Aquí Israel queda dins de la línia dels armisticis del 1949, com la dibuixen l'ONU (resolucions 242 i 2334) i el Tribunal Internacional de Justícia (2004 i 2024); el Golan és de Síria i el Sinaí, d'Egipte. El control israelià va a la capa d'ocupacions (§1.3). |
 | Cisjordània i Gaza continuen després del 1967 | CShapes les fa desaparèixer dins d'Israel. Aquí continuen amb la forma del 1967, com a territori ocupat i sense dependre de cap estat: fins al 1988, amb el nom de Cisjordània i de Franja de Gaza; des del 15 de novembre del 1988, el de Palestina. Jordània s'havia annexionat Cisjordània el 1950, però gairebé ningú ho va reconèixer, i hi va renunciar el 31 de juliol del 1988. |
+| Montenegro, Sèrbia i Kosovo, el dia de la proclamació | CShapes els fa començar el dia que els van reconèixer —Montenegro el 12 de juny del 2006 (la Unió Europea), Sèrbia el 6 i Kosovo el 20 de febrer del 2008— i entremig els deixa en blanc. Aquí, el dia que es van proclamar (§0.1): Montenegro, el 3 de juny del 2006, quan el parlament declara la independència; Sèrbia i Montenegro dura a Sèrbia fins que el parlament serbi se'n proclama successor, el 5; Kosovo, el 17 de febrer del 2008, la declaració de l'Assemblea. Kosovo surt com a estat, com a CShapes i Gleditsch i Ward, però Sèrbia i un centenar d'estats membres de l'ONU no el reconeixen: el fet de la declaració ho diu. |
 
 **Les dates, quan les fonts discrepen** (§0.1: una cessió va el dia que es va signar):
 
@@ -148,6 +149,7 @@ fitxers generats no es toquen mai a mà.
   d'ocupació aliades.
 - **S'acaba el 2019.** Es dona per fet que cap frontera reconeguda d'Europa ha canviat després;
   si en canvia alguna, s'afegirà a mà.
+- **Les fronteres d'avui, a mitges.** CShapes no té Svalbard, la Terra de Francesc Josep, les Fèroe ni Grenlàndia; tampoc Gibraltar, Ceuta i Melilla, les bases britàniques de Xipre ni els enclavaments (Llívia, Campione, Büsingen), i Vaduz surt suís; les Åland hi són, però la simplificació se les menja. Del 2000 ençà, li falta la cessió del Pamir oriental del Tajikistan a la Xina (uns 1.100 km², ratificada el 12 de gener del 2011). Els lots són a [treball/README.md](treball/README.md).
 - **Geometria simplificada.** Per veure el continent n'hi ha prou; per mesurar distàncies o
   superfícies, no. Gaza i Cisjordània no se simplifiquen: al 12 %, Gaza quedava en un triangle
   que deixava la ciutat de Gaza a Israel.

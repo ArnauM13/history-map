@@ -143,6 +143,34 @@ describe('les fronteres corregides', () => {
         ['1939-09-01', '255'],
       ],
     ],
+    // CShapes els feia començar el dia que els van reconèixer i els deixava uns dies en blanc.
+    [
+      'Podgorica',
+      [19.26, 42.44],
+      [
+        ['2006-06-02', '345'],
+        ['2006-06-03', '341'],
+        ['2006-06-11', '341'],
+      ],
+    ],
+    [
+      'Belgrad',
+      [20.46, 44.82],
+      [
+        ['2006-06-04', '345'],
+        ['2006-06-05', '340'],
+      ],
+    ],
+    [
+      'Prixtina',
+      [21.17, 42.66],
+      [
+        ['2006-06-04', '345'],
+        ['2006-06-05', '340'],
+        ['2008-02-16', '340'],
+        ['2008-02-17', '347'],
+      ],
+    ],
   ]
   for (const [name, point, expected] of cases) {
     it(`posen ${name} on era`, () => {
