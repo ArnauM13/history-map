@@ -7,7 +7,7 @@
 de les Muntanyes del Caucas del Nord i les zones disputades (Karabakh, Zangezur, Nakhitxevan,
 Kars, Batum). La Turquia de Sèvres és de [1919-turquia](1919-turquia.md).
 
-**Estat**: obert — fase 2 (recerca), pla del 2026-10-05.
+**Estat**: en marxa — fase 2 (recerca), des del 2026-11-01.
 
 ## Context
 
