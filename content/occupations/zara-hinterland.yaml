@@ -39,4 +39,6 @@ wikipedia:
 sources:
   - title: A. Fiorio, «Tra Italia e Jugoslavia. La Dalmazia e la difficile applicazione del Trattato di Rapallo»
     publisher: Università di Trieste
-    url: https://www.openstarts.units.it/bitstream/10077/32190/3/07-Fiorio.pdf
+    # OpenStarts no respon (503 o temps esgotat, des de l'octubre del 2026): la còpia de
+    # l'Internet Archive del mateix fitxer.
+    url: https://web.archive.org/web/20210929205353/https://www.openstarts.units.it/bitstream/10077/32190/3/07-Fiorio.pdf
