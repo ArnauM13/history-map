@@ -116,8 +116,8 @@ const LINES = {
     [14.37, 45.362],
     [14.4, 45.37],
     [14.43, 45.375],
-    [14.447, 45.36],
-    [14.447, 45.3],
+    [14.47, 45.375],
+    [14.5, 45.3],
   ],
   /**
    * El corpus separatum de Fiume, el terme de la ciutat abans de Rapallo: la ciutat, Kozala, Drenova
@@ -129,8 +129,8 @@ const LINES = {
     [14.39, 45.355],
     [14.4, 45.37],
     [14.43, 45.375],
-    [14.447, 45.36],
-    [14.447, 45.3],
+    [14.47, 45.375],
+    [14.5, 45.3],
   ],
   /**
    * La Dalmàcia que Itàlia va ocupar per l'armistici, fins a la línia del pacte de Londres (1915):
@@ -226,9 +226,18 @@ const OCCUPIED_DALMATIA = {
  */
 const AREAS = {
   danzig: (raw) => rawState(raw, '291', '1930-01-01'),
-  fiume: (raw) => intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.fiume)),
+  // A l'est, fins al Rječina: la vora de la Croàcia de CShapes. Amb una línia a mà, entre Fiume i
+  // Sušak quedava una falca austríaca del 1918 al 1919, i Fiume i Hongria sortien del mateix color.
+  fiume: (raw) =>
+    minus(
+      intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.fiume)),
+      rawState(raw, '310', '1919-01-01'),
+    ),
   corpusSeparatum: (raw) =>
-    intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.corpusSeparatum)),
+    minus(
+      intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.corpusSeparatum)),
+      rawState(raw, '310', '1919-01-01'),
+    ),
   rapallo: (raw) => {
     const yugoslavia = rawState(raw, '345', '1930-01-01')
     return union(
@@ -245,7 +254,13 @@ const AREAS = {
       islandsIn(yugoslavia, ISLANDS.cresLosinj),
     )
   },
-  dalmatia: (raw) => intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.london)),
+  // Sense la Lika, que era de Croàcia-Eslavònia: la línia de Londres hi entra uns quilòmetres, i
+  // fins a Trianon CShapes la dona a Hongria, de manera que les dues peces se sobreposaven.
+  dalmatia: (raw) =>
+    minus(
+      intersect(mainland(rawState(raw, '345', '1930-01-01')), ring(LINES.london)),
+      rawState(raw, '310', '1920-01-01'),
+    ),
   dodecanese: (raw) => islandsIn(rawState(raw, '350', '1930-01-01'), ISLANDS.dodecanese),
 }
 
@@ -612,6 +627,13 @@ function readOccupations() {
 const COST = { occupied: 1000, occupiedNeighbour: 100, near: 10 }
 
 /**
+ * Veïns que la topologia no veu: una vora retallada a mà acaba a mig segment d'una de CShapes, i
+ * les dues peces no comparteixen cap arc. Fiume i la Croàcia hongaresa, al Rječina, sortien del
+ * mateix color del 1918 al 1920.
+ */
+const TOUCHING = [['Q548114', '310']]
+
+/**
  * Els estats que no són veïns a CShapes però sí abans del 1886, on build-history.mjs els pinta
  * amb el mateix color. Es llegeixen de les fronteres d'abans del 1886 que hi ha al repo: quan les
  * correccions d'Itàlia i Grècia van canviar l'acolorit, el Regne Unit i Grècia van sortir del
@@ -656,7 +678,7 @@ function assignColours(topo, occupations) {
     }
   })
 
-  for (const [a, b] of historicNeighbours()) {
+  for (const [a, b] of [...historicNeighbours(), ...TOUCHING]) {
     if (adjacency.has(a) && adjacency.has(b)) {
       adjacency.get(a).add(b)
       adjacency.get(b).add(a)
