@@ -7,7 +7,7 @@ dates.
 (1920-1922), Memel sota administració aliada fins al 1923, i el control real d'Estònia i Letònia
 durant les guerres d'independència.
 
-**Estat**: obert — fase 2 (recerca), pla del 2026-10-05.
+**Estat**: en marxa — fase 2 (recerca), des del 2026-11-01.
 
 ## Context
 
